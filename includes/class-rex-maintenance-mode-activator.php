@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  */
 
 /**
@@ -16,11 +16,12 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Oh_My_Page_Activator {
+class Rex_Maintenance_Mode_Activator
+{
 
 	/**
 	 * Short Description. (use period)
@@ -29,8 +30,7 @@ class Oh_My_Page_Activator {
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate() {
-
+	public static function activate()
+	{
 	}
-
 }

@@ -22,7 +22,7 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
+ * @package    Rex_Maintenance_Mode
  */
 
 // If uninstall not called from WordPress, then exit.
@@ -32,7 +32,7 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 //Options cleanup during uninstall plugin
 
-$oh_my_page_options = [
+$rex_maintenance_mode_options = [
 	'enable-disable-settings',
 	'content-headline-settings',
 	'content-subheading-settings',
@@ -46,9 +46,9 @@ $oh_my_page_options = [
 ];
 
 
-if (!empty($oh_my_page_options)) {
+if (!empty($rex_maintenance_mode_options)) {
 
-	foreach ($oh_my_page_options as $option) {
+	foreach ($rex_maintenance_mode_options as $option) {
 
 		delete_option($option);
 	}

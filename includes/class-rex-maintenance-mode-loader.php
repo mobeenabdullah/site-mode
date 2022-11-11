@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  */
 
 /**
@@ -17,11 +17,12 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Oh_My_Page_Loader {
+class Rex_Maintenance_Mode_Loader
+{
 
 	/**
 	 * The array of actions registered with WordPress.
@@ -46,11 +47,11 @@ class Oh_My_Page_Loader {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
+	public function __construct()
+	{
 
 		$this->actions = array();
 		$this->filters = array();
-
 	}
 
 	/**
@@ -63,8 +64,9 @@ class Oh_My_Page_Loader {
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
-	public function add_action( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-		$this->actions = $this->add( $this->actions, $hook, $component, $callback, $priority, $accepted_args );
+	public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->actions = $this->add($this->actions, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
 	/**
@@ -77,8 +79,9 @@ class Oh_My_Page_Loader {
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
 	 */
-	public function add_filter( $hook, $component, $callback, $priority = 10, $accepted_args = 1 ) {
-		$this->filters = $this->add( $this->filters, $hook, $component, $callback, $priority, $accepted_args );
+	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1)
+	{
+		$this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
 	/**
@@ -95,7 +98,8 @@ class Oh_My_Page_Loader {
 	 * @param    int                  $accepted_args    The number of arguments that should be passed to the $callback.
 	 * @return   array                                  The collection of actions and filters registered with WordPress.
 	 */
-	private function add( $hooks, $hook, $component, $callback, $priority, $accepted_args ) {
+	private function add($hooks, $hook, $component, $callback, $priority, $accepted_args)
+	{
 
 		$hooks[] = array(
 			'hook'          => $hook,
@@ -106,7 +110,6 @@ class Oh_My_Page_Loader {
 		);
 
 		return $hooks;
-
 	}
 
 	/**
@@ -114,16 +117,15 @@ class Oh_My_Page_Loader {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 
-		foreach ( $this->filters as $hook ) {
-			add_filter( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+		foreach ($this->filters as $hook) {
+			add_filter($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
 		}
 
-		foreach ( $this->actions as $hook ) {
-			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+		foreach ($this->actions as $hook) {
+			add_action($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
 		}
-
 	}
-
 }

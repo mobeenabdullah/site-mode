@@ -9,8 +9,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Oh_My_Page
+class Rex_Maintenance_Mode
 {
 
 	/**
@@ -36,7 +36,7 @@ class Oh_My_Page
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Oh_My_Page_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Rex_Maintenance_Mode_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -70,12 +70,12 @@ class Oh_My_Page
 	 */
 	public function __construct()
 	{
-		if (defined('OH_MY_PAGE_VERSION')) {
-			$this->version = OH_MY_PAGE_VERSION;
+		if (defined('REX_MAINTENANCE_MODE_VERSION')) {
+			$this->version = REX_MAINTENANCE_MODE_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'oh-my-page';
+		$this->plugin_name = 'rex-maintenance-mode';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -92,10 +92,10 @@ class Oh_My_Page
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Oh_My_Page_Loader. Orchestrates the hooks of the plugin.
-	 * - Oh_My_Page_i18n. Defines internationalization functionality.
-	 * - Oh_My_Page_Admin. Defines all hooks for the admin area.
-	 * - Oh_My_Page_Public. Defines all hooks for the public side of the site.
+	 * - Rex_Maintenance_Mode_Loader. Orchestrates the hooks of the plugin.
+	 * - Rex_Maintenance_Mode_i18n. Defines internationalization functionality.
+	 * - Rex_Maintenance_Mode_Admin. Defines all hooks for the admin area.
+	 * - Rex_Maintenance_Mode_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -110,13 +110,13 @@ class Oh_My_Page
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-oh-my-page-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rex-maintenance-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-oh-my-page-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rex-maintenance-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the options page of the plugin
@@ -131,25 +131,25 @@ class Oh_My_Page
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-oh-my-page-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-rex-maintenance-mode-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-oh-my-page-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-rex-maintenance-mode-public.php';
 
 
 
 
 
-		$this->loader = new Oh_My_Page_Loader();
+		$this->loader = new Rex_Maintenance_Mode_Loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Oh_My_Page_i18n class in order to set the domain and to register the hook
+	 * Uses the Rex_Maintenance_Mode_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -158,7 +158,7 @@ class Oh_My_Page
 	private function set_locale()
 	{
 
-		$plugin_i18n = new Oh_My_Page_i18n();
+		$plugin_i18n = new Rex_Maintenance_Mode_i18n();
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
@@ -173,7 +173,7 @@ class Oh_My_Page
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Oh_My_Page_Admin($this->get_plugin_name(), $this->get_version());
+		$plugin_admin = new Rex_Maintenance_Mode_Admin($this->get_plugin_name(), $this->get_version());
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -189,7 +189,7 @@ class Oh_My_Page
 	private function define_public_hooks()
 	{
 
-		$plugin_public = new Oh_My_Page_Public($this->get_plugin_name(), $this->get_version());
+		$plugin_public = new Rex_Maintenance_Mode_Public($this->get_plugin_name(), $this->get_version());
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
@@ -200,14 +200,14 @@ class Oh_My_Page
 
 	public function get_settings_page()
 	{
-		$settings_page = new Oh_My_Page_Setting_page();
+		$settings_page = new Rex_Maintenance_Mode_Setting_page();
 	}
 
 	// menu 
 
 	public function get_menu()
 	{
-		$settings_menu = new Oh_My_Page_Menu();
+		$settings_menu = new Rex_Maintenance_Mode_Menu();
 	}
 
 	/**
@@ -236,7 +236,7 @@ class Oh_My_Page
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Oh_My_Page_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Rex_Maintenance_Mode_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
 	{
@@ -260,19 +260,19 @@ class Oh_My_Page
 	{
 		$selected_template = get_option('content-content-template-settings');
 		if ($selected_template == '1') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/oh-my-page-template-one.php';
+			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
 			exit;
 		} elseif ($selected_template == '2') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/oh-my-page-template-two.php';
+			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-two.php';
 			exit;
 		} elseif ($selected_template == '3') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/oh-my-page-template-three.php';
+			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-three.php';
 			exit;
 		} elseif ($selected_template == '4') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/oh-my-page-template-four.php';
+			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-four.php';
 			exit;
 		} else {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/oh-my-page-template-default.php';
+			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-default.php';
 			exit;
 		}
 	}
@@ -282,17 +282,17 @@ class Oh_My_Page
 	{
 		if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
 			$image_url = wp_get_attachment_image_url(get_option('content-bg-image-settings'), 'full');
-            echo $image_url . 'testdata';
-        ?>
+			echo $image_url . 'testdata';
+?>
 			<style>
 				body {
-                    background-image: url("<?php echo $image_url?>") !important;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    background-size: cover !important;
+					background-image: url("<?php echo $image_url ?>") !important;
+					background-repeat: no-repeat;
+					background-position: center;
+					background-size: cover !important;
 				}
 			</style>
-    <?php
+<?php
 		}
 	}
 

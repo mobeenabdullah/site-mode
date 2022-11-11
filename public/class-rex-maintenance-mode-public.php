@@ -1,26 +1,26 @@
 <?php
 
 /**
- * The admin-specific functionality of the plugin.
+ * The public-facing functionality of the plugin.
  *
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/admin
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/public
  */
 
 /**
- * The admin-specific functionality of the plugin.
+ * The public-facing functionality of the plugin.
  *
  * Defines the plugin name, version, and two examples hooks for how to
- * enqueue the admin-specific stylesheet and JavaScript.
+ * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/admin
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/public
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Oh_My_Page_Admin
+class Rex_Maintenance_Mode_Public
 {
 
 	/**
@@ -45,7 +45,7 @@ class Oh_My_Page_Admin
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    1.0.0
-	 * @param      string    $plugin_name       The name of this plugin.
+	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 	public function __construct($plugin_name, $version)
@@ -56,7 +56,7 @@ class Oh_My_Page_Admin
 	}
 
 	/**
-	 * Register the stylesheets for the admin area.
+	 * Register the stylesheets for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -67,19 +67,19 @@ class Oh_My_Page_Admin
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Oh_My_Page_Loader as all of the hooks are defined
+		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Oh_My_Page_Loader will then create the relationship
+		 * The Rex_Maintenance_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/oh-my-page-admin.css', array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Register the JavaScript for the public-facing side of the site.
 	 *
 	 * @since    1.0.0
 	 */
@@ -90,16 +90,14 @@ class Oh_My_Page_Admin
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Oh_My_Page_Loader as all of the hooks are defined
+		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Oh_My_Page_Loader will then create the relationship
+		 * The Rex_Maintenance_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-		if (!did_action('wp_enqueue_media')) {
-			wp_enqueue_media();
-		}
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/oh-my-page-admin.js', array('jquery'), $this->version, false);
+
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/rex-maintenance-mode-public.js', array('jquery'), $this->version, false);
 	}
 }
