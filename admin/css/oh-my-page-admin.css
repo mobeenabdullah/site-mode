@@ -1,0 +1,40 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ .template__wrapper .template_options {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 30px;
+ }
+ .image {
+    opacity: 0.8;
+    width: 200px;
+    height: 160px;
+    background-position: center center;
+    background-color: gray;
+    display: inline-block;    
+    border-radius: 10px;
+    transition: all .2s;
+    width: 100%;
+  }
+  .image:hover {
+    opacity: 1;
+    border: 3px solid #2271b1 !important;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }
+  .radio-img {
+    display: block;
+  }
+  .radio-img > input {
+    display: none;
+  }
+  .radio-img > .image {
+    cursor: pointer;
+    border: 3px solid black;
+  }
+  .radio-img > input:checked + .image {
+    border: 3px solid #2271b1;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
+  }

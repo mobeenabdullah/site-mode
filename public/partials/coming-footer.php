@@ -1,0 +1,1 @@
+<h1>This is footer from partial folder </h1>
