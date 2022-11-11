@@ -1,10 +1,12 @@
 <?php
 
 /**
- *  Name : Template-Two
+ *  Name : Template-one
  */
+
+require_once 'header.php';
+
 ?>
-<?php require_once 'header.php' ?>
 <div class="container">
     <div class="company__logo">
         <?php
@@ -14,19 +16,16 @@
     </div>
     <div class="content">
         <h1>
-            <?php esc_html_e(get_option('content-headline-settings', 'oh-my-page')); ?>
+            <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>
         </h1>
         <h3>
-            <?php esc_html_e(get_option('content-content-settings', 'oh-my-page')); ?>
+            <?php esc_html_e(get_option('content-content-settings', 'rex-maintenance-mode')); ?>
         </h3>
         <p>
-            <?php esc_html_e(get_option('content-subheading-settings', 'oh-my-page')); ?>
+            <?php esc_html_e(get_option('content-subheading-settings', 'rex-maintenance-mode')); ?>
         </p>
     </div>
-    <div class="social-icons">
-        <?php require_once 'social-media.php' ?>
-    </div>
+    <?php get_template_part('/public/partials/coming', 'footer'); ?>
     <?php require_once 'social-media.php' ?>
-
 </div>
-<?php require_once 'footer.php' ?>
+<?php require_once 'footer.php'; ?>

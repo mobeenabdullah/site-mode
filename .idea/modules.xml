@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/oh-my-page.iml" filepath="$PROJECT_DIR$/.idea/oh-my-page.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/rex-maintenance-mode.iml" filepath="$PROJECT_DIR$/.idea/rex-maintenance-mode.iml" />
     </modules>
   </component>
 </project>

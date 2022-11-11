@@ -9,8 +9,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  */
 
 /**
@@ -20,11 +20,12 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Oh_My_Page
- * @subpackage Oh_My_Page/includes
+ * @package    Rex_Maintenance_Mode
+ * @subpackage Rex_Maintenance_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Oh_My_Page_i18n {
+class Rex_Maintenance_Mode_i18n
+{
 
 
 	/**
@@ -32,16 +33,13 @@ class Oh_My_Page_i18n {
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load_plugin_textdomain()
+	{
 
 		load_plugin_textdomain(
-			'oh-my-page',
+			'rex-maintenance-mode',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);
-
 	}
-
-
-
 }
