@@ -1,0 +1,121 @@
+.wrapper {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.wrapper_overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.wrapper .uc_image {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100vh;
+    width: 100%;
+}
+
+.wrapper .uc_image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.construction_cover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.construction_cover-logo {
+    margin-bottom: 6rem;
+    width: 13.2rem;
+    height: auto;
+}
+
+.construction_cover-logo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.construction_cover-heading {
+    margin-bottom: 1.2rem;
+}
+
+.construction_cover-heading h1 {
+    font-size: 7rem;
+    font-weight: 400;
+    text-align: center;
+    line-height: 9.6rem;
+    color: var(--uc-yellow-color);
+    font-family: 'Open Sans', sans-serif !important;
+}
+
+.construction_cover-text {
+    font-size: 2.4rem;
+    text-align: center;
+    line-height: 3.3rem;
+    color: var(--uc-white-color);
+    margin-bottom: 8rem;
+    max-width: 65.3rem;
+    font-weight: 300;
+}
+
+.construction_cover-icons .social_media {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    gap: 1.7rem;
+}
+
+.construction_cover-icons .social_media li a {
+    display: block;
+    padding: 1.31rem, 2.13rem, 1.34rem, 1.84rem;
+    border: 1px solid var(--uc-white-color);
+    height: 5.3rem;
+    width: 5.3rem;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.construction_cover-icons .social_media li a svg path {
+    fill: var(--uc-white-color);
+}
+
+.construction_cover-icons .social_media li a:hover {
+    background-color: var(--uc-white-color);
+    transition: all 0.4s;
+}
+
+.construction_cover-icons .social_media li a:hover svg path {
+    fill: var(--uc-black-color);
+}
+
+@media screen and (max-width: 767px) {
+    .construction_cover-heading {
+        margin-bottom: 3rem;
+    }
+    .construction_cover-heading h1 {
+        line-height: 6rem;
+        font-size: 6rem;
+    }
+}

@@ -84,7 +84,8 @@ class Rex_Maintenance_Mode
 		$this->get_menu();
 		$this->get_settings_page();
 		add_action('template_redirect', [$this, 'load_template_on_call']);
-		add_action('wp_head', [$this, 'load_internal_css']);
+
+//		add_action('wp_head', [$this, 'load_internal_css']);
 	}
 
 	/**
@@ -304,4 +305,7 @@ class Rex_Maintenance_Mode
 			exit;
 		}
 	}
+
+
+
 }
