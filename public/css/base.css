@@ -1,0 +1,51 @@
+:root {
+    --uc-white-color: #ffffff;
+    --uc-black-color: #000000;
+    --uc-gray-color: #707070;
+    --uc-text-color: #141414;
+    --uc-yellow-color: #F5D100;
+    --uc-lightBlue-color: #3943B3;
+    --us-blue-color: #27429C;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 1.6rem;
+    color: var(--uc-text-color);
+}
+
+.container {
+    max-width: 114rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 900px) {
+    html {
+        font-size: 50%;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 3rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 40%;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 3.9rem;
+    }
+}

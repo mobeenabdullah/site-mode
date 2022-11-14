@@ -53,6 +53,9 @@ class Rex_Maintenance_Mode_Public
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+        add_filter('style_loader_tag', [$this, 'my_style_loader_tag_filter'], 10, 2);
+//        add_filter('style_loader_tag', [$this, 'rex_maintenance_loader_tag_filter'], 10, 3);
+
 	}
 
 	/**
@@ -75,7 +78,12 @@ class Rex_Maintenance_Mode_Public
 		 * class.
 		 */
 
+        wp_enqueue_style('preconnect-font', 'https://fonts.googleapis.com');
+        wp_enqueue_style('preconnect-static', 'https://fonts.gstatic.com');
+        wp_enqueue_style('open-sans-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
+        wp_enqueue_style('base', plugin_dir_url(__FILE__) . 'css/base.css', array(), $this->version, 'all');
+        wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -100,4 +108,18 @@ class Rex_Maintenance_Mode_Public
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/rex-maintenance-mode-public.js', array('jquery'), $this->version, false);
 	}
+
+    function my_style_loader_tag_filter($html, $handle) {
+        if ($handle === 'preconnect-font') {
+            return str_replace("rel='stylesheet'",
+                "rel='preconnect'", $html);
+        }
+        if ($handle === 'preconnect-static') {
+            return str_replace("rel='stylesheet'",
+                "rel='preconnect' crossorigin", $html);
+        }
+        return $html;
+    }
+
+
 }
