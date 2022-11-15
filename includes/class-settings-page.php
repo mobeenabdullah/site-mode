@@ -40,14 +40,14 @@ class Rex_Maintenance_Mode_Setting_page
     {
         // Settings Registeration
         register_setting('rex-maintenance-mode-setting-group', 'enable-disable-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-headline-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-subheading-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-content-settings');
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-headline-settings',[ 'default' => 'Headline Here' ]);
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-subheading-settings',[ 'default' => 'Sub Heading Here' ]);
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-content-settings',[ 'default' => 'Write some content' ]);
         register_setting('rex-maintenance-mode-setting-content-group', 'content-logo-settings');
         register_setting('rex-maintenance-mode-setting-content-group', 'content-bg-image-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-fb-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-linkedin-settings');
-        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-twitter-settings');
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-fb-settings',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-linkedin-settings',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-mode-setting-content-group', 'content-social-twitter-settings',[ 'default' => 'username' ]);
         register_setting('rex-maintenance-mode-setting-design-group', 'content-content-template-settings');
     }
 
