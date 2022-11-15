@@ -20,22 +20,38 @@
                         <?php endif; ?>
                     </div>
                     <div class="construction_cover__right">
-                        <div class="uc_header">
+
+                        <div class="uc_content">
                             <?php
                             $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full');
                             ?>
                             <?php if($logo_url) : ?>
-                                <div class="uc_header-logo">
+                                <div class="uc_content-logo">
                                     <img src="<?php echo  esc_attr($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
                                 </div>
                             <?php else : ?>
-                                <div class="construction_cover__right--logo">
+                                <div class="uc_content-logo">
                                     <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
                                 </div>
                             <?php endif; ?>
 
+                            <?php if(!empty(get_option('content-subheading-settings', 'rex-maintenance-mode')) || !empty(get_option('content-headline-settings', 'rex-maintenance-mode'))) : ?>
+                                <div class="uc_content-heading">
+                                    <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) { ?>
+                                        <h2 class="sub_title"><?php esc_html_e(get_option('content-subheading-settings', 'rex-maintenance-mode')); ?></h2>
+                                    <?php } ?>
+                                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?></h1>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) : ?>
+                                <div class="uc_content-text">
+                                    <p><?php esc_html_e(get_option('content-content-settings', 'rex-maintenance-mode')); ?></p>
+                                </div>
+                            <?php endif; ?>
                             <?php if(!empty(get_option('content-social-fb-settings')) || !empty(get_option('content-social-twitter-settings')) || !empty(get_option('content-social-linkedin-settings'))) : ?>
-                                <div class="uc_header-social">
+                                <div class="uc_content-social">
+                                    <h3 class="sub_title">Follow us on:</h3>
                                     <ul class="social_media">
                                         <?php if(!empty(get_option('content-social-fb-settings'))) { ?>
                                             <li>
@@ -74,22 +90,6 @@
                                             </li>
                                         <?php } ?>
                                     </ul>
-                                </div>
-                            <?php endif; ?>
-                        </div>
-                        <div class="uc_content">
-                            <?php if(!empty(get_option('content-subheading-settings', 'rex-maintenance-mode')) || !empty(get_option('content-headline-settings', 'rex-maintenance-mode'))) : ?>
-                                <div class="uc_content-heading">
-                                    <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) { ?>
-                                        <h2><?php esc_html_e(get_option('content-subheading-settings', 'rex-maintenance-mode')); ?></h2>
-                                    <?php } ?>
-                                    <h1><?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?></h1>
-                                </div>
-                            <?php endif; ?>
-
-                            <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) : ?>
-                                <div class="uc_content-text">
-                                    <p><?php esc_html_e(get_option('content-content-settings', 'rex-maintenance-mode')); ?></p>
                                 </div>
                             <?php endif; ?>
                         </div>
