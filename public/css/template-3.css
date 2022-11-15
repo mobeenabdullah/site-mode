@@ -105,8 +105,9 @@ body {
 
 .construction_cover__left--img {
 	width: 100%;
-	height: 100%;
+	height: 100vh;
 	display: flex;
+	overflow: hidden;
 }
 
 .construction_cover__left--img img {
