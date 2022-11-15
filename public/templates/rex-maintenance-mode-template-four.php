@@ -9,20 +9,18 @@
 <main>
     <section id="under_constructon" class="wrapper">
         <div class="uc_header">
-            <div class="container">
-                <?php
-                $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full');
-                ?>
-                <?php if($logo_url) : ?>
-                    <div class="uc_header-img">
-                        <img src="<?php echo  esc_url($logo_url) ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
-                    </div>
-                <?php else : ?>
-                    <div class="uc_header-img">
-                        <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
-                    </div>
-                <?php endif; ?>
-            </div>
+            <?php
+            $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full');
+            ?>
+            <?php if($logo_url) : ?>
+                <div class="uc_header-img">
+                    <img src="<?php echo  esc_url($logo_url) ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
+                </div>
+            <?php else : ?>
+                <div class="uc_header-img">
+                    <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
+                </div>
+            <?php endif; ?>
         </div>
         <div class="uc_content">
             <div class="container">
@@ -46,7 +44,7 @@
                             $bg_url = wp_get_attachment_image_url(get_option('content-bg-image-settings'), 'full');
                             ?>
                             <?php if($bg_url) : ?>
-                                <div class="construction_cover__left--img">
+                                <div class="construction_cover__right--img">
                                     <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
                                 </div>
                             <?php endif; ?>
