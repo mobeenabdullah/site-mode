@@ -6,7 +6,7 @@
     width: 100%;
     position: relative;
     z-index: 1;
-    overflow: hidden;
+    //overflow: hidden;
     & .container-fluid {
         padding: 0;
     }
@@ -36,17 +36,66 @@
     }
 
     &__right {
-        height: 100%;
+        height: 100vh;
         padding-right: 10rem;
+        display: flex;
+        align-items: center;
 
-        .uc_header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 3rem 0 3rem 0;
-            border-bottom: 1px solid #ececec;
+        .uc_content {
+            &-logo {
+
+                width: 9rem;
+                height: auto;
+                margin-bottom: 5rem;
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+            }
+            &-heading {
+                margin-bottom: 1.2rem;
+            }
+            & .sub_title {
+                font-family: var(--#{$prefix}-open-sans);
+                font-size: 2rem;
+                line-height: 7rem;
+                letter-spacing: 0.2rem;
+                text-align: left;
+                color: var(--#{$prefix}-text-color);
+                font-weight: 700;
+                text-transform: uppercase;
+            }
+
+            & .main_title {
+                font-family: var(--#{$prefix}-open-sans);
+                font-size: 5.4rem;
+                font-weight: 700;
+                text-align: left;
+                line-height: 6.4rem;
+                color: var(--#{$prefix}-light-blue-color);
+                margin-bottom: 2rem;
+            }
+            &-text {
+                margin-bottom: 8rem;
+                & p {
+                    font-family: var(--#{$prefix}-open-sans);
+                    font-size: 2rem;
+                    text-align: left;
+                    line-height: 3.2rem;
+                    color: var(--#{$prefix}-black-color);
+                    max-width: 71.3rem;
+                    font-weight: 300;
+                    opacity: 1;
+                }
+            }
             &-social {
-                .social_media {
+                & .sub_title {
+                    font-size: 1.8rem;
+                    line-height: 2.8rem;
+                    margin-bottom: 2rem;
+                }
+                & .social_media {
                     display: flex;
                     list-style: none;
                     gap: 1.3rem;
@@ -62,6 +111,7 @@
                             align-items: center;
                             border: 1px solid var(--#{$prefix}-light-blue-color);
                             border-radius: 50%;
+                            padding: 0.8rem;
 
                             & svg {
                                 & path {
@@ -83,61 +133,6 @@
                     }
                 }
             }
-            &-logo {
-                width: 9rem;
-                height: auto;
-
-                & img {
-                    width: 100%;
-                    height: 100%;
-                    object-fit: contain;
-                }
-            }
-            &-seperator {
-
-            }
-        }
-        .uc_content {
-            height: calc(100vh - 16.7rem);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            &-heading {
-                margin-bottom: 1.2rem;
-                & h2 {
-                    font-family: var(--#{$prefix}-open-sans);
-                    font-size: 3rem;
-                    line-height: 7rem;
-                    letter-spacing: 0.3rem;
-                    text-align: left;
-                    color: var(--#{$prefix}-text-color);
-                    font-weight: 700;
-                    text-transform: uppercase;
-                }
-
-                & h1 {
-                    font-family: var(--#{$prefix}-open-sans);
-                    font-size: 6rem;
-                    font-weight: 700;
-                    text-align: left;
-                    line-height: 7rem;
-                    color: var(--#{$prefix}-light-blue-color);
-                    margin-bottom: 2rem;
-                }
-            }
-            &-text {
-                & p {
-                    font-family: var(--#{$prefix}-open-sans);
-                    font-size: 2.4rem;
-                    text-align: left;
-                    line-height: 3.3rem;
-                    color: var(--#{$prefix}-black-color);
-                    max-width: 71.3rem;
-                    font-weight: 300;
-                    opacity: 1;
-                }
-            }
         }
     }
 }
@@ -149,7 +144,7 @@
         flex-direction: column;
         grid-gap: 0;
         &__left {
-            height: 50rem;
+            height: 90rem;
             width: 100%;
             overflow: hidden;
             &--img {
@@ -172,6 +167,24 @@
                     width: 9rem;
                     height: auto;
                 }
+            }
+            & .uc_content {
+                height: calc(100% - 6.6rem);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                &-text p {
+                    line-height: 4.4rem;
+                    font-size: 3rem;
+                }
+                & .main_title {
+                    font-size: 5rem;
+                    line-height: 6.5rem;
+                }
+                & .sub_title {
+                    font-size: 3rem;
+                }
                 &-social {
                     & .social_media {
                         & li {
@@ -185,24 +198,10 @@
                                 align-items: center;
                                 border: 1px solid var(--uc-light-blue-color);
                                 border-radius: 50%;
-                                padding: 1rem;
+                                padding: 1.3rem;
                             }
                         }
                     }
-                }
-            }
-            & .uc_content {
-                height: calc(100% - 6.6rem);
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
-                &-text p {
-                    line-height: 4.4rem;
-                }
-                &-heading h1 {
-                    font-size: 5rem;
-                    line-height: 6.5rem;
                 }
             }
         }
