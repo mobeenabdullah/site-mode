@@ -31,7 +31,6 @@
                             <div class="construction_cover__left--logo">
                                 <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
                             </div>
-
                         <?php endif; ?>
                     </div>
                     <div class="construction_cover__right">
@@ -48,7 +47,7 @@
                         <?php endif; ?>
                         <?php if(!empty(get_option('content-social-fb-settings')) || !empty(get_option('content-social-twitter-settings')) || !empty(get_option('content-social-linkedin-settings'))) : ?>
                             <div class="construction_cover__right--icons">
-                            <ul class="social_media">
+                                <ul class="social_media">
                                 <?php if(!empty(get_option('content-social-fb-settings'))) { ?>
                                 <li>
                                     <a href="https://www.facebook.com/<?php echo esc_attr(get_option('content-social-fb-settings')); ?>" aria-label="Facebook profile">
@@ -86,7 +85,7 @@
                                 </li>
                                 <?php } ?>
                             </ul>
-                        </div>
+                            </div>
                         <?php endif; ?>
                     </div>
                 </div>
