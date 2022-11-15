@@ -54,7 +54,6 @@ class Rex_Maintenance_Mode_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
         add_filter('style_loader_tag', [$this, 'my_style_loader_tag_filter'], 10, 2);
-//        add_filter('style_loader_tag', [$this, 'rex_maintenance_loader_tag_filter'], 10, 3);
 
 	}
 

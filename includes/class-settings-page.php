@@ -103,7 +103,7 @@ class Rex_Maintenance_Mode_Setting_page
     {
     ?>
         <div>
-            <input type="text" name="content-headline-settings" value="<?php echo get_option('content-headline-settings') ?>" />
+            <input type="text" name="content-headline-settings" value="<?php esc_attr_e(get_option('content-headline-settings'),'rex-maintenance-mode'); ?>" />
         </div>
     <?php
     }
@@ -112,7 +112,7 @@ class Rex_Maintenance_Mode_Setting_page
     {
     ?>
         <div>
-            <input type="text" name="content-subheading-settings" value="<?php echo  get_option('content-subheading-settings') ?>" />
+            <input type="text" name="content-subheading-settings" value="<?php esc_attr_e(get_option('content-subheading-settings'),'rex-maintenance-mode'); ?>" />
         </div>
     <?php
     }
@@ -120,7 +120,7 @@ class Rex_Maintenance_Mode_Setting_page
     {
     ?>
         <div>
-            <textarea rows="10" cols="50" name="content-content-settings" ><?php echo  get_option('content-content-settings') ?></textarea>
+            <textarea rows="10" cols="50" name="content-content-settings" ><?php esc_html_e(get_option('content-content-settings'),'rex-maintenance-mode'); ?></textarea>
         </div>
     <?php
     }
@@ -137,11 +137,11 @@ class Rex_Maintenance_Mode_Setting_page
                     ?>
                 </a>
                 <a href="#" class="logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
-                <input type="hidden" name="content-logo-settings" value="<?php echo esc_attr(get_option('content-logo-settings')); ?>">
+                <input type="hidden" name="content-logo-settings" value="<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
                 <a href="#" class="button logo-upload"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
                 <a href="#" class="logo-remove" style="display:none"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
-                <input type="hidden" name="content-logo-settings" value=<?php echo esc_attr(get_option('content-logo-settings')); ?>>
+                <input type="hidden" name="content-logo-settings" value=<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
     <?php
@@ -160,11 +160,11 @@ class Rex_Maintenance_Mode_Setting_page
                     ?>
                 </a>
                 <a href="#" class="bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                <input type="hidden" name="content-bg-image-settings" value="<?php echo esc_attr(get_option('content-bg-image-settings')); ?>">
+                <input type="hidden" name="content-bg-image-settings" value="<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
                 <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
                 <a href="#" class="bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                <input type="hidden" name="content-bg-image-settings" value=<?php echo esc_attr(get_option('content-bg-image-settings')); ?>>
+                <input type="hidden" name="content-bg-image-settings" value=<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
         <div class="setting__page_image">

@@ -85,7 +85,6 @@ class Rex_Maintenance_Mode
 		$this->get_settings_page();
 		add_action('template_redirect', [$this, 'load_template_on_call']);
 
-//		add_action('wp_head', [$this, 'load_internal_css']);
 	}
 
 	/**
@@ -275,25 +274,6 @@ class Rex_Maintenance_Mode
 		} else {
 			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-default.php';
 			exit;
-		}
-	}
-
-
-	function load_internal_css()
-	{
-		if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
-			$image_url = wp_get_attachment_image_url(get_option('content-bg-image-settings'), 'full');
-			echo $image_url . 'testdata';
-?>
-			<style>
-				body {
-					background-image: url("<?php echo $image_url ?>") !important;
-					background-repeat: no-repeat;
-					background-position: center;
-					background-size: cover !important;
-				}
-			</style>
-<?php
 		}
 	}
 
