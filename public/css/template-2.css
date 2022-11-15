@@ -13,6 +13,7 @@
 	--uc-red-color: #db3529;
 	--uc-text-new: #8d8c8c;
 	--uc-green-heading: #6FB644;
+	--uc-navy-blue: #294F97;
 }
 
 * {
@@ -123,6 +124,7 @@ body {
 .construction_cover {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 8rem;
 	position: relative;
 }
 
