@@ -1,40 +1,92 @@
-/**
- * All of the CSS for your admin-specific functionality should be
- * included in this file.
- */
+.template__wrapper .template_options {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	grid-gap: 30px;
+}
 
- .template__wrapper .template_options {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 30px;
- }
- .image {
-    opacity: 0.8;
-    width: 200px;
-    height: 160px;
-    background-position: center center;
-    background-color: gray;
-    display: inline-block;    
-    border-radius: 10px;
-    transition: all .2s;
-    width: 100%;
-  }
-  .image:hover {
-    opacity: 1;
-    border: 3px solid #2271b1 !important;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-  }
-  .radio-img {
-    display: block;
-  }
-  .radio-img > input {
-    display: none;
-  }
-  .radio-img > .image {
-    cursor: pointer;
-    border: 3px solid black;
-  }
-  .radio-img > input:checked + .image {
-    border: 3px solid #2271b1;
-    box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-  }
+.image {
+	opacity: 0.8;
+	width: 200px;
+	height: 160px;
+	background-position: center center;
+	background-color: gray;
+	display: inline-block;
+	border-radius: 10px;
+	transition: all .2s;
+	width: 100%;
+}
+
+.image:hover {
+	opacity: 1;
+	border: 3px solid #2271b1 !important;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.radio-img {
+	display: block;
+}
+
+.radio-img > input {
+	display: none;
+}
+
+.radio-img > input:checked + .image {
+	border: 3px solid #2271b1;
+	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+
+.radio-img > .image {
+	cursor: pointer;
+	border: 3px solid black;
+}
+
+.bg-image-upload {
+	width: 400px;
+	height: 250px;
+	display: block;
+}
+
+.bg-image-upload img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.Logo-upload {
+	display: block;
+	width: 80px;
+	height: auto;
+}
+
+.Logo-upload img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.logo-remove, .bg-image-remove {
+	background: #2271b1;
+	border-color: #2271b1;
+	color: #fff;
+	text-decoration: none;
+	text-shadow: none;
+	display: inline-block;
+	font-size: 13px;
+	line-height: 2.15384615;
+	min-height: 30px;
+	margin: 0;
+	padding: 0 10px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-appearance: none;
+	border-radius: 3px;
+	white-space: nowrap;
+	box-sizing: border-box;
+	margin-top: 20px;
+}
+
+.logo-remove:hover, .bg-image-remove:hover {
+	color: #ffffff;
+}

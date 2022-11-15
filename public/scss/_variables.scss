@@ -1,0 +1,39 @@
+// SASS variables
+$prefix: uc;
+
+// Colors
+$black: #000000;
+$black-v2: #141414;
+$white: #ffffff;
+$gray: #707070;
+$text: #141414;
+$yellow: #ff9800;
+$light-blue: #3943B3;
+$blue: #27429C;
+
+$orange: #E5792B;
+$red: #db3529;
+$text-new: #8d8c8c;
+$green-heading: #6FB644;
+
+$half-white: #f4f4f4;
+$open-sans: 'Open Sans', sans-serif;
+
+
+$colors: (
+    'black-color': $black,
+    'black-v2': $black-v2,
+    'white-color': $white,
+    'gray-color': $gray,
+    'text-color': $text,
+    'yellow-color': $yellow,
+    'light-blue-color': $light-blue,
+    'blue-color': $blue,
+    'half-white-color': $half-white,
+    'open-sans': $open-sans,
+    'orange-color': $orange,
+    'red-color': $red,
+    'text-new': $text-new,
+    'green-heading': $green-heading,
+
+);
