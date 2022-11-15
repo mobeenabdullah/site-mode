@@ -15,7 +15,7 @@
                         ?>
                         <?php if($bg_url) : ?>
                             <div class="construction_cover__left--img">
-                                <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>"/>
+                                <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -27,26 +27,26 @@
                             ?>
                             <?php if($logo_url) : ?>
                                 <div class="uc_content-logo">
-                                    <img src="<?php echo  esc_attr($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
+                                    <img src="<?php echo  esc_attr($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
                                 </div>
                             <?php else : ?>
                                 <div class="uc_content-logo">
-                                    <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
+                                    <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="<?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
                                 </div>
                             <?php endif; ?>
 
-                            <?php if(!empty(get_option('content-subheading-settings', 'rex-maintenance-mode')) || !empty(get_option('content-headline-settings', 'rex-maintenance-mode'))) : ?>
+                            <?php if(!empty(get_option('content-subheading-settings')) || !empty(get_option('content-headline-settings'))) : ?>
                                 <div class="uc_content-heading">
-                                    <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) { ?>
-                                        <h2 class="sub_title"><?php esc_html_e(get_option('content-subheading-settings', 'rex-maintenance-mode')); ?></h2>
+                                    <?php if(!empty(get_option('content-content-settings'))) { ?>
+                                        <h2 class="sub_title"><?php esc_html_e(get_option('content-subheading-settings'), 'rex-maintenance-mode'); ?></h2>
                                     <?php } ?>
-                                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?></h1>
+                                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?></h1>
                                 </div>
                             <?php endif; ?>
 
-                            <?php if(!empty(get_option('content-content-settings', 'rex-maintenance-mode'))) : ?>
+                            <?php if(!empty(get_option('content-content-settings'))) : ?>
                                 <div class="uc_content-text">
-                                    <p><?php esc_html_e(get_option('content-content-settings', 'rex-maintenance-mode')); ?></p>
+                                    <p><?php esc_html_e(get_option('content-content-settings'), 'rex-maintenance-mode'); ?></p>
                                 </div>
                             <?php endif; ?>
                             <?php if(!empty(get_option('content-social-fb-settings')) || !empty(get_option('content-social-twitter-settings')) || !empty(get_option('content-social-linkedin-settings'))) : ?>
