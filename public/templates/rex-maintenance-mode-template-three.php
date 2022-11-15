@@ -15,7 +15,7 @@
                         ?>
                         <?php if($bg_url) : ?>
                             <div class="construction_cover__left--img">
-                                <img src="<?php echo $bg_url;?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>"/>
+                                <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>"/>
                             </div>
                         <?php endif; ?>
                     </div>
