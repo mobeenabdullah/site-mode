@@ -272,7 +272,7 @@ class Rex_Maintenance_Mode
 			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-four.php';
 			exit;
 		} else {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-default.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
 			exit;
 		}
 	}

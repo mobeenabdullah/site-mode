@@ -39,7 +39,7 @@ class Rex_Maintenance_Mode_Menu
             'rex-maintenance-mode-options',
             [$this, 'rex_maintenance_mode_settings_page_cb'],
             'dashicons-welcome-add-page',
-            10,
+
         );
     }
 

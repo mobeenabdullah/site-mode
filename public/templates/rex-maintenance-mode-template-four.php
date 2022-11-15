@@ -10,7 +10,7 @@
         <?php
         $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full');
         ?>
-        <img src="<?php echo  esc_attr($logo_url) ?>" width="150" height="150" alt="logo">
+        <img src="<?php echo  esc_url($logo_url) ?>" width="150" height="150" alt="logo">
     </div>
     <div class="content">
         <h1>
@@ -24,6 +24,5 @@
         </p>
     </div>
 </div>
-<?php require_once 'social-media.php' ?>
 </div>
 <?php require_once 'footer.php' ?>
