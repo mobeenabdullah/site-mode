@@ -120,7 +120,7 @@ class Rex_Maintenance_Mode_Setting_page
     {
     ?>
         <div>
-            <input type="textarea" rows="4" cols="50" name="content-content-settings" value="<?php echo  get_option('content-content-settings') ?>" />
+            <textarea rows="10" cols="50" name="content-content-settings" ><?php echo  get_option('content-content-settings') ?></textarea>
         </div>
     <?php
     }

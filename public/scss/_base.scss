@@ -1,0 +1,78 @@
+@import './variables';
+
+// CSS variables
+:root {
+
+    @each $color,
+    $value in $colors {
+        --#{$prefix}-#{$color}: #{$value};
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// Base Styling
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--#{$prefix}-open-sans);
+    font-size: 1.6rem;
+    color: var(--#{$prefix}-text-color);
+
+}
+
+.container {
+    max-width: 114rem;
+    margin: 0 auto;
+}
+.container-fluid {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 1.5%;
+}
+
+// Media Queries
+
+@media screen and (max-width: 1400px) {
+    html {
+        font-size: 55%;
+    }
+    .container {
+        max-width: 100%;
+        padding: 0 4rem;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    html {
+        font-size: 40%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 3rem;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    html {
+        font-size: 30%;
+    }
+
+    .container {
+        max-width: 100%;
+        padding: 0 3.9rem;
+    }
+}
