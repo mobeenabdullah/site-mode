@@ -87,13 +87,19 @@ body {
 	overflow: hidden;
 	display: grid;
 	grid-template-rows: auto 1fr auto;
-	grid-gap: 2rem;
+	grid-gap: 1rem;
+}
+
+.wrapper .content {
+	height: 68vh;
+	display: flex;
+	align-items: center;
 }
 
 .uc_header {
 	border-bottom: 1px solid #f5f5f5;
 	padding: 2rem 0;
-	min-height: 12rem;
+	min-height: 14rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -119,13 +125,12 @@ body {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
 	grid-gap: 10rem;
-	height: calc(100vh - 30rem);
 }
 
 .construction_cover__left {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: start;
 	justify-content: center;
 }
 
@@ -185,7 +190,7 @@ body {
 }
 
 .construction_cover__right--img {
-	height: 58rem;
+	height: 40rem;
 	width: 100%;
 	overflow: hidden;
 	border-radius: 1rem;
@@ -242,5 +247,23 @@ body {
 	}
 	.construction_cover__right-heading h1 {
 		line-height: 7rem;
+	}
+	.uc_footer .social_media li a {
+		padding: 0.5rem;
+	}
+	.construction_cover {
+		grid-template-columns: repeat(1, 1fr);
+	}
+	.construction_cover__left {
+		order: 2;
+	}
+	.construction_cover__right {
+		order: 1;
+	}
+	.construction_cover__right--img {
+		height: 50rem;
+		width: 100%;
+		overflow: hidden;
+		border-radius: 1rem;
 	}
 }
