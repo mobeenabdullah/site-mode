@@ -9,13 +9,18 @@
   overflow: hidden;
   display: grid;
   grid-template-rows: auto 1fr auto;
-  grid-gap: 2rem;
+  grid-gap: 1rem;
+  & .content {
+    height: 68vh;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .uc_header {
   border-bottom: 1px solid #f5f5f5;
   padding: 2rem 0;
-  min-height: 12rem;
+  min-height: 14rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -40,12 +45,12 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10rem;
-  height: calc(100vh - 30rem);
+  //height: calc(100vh - 30rem);
 
   &__left {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: start;
     justify-content: center;
     &--img {
       display: flex;
@@ -102,7 +107,7 @@
     display: flex;
     align-items: center;
     &--img {
-      height: 58rem;
+      height: 40rem;
       width: 100%;
       overflow: hidden;
       border-radius: 1rem;
@@ -171,4 +176,30 @@
       }
     }
   }
+  .uc_footer {
+    & .social_media {
+      & li {
+        & a {
+          padding: 0.5rem;
+        }
+      }
+    }
+  }
+  .construction_cover {
+    grid-template-columns: repeat(1, 1fr);
+    &__left {
+      order: 2;
+    }
+    &__right {
+      order: 1;
+      &--img {
+        height: 50rem;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 1rem;
+
+      }
+    }
+  }
+
 }
