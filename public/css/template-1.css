@@ -144,7 +144,7 @@ body {
 	font-size: 6.5rem;
 	font-weight: 700;
 	text-align: center;
-	line-height: 1.5;
+	line-height: 1.2;
 	color: var(--uc-orange-color);
 	overflow: visible;
 	height: auto;
@@ -166,6 +166,7 @@ body {
 	display: inline-block;
 	padding: 0.5rem 2rem;
 	border-radius: 0.4rem;
+	margin-bottom: 2rem;
 }
 
 .construction_cover-text {
@@ -188,22 +189,7 @@ body {
 	justify-content: space-between;
 	align-items: center;
 	list-style: none;
-	gap: 1rem;
-}
-
-.construction_cover-icons .social_media li:nth-child(1) {
-	position: relative;
-	z-index: 3;
-}
-
-.construction_cover-icons .social_media li:nth-child(2) {
-	position: relative;
-	z-index: 2;
-}
-
-.construction_cover-icons .social_media li:nth-child(3) {
-	position: relative;
-	z-index: 1;
+	gap: 4rem;
 }
 
 .construction_cover-icons .social_media li a {
