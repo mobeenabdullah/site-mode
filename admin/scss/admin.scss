@@ -1,3 +1,11 @@
+// Variables
+$color_checkbox_success: #2271b1;
+$color_checkbox_default:#8E8E93;
+$transition: .3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$width: 2em;
+$height: $width/2;
+
+
 .template__wrapper {
   & .template_options {
     display: grid;
@@ -17,14 +25,6 @@
     display: flex;
     width: 100%;
     height: 340px;
-    & > input {
-      display: none;
-      &:checked + .image {
-        //border: 3px solid #2271b1;
-        //box-shadow: 0 0 10px 0 rgba(0,0,0,0.5);
-
-      }
-    }
     & > .image {
       cursor: pointer;
       //border: 3px solid black;
@@ -40,10 +40,8 @@
     background-size: cover;
     display: inline-block;
     transition: all .2s;
-    //border: 10px solid #ffffff;
     &:hover {
       opacity: 1;
-      //box-shadow: 0 0 5px 5px rgba(0,0,0,0.1);
     }
   }
   & .template_actions {
@@ -167,4 +165,67 @@
   }
 }
 
+// Toggle
+.toggle{
 
+  .toggle-control{
+    transition: $transition;
+    width: $width;
+    height: $height;
+    display: block;
+    border: 2px solid rgba(black,.01);
+    border-radius: $height;
+    background-color: rgba(black,.06);
+    position: relative;
+    &:after{
+      transition: $transition;
+      content: "";
+      width: $width/2;
+      height: $height;
+      display: block;
+      background-color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 1px 2px rgba(black, .4),0 3px 2px rgba(black,.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  input{
+    display: none;
+    &:checked + .toggle-control{
+      border-color: $color_checkbox_success;
+      background-color: $color_checkbox_success;
+      &:after{
+        left: $width/2;
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 1536px) {
+  .template__wrapper {
+    & .template_options {
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+    }
+  }
+}
+@media screen and (max-width: 767px) {
+  .template__wrapper {
+    & .template_options {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 20px;
+    }
+  }
+  .template_thumb {
+    & .radio-img {
+      height: 210px;
+    }
+    & .image {
+      height: 210px;
+    }
+  }
+}
