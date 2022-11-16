@@ -4,12 +4,16 @@
 	--uc-white-color: #ffffff;
 	--uc-gray-color: #707070;
 	--uc-text-color: #141414;
-	--uc-yellow-color: #F5D100;
+	--uc-yellow-color: #ff9800;
 	--uc-light-blue-color: #3943B3;
 	--uc-blue-color: #27429C;
 	--uc-half-white-color: #f4f4f4;
 	--uc-open-sans: Open Sans, sans-serif;
-	--uc-orange-color: #E76E3C;
+	--uc-orange-color: #E5792B;
+	--uc-red-color: #db3529;
+	--uc-text-new: #8d8c8c;
+	--uc-green-heading: #6FB644;
+	--uc-navy-blue: #294F97;
 }
 
 * {
@@ -30,13 +34,18 @@ body {
 
 .container {
 	max-width: 114rem;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0 auto;
+}
+
+.container-fluid {
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 0 1.5%;
 }
 
 @media screen and (max-width: 1400px) {
 	html {
-		font-size: 50%;
+		font-size: 55%;
 	}
 	.container {
 		max-width: 100%;
@@ -46,7 +55,7 @@ body {
 
 @media screen and (max-width: 1400px) {
 	html {
-		font-size: 45%;
+		font-size: 50%;
 	}
 }
 
@@ -75,6 +84,7 @@ body {
 	width: 100%;
 	position: relative;
 	z-index: 1;
+	overflow: hidden;
 }
 
 .wrapper_overlay {

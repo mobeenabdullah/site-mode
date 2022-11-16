@@ -83,16 +83,23 @@ class Rex_Maintenance_Mode_Public
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
 
         $selected_template = get_option('content-content-template-settings');
-        if ($selected_template == '1') {
-            wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
-        } elseif ($selected_template == '2') {
-            wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
-        } elseif ($selected_template == '3') {
-            wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
-        } elseif ($selected_template == '4') {
-            wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
-        } else {
-            wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-5.css', array(), $this->version, 'all');
+
+        switch (true) {
+            case ($selected_template == '1'):
+                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
+                break;
+            case ($selected_template == '2'):
+                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
+                break;
+            case ($selected_template == '3'):
+                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
+                break;
+            case ($selected_template == '4'):
+                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
+                break;
+            default:
+                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
+
         }
 	}
 

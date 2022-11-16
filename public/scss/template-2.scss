@@ -46,8 +46,9 @@
 .construction_cover {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 8rem;
+    grid-gap: 0;
     position: relative;
+    width: 100%;
 
     &__left {
         width: 100%;

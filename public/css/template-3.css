@@ -122,6 +122,11 @@ body {
 	padding-right: 10rem;
 	display: flex;
 	align-items: center;
+	width: 100%;
+}
+
+.construction_cover__right .uc_content {
+	width: 100%;
 }
 
 .construction_cover__right .uc_content-logo {
