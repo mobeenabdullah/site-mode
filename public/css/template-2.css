@@ -176,19 +176,7 @@ body {
 	margin-bottom: 1.2rem;
 }
 
-.construction_cover__right--heading h2 {
-	font-family: var(--uc-open-sans);
-	font-size: 2.2rem;
-	line-height: 4.1rem;
-	letter-spacing: 0.3rem;
-	text-align: left;
-	color: var(--uc-green-heading);
-	font-weight: 600;
-	text-transform: uppercase;
-	margin-bottom: 1rem;
-}
-
-.construction_cover__right--heading h1 {
+.construction_cover__right--heading .main_title {
 	font-family: var(--uc-open-sans);
 	font-size: 6.5rem;
 	font-weight: 600;
