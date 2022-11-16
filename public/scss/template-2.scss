@@ -98,9 +98,9 @@
 
             & h2 {
                 font-family: var(--#{$prefix}-open-sans);
-                font-size: 3rem;
+                font-size: 2.2rem;
                 line-height: 4.1rem;
-                letter-spacing: 0.6rem;
+                letter-spacing: 0.3rem;
                 text-align: left;
                 color: var(--#{$prefix}-green-heading);
                 font-weight: 600;
@@ -126,9 +126,9 @@
 
             & p {
                 font-family: var(--#{$prefix}-open-sans);
-                font-size: 2.4rem;
+                font-size: 2rem;
                 text-align: left;
-                line-height: 3.6rem;
+                line-height: 3.2rem;
                 color: var(--#{$prefix}-white-color);
                 font-weight: 300;
             }

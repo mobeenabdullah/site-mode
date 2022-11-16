@@ -119,16 +119,6 @@ class Rex_Maintenance_Mode
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rex-maintenance-mode-i18n.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the options page of the plugin
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-settings-page.php';
-
-		/**
-		 * The class responsible for defining all actions that occur in the Menu of the plugin
-		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-plugin-menu.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-rex-maintenance-mode-admin.php';

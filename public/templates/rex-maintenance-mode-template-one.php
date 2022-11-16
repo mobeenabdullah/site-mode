@@ -43,11 +43,20 @@ require_once 'header.php';
                 <?php } ?>
                 <h1><?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?></h1>
             </div>
+            <?php else : ?>
+                <div class="construction_cover-heading">
+                    <h2><?php esc_html_e(get_option('content-subheading-settings','Sub Heading Here'), 'rex-maintenance-mode'); ?></h2>
+                    <h1><?php esc_html_e(get_option('content-headline-settings','Headline Here'), 'rex-maintenance-mode'); ?></h1>
+                </div>
             <?php endif; ?>
             <?php if(!empty(get_option('content-content-settings'))) : ?>
             <div class="construction_cover-text">
                 <p><?php esc_html_e(get_option('content-content-settings'), 'rex-maintenance-mode'); ?></p>
             </div>
+            <?php else : ?>
+                <div class="construction_cover-text">
+                    <p><?php esc_html_e(get_option('content-content-settings', 'Write some content'), 'rex-maintenance-mode'); ?></p>
+                </div>
             <?php endif; ?>
             <?php if(!empty(get_option('content-social-fb-settings')) || !empty(get_option('content-social-twitter-settings')) || !empty(get_option('content-social-linkedin-settings'))) : ?>
             <div class="construction_cover-icons">
