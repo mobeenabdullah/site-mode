@@ -59,7 +59,7 @@
     &-heading {
         text-align: center;
 
-        & h1 {
+        & .main_title {
             font-family: var(--#{$prefix}-open-sans);
             font-size: 6.5rem;
             font-weight: 700;
@@ -68,24 +68,6 @@
             color: var(--#{$prefix}-orange-color);
             overflow: visible;
             height: auto;
-            margin-bottom: 2rem;
-        }
-
-        & h2 {
-            font-family: var(---#{$prefix}-open-sans);
-            font-size: 2rem;
-            font-weight: 600;
-            text-align: center;
-            line-height: 2.8rem;
-            color: var(---#{$prefix}-white-color);
-            text-transform: uppercase;
-            letter-spacing: 0.2rem;
-            overflow: visible;
-            height: auto;
-            background-color: var(--#{$prefix}-orange-color);;
-            display: inline-block;
-            padding: 0.5rem 2rem;
-            border-radius: 0.4rem;
             margin-bottom: 2rem;
         }
     }
