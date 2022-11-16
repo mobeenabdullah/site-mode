@@ -208,69 +208,62 @@ class Rex_Maintenance_Mode_Setting_page
             ?>
             <div class="template_options">
                 <div class="template_thumb <?php echo ($template == '1') ? 'activated_template' : '' ?>">
-                    <label class="radio-img">
-                        <input type="radio" id="one" name="content-content-template-settings" value="1" <?php checked(1, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                    <div class="radio-img">
                         <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-1.jpg'; ?>)"></div>
-                    </label>
-                           <div class="template_actions">
-                            <div class="template_title">
-                                <h2 class="template_title-title">Food Template</h2>
-                            </div>
-                               <?php if($template == '1') { ?>
-                                   <div class="active_template-btn"><span>Activated</span></div>
-                               <?php } else { ?>
-                                   <div class="active_template-btn"><a href="#">Active</a></div>
-                               <?php } ?>
+                    </div>
+                    <div class="template_actions">
+                        <div class="template_title">
+                            <h2 class="template_title-title">Food Template</h2>
                         </div>
+                       <label class="label toggle">
+                            <input type="radio" class="toggle_input" id="one" name="content-content-template-settings" value="1" <?php checked(1, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                           <div class="toggle-control"></div>
+                       </label>
+                    </div>
                 </div>
                 <div class="template_thumb <?php echo ($template == '2') ? 'activated_template' : '' ?>">
-                    <label class="radio-img">
-                        <input type="radio" id="two" name="content-content-template-settings" value="2" <?php checked(2, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                    <div class="radio-img">
                         <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-2.jpg'; ?>)"></div>
-                    </label>
-
-                        <div class="template_actions">
-                            <div class="template_title">
-                                <h2 class="template_title-title">Construction Template</h2>
-                            </div>
-                            <?php if($template == '2') { ?>
-                            <div class="active_template-btn"><span>Activated</span></div>
-                            <?php } else { ?>
-                            <div class="active_template-btn"><a href="#">Active</a></div>
-                            <?php } ?>
+                    </div>
+                    <div class="template_actions">
+                        <div class="template_title">
+                            <h2 class="template_title-title">Construction Template</h2>
                         </div>
+                        <label class="label toggle">
+                            <!--                                   <input type="checkbox" class="toggle_input" />-->
+                            <input type="radio" class="toggle_input" id="two" name="content-content-template-settings" value="2" <?php checked(2, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <div class="toggle-control"></div>
+                        </label>
+                    </div>
 
                 </div>
                 <div class="template_thumb <?php echo ($template == '3') ? 'activated_template' : '' ?>">
-                    <label class="radio-img">
-                        <input type="radio" id="three" name="content-content-template-settings" value="3" <?php checked(3, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                    <div class="radio-img">
                         <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-3.jpg'; ?>)"></div>
-                    </label>
+                    </div>
                     <div class="template_actions">
                         <div class="template_title">
                             <h2 class="template_title-title">Fashion Template</h2>
                         </div>
-                        <?php if($template == '3') { ?>
-                            <div class="active_template-btn"><span>Activated</span></div>
-                        <?php } else { ?>
-                            <div class="active_template-btn"><a href="#">Active</a></div>
-                        <?php } ?>
+
+                        <label class="label toggle">
+                            <input type="radio" class="toggle_input" id="three" name="content-content-template-settings" value="3" <?php checked(3, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <div class="toggle-control"></div>
+                        </label>
                     </div>
                 </div>
                 <div class="template_thumb <?php echo ($template == '4') ? 'activated_template' : '' ?>">
-                    <label class="radio-img">
-                        <input type="radio" id="four" name="content-content-template-settings" value="4" <?php checked(4, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                    <div class="radio-img">
                         <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-4.jpg'; ?>)"></div>
-                    </label>
+                    </div>
                     <div class="template_actions">
                         <div class="template_title">
                             <h2 class="template_title-title">Travel Template</h2>
                         </div>
-                        <?php if($template == '4') { ?>
-                            <div class="active_template-btn"><span>Activated</span></div>
-                        <?php } else { ?>
-                            <div class="active_template-btn"><a href="#">Active</a></div>
-                        <?php } ?>
+                        <label class="label toggle">
+                            <input type="radio" class="toggle_input" id="four" name="content-content-template-settings" value="4" <?php checked(4, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <div class="toggle-control"></div>
+                        </label>
                     </div>
                 </div>
             </div>
