@@ -5,6 +5,16 @@ $transition: .3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
 $width: 2em;
 $height: $width/2;
 
+.nav-tab-wrapper {
+  & a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  & svg {
+    width: 18px;
+  }
+}
 
 .template__wrapper {
   & .template_options {
@@ -114,6 +124,22 @@ $height: $width/2;
           }
         }
       }
+      & .toggle {
+        & .toggle-control {
+          border: 2px solid #f0f0f0;
+          background-color: #f0f0f0;
+        }
+        input{
+          display: none;
+          &:checked + .toggle-control{
+            border-color: $color_checkbox_success;
+            background-color: $color_checkbox_success;
+            &:after{
+              left: $width/2;
+            }
+          }
+        }
+      }
     }
 }
 
@@ -185,7 +211,7 @@ $height: $width/2;
       display: block;
       background-color: #fff;
       border-radius: 50%;
-      box-shadow: 0 1px 2px rgba(black, .4),0 3px 2px rgba(black,.4);
+      box-shadow: 0 1px 2px rgba(black, .2),0 3px 2px rgba(black,.2);
       position: absolute;
       top: 0;
       left: 0;

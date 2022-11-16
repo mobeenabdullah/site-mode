@@ -216,7 +216,7 @@ class Rex_Maintenance_Mode_Setting_page
                             <h2 class="template_title-title">Food Template</h2>
                         </div>
                        <label class="label toggle">
-                            <input type="radio" class="toggle_input" id="one" name="content-content-template-settings" value="1" <?php checked(1, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <input type="radio" class="toggle_input" id="one" name="content-content-template-settings" value="1" <?php echo (get_option('content-content-template-settings') == '1') ? 'checked' : ''?> />
                            <div class="toggle-control"></div>
                        </label>
                     </div>
@@ -231,7 +231,7 @@ class Rex_Maintenance_Mode_Setting_page
                         </div>
                         <label class="label toggle">
                             <!--                                   <input type="checkbox" class="toggle_input" />-->
-                            <input type="radio" class="toggle_input" id="two" name="content-content-template-settings" value="2" <?php checked(2, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <input type="radio" class="toggle_input" id="two" name="content-content-template-settings" value="2" <?php echo (get_option('content-content-template-settings') == '2') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>
                     </div>
@@ -247,7 +247,7 @@ class Rex_Maintenance_Mode_Setting_page
                         </div>
 
                         <label class="label toggle">
-                            <input type="radio" class="toggle_input" id="three" name="content-content-template-settings" value="3" <?php checked(3, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <input type="radio" class="toggle_input" id="three" name="content-content-template-settings" value="3" <?php echo (get_option('content-content-template-settings') == '3') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>
                     </div>
@@ -261,7 +261,7 @@ class Rex_Maintenance_Mode_Setting_page
                             <h2 class="template_title-title">Travel Template</h2>
                         </div>
                         <label class="label toggle">
-                            <input type="radio" class="toggle_input" id="four" name="content-content-template-settings" value="4" <?php checked(4, esc_attr_e(get_option('content-content-template-settings'), 'rex-maintenance-mode'), true); ?> />
+                            <input type="radio" class="toggle_input" id="four" name="content-content-template-settings" value="4" <?php echo (get_option('content-content-template-settings') == '4') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>
                     </div>
