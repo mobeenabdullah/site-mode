@@ -226,7 +226,7 @@ body {
 	height: 3rem;
 }
 
-.construction_cover-icons .social_media li a svg path {
+.construction_cover-icons .social_media li a svg path, .construction_cover-icons .social_media li a svg circle {
 	fill: var(--uc-orange-color);
 }
 
@@ -235,7 +235,7 @@ body {
 	transition: all 0.4s;
 }
 
-.construction_cover-icons .social_media li a:hover svg path {
+.construction_cover-icons .social_media li a:hover svg path, .construction_cover-icons .social_media li a:hover svg circle {
 	fill: var(--uc-white-color);
 }
 

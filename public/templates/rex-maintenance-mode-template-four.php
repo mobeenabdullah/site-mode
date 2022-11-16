@@ -47,6 +47,10 @@
                                 <div class="construction_cover__right--img">
                                     <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
                                 </div>
+                            <?php else : ?>
+                                <div class="construction_cover__right--img">
+                                    <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/placeholder-img.jpg'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
+                                </div>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -82,12 +86,7 @@
                 <?php if(!empty(get_option('content-social-linkedin-settings'))) { ?>
                     <li>
                         <a href="hhttps://www.linkedin.com/in/<?php echo esc_attr(get_option('content-social-linkedin-settings')); ?>" aria-label="Linkedin profile">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="19.236" height="13.467"
-                                 viewBox="0 0 19.236 13.467">
-                                <path id="bxl-youtube"
-                                      d="M20.831,7.117a2.409,2.409,0,0,0-1.693-1.7C17.632,5.007,11.611,5,11.611,5a58.432,58.432,0,0,0-7.527.388A2.46,2.46,0,0,0,2.387,7.1a25.467,25.467,0,0,0-.4,4.627,25.311,25.311,0,0,0,.39,4.627,2.408,2.408,0,0,0,1.694,1.7c1.52.413,7.526.42,7.526.42a58.565,58.565,0,0,0,7.527-.387,2.417,2.417,0,0,0,1.7-1.694,25.353,25.353,0,0,0,.4-4.625A24.108,24.108,0,0,0,20.831,7.117Zm-11.146,7.5,0-5.767,5,2.888Z"
-                                      transform="translate(-1.986 -5)" />
-                            </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><circle cx="4.983" cy="5.009" r="2.188"></circle><path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path></svg>
                         </a>
                     </li>
                 <?php } ?>

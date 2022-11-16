@@ -200,7 +200,7 @@ body {
 .construction_cover__right--img img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	display: block;
 }
 
@@ -230,7 +230,7 @@ body {
 	align-items: center;
 }
 
-.uc_footer .social_media li a svg path {
+.uc_footer .social_media li a svg path, .uc_footer .social_media li a svg circle {
 	fill: var(--uc-gray-color);
 }
 
@@ -238,7 +238,7 @@ body {
 	transition: all 0.4s;
 }
 
-.uc_footer .social_media li a:hover svg path {
+.uc_footer .social_media li a:hover svg path, .uc_footer .social_media li a:hover svg circle {
 	fill: var(--uc-red-color);
 }
 

@@ -237,7 +237,7 @@ body {
 	height: 100%;
 }
 
-.construction_cover__right--icons .social_media li a svg path {
+.construction_cover__right--icons .social_media li a svg path, .construction_cover__right--icons .social_media li a svg circle {
 	fill: var(--uc-white-color);
 }
 
@@ -250,7 +250,7 @@ body {
 	height: 100%;
 }
 
-.construction_cover__right--icons .social_media li a:hover svg path {
+.construction_cover__right--icons .social_media li a:hover svg path, .construction_cover__right--icons .social_media li a:hover svg circle {
 	fill: var(--uc-orange-color);
 }
 
