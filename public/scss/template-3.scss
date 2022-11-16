@@ -117,7 +117,7 @@
                             padding: 0.8rem;
 
                             & svg {
-                                & path {
+                                & path, & circle {
                                     fill: var(--#{$prefix}-light-blue-color);
                                 }
                             }
@@ -127,7 +127,7 @@
                                 border: 1px solid var(--#{$prefix}-white-color);
                                 transition: all 0.4s;
                                 & svg {
-                                    & path {
+                                    & path, & circle {
                                         fill: var(--#{$prefix}-white-color);
                                     }
                                 }

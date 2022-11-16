@@ -155,7 +155,7 @@
                         width: 100%;
                         height: 100%;
 
-                        & path {
+                        & path, & circle {
                             fill: var(--#{$prefix}-white-color);
                         }
                     }
@@ -167,7 +167,7 @@
                             width: 100%;
                             height: 100%;
 
-                            & path {
+                            & path, & circle {
                                 fill: var(--#{$prefix}-orange-color);
 
                             }

@@ -140,7 +140,7 @@
                     transform: rotate(-45deg);
                     width: 3rem;
                     height: 3rem;
-                    & path {
+                    & path, & circle {
                         fill: var(--#{$prefix}-orange-color);;
                     }
                 }
@@ -149,7 +149,7 @@
                     background-color: var(--#{$prefix}-orange-color);
                     transition: all 0.4s;
                     & svg {
-                        & path {
+                        & path, & circle {
                             fill: var(--#{$prefix}-white-color);
                         }
                     }
