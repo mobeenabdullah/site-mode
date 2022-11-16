@@ -16,6 +16,10 @@ require_once 'header.php';
     <div class="uc_image">
         <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
     </div>
+    <?php else : ?>
+        <div class="uc_image">
+            <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); ?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
+        </div>
     <?php endif; ?>
     <div class="wrapper_overlay"></div>
     <div class="container">

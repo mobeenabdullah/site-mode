@@ -46,6 +46,7 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10rem;
   //height: calc(100vh - 30rem);
+  width: 100%;
 
   &__left {
     display: flex;

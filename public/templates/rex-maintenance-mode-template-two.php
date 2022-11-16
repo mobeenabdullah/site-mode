@@ -14,6 +14,10 @@
         <div class="uc_image">
             <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
         </div>
+        <?php else : ?>
+            <div class="uc_image">
+                <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); ?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
+            </div>
         <?php endif; ?>
         <div class="wrapper_overlay"></div>
         <div class="container-fluid">
@@ -37,7 +41,7 @@
                         <?php if(!empty(get_option('content-subheading-settings')) || !empty(get_option('content-headline-settings'))) : ?>
                         <div class="construction_cover__right--heading">
                             <h2><?php esc_html_e(get_option('content-subheading-settings'),'rex-maintenance-mode'); ?></h2>
-                            <h1><?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?></h1>
+                            <h1><?php esc_html_e(get_option('content-headline-settings','Here headline will be placed..!'), 'rex-maintenance-mode'); ?></h1>
                         </div>
                         <?php endif; ?>
                         <?php if(!empty(get_option('content-content-settings'))) : ?>
