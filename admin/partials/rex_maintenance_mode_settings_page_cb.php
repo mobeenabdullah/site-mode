@@ -1,76 +1,13 @@
 <?php
-
-/**
- * Responsible for plugin menu
- *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
- *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
- */
-
-/**
- * Responsible for plugin menu
- *
- * This class defines all code necessary to run during the plugin's menu
- *
- * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
- * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
- */
-class Rex_Maintenance_Mode_Menu
-{
-
-
-    public function  __construct()
-    {
-        add_action('admin_menu', [$this, 'rex_maintenance_mode_menu']);
-        add_action('admin_menu', [$this, 'rex_maintenance_mode_submenu_settings_page']);
-    }
-
-    public function rex_maintenance_mode_menu()
-    {
-        add_menu_page(
-            __('REX Maintenance Mode Settings', 'rex-maintenance-mode'),
-            'Maintenance Mode by WPRex',
-            'manage_options',
-            'wprex-maintenance-mode',
-            [$this, 'rex_maintenance_mode_settings_page_cb'],
-            'dashicons-welcome-add-page',
-
-        );
-    }
-
-    public function rex_maintenance_mode_submenu_settings_page()
-    {
-        add_submenu_page(
-            'wprex-maintenance-mode',
-            'Maintenance Mode by WPRex',
-            'Settings',
-            'manage_options',
-            'wprex-maintenance-mode',
-            [$this, 'rex_maintenance_mode_settings_page_cb']
-        );
-        add_submenu_page(
-            'wprex-maintenance-mode',
-            'about',
-            'About',
-            'manage_options',
-            'rex-maintenance-mode-about',
-            [$this, 'rex_maintenance_mode_content_page_html']
-        );
-    }
-
-    public function rex_maintenance_mode_settings_page_cb()
+    function rex_maintenance_mode_settings_page_cb()
     {
         if (!current_user_can('manage_options')) {
             return;
         }
         $default_tab = null;
         $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
-?>
+
+    ?>
         <div class="wrap">
             <!-- Print the page title -->
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
@@ -113,7 +50,7 @@ class Rex_Maintenance_Mode_Menu
                         submit_button(__('Save Changes', 'rex-maintenance-mode'));
                         break;
                     case 'social':
-                            echo 'social icons';
+                        echo 'social icons';
                         break;
                     case 'design':
                         settings_fields('rex-maintenance-mode-setting-design-group');
@@ -130,8 +67,8 @@ class Rex_Maintenance_Mode_Menu
                         echo 'import-export';
                         break;
                     default:
-                        settings_fields('wprex-maintenance-mode-general-group');
-                        do_settings_sections('wprex-maintenance-mode-general-page');
+                        settings_fields('rex-maintenance-mode-setting-group');
+                        do_settings_sections('rex-maintenance-mode-options');
                         submit_button(__('Save Changes', 'rex-maintenance-mode'));
                         break;
 
@@ -140,9 +77,3 @@ class Rex_Maintenance_Mode_Menu
         </div>
 <?php
     }
-
-    public function rex_maintenance_mode_content_page_html()
-    {
-        echo 'About page';
-    }
-}
