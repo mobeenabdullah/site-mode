@@ -38,8 +38,14 @@ class Rex_Maintenance_Mode_Setting_page
 
     public function rex_maintenance_mode_settings_registration()
     {
-        // Settings Registeration
-        register_setting('rex-maintenance-mode-setting-group', 'enable-disable-settings');
+        // Settings for general section
+        register_setting('wprex-maintenance-mode-general-group', 'wprex-status-settings');
+        register_setting('wprex-maintenance-mode-general-group', 'wprex-mode-settings');
+        register_setting('wprex-maintenance-mode-general-group', 'wprex-redirect-url-settings');
+        register_setting('wprex-maintenance-mode-general-group', 'wprex-delay-settings');
+
+
+
         register_setting('rex-maintenance-mode-setting-content-group', 'content-headline-settings',[ 'default' => 'Headline Here' ]);
         register_setting('rex-maintenance-mode-setting-content-group', 'content-subheading-settings',[ 'default' => 'Sub Heading Here' ]);
         register_setting('rex-maintenance-mode-setting-content-group', 'content-content-settings',[ 'default' => 'Write some content' ]);
@@ -53,15 +59,19 @@ class Rex_Maintenance_Mode_Setting_page
 
     public function rex_maintenance_mode_section_registration()
     {
+        //  General section
+        add_settings_section('wprex-maintenance-mode-general-section', 'Primary Settings', [$this, 'rex_maintenance_mode_settings_section_callback'], 'wprex-maintenance-mode-general-page');
 
-        add_settings_section('rex-maintenance-mode-section', 'Primary Settings', [$this, 'rex_maintenance_mode_settings_section_callback'], 'rex-maintenance-mode-options');
         add_settings_section('rex-maintenance-mode-content-section', 'Content Customization', [$this, 'rex_maintenance_mode_content_customization_section_callback'], 'rex-maintenance-mode-options-one');
         add_settings_section('rex-maintenance-mode-design-section', 'Design Templates', [$this, 'rex_maintenance_mode_design_section_callback'], 'rex-maintenance-mode-design');
     }
 
     public function rex_maintenance_mode_section_fields_registration()
     {
-        add_settings_field('rex_maintenance_mode_disable', 'Disable / Enable', [$this, 'rex_maintenance_mode_disable_enable_cb'], 'rex-maintenance-mode-options', 'rex-maintenance-mode-section');
+        // General section fields
+        add_settings_field('rex_maintenance_status_disable', 'Status', [$this, 'rex_maintenance_status_cb'], 'wprex-maintenance-mode-general-page', 'wprex-maintenance-mode-general-section');
+        add_settings_field('rex_maintenance_mode_disable', 'Mode', [$this, 'rex_maintenance_mode_cb'], 'wprex-maintenance-mode-general-page', 'wprex-maintenance-mode-general-section');
+
         add_settings_field('rex_maintenance_mode_content_headline', 'Headline', [$this, 'rex_maintenance_mode_content_headline_cb'], 'rex-maintenance-mode-options-one', 'rex-maintenance-mode-content-section');
         add_settings_field('rex_maintenance_mode_content_subdeading', 'Sub Heading', [$this, 'rex_maintenance_mode_content_subheading_cb'], 'rex-maintenance-mode-options-one', 'rex-maintenance-mode-content-section');
         add_settings_field('rex_maintenance_mode_content_area', 'Content Area', [$this, 'rex_maintenance_mode_content_area_cb'], 'rex-maintenance-mode-options-one', 'rex-maintenance-mode-content-section');
@@ -73,30 +83,56 @@ class Rex_Maintenance_Mode_Setting_page
         add_settings_field('rex_maintenance_mode_design_templates', 'Design ', [$this, 'rex_maintenance_mode_design_template_cb'], 'rex-maintenance-mode-design', 'rex-maintenance-mode-design-section');
     }
 
-    public function rex_maintenance_mode_settings_section_callback()
+    public function rex_maintenance_mode_settings_section_callback($args)
     {
-        echo '<p>You can simply enable or disable the coming soon page here.</p>';
+
     }
     public function rex_maintenance_mode_content_customization_section_callback()
     {
-        echo '<p>You can change content of the coming soon here. </p>';
+
     }
 
     public function rex_maintenance_mode_design_section_callback()
     {
-        echo '<p>select pre-design template from the design list.</p>';
+
     }
 
-    public function rex_maintenance_mode_disable_enable_cb()
+    public function rex_maintenance_status_cb()
     {
-        $setting = get_option('settings_one');
-        $setting_two = get_option('enable-disable-settings');
-        $options = get_option('settings_one');
+        print_r(get_option('wprex-status-settings'));
 ?>
         <div>
-            <input type="checkbox" name="enable-disable-settings" value="1" <?php checked(1, get_option('enable-disable-settings'), true); ?> />
+            <input type="checkbox" name="wprex-status-settings" value="1" <?php checked(1, get_option('wprex-status-settings'), true); ?> />
         </div>
     <?php
+    }
+
+    public function rex_maintenance_mode_cb()
+    {
+        print_r(get_option('wprex-mode-settings'));
+        ?>
+        <div>
+            <select name="wprex-mode-settings" id="mode-selector">
+                <option value="maintenance" >Maintenance</option>
+                <option value="coming-soon">Coming Soon</option>
+                <option value="redirect"  id="direct-item">Redirect</option>
+            </select>
+            <?php
+//            if(get_option('wprex-mode-settings') ==='redirect') {
+                ?>
+                <div id="direct-sub">
+                   <div>
+                       <input type="text" name="wprex-redirect-url-settings" value="1" <?php checked(1, get_option('wprex-redirect-url-settings'), true); ?> />
+                   </div>
+                    <div>
+                        <input type="number" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
+                    </div>
+                </div>
+           <?php
+//    }
+?>
+        </div>
+        <?php
     }
 
     public function rex_maintenance_mode_content_headline_cb()
