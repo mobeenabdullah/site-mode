@@ -48,14 +48,17 @@ class Rex_Maintenance_Mode_Setting_page
 
         // Settings for conten section
         register_setting('rex-maintenance-setting-content-group', 'content-logo-type-setting');
-        register_setting('rex-maintenance-setting-content-group', 'content-headline-settings',[ 'default' => 'Headline Here' ]);
-        register_setting('rex-maintenance-setting-content-group', 'content-subheading-settings',[ 'default' => 'Sub Heading Here' ]);
-        register_setting('rex-maintenance-setting-content-group', 'content-content-settings',[ 'default' => 'Write some content' ]);
         register_setting('rex-maintenance-setting-content-group', 'content-logo-settings');
+        register_setting('rex-maintenance-setting-content-group', 'text-logo-setting',[ 'default' => bloginfo('name') ]);
+        register_setting('rex-maintenance-setting-content-group', 'disable-logo-setting');
+        register_setting('rex-maintenance-setting-content-group', 'content-headline-settings',[ 'default' => 'Headline Here' ]);
+        register_setting('rex-maintenance-setting-content-group', 'content-content-settings',[ 'default' => 'Write some content' ]);
         register_setting('rex-maintenance-setting-content-group', 'content-bg-image-settings');
         register_setting('rex-maintenance-setting-content-group', 'content-social-fb-settings',[ 'default' => 'username' ]);
         register_setting('rex-maintenance-setting-content-group', 'content-social-linkedin-settings',[ 'default' => 'username' ]);
         register_setting('rex-maintenance-setting-content-group', 'content-social-twitter-settings',[ 'default' => 'username' ]);
+
+
         register_setting('rex-maintenance-setting-design-group', 'content-content-template-settings');
     }
 
@@ -64,8 +67,14 @@ class Rex_Maintenance_Mode_Setting_page
         //  General section
         add_settings_section('wprex-maintenance-general-section', 'Primary Settings', [$this, 'rex_maintenance_general_settings_section_callback'], 'wprex-maintenance-general-page');
 
-        add_settings_section('rex-maintenance-content-section', 'Content Customization', [$this, 'rex_maintenance_content_customization_section_callback'], 'rex-maintenance-options-one');
+        //Content Section
+        add_settings_section('rex-maintenance-content-logo-section', 'Content Logo Area', [$this, 'rex_maintenance_content_logo_section_callback'], 'rex-maintenance-options-one');
+        add_settings_section('rex-maintenance-content-text-section', 'Content textarea', [$this, 'rex_maintenance_content_customization_section_callback'], 'rex-maintenance-options-one');
         add_settings_section('rex-maintenance-design-section', 'Design Templates', [$this, 'rex_maintenance_design_section_callback'], 'rex-maintenance-design');
+
+        //Social Section
+        add_settings_section('rex-maintenance-social-section', 'Social Section',[$this,'rex_maintenance_social_section_callback'], 'rex-maintenance-social');
+
     }
 
     public function rex_maintenance_mode_section_fields_registration()
@@ -78,16 +87,21 @@ class Rex_Maintenance_Mode_Setting_page
         add_settings_field('rex_maintenance_login_log','Login Icon', [$this, 'rex_maintenance_login_cb'],'wprex-maintenance-general-page','wprex-maintenance-general-section');
 
 
-        add_settings_field('rex_maintenance_content_logo_type', 'Logo Type', [$this, 'rex_maintenance_content_logo_type_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_logo', 'Image Logo', [$this, 'rex_maintenance_content_logo_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_headline', 'Headline', [$this, 'rex_maintenance_content_headline_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_subdeading', 'Sub Heading', [$this, 'rex_maintenance_content_subheading_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_area', 'Content Area', [$this, 'rex_maintenance_content_area_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_bg_image', 'Change Background Image', [$this, 'rex_maintenance_content_bg_image_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_social_fb', 'Facebook Username', [$this, 'rex_maintenance_content_social_fb_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_social_linkedIn', 'LinkedIn Username', [$this, 'rex_maintenance_content_social_linkedin_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_content_social_twitter', 'Twitter Username', [$this, 'rex_maintenance_content_social_twitter_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
-        add_settings_field('rex_maintenance_design_templates', 'Design ', [$this, 'rex_maintenance_design_template_cb'], 'rex-maintenance-design', 'rex-maintenance-design-section');
+
+        add_settings_field('rex_maintenance_content_disable_logo','Disable Logo', [$this, 'rex_maintenance_content_disable_logo_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
+        add_settings_field('rex_maintenance_content_logo_type', 'Logo Type', [$this, 'rex_maintenance_content_logo_type_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
+        add_settings_field('rex_maintenance_content_logo', 'Image Logo', [$this, 'rex_maintenance_content_logo_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
+        add_settings_field('rex_maintenance_content_text_logo', 'Text Logo', [$this, 'rex_maintenance_content_text_logo_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
+
+        add_settings_field('rex_maintenance_content_headline', 'Headline', [$this, 'rex_maintenance_content_headline_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-text-section');
+        add_settings_field('rex_maintenance_content_area', 'Content Area', [$this, 'rex_maintenance_content_area_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-text-section');
+        add_settings_field('rex_maintenance_content_bg_image', 'Change Background Image', [$this, 'rex_maintenance_content_bg_image_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-text-section');
+
+        //Social Section Field
+        add_settings_field('rex_maintenance_content_social_fb', 'Facebook Username', [$this, 'rex_maintenance_content_social_fb_cb'], 'rex-maintenance-options-one', 'rex-maintenance-social-section');
+        add_settings_field('rex_maintenance_content_social_linkedIn', 'LinkedIn Username', [$this, 'rex_maintenance_content_social_linkedin_cb'], 'rex-maintenance-options-one', 'rex-maintenance-social-section');
+        add_settings_field('rex_maintenance_content_social_twitter', 'Twitter Username', [$this, 'rex_maintenance_content_social_twitter_cb'], 'rex-maintenance-options-one', 'rex-maintenance-social-section');
+        add_settings_field('rex_maintenance_design_templates', 'Design ', [$this, 'rex_maintenance_design_template_cb'], 'rex-maintenance-design', 'rex-maintenance-social-section');
     }
 
     public function rex_maintenance_general_settings_section_callback($args)
@@ -96,6 +110,12 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_content_customization_section_callback()
     {
+
+    }
+    public function rex_maintenance_social_section_callback() {
+        
+    }
+    public function rex_maintenance_content_logo_section_callback() {
 
     }
 
@@ -169,6 +189,14 @@ public function rex_maintenance_content_logo_type_cb() {
     <?php
 }
 
+public function rex_maintenance_content_disable_logo_cb() {
+        ?>
+    <div>
+            <input type="checkbox" name="disable-logo-setting" value="<?php esc_attr_e(get_option('disable-logo-setting'),'rex-maintenance-mode'); ?>" />
+        </div>
+    <?php
+}
+
     public function rex_maintenance_content_headline_cb()
     {
     ?>
@@ -178,11 +206,12 @@ public function rex_maintenance_content_logo_type_cb() {
     <?php
     }
 
-    public function rex_maintenance_content_subheading_cb()
+    public function rex_maintenance_content_text_logo_cb()
     {
     ?>
         <div>
-            <input type="text" name="content-subheading-settings" value="<?php esc_attr_e(get_option('content-subheading-settings'),'rex-maintenance-mode'); ?>" />
+            <input type="text" name="text-logo-setting" value="<?php esc_attr_e(get_option('content-subheading-settings'),'rex-maintenance-mode'); ?>" />
+
         </div>
     <?php
     }
@@ -190,7 +219,20 @@ public function rex_maintenance_content_logo_type_cb() {
     {
     ?>
         <div>
-            <textarea rows="10" cols="50" name="content-content-settings" ><?php esc_html_e(get_option('content-content-settings'),'rex-maintenance-mode'); ?></textarea>
+            <?php
+            $content = get_option('content-content-settings');
+            $custom_editor_id = "editorid";
+            $custom_editor_name = "content-content-settings";
+            $args = array(
+                'media_buttons' => false, // This setting removes the media button.
+                'textarea_name' => $custom_editor_name, // Set custom name.
+                'textarea_rows' => get_option('default_post_edit_rows', 10), //Determine the number of rows.
+                'quicktags' => false, // Remove view as HTML button.
+                'tinymce' => true,
+                'teeny' => true,
+            );
+            wp_editor( $content, $custom_editor_id, $args );
+            ?>
         </div>
     <?php
     }
