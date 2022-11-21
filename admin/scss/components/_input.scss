@@ -1,20 +1,20 @@
-.uc_input_cover {
+.#{$prefix}_input_cover {
   & input[type="text"] {
     width: $form-fields-width;
     height: $form-fields-height;
     line-height: 3;
     background: $white_color;
-    border: 2px solid $primary_color;
+    border: $border-width solid $primary_color;
     border-radius: $form-field-border-radius;
     padding: $form-field-padding;
     font-size: $form-field-font-size;
     font-family: $body-font-family;
-    &:focus , &:active, &:hover, &:focus-visible {
+    &:active, &:hover, &:focus-visible {
       border-color: $primary_color;
     }
-    &:focus-visible {
-      box-shadow: 0 0 0 5px rgba($primary_color, 0.5);
-      outline: 3px solid transparent;
+    &:focus {
+      box-shadow: $focus-shadow;
+      outline: $outline-width solid transparent;
     }
   }
 }

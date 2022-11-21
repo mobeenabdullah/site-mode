@@ -1,4 +1,4 @@
-$prefix: 'uc';
+$prefix: 'um';
 //$base-font-size: 62.5%;
 //$body-font-size: 1.6rem;
 //$body-text-line-height: 1.5;
@@ -7,7 +7,8 @@ $prefix: 'uc';
 $body-font-family: 'Open Sans', sans-serif;
 $transition-cubic-brezier: .3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
 $transition-opacity: opacity 0.2s ease-in-out;
-$border-width: 2px;
+$border-width: 1px;
+$border-radius-50: 50%;
 
 
 // Colors
@@ -23,13 +24,12 @@ $radio-checked-color: $primary_color;
 $radio-unchecked-color: $primary_color;*/
 
 // Checkbox
-$checkbox-width-height: 20px;
+$checkbox-width-height: 18px;
 $checkbox-width-before: $checkbox-width-height;
 $checkbox-height-before: $checkbox-width-height;
 $checkbox-width-after: $checkbox-width-height;
 $checkbox-height-after: $checkbox-width-height;
 $checkbox-mark-top: $border-width + 3;
-$checkbox-mark-left: $border-width;
 $padding-top-bottom: $checkbox-width-height / 3;
 $padding-left-right: $checkbox-width-height + 20px;
 
@@ -41,10 +41,10 @@ $height: $width/2;
 $form-fields-width: 20em;
 $form-fields-height: 3em;
 $form-field-border-radius: .25em;
-$form-field-padding: 0 .5em;
+$form-field-padding: 0 1em;
 $form-field-font-size: 1em;
 $outline-width: $border-width;
-$focus-shadow: 0 0 0 3px rgba($primary_color, 0.5);
+$focus-shadow: 0 0 0 $border-width rgba($primary_color, 0.5);
 
 
 // Range Slider

@@ -1,8 +1,11 @@
-.uc_radio_wrapper {
+.#{$prefix}_checkbox_wrapper {
   position: relative;
   & label {
-    display: block;
-    padding: 12px 0 12px 48px;
+    padding: 0 $padding-left-right;
+    height: $checkbox-height-before + $border-width;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: $input-bottom-spacing;
   }
   & input {
     height: 22px;
@@ -11,6 +14,9 @@
     position: absolute;
     top: 0;
     width: 22px;
+    &::before {
+      display: none;
+    }
   }
   & input + label::before {
     border: $border-width solid $primary_color;
@@ -18,27 +24,27 @@
     height: $checkbox-height-before;
     left: 0;
     position: absolute;
-    top: 50%;
+    top: 0;
     width: $checkbox-width-before;
-    transform: translateY(calc(-50% - 4px));
     border-radius: $form-field-border-radius;
   }
   & input + label::after {
-    content: "";
+    content: "\2713";
     opacity: 0;
+    font-size: $checkbox-height-after - 4px;
     font-weight: 700;
-    line-height: 25px;
     background-repeat: no-repeat;
     height: $checkbox-height-after;
     width: $checkbox-width-after;
     position: absolute;
-    left: $checkbox-mark-left;
-    top: $checkbox-mark-top;
+    left: 0;
+    top: 0;
     transition: $transition-cubic-brezier;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: $form-field-border-radius;
+    border: $border-width solid transparent;
   }
   & input:checked + label::before {
     background-color: $primary_color;
@@ -52,17 +58,3 @@
     outline: $outline-width solid transparent;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
