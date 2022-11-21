@@ -1,0 +1,9 @@
+// Box Shadow mixin
+@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($primary_color, 0.5)) {
+  box-shadow: $x-axis $y-axis $blur $spread $color;
+}
+
+// border Mixin
+@mixin border($direction, $width, $style, $color) {
+  border-#{$direction}: $width $style $color;
+}
