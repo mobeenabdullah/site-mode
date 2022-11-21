@@ -108,16 +108,16 @@ class Rex_Maintenance_Mode_Menu
             <form action="options.php" method="post">
                 <?php switch ($tab):
                     case 'content':
-                        settings_fields('rex-maintenance-mode-setting-content-group');
-                        do_settings_sections('rex-maintenance-mode-options-one');
+                        settings_fields('rex-maintenance-setting-content-group');
+                        do_settings_sections('rex-maintenance-options-one');
                         submit_button(__('Save Changes', 'rex-maintenance-mode'));
                         break;
                     case 'social':
                             echo 'social icons';
                         break;
                     case 'design':
-                        settings_fields('rex-maintenance-mode-setting-design-group');
-                        do_settings_sections('rex-maintenance-mode-design');
+                        settings_fields('rex-maintenance-setting-design-group');
+                        do_settings_sections('rex-maintenance-design');
                         submit_button(__('Save Changes', 'rex-maintenance-mode'));
                         break;
                     case 'seo':
@@ -130,8 +130,8 @@ class Rex_Maintenance_Mode_Menu
                         echo 'import-export';
                         break;
                     default:
-                        settings_fields('wprex-maintenance-mode-general-group');
-                        do_settings_sections('wprex-maintenance-mode-general-page');
+                        settings_fields('wprex-maintenance-general-group');
+                        do_settings_sections('wprex-maintenance-general-page');
                         submit_button(__('Save Changes', 'rex-maintenance-mode'));
                         break;
 
