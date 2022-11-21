@@ -1,0 +1,68 @@
+.uc_radio_wrapper {
+  position: relative;
+  & label {
+    display: block;
+    padding: 12px 0 12px 48px;
+  }
+  & input {
+    height: 22px;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 22px;
+  }
+  & input + label::before {
+    border: $border-width solid $primary_color;
+    content: "";
+    height: $checkbox-height-before;
+    left: 0;
+    position: absolute;
+    top: 50%;
+    width: $checkbox-width-before;
+    transform: translateY(calc(-50% - 4px));
+    border-radius: $form-field-border-radius;
+  }
+  & input + label::after {
+    content: "";
+    opacity: 0;
+    font-weight: 700;
+    line-height: 25px;
+    background-repeat: no-repeat;
+    height: $checkbox-height-after;
+    width: $checkbox-width-after;
+    position: absolute;
+    left: $checkbox-mark-left;
+    top: $checkbox-mark-top;
+    transition: $transition-cubic-brezier;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $form-field-border-radius;
+  }
+  & input:checked + label::before {
+    background-color: $primary_color;
+  }
+  & input:checked + label::after {
+    opacity: 1;
+    color: $white_color;
+  }
+  & input:focus + label::before {
+    box-shadow: $focus-shadow;
+    outline: $outline-width solid transparent;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+.uc_select {
+  position: relative;
+  display: flex;
+  width: $form-fields-width;
+  height: $form-fields-height;
+  line-height: 3;
+  background: $white_color;
+  border-radius: $form-field-border-radius;
+  margin-bottom: $input-bottom-spacing;
+  select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    -ms-appearance:none;
+    appearance:none;
+    outline:0;
+    box-shadow:none;
+    border: $border-width solid $primary_color !important;
+    background: $white_color;
+    background-image: none;
+    flex: 1;
+    padding: $form-field-padding;
+    color:black;
+    cursor:pointer;
+    font-size: $form-field-font-size;
+    font-family: $body-font-family;
+    &::-ms-expand {
+      display: none;
+    }
+    &:hover {
+      color: $secondary_color;
+    }
+    &:focus {
+      box-shadow: 0 0 0 3px rgba($primary_color, 0.5);
+      outline: $outline-width solid transparent;
+
+    }
+  }
+
+  &::after {
+    content: '\25BC';
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0 1em;
+    background: transparent;
+    cursor:pointer;
+    pointer-events:none;
+    transition: $transition-cubic-brezier;
+    color: $primary_color;
+  }
+  &:hover::after {
+    color: $secondary_color;
+  }
+}

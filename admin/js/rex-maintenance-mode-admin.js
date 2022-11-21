@@ -1,7 +1,7 @@
 
 jQuery(function ($) {
 
-  $("body").on("click", ".logo-upload", function (event) {
+    $("body").on("click", ".logo-upload", function (event) {
     event.preventDefault(); // prevent default link click and page refresh
 
     const button = $(this);
@@ -42,22 +42,22 @@ jQuery(function ($) {
     });
 
     customUploader.open();
-  });
-  // on remove button click
-  $("body").on("click", ".logo-remove", function (event) {
+    });
+    // on remove button click
+    $("body").on("click", ".logo-remove", function (event) {
     event.preventDefault();
     const button = $(this);
     button.next().val(""); // emptying the hidden field
     button.hide().prev().addClass("button").html("Upload Logo"); // replace the image with text
-  });
+    });
 
-  /*
-  * Background Image
-  */
+    /*
+    * Background Image
+    */
 
 
-  // on upload button click
-  $("body").on("click", ".bg-image-upload", function (event) {
+    // on upload button click
+    $("body").on("click", ".bg-image-upload", function (event) {
     event.preventDefault(); // prevent default link click and page refresh
 
     const button = $(this);
@@ -98,12 +98,23 @@ jQuery(function ($) {
     });
 
     customUploader.open();
-  });
-  // on remove button click
-  $("body").on("click", ".bg-image-remove", function (event) {
+    });
+    // on remove button click
+    $("body").on("click", ".bg-image-remove", function (event) {
     event.preventDefault();
     const button = $(this);
     button.next().val(""); // emptying the hidden field
     button.hide().prev().addClass("button").html("Upload Background Image"); // replace the image with text
-  });
+    });
+
+    // Start document ready function
+    $(document).ready(function () {
+        // Show and hide redirect options
+        $('#site_mode').on('change', function() {
+            $('.redirect_options').css('display', 'none');
+            if ( $(this).val() === 'redirect' ) {
+                $('.redirect_options').css('display', 'flex');
+            }
+        });
+    })
 });

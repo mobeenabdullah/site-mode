@@ -1,0 +1,67 @@
+$prefix: 'uc';
+//$base-font-size: 62.5%;
+//$body-font-size: 1.6rem;
+//$body-text-line-height: 1.5;
+
+// General Variables
+$body-font-family: 'Open Sans', sans-serif;
+$transition-cubic-brezier: .3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$transition-opacity: opacity 0.2s ease-in-out;
+$border-width: 2px;
+
+
+// Colors
+$primary_color: #81B622;
+$secondary_color:  #757575;
+$white_color: #ffffff;
+$black_color: #000000;
+
+/*$off_white: #d7dcdf;
+$checkbox-border-color-checked: $primary_color;
+$checkbox-bg-color-unchecked: $white_color;
+$radio-checked-color: $primary_color;
+$radio-unchecked-color: $primary_color;*/
+
+// Checkbox
+$checkbox-width-height: 20px;
+$checkbox-width-before: $checkbox-width-height;
+$checkbox-height-before: $checkbox-width-height;
+$checkbox-width-after: $checkbox-width-height;
+$checkbox-height-after: $checkbox-width-height;
+$checkbox-mark-top: $border-width + 3;
+$checkbox-mark-left: $border-width;
+$padding-top-bottom: $checkbox-width-height / 3;
+$padding-left-right: $checkbox-width-height + 20px;
+
+
+// Form Field Variables
+$input-bottom-spacing: 1.5rem;
+$width: 2.5em;
+$height: $width/2;
+$form-fields-width: 20em;
+$form-fields-height: 3em;
+$form-field-border-radius: .25em;
+$form-field-padding: 0 .5em;
+$form-field-font-size: 1em;
+$outline-width: $border-width;
+$focus-shadow: 0 0 0 3px rgba($primary_color, 0.5);
+
+
+// Range Slider
+// Base Colors
+//$shade-10: $secondary_color !default;
+//$shade-1: $off_white !default;
+//$shade-0: $white_color !default;
+//$teal: $primary_color !default;
+//
+//$range-width: 100% !default;
+//
+//$range-handle-color: $shade-10 !default;
+//$range-handle-color-hover: $teal !default;
+//$range-handle-size: 20px !default;
+//
+//$range-track-color: $shade-1 !default;
+//$range-track-height: 10px !default;
+//
+//$range-label-color: $primary_color !default;
+//$range-label-width: 60px !default;
