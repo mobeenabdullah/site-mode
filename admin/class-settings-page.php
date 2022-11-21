@@ -108,7 +108,7 @@ class Rex_Maintenance_Mode_Setting_page
     {
         print_r(get_option('wprex-status-settings'));
 ?>
-        <div class="uc_checkbox_wrapper">
+        <div class="um_checkbox_wrapper">
             <input type="checkbox" id="status" name="wprex-status-settings" value="1" <?php checked(1, get_option('wprex-status-settings'), true); ?> />
             <label for="status">Enable/Disable</label>
         </div>
@@ -119,40 +119,42 @@ class Rex_Maintenance_Mode_Setting_page
     {
         print_r(get_option('wprex-mode-settings'));
         ?>
-            <div class="uc_select">
+            <div class="um_select">
                 <label for="site_mode" class="screen-reading">Mode</label>
                 <select name="wprex-mode-settings" id="site_mode">
                     <option value="maintenance" >Maintenance</option>
                     <option value="coming-soon">Coming Soon</option>
                     <option value="redirect"  id="direct-item">Redirect</option>
                 </select>
+                <span class="arrow-down"></span>
             </div>
-
-<!--            <select name="wprex-mode-settings" id="mode-selector">-->
-<!--                <option value="maintenance" >Maintenance</option>-->
-<!--                <option value="coming-soon">Coming Soon</option>-->
-<!--                <option value="redirect"  id="direct-item">Redirect</option>-->
-<!--            </select>-->
-            <?php
-
-                ?>
-                <div class="redirect_options">
-                    <div class="uc_input_cover label_top">
-                        <label for="redirect_url">Redirect Url</label>
-                        <input type="text" id="redirect_url" name="wprex-redirect-url-settings" value="1" <?php checked(1, get_option('wprex-redirect-url-settings'), true); ?> />
-                    </div>
-                    <div class="uc_input_cover label_top">
-                        <label for="delay_seconds">Delay Seconds</label>
-                        <input type="number" id="delay_seconds" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
-                    </div>
+            <div class="redirect_options">
+                <div class="um_input_cover label_top">
+                    <label for="redirect_url">Redirect Url</label>
+                    <input type="text" id="redirect_url" name="wprex-redirect-url-settings" value="1" <?php checked(1, get_option('wprex-redirect-url-settings'), true); ?> />
                 </div>
+                <div class="um_input_cover label_top">
+                    <label for="delay_seconds">Delay Seconds</label>
+                    <input type="number" id="delay_seconds" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
+                </div>
+            </div>
         <?php
     }
 
     public function rex_maintenance_login_cb() {
         ?>
-          <div>
-            <input type="checkbox" name="wprex-login-icon-setting" value="1" <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+        <div class="um_checkbox_wrapper">
+            <input type="checkbox" id="login_icon" name="wprex-login-icon-setting" value="1" <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+            <label for="login_icon">Show Login Icon</label>
+        </div>
+        <div class="um_radio_wrapper">
+            <input id="a11y-issue-3" checked name="a11y-issues1" type="radio" value="no-focus-styles">
+            <label for="a11y-issue-3">Focus styles are not present</label>
+        </div>
+
+        <div class="um_radio_wrapper">
+            <input id="a11y-issue-4" name="a11y-issues1" type="radio" value="html-markup">
+            <label for="a11y-issue-4">HTML markup is used in bizarre way. Also, what happens if the label text is very looooooooong, like this one?</label>
         </div>
     <?php
         }
@@ -172,8 +174,9 @@ public function rex_maintenance_content_logo_type_cb() {
     public function rex_maintenance_content_headline_cb()
     {
     ?>
-        <div>
-            <input type="text" name="content-headline-settings" value="<?php esc_attr_e(get_option('content-headline-settings'),'rex-maintenance-mode'); ?>" />
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <input type="text" id="headline" name="content-headline-settings" value="<?php esc_attr_e(get_option('content-headline-settings'),'rex-maintenance-mode'); ?>" />
         </div>
     <?php
     }
@@ -285,7 +288,7 @@ public function rex_maintenance_content_logo_type_cb() {
                         <div class="template_title">
                             <h2 class="template_title-title">Food Template</h2>
                         </div>
-                       <label class="label toggle">
+                       <label class="um_toggle">
                             <input type="radio" class="toggle_input" id="one" name="content-content-template-settings" value="1" <?php echo (get_option('content-content-template-settings') == '1') ? 'checked' : ''?> />
                            <div class="toggle-control"></div>
                        </label>
@@ -299,8 +302,7 @@ public function rex_maintenance_content_logo_type_cb() {
                         <div class="template_title">
                             <h2 class="template_title-title">Construction Template</h2>
                         </div>
-                        <label class="label toggle">
-                            <!--                                   <input type="checkbox" class="toggle_input" />-->
+                        <label class="um_toggle">
                             <input type="radio" class="toggle_input" id="two" name="content-content-template-settings" value="2" <?php echo (get_option('content-content-template-settings') == '2') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>
@@ -316,7 +318,7 @@ public function rex_maintenance_content_logo_type_cb() {
                             <h2 class="template_title-title">Fashion Template</h2>
                         </div>
 
-                        <label class="label toggle">
+                        <label class="um_toggle">
                             <input type="radio" class="toggle_input" id="three" name="content-content-template-settings" value="3" <?php echo (get_option('content-content-template-settings') == '3') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>
@@ -330,7 +332,7 @@ public function rex_maintenance_content_logo_type_cb() {
                         <div class="template_title">
                             <h2 class="template_title-title">Travel Template</h2>
                         </div>
-                        <label class="label toggle">
+                        <label class="um_toggle">
                             <input type="radio" class="toggle_input" id="four" name="content-content-template-settings" value="4" <?php echo (get_option('content-content-template-settings') == '4') ? 'checked' : ''?> />
                             <div class="toggle-control"></div>
                         </label>

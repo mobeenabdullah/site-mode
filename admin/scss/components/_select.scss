@@ -1,4 +1,4 @@
-.uc_select {
+.#{$prefix}_select {
   position: relative;
   display: flex;
   width: $form-fields-width;
@@ -30,25 +30,30 @@
       color: $secondary_color;
     }
     &:focus {
-      box-shadow: 0 0 0 3px rgba($primary_color, 0.5);
+      box-shadow: $focus-shadow;
       outline: $outline-width solid transparent;
 
     }
   }
 
-  &::after {
-    content: '\25BC';
+  & .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $secondary_color;
     position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0 1em;
-    background: transparent;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    transition: $transition-cubic-brezier;
     cursor:pointer;
     pointer-events:none;
-    transition: $transition-cubic-brezier;
-    color: $primary_color;
   }
-  &:hover::after {
+  &:hover {
     color: $secondary_color;
+    & .arrow-down {
+      border-top: 5px solid $primary_color;
+    }
   }
 }
