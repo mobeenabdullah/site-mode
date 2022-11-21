@@ -101,8 +101,9 @@ class Rex_Maintenance_Mode_Setting_page
     {
         print_r(get_option('wprex-status-settings'));
 ?>
-        <div>
-            <input type="checkbox" name="wprex-status-settings" value="1" <?php checked(1, get_option('wprex-status-settings'), true); ?> />
+        <div class="uc_checkbox_wrapper">
+            <input type="checkbox" id="status" name="wprex-status-settings" value="1" <?php checked(1, get_option('wprex-status-settings'), true); ?> />
+            <label for="status">Enable/Disable</label>
         </div>
     <?php
     }
@@ -111,27 +112,33 @@ class Rex_Maintenance_Mode_Setting_page
     {
         print_r(get_option('wprex-mode-settings'));
         ?>
-        <div>
-            <select name="wprex-mode-settings" id="mode-selector">
-                <option value="maintenance" >Maintenance</option>
-                <option value="coming-soon">Coming Soon</option>
-                <option value="redirect"  id="direct-item">Redirect</option>
-            </select>
+            <div class="uc_select">
+                <label for="site_mode" class="screen-reading">Mode</label>
+                <select name="wprex-mode-settings" id="site_mode">
+                    <option value="maintenance" >Maintenance</option>
+                    <option value="coming-soon">Coming Soon</option>
+                    <option value="redirect"  id="direct-item">Redirect</option>
+                </select>
+            </div>
+
+<!--            <select name="wprex-mode-settings" id="mode-selector">-->
+<!--                <option value="maintenance" >Maintenance</option>-->
+<!--                <option value="coming-soon">Coming Soon</option>-->
+<!--                <option value="redirect"  id="direct-item">Redirect</option>-->
+<!--            </select>-->
             <?php
-//            if(get_option('wprex-mode-settings') ==='redirect') {
+
                 ?>
-                <div id="direct-sub">
-                   <div>
-                       <input type="text" name="wprex-redirect-url-settings" value="1" <?php checked(1, get_option('wprex-redirect-url-settings'), true); ?> />
-                   </div>
-                    <div>
-                        <input type="number" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
+                <div class="redirect_options">
+                    <div class="uc_input_cover label_top">
+                        <label for="redirect_url">Redirect Url</label>
+                        <input type="text" id="redirect_url" name="wprex-redirect-url-settings" value="1" <?php checked(1, get_option('wprex-redirect-url-settings'), true); ?> />
+                    </div>
+                    <div class="uc_input_cover label_top">
+                        <label for="delay_seconds">Delay Seconds</label>
+                        <input type="number" id="delay_seconds" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
                     </div>
                 </div>
-           <?php
-//    }
-?>
-        </div>
         <?php
     }
 
