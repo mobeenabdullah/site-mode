@@ -1,10 +1,13 @@
-.uc_checkbox_wrapper {
+.#{$prefix}_radio_wrapper {
   position: relative;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   & label {
     padding: 0 $padding-left-right;
     height: $checkbox-height-before + $border-width;
     display: inline-flex;
     align-items: center;
+    margin-bottom: $input-bottom-spacing;
   }
   & input {
     height: 22px;
@@ -18,43 +21,43 @@
     }
   }
   & input + label::before {
-    border: $border-width solid $primary_color;
     content: "";
+    border: $border-width solid $primary_color;
     height: $checkbox-height-before;
-    left: 0;
     position: absolute;
     top: 0;
+    left: 0;
     width: $checkbox-width-before;
-    border-radius: $form-field-border-radius;
+    border-radius: $border-radius-50;
   }
   & input + label::after {
     content: "\2713";
     opacity: 0;
-    font-size: $checkbox-height-after - 6px;
-    font-weight: 700;
-    line-height: 25px;
-    background-repeat: no-repeat;
-    height: $checkbox-height-after;
-    width: $checkbox-width-after;
+    border: 6px solid $primary_color;
     position: absolute;
+    font-size: $checkbox-height-after - 6;
+    font-weight: 700;
     left: 0;
     top: 0;
     transition: $transition-cubic-brezier;
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: $form-field-border-radius;
+    border-radius: $border-radius-50;
     border: $border-width solid transparent;
-  }
-  & input:checked + label::before {
-    background-color: $primary_color;
-  }
-  & input:checked + label::after {
-    opacity: 1;
+    width: $checkbox-width-before;
+    height: $checkbox-width-before;
     color: $white_color;
+    background-color: $primary_color;
+
   }
+  input:checked + label::after {
+    opacity: 1;
+  }
+
   & input:focus + label::before {
     box-shadow: $focus-shadow;
     outline: $outline-width solid transparent;
   }
 }
+
