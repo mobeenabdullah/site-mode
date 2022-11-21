@@ -39,7 +39,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    transition: $transition-cubic-brezier;
+    transition: $transition-opacity;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +54,7 @@
     color: $white_color;
   }
   & input:focus + label::before {
-    box-shadow: $focus-shadow;
+    @include box-shadow();
     outline: $outline-width solid transparent;
   }
 }

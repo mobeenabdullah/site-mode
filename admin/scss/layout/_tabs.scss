@@ -1,18 +1,59 @@
 // Tabs
-.nav-tab-wrapper {
-  & a {
+.toplevel_page_wprex-maintenance-mode {
+  & .nav-tab-wrapper {
+    @include border(bottom, 1px, solid, rgba($secondary_color, .1));
     display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  & svg {
-    width: 18px;
+    align-items: end;
+    & .nav-tab {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: $white_color;
+      margin: 0;
+      padding: 12px 30px;
+      text-transform: uppercase;
+      border: 1px solid rgba($secondary_color, .2);
+      border-right: none;
+      border-bottom: none;
+      opacity: 0.8;
+      transition: $transition-opacity;
+      &:hover {
+        opacity: 1;
+      }
+      &:first-child {
+        border-top-left-radius: 5px;
+      }
+      &:last-child {
+        @include border(right, 1px, solid, rgba($secondary_color, .2));
+        border-top-right-radius: 5px;
+      }
+      & svg {
+        width: 18px;
+        & path, & circle {
+          fill: $primary_color;
+        }
+      }
+      &.nav-tab-active {
+        background-color: $primary_color;
+        color: $white_color;
+        border-bottom: none;
+        opacity: 1;
+        padding: 15px 30px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        & svg {
+          & path, & circle {
+            fill: $white_color;
+          }
+        }
+      }
+    }
+    & + form {
+      background-color: $white_color;
+      padding: 20px 20px 0 20px;
+    }
   }
 }
-
-
-
-// General Tab Section
 .redirect_options {
   display: none;
   align-items: start;
@@ -20,29 +61,18 @@
 }
 
 // Content Tab Section
-.logo-remove, .bg-image-remove {
-  background: #2271b1;
-  border-color: #2271b1;
-  color: #fff;
-  text-decoration: none;
-  text-shadow: none;
-  display: inline-block;
-  font-size: 13px;
-  line-height: 2.15384615;
-  min-height: 30px;
-  margin: 0;
-  padding: 0 10px;
-  cursor: pointer;
-  border-width: 1px;
-  border-style: solid;
-  -webkit-appearance: none;
-  border-radius: 3px;
-  white-space: nowrap;
-  box-sizing: border-box;
-  margin-top: 20px;
+.um_btn {
+  background: $primary_color !important;
+  border-color: $primary_color !important;
+  color: $white_color !important;
+
   &:hover {
-    color: #ffffff;
+    background-color: darken($primary_color, 3) !important;
+    border-color: darken($primary_color, 3) !important;
   }
+}
+.bg-image-upload {
+  margin-bottom: $input-bottom-spacing;
 }
 
 // Design Tab
@@ -183,6 +213,7 @@
     }
   }
 }
+
 
 
 

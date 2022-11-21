@@ -30,7 +30,7 @@
       color: $secondary_color;
     }
     &:focus {
-      box-shadow: $focus-shadow;
+      @include box-shadow();
       outline: $outline-width solid transparent;
 
     }

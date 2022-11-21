@@ -1,30 +1,23 @@
 $prefix: 'um';
-//$base-font-size: 62.5%;
-//$body-font-size: 1.6rem;
-//$body-text-line-height: 1.5;
 
 // General Variables
 $body-font-family: 'Open Sans', sans-serif;
 $transition-cubic-brezier: .3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
 $transition-opacity: opacity 0.2s ease-in-out;
-$border-width: 1px;
+$border-width: 2px;
 $border-radius-50: 50%;
 
 
+
 // Colors
-$primary_color: #81B622;
+$primary_color: #6F73D2;
 $secondary_color:  #757575;
 $white_color: #ffffff;
 $black_color: #000000;
 
-/*$off_white: #d7dcdf;
-$checkbox-border-color-checked: $primary_color;
-$checkbox-bg-color-unchecked: $white_color;
-$radio-checked-color: $primary_color;
-$radio-unchecked-color: $primary_color;*/
 
 // Checkbox
-$checkbox-width-height: 18px;
+$checkbox-width-height: 19px;
 $checkbox-width-before: $checkbox-width-height;
 $checkbox-height-before: $checkbox-width-height;
 $checkbox-width-after: $checkbox-width-height;
@@ -44,7 +37,18 @@ $form-field-border-radius: .25em;
 $form-field-padding: 0 1em;
 $form-field-font-size: 1em;
 $outline-width: $border-width;
-$focus-shadow: 0 0 0 $border-width rgba($primary_color, 0.5);
+
+
+
+/*$off_white: #d7dcdf;
+$checkbox-border-color-checked: $primary_color;
+$checkbox-bg-color-unchecked: $white_color;
+$radio-checked-color: $primary_color;
+$radio-unchecked-color: $primary_color;*/
+
+//$base-font-size: 62.5%;
+//$body-font-size: 1.6rem;
+//$body-text-line-height: 1.5;
 
 
 // Range Slider

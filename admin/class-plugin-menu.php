@@ -110,15 +110,17 @@ class Rex_Maintenance_Mode_Menu
                     case 'content':
                         settings_fields('rex-maintenance-setting-content-group');
                         do_settings_sections('rex-maintenance-options-one');
-                        submit_button(__('Save Changes', 'rex-maintenance-mode'));
+                        submit_button(__('Save Content', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'social':
-                            echo 'social icons';
+                        settings_fields('rex-maintenance-setting-social-group');
+                        do_settings_sections('rex-maintenance-options-social');
+                        submit_button(__('Save Social Media', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'design':
                         settings_fields('rex-maintenance-setting-design-group');
                         do_settings_sections('rex-maintenance-design');
-                        submit_button(__('Save Changes', 'rex-maintenance-mode'));
+                        submit_button(__('Save Design', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'seo':
                         echo 'seo';
@@ -132,7 +134,7 @@ class Rex_Maintenance_Mode_Menu
                     default:
                         settings_fields('wprex-maintenance-general-group');
                         do_settings_sections('wprex-maintenance-general-page');
-                        submit_button(__('Save Changes', 'rex-maintenance-mode'));
+                        submit_button(__('Save Default', 'rex-maintenance-mode'),'um_btn');
                         break;
 
                 endswitch; ?>
