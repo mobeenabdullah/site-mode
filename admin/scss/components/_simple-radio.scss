@@ -1,11 +1,11 @@
 .#{$prefix}_radio_wrapper {
   position: relative;
+  margin-bottom: $input-bottom-spacing;
   & label {
     padding: 0 $padding-left-right;
     height: $checkbox-height-before + $border-width;
     display: inline-flex;
     align-items: center;
-    margin-bottom: $input-bottom-spacing;
     font-size: $form-field-font-size;
   }
   & input {
@@ -23,7 +23,7 @@
       position: absolute;
       top: 0;
       border-radius: $border-radius-50;
-      border: $border-width solid $primary_color;
+      border: $border-width solid $secondary_color;
     }
     & + label::after {
       content: '\002B24';

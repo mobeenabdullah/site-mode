@@ -124,7 +124,7 @@ class Rex_Maintenance_Mode_Setting_page
 
         add_settings_field('rex_maintenance_content_disable_logo','Disable Logo', [$this, 'rex_maintenance_content_disable_logo_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
         add_settings_field('rex_maintenance_content_logo_type', 'Logo Type', [$this, 'rex_maintenance_content_logo_type_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
-
+        add_settings_field('rex_maintenance_content_logo', 'Image Logo', [$this, 'rex_maintenance_content_logo_type_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
 
 
         add_settings_field('rex_maintenance_content_headline', 'Headline', [$this, 'rex_maintenance_content_headline_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-text-section');
@@ -251,7 +251,7 @@ class Rex_Maintenance_Mode_Setting_page
         </div>
         <?php
         $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'medium'); ?>
-        <div>
+        <div class="image_logo_wrapper">
             <?php if ($logo_url) : ?>
                 <a href="#" class="Logo-upload test">
                     <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
@@ -261,12 +261,12 @@ class Rex_Maintenance_Mode_Setting_page
                 <a href="#" class="logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-logo-settings" value="<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="button um_btn" style="display:none"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn logo-upload"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn logo-remove" style="display:none"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-logo-settings" value=<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
-        <div class="um_input_cover label_top">
+        <div class="um_input_cover label_top text_logo_wrapper">
             <label for="text_logo">Type Logo text</label>
             <input type="text" id="text_logo" name="text-logo-setting" value="<?php esc_attr_e(get_option('content-subheading-settings'),'rex-maintenance-mode'); ?>" />
         </div>
@@ -277,7 +277,7 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_content_disable_logo_cb() {
         ?>
     <div class="um_checkbox_wrapper">
-        <input type="checkbox" id="disable_logo_settings" name="disable-logo-setting" value="<?php esc_attr_e(get_option('disable-logo-setting'),'rex-maintenance-mode'); ?>" />
+        <input type="checkbox" id="disable_logo_settings" class="enable_disable-rows" name="disable-logo-setting" value="<?php esc_attr_e(get_option('disable-logo-setting'),'rex-maintenance-mode'); ?>" />
         <label for="disable_logo_settings">Enable/Disable</label>
     </div>
     <?php
@@ -328,11 +328,11 @@ class Rex_Maintenance_Mode_Setting_page
                     <?php
                     ?>
                 </a>
-                <a href="#" class="button um_btn"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-bg-image-settings" value="<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-bg-image-settings" value=<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
@@ -344,7 +344,7 @@ class Rex_Maintenance_Mode_Setting_page
 
     public function rex_maintenance_social_icons_show_cb() { ?>
     <div class="um_checkbox_wrapper">
-        <input type="checkbox" id="disable_enable_social_icons_settings" name="show-social-icons-setting" value="<?php esc_attr_e(get_option('show-social-icons-setting'),'rex-maintenance-mode'); ?>" />
+        <input type="checkbox" id="disable_enable_social_icons_settings" class="enable_disable-rows" name="show-social-icons-setting" value="<?php esc_attr_e(get_option('show-social-icons-setting'),'rex-maintenance-mode'); ?>" />
         <label for="disable_enable_social_icons_settings">Enable/Disable</label>
     </div>
     <?php
@@ -353,10 +353,12 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_content_social_fb_cb()
     {
     ?>
-        <div class="container-one">
+        <div class="social_media_field_wrapper">
             <input type="text" name="content-social-fb-settings" value="<?php esc_attr_e(get_option('content-bg-social-fb-settings'), 'rex-maintenance-mode') ?>" />
-            <input type="checkbox" id="content_social_fb_checkbox_settings" name="content-social-fb-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-fb-checkbox-settings'),'rex-maintenance-mode'); ?>" />
-            <label for="content_social_fb_checkbox_settings">Disable</label>
+            <div class="um_checkbox_wrapper">
+                <input type="checkbox" id="content_social_fb_checkbox_settings" class="disable_media" name="content-social-fb-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-fb-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+                <label for="content_social_fb_checkbox_settings">Disable</label>
+            </div>
         </div>
     <?php
     }
@@ -364,10 +366,13 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_content_social_linkedin_cb()
     {
     ?>
-        <div>
+        <div class="social_media_field_wrapper">
             <input type="text" name="content-social-linkedin-settings" value="<?php esc_attr_e(get_option('content-social-linkedin-settings'), 'rex-maintenance-mode') ?>" />
-            <input type="checkbox" id="content_social_linkedin_checkbox_settings" name="content-social-linkedin-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-linkedin-checkbox-settings'),'rex-maintenance-mode'); ?>" />
-            <label for="content_social_linkedin_checkbox_settings">Disable</label>
+            <div class="um_checkbox_wrapper">
+                <input type="checkbox" id="content_social_linkedin_checkbox_settings" class="disable_media" name="content-social-linkedin-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-linkedin-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+                <label for="content_social_linkedin_checkbox_settings">Disable</label>
+            </div>
+
         </div>
     <?php
     }
@@ -375,10 +380,12 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_content_social_twitter_cb()
     {
     ?>
-        <div>
+        <div class="social_media_field_wrapper">
             <input type="text" name="content-social-twitter-settings" value="<?php esc_attr_e(get_option('content-social-twitter-settings'), 'rex-maintenance-mode') ?>" />
-            <input type="checkbox" id="content_social_twitter_checkbox_settings" name="content-social-twitter-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-twitter-checkbox-settings'),'rex-maintenance-mode'); ?>" />
-            <label for="content_social_twitter_checkbox_settings">Disable</label>
+            <div class="um_checkbox_wrapper">
+                <input type="checkbox" id="content_social_twitter_checkbox_settings" class="disable_media" name="content-social-twitter-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-twitter-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+                <label for="content_social_twitter_checkbox_settings">Disable</label>
+            <div>
         </div>
     <?php
     }

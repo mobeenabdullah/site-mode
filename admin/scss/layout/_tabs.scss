@@ -78,6 +78,19 @@
 .bg-image-upload {
   margin-bottom: $input-bottom-spacing;
 }
+.bg-image-upload {
+  width: 400px;
+  height: 250px;
+  display: block;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.image_logo_wrapper, .text_logo_type {
+  display: none;
+}
 
 // Design Tab
 .template__wrapper {
@@ -191,6 +204,28 @@
   }
 }
 
+
+// Social Media Tab
+.hide_socialmedia {
+  display: none;
+}
+.disable_media_input {
+  background-clip: padding-box;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: #e9ecef !important;
+  pointer-events: none;
+}
+.social_media_field_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & .um_checkbox_wrapper {
+    margin-bottom: 0;
+    margin-top: -2px;
+  }
+}
 
 // Responsive
 @media screen and (max-width: 1536px) {
