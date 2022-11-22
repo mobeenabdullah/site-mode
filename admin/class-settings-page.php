@@ -170,8 +170,11 @@ class Rex_Maintenance_Mode_Setting_page
                 </div>
                 <div class="um_input_cover label_top">
                     <label for="delay_seconds">Delay Seconds</label>
-                    <input type="number" id="delay_seconds" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
+                    <div class="um_number-cover">
+                        <input type="number" min="0" max="9" id="delay_seconds" data-inc="1" name="wprex-delay-settings" value="1" <?php checked(1, get_option('wprex-delay-settings'), true); ?> />
+                    </div>
                 </div>
+
             </div>
         <?php
     }
@@ -181,15 +184,6 @@ class Rex_Maintenance_Mode_Setting_page
         <div class="um_checkbox_wrapper">
             <input type="checkbox" id="login_icon" name="wprex-login-icon-setting" value="1" <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
             <label for="login_icon">Show Login Icon</label>
-        </div>
-        <div class="um_radio_wrapper">
-            <input id="a11y-issue-3" checked name="a11y-issues1" type="radio" value="no-focus-styles">
-            <label for="a11y-issue-3">Focus styles are not present</label>
-        </div>
-
-        <div class="um_radio_wrapper">
-            <input id="a11y-issue-4" name="a11y-issues1" type="radio" value="html-markup">
-            <label for="a11y-issue-4">HTML markup is used in bizarre way. Also, what happens if the label text is very looooooooong, like this one?</label>
         </div>
     <?php
         }
