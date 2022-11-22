@@ -58,8 +58,11 @@ class Rex_Maintenance_Mode_Setting_page
         //Settings for Social Section
         register_setting('rex-maintenance-setting-social-group', 'show-social-icons-setting');
         register_setting('rex-maintenance-setting-social-group', 'content-social-fb-settings',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group','content-social-fb-checkbox-settings');
         register_setting('rex-maintenance-setting-social-group', 'content-social-linkedin-settings',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group','content-social-linkedin-checkbox-settings');
         register_setting('rex-maintenance-setting-social-group', 'content-social-twitter-settings',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group','content-social-twitter-checkbox-settings');
 
 
         register_setting('rex-maintenance-setting-design-group', 'content-content-template-settings');
@@ -102,18 +105,13 @@ class Rex_Maintenance_Mode_Setting_page
 
         //Social Section Field
 
-
-        add_settings_field('rex_maintenance_content_social_fb', 'Facebook Username', [$this, 'rex_maintenance_content_social_fb_cb'], 'rex-maintenance-options-social', 'rex-maintenance-social-section');
-        add_settings_field('rex_maintenance_content_social_linkedIn', 'LinkedIn Username', [$this, 'rex_maintenance_content_social_linkedin_cb'], 'rex-maintenance-options-social', 'rex-maintenance-social-section');
-        add_settings_field('rex_maintenance_content_social_twitter', 'Twitter Username', [$this, 'rex_maintenance_content_social_twitter_cb'], 'rex-maintenance-options-social', 'rex-maintenance-social-section');
-        add_settings_field('rex_maintenance_design_templates', 'Design ', [$this, 'rex_maintenance_design_template_cb'], 'rex-maintenance-design', 'rex-maintenance-social-section');
-
-
         add_settings_field('rex_maintenance_social_icons_show_section_field', 'Show Social Icons', [$this,'rex_maintenance_social_icons_show_cb'],'rex-maintenance-social-page','rex-maintenance-social-section');
         add_settings_field('rex_maintenance_content_social_fb', 'Facebook Username', [$this, 'rex_maintenance_content_social_fb_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
+        add_settings_field('rex_maintenance_content_social_checkbox_fb', '', [$this, 'rex_maintenance_content_social_fb_checkbox_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
         add_settings_field('rex_maintenance_content_social_linkedIn', 'LinkedIn Username', [$this, 'rex_maintenance_content_social_linkedin_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
+        add_settings_field('rex_maintenance_content_social_checkbox_linkedIn', '', [$this, 'rex_maintenance_content_social_linkedIn_checkbox_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
         add_settings_field('rex_maintenance_content_social_twitter', 'Twitter Username', [$this, 'rex_maintenance_content_social_twitter_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
-
+        add_settings_field('rex_maintenance_content_social_checkbox_twitter', '', [$this, 'rex_maintenance_content_social_twitter_checkbox_cb'], 'rex-maintenance-social-page', 'rex-maintenance-social-section');
         //Design Section
         add_settings_field('rex_maintenance_design_templates', 'Design ', [$this, 'rex_maintenance_design_template_cb'], 'rex-maintenance-design', 'rex-maintenance-social-page');
 
@@ -309,6 +307,13 @@ public function rex_maintenance_social_icons_show_cb() { ?>
         </div>
     <?php
     }
+public function rex_maintenance_content_social_fb_checkbox_cb() { ?>
+    <div class="um_checkbox_wrapper">
+        <input type="checkbox" id="content_social_fb_checkbox_settings" name="content-social-fb-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-fb-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+        <label for="content_social_fb_checkbox_settings">Disable</label>
+    </div>
+    <?php
+}
 
     public function rex_maintenance_content_social_linkedin_cb()
     {
@@ -318,6 +323,13 @@ public function rex_maintenance_social_icons_show_cb() { ?>
         </div>
     <?php
     }
+    public function rex_maintenance_content_social_linkedin_checkbox_cb() { ?>
+        <div class="um_checkbox_wrapper">
+            <input type="checkbox" id="content_social_linkedin_checkbox_settings" name="content-social-linkedin-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-linkedin-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+            <label for="content_social_linkedin_checkbox_settings">Disable</label>
+        </div>
+        <?php
+    }
 
     public function rex_maintenance_content_social_twitter_cb()
     {
@@ -326,6 +338,13 @@ public function rex_maintenance_social_icons_show_cb() { ?>
             <input type="text" name="content-social-twitter-settings" value="<?php esc_attr_e(get_option('content-social-twitter-settings'), 'rex-maintenance-mode') ?>" />
         </div>
     <?php
+    }
+    public function rex_maintenance_content_social_twitter_checkbox_cb() { ?>
+        <div class="um_checkbox_wrapper">
+            <input type="checkbox" id="content_social_twitter_checkbox_settings" name="content-social-twitter-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-twitter-checkbox-settings'),'rex-maintenance-mode'); ?>" />
+            <label for="content_social_twitter_checkbox_settings">Disable</label>
+        </div>
+        <?php
     }
 
     public function rex_maintenance_design_template_cb()
