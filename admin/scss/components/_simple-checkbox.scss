@@ -6,6 +6,7 @@
     display: inline-flex;
     align-items: center;
     margin-bottom: $input-bottom-spacing;
+    font-size: $form-field-font-size;
   }
   & input {
     height: 22px;
