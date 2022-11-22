@@ -114,7 +114,7 @@ class Rex_Maintenance_Mode_Menu
                         break;
                     case 'social':
                         settings_fields('rex-maintenance-setting-social-group');
-                        do_settings_sections('rex-maintenance-options-social');
+                        do_settings_sections('rex-maintenance-social-page');
                         submit_button(__('Save Social Media', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'design':
