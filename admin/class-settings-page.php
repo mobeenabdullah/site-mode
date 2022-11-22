@@ -64,8 +64,27 @@ class Rex_Maintenance_Mode_Setting_page
         register_setting('rex-maintenance-setting-social-group', 'content-social-twitter-settings',[ 'default' => 'username' ]);
         register_setting('rex-maintenance-setting-social-group','content-social-twitter-checkbox-settings');
 
-
+    // Settings for Design Section
         register_setting('rex-maintenance-setting-design-group', 'content-content-template-settings');
+
+    //Settings for SEO Section
+        register_setting('rex-maintenance-setting-seo-group', 'soe-meta-title-setting');
+        register_setting('rex-maintenance-setting-seo-group', 'seo-meta-description-setting');
+        register_setting('rex-maintenance-setting-seo-group', 'soe-meta-favicon-setting');
+        register_setting('rex-maintenance-setting-seo-group', 'soe-meta-image-setting');
+
+    // Settings for Advance Section
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-ga-id-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-custom-css-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-wp-rest-api-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-rss-feed-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-page-whitelist-include-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-page-whitelist-exclude-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-header-code-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-footer-code-settings');
+        register_setting('rex-maintenance-setting-seo-group', 'advanced-user-roles-settings');
+
+
     }
 
     public function rex_maintenance_mode_section_registration()
@@ -82,6 +101,13 @@ class Rex_Maintenance_Mode_Setting_page
 
         //Social Section
         add_settings_section('rex-maintenance-social-section', 'Social Section',[$this,'rex_maintenance_social_section_callback'], 'rex-maintenance-social-page');
+
+        //SEO Section
+        add_settings_section('rex-maintenance-seo-section', 'SEO Section',[$this,'rex_maintenance_seo_section_callback'], 'rex-maintenance-seo-page');
+
+        //Advance Section
+        add_settings_section('rex-maintenance-advanced-section', 'Advance Section',[$this,'rex_maintenance_advance_section_callback'], 'rex-maintenance-advanced-page');
+
 
     }
 
@@ -117,6 +143,23 @@ class Rex_Maintenance_Mode_Setting_page
         //Design Section
         add_settings_field('rex_maintenance_design_templates', 'Design ', [$this, 'rex_maintenance_design_template_cb'], 'rex-maintenance-design-page', 'rex-maintenance-design-section');
 
+        // SEO Section fields
+        add_settings_field('rex_maintenance_seo_title', 'SEO Meta Title ', [$this, 'rex_maintenance_seo_meta_title_cb'], 'rex-maintenance-seo-page', 'rex-maintenance-seo-section');
+        add_settings_field('rex_maintenance_seo_description', 'SEO Meta Description ', [$this, 'rex_maintenance_seo_meta_description_cb'], 'rex-maintenance-seo-page', 'rex-maintenance-seo-section');
+        add_settings_field('rex_maintenance_seo_favicon', 'SEO Meta Favicon', [$this, 'rex_maintenance_seo_meta_favicon_cb'], 'rex-maintenance-seo-page', 'rex-maintenance-seo-section');
+        add_settings_field('rex_maintenance_seo_image', 'Social Share Image', [$this, 'rex_maintenance_seo_meta_image_cb'], 'rex-maintenance-seo-page', 'rex-maintenance-seo-section');
+
+        // Advance Section Fields
+
+        add_settings_field('rex_maintenance_advanced_ga_id', 'GA (ID/Code)', [$this, 'rex_maintenance_advance_ga_id_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_advanced_custom_css', 'Custom CSS', [$this, 'rex_maintenance_advance_custom_css_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_wp_rest_api', 'Custom CSS', [$this, 'rex_maintenance_advance_wp_rest_api_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_rss_feed', 'RSS Feed', [$this, 'rex_maintenance_advance_rss_feed_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_whitelist_include', 'Page Whitelist Include', [$this, 'rex_maintenance_page_whitelist_include_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_page_exclude', 'Page Exclude', [$this, 'rex_maintenance_page_exclude_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_header_code', 'Header Code', [$this, 'rex_maintenance_header_code_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_footer_code', 'Footer Code', [$this, 'rex_maintenance_footer_code_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_advanced_image', 'Show site to these roles', [$this, 'rex_maintenance_advance_user_role_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
     }
 
     public function rex_maintenance_general_settings_section_callback($args)
@@ -136,6 +179,13 @@ class Rex_Maintenance_Mode_Setting_page
 
     public function rex_maintenance_design_section_callback()
     {
+
+    }
+    public function rex_maintenance_seo_section_callback () {
+
+    }
+
+    public function rex_maintenance_advance_section_callback() {
 
     }
 
@@ -188,7 +238,7 @@ class Rex_Maintenance_Mode_Setting_page
     <?php
         }
 
-public function rex_maintenance_content_logo_type_cb() {
+    public function rex_maintenance_content_logo_type_cb() {
         ?>
 
         <div class="um_radio_wrapper">
@@ -224,7 +274,7 @@ public function rex_maintenance_content_logo_type_cb() {
     <?php
 }
 
-public function rex_maintenance_content_disable_logo_cb() {
+    public function rex_maintenance_content_disable_logo_cb() {
         ?>
     <div class="um_checkbox_wrapper">
         <input type="checkbox" id="disable_logo_settings" name="disable-logo-setting" value="<?php esc_attr_e(get_option('disable-logo-setting'),'rex-maintenance-mode'); ?>" />
@@ -266,7 +316,6 @@ public function rex_maintenance_content_disable_logo_cb() {
     }
 
 
-
     public function rex_maintenance_content_bg_image_cb()
     {
 
@@ -293,7 +342,7 @@ public function rex_maintenance_content_disable_logo_cb() {
     <?php
     }
 
-public function rex_maintenance_social_icons_show_cb() { ?>
+    public function rex_maintenance_social_icons_show_cb() { ?>
     <div class="um_checkbox_wrapper">
         <input type="checkbox" id="disable_enable_social_icons_settings" name="show-social-icons-setting" value="<?php esc_attr_e(get_option('show-social-icons-setting'),'rex-maintenance-mode'); ?>" />
         <label for="disable_enable_social_icons_settings">Enable/Disable</label>
@@ -403,4 +452,146 @@ public function rex_maintenance_social_icons_show_cb() { ?>
         </div>
 <?php
     }
+
+
+// SEO Section Fields callbacks
+
+    public function rex_maintenance_seo_meta_title_cb() { ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">SEO Meta Title</label>
+            <input type="text" id="seo-meta-title" name="soe-meta-title-setting" value="<?php esc_attr_e(get_option('soe-meta-title-setting'),'rex-maintenance-mode'); ?>" />
+        </div>
+    <?php
+    }
+
+    public function rex_maintenance_seo_meta_description_cb() { ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">SEO Meta Title</label>
+            <input type="text" id="seo-meta-description" name="soe-meta-title-setting" value="<?php esc_attr_e(get_option('soe-meta-title-setting'),'rex-maintenance-mode'); ?>" />
+        </div>
+        <?php
+    }
+
+    public function rex_maintenance_seo_meta_favicon_cb() {
+        $favicon_url = wp_get_attachment_image_url(get_option('soe-meta-favicon-setting'), 'medium'); ?>
+        <div>
+            <?php if ($favicon_url) : ?>
+                <a href="#" class="Logo-upload">
+                    <img src="<?php echo esc_url($favicon_url) ?>" width="150" height="150" />
+                    <?php
+                    ?>
+                </a>
+                <a href="#" class="logo-remove"><?php esc_html_e('Remove Favicon', 'rex-maintenance-mode'); ?></a>
+                <input type="hidden" name="soe-meta-favicon-setting" value="<?php esc_attr_e(get_option('soe-meta-favicon-setting'),'rex-maintenance-mode'); ?>">
+            <?php else : ?>
+                <a href="#" class="button um_btn"><?php esc_html_e('Upload Favicon', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn" style="display:none"><?php esc_html_e('Remove Favicon', 'rex-maintenance-mode'); ?></a>
+                <input type="hidden" name="soe-meta-favicon-setting" value=<?php esc_attr_e(get_option('soe-meta-favicon-setting'),'rex-maintenance-mode'); ?>>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+    public function rex_maintenance_seo_meta_image_cb() {
+
+        $image_url = wp_get_attachment_image_url(get_option('soe-meta-image-setting'), 'medium'); ?>
+        <div>
+            <?php if ($image_url) : ?>
+                <a href="#" class="Logo-upload">
+                    <img src="<?php echo esc_url($image_url) ?>" width="150" height="150" />
+                    <?php
+                    ?>
+                </a>
+                <a href="#" class="logo-remove"><?php esc_html_e('Remove Image', 'soe-meta-image-setting'); ?></a>
+                <input type="hidden" name="soe-meta-image-setting" value="<?php esc_attr_e(get_option('soe-meta-image-setting'),'rex-maintenance-mode'); ?>">
+            <?php else : ?>
+                <a href="#" class="button um_btn"><?php esc_html_e('Upload Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn" style="display:none"><?php esc_html_e('Remove Image', 'rex-maintenance-mode'); ?></a>
+                <input type="hidden" name="soe-meta-image-setting" value=<?php esc_attr_e(get_option('soe-meta-image-setting'),'rex-maintenance-mode'); ?>>
+            <?php endif; ?>
+        </div>
+        <?php
+    }
+
+    //Advance Section fields callback
+    public function rex_maintenance_advance_ga_id_cb() { ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <input type="text" id="headline" name="advanced-ga-id-settings" value="<?php esc_attr_e(get_option('advanced-ga-id-settings'),'rex-maintenance-mode'); ?>" />
+        </div>
+        <?php
+    }
+    public function rex_maintenance_advance_custom_css_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
+        </div>
+        <?php
+    }
+    public function rex_maintenance_advance_wp_rest_api_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <input type="checkbox" id="headline" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+        </div>
+        <?php
+    }
+    public function rex_maintenance_advance_rss_feed_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <input type="checkbox" id="headline" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+        </div>
+        <?php
+    }
+    public function rex_maintenance_page_whitelist_include_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label for="gender"> Select you gender</label>
+            <select name="gender">
+                <option value="none" selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">other</option>
+            </select>
+        </div>
+        <?php
+    }
+    public function rex_maintenance_page_exclude_cb() {
+        ?>
+        <label for="gender"> Select you gender</label>
+        <select name="gender">
+            <option value="none" selected>Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">other</option>
+        </select>
+        <?php
+    }
+    public function rex_maintenance_header_code_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
+        </div>
+        <?php
+    }
+    public function rex_maintenance_footer_code_cb() {
+        ?>
+        <div class="um_input_cover">
+            <label class="screen-reading" for="headline">Headline</label>
+            <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
+        </div>
+        <?php
+    }
+    public function rex_maintenance_advance_user_role_cb() {
+        global  $wp_roles;
+         foreach ( $wp_roles->roles as $key=>$value ): ?>
+            <div class="um_checkbox_wrapper">
+                <input type="checkbox" id="status" name="advanced-user-roles-settings" value="<?php echo $key; ?>"/>
+                <label for="status"><?php echo $value['name']; ?></label>
+            </div>
+        <?php endforeach;
+    }
+
 }
