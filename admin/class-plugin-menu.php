@@ -124,9 +124,14 @@ class Rex_Maintenance_Mode_Menu
                         break;
                     case 'seo':
                         echo 'seo';
+                        settings_fields('rex-maintenance-setting-seo-group');
+                        do_settings_sections('rex-maintenance-seo-page');
+                        submit_button(__('Save SEO Changes', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'advanced':
-                        echo 'advanced';
+                        settings_fields('rex-maintenance-setting-advanced-group');
+                        do_settings_sections('rex-maintenance-advanced-page');
+                        submit_button(__('Save Advance Settings', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'import-export':
                         echo 'import-export';
