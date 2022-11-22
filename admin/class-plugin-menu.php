@@ -119,7 +119,7 @@ class Rex_Maintenance_Mode_Menu
                         break;
                     case 'design':
                         settings_fields('rex-maintenance-setting-design-group');
-                        do_settings_sections('rex-maintenance-design');
+                        do_settings_sections('rex-maintenance-design-page');
                         submit_button(__('Save Design', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'seo':
