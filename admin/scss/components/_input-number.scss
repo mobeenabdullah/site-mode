@@ -1,0 +1,106 @@
+input[type="number"] {
+  -moz-appearance: textfield;
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.um_number-cover {
+  display: flex;
+  margin: 0;
+  position: relative;
+  justify-content: space-between;
+  overflow: hidden;
+  position: relative;
+  & input {
+    color: $secondary_color;
+    border-radius: $form-field-border-radius;
+    background-color: $white_color;
+    border: $border-width solid $primary_color;
+    font-size: $form-field-font-size;
+    display: block;
+    padding: 0 2.5rem 0 1em;
+    margin: 0;
+    text-align: center;
+    width: 8rem;
+    height: $form-fields-height;
+    &:focus {
+      @include box-shadow();
+      outline: $outline-width solid transparent;
+    }
+  }
+
+  & .um_number-cover--nav {
+    //height: 100%;
+    width: 2rem;
+    height: 100%;
+    border-left: $border-width solid darken($primary_color, 3%);
+    border-radius: $form-field-border-radius;
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    right: 0;
+    & .um_InputButton {
+      font-size: $form-field-font-size;
+      //position: relative;
+      cursor: pointer;
+      border-bottom: $border-width solid darken($primary_color, 3%);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      font-weight: 700;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      //border-left: 1px solid #b7b7b7;
+      //width: 15px;
+      //text-align: center;
+      //color: $secondary_color;
+      //font-size: 14px;
+      //font-family: "Trebuchet MS", Helvetica, sans-serif !important;
+      //line-height: 1.1;
+      //-webkit-transform: translateX(-100%);
+      //transform: translateX(-100%);
+      //-webkit-user-select: none;
+      //-moz-user-select: none;
+      //-ms-user-select: none;
+      //user-select: none;
+      background-color: $primary_color;
+      & svg {
+        width: 1rem;
+        height: 1rem;
+        & path {
+          fill: $white_color;
+        }
+      }
+      &:active {
+        //@include box-shadow();
+        outline: $outline-width solid transparent;
+      }
+      &.um_InputUp {
+        //position: relative;
+        //height: 50%;
+        //display: flex;
+        //align-items: center;
+        //justify-content: center;
+        //border-bottom: 1px solid #b7b7b7;
+        padding-top: 2px;
+      }
+      &.um_InputDown {
+        //position: relative;
+        //display: flex;
+        //align-items: center;
+        //justify-content: center;
+        //height: 50%;
+      }
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}

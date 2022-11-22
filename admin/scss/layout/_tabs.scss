@@ -47,6 +47,10 @@
           }
         }
       }
+      &:focus {
+        @include box-shadow();
+        outline: $outline-width solid transparent;
+      }
     }
     & + form {
       background-color: $white_color;
