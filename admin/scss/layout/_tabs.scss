@@ -78,6 +78,19 @@
 .bg-image-upload {
   margin-bottom: $input-bottom-spacing;
 }
+.bg-image-upload {
+  width: 400px;
+  height: 250px;
+  display: block;
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.image_logo_wrapper, .text_logo_type {
+  display: none;
+}
 
 // Design Tab
 .template__wrapper {

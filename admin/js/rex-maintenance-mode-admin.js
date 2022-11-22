@@ -157,5 +157,20 @@ jQuery(function ($) {
             });
         }
         customInputNumber();
+
+        // Image and text logo toggle
+        $('input[name="content-logo-settings"]').on('click',function(){
+            $('.image_logo_wrapper').hide();
+            $('.text_logo_wrapper').hide();
+            if($(this).val() === 'image-type'){
+                $('.image_logo_wrapper').show();
+            }
+            else if($(this).val() === 'text-type'){
+                $('.text_logo_wrapper').show();
+            } else {
+                $('.image_logo_wrapper').hide();
+                $('.text_logo_wrapper').hide();
+            }
+        });
     })
 });
