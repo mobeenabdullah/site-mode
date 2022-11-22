@@ -101,10 +101,10 @@ jQuery(function ($) {
     });
     // on remove button click
     $("body").on("click", ".bg-image-remove", function (event) {
-    event.preventDefault();
-    const button = $(this);
-    button.next().val(""); // emptying the hidden field
-    button.hide().prev().addClass("button").html("Upload Background Image"); // replace the image with text
+        event.preventDefault();
+        const button = $(this);
+        button.next().val(""); // emptying the hidden field
+        button.hide().prev().addClass("button").html("Upload Background Image"); // replace the image with text
     });
 
     // Start document ready function
@@ -172,5 +172,31 @@ jQuery(function ($) {
                 $('.text_logo_wrapper').hide();
             }
         });
+
+        // hide Social Media
+        function showTableRowOnEnableDisable() {
+            let enableDisableParentRow = $('.enable_disable-rows').parent().parent().parent();
+            if($('.enable_disable-rows').is(':checked')) {
+                enableDisableParentRow.nextAll().removeClass('hide_socialmedia');
+            } else {
+                enableDisableParentRow.nextAll().addClass('hide_socialmedia');
+            }
+        }
+
+        function disableSingleMedia() {
+            if($('.disable_media').is(':checked')) {
+                let disableMediaInput = $(this).parent().prev();
+                disableMediaInput.addClass('disable_media_input');
+            } else {
+                let disableMediaInput = $(this).parent().prev();
+                disableMediaInput.removeClass('disable_media_input');
+            }
+        }
+
+        $('.enable_disable-rows').on('click', showTableRowOnEnableDisable);
+        $('.enable_disable-rows').load(showTableRowOnEnableDisable());
+
+        $('.disable_media').on('click', disableSingleMedia);
+        $('.disable_media').load(disableSingleMedia());
     })
 });

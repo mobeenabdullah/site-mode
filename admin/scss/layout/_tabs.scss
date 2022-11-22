@@ -205,6 +205,28 @@
 }
 
 
+// Social Media Tab
+.hide_socialmedia {
+  display: none;
+}
+.disable_media_input {
+  background-clip: padding-box;
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-color: #e9ecef !important;
+  pointer-events: none;
+}
+.social_media_field_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  & .um_checkbox_wrapper {
+    margin-bottom: 0;
+    margin-top: -2px;
+  }
+}
+
 // Responsive
 @media screen and (max-width: 1536px) {
   .template__wrapper {
