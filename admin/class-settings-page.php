@@ -559,12 +559,16 @@ class Rex_Maintenance_Mode_Setting_page
             <?php
             $all_pages = get_pages();
             ?>
-            <select name="exclude">
-                <?php foreach($all_pages as $value ) {
+            <div class="um_select label_top">
+            <label for="site_mode" class="screen-reading">Mode</label>
+            <select name="wprex-mode-settings" id="site_mode" name="exclude">
+              <?php foreach($all_pages as $value ) {
 
                 } ?>
                 <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
             </select>
+            <span class="arrow-down"></span>
+        </div>
             <?php
     }
     public function rex_maintenance_page_exclude_cb() {
@@ -573,40 +577,19 @@ class Rex_Maintenance_Mode_Setting_page
        <?php
             $pages = get_pages();
         ?>
-        <select name="exclude">
-            <?php foreach($pages as $value ) {
+        <div class="um_select label_top">
+            <label for="site_mode" class="screen-reading">Mode</label>
+            <select name="wprex-mode-settings" id="site_mode" name="exclude">
+               <?php foreach($pages as $value ) {
 
             } ?>
             <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
-        </select>
-
-        <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode">
-                 <option value="none" selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">other</option>
             </select>
             <span class="arrow-down"></span>
         </div>
         <?php
     }
-    public function rex_maintenance_page_exclude_cb() {
-        ?>
-        <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode">
-                 <option value="none" selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">other</option>
-            </select>
-            <span class="arrow-down"></span>
-        </div>
 
-        <?php
-    }
     public function rex_maintenance_header_code_cb() {
         ?>
         <div class="um_textarea_cover">
