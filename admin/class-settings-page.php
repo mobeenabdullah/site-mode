@@ -153,7 +153,8 @@ class Rex_Maintenance_Mode_Setting_page
 
         add_settings_field('rex_maintenance_advanced_ga_id', 'GA (ID/Code)', [$this, 'rex_maintenance_advance_ga_id_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
         add_settings_field('rex_maintenance_advanced_custom_css', 'Custom CSS', [$this, 'rex_maintenance_advance_custom_css_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
-        add_settings_field('rex_maintenance_wp_rest_api', 'Custom CSS', [$this, 'rex_maintenance_advance_wp_rest_api_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
+        add_settings_field('rex_maintenance_wp_rest_api', 'WP Rest API
+        .', [$this, 'rex_maintenance_advance_wp_rest_api_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
         add_settings_field('rex_maintenance_rss_feed', 'RSS Feed', [$this, 'rex_maintenance_advance_rss_feed_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
         add_settings_field('rex_maintenance_whitelist_include', 'Page Whitelist Include', [$this, 'rex_maintenance_page_whitelist_include_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
         add_settings_field('rex_maintenance_page_exclude', 'Page Exclude', [$this, 'rex_maintenance_page_exclude_cb'], 'rex-maintenance-advanced-page', 'rex-maintenance-advanced-section');
@@ -546,25 +547,29 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_page_whitelist_include_cb() {
         ?>
-        <div class="um_input_cover">
-            <label for="gender"> Select you gender</label>
-            <select name="gender">
-                <option value="none" selected>Gender</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-                <option value="other">other</option>
+            <label for="gender">Include Pages</label>
+            <?php
+            $all_pages = get_pages();
+            ?>
+            <select name="exclude">
+                <?php foreach($all_pages as $value ) {
+
+                } ?>
+                <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
             </select>
-        </div>
-        <?php
+            <?php
     }
     public function rex_maintenance_page_exclude_cb() {
         ?>
-        <label for="gender"> Select you gender</label>
-        <select name="gender">
-            <option value="none" selected>Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">other</option>
+        <label for="gender">Exclude Pages</label>
+       <?php
+            $pages = get_pages();
+        ?>
+        <select name="exclude">
+            <?php foreach($pages as $value ) {
+
+            } ?>
+            <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
         </select>
         <?php
     }
