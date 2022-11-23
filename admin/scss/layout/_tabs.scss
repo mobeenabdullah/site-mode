@@ -298,6 +298,120 @@
     margin-top: -2px;
   }
 }
+.socialmedia__wrapper {
+  & .social_media_field {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 10px;
+    & button {
+      cursor: pointer;
+      border: none;
+      background-color: transparent;
+      -webkit-appearance: none !important;
+      -moz-appearance: none !important;
+      appearance: none !important;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+    }
+    & %sort_icon {
+      & svg {
+        & path {
+          fill: $secondary_color;
+        }
+      }
+    }
+    & .sortable_icon {
+      margin-right: 10px;
+      @extend %sort_icon;
+      & button {
+        height: 29px;
+        border-radius: 3px;
+        background-color: rgba(0,0,0,0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-left: 3px;
+        padding-right: 2px;
+        & svg {
+          width: 16px;
+          & path {
+            fill: rgba($secondary_color,0.8);
+          }
+        }
+      }
+    }
+    & .social_icon {
+      border: 1px solid $secondary_color;
+      width: 28px;
+      height: 28px;
+      background-color: $secondary_color;
+      border-radius: .3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      & span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 18px;
+        height: auto;
+        & svg {
+          & path, & circle {
+            fill: $white_color;
+          }
+        }
+      }
+    }
+    & .social_field {
+
+    }
+    & .social_delete {
+      @extend %sort_icon;
+      width: 30px;
+      height: 30px;
+      position: relative;
+      z-index: 2;
+      transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+      & button {
+        & svg {
+          width: 18px;
+          height: 18px;
+        }
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-color: rgba($primary_color,.10);
+        transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
+        opacity: 1;
+        z-index: -1;
+      }
+      &:hover {
+        & button {
+          & svg {
+            & path {
+              fill: $primary_color;
+            }
+          }
+        }
+        &::before {
+          opacity: 1;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+}
 
 // Responsive
 @media screen and (max-width: 1536px) {
