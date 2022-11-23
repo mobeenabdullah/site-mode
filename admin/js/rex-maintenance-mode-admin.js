@@ -101,10 +101,16 @@ jQuery(function ($) {
     });
     // on remove button click
     $("body").on("click", ".bg-image-remove", function (event) {
+        let image_btn = $('.bg-image-upload');
+        let bg_image = $('.display_bg_img');
         event.preventDefault();
         const button = $(this);
+
         button.next().val(""); // emptying the hidden field
-        button.hide().prev().addClass("button").html("Upload Background Image"); // replace the image with text
+        button.hide().prev(); // replace the image with text
+
+        image_btn.addClass("button normal_btn").html("Upload Background Image");
+        bg_image.hide();
     });
 
     // Start document ready function

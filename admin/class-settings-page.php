@@ -122,7 +122,7 @@ class Rex_Maintenance_Mode_Setting_page
 
 
 
-        add_settings_field('rex_maintenance_content_disable_logo','Disable Logo', [$this, 'rex_maintenance_content_disable_logo_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
+//        add_settings_field('rex_maintenance_content_disable_logo','Disable Logo', [$this, 'rex_maintenance_content_disable_logo_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
         add_settings_field('rex_maintenance_content_logo_type', 'Logo Type', [$this, 'rex_maintenance_content_logo_type_cb'],'rex-maintenance-options-one', 'rex-maintenance-content-logo-section');
         add_settings_field('rex_maintenance_content_logo', 'Image Logo', [$this, 'rex_maintenance_content_logo_type_cb'], 'rex-maintenance-options-one', 'rex-maintenance-content-section');
 
@@ -241,29 +241,35 @@ class Rex_Maintenance_Mode_Setting_page
 
     public function rex_maintenance_content_logo_type_cb() {
         ?>
+        <div class="logo_type_wrapper">
+            <div class="um_radio_wrapper">
+                <input type="radio" id="disable-logo" name="content-logo-settings" value="disable-logo"  <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+                <label for="disable-logo">Disable Logo</label>
+            </div>
+            <div class="um_radio_wrapper">
+                <input type="radio" id="image-logo" name="content-logo-settings" value="image-type"  <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+                <label for="image-logo">Image Type</label>
+            </div>
+            <div class="um_radio_wrapper">
+                <input type="radio" id="text-logo" name="content-logo-settings" value="text-type"  <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+                <label for="text-logo">Text Type</label>
+            </div>
+        </div>
 
-        <div class="um_radio_wrapper">
-            <input type="radio" id="image-logo" name="content-logo-settings" value="image-type"  <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
-            <label for="image-logo">Image Type</label>
-        </div>
-        <div class="um_radio_wrapper">
-            <input type="radio" id="text-logo" name="content-logo-settings" value="text-type"  <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
-            <label for="text-logo">Text Type</label>
-        </div>
         <?php
         $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'medium'); ?>
         <div class="image_logo_wrapper">
             <?php if ($logo_url) : ?>
-                <a href="#" class="Logo-upload test">
-                    <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
-                    <?php
-                    ?>
+                 <a href="#" class="Logo-upload um_btn_outline">
+                    <div class="display_bg_img">
+                        <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
+                    </div>
                 </a>
                 <a href="#" class="logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-logo-settings" value="<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn logo-upload"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="button um_btn logo-remove" style="display:none"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline logo-upload"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline logo-remove" style="display:none"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-logo-settings" value=<?php esc_attr_e(get_option('content-logo-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
@@ -273,17 +279,7 @@ class Rex_Maintenance_Mode_Setting_page
         </div>
 
     <?php
-}
-
-    public function rex_maintenance_content_disable_logo_cb() {
-        ?>
-    <div class="um_checkbox_wrapper">
-        <input type="checkbox" id="disable_logo_settings" class="enable_disable-rows" name="disable-logo-setting" value="<?php esc_attr_e(get_option('disable-logo-setting'),'rex-maintenance-mode'); ?>" />
-        <label for="disable_logo_settings">Enable/Disable</label>
-    </div>
-    <?php
-}
-
+    }
     public function rex_maintenance_content_headline_cb()
     {
     ?>
@@ -324,16 +320,17 @@ class Rex_Maintenance_Mode_Setting_page
     ?>
         <div>
             <?php if ($bg_img_id) : ?>
-                <a href="#" class="bg-image-upload">
-                    <img src="<?php echo esc_url($bg_img_id) ?>" width="350" height="350" alt="background Image" />
-                    <?php
-                    ?>
-                </a>
-                <a href="#" class="button um_btn bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                <div class="bg_image_wrapper">
+                    <a href="#" class="bg-image-upload um_btn_outline image_btn"></a>
+                    <div class="display_bg_img">
+                        <img src="<?php echo esc_url($bg_img_id) ?>" width="350" height="350" alt="background Image" />
+                    </div>
+                </div>
+                <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-bg-image-settings" value="<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="button um_btn bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="content-bg-image-settings" value=<?php esc_attr_e(get_option('content-bg-image-settings'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
@@ -492,15 +489,14 @@ class Rex_Maintenance_Mode_Setting_page
                 <a href="#" class="logo-remove"><?php esc_html_e('Remove Favicon', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="soe-meta-favicon-setting" value="<?php esc_attr_e(get_option('soe-meta-favicon-setting'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn"><?php esc_html_e('Upload Favicon', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="button um_btn" style="display:none"><?php esc_html_e('Remove Favicon', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline"><?php esc_html_e('Upload Favicon', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline" style="display:none"><?php esc_html_e('Remove Favicon', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="soe-meta-favicon-setting" value=<?php esc_attr_e(get_option('soe-meta-favicon-setting'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
         <?php
     }
     public function rex_maintenance_seo_meta_image_cb() {
-
         $image_url = wp_get_attachment_image_url(get_option('soe-meta-image-setting'), 'medium'); ?>
         <div>
             <?php if ($image_url) : ?>
@@ -512,8 +508,8 @@ class Rex_Maintenance_Mode_Setting_page
                 <a href="#" class="logo-remove"><?php esc_html_e('Remove Image', 'soe-meta-image-setting'); ?></a>
                 <input type="hidden" name="soe-meta-image-setting" value="<?php esc_attr_e(get_option('soe-meta-image-setting'),'rex-maintenance-mode'); ?>">
             <?php else : ?>
-                <a href="#" class="button um_btn"><?php esc_html_e('Upload Image', 'rex-maintenance-mode'); ?></a>
-                <a href="#" class="button um_btn" style="display:none"><?php esc_html_e('Remove Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline"><?php esc_html_e('Upload Image', 'rex-maintenance-mode'); ?></a>
+                <a href="#" class="button um_btn_outline" style="display:none"><?php esc_html_e('Remove Image', 'rex-maintenance-mode'); ?></a>
                 <input type="hidden" name="soe-meta-image-setting" value=<?php esc_attr_e(get_option('soe-meta-image-setting'),'rex-maintenance-mode'); ?>>
             <?php endif; ?>
         </div>
@@ -555,13 +551,15 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_page_whitelist_include_cb() {
         ?>
 
-            <label for="gender">Include Pages</label>
+
             <?php
             $all_pages = get_pages();
             ?>
-            <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode" name="exclude">
+            <div class="label_top">
+                <label for="include_pages">Include Pages</label>
+            </div>
+            <div class="um_select">
+            <select name="wprex-mode-settings" id="include_pages" name="exclude">
               <?php foreach($all_pages as $value ) {
 
                 } ?>
@@ -573,13 +571,12 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_page_exclude_cb() {
         ?>
-        <label for="gender">Exclude Pages</label>
-       <?php
-            $pages = get_pages();
-        ?>
-        <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode" name="exclude">
+       <?php $pages = get_pages(); ?>
+            <div class="label_top">
+                <label for="include_pages_1">Include Pages</label>
+            </div>
+         <div class="um_select label_top">
+            <select name="wprex-mode-settings" id="include_pages_1" name="exclude">
                <?php foreach($pages as $value ) {
 
             } ?>
