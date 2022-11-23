@@ -297,7 +297,7 @@ class Rex_Maintenance_Mode_Setting_page
     public function rex_maintenance_content_area_cb()
     {
     ?>
-        <div>
+        <div class="description_editor">
             <?php
             $content = get_option('content-content-settings');
             $custom_editor_id = "editorid";

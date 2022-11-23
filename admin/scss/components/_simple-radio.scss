@@ -9,16 +9,16 @@
     font-size: $form-field-font-size;
   }
   & input {
-    height: 20px;
+    height: $checkbox-height-before;
+    width: $checkbox-width-before;
     left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
-    width: 20px;
     & + label::before {
       content: "";
-      height: $checkbox-height-after;
-      width: $checkbox-width-after;
+      height: $checkbox-height-before;
+      width: $checkbox-width-before;
       left: 0;
       position: absolute;
       top: 0;
@@ -38,7 +38,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: $checkbox-height-after - 5;
+      font-size: $checkbox-height-after - 6;
       color: $primary_color;
       border: $border-width solid transparent;
     }

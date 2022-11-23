@@ -1,8 +1,3 @@
-/*$off_white: #d7dcdf;
-$checkbox-border-color-checked: $primary_color;
-$checkbox-bg-color-unchecked: $white_color;
-$radio-checked-color: $primary_color;
-$radio-unchecked-color: $primary_color;*/
 .screen-reading {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -73,8 +68,8 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .toplevel_page_wprex-maintenance-mode .nav-tab-wrapper .nav-tab:focus {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .toplevel_page_wprex-maintenance-mode .nav-tab-wrapper + form {
@@ -117,6 +112,10 @@ $radio-unchecked-color: $primary_color;*/
 
 .image_logo_wrapper, .text_logo_type {
 	display: none;
+}
+
+.description_editor {
+	width: 60%;
 }
 
 .template__wrapper .template_options {
@@ -280,19 +279,19 @@ $radio-unchecked-color: $primary_color;*/
 
 .um_checkbox_wrapper label {
 	padding: 0 39px;
-	height: 21px;
+	height: 20px;
 	display: inline-flex;
 	align-items: center;
 	font-size: 14px;
 }
 
 .um_checkbox_wrapper input {
-	height: 22px;
+	height: 19px;
+	width: 19px;
 	left: 0;
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	width: 22px;
 }
 
 .um_checkbox_wrapper input::before {
@@ -300,13 +299,13 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .um_checkbox_wrapper input + label::before {
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 	content: "";
 	height: 19px;
+	width: 19px;
 	left: 0;
 	position: absolute;
 	top: 0;
-	width: 19px;
 	border-radius: 0.25em;
 }
 
@@ -326,7 +325,7 @@ $radio-unchecked-color: $primary_color;*/
 	align-items: center;
 	justify-content: center;
 	border-radius: 0.25em;
-	border: 2px solid transparent;
+	border: 1px solid transparent;
 }
 
 .um_checkbox_wrapper input:checked + label::before {
@@ -340,8 +339,8 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .um_checkbox_wrapper input:focus + label::before {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .um_radio_wrapper {
@@ -351,19 +350,19 @@ $radio-unchecked-color: $primary_color;*/
 
 .um_radio_wrapper label {
 	padding: 0 39px;
-	height: 21px;
+	height: 20px;
 	display: inline-flex;
 	align-items: center;
 	font-size: 14px;
 }
 
 .um_radio_wrapper input {
-	height: 20px;
+	height: 19px;
+	width: 19px;
 	left: 0;
 	opacity: 0;
 	position: absolute;
 	top: 0;
-	width: 20px;
 }
 
 .um_radio_wrapper input + label::before {
@@ -374,7 +373,7 @@ $radio-unchecked-color: $primary_color;*/
 	position: absolute;
 	top: 0;
 	border-radius: 50%;
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 }
 
 .um_radio_wrapper input + label::after {
@@ -390,9 +389,9 @@ $radio-unchecked-color: $primary_color;*/
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	font-size: 14px;
+	font-size: 13px;
 	color: #6F73D2;
-	border: 2px solid transparent;
+	border: 1px solid transparent;
 }
 
 .um_radio_wrapper input:checked + label::after {
@@ -400,8 +399,8 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .um_radio_wrapper input:focus + label::before {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .um_select {
@@ -422,7 +421,7 @@ $radio-unchecked-color: $primary_color;*/
 	appearance: none;
 	outline: 0;
 	box-shadow: none;
-	border: 2px solid #757575 !important;
+	border: 1px solid #757575 !important;
 	background: #ffffff;
 	background-image: none;
 	flex: 1;
@@ -442,8 +441,8 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .um_select select:focus {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .um_select .arrow-down {
@@ -474,7 +473,7 @@ $radio-unchecked-color: $primary_color;*/
 	height: 3em;
 	line-height: 3;
 	background: #ffffff;
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 	border-radius: 0.25em;
 	padding: 0 1em;
 	font-size: 14px;
@@ -486,8 +485,8 @@ $radio-unchecked-color: $primary_color;*/
 }
 
 .um_input_cover input[type="text"]:focus {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .label_top label {
@@ -564,7 +563,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	color: #757575;
 	border-radius: 0.25em;
 	background-color: #ffffff;
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 	font-size: 14px;
 	display: block;
 	padding: 0 2.5rem 0 1em;
@@ -575,8 +574,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 }
 
 .um_number-cover input:focus {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .um_number-cover .um_number-cover--nav {
@@ -594,7 +593,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 .um_number-cover .um_number-cover--nav .um_InputButton {
 	font-size: 14px;
 	cursor: pointer;
-	border-bottom: 2px solid #6d6d6d;
+	border-bottom: 1px solid #6d6d6d;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -618,7 +617,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton:active {
-	outline: 2px solid transparent;
+	outline: 1px solid transparent;
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton.um_InputUp {
@@ -635,7 +634,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 .um_number-cover .um_number-cover--nav .um_InputButton:hover {
 	background-color: #686868;
-	border-bottom: 2px solid #6368ce;
+	border-bottom: 1px solid #6368ce;
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton:hover svg path {
@@ -647,7 +646,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	height: auto;
 	line-height: 3;
 	background: #ffffff;
-	border: 2px solid #757575;
+	border: 1px solid #757575;
 	border-radius: 0.25em;
 	padding: 0 1em;
 	font-size: 14px;
@@ -659,8 +658,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 }
 
 .um_textarea_cover textarea:focus {
-	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
-	outline: 2px solid transparent;
+	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	outline: 1px solid transparent;
 }
 
 .label_top label {
