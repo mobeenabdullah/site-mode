@@ -1,7 +1,7 @@
-.#{$prefix}_input_cover {
-  & input[type="text"] {
-    width: $form-fields-width;
-    height: $form-fields-height;
+.#{$prefix}_textarea_cover {
+  & textarea {
+    width: auto;
+    height: auto;
     line-height: 3;
     background: $white_color;
     border: $border-width solid $secondary_color;

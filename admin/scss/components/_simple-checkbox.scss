@@ -1,11 +1,11 @@
 .#{$prefix}_checkbox_wrapper {
   position: relative;
+  margin-bottom: $input-bottom-spacing;
   & label {
     padding: 0 $padding-left-right;
     height: $checkbox-height-before + $border-width;
     display: inline-flex;
     align-items: center;
-    margin-bottom: $input-bottom-spacing;
     font-size: $form-field-font-size;
   }
   & input {
@@ -20,7 +20,7 @@
     }
   }
   & input + label::before {
-    border: $border-width solid $primary_color;
+    border: $border-width solid $secondary_color;
     content: "";
     height: $checkbox-height-before;
     left: 0;
@@ -49,6 +49,7 @@
   }
   & input:checked + label::before {
     background-color: $primary_color;
+    border-color: $primary_color
   }
   & input:checked + label::after {
     opacity: 1;
