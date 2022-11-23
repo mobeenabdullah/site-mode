@@ -529,7 +529,7 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_advance_custom_css_cb() {
         ?>
-        <div class="um_input_cover">
+        <div class="um_textarea_cover">
             <label class="screen-reading" for="headline">Headline</label>
             <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
         </div>
@@ -537,47 +537,51 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_advance_wp_rest_api_cb() {
         ?>
-        <div class="um_input_cover">
-            <label class="screen-reading" for="headline">Headline</label>
-            <input type="checkbox" id="headline" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+        <div class="um_checkbox_wrapper">
+            <input type="checkbox" id="custom_css" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+            <label for="custom_css">Enable/Disable</label>
         </div>
         <?php
     }
     public function rex_maintenance_advance_rss_feed_cb() {
         ?>
-        <div class="um_input_cover">
-            <label class="screen-reading" for="headline">Headline</label>
-            <input type="checkbox" id="headline" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+        <div class="um_checkbox_wrapper">
+            <input type="checkbox" id="rest_api" name="advanced-wp-rest-api-settings" value="<?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?>" />
+            <label for="rest_api">Enable/Disable</label>
         </div>
         <?php
     }
     public function rex_maintenance_page_whitelist_include_cb() {
         ?>
-        <div class="um_input_cover">
-            <label for="gender"> Select you gender</label>
-            <select name="gender">
-                <option value="none" selected>Gender</option>
+        <div class="um_select label_top">
+            <label for="site_mode" class="screen-reading">Mode</label>
+            <select name="wprex-mode-settings" id="site_mode">
+                 <option value="none" selected>Gender</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">other</option>
             </select>
+            <span class="arrow-down"></span>
         </div>
         <?php
     }
     public function rex_maintenance_page_exclude_cb() {
         ?>
-        <label for="gender"> Select you gender</label>
-        <select name="gender">
-            <option value="none" selected>Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-            <option value="other">other</option>
-        </select>
+        <div class="um_select label_top">
+            <label for="site_mode" class="screen-reading">Mode</label>
+            <select name="wprex-mode-settings" id="site_mode">
+                 <option value="none" selected>Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">other</option>
+            </select>
+            <span class="arrow-down"></span>
+        </div>
         <?php
     }
     public function rex_maintenance_header_code_cb() {
         ?>
-        <div class="um_input_cover">
+        <div class="um_textarea_cover">
             <label class="screen-reading" for="headline">Headline</label>
             <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
         </div>
@@ -585,7 +589,7 @@ class Rex_Maintenance_Mode_Setting_page
     }
     public function rex_maintenance_footer_code_cb() {
         ?>
-        <div class="um_input_cover">
+        <div class="um_textarea_cover">
             <label class="screen-reading" for="headline">Headline</label>
             <textarea id="w3review" name="w3review" rows="6" cols="80"><?php esc_attr_e(get_option('advanced-wp-rest-api-settings'),'rex-maintenance-mode'); ?></textarea>
         </div>
@@ -595,8 +599,8 @@ class Rex_Maintenance_Mode_Setting_page
         global  $wp_roles;
          foreach ( $wp_roles->roles as $key=>$value ): ?>
             <div class="um_checkbox_wrapper">
-                <input type="checkbox" id="status" name="advanced-user-roles-settings" value="<?php echo $key; ?>"/>
-                <label for="status"><?php echo $value['name']; ?></label>
+                <input type="checkbox" id="<?php echo $key; ?>" name="advanced-user-<?php echo $key; ?>-role-settings" value="<?php echo $key; ?>"/>
+                <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
             </div>
         <?php endforeach;
     }
