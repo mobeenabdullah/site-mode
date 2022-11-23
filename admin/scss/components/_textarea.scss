@@ -1,0 +1,28 @@
+.#{$prefix}_textarea_cover {
+  & textarea {
+    width: auto;
+    height: auto;
+    line-height: 3;
+    background: $white_color;
+    border: $border-width solid $secondary_color;
+    border-radius: $form-field-border-radius;
+    padding: $form-field-padding;
+    font-size: $form-field-font-size;
+    font-family: $body-font-family;
+    &:active, &:hover, &:focus-visible {
+      border-color: $primary_color;
+    }
+    &:focus {
+      @include box-shadow();
+      outline: $outline-width solid transparent;
+    }
+  }
+}
+.label_top {
+  & label {
+    width: 100%;
+    display: block;
+    margin-bottom: 1rem;
+    font-size: $form-field-font-size;
+  }
+}

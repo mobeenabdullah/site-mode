@@ -641,3 +641,31 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 .um_number-cover .um_number-cover--nav .um_InputButton:hover svg path {
 	fill: #ffffff;
 }
+
+.um_textarea_cover textarea {
+	width: auto;
+	height: auto;
+	line-height: 3;
+	background: #ffffff;
+	border: 2px solid #757575;
+	border-radius: 0.25em;
+	padding: 0 1em;
+	font-size: 14px;
+	font-family: "Open Sans", sans-serif;
+}
+
+.um_textarea_cover textarea:active, .um_textarea_cover textarea:hover, .um_textarea_cover textarea:focus-visible {
+	border-color: #6F73D2;
+}
+
+.um_textarea_cover textarea:focus {
+	box-shadow: 0 0 0 2px rgba(111, 115, 210, 0.5);
+	outline: 2px solid transparent;
+}
+
+.label_top label {
+	width: 100%;
+	display: block;
+	margin-bottom: 1rem;
+	font-size: 14px;
+}
