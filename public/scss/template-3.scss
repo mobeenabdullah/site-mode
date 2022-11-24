@@ -2,11 +2,10 @@
 
 // hero section start
 .wrapper {
-    height: 100vh;
-    width: 100%;
-    position: relative;
+    @extend %width-100-height-100vh;
+    @extend %position-relative;
     z-index: 1;
-    //overflow: hidden;
+
     & .container-fluid {
         padding: 0;
     }
@@ -16,43 +15,37 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 8rem;
-    position: relative;
-    height: 100vh;
-    width: 100%;
-
+    
+    @extend %position-relative;
+    @extend %width-100-height-100vh;
     &__left {
-        height: 100%;
+        @include width_height_mixin(null, 100%);
+
         &--img {
-            width: 100%;
-            height: 100vh;
-            display: flex;
+            @extend %width-100-height-100vh;
+            @include flex_mixin(flex, null, null, null, null);
             overflow: hidden;
             & img {
                 display: block;
-                width: 100%;
-                height: 100%;
+                @extend %width-100-height-100;
                 object-fit: cover;
             }
         }
     }
 
     &__right {
-        height: 100vh;
+        @include flex_mixin(flex, null, center, null, null);
+        @extend %width-100-height-100vh;
         padding-right: 10rem;
-        display: flex;
-        align-items: center;
-        width: 100%;
 
         .uc_content {
-            width: 100%;
-            &-logo {
+            @include width_height_mixin(100%, null);
 
-                width: 9rem;
-                height: auto;
+            &-logo {
+                @include width_height_mixin(9rem, auto);
                 margin-bottom: 5rem;
                 & img {
-                    width: 100%;
-                    height: 100%;
+                    @extend %width-100-height-100;
                     object-fit: contain;
                 }
             }
@@ -60,33 +53,30 @@
                 margin-bottom: 1.2rem;
             }
             & .sub_title {
-                font-family: var(--#{$prefix}-open-sans);
                 font-size: 2rem;
                 line-height: 7rem;
                 letter-spacing: 0.2rem;
                 text-align: left;
-                color: var(--#{$prefix}-text-color);
+                color: var(--template-three-text-color);
                 font-weight: 700;
                 text-transform: uppercase;
             }
 
             & .main_title {
-                font-family: var(--#{$prefix}-open-sans);
                 font-size: 5.4rem;
                 font-weight: 700;
                 text-align: left;
                 line-height: 6.4rem;
-                color: var(--#{$prefix}-light-blue-color);
+                color: var(--template-three-primary-color);
                 margin-bottom: 2rem;
             }
             &-text {
                 margin-bottom: 8rem;
                 & p {
-                    font-family: var(--#{$prefix}-open-sans);
                     font-size: 2rem;
                     text-align: left;
                     line-height: 3.2rem;
-                    color: var(--#{$prefix}-black-color);
+                    color: var(--base-black-color);
                     max-width: 71.3rem;
                     font-weight: 300;
                     opacity: 1;
@@ -99,36 +89,31 @@
                     margin-bottom: 2rem;
                 }
                 & .social_media {
-                    display: flex;
+                    @include flex_mixin(flex, null, null, null, 1.3rem);
                     list-style: none;
-                    gap: 1.3rem;
 
                     & li {
                         & a {
-                            border-radius: 50%;
-                            height: 4rem;
-                            width: 4rem;
+                            @include flex_mixin(flex, center, center, null, null);
+                            @include width_height_mixin(4rem, 4rem);
                             text-align: center;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            border: 1px solid var(--#{$prefix}-light-blue-color);
+                            border: 1px solid var(--template-three-primary-color);
                             border-radius: 50%;
                             padding: 0.8rem;
 
                             & svg {
                                 & path, & circle {
-                                    fill: var(--#{$prefix}-light-blue-color);
+                                    fill: var(--template-three-primary-color;
                                 }
                             }
 
                             &:hover {
-                                background-color: var(--#{$prefix}-light-blue-color);
-                                border: 1px solid var(--#{$prefix}-white-color);
+                                background-color: var(--template-three-primary-color);
+                                border: 1px solid var(--base-white-color);
                                 transition: all 0.4s;
                                 & svg {
                                     & path, & circle {
-                                        fill: var(--#{$prefix}-white-color);
+                                        fill: var(--base-white-color);
                                     }
                                 }
                             }
@@ -143,40 +128,34 @@
 
 @media screen and (max-width: 800px) {
     .construction_cover {
-        display: flex;
-        flex-direction: column;
-        grid-gap: 0;
+        @include flex_mixin(flex, null, null, column, 0);
+
         &__left {
-            height: 90rem;
-            width: 100%;
+            @include width_height_mixin(100%, 90rem);
             overflow: hidden;
             &--img {
-                width: 100%;
-                height: 100%;
-                display: flex;
+                @include width_height_mixin(100%, 100%);
+                @include flex_mixin(flex, null, null, null, null);
             }
         }
         &__right {
-            height: calc(100% - 50rem);
+            //height: calc(100% - 50rem);
             padding: 5rem;
-            width: 100%;
+            @include width_height_mixin(100%, calc(100% - 50rem));
+
             & .uc_header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                @include flex_mixin(flex, space-between, center, null, null);
                 padding: 0 0 3rem 0;
                 border-bottom: 1px solid #ececec;
+
                 &-logo {
-                    width: 9rem;
-                    height: auto;
+                    @include width_height_mixin(9rem, auto);
                 }
             }
             & .uc_content {
-                height: calc(100% - 6.6rem);
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: center;
+                @include width_height_mixin(null, calc(100% - 6.6rem));
+                @include flex_mixin(flex, center, flex-start, column, null);
+
                 &-text p {
                     line-height: 4.4rem;
                     font-size: 3rem;
@@ -192,15 +171,11 @@
                     & .social_media {
                         & li {
                             & a {
+                                @include width_height_mixin(6rem, 6rem);
+                                @include flex_mixin(flex, center, center, null, null);
                                 border-radius: 50%;
-                                height: 6rem;
-                                width: 6rem;
                                 text-align: center;
-                                display: flex;
-                                justify-content: center;
-                                align-items: center;
                                 border: 1px solid var(--uc-light-blue-color);
-                                border-radius: 50%;
                                 padding: 1.3rem;
                             }
                         }
