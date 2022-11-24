@@ -131,7 +131,7 @@
       background-color: transparent !important;
     }
   }
-  .display_bg_img {
+  .display_bg_img, .display_logo_img {
     display: block;
     margin-bottom: 15px;
     background-color: transparent;
@@ -417,7 +417,7 @@
 @media screen and (max-width: 1536px) {
   .template__wrapper {
     & .template_options {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-gap: 40px;
     }
   }

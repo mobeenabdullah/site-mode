@@ -66,16 +66,18 @@ class Advanced_Field
     }
     public function rex_maintenance_page_whitelist_include_cb() {
         ?>
-        <label for="gender">Include Pages</label>
+<!--        <div class="label_top">-->
+<!--            <label for="whitelist_include">Page Whitelist Include</label>-->
+<!--        </div>-->
+
         <?php
         $all_pages = get_pages();
         ?>
-        <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode">
-                <?php foreach($all_pages as $value ) { ?>
+        <div class="um_select">
+            <select name="wprex-mode-settings" id="whitelist_include">
+                <?php foreach($all_pages as $value ) : ?>
                     <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
-                <?php } ?>
+                <?php endforeach; ?>
             </select>
             <span class="arrow-down"></span>
         </div>
@@ -83,13 +85,14 @@ class Advanced_Field
     }
     public function rex_maintenance_page_exclude_cb() {
         ?>
-        <label for="gender">Exclude Pages</label>
+<!--        <div class="label_top">-->
+<!--            <label for="page_exclude">Page Exclude</label>-->
+<!--        </div>-->
         <?php
         $pages = get_pages();
         ?>
         <div class="um_select label_top">
-            <label for="site_mode" class="screen-reading">Mode</label>
-            <select name="wprex-mode-settings" id="site_mode">
+            <select name="wprex-mode-settings" id="page_exclude">
                 <?php foreach($pages as $value ) : ?>
                     <option value="<?php echo $value->post_name; ?>" selected><?php echo $value->post_title; ?></option>
                 <?php endforeach; ?>

@@ -17,7 +17,6 @@
                         submit_button(__('Save Design', 'rex-maintenance-mode'),'um_btn');
                         break;
                     case 'seo':
-                        echo 'seo';
                         settings_fields('rex-maintenance-setting-seo-group');
                         do_settings_sections('rex-maintenance-seo-page');
                         submit_button(__('Save SEO Changes', 'rex-maintenance-mode'),'um_btn');

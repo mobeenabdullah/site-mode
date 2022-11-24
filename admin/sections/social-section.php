@@ -20,7 +20,7 @@ class Social_Section
     }
     public function add_Section() {
         //Social Section
-        add_settings_section('rex-maintenance-social-section', 'Social Section',[$this,'rex_maintenance_social_section_callback'], 'rex-maintenance-social-page');
+        add_settings_section('rex-maintenance-social-section', '',[$this,'rex_maintenance_social_section_callback'], 'rex-maintenance-social-page');
     }
     public function rex_maintenance_social_section_callback() {
 

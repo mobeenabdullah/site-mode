@@ -20,7 +20,7 @@ class SEO_Section
     }
     public function add_Section() {
         //SEO Section
-        add_settings_section('rex-maintenance-seo-section', 'SEO Section',[$this,'rex_maintenance_seo_section_callback'], 'rex-maintenance-seo-page');
+        add_settings_section('rex-maintenance-seo-section', '',[$this,'rex_maintenance_seo_section_callback'], 'rex-maintenance-seo-page');
     }
     public function rex_maintenance_seo_section_callback () {
 
