@@ -66,34 +66,6 @@ class Rex_Maintenance_Mode_Setting_page
         $seo_fields = new SEO_Field();
         $advanced_fields = new Advanced_Field();
 
-        $this->iniantiate();
-
-    }
-    public function iniantiate() {
-//        $classes = [
-//            'General_Settings',
-//            'Content_Settings',
-//            'Social_Settings',
-//            'Design_Settings',
-//            'SEO_Settings',
-//            'Advanced_Section',
-//            'General_Section',
-//            'Content_Section',
-//            'Social_Section',
-//            'Design_Section',
-//            'SEO_Section',
-//            'Advanced_Section',
-//            'General_Field',
-//            'Content_Field',
-//            'Social_Field',
-//            'Design_Field',
-//            'SEO_Field',
-//            'Advanced_Field',
-//        ];
-//        foreach ($classes as $class) {
-//            $class_instance = new $class();
-//            return $class_instance;
-//        }
     }
 
 }
