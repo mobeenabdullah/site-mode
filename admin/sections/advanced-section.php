@@ -20,7 +20,7 @@ class Advanced_Section
     }
     public function add_Section() {
         //Advance Section
-        add_settings_section('rex-maintenance-advanced-section', 'Advance Section',[$this,'rex_maintenance_advanced_section_callback'], 'rex-maintenance-advanced-page');
+        add_settings_section('rex-maintenance-advanced-section', '',[$this,'rex_maintenance_advanced_section_callback'], 'rex-maintenance-advanced-page');
     }
 
     public function rex_maintenance_advanced_section_callback() {

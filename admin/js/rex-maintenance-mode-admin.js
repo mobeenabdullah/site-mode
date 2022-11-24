@@ -165,15 +165,18 @@ jQuery(function ($) {
         customInputNumber();
 
         // Image and text logo toggle
+        $('.image_logo_wrapper').hide();
+        $('.text_logo_wrapper').hide();
+
         $('input[name="content-logo-settings"]').on('click',function(){
-            $('.image_logo_wrapper').hide();
-            $('.text_logo_wrapper').hide();
-            if($(this).val() === 'image-type'){
+            if($(this).val() === 'type-image'){
                 $('.image_logo_wrapper').show();
+                $('.text_logo_wrapper').hide();
             }
-            else if($(this).val() === 'text-type'){
+            else if($(this).val() === 'type-text'){
                 $('.text_logo_wrapper').show();
-            } else {
+                $('.image_logo_wrapper').hide();
+            } else if($(this).val() === 'type-disable') {
                 $('.image_logo_wrapper').hide();
                 $('.text_logo_wrapper').hide();
             }

@@ -32,7 +32,7 @@ class Design_Field
             <div class="template_options">
                 <div class="template_thumb <?php echo ($template == '1') ? 'activated_template' : '' ?>">
                     <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-1.jpg'; ?>)"></div>
+                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'/img/template-1.jpg'; ?>)"></div>
                     </div>
                     <div class="template_actions">
                         <div class="template_title">
@@ -46,7 +46,7 @@ class Design_Field
                 </div>
                 <div class="template_thumb <?php echo ($template == '2') ? 'activated_template' : '' ?>">
                     <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-2.jpg'; ?>)"></div>
+                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'/img/template-2.jpg'; ?>)"></div>
                     </div>
                     <div class="template_actions">
                         <div class="template_title">
@@ -61,7 +61,7 @@ class Design_Field
                 </div>
                 <div class="template_thumb <?php echo ($template == '3') ? 'activated_template' : '' ?>">
                     <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-3.jpg'; ?>)"></div>
+                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'/img/template-3.jpg'; ?>)"></div>
                     </div>
                     <div class="template_actions">
                         <div class="template_title">
@@ -76,7 +76,7 @@ class Design_Field
                 </div>
                 <div class="template_thumb <?php echo ($template == '4') ? 'activated_template' : '' ?>">
                     <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-4.jpg'; ?>)"></div>
+                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'/img/template-4.jpg'; ?>)"></div>
                     </div>
                     <div class="template_actions">
                         <div class="template_title">

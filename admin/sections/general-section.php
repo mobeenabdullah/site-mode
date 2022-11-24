@@ -19,7 +19,7 @@ class General_Section
         $this->add_Section();
     }
     public function add_Section() {
-        add_settings_section('wprex-maintenance-general-section', 'Primary Settings', [$this, 'rex_maintenance_general_settings_section_callback'], 'wprex-maintenance-general-page');
+        add_settings_section('wprex-maintenance-general-section', '', [$this, 'rex_maintenance_general_settings_section_callback'], 'wprex-maintenance-general-page');
     }
     public function rex_maintenance_general_settings_section_callback($args)
     {

@@ -163,13 +163,13 @@
 	background-color: transparent !important;
 }
 
-.bg_image_wrapper .display_bg_img {
+.bg_image_wrapper .display_bg_img, .bg_image_wrapper .display_logo_img {
 	display: block;
 	margin-bottom: 15px;
 	background-color: transparent;
 }
 
-.bg_image_wrapper .display_bg_img img {
+.bg_image_wrapper .display_bg_img img, .bg_image_wrapper .display_logo_img img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -441,7 +441,7 @@
 
 @media screen and (max-width: 1536px) {
 	.template__wrapper .template_options {
-		grid-template-columns: repeat(2, 1fr);
+		grid-template-columns: repeat(3, 1fr);
 		grid-gap: 40px;
 	}
 }

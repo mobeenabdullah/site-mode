@@ -24,7 +24,7 @@ class Content_Section
     public function add_sections()
     {
         //Content Section
-        add_settings_section('rex-maintenance-content-logo-section', 'Content Logo Area', [$this, 'rex_maintenance_content_logo_section_callback'], 'rex-maintenance-options-one');
+        add_settings_section('rex-maintenance-content-logo-section', '', [$this, 'rex_maintenance_content_logo_section_callback'], 'rex-maintenance-options-one');
         add_settings_section('rex-maintenance-content-text-section', 'Content textarea', [$this, 'rex_maintenance_content_customization_section_callback'], 'rex-maintenance-options-one');
 
     }

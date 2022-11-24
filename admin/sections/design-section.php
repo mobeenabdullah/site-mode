@@ -20,7 +20,7 @@ class Design_Section
     }
     public function add_Section() {
         //Design Section
-        add_settings_section('rex-maintenance-design-section', 'Design Templates', [$this, 'rex_maintenance_design_section_callback'], 'rex-maintenance-design-page');
+        add_settings_section('rex-maintenance-design-section', '', [$this, 'rex_maintenance_design_section_callback'], 'rex-maintenance-design-page');
     }
 
     public function rex_maintenance_design_section_callback()
