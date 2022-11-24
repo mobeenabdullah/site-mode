@@ -2,9 +2,8 @@
 
 // hero section start
 .wrapper {
-  width: 100%;
-  height: 100vh;
-  position: relative;
+  @extend %width-100-height-100vh;
+  @extend %position-relative;
   z-index: 1;
   overflow: hidden;
   display: grid;
@@ -12,29 +11,25 @@
   grid-gap: 1rem;
   & .content {
     height: 68vh;
-    display: flex;
-    align-items: center;
+    @include flex_mixin(flex, null, center, null, null);
   }
 }
 
 .uc_header {
-  border-bottom: 1px solid #f5f5f5;
+  border-bottom: 1px solid var(--base-border-color);
   padding: 2rem 0;
   min-height: 14rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex_mixin(flex, center, center, null, null);
+
   &-img {
+    @extend %width-100-height-100;
     text-align: center;
-    width: 100%;
     max-width: 15rem;
-    height: 100%;
     margin: 0 auto;
     max-height: 7.7rem;
     & img {
-      width: 100%;
-      height: 100%;
-      display: flex;
+      @extend %width-100-height-100;
+      @include flex_mixin(flex, null, null, null, null);
       object-fit: contain;
     }
   }
@@ -46,19 +41,17 @@
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 10rem;
   //height: calc(100vh - 30rem);
-  width: 100%;
+  @include width_height_mixin(100%, null);
 
   &__left {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: center;
+    @include flex_mixin(flex, center, start, column, null);
+
     &--img {
-      display: flex;
-      height: 50rem;
+      @include flex_mixin(flex, null, null, null, null);
+      @include width_height_mixin(null, 50rem);
+
       & img {
-        width: 100%;
-        height: 100%;
+        @extend %width-100-height-100;
         object-fit: contain;
         display: block;
       }
@@ -69,52 +62,47 @@
 
     &--text {
       & p {
-        font-family: var(--#{$prefix}-open-sans);
         font-size: 1.8rem;
         text-align: left;
         line-height: 3.2rem;
-        color: var(--#{$prefix}-black-color);
+        color: var(--base-black-color);
         max-width: 71.3rem;
         font-weight: 300;
         opacity: 1;
       }
     }
     & .sub_title {
-      font-family: var(--#{$prefix}-open-sans);
       font-size: 2rem;
       line-height: 2.8rem;
       letter-spacing: 0.2rem;
       text-align: left;
-      color: var(--#{$prefix}-text-color);
+      color: var(--template-four-text-color);
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 2rem;
     }
 
     & .main_title {
-      font-family: var(--#{$prefix}-open-sans);
       font-size: 3.8rem;
       font-weight: 700;
       text-align: left;
       line-height: 4.8rem;
-      color: var(--#{$prefix}-red-color);
+      color: var(--template-four-primary-color);
       margin-bottom: 2rem;
     }
-
   }
 
   &__right {
-    position: relative;
-    display: flex;
-    align-items: center;
+    @extend %position-relative;
+    @include flex_mixin(flex, null, center, null, null);
+
     &--img {
-      height: 40rem;
-      width: 100%;
+      @include width_height_mixin(100%, 40rem);
       overflow: hidden;
       border-radius: 1rem;
+
       & img {
-        width: 100%;
-        height: 100%;
+        @extend %width-100-height-100;
         object-fit: cover;
         display: block;
       }
@@ -124,32 +112,25 @@
 
 // Footer
 .uc_footer {
-  border-top: 1px solid #f5f5f5;
+  border-top: 1px solid var(--base-border-color);
   padding: 2rem 0;
-  height: 14rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @include width_height_mixin(null, 14rem);
+
+  @include flex_mixin(flex, center, center, null, null);
   min-height: 12rem;
 
   & .social_media {
-    display: flex;
+    @include flex_mixin(flex, center, null, null, 1.5re,);
     list-style: none;
-    gap: 1.5rem;
-    justify-content: center;
 
     & li {
+      padding: 0.8rem;
       & a {
-        height: 4rem;
-        width: 4rem;
         text-align: center;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
         & svg {
+          @include width_height_mixin(2rem, 2rem);
           & path, & circle {
-            fill: var(--#{$prefix}-gray-color);
+            fill: var(--template-four-text-color);
           }
         }
 
@@ -157,8 +138,7 @@
           transition: all 0.4s;
           & svg {
             & path, & circle {
-              fill: var(--#{$prefix}-red-color);
-
+              fill: var(--template-four-primary-color);
             }
           }
         }
@@ -194,13 +174,17 @@
     &__right {
       order: 1;
       &--img {
-        height: 50rem;
-        width: 100%;
+        @include width_height_mixin(100%, 50rem);
         overflow: hidden;
         border-radius: 1rem;
-
       }
     }
   }
 
+}
+
+
+
+.test {
+  @include grid_mixin(4, 3rem);
 }
