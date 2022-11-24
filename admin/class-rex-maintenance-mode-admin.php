@@ -54,15 +54,6 @@ class Rex_Maintenance_Mode_Admin
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-        /**
-         * The class responsible for defining all actions that occur in the options page of the plugin
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-settings-page.php';
-
-        /**
-         * The class responsible for defining all actions that occur in the Menu of the plugin
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-plugin-menu.php';
 	}
 
 	/**

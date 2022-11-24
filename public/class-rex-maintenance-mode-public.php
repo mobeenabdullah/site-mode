@@ -53,6 +53,7 @@ class Rex_Maintenance_Mode_Public
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
         add_filter('style_loader_tag', [$this, 'my_style_loader_tag_filter'], 10, 2);
 
 	}
@@ -138,5 +139,34 @@ class Rex_Maintenance_Mode_Public
         return $html;
     }
 
+    public function load_template_on_call()
+    {
+        if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
+
+            esc_html($this->load_templates());
+            exit;
+        }
+    }
+
+    public function load_templates()
+    {
+        $selected_template = get_option('content-content-template-settings');
+        if ($selected_template == '1') {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
+            exit;
+        } elseif ($selected_template == '2') {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-two.php';
+            exit;
+        } elseif ($selected_template == '3') {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-three.php';
+            exit;
+        } elseif ($selected_template == '4') {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-four.php';
+            exit;
+        } else {
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
+            exit;
+        }
+    }
 
 }
