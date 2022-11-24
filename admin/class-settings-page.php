@@ -9,6 +9,28 @@
  * @package    Rex_Maintenance_Mode
  * @subpackage Rex_Maintenance_Mode/includes
  */
+require_once plugin_dir_path(__DIR__) . 'admin/fields/general-fields.php';
+require_once plugin_dir_path(__DIR__) . 'admin/fields/content-fields.php';
+require_once plugin_dir_path(__DIR__) . 'admin/fields/social-fields.php';
+require_once plugin_dir_path(__DIR__) . 'admin/fields/design-fields.php';
+require_once plugin_dir_path(__DIR__) . 'admin/fields/seo-fields.php';
+require_once plugin_dir_path(__DIR__) . 'admin/fields/advanced-fields.php';
+
+
+require_once plugin_dir_path(__DIR__) . 'admin/settings/general-setting.php';
+require_once plugin_dir_path(__DIR__) . 'admin/settings/content-settings.php';
+require_once plugin_dir_path(__DIR__) . 'admin/settings/social-settings.php';
+require_once plugin_dir_path(__DIR__) . 'admin/settings/design-settings.php';
+require_once plugin_dir_path(__DIR__) . 'admin/settings/seo-settings.php';
+require_once plugin_dir_path(__DIR__) . 'admin/settings/advanced-settings.php';
+
+
+require_once plugin_dir_path(__DIR__) . 'admin/sections/general-section.php';
+require_once plugin_dir_path(__DIR__) . 'admin/sections/content-section.php';
+require_once plugin_dir_path(__DIR__) . 'admin/sections/design-section.php';
+require_once plugin_dir_path(__DIR__) . 'admin/sections/social-section.php';
+require_once plugin_dir_path(__DIR__) . 'admin/sections/seo-section.php';
+require_once plugin_dir_path(__DIR__) . 'admin/sections/advanced-section.php';
 
 /**
  * Load during plugin options page
@@ -26,6 +48,7 @@ class Rex_Maintenance_Mode_Setting_page
     public function  __construct()
     {
 
+<<<<<<< Updated upstream
         add_action('admin_init', [$this, 'rex_maintenance_mode_init']);
     }
 
@@ -442,113 +465,37 @@ class Rex_Maintenance_Mode_Setting_page
                 <input type="checkbox" id="content_social_linkedin_checkbox_settings" class="disable_media" name="content-social-linkedin-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-linkedin-checkbox-settings'),'rex-maintenance-mode'); ?>" />
                 <label for="content_social_linkedin_checkbox_settings">Disable</label>
             </div>
+=======
+>>>>>>> Stashed changes
 
-        </div>
-    <?php
+
     }
 
-    public function rex_maintenance_content_social_twitter_cb()
+    public function rex_maintenance_mode_init()
     {
-    ?>
-        <div class="social_media_field_wrapper">
-            <input type="text" name="content-social-twitter-settings" value="<?php esc_attr_e(get_option('content-social-twitter-settings'), 'rex-maintenance-mode') ?>" />
-            <div class="um_checkbox_wrapper">
-                <input type="checkbox" id="content_social_twitter_checkbox_settings" class="disable_media" name="content-social-twitter-checkbox-settings" value="<?php esc_attr_e(get_option('content-social-twitter-checkbox-settings'),'rex-maintenance-mode'); ?>" />
-                <label for="content_social_twitter_checkbox_settings">Disable</label>
-            <div>
-        </div>
-    <?php
-    }
 
-    public function rex_maintenance_design_template_cb()
-    {
-    ?>
-        <div class="template__wrapper">
-            <?php $template = get_option('content-content-template-settings');
-            ?>
-            <div class="template_options">
-                <div class="template_thumb <?php echo ($template == '1') ? 'activated_template' : '' ?>">
-                    <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-1.jpg'; ?>)"></div>
-                    </div>
-                    <div class="template_actions">
-                        <div class="template_title">
-                            <h2 class="template_title-title">Food Template</h2>
-                        </div>
-                       <label class="um_toggle">
-                            <input type="radio" class="toggle_input" id="one" name="content-content-template-settings" value="1" <?php echo (get_option('content-content-template-settings') == '1') ? 'checked' : ''?> />
-                           <div class="toggle-control"></div>
-                       </label>
-                    </div>
-                </div>
-                <div class="template_thumb <?php echo ($template == '2') ? 'activated_template' : '' ?>">
-                    <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-2.jpg'; ?>)"></div>
-                    </div>
-                    <div class="template_actions">
-                        <div class="template_title">
-                            <h2 class="template_title-title">Construction Template</h2>
-                        </div>
-                        <label class="um_toggle">
-                            <input type="radio" class="toggle_input" id="two" name="content-content-template-settings" value="2" <?php echo (get_option('content-content-template-settings') == '2') ? 'checked' : ''?> />
-                            <div class="toggle-control"></div>
-                        </label>
-                    </div>
+        $general_settings = new General_Settings();
+        $content_settings = new Content_Settings();
+        $social_settings = new Social_Settings();
+        $design_settings = new Design_Settings();
+        $seo_settings = new SEO_Settings();
+        $advanced_settings = new Advanced_Settings();
 
-                </div>
-                <div class="template_thumb <?php echo ($template == '3') ? 'activated_template' : '' ?>">
-                    <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-3.jpg'; ?>)"></div>
-                    </div>
-                    <div class="template_actions">
-                        <div class="template_title">
-                            <h2 class="template_title-title">Fashion Template</h2>
-                        </div>
+        $content_section = new Content_Section();
+        $content_section = new General_Section();
+        $social_section = new Social_Section();
+        $design_section = new Design_Section();
+        $seo_section = new SEO_Section();
+        $advanced_section = new Advanced_Section();
 
-                        <label class="um_toggle">
-                            <input type="radio" class="toggle_input" id="three" name="content-content-template-settings" value="3" <?php echo (get_option('content-content-template-settings') == '3') ? 'checked' : ''?> />
-                            <div class="toggle-control"></div>
-                        </label>
-                    </div>
-                </div>
-                <div class="template_thumb <?php echo ($template == '4') ? 'activated_template' : '' ?>">
-                    <div class="radio-img">
-                        <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'admin/img/template-4.jpg'; ?>)"></div>
-                    </div>
-                    <div class="template_actions">
-                        <div class="template_title">
-                            <h2 class="template_title-title">Travel Template</h2>
-                        </div>
-                        <label class="um_toggle">
-                            <input type="radio" class="toggle_input" id="four" name="content-content-template-settings" value="4" <?php echo (get_option('content-content-template-settings') == '4') ? 'checked' : ''?> />
-                            <div class="toggle-control"></div>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-<?php
-    }
+        $general_fields = new General_Field();
+        $content_fields = new Content_Field();
+        $social_fields = new Social_Field();
+        $design_fields = new Design_Field();
+        $seo_fields = new SEO_Field();
+        $advanced_fields = new Advanced_Field();
 
-
-// SEO Section Fields callbacks
-
-    public function rex_maintenance_seo_meta_title_cb() { ?>
-        <div class="um_input_cover">
-            <label class="screen-reading" for="headline">SEO Meta Title</label>
-            <input type="text" id="seo-meta-title" name="soe-meta-title-setting" value="<?php esc_attr_e(get_option('soe-meta-title-setting'),'rex-maintenance-mode'); ?>" />
-        </div>
-    <?php
-    }
-
-    public function rex_maintenance_seo_meta_description_cb() { ?>
-        <div class="um_input_cover">
-            <label class="screen-reading" for="headline">SEO Meta Title</label>
-            <input type="text" id="seo-meta-description" name="soe-meta-title-setting" value="<?php esc_attr_e(get_option('soe-meta-title-setting'),'rex-maintenance-mode'); ?>" />
-        </div>
-        <?php
-    }
-
+<<<<<<< Updated upstream
     public function rex_maintenance_seo_meta_favicon_cb() {
         $favicon_url = wp_get_attachment_image_url(get_option('soe-meta-favicon-setting'), 'medium'); ?>
         <div>
@@ -587,15 +534,12 @@ class Rex_Maintenance_Mode_Setting_page
         </div>
         <?php
     }
+=======
 
-    //Advance Section fields callback
-    public function rex_maintenance_advance_ga_id_cb() { ?>
-        <div class="um_input_cover">
-            <label class="screen-reading" for="headline">Headline</label>
-            <input type="text" id="headline" name="advanced-ga-id-settings" value="<?php esc_attr_e(get_option('advanced-ga-id-settings'),'rex-maintenance-mode'); ?>" />
-        </div>
-        <?php
+>>>>>>> Stashed changes
+
     }
+<<<<<<< Updated upstream
     public function rex_maintenance_advance_custom_css_cb() {
         ?>
         <div class="um_textarea_cover">
@@ -684,5 +628,8 @@ class Rex_Maintenance_Mode_Setting_page
             </div>
         <?php endforeach;
     }
+=======
+
+>>>>>>> Stashed changes
 
 }
