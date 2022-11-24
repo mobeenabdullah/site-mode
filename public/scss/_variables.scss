@@ -1,39 +1,114 @@
-// SASS variables
-$prefix: uc;
-
 // Colors
-$black: #000000;
-$black-v2: #141414;
-$white: #ffffff;
-$gray: #707070;
-$text: #141414;
-$yellow: #ff9800;
-$light-blue: #3943B3;
-$blue: #27429C;
-$navy-blue: #294F97;
-$orange: #E5792B;
-$red: #db3529;
-$text-new: #8d8c8c;
-$green-heading: #6FB644;
-$half-white: #f4f4f4;
-$open-sans: 'Open Sans', sans-serif;
+
+// Base variables
+$open-sans: 'Open Sans', sans-serif !default;
+$base-black: #000000 !default;
+$base-white: #ffffff !default;
+
+// Template One
+$template-one-primary-color: #E5792B !default;
+$template-one-secondary-color: #141414 !default;
+$template-one-text-color: #707070 !default;
+
+// Template Two
+$template-two-primary-color: #6FB644 !default;
+$template-two-secondary-color: #141414 !default;
+$template-two-text-color: #707070 !default;
+
+// Template Three
+$template-three-primary-color: #294F97 !default;
+$template-three-secondary-color: #141414 !default;
+$template-three-text-color: #707070 !default;
+
+// Template Foure
+$template-four-primary-color: #db3529 !default;
+$template-four-secondary-color: #141414 !default;
+$template-four-text-color: #707070 !default;
+
+//$yellow: #ff9800 !default;
+//$light-blue: #3943B3 !default;
+//$blue: #27429C !default;
+//$navy-blue: #294F97 !default;
+//$orange: #E5792B !default;
+//$red: #db3529 !default;
+//$text-new: #8d8c8c !default;
+//$green-heading: #6FB644 !default;
+//$half-white: #f4f4f4 !default;
+
 
 
 $colors: (
-    'black-color': $black,
-    'black-v2': $black-v2,
-    'white-color': $white,
-    'gray-color': $gray,
-    'text-color': $text,
-    'yellow-color': $yellow,
-    'light-blue-color': $light-blue,
-    'blue-color': $blue,
-    'half-white-color': $half-white,
-    'open-sans': $open-sans,
-    'orange-color': $orange,
-    'red-color': $red,
-    'text-new': $text-new,
-    'green-heading': $green-heading,
-    'navy-blue': $navy-blue,
+    'base-black-color': $base-black,
+    'base-white-color': $base-white,
+    'base-open-sans': $open-sans,
+
+    'template-one-primary-color': $template-one-primary-color,
+    'template-one-secondary-color': $template-one-secondary-color,
+    'template-one-text-color': $template-one-text-color,
+
+    'template-two-primary-color': $template-two-primary-color,
+    'template-two-secondary-color': $template-two-secondary-color,
+    'template-two-text-color': $template-two-text-color,
+
+    'template-three-primary-color': $template-three-primary-color,
+    'template-three-secondary-color': $template-three-secondary-color,
+    'template-three-text-color': $template-three-text-color,
+
+    'template-four-primary-color': $template-four-primary-color,
+    'template-four-secondary-color': $template-four-secondary-color,
+    'template-four-text-color': $template-four-text-color,
 
 );
+
+// Mixin for font-size, font-weight, line-height, text-align
+@mixin font_mixin($size, $weight, $line-height, $text-align) {
+  @if $size {
+    font-size: $size;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $line-height {
+    line-height: $line-height;
+  }
+  @if $text-align {
+    text-align: $text-align;
+  }
+}
+
+// Mixin for positioning
+@mixin position_mixin($position, $top, $right, $bottom, $left) {
+  @if $position {
+    position: $position;
+  }
+  @if $top {
+    top: $top;
+  }
+  @if $right {
+    right: $right;
+  }
+  @if $bottom {
+    bottom: $bottom;
+  }
+  @if $left {
+    left: $left;
+  }
+}
+
+// Mixin for Width and Height
+@mixin width_height_mixin($width, $height) {
+  @if $width and $height {
+    width: $width;
+    height: $height;
+  }
+}
+
+@mixin flex_mixin($display, $x, $y, $direction, $gap) {
+  display: $display;
+  align-items: $y;
+  justify-content: $y;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+

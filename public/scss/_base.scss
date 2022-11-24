@@ -3,9 +3,8 @@
 // CSS variables
 :root {
 
-    @each $color,
-    $value in $colors {
-        --#{$prefix}-#{$color}: #{$value};
+    @each $color, $value in $colors {
+        --#{$color}: #{$value};
     }
 }
 
@@ -21,9 +20,9 @@ html {
 }
 
 body {
-    font-family: var(--#{$prefix}-open-sans);
+    font-family: var(--base-open-sans);
     font-size: 1.6rem;
-    color: var(--#{$prefix}-text-color);
+    color: var(--text-color);
 }
 
 .container {
@@ -74,4 +73,18 @@ body {
         max-width: 100%;
         padding: 0 3.9rem;
     }
+}
+
+// Placeholders
+%width-100-height-100vh {
+    @include width_height_mixin(100%, 100vh);
+}
+%width-100-height-100 {
+    @include width_height_mixin(100%, 100%);
+}
+%position-relative {
+    @include position_mixin(relative, null, null, null, null);
+}
+%position-absolute-top-left {
+    @include position_mixin(absolute, 0, null, null, 0);
 }
