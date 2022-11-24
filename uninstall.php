@@ -32,23 +32,35 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 //Options cleanup during uninstall plugin
 
-$rex_maintenance_mode_options = [
-	'enable-disable-settings',
-	'content-headline-settings',
-	'content-subheading-settings',
-	'content-content-settings',
-	'content-logo-settings',
-	'content-bg-image-settings',
-	'content-social-fb-settings',
-	'content-social-twitter-settings',
-	'content-social-linkedIn-settings',
-	'content-content-template-settings'
+$options = [
+    'advanced-ga-id-settings',
+    'advanced-custom-css-settings',
+    'advanced-wp-rest-api-settings',
+    'advanced-rss-feed-settings',
+    'advanced-page-whitelist-include-settings',
+    'advanced-page-whitelist-exclude-settings',
+    'advanced-header-code-settings',
+    'advanced-footer-code-settings',
+    'advanced-user-roles-settings',
+    'content-logo-type-setting',
+    'content-logo-settings',
+    'text-logo-setting',
+    'disable-logo-setting',
+    'content-headline-settings',
+    'content-content-settings',
+    'content-bg-image-settings',
+    'content-content-template-settings',
+    'wprex-status-settings',
+    'wprex-mode-settings',
+    'wprex-redirect-url-settings',
+    'wprex-delay-settings',
+    'wprex-login-icon-setting'
 ];
 
 
-if (!empty($rex_maintenance_mode_options)) {
+if (!empty($options)) {
 
-	foreach ($rex_maintenance_mode_options as $option) {
+	foreach ($options as $option) {
 
 		delete_option($option);
 	}
