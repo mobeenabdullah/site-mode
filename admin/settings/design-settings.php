@@ -1,14 +1,6 @@
 <?php
 
-/**
- * Responsible for plugin menu
- *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
- *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
- */
+
 
 /**
  * Responsible for plugin menu
@@ -20,15 +12,19 @@
  * @subpackage Rex_Maintenance_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Core {
+class Design_Settings
+{
+
 
     public function __construct()
     {
-
+        $this->add_settings();
     }
 
-    public function wp_header_files() {
+    public function add_settings()
+    {
+        // Settings for Design Section
+        register_setting('rex-maintenance-setting-design-group', 'content-content-template-settings');
 
     }
-
 }

@@ -83,7 +83,7 @@ class Rex_Maintenance_Mode
 		$this->define_public_hooks();
 		$this->get_menu();
 		$this->get_settings_page();
-		add_action('template_redirect', [$this, 'load_template_on_call']);
+
 
 	}
 
@@ -126,17 +126,27 @@ class Rex_Maintenance_Mode
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-rex-maintenance-core.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-plugin-menu.php';
+
+        /**
+         * The class responsible for defining all actions that occur in the options page of the plugin
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-settings-page.php';
+
+        /**
+         * The class responsible for defining all actions that occur in the Menu of the plugin
+         */
+        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-plugin-menu.php';
+
+
+
+
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-rex-maintenance-mode-public.php';
-
-
-
-
 
 		$this->loader = new Rex_Maintenance_Mode_Loader();
 	}
@@ -169,9 +179,16 @@ class Rex_Maintenance_Mode
 	{
 
 		$plugin_admin = new Rex_Maintenance_Mode_Admin($this->get_plugin_name(), $this->get_version());
+        $plugin_menu = new Rex_Maintenance_Mode_Menu();
+        $plugin_pages = new Rex_Maintenance_Mode_Setting_page();
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+        $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_menu');
+        $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_submenu_settings_page');
+        $this->loader->add_action('admin_init', $plugin_pages, 'rex_maintenance_mode_init');
+//        add_action('admin_init', [$this, 'rex_maintenance_mode_init']);
+
 	}
 
 	/**
@@ -188,6 +205,8 @@ class Rex_Maintenance_Mode
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+        $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
+
 	}
 
 
@@ -248,39 +267,6 @@ class Rex_Maintenance_Mode
 	{
 		return $this->version;
 	}
-
-
-
-	public function load_templates()
-	{
-		$selected_template = get_option('content-content-template-settings');
-		if ($selected_template == '1') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
-			exit;
-		} elseif ($selected_template == '2') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-two.php';
-			exit;
-		} elseif ($selected_template == '3') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-three.php';
-			exit;
-		} elseif ($selected_template == '4') {
-			require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-four.php';
-			exit;
-		} else {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
-			exit;
-		}
-	}
-
-	public function load_template_on_call()
-	{
-		if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
-
-			esc_html($this->load_templates());
-			exit;
-		}
-	}
-
 
 
 }
