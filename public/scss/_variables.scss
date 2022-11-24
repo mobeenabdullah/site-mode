@@ -4,6 +4,8 @@
 $open-sans: 'Open Sans', sans-serif !default;
 $base-black: #000000 !default;
 $base-white: #ffffff !default;
+$base-border: #f5f5f5 !default;
+$base-text-color: #141414 !default;
 
 // Template One
 $template-one-primary-color: #E5792B !default;
@@ -25,22 +27,12 @@ $template-four-primary-color: #db3529 !default;
 $template-four-secondary-color: #141414 !default;
 $template-four-text-color: #707070 !default;
 
-//$yellow: #ff9800 !default;
-//$light-blue: #3943B3 !default;
-//$blue: #27429C !default;
-//$navy-blue: #294F97 !default;
-//$orange: #E5792B !default;
-//$red: #db3529 !default;
-//$text-new: #8d8c8c !default;
-//$green-heading: #6FB644 !default;
-//$half-white: #f4f4f4 !default;
-
-
-
 $colors: (
     'base-black-color': $base-black,
     'base-white-color': $base-white,
     'base-open-sans': $open-sans,
+    'base-border-color': $base-border,
+    'base-text-color': $base-text-color,
 
     'template-one-primary-color': $template-one-primary-color,
     'template-one-secondary-color': $template-one-secondary-color,
@@ -57,7 +49,6 @@ $colors: (
     'template-four-primary-color': $template-four-primary-color,
     'template-four-secondary-color': $template-four-secondary-color,
     'template-four-text-color': $template-four-text-color,
-
 );
 
 // Mixin for font-size, font-weight, line-height, text-align
@@ -103,12 +94,45 @@ $colors: (
   }
 }
 
+// Mixin for basic flex
 @mixin flex_mixin($display, $x, $y, $direction, $gap) {
   display: $display;
   align-items: $y;
-  justify-content: $y;
+  justify-content: $x;
   flex-direction: $direction;
   gap: $gap;
 }
+
+// Mixin for grid
+$grid-template-row: 'row';
+$grid-template-column: 'column';
+$grid-equal-cols: 'equal_cols';
+$grid-equal-rows: 'equal_rows';
+
+
+@mixin grid_mixin($no_of_col_row, $gap) {
+  // Generate equal rows
+  @if $grid-equal-rows == 'equal_rows' {
+    display: grid;
+    grid-template-rows: repeat($no_of_col_row, 1fr);
+    grid-gap: $gap;
+  }
+
+  @if $grid-equal-cols == 'equal_cols' {
+    display: grid;
+    grid-template-column: repeat($no_of_col_row, 1fr);
+    grid-gap: $gap;
+  }
+
+  @if $grid-template-row == 'row' {
+    display: grid;
+    grid-template-#{$no_of_col_row}: auto 1fr auto;
+    grid-gap: $gap;
+  }
+
+
+
+}
+
 
 
