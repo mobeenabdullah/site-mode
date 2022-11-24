@@ -3,38 +3,6 @@
 /**
  * Load during plugin options page
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
- *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
- */
-require_once plugin_dir_path(__DIR__) . 'admin/fields/general-fields.php';
-require_once plugin_dir_path(__DIR__) . 'admin/fields/content-fields.php';
-require_once plugin_dir_path(__DIR__) . 'admin/fields/social-fields.php';
-require_once plugin_dir_path(__DIR__) . 'admin/fields/design-fields.php';
-require_once plugin_dir_path(__DIR__) . 'admin/fields/seo-fields.php';
-require_once plugin_dir_path(__DIR__) . 'admin/fields/advanced-fields.php';
-
-
-require_once plugin_dir_path(__DIR__) . 'admin/settings/general-setting.php';
-require_once plugin_dir_path(__DIR__) . 'admin/settings/content-settings.php';
-require_once plugin_dir_path(__DIR__) . 'admin/settings/social-settings.php';
-require_once plugin_dir_path(__DIR__) . 'admin/settings/design-settings.php';
-require_once plugin_dir_path(__DIR__) . 'admin/settings/seo-settings.php';
-require_once plugin_dir_path(__DIR__) . 'admin/settings/advanced-settings.php';
-
-
-require_once plugin_dir_path(__DIR__) . 'admin/sections/general-section.php';
-require_once plugin_dir_path(__DIR__) . 'admin/sections/content-section.php';
-require_once plugin_dir_path(__DIR__) . 'admin/sections/design-section.php';
-require_once plugin_dir_path(__DIR__) . 'admin/sections/social-section.php';
-require_once plugin_dir_path(__DIR__) . 'admin/sections/seo-section.php';
-require_once plugin_dir_path(__DIR__) . 'admin/sections/advanced-section.php';
-
-/**
- * Load during plugin options page
- *
  * This class defines all code necessary to run during the plugin's options page
  *
  * @since      1.0.0
@@ -45,7 +13,34 @@ require_once plugin_dir_path(__DIR__) . 'admin/sections/advanced-section.php';
 class Rex_Maintenance_Mode_Setting_page
 {
 
-    public function  __construct() {}
+    public function  __construct() {
+        $this->load_files();
+    }
+
+    public function load_files() {
+        $files = [
+            'general',
+            'content',
+            'social',
+            'design',
+            'seo',
+            'advanced',
+        ];
+        /**
+         * Load during plugin options page
+         *
+         * @link       https://https://mobeenabdullah.com
+         * @since      1.0.0
+         *
+         * @package    Rex_Maintenance_Mode
+         * @subpackage Rex_Maintenance_Mode/includes
+         */
+        foreach ($files as $file) {
+            require_once plugin_dir_path(__DIR__) . "admin/fields/{$file}-fields.php";
+            require_once plugin_dir_path(__DIR__) . "admin/settings/{$file}-settings.php";
+            require_once plugin_dir_path(__DIR__) . "admin/sections/{$file}-section.php";
+        }
+    }
 
     public function rex_maintenance_mode_init()
     {
@@ -70,6 +65,35 @@ class Rex_Maintenance_Mode_Setting_page
         $design_fields = new Design_Field();
         $seo_fields = new SEO_Field();
         $advanced_fields = new Advanced_Field();
+
+        $this->iniantiate();
+
+    }
+    public function iniantiate() {
+//        $classes = [
+//            'General_Settings',
+//            'Content_Settings',
+//            'Social_Settings',
+//            'Design_Settings',
+//            'SEO_Settings',
+//            'Advanced_Section',
+//            'General_Section',
+//            'Content_Section',
+//            'Social_Section',
+//            'Design_Section',
+//            'SEO_Section',
+//            'Advanced_Section',
+//            'General_Field',
+//            'Content_Field',
+//            'Social_Field',
+//            'Design_Field',
+//            'SEO_Field',
+//            'Advanced_Field',
+//        ];
+//        foreach ($classes as $class) {
+//            $class_instance = new $class();
+//            return $class_instance;
+//        }
     }
 
 }
