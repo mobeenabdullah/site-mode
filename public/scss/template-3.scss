@@ -15,7 +15,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 8rem;
-    
+
     @extend %position-relative;
     @extend %width-100-height-100vh;
     &__left {
@@ -53,39 +53,29 @@
                 margin-bottom: 1.2rem;
             }
             & .sub_title {
-                font-size: 2rem;
-                line-height: 7rem;
+                @include font_mixin(2rem, 700, 7rem, left);
                 letter-spacing: 0.2rem;
-                text-align: left;
                 color: var(--template-three-text-color);
-                font-weight: 700;
                 text-transform: uppercase;
             }
 
             & .main_title {
-                font-size: 5.4rem;
-                font-weight: 700;
-                text-align: left;
-                line-height: 6.4rem;
+                @include font_mixin(5.4rem, 700, 6.4rem, left);
                 color: var(--template-three-primary-color);
                 margin-bottom: 2rem;
             }
             &-text {
                 margin-bottom: 8rem;
                 & p {
-                    font-size: 2rem;
-                    text-align: left;
-                    line-height: 3.2rem;
+                    @include font_mixin(2rem, 300, 3.2rem, left);
                     color: var(--base-black-color);
                     max-width: 71.3rem;
-                    font-weight: 300;
                     opacity: 1;
                 }
             }
             &-social {
                 & .sub_title {
-                    font-size: 1.8rem;
-                    line-height: 2.8rem;
+                    @include font_mixin(1.8rem, null, 2.8rem, null);
                     margin-bottom: 2rem;
                 }
                 & .social_media {
@@ -103,7 +93,7 @@
 
                             & svg {
                                 & path, & circle {
-                                    fill: var(--template-three-primary-color;
+                                    fill: var(--template-three-primary-color);
                                 }
                             }
 
@@ -157,15 +147,13 @@
                 @include flex_mixin(flex, center, flex-start, column, null);
 
                 &-text p {
-                    line-height: 4.4rem;
-                    font-size: 3rem;
+                    @include font_mixin(3rem, null, 4.4rem, null);
                 }
                 & .main_title {
-                    font-size: 5rem;
-                    line-height: 6.5rem;
+                    @include font_mixin(5rem, null, 6.5rem, null);
                 }
                 & .sub_title {
-                    font-size: 3rem;
+                    @include font_mixin(3rem, null, null, null);
                 }
                 &-social {
                     & .social_media {
@@ -174,8 +162,9 @@
                                 @include width_height_mixin(6rem, 6rem);
                                 @include flex_mixin(flex, center, center, null, null);
                                 border-radius: 50%;
+                                @include font_mixin(null, null, null, center);
                                 text-align: center;
-                                border: 1px solid var(--uc-light-blue-color);
+                                border: 1px solid var(--base-border-color);
                                 padding: 1.3rem;
                             }
                         }

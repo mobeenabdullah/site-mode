@@ -1,19 +1,5 @@
 @import './base';
 
-%width-100-height-100vh {
-    @include width_height_mixin(100%, 100vh);
-}
-%width-100-height-100 {
-    @include width_height_mixin(100%, 100%);
-}
-%position-relative {
-    @include position_mixin(relative, null, null, null, null);
-}
-%position-absolute-top-left {
-    @include position_mixin(absolute, 0, null, null, 0);
-}
-
-
 // hero section start
 .wrapper {
     @extend %width-100-height-100vh;
