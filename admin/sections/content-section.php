@@ -25,7 +25,7 @@ class Content_Section
     {
         //Content Section
         add_settings_section('rex-maintenance-content-logo-section', '', [$this, 'rex_maintenance_content_logo_section_callback'], 'rex-maintenance-options-one');
-        add_settings_section('rex-maintenance-content-text-section', 'Content textarea', [$this, 'rex_maintenance_content_customization_section_callback'], 'rex-maintenance-options-one');
+        add_settings_section('rex-maintenance-content-text-section', '', [$this, 'rex_maintenance_content_customization_section_callback'], 'rex-maintenance-options-one');
 
     }
     public function rex_maintenance_content_customization_section_callback()
