@@ -27,6 +27,7 @@ class General_Settings
         register_setting('wprex-maintenance-general-group', 'wprex-redirect-url-settings');
         register_setting('wprex-maintenance-general-group', 'wprex-delay-settings');
         register_setting('wprex-maintenance-general-group', 'wprex-login-icon-setting');
+        register_setting('wprex-maintenance-general-group', 'wprex-login-url-setting');
     }
 }
 

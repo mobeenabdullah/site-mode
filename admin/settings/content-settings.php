@@ -23,13 +23,13 @@ class Content_Settings
 
     public function add_settings()
     {
-        register_setting('rex-maintenance-setting-content-group', 'content-logo-type-setting');
-        register_setting('rex-maintenance-setting-content-group', 'content-logo-settings');
-        register_setting('rex-maintenance-setting-content-group', 'text-logo-setting', ['default' => bloginfo('name')]);
-        register_setting('rex-maintenance-setting-content-group', 'disable-logo-setting');
-        register_setting('rex-maintenance-setting-content-group', 'content-headline-settings', ['default' => 'Headline Here']);
-        register_setting('rex-maintenance-setting-content-group', 'content-content-settings', ['default' => 'Write some content']);
-        register_setting('rex-maintenance-setting-content-group', 'content-bg-image-settings');
+
+        register_setting('rex-maintenance-setting-content-group', 'content-text-logo-setting', ['default' => bloginfo('name')]);
+        register_setting('rex-maintenance-setting-content-group', 'content-image-logo-setting');
+        register_setting('rex-maintenance-setting-content-group', 'content-disable-logo-setting');
+        register_setting('rex-maintenance-setting-content-group', 'content-heading-setting', ['default' => 'Under Maintenance']);
+        register_setting('rex-maintenance-setting-content-group', 'content-description-setting', ['default' => 'Site will be available soon. Thank you for your patience!']);
+        register_setting('rex-maintenance-setting-content-group', 'content-bg-image-setting');
     }
 
 }
