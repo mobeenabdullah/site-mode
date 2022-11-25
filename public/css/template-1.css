@@ -86,7 +86,7 @@ body {
 	height: 100vh;
 }
 
-.wrapper .uc_image img {
+.wrapper .uc_image img, .wrapper .login_icon a svg, .construction_cover-icons .social_media li a {
 	width: 100%;
 	height: 100%;
 }
@@ -104,6 +104,9 @@ body {
 .wrapper {
 	overflow: hidden;
 	z-index: 1;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 .wrapper_overlay {
@@ -131,7 +134,11 @@ body {
 }
 
 .wrapper .login_icon a {
-	display: block;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	display: flex !important;
+	padding: 1rem;
 }
 
 .construction_cover {
@@ -197,10 +204,8 @@ body {
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	width: 5.3rem;
-	height: 5.3rem;
 	padding: 1.2rem;
-	background-color: var(--base-black-color);
+	background-color: var(--base-white-color);
 	border: 1px solid var(--base-orange-color);
 	border-radius: 0.4rem;
 	transform: rotate(45deg);
@@ -215,11 +220,11 @@ body {
 }
 
 .construction_cover-icons .social_media li a svg path, .construction_cover-icons .social_media li a svg circle {
-	fill: var(----template-one-primary-color);
+	fill: var(--base-black-color);
 }
 
 .construction_cover-icons .social_media li a:hover {
-	background-color: var(----template-one-primary-color);
+	background-color: var(--template-one-primary-color);
 	transition: all 0.4s;
 }
 

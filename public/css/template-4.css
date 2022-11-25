@@ -86,7 +86,7 @@ body {
 	height: 100vh;
 }
 
-.uc_header-img, .uc_header-img img, .construction_cover__left--img img, .construction_cover__right--img img {
+.uc_header-img, .uc_header-img img, .construction_cover__left--img img, .construction_cover__right--img img, .uc_footer .social_media li a, .uc_footer .social_media li a svg {
 	width: 100%;
 	height: 100%;
 }
@@ -215,21 +215,20 @@ body {
 .uc_footer .social_media {
 	display: flex;
 	justify-content: center;
-	gap: 1.5re;
+	gap: 1.5rem;
 	list-style: none;
 }
 
 .uc_footer .social_media li {
-	padding: 0.8rem;
+	padding: 0.3rem;
+	width: 3rem;
+	height: 3rem;
 }
 
 .uc_footer .social_media li a {
+	display: flex;
+	justify-content: center;
 	text-align: center;
-}
-
-.uc_footer .social_media li a svg {
-	width: 2rem;
-	height: 2rem;
 }
 
 .uc_footer .social_media li a svg path, .uc_footer .social_media li a svg circle {

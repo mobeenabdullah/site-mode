@@ -103,6 +103,9 @@ body {
 
 .wrapper {
 	z-index: 1;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 }
 
 .wrapper .container-fluid {
@@ -146,7 +149,7 @@ body {
 
 .construction_cover__right {
 	display: flex;
-	align-items: center;
+	align-items: start;
 	justify-content: center;
 	flex-direction: column;
 	padding: 0 10rem;
@@ -164,9 +167,9 @@ body {
 }
 
 .construction_cover__right--heading .main_title {
-	font-size: 6.5rem;
-	font-weight: 600;
-	line-height: 7.6rem;
+	font-size: 5rem;
+	font-weight: 700;
+	line-height: 6.6rem;
 	text-align: left;
 	color: var(--template-two-primary-color);
 	margin-bottom: 2.4rem;
