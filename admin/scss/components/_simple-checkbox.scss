@@ -21,7 +21,7 @@
     }
   }
   & input + label::before {
-    border: $border-width solid $secondary_color;
+    border: $border-width solid $secondary-color;
     content: "";
     height: $checkbox-height-before;
     width: $checkbox-width-before;
@@ -41,7 +41,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    transition: $transition-opacity;
+    transition: $transition-all;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -49,12 +49,12 @@
     border: $border-width solid transparent;
   }
   & input:checked + label::before {
-    background-color: $primary_color;
-    border-color: $primary_color
+    background-color: $primary-color;
+    border-color: $primary-color
   }
   & input:checked + label::after {
     opacity: 1;
-    color: $white_color;
+    color: $white-color;
   }
   & input:focus + label::before {
     @include box-shadow();

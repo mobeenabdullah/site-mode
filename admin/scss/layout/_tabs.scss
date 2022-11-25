@@ -1,22 +1,19 @@
 // Tabs
 .toplevel_page_wprex-maintenance-mode {
   & .nav-tab-wrapper {
-    @include border(bottom, 1px, solid, rgba($secondary_color, .1));
-    display: flex;
-    align-items: end;
+    @include border(bottom, 1px, solid, rgba($secondary-color, .1));
+    @include flex_mixin(flex, null, end, null, null);    
     & .nav-tab {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      background-color: $white_color;
+      @include flex_mixin(flex, null, center, null, 10px);
+      background-color: $white-color;
       margin: 0;
       padding: 12px 30px;
       text-transform: uppercase;
-      border: 1px solid rgba($secondary_color, .2);
+      border: 1px solid rgba($secondary-color, .2);
       border-right: none;
       border-bottom: none;
       opacity: 0.8;
-      transition: $transition-opacity;
+      transition: $transition-all;
       &:hover {
         opacity: 1;
       }
@@ -24,18 +21,18 @@
         border-top-left-radius: 5px;
       }
       &:last-child {
-        @include border(right, 1px, solid, rgba($secondary_color, .2));
+        @include border(right, 1px, solid, rgba($secondary-color, .2));
         border-top-right-radius: 5px;
       }
       & svg {
         width: 18px;
         & path, & circle {
-          fill: $primary_color;
+          fill: $primary-color;
         }
       }
       &.nav-tab-active {
-        background-color: $primary_color;
-        color: $white_color;
+        background-color: $primary-color;
+        color: $white-color;
         border-bottom: none;
         opacity: 1;
         padding: 15px 30px;
@@ -43,7 +40,7 @@
         border-top-right-radius: 5px;
         & svg {
           & path, & circle {
-            fill: $white_color;
+            fill: $white-color;
           }
         }
       }
@@ -53,7 +50,7 @@
       }
     }
     & + form {
-      background-color: $white_color;
+      background-color: $white-color;
       padding: 20px 20px 20px 20px;
       & h2, .submit {
         padding: 0;
@@ -71,28 +68,36 @@
 
 // Content Tab Section
 .um_btn {
-  background: $primary_color !important;
-  border-color: $primary_color !important;
-  color: $white_color !important;
+  background: $btn-bg-color !important;
+  border-color: $btn-border-color !important;
+  border-width: $btn-border-width !important;
+  color: $white-color !important;
+  padding: $btn-padding !important;
+  border-radius: $btn-radius !important;
+  font-size: $btn-font-size !important;
+  line-height: $btn-line-height !important;
   width: auto !important;
   height: auto !important;
 
   &:hover {
-    background-color: darken($primary_color, 3) !important;
-    border-color: darken($primary_color, 3) !important;
+    background-color: darken($btn-bg-color, 3) !important;
+    border-color: darken($btn-bg-color, 3) !important;
   }
 }
 .um_btn_outline {
-  background: $secondary_color !important;
-  border-color: $secondary_color !important;
-  color: $white_color !important;
+  background: $secondary-color !important;
+  border-color: $secondary-color !important;
+  color: $white-color !important;
+  padding: $btn-padding !important;
+  border-radius: $btn-radius !important;
+  font-size: $btn-font-size !important;
+  line-height: $btn-line-height !important;
   width: auto !important;
   height: auto !important;
 
   &:hover {
-    background-color: $primary_color !important;
-    border-color: $primary_color !important;
-    color: $white_color !important;
+    background-color: darken($btn-bg-color, 3) !important;
+    border-color: darken($btn-bg-color, 3) !important;
   }
 }
 
@@ -107,9 +112,7 @@
   width: 60%;
 }
 .logo_type_wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex_mixin(flex, null, center, null, 10px);  
 }
 .bg_image_wrapper {
   position: relative;
@@ -146,16 +149,16 @@
     width: auto !important;
     height: auto !important;
     display: inline-block;
-    background: $secondary_color !important;
-    border-color: $secondary_color !important;
-    color: $white_color !important;
+    background: $secondary-color !important;
+    border-color: $secondary-color !important;
+    color: $white-color !important;
     width: auto !important;
     height: auto !important;
 
     &:hover {
-      background-color: $primary_color !important;
-      border-color: $primary_color !important;
-      color: $white_color !important;
+      background-color: $primary-color !important;
+      border-color: $primary-color !important;
+      color: $white-color !important;
     }
   }
 }
@@ -171,12 +174,11 @@
 }
 
 .template_thumb {
-  display: flex;
-  flex-direction: column;
+  @include flex_mixin(flex, null, null, column, null);  
   width: 100%;
   height: auto;
   position: relative;
-  background: #fff;
+  background: $white-color;
   border: 1px solid rgba(0,0,0,0.1);
   overflow: hidden;
   border-radius: 0.25rem;
@@ -204,10 +206,8 @@
     }
   }
   & .template_actions {
-    display: flex;
-    justify-content: space-between;
-    padding: 20px;
-    align-items: center;
+    @include flex_mixin(flex, space-between, center, null, 10px);    
+    padding: 20px;    
     border-top: 1px solid rgba(255,255,255,0.4);
     & .template_title {
       &-title {
@@ -239,15 +239,14 @@
         box-sizing: border-box;
         background: #2271b1;
         border-color: #2271b1;
-        color: #fff;
+        color: $white-color;       
         text-shadow: none;
         vertical-align: baseline;
         transition: all .2s;
         &:hover {
           background: #135e96;
           border-color: #135e96;
-          color: #fff;
-        }
+          color: $white-color       }
       }
     }
   }
@@ -257,7 +256,7 @@
   & .template_actions {
     & .template_title {
       &-title {
-        color: #ffffff;
+        color: $white-color;
       }
     }
     & .active_template-btn {
@@ -290,9 +289,7 @@
   pointer-events: none;
 }
 .social_media_field_wrapper {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  @include flex_mixin(flex, null, center, null, 10px);  
   & .um_checkbox_wrapper {
     margin-bottom: 0;
     margin-top: -2px;
@@ -300,9 +297,7 @@
 }
 .socialmedia__wrapper {
   & .social_media_field {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    @include flex_mixin(flex, null, center, null, 5px);    
     margin-bottom: 10px;
     & button {
       cursor: pointer;
@@ -319,7 +314,7 @@
     & %sort_icon {
       & svg {
         & path {
-          fill: $secondary_color;
+          fill: $secondary-color;
         }
       }
     }
@@ -330,37 +325,32 @@
         height: 29px;
         border-radius: 3px;
         background-color: rgba(0,0,0,0.05);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex_mixin(flex, center, center, null, null);        
         padding-left: 3px;
         padding-right: 2px;
         & svg {
           width: 16px;
           & path {
-            fill: rgba($secondary_color,0.8);
+            fill: rgba($secondary-color,0.8);
           }
         }
       }
     }
     & .social_icon {
-      border: 1px solid $secondary_color;
+      border: 1px solid $secondary-color;
       width: 28px;
       height: 28px;
-      background-color: $secondary_color;
+      background-color: $secondary-color;
       border-radius: .3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      @include flex_mixin(flex, center, center, null, null);        
+      
       & span {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flex_mixin(flex, center, center, null, null);                
         width: 18px;
         height: auto;
         & svg {
           & path, & circle {
-            fill: $white_color;
+            fill: $white-color;
           }
         }
       }
@@ -390,7 +380,7 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background-color: rgba($primary_color,.10);
+        background-color: rgba($primary-color,.10);
         transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
         opacity: 1;
         z-index: -1;
@@ -399,7 +389,7 @@
         & button {
           & svg {
             & path {
-              fill: $primary_color;
+              fill: $primary-color;
             }
           }
         }

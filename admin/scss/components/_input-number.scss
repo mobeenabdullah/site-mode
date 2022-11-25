@@ -14,10 +14,10 @@ input[type="number"] {
   overflow: hidden;
   position: relative;
   & input {
-    color: $secondary_color;
+    color: $secondary-color;
     border-radius: $form-field-border-radius;
-    background-color: $white_color;
-    border: $border-width solid $secondary_color;
+    background-color: $white-color;
+    border: $border-width solid $secondary-color;
     font-size: $form-field-font-size;
     display: block;
     padding: 0 2.5rem 0 1em;
@@ -35,7 +35,8 @@ input[type="number"] {
     //height: 100%;
     width: 2rem;
     height: 100%;
-    border-radius: $form-field-border-radius;
+    border-top-right-radius: $form-field-border-radius;
+    border-bottom-right-radius: $form-field-border-radius;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     overflow: hidden;
@@ -45,7 +46,7 @@ input[type="number"] {
     & .um_InputButton {
       font-size: $form-field-font-size;
       cursor: pointer;
-      border-bottom: $border-width solid darken($secondary_color, 3%);
+      border-bottom: $border-width solid darken($secondary-color, 3%);
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -55,13 +56,13 @@ input[type="number"] {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $secondary_color;
-      transition: $transition-opacity;
+      background-color: $secondary-color;
+      transition: $transition-all;
       & svg {
         width: 1rem;
         height: 1rem;
         & path {
-          fill: $white_color;
+          fill: $white-color;
         }
       }
       &:active {
@@ -79,11 +80,11 @@ input[type="number"] {
         }
       }
       &:hover {
-        background-color: darken($secondary_color, 5%);
-        border-bottom: $border-width solid darken($primary_color, 3%);
+        background-color: darken($secondary-color, 5%);
+        border-bottom: $border-width solid transparent;        
         & svg {
           & path {
-            fill: $white_color;
+            fill: $white-color;
           }
         }
       }

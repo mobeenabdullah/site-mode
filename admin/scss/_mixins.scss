@@ -1,9 +1,18 @@
 // Box Shadow mixin
-@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($primary_color, 0.5)) {
+@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($primary-color, 0.5)) {
   box-shadow: $x-axis $y-axis $blur $spread $color;
 }
 
-// border Mixin
+// Border Mixin
 @mixin border($direction, $width, $style, $color) {
   border-#{$direction}: $width $style $color;
+}
+
+// Mixin for basic flex
+@mixin flex_mixin($display, $x, $y, $direction, $gap) {
+  display: $display;
+  align-items: $y;
+  justify-content: $x;
+  flex-direction: $direction;
+  gap: $gap;
 }

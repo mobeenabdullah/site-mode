@@ -207,5 +207,16 @@ jQuery(function ($) {
 
         $('.disable_media').on('click', disableSingleMedia);
         $('.disable_media').load(disableSingleMedia());
+
+        
+        function enableDisableLoginIcon() {          
+          if($('.enable_login_icon').is(":checked")) {
+            $('.login_url_field').show();
+          } else {
+            $('.login_url_field').hide();
+          }
+        }
+        $('.enable_login_icon').on('click', enableDisableLoginIcon);
+        $('.enable_login_icon').load(enableDisableLoginIcon);
     })
 });
