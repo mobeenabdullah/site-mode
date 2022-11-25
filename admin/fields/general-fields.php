@@ -66,10 +66,10 @@ class General_Field
     public function rex_maintenance_login_cb() {
         ?>
         <div class="um_checkbox_wrapper">
-            <input type="checkbox" id="login_icon" name="wprex-login-icon-setting" value="1" <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
+            <input type="checkbox" id="login_icon" class="enable_login_icon" name="wprex-login-icon-setting" value="1" <?php checked(1, get_option('wprex-login-icon-setting'), true); ?> />
             <label for="login_icon">Login Icon</label>
         </div>
-        <div class="um_input_cover label_top">
+        <div class="um_input_cover label_top login_url_field">
             <label for="redirect_url">Login URL</label>
             <input type="text" id="redirect_url" name="wprex-login-url-setting" value="login url" <?php checked(1, get_option('wprex-login-url-setting'), true); ?> />
         </div>

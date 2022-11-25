@@ -599,6 +599,7 @@
 	background: #ffffff;
 	border-radius: 0.25em;
 	margin-bottom: 1.5rem;
+	overflow: hidden;
 }
 
 .um_select select {
@@ -612,11 +613,12 @@
 	background: #ffffff;
 	background-image: none;
 	flex: 1;
-	padding: 0 1em;
+	padding: 0 3rem 0 1rem;
 	color: black;
 	cursor: pointer;
 	font-size: 14px;
 	font-family: "Open Sans", sans-serif;
+	width: 100%;
 }
 
 .um_select select::-ms-expand {
@@ -761,7 +763,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 .um_number-cover .um_number-cover--nav {
 	width: 2rem;
 	height: 100%;
-	border-radius: 0.25em;
+	border-top-right-radius: 0.25em;
+	border-bottom-right-radius: 0.25em;
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
 	overflow: hidden;
@@ -814,7 +817,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 .um_number-cover .um_number-cover--nav .um_InputButton:hover {
 	background-color: #686868;
-	border-bottom: 1px solid #6368ce;
+	border-bottom: 1px solid transparent;
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton:hover svg path {

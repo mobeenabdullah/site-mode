@@ -7,6 +7,7 @@
   background: $white_color;
   border-radius: $form-field-border-radius;
   margin-bottom: $input-bottom-spacing;
+  overflow: hidden;
   select {
     -webkit-appearance:none;
     -moz-appearance:none;
@@ -18,11 +19,13 @@
     background: $white_color;
     background-image: none;
     flex: 1;
-    padding: $form-field-padding;
+    padding: 0 3rem 0 1rem;
     color:black;
     cursor:pointer;
     font-size: $form-field-font-size;
     font-family: $body-font-family;
+    width: 100%;
+
     &::-ms-expand {
       display: none;
     }

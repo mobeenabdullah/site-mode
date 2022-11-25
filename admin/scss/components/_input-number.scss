@@ -35,7 +35,8 @@ input[type="number"] {
     //height: 100%;
     width: 2rem;
     height: 100%;
-    border-radius: $form-field-border-radius;
+    border-top-right-radius: $form-field-border-radius;
+    border-bottom-right-radius: $form-field-border-radius;
     display: grid;
     grid-template-rows: repeat(2, 1fr);
     overflow: hidden;
@@ -80,7 +81,7 @@ input[type="number"] {
       }
       &:hover {
         background-color: darken($secondary_color, 5%);
-        border-bottom: $border-width solid darken($primary_color, 3%);
+        border-bottom: $border-width solid transparent;        
         & svg {
           & path {
             fill: $white_color;
