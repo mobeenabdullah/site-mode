@@ -6,6 +6,9 @@
     @extend %position-relative;
     overflow: hidden;
     z-index: 1;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 
     &_overlay {
         @extend %position-absolute-top-left;
@@ -34,11 +37,15 @@
         @include flex_mixin(flex, center, center, null, null);
 
         &  a {
-            display: block;
+            @include flex_mixin(flex, center, center, null, null);
+            display: flex !important;
+            padding: 1rem;
+            & svg {
+                @extend %width-100-height-100;
+            }
+            
         }
-        & svg {
-            @include width_height_mixin(3rem, null);
-        }
+        
 
     }
 }
@@ -93,9 +100,9 @@
             & a {
                 @include flex_mixin(flex, center, center, null, null);
                 text-align: center;
-                @include width_height_mixin(5.3rem, 5.3rem);
+                @extend %width-100-height-100;
                 padding: 1.2rem;
-                background-color: var(--base-black-color);
+                background-color: var(--base-white-color);
                 border: 1px solid var(--base-orange-color);
                 border-radius: 0.4rem;
                 transform: rotate(45deg);
@@ -107,12 +114,12 @@
                     transform: rotate(-45deg);
 
                     & path, & circle {
-                        fill: var(----template-one-primary-color);;
+                        fill: var(--base-black-color);
                     }
                 }
 
                 &:hover {
-                    background-color: var(----template-one-primary-color);
+                    background-color: var(--template-one-primary-color);
                     transition: all 0.4s;
                     & svg {
                         & path, & circle {
