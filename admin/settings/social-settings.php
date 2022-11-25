@@ -25,11 +25,11 @@ class Social_Settings
     {
         //Settings for Social Section
         register_setting('rex-maintenance-setting-social-group', 'show-social-icons-setting');
-        register_setting('rex-maintenance-setting-social-group', 'content-social-fb-settings',[ 'default' => 'username' ]);
-        register_setting('rex-maintenance-setting-social-group','content-social-fb-checkbox-settings');
-        register_setting('rex-maintenance-setting-social-group', 'content-social-linkedin-settings',[ 'default' => 'username' ]);
-        register_setting('rex-maintenance-setting-social-group','content-social-linkedin-checkbox-settings');
-        register_setting('rex-maintenance-setting-social-group', 'content-social-twitter-settings',[ 'default' => 'username' ]);
-        register_setting('rex-maintenance-setting-social-group','content-social-twitter-checkbox-settings');
+        register_setting('rex-maintenance-setting-social-group', 'content-social-fb-setting',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group', 'content-social-linkedin-setting',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group', 'content-social-twitter-setting',[ 'default' => 'username' ]);
+        register_setting('rex-maintenance-setting-social-group', 'content-social-add-setting');
+        register_setting('rex-maintenance-setting-social-group', 'content-social-delete-setting');
+
     }
 }
