@@ -23,7 +23,7 @@
       position: absolute;
       top: 0;
       border-radius: $border-radius-50;
-      border: $border-width solid $secondary_color;
+      border: $border-width solid $secondary-color;
     }
     & + label::after {
       content: '\002B24';
@@ -34,12 +34,12 @@
       width: $checkbox-width-after;
       left: 0;
       top: 0;
-      transition: $transition-opacity;
+      transition: $transition-all;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: $checkbox-height-after - 6;
-      color: $primary_color;
+      color: $primary-color;
       border: $border-width solid transparent;
     }
     &:checked + label::after {

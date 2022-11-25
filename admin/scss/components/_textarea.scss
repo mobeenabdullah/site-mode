@@ -3,14 +3,14 @@
     width: auto;
     height: auto;
     line-height: 3;
-    background: $white_color;
-    border: $border-width solid $secondary_color;
+    background: $white-color;
+    border: $border-width solid $secondary-color;
     border-radius: $form-field-border-radius;
     padding: $form-field-padding;
     font-size: $form-field-font-size;
-    font-family: $body-font-family;
+    font-family: $base-font-family;
     &:active, &:hover, &:focus-visible {
-      border-color: $primary_color;
+      border-color: $primary-color;
     }
     &:focus {
       @include box-shadow();

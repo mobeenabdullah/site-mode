@@ -1,3 +1,7 @@
+html {
+	font-size: 62.5%;
+}
+
 .screen-reading {
 	border: 0;
 	clip: rect(1px, 1px, 1px, 1px);
@@ -19,7 +23,7 @@
 }
 
 .toplevel_page_wprex-maintenance-mode .nav-tab-wrapper {
-	border-bottom: 1px solid rgba(117, 117, 117, 0.1);
+	border-bottom: 1px solid rgba(32, 32, 32, 0.1);
 	display: flex;
 	align-items: end;
 }
@@ -32,11 +36,11 @@
 	margin: 0;
 	padding: 12px 30px;
 	text-transform: uppercase;
-	border: 1px solid rgba(117, 117, 117, 0.2);
+	border: 1px solid rgba(32, 32, 32, 0.2);
 	border-right: none;
 	border-bottom: none;
 	opacity: 0.8;
-	transition: opacity 0.2s ease-in-out;
+	transition: all 0.2s;
 }
 
 .toplevel_page_wprex-maintenance-mode .nav-tab-wrapper .nav-tab:hover {
@@ -48,7 +52,7 @@
 }
 
 .toplevel_page_wprex-maintenance-mode .nav-tab-wrapper .nav-tab:last-child {
-	border-right: 1px solid rgba(117, 117, 117, 0.2);
+	border-right: 1px solid rgba(32, 32, 32, 0.2);
 	border-top-right-radius: 5px;
 }
 
@@ -98,7 +102,12 @@
 .um_btn {
 	background: #6F73D2 !important;
 	border-color: #6F73D2 !important;
+	border-width: 1px !important;
 	color: #ffffff !important;
+	padding: 0.6rem 1.5rem !important;
+	border-radius: 0.5rem !important;
+	font-size: 1.4rem !important;
+	line-height: 1.5 !important;
 	width: auto !important;
 	height: auto !important;
 }
@@ -109,17 +118,20 @@
 }
 
 .um_btn_outline {
-	background: #757575 !important;
-	border-color: #757575 !important;
+	background: #202020 !important;
+	border-color: #202020 !important;
 	color: #ffffff !important;
+	padding: 0.6rem 1.5rem !important;
+	border-radius: 0.5rem !important;
+	font-size: 1.4rem !important;
+	line-height: 1.5 !important;
 	width: auto !important;
 	height: auto !important;
 }
 
 .um_btn_outline:hover {
-	background-color: #6F73D2 !important;
-	border-color: #6F73D2 !important;
-	color: #ffffff !important;
+	background-color: #6368ce !important;
+	border-color: #6368ce !important;
 }
 
 .bg-image-upload {
@@ -180,8 +192,8 @@
 	width: auto !important;
 	height: auto !important;
 	display: inline-block;
-	background: #757575 !important;
-	border-color: #757575 !important;
+	background: #202020 !important;
+	border-color: #202020 !important;
 	color: #ffffff !important;
 	width: auto !important;
 	height: auto !important;
@@ -205,7 +217,7 @@
 	width: 100%;
 	height: auto;
 	position: relative;
-	background: #fff;
+	background: #ffffff;
 	border: 1px solid rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 	border-radius: 0.25rem;
@@ -240,9 +252,10 @@
 
 .template_thumb .template_actions {
 	display: flex;
-	justify-content: space-between;
-	padding: 20px;
 	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 20px;
 	border-top: 1px solid rgba(255, 255, 255, 0.4);
 }
 
@@ -274,7 +287,7 @@
 	box-sizing: border-box;
 	background: #2271b1;
 	border-color: #2271b1;
-	color: #fff;
+	color: #ffffff;
 	text-shadow: none;
 	vertical-align: baseline;
 	transition: all .2s;
@@ -283,7 +296,7 @@
 .template_thumb .template_actions .active_template-btn a:hover, .template_thumb .template_actions .active_template-btn span:hover {
 	background: #135e96;
 	border-color: #135e96;
-	color: #fff;
+	color: #ffffff;
 }
 
 .activated_template {
@@ -352,7 +365,7 @@
 }
 
 .socialmedia__wrapper .social_media_field .sortable_icon svg path, .socialmedia__wrapper .social_media_field .social_delete svg path {
-	fill: #757575;
+	fill: #202020;
 }
 
 .socialmedia__wrapper .social_media_field .sortable_icon {
@@ -375,14 +388,14 @@
 }
 
 .socialmedia__wrapper .social_media_field .sortable_icon button svg path {
-	fill: rgba(117, 117, 117, 0.8);
+	fill: rgba(32, 32, 32, 0.8);
 }
 
 .socialmedia__wrapper .social_media_field .social_icon {
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 	width: 28px;
 	height: 28px;
-	background-color: #757575;
+	background-color: #202020;
 	border-radius: .3rem;
 	display: flex;
 	align-items: center;
@@ -391,8 +404,8 @@
 
 .socialmedia__wrapper .social_media_field .social_icon span {
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
 	width: 18px;
 	height: auto;
 }
@@ -486,7 +499,7 @@
 }
 
 .um_checkbox_wrapper input + label::before {
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 	content: "";
 	height: 19px;
 	width: 19px;
@@ -507,7 +520,7 @@
 	position: absolute;
 	left: 0;
 	top: 0;
-	transition: opacity 0.2s ease-in-out;
+	transition: all 0.2s;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -560,7 +573,7 @@
 	position: absolute;
 	top: 0;
 	border-radius: 50%;
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 }
 
 .um_radio_wrapper input + label::after {
@@ -572,7 +585,7 @@
 	width: 19px;
 	left: 0;
 	top: 0;
-	transition: opacity 0.2s ease-in-out;
+	transition: all 0.2s;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -599,7 +612,6 @@
 	background: #ffffff;
 	border-radius: 0.25em;
 	margin-bottom: 1.5rem;
-	overflow: hidden;
 }
 
 .um_select select {
@@ -609,7 +621,7 @@
 	appearance: none;
 	outline: 0;
 	box-shadow: none;
-	border: 1px solid #757575 !important;
+	border: 1px solid #202020 !important;
 	background: #ffffff;
 	background-image: none;
 	flex: 1;
@@ -618,6 +630,7 @@
 	cursor: pointer;
 	font-size: 14px;
 	font-family: "Open Sans", sans-serif;
+	max-width: 100%;
 	width: 100%;
 }
 
@@ -626,11 +639,12 @@
 }
 
 .um_select select:hover {
-	color: #757575;
+	color: #202020;
 }
 
 .um_select select:focus {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	border: 1px solid #6F73D2 !important;
 	outline: 1px solid transparent;
 }
 
@@ -639,18 +653,19 @@
 	height: 0;
 	border-left: 5px solid transparent;
 	border-right: 5px solid transparent;
-	border-top: 5px solid #757575;
+	border-top: 5px solid #202020;
 	position: absolute;
 	top: 50%;
 	right: 15px;
 	transform: translateY(-50%);
-	transition: 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	transition: all 0.2s;
 	cursor: pointer;
 	pointer-events: none;
 }
 
 .um_select:hover {
-	color: #757575;
+	color: #202020;
+	opacity: 1;
 }
 
 .um_select:hover .arrow-down {
@@ -662,7 +677,7 @@
 	height: 3em;
 	line-height: 3;
 	background: #ffffff;
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 	border-radius: 0.25em;
 	padding: 0 1em;
 	font-size: 14px;
@@ -684,24 +699,24 @@
 }
 
 .um_toggle .toggle-control {
-	transition: 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	transition: all 0.2s;
 	width: 2.5em;
 	height: 1.25em;
 	display: block;
-	border: 2px solid #757575;
+	border: 2px solid #202020;
 	border-radius: 1.25em;
-	background-color: #757575;
+	background-color: #202020;
 	position: relative;
 	cursor: pointer;
 }
 
 .um_toggle .toggle-control:after {
-	transition: 0.3s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+	transition: all 0.2s;
 	content: "";
 	width: 1.25em;
 	height: 1.25em;
 	display: block;
-	background-color: #fff;
+	background-color: #ffffff;
 	border-radius: 50%;
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 3px 2px rgba(0, 0, 0, 0.2);
 	position: absolute;
@@ -742,10 +757,10 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 }
 
 .um_number-cover input {
-	color: #757575;
+	color: #202020;
 	border-radius: 0.25em;
 	background-color: #ffffff;
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 	font-size: 14px;
 	display: block;
 	padding: 0 2.5rem 0 1em;
@@ -776,7 +791,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 .um_number-cover .um_number-cover--nav .um_InputButton {
 	font-size: 14px;
 	cursor: pointer;
-	border-bottom: 1px solid #6d6d6d;
+	border-bottom: 1px solid #181818;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
@@ -786,8 +801,8 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: #757575;
-	transition: opacity 0.2s ease-in-out;
+	background-color: #202020;
+	transition: all 0.2s;
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton svg {
@@ -816,7 +831,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 }
 
 .um_number-cover .um_number-cover--nav .um_InputButton:hover {
-	background-color: #686868;
+	background-color: #131313;
 	border-bottom: 1px solid transparent;
 }
 
@@ -829,7 +844,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	height: auto;
 	line-height: 3;
 	background: #ffffff;
-	border: 1px solid #757575;
+	border: 1px solid #202020;
 	border-radius: 0.25em;
 	padding: 0 1em;
 	font-size: 14px;
