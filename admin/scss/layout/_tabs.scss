@@ -321,13 +321,14 @@
     & .sortable_icon {
       margin-right: 10px;
       @extend %sort_icon;
-      & button {
+      & span {
         height: 29px;
         border-radius: 3px;
         background-color: rgba(0,0,0,0.05);
         @include flex_mixin(flex, center, center, null, null);        
         padding-left: 3px;
         padding-right: 2px;
+        cursor: pointer;
         & svg {
           width: 16px;
           & path {
@@ -354,10 +355,7 @@
           }
         }
       }
-    }
-    & .social_field {
-
-    }
+    }  
     & .social_delete {
       @extend %sort_icon;
       width: 30px;
