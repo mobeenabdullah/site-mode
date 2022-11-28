@@ -221,44 +221,23 @@ jQuery(function ($) {
     })
 
     // Drag and Drop JQuery
-    $( "#sortable" ).sortable();
-
-    // Add and Remove social media rows
-    var row = $(".ui-state-default");
-
-    var row = $(".ui-state-default");
-
-    function addRow() {
-      row.clone(true, true).appendTo("#sortable");
-    }
-    
-    function removeRow(button) {
-      button.closest("li.ui-state-default").remove();
-    }
-    
-    $('#sortable .ui-state-default:first-child').find('.remove').hide();
-    
-    /* Doc ready */
-    $(".add").on('click', function () {
-      addRow();  
-      if($("#sortable .ui-state-default").length > 1) {
-        //alert("Can't remove row.");
-        $(".remove").show();
-      }
+    $( "#sortable" ).sortable({
+      cursor: "move"
     });
-    $(".remove").on('click', function () {
-      if($("#sortable .ui-state-default").size() == 1) {
-        //alert("Can't remove row.");
-        $(".remove").hide();
-      } else {
-        removeRow($(this));
-        
-        if($("#sortable .ui-state-default").size() == 1) {
-            $(".remove").hide();
-        }
-        
+    
+    $( "#sortable" ).on( "sortchange", function( event, ui ) {
+      var sortedIDs = $( "#sortable" ).sortable( "toArray" );      
+      console.log(sortedIDs);
+    } );   
+    
+    $('.show_icon').on('click', function() {
+      let socialParentElement = $(this).parent().parent().parent();      
+      if($($(this)).is(':checked')) {        
+        socialParentElement.addClass('disable_media');
+      } else {          
+        socialParentElement.removeClass('disable_media');
       }
-    });
+    })
 
 });
 

@@ -296,6 +296,11 @@
   }
 }
 .socialmedia__wrapper {
+  & ul {
+    & .disable_media {
+      opacity: 0.5;      
+    }
+  }
   & .social_media_field {
     @include flex_mixin(flex, null, center, null, 5px);    
     margin-bottom: 10px;
@@ -322,13 +327,13 @@
       margin-right: 10px;
       @extend %sort_icon;
       & span {
-        height: 29px;
-        border-radius: 3px;
-        background-color: rgba(0,0,0,0.05);
-        @include flex_mixin(flex, center, center, null, null);        
-        padding-left: 3px;
-        padding-right: 2px;
-        cursor: pointer;
+        // height: 29px;
+        // border-radius: 3px;
+        // background-color: rgba(0,0,0,0.05);
+        // @include flex_mixin(flex, center, center, null, null);        
+        // padding-left: 3px;
+        // padding-right: 2px;
+        cursor: ns-resize;
         & svg {
           width: 16px;
           & path {
@@ -357,6 +362,8 @@
       }
     }  
     & .social_delete {
+      display: flex;
+      align-items: center;
       @extend %sort_icon;
       width: 30px;
       height: 30px;
@@ -368,35 +375,7 @@
           width: 18px;
           height: 18px;
         }
-      }
-      &::before {
-        content: '';
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%,-50%);
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background-color: rgba($primary-color,.10);
-        transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
-        opacity: 1;
-        z-index: -1;
-      }
-      &:hover {
-        & button {
-          & svg {
-            & path {
-              fill: $primary-color;
-            }
-          }
-        }
-        &::before {
-          opacity: 1;
-          width: 100%;
-          height: 100%;
-        }
-      }
+      }     
     }
   }
 }
