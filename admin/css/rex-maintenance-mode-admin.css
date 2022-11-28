@@ -866,3 +866,20 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	margin-bottom: 1rem;
 	font-size: 14px;
 }
+
+.dropzone {
+	padding: 0;
+}
+
+.draggable {
+	padding: 0;
+	cursor: move;
+}
+
+.draggable + .draggable {
+	margin-top: 1.5ch;
+}
+
+.draggable.is-dragging {
+	opacity: 0.5;
+}
