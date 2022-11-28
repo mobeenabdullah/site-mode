@@ -61,3 +61,44 @@
     outline: $outline-width solid transparent;
   }
 }
+
+
+.#{$prefix}_checkbox_show_hide {
+  margin-bottom: 0 !important;
+  height: 100%;
+  width: 100%;
+  & label {
+    padding: 0;
+  }
+  & input + label::before {
+    content: '' !important;
+    background-image: url('../../admin/img/show-regular-24.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  & input + label::after {
+    content: "" !important;
+    background-image: url('../../admin/img/hide-regular-24.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  & input:checked + label::before {
+    background-color: transparent;
+    border-color: transparent;
+  }
+}
+
+
+

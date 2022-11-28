@@ -102,7 +102,7 @@ class Rex_Maintenance_Mode_Admin
 			wp_enqueue_media();
 		}
 		
-		wp_enqueue_script('jquery-ui-min', 'https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js', array('jquery'), $this->version, false);
+		wp_enqueue_script('jquery-ui-draggable', array('jquery'), $this->version, false);
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/rex-maintenance-mode-admin.js', array('jquery'), $this->version, false);
 	}
 }
