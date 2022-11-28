@@ -1,0 +1,17 @@
+.dropzone {    
+    padding: 0;    
+  }
+  
+  .draggable {    
+    padding: 0;    
+    cursor: move;
+  
+    + .draggable {
+      margin-top: 1.5ch;
+    }
+  
+    &.is-dragging {
+      opacity: 0.5;
+    }
+  }
+  
