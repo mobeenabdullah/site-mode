@@ -35,10 +35,11 @@ class Rex_Maintenance_Mode_Setting_page
          * @package    Rex_Maintenance_Mode
          * @subpackage Rex_Maintenance_Mode/includes
          */
+
         foreach ($files as $file) {
-            require_once plugin_dir_path(__DIR__) . "admin/fields/{$file}-fields.php";
-            require_once plugin_dir_path(__DIR__) . "admin/settings/{$file}-settings.php";
-            require_once plugin_dir_path(__DIR__) . "admin/sections/{$file}-section.php";
+            require_once plugin_dir_path(__FILE__) . "fields/{$file}.php";
+            require_once plugin_dir_path(__FILE__) . "settings/{$file}.php";
+            require_once plugin_dir_path(__FILE__) . "sections/{$file}.php";
         }
     }
 

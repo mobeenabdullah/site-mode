@@ -43,7 +43,7 @@ define('REX_MAINTENANCE_MODE_VERSION', '1.0.0');
  */
 function activate_rex_maintenance_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-rex-maintenance-mode-activator.php';
+	require_once plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode-activator.php';
 	Rex_Maintenance_Mode_Activator::activate();
 }
 
@@ -53,7 +53,7 @@ function activate_rex_maintenance_mode()
  */
 function deactivate_rex_maintenance_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-rex-maintenance-mode-deactivator.php';
+	require_once plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode-deactivator.php';
 	Rex_Maintenance_Mode_Deactivator::deactivate();
 }
 
@@ -64,7 +64,7 @@ register_deactivation_hook(__FILE__, 'deactivate_rex_maintenance_mode');
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/class-rex-maintenance-mode.php';
+require plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode.php';
 
 /**
  * Begins execution of the plugin.

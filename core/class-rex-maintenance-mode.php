@@ -110,13 +110,13 @@ class Rex_Maintenance_Mode
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rex-maintenance-mode-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-rex-maintenance-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-rex-maintenance-mode-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-rex-maintenance-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
@@ -126,20 +126,12 @@ class Rex_Maintenance_Mode
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-plugin-menu.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/includes/classes/class-plugin-menu.php';
 
         /**
          * The class responsible for defining all actions that occur in the options page of the plugin
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-settings-page.php';
-
-        /**
-         * The class responsible for defining all actions that occur in the Menu of the plugin
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/class-plugin-menu.php';
-
-
-
+        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/class-settings-page.php';
 
 
 		/**
@@ -186,7 +178,7 @@ class Rex_Maintenance_Mode
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
         $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_menu');
         $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_submenu_settings_page');
-        $this->loader->add_action('admin_init', $plugin_pages, 'rex_maintenance_mode_init');
+//        $this->loader->add_action('admin_init', $plugin_pages, 'rex_maintenance_mode_init');
 //        add_action('admin_init', [$this, 'rex_maintenance_mode_init']);
 
 	}
