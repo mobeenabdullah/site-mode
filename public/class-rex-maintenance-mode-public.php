@@ -127,7 +127,7 @@ class Rex_Maintenance_Mode_Public
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/rex-maintenance-mode-public.js', array('jquery'), $this->version, false);
 	}
 
-    function my_style_loader_tag_filter($html, $handle) {
+   public function my_style_loader_tag_filter($html, $handle) {
         if ($handle === 'preconnect-font') {
             return str_replace("rel='stylesheet'",
                 "rel='preconnect'", $html);

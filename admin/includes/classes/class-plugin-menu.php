@@ -79,8 +79,8 @@ class Rex_Maintenance_Mode_Menu
             <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
             <!-- Here are our tabs -->
          <?php
-            require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/menu_nav.php';
-            require_once plugin_dir_path(dirname(__FILE__)) . 'admin/partials/admin-page-form.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
          ?>
         </div>
 <?php

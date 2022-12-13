@@ -119,7 +119,8 @@ class Advanced_Field
     }
     public function rex_maintenance_advance_user_role_cb() {
         global  $wp_roles;
-        foreach ( $wp_roles->roles as $key=>$value ): ?>
+        foreach ( $wp_roles->roles as $key=>$value ):
+            ?>
             <div class="um_checkbox_wrapper">
                 <input type="checkbox" id="<?php echo $key; ?>" name="advanced-user-<?php echo $key; ?>-role-settings" value="<?php echo $key; ?>"/>
                 <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
