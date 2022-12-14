@@ -1,3 +1,11 @@
+//--------------------------------------------------------------------------
+// Mixin for convert font-size px to rem with fallback property
+//--------------------------------------------------------------------------
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
 // Box Shadow mixin
 @mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($primary-color, 0.5)) {
   box-shadow: $x-axis $y-axis $blur $spread $color;
@@ -5,7 +13,11 @@
 
 // Border Mixin
 @mixin border($direction, $width, $style, $color) {
-  border-#{$direction}: $width $style $color;
+  @if $direction == null {
+    border: $width $style $color;
+  } @else {
+    border-#{$direction}: $width $style $color;
+  }
 }
 
 // Mixin for basic flex

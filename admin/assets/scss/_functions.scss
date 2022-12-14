@@ -1,0 +1,10 @@
+//---------------------------------------
+// PX to REM conversion on base font 16px
+//---------------------------------------
+
+@function calculateRem($size) {
+    $remSize: $size / 16px;
+    @return #{$remSize}rem;
+}
+
+

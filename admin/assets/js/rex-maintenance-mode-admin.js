@@ -245,6 +245,7 @@ jQuery(function ($) {
             jQuery(
                 '<div class="um_number-cover--nav"><div class="um_InputButton um_InputUp" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></div><div class="um_InputButton um_InputDown" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 11h14v2H5z"></path></svg></div></div>'
             ).insertAfter(".um_number-cover input");
+            
             jQuery(".um_number-cover").each(function() {
                 var spinner = jQuery(this),
                     input = spinner.find('input[type="number"]'),
@@ -322,10 +323,10 @@ jQuery(function ($) {
         $('.enable_disable-rows').load(showTableRowOnEnableDisable());
 
         $('.disable_media').on('click', disableSingleMedia);
-        $('.disable_media').load(disableSingleMedia());
+        $('.disable_media').load(disableSingleMedia());        
 
-
-        function enableDisableLoginIcon() {
+        // $('.login_url_field').hide();
+        function enableDisableLoginIcon() {            
             if($('.enable_login_icon').is(":checked")) {
                 $('.login_url_field').show();
             } else {
@@ -333,7 +334,7 @@ jQuery(function ($) {
             }
         }
         $('.enable_login_icon').on('click', enableDisableLoginIcon);
-        $('.enable_login_icon').load(enableDisableLoginIcon);
+        $('.enable_login_icon').load(enableDisableLoginIcon);          
     })
 
     // Drag and Drop JQuery

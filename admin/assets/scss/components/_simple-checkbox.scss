@@ -54,7 +54,7 @@
   }
   & input:checked + label::after {
     opacity: 1;
-    color: $white-color;
+    color: $base-white-color;
   }
   & input:focus + label::before {
     @include box-shadow();
