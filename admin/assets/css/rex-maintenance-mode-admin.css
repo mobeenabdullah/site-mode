@@ -101,7 +101,7 @@
 	border-color: #6368ce !important;
 }
 
-.um_btn_outline {
+.um_btn_outline, .button.bg-image-upload, .button.logo-upload {
 	background: #202020 !important;
 	border-color: #202020 !important;
 	color: #ffffff !important;
@@ -113,7 +113,7 @@
 	height: auto !important;
 }
 
-.um_btn_outline:hover {
+.um_btn_outline:hover, .button.bg-image-upload:hover, .button.logo-upload:hover {
 	background-color: #6368ce !important;
 	border-color: #6368ce !important;
 }
@@ -362,6 +362,59 @@
 
 .image_logo_wrapper a {
 	display: block;
+}
+
+.bg-image-upload {
+	display: block;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.bg-image-upload .image_display {
+	position: relative;
+	max-width: 400px;
+	max-height: 250px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.bg-image-upload .image_display img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+.image_display .bg-image-upload {
+	background-color: red !important;
+}
+
+.logo-upload {
+	display: block;
+	height: auto;
+	margin-bottom: 20px;
+}
+
+.logo-upload .image_logo_display {
+	position: relative;
+	max-width: 150px;
+	max-height: 150px;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.logo-upload .image_logo_display img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+}
+
+.button.bg-image-upload:focus, .button.logo-upload:focus {
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 .logo_type_wrapper {

@@ -1,7 +1,7 @@
 <div class="rex__wrap--cover-content-form">   
     <form method="post" class="rex_form general_form" id="rex-general" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">     
         <?php
-            $template = $general = get_option('rex_general');    
+            $template =  get_option('rex_general');    
             $un_data = unserialize($template);
             $status = $un_data['status'];
             $url = $un_data['url'];

@@ -45,11 +45,11 @@
                                 <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
                             </div>
                         </div>
-                        <a href="#" class="button logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
+                        <a href="#" class="button um_btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                         <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>">
                     <?php else : ?>
                         <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
-                        <a href="#" class="logo-remove button" style="display: none;"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
+                        <a href="#" class="logo-remove um_btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
                         <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>>
                     <?php endif; ?>
                 </div>
@@ -107,17 +107,12 @@
             <div class="option__row--field">
                 <div>
                     <?php if ($bg_img_id) : ?>
-                        <div class="bg_image_wrapper">
-                            <a href="#" class="bg-image-upload image_btn"></a>
-                            <div class="display_bg_img">
-                                <img src="<?php echo esc_url($bg_img_id) ?>" width="350" height="350" alt="background Image" />
-                            </div>
-                        </div>
-                        <a href="#" class="button bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                        <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
+                        <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                         <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>">
                         <?php else : ?>
                         <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
-                        <a href="#" class="button bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                        <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                         <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>>
                     <?php endif; ?>
                 </div>
