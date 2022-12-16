@@ -26,7 +26,7 @@ jQuery(function ($) {
                     .get("selection")
                     .first()
                     .toJSON();
-                button.removeClass("button").html('<img src="' + attachment.url + '">'); // add image instead of "Upload Image"
+                button.removeClass("button").html('<div class="image_logo_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
                 button.next().show(); // show "Remove image" link
                 button.next().next().val(attachment.id); // Populate the hidden field with image ID
             });
@@ -45,10 +45,12 @@ jQuery(function ($) {
     });
     // on remove button click
     $("body").on("click", ".logo-remove", function (event) {
+        let image_logo_display = $('.image_display');
         event.preventDefault();
         const button = $(this);
         button.next().val(""); // emptying the hidden field
         button.hide().prev().addClass("button").html("Upload Logo"); // replace the image with text
+        image_logo_display.hide();
     });
 
     /*
@@ -82,7 +84,7 @@ jQuery(function ($) {
                     .get("selection")
                     .first()
                     .toJSON();
-                button.removeClass("button").html('<img src="' + attachment.url + '">'); // add image instead of "Upload Image"
+                button.removeClass("button").html('<div class="image_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
                 button.next().show(); // show "Remove image" link
                 button.next().next().val(attachment.id); // Populate the hidden field with image ID
             });
@@ -102,15 +104,19 @@ jQuery(function ($) {
     // on remove button click
     $("body").on("click", ".bg-image-remove", function (event) {
         let image_btn = $('.bg-image-upload');
+        let image_display = $('.image_display');
         let bg_image = $('.display_bg_img');
         event.preventDefault();
         const button = $(this);
 
+        console.log("image_btn", image_btn, "bg_image", bg_image, "button", button);
+
         button.next().val(""); // emptying the hidden field
         button.hide().prev(); // replace the image with text
 
-        image_btn.addClass("button normal_btn").html("Upload Background Image");
+        image_btn.addClass("button").html("Upload Background Image");
         bg_image.hide();
+        image_display.hide();
     });
 
 
