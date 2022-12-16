@@ -8,21 +8,20 @@
         //uniseralize data
         $uns_data = unserialize($rex_advanced);
 
-        $ga_id              = $uns_data['ga_id'];
-        $custom_css         = $uns_data['custom_css'];
-        $enable_rest_api    = $uns_data['enable_rest_api'];
-        $enable_feed        = $uns_data['enable_feed'];
-        $include_pages      = $uns_data['include_pages'];
-        $exclude_pages      = $uns_data['exclude_pages'];
-        $header_code        = $uns_data['header_code'];
-        $footer_code        = $uns_data['footer_code'];
-        $admin_role         = $uns_data['admin_role'];
-        $editor_role        = $uns_data['editor_role'];
-        $author_role        = $uns_data['author_role'];
-        $contributor_role   = $uns_data['contributor_role'];
-        $subscriber_role    = $uns_data['subscriber_role'];
-        $user_role          = $uns_data['user_role'];
-
+        $ga_id              = ($uns_data['ga_id']) ? $uns_data['ga_id'] : '';
+        $custom_css         = ($uns_data['custom_css']) ? $uns_data['custom_css'] : '';
+        $enable_rest_api    = ($uns_data['enable_rest_api']) ? $uns_data['enable_rest_api'] : '';
+        $enable_feed        = ($uns_data['enable_feed']) ? $uns_data['enable_feed'] : '';
+        $include_pages      = ($uns_data['include_pages']) ? $uns_data['include_pages'] : '';
+        $exclude_pages      = ($uns_data['exclude_pages']) ? $uns_data['exclude_pages'] : '';
+        $header_code        = ($uns_data['header_code']) ? $uns_data['header_code'] : '';
+        $footer_code        = ($uns_data['footer_code']) ? $uns_data['footer_code'] : '';
+        $admin_role         = ($uns_data['admin_role']);
+        $editor_role        = ($uns_data['editor_role']) ? $uns_data['editor_role'] : '';
+        $author_role        = ($uns_data['editor_role']) ? $uns_data['author_role'] : '';;
+        $contributor_role   = ($uns_data['contributor_role']) ? $uns_data['contributor_role'] : '';
+        $subscriber_role    = ($uns_data['subscriber_role']) ? $uns_data['subscriber_role'] : '';
+        $user_role          = ($uns_data['user_role']) ? $uns_data['user_role'] : '';
     ?>
     <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
         <div class="um_input_cover">

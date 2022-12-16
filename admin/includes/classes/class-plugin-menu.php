@@ -28,7 +28,6 @@ class Rex_Maintenance_Mode_Menu
     {
 
     }
-
     public function rex_maintenance_mode_menu()
     {
         add_menu_page(

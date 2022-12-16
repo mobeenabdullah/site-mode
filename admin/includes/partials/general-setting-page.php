@@ -10,11 +10,11 @@
                     $template = $general = get_option('rex_general');
                     // convert serialized string to array
                     $un_data = unserialize($template);
-                    $status = $un_data['status'];
-                    $url = $un_data['url'];
-                    $delay = $un_data['delay'];
-                    $login_icon = $un_data['login_icon'];
-                    $login_url = $un_data['login_url'];
+                       $status = ($un_data['status']) ? $un_data['status'] : false;
+                       $url = ($un_data['url']) ? $un_data['url'] : '';
+                       $delay = ($un_data['delay']) ? $un_data['delay'] : 0;
+                       $login_icon = ($un_data['login_icon']) ? $un_data['login_icon'] : false;
+                       $login_url = ($un_data['login_url']);
 
                     ?>
                     <div class="options">

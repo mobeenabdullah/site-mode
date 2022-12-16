@@ -8,8 +8,6 @@
                    // convert serialized string to array
                     $un_data = unserialize($template);
                     $enable_template = $un_data['enable_template'];
-
-
                 ?>
                 <div class="template_options">
                     <div class="template_thumb <?php echo ($enable_template== '1') ? 'activated_template' : '' ?>">
@@ -89,7 +87,6 @@
         $overlay_color = $lb_data['overlay_color'];
         $overlay_opacity = $lb_data['overlay_opacity'];
 
-        print_r($lb_data);
         ?>
         <div class="logo_section">
             <h3>Logo & Background</h3>
@@ -157,24 +154,47 @@
     <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
         <?php
         // api call for font family
-        $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
 
-        if ( ! is_wp_error( $response ) ) {
-            $fonts = json_decode( $response['body'] );
-            foreach ( $fonts->items as $font ) {
-                echo '<h2>' . $font->family . '</h2>';
-                foreach ( $font->variants as $variant ) {
-                    echo '<p>' . $variant . ': ' . $font->files->$variant . '</p>';
+        if(!get_option( 'rex_font_families' )) {
+            $font_families = [];
+            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
+            if ( ! is_wp_error( $response ) ) {
+                $fonts = json_decode( $response['body'] );
+                foreach ( $fonts->items as $font ) {
+                    //store font family in array
+                    $font_families[] = $font->family;
+//                    echo '<pre>';
+//                    var_dump($font_families);
+//                    echo '</pre>';
+                    foreach ( $font->variants as $variant ) {
+//                        echo '<p>' . $variant . ': ' . $font->files->$variant . '</p>';
+//                        if($font->family == 'Open Sans') {
+//                            echo '<p>Open Sans-----test</p>';
+////                            echo '<h3>' . $font->files->$variant . '</h3>';
+//                            $selected_font =  "https://fonts.googleapis.com/css?family={$font->family}";
+//                        }
+                    }
                 }
+                //show font family in var_dump
+                if(get_option( 'rex_font_families' )) {
+                    update_option('rex_font_families',$font_families);
+                }
+                else {
+                    add_option('rex_font_families',$font_families);
+                }
+
             }
         }
+
+//        function font_enqueue() {
+
+        echo '<br>';
         ?>
        <div class="color_font_section">
            <div class="font_family">
                <div class="um_select">
                    <label for="site_mode" class="screen-reading"><?php _e('Mode','rex-maintenance-mode');?></label>
                    <select name="wprex-mode-settings" id="site_mode">
-
                        <?php
                        if ( ! is_wp_error( $response ) ) {
                        $fonts = json_decode( $response['body'] );
