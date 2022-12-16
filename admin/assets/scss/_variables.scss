@@ -7,16 +7,18 @@ $base-html-font: 62.5%;
 // Colors variables
 $primary-color: #6F73D2;
 $secondary-color:  #202020;
-$white-color: #ffffff;
-$black-color: #141414;
+$base-white-color: #ffffff;
+$base-black-color: #141414;
+
+
 
 // Button Variables
 $btn-bg-color: $primary-color;
 $btn-border-color: $primary-color;
 $btn-border-width: 1px;
-$btn-padding: 0.6rem 1.5rem;
+$btn-padding: 0.5rem 1.5rem 0.6rem 1.5rem;
 $btn-radius: 0.5rem;
-$btn-font-size: 1.4rem;
+$btn-font-size: 0.8rem;
 $btn-line-height: 1.5;
 
 

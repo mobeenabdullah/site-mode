@@ -26,7 +26,7 @@ jQuery(function ($) {
                     .get("selection")
                     .first()
                     .toJSON();
-                button.removeClass("button").html('<img src="' + attachment.url + '">'); // add image instead of "Upload Image"
+                button.removeClass("button").html('<div class="image_logo_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
                 button.next().show(); // show "Remove image" link
                 button.next().next().val(attachment.id); // Populate the hidden field with image ID
             });
@@ -45,10 +45,12 @@ jQuery(function ($) {
     });
     // on remove button click
     $("body").on("click", ".logo-remove", function (event) {
+        let image_logo_display = $('.image_display');
         event.preventDefault();
         const button = $(this);
         button.next().val(""); // emptying the hidden field
         button.hide().prev().addClass("button").html("Upload Logo"); // replace the image with text
+        image_logo_display.hide();
     });
 
     /*
@@ -82,7 +84,7 @@ jQuery(function ($) {
                     .get("selection")
                     .first()
                     .toJSON();
-                button.removeClass("button").html('<img src="' + attachment.url + '">'); // add image instead of "Upload Image"
+                button.removeClass("button").html('<div class="image_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
                 button.next().show(); // show "Remove image" link
                 button.next().next().val(attachment.id); // Populate the hidden field with image ID
             });
@@ -102,15 +104,19 @@ jQuery(function ($) {
     // on remove button click
     $("body").on("click", ".bg-image-remove", function (event) {
         let image_btn = $('.bg-image-upload');
+        let image_display = $('.image_display');
         let bg_image = $('.display_bg_img');
         event.preventDefault();
         const button = $(this);
 
+        console.log("image_btn", image_btn, "bg_image", bg_image, "button", button);
+
         button.next().val(""); // emptying the hidden field
         button.hide().prev(); // replace the image with text
 
-        image_btn.addClass("button normal_btn").html("Upload Background Image");
+        image_btn.addClass("button").html("Upload Background Image");
         bg_image.hide();
+        image_display.hide();
     });
 
 
@@ -245,6 +251,7 @@ jQuery(function ($) {
             jQuery(
                 '<div class="um_number-cover--nav"><div class="um_InputButton um_InputUp" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></div><div class="um_InputButton um_InputDown" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 11h14v2H5z"></path></svg></div></div>'
             ).insertAfter(".um_number-cover input");
+            
             jQuery(".um_number-cover").each(function() {
                 var spinner = jQuery(this),
                     input = spinner.find('input[type="number"]'),
@@ -322,10 +329,10 @@ jQuery(function ($) {
         $('.enable_disable-rows').load(showTableRowOnEnableDisable());
 
         $('.disable_media').on('click', disableSingleMedia);
-        $('.disable_media').load(disableSingleMedia());
+        $('.disable_media').load(disableSingleMedia());        
 
-
-        function enableDisableLoginIcon() {
+        // $('.login_url_field').hide();
+        function enableDisableLoginIcon() {            
             if($('.enable_login_icon').is(":checked")) {
                 $('.login_url_field').show();
             } else {
@@ -333,7 +340,7 @@ jQuery(function ($) {
             }
         }
         $('.enable_login_icon').on('click', enableDisableLoginIcon);
-        $('.enable_login_icon').load(enableDisableLoginIcon);
+        $('.enable_login_icon').load(enableDisableLoginIcon);          
     })
 
     // Drag and Drop JQuery

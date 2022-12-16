@@ -22,14 +22,11 @@
  */
 class Rex_Maintenance_Mode_Menu
 {
-
-
-    public function  __construct()
-    {
+    public function  __construct() {
 
     }
-    public function rex_maintenance_mode_menu()
-    {
+    
+    public function rex_maintenance_mode_menu() {
         add_menu_page(
             __('REX Maintenance Mode Settings', 'rex-maintenance-mode'),
             'Maintenance Mode by WPRex',
@@ -37,7 +34,6 @@ class Rex_Maintenance_Mode_Menu
             'wprex-maintenance-mode',
             [$this, 'rex_maintenance_mode_settings_page_cb'],
             'dashicons-welcome-add-page',
-
         );
     }
 
@@ -45,8 +41,7 @@ class Rex_Maintenance_Mode_Menu
 
     }
 
-    public function rex_maintenance_mode_submenu_settings_page()
-    {
+    public function rex_maintenance_mode_submenu_settings_page() {
         add_submenu_page(
             'wprex-maintenance-mode',
             'Maintenance Mode by WPRex',
@@ -55,6 +50,7 @@ class Rex_Maintenance_Mode_Menu
             'wprex-maintenance-mode',
             [$this, 'rex_maintenance_mode_settings_page_cb']
         );
+
         add_submenu_page(
             'wprex-maintenance-mode',
             'about',
@@ -65,23 +61,28 @@ class Rex_Maintenance_Mode_Menu
         );
     }
 
-    public function rex_maintenance_mode_settings_page_cb()
-    {
+    public function rex_maintenance_mode_settings_page_cb() {
         if (!current_user_can('manage_options')) {
             return;
         }
         $default_tab = null;
         $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
-?>
-        <div class="wrap">
-            <!-- Print the page title -->
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <!-- Here are our tabs -->
-         <?php
-            require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
-            require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
-         ?>
-        </div>
+    ?>      
+        
+        <div class="wrap rex__wrap">            
+            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>            
+            <div class="rex__wrap--cover">
+                <div class="rex__wrap--cover-content">
+                    <?php
+                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
+                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
+                    ?>
+                </div>                
+                <div class="rex__wrap--cover-sidebar">
+                    <?php require_once plugin_dir_path(dirname(__FILE__)) . 'partials/sidebar.php'; ?>
+                </div>
+            </div>            
+        </div>        
 <?php
     }
 

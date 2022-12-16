@@ -4,7 +4,7 @@
   width: $form-fields-width;
   height: $form-fields-height;
   line-height: 3;
-  background: $white-color;
+  background: $base-white-color;
   border-radius: $form-field-border-radius;
   margin-bottom: $input-bottom-spacing;  
   select {
@@ -15,7 +15,7 @@
     outline:0;
     box-shadow:none;
     border: $border-width solid $secondary-color !important;
-    background: $white-color;
+    background: $base-white-color;
     background-image: none;
     flex: 1;
     padding: 0 3rem 0 1rem;
