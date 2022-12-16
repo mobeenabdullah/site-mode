@@ -25,7 +25,7 @@ class Rex_Maintenance_Mode_Menu
     public function  __construct() {
 
     }
-
+    
     public function rex_maintenance_mode_menu() {
         add_menu_page(
             __('REX Maintenance Mode Settings', 'rex-maintenance-mode'),

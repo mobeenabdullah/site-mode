@@ -362,7 +362,6 @@ jQuery(function ($) {
         }
     })
 
-
     // ajax calls
     $( "#rex-general" ).submit(function( event ) {
         event.preventDefault();
