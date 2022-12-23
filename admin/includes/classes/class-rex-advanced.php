@@ -49,7 +49,7 @@ class Rex_Advanced
     {
         if (!empty($this->custom_css)) {
             echo '<style type="text/css">' . $this->custom_css . '</style>';
-            echo 'custom css test';
+
         }
     }
 
@@ -68,7 +68,7 @@ class Rex_Advanced
     }
 
     public function  ajax_rex_advanced() {
-
+        
         $nonce = $_POST['advance-custom-message'];
         if(!wp_verify_nonce( $nonce, 'advance-settings-save' )) {
             die(__('Security Check', 'rex-maintenance-mode'));
