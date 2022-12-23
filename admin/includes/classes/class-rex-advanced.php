@@ -41,23 +41,6 @@ class Rex_Advanced
     public function __construct()
     {
         $rex_advanced = get_option('rex_advanced');
-        //uniseralize data
-        $uns_data = unserialize($rex_advanced);
-
-//        $this->ga_id              = $uns_data['ga_id'];
-//        $this->custom_css         = $uns_data['custom_css'];
-//        $this->enable_rest_api    = $uns_data['enable_rest_api'];
-//        $this->enable_feed        = $uns_data['enable_feed'];
-//        $this->include_pages      = $uns_data['include_pages'];
-//        $this->exclude_pages      = $uns_data['exclude_pages'];
-//        $this->header_code        = $uns_data['header_code'];
-//        $this->footer_code        = $uns_data['footer_code'];
-//        $this->admin_role         = $uns_data['admin_role'];
-//        $this->editor_role        = $uns_data['editor_role'];
-//        $this->author_role        = $uns_data['author_role'];
-//        $this->contributor_role   = $uns_data['contributor_role'];
-//        $this->subscriber_role    = $uns_data['subscriber_role'];
-//        $this->user_role          = $uns_data['user_role'];
 
 
     }

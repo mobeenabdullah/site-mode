@@ -7,7 +7,6 @@
         $rex_advanced = get_option('rex_advanced');
         //uniseralize data
         $uns_data = unserialize($rex_advanced);
-
     //check if value is set or not and set default value
         $ga_id              = isset($uns_data['ga_id']) ? $uns_data['ga_id'] : 'google analytics id';
         $custom_css         = isset($uns_data['custom_css']) ? $uns_data['custom_css'] : 'custom css';
@@ -23,7 +22,7 @@
         $contributor_role   = isset($uns_data['contributor_role']) ? $uns_data['contributor_role'] : 'contributor';
         $subscriber_role    = isset($uns_data['subscriber_role']) ? $uns_data['subscriber_role'] : 'subscriber';
         $user_role          = isset($uns_data['user_role']) ? $uns_data['user_role'] : 'user';
-        
+
     ?>
     <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
         <div class="um_input_cover">
@@ -72,7 +71,7 @@
         foreach ( $wp_roles->roles as $key=>$value ):
         ?>
         <div class="um_checkbox_wrapper">
-            <input type="checkbox" id="<?php echo $key; ?>" name="advanced-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,$user_role[$key]); ?> />
+            <input type="checkbox" id="<?php echo $key; ?>" name="advanced-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
             <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
             <?php echo "advanced-{$key}-role-setting"; ?>
         </div>

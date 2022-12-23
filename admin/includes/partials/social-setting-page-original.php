@@ -10,15 +10,16 @@
             $social = get_option('rex_social');
             // unserialize data
             $uns_data = unserialize($social);
-            $show_social = $uns_data['show_social'];
-            $facebook = $uns_data['social_fb'];
-            $twitter = $uns_data['social_twitter'];
-            $linkedin = $uns_data['social_linkedin'];
-            $youtube = $uns_data['social_youtube'];
-            $instagram = $uns_data['social_instagram'];
-            $pinterest = $uns_data['social_pintrest'];
-            $quora = $uns_data['social_quora'];
-            $behance = $uns_data['social_behance'];
+            // check if values set or not and set default values
+            $show_social    = isset($uns_data['show_social']) ? $uns_data['show_social'] : '';
+            $facebook       = isset($uns_data['facebook']) ? $uns_data['facebook'] : 'facebookusername';
+            $twitter        = isset($uns_data['twitter']) ? $uns_data['twitter'] : 'twitterusername';
+            $linkedin       = isset($uns_data['linkedin']) ? $uns_data['linkedin'] : 'linkedinusername';
+            $youtube        = isset($uns_data['youtube']) ? $uns_data['youtube'] : 'youtubeusername';
+            $instagram      = isset($uns_data['instagram']) ? $uns_data['instagram'] : 'instagramusername';
+            $pinterest      = isset($uns_data['pinterest']) ? $uns_data['pinterest'] : 'pinterestusername';
+            $quora          = isset($uns_data['quora']) ? $uns_data['quora'] : 'quorausername';
+            $behance        = isset($uns_data['behance']) ? $uns_data['behance'] : 'behanceusername';
 
         ?>
         <div class="um_checkbox_wrapper">
