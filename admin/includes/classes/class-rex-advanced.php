@@ -59,6 +59,7 @@ class Rex_Advanced
 //        $this->subscriber_role    = $uns_data['subscriber_role'];
 //        $this->user_role          = $uns_data['user_role'];
 
+
     }
 
     public function rex_custom_css_include()
@@ -126,6 +127,5 @@ class Rex_Advanced
         }
         die();
     }
-
 
 }
