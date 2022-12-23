@@ -6,12 +6,13 @@
             $content = get_option('rex_content');
             //unserialize data
             $uns_data = unserialize($content);
-            $text_logo = $uns_data['text_logo'];
-            $image_logo = $uns_data['image_logo'];
-            $disable_logo = $uns_data['disable_logo'];
-            $heading = $uns_data['heading'];
-            $description = $uns_data['description'];
-            $bg_image = $uns_data['bg_image'];
+            // check values are set or not if not assign default values
+            $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : '';
+            $image_logo     = isset($uns_data['image_logo']) ? $uns_data['image_logo'] : '';
+            $disable_logo   = isset($uns_data['disable_logo']) ? $uns_data['disable_logo'] : '';
+            $heading        = isset($uns_data['heading']) ? $uns_data['heading'] : ' heading goes here';
+            $description    = isset($uns_data['description']) ? $uns_data['description'] : 'description goes here';
+            $bg_image       = isset($uns_data['bg_image']) ? $uns_data['bg_image'] : '';
 
         ?>
     <form method="post" id="rex-content" class="rex_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">        

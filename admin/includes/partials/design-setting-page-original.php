@@ -8,7 +8,8 @@
                         $template = get_option('rex_design');
                     // convert serialized string to array
                         $un_data = unserialize($template);
-                        $enable_template = $un_data['enable_template'];
+                        //check if value is set or not if not set then set default value.
+                        $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
 
 
                     ?>
@@ -83,12 +84,13 @@
             $rex_design_lb = get_option('rex_design_lb');
             // convert serialized string to array
             $lb_data = unserialize($rex_design_lb);
-            $logo_width = $lb_data['logo_width'];
-            $logo_height = $lb_data['logo_height'];
-            $design_background = $lb_data['design_background'];
-            $background_overlay = $lb_data['background_overlay'];
-            $overlay_color = $lb_data['overlay_color'];
-            $overlay_opacity = $lb_data['overlay_opacity'];
+            //check if value is set or not if not set then set default value.
+            $logo_width         = isset($lb_data['logo_width']) ? $lb_data['logo_width'] : '200';
+            $logo_height        = isset($lb_data['logo_height']) ? $lb_data['logo_height'] : '200';
+            $design_background  = isset($lb_data['design_background']) ? $lb_data['design_background'] : '#ffffff';
+            $background_overlay = isset($lb_data['background_overlay']) ? $lb_data['background_overlay'] : '#000000';
+            $overlay_color      = isset($lb_data['overlay_color']) ? $lb_data['overlay_color'] : '#000000';
+            $overlay_opacity    = isset($lb_data['overlay_opacity']) ? $lb_data['overlay_opacity'] : '0.5';
         
             ?>
             <div class="logo_section">
@@ -157,7 +159,7 @@
         <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
             // api call for font family
-            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
+//            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
 
             ?>
         <div class="color_font_section">
@@ -167,14 +169,18 @@
                     <select name="wprex-mode-settings" id="site_mode">
 
                         <?php
-                        if ( ! is_wp_error( $response ) ) {
-                        $fonts = json_decode( $response['body'] );
-                        foreach ( $fonts->items as $font ) {
+//                        if ( ! is_wp_error( $response ) ) {
+//                        $fonts = json_decode( $response['body'] );
+//                        foreach ( $fonts->items as $font ) {
                         ?>
-                        <option value="" ><?php _e($font->family,'rex-maintenance-mode');?></option>
+                        <option value="" >
+                            <?php
+//                            _e($font->family,'rex-maintenance-mode');
+                            ?>
+                        </option>
                         <?php
-                        }
-                        }
+//                        }
+//                        }
                         ?>
                     </select>
                     <span class="arrow-down"></span>
@@ -192,10 +198,11 @@
             $rex_design_colors = get_option('rex_design_colors');
             //unserialize data
             $color_data = unserialize($rex_design_colors);
-            $icon_size = $color_data['icon_size'];
-            $icon_color = $color_data['icon_color'];
-            $icon_bg_color = $color_data['icon_bg_color'];
-            $icon_border_color = $color_data['icon_border_color'];
+            //check if values are set or not and assign default values
+            $icon_size = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
+            $icon_color = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
+            $icon_bg_color = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
+            $icon_border_color = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
 
 
             ?>

@@ -83,8 +83,6 @@ class Rex_Maintenance_Mode
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->get_menu();
-		$this->get_settings_page();
-
 
 	}
 
@@ -128,13 +126,6 @@ class Rex_Maintenance_Mode
          * The class responsible for defining all actions that occur in the admin area.
          */
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/includes/classes/class-plugin-menu.php';
-
-
-        /**
-         * The class responsible for defining all actions that occur in the options page of the plugin
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/class-settings-page.php';
-
 
         /**
          * The class responsible for defining advanced settings page of the plugin
@@ -185,7 +176,6 @@ class Rex_Maintenance_Mode
 
 		$plugin_admin = new Rex_Maintenance_Mode_Admin($this->get_plugin_name(), $this->get_version());
         $plugin_menu = new Rex_Maintenance_Mode_Menu();
-        $plugin_pages = new Rex_Maintenance_Mode_Setting_page();
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
@@ -264,14 +254,6 @@ class Rex_Maintenance_Mode
 
 
 
-	}
-
-
-	// settings
-
-	public function get_settings_page()
-	{
-		$settings_page = new Rex_Maintenance_Mode_Setting_page();
 	}
 
 	// menu 

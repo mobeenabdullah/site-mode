@@ -7,21 +7,22 @@
         $rex_advanced = get_option('rex_advanced');
         //uniseralize data
         $uns_data = unserialize($rex_advanced);
-
-        $ga_id              = $uns_data['ga_id'];
-        $custom_css         = $uns_data['custom_css'];
-        $enable_rest_api    = $uns_data['enable_rest_api'];
-        $enable_feed        = $uns_data['enable_feed'];
-        $include_pages      = $uns_data['include_pages'];
-        $exclude_pages      = $uns_data['exclude_pages'];
-        $header_code        = $uns_data['header_code'];
-        $footer_code        = $uns_data['footer_code'];
-        $admin_role         = $uns_data['admin_role'];
-        $editor_role        = $uns_data['editor_role'];
-        $author_role        = $uns_data['author_role'];
-        $contributor_role   = $uns_data['contributor_role'];
-        $subscriber_role    = $uns_data['subscriber_role'];
-        $user_role          = $uns_data['user_role'];
+        
+    //check if value is set or not and set default value
+        $ga_id              = isset($uns_data['ga_id']) ? $uns_data['ga_id'] : 'google analytics id';
+        $custom_css         = isset($uns_data['custom_css']) ? $uns_data['custom_css'] : 'custom css';
+        $enable_rest_api    = isset($uns_data['enable_rest_api']) ? $uns_data['enable_rest_api'] : 'enable';
+        $enable_feed        = isset($uns_data['enable_feed']) ? $uns_data['enable_feed'] : 'enable';
+        $include_pages      = isset($uns_data['include_pages']) ? $uns_data['include_pages'] : '';
+        $exclude_pages      = isset($uns_data['exclude_pages']) ? $uns_data['exclude_pages'] : '';
+        $header_code        = isset($uns_data['header_code']) ? $uns_data['header_code'] : 'header code';
+        $footer_code        = isset($uns_data['footer_code']) ? $uns_data['footer_code'] : 'footer code';
+        $admin_role         = isset($uns_data['admin_role']) ? $uns_data['admin_role'] : 'administrator';
+        $editor_role        = isset($uns_data['editor_role']) ? $uns_data['editor_role'] : 'editor';
+        $author_role        = isset($uns_data['author_role']) ? $uns_data['author_role'] : 'author';
+        $contributor_role   = isset($uns_data['contributor_role']) ? $uns_data['contributor_role'] : 'contributor';
+        $subscriber_role    = isset($uns_data['subscriber_role']) ? $uns_data['subscriber_role'] : 'subscriber';
+        $user_role          = isset($uns_data['user_role']) ? $uns_data['user_role'] : 'user';
 
     ?>
     <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
@@ -71,7 +72,7 @@
         foreach ( $wp_roles->roles as $key=>$value ):
         ?>
         <div class="um_checkbox_wrapper">
-            <input type="checkbox" id="<?php echo $key; ?>" name="advanced-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,$user_role[$key]); ?> />
+            <input type="checkbox" id="<?php echo $key; ?>" name="advanced-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
             <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
             <?php echo "advanced-{$key}-role-setting"; ?>
         </div>
