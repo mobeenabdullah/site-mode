@@ -42,6 +42,7 @@ class Rex_Advanced
     {
         $rex_advanced = get_option('rex_advanced');
 
+
     }
 
     public function rex_custom_css_include()
@@ -109,6 +110,5 @@ class Rex_Advanced
         }
         die();
     }
-
 
 }

@@ -7,7 +7,6 @@
         $rex_advanced = get_option('rex_advanced');
         //uniseralize data
         $uns_data = unserialize($rex_advanced);
-        
     //check if value is set or not and set default value
         $ga_id              = isset($uns_data['ga_id']) ? $uns_data['ga_id'] : 'google analytics id';
         $custom_css         = isset($uns_data['custom_css']) ? $uns_data['custom_css'] : 'custom css';

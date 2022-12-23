@@ -228,6 +228,7 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
+
         // ajax ccalls
 
         //general settings
