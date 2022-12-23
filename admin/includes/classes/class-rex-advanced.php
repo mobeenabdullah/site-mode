@@ -42,6 +42,7 @@ class Rex_Advanced
     {
         $rex_advanced = get_option('rex_advanced');
 
+
     }
 
     public function rex_custom_css_include()
@@ -118,6 +119,5 @@ class Rex_Advanced
             return new WP_Error('rest_cannot_access', __('The REST API on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
         }
     }
-
 
 }
