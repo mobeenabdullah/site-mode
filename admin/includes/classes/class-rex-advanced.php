@@ -111,4 +111,13 @@ class Rex_Advanced
         die();
     }
 
+    public function rex_rest_api($access)
+    {
+        if ($this->enable_rest_api) {
+            return $access;
+        } else {
+            return new WP_Error('rest_cannot_access', __('The REST API on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
+        }
+    }
+
 }

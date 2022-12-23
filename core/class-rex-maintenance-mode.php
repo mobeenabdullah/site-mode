@@ -228,9 +228,7 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
-
-        // ajax ccalls
-
+        $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'rex_rest_api');
         //general settings
         // general
         add_action('wp_ajax_nopriv_ajax_rex_general',$this->classes_loader->get_general(),'ajax_rex_general');
