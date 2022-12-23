@@ -8,10 +8,11 @@
        $seo = get_option('rex_seo');
        //unserialize data
          $seo = unserialize($seo);
-           $meta_title = $seo['meta_title'];
-           $meta_description = $seo['meta_description'];
-           $meta_favicon = $seo['meta_favicon'];
-           $meta_image = $seo['meta_image'];
+         //check if values are set or not if not set then set default values
+           $meta_title          = isset($seo['meta_title']) ? $seo['meta_title'] : 'SEO Meta Title';
+           $meta_description    = isset($seo['meta_description']) ? $seo['meta_description'] : 'SEO Meta Description';
+           $meta_favicon        = isset($seo['meta_favicon']) ? $seo['meta_favicon'] : '';
+           $meta_image          = isset($seo['meta_image']) ? $seo['meta_image'] : '';
 
        ?>
         <div class="um_input_cover">
