@@ -24,7 +24,7 @@
         $user_role          = isset($uns_data['user_role']) ? $uns_data['user_role'] : 'user';
 
     ?>
-    <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form id="rex-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
         <div class="um_input_cover">
             <label class="screen-reading" for="ga"><?php _e('GA (ID/Code)', 'rex-maintenance-mode')?></label>
             <input type="text" id="ga" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />

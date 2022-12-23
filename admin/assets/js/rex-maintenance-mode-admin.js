@@ -514,6 +514,7 @@ jQuery(function ($) {
 
     $( "#rex-advanced" ).submit(function( event ) {
         event.preventDefault();
+        alert('hello from adavnced');;
         const form = document.getElementById("rex-advanced");
         const formData = new FormData(form);
         formData.append('action', 'ajax_rex_advanced');
