@@ -3,9 +3,11 @@
         <?php
             $template =  get_option('rex_general');    
             $un_data = unserialize($template);
+
         //check if the values are set or not and then assign them to the variables
             $rex_title      = isset($un_data['rex_title']) ? $un_data['rex_title'] : '';
             $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+            $mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
             $url            = isset($un_data['url'] ) ? $un_data['url']  : '';
             $delay          = isset($un_data['delay'] ) ? $un_data['delay']  : '';
             $login_icon     = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
@@ -35,9 +37,9 @@
                 <div class="um_select">
                     <label for="site_mode" class="screen-reading"><?php _e('Mode','rex-maintenance-mode');?></label>
                     <select name="wprex-mode-settings" id="site_mode">
-                        <option value="maintenance" ><?php _e('Maintenance - Returns HTTP 200 OK response','rex-maintenance-mode');?></option>
-                        <option value="coming-soon"><?php _e('Coming Soon - Returns 503 HTTP Service response','rex-maintenance-mode');?></option>
-                        <option value="redirect"  id="direct-item"><?php _e('Redirect - Returns HTTP 301 response and redirect to a URL','rex-maintenance-mode');?></option>
+                        <option value="maintenance" <?php selected( $mode==='maintenance', 1 ); ?>><?php _e('Maintenance - Returns HTTP 200 OK response','rex-maintenance-mode');?></option>
+                        <option value="coming-soon" <?php selected( $mode==='coming-soon', 1 ); ?>><?php _e('Coming Soon - Returns 503 HTTP Service response','rex-maintenance-mode');?></option>
+                        <option value="redirect" <?php selected( $mode==='redirect', 1 ); ?> id="direct-item"><?php _e('Redirect - Returns HTTP 301 response and redirect to a URL','rex-maintenance-mode');?></option>
                     </select>
                     <span class="arrow-down"></span>
                 </div>
