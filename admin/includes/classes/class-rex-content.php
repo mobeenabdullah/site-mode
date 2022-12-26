@@ -33,15 +33,7 @@ class Rex_Content
 
     public function __construct()
     {
-//        $content            = get_option('rex_content');
-//        //unserialize data
-//        $uns_data           = unserialize($content);
-//        $this->text_logo    = $uns_data['text_logo'];
-//        $this->image_logo   = $uns_data['image_logo'];
-//        $this->disable_logo = $uns_data['disable_logo'];
-//        $this->heading      = $uns_data['heading'];
-//        $this->description  = $uns_data['description'];
-//        $this->bg_image     = $uns_data['bg_image'];
+
     }
 
     public function ajax_rex_content() {
@@ -53,9 +45,9 @@ class Rex_Content
         }
         else {
             $data = array(
+                "logo_settings" =>$_POST['content-logo-settings'],
                 "image_logo"    =>$_POST['content-image-logo-setting'],
                 "text_logo"     =>$_POST['content-text-logo-setting'],
-                "disable_logo"  =>$_POST['content-logo-settings'],
                 "heading"       =>$_POST['content-heading-setting'],
                 'description'   =>$_POST['content-description-setting'],
                 'bg_image'      =>$_POST['content-bg-image-setting'],

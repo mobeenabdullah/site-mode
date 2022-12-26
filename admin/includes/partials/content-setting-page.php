@@ -6,14 +6,17 @@
             $content = get_option('rex_content');
             //unserialize data
             $uns_data = unserialize($content);
+
             // check values are set or not if not assign default values
             $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : '';
             $image_logo     = isset($uns_data['image_logo']) ? $uns_data['image_logo'] : '';
-            $disable_logo   = isset($uns_data['disable_logo']) ? $uns_data['disable_logo'] : '';
+            $logo_setting   = isset($uns_data['logo_settings']) ? $uns_data['logo_settings'] : 'image-logo';
             $heading        = isset($uns_data['heading']) ? $uns_data['heading'] : ' heading goes here';
             $description    = isset($uns_data['description']) ? $uns_data['description'] : 'description goes here';
             $bg_image       = isset($uns_data['bg_image']) ? $uns_data['bg_image'] : '';
 
+            //if logo_setting is image-logo then disable text logo field
+        echo $bg_image;
         ?>
     <form method="post" id="rex-content" class="rex_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">        
 
@@ -26,15 +29,15 @@
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
                     <div class="um_radio_wrapper">
-                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked(1,!empty($text_logo), true); ?> />
+                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($logo_setting=='type-text',true,true); ?> />
                         <label for="text-logo"><?php _e('Text','rex-maintenance-mode');?></label>
                     </div>
                     <div class="um_radio_wrapper">
-                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked(1, !empty($image_logo), true); ?> />
+                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked($logo_setting=='type-image',true, true); ?> />
                         <label for="image-logo"><?php _e('Image','rex-maintenance-mode');?></label>
                     </div>
                     <div class="um_radio_wrapper">
-                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  <?php checked(1,!empty($disable_logo), true); ?> />
+                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  <?php checked($logo_setting=='type-disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('disable','rex-maintenance-mode');?></label>
                     </div>
                 </div>
@@ -51,12 +54,12 @@
                     <?php else : ?>
                         <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
                         <a href="#" class="logo-remove um_btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
-                        <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>>
+                        <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'rex-maintenance-mode'); ?>>
                     <?php endif; ?>
                 </div>
                 <div class="um_input_cover label_top text_logo_wrapper">
                     <label for="text_logo"><?php _e('Type Logo text','rex-maintenance-mode');?></label>
-                    <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e(get_option('content-text-logo-setting'),'rex-maintenance-mode'); ?>" />
+                    <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'rex-maintenance-mode'); ?>" />
                 </div>               
             </div>
         </div>
@@ -98,23 +101,22 @@
                 </div>
             </div>
         </div>
-        
-        <?php $bg_img_id = wp_get_attachment_image_url($bg_image, 'full'); ?>
-
+        <?php $bg_img_url = wp_get_attachment_image_url($bg_image, 'full'); ?>
         <div class="option__row">
             <div class="option__row--label">
                 <span><?php _e('Background Image','rex-maintenance-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div>
-                    <?php if ($bg_img_id) : ?>
+                    <?php if ($bg_img_url) : ?>
+                        <img src="<?php echo esc_url($bg_img_url) ?>" width="150" height="150" />
                         <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
                         <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>">
+                        <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e($bg_image,'rex-maintenance-mode'); ?>">
                         <?php else : ?>
                         <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
                         <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>>
+                        <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e($bg_image,'rex-maintenance-mode'); ?>>
                     <?php endif; ?>
                 </div>
             </div>
