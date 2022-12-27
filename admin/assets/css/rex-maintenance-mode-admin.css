@@ -78,7 +78,7 @@
 }
 
 .redirect_options {
-	display: none;
+	/*display: none;*/
 	align-items: start;
 	gap: 2rem;
 }
@@ -137,7 +137,7 @@
 }
 
 .login_url_field {
-	display: none;
+	/*display: none;*/
 }
 
 .hide_socialmedia {

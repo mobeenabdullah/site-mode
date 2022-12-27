@@ -35,38 +35,7 @@ class Rex_Design
         protected $icon_border_color    = '';
 
 
-    public function __construct()
-    {
-//        $template               = get_option('rex_design');
-//        $rex_design_lb          = get_option('rex_design_lb');
-//        $rex_design_colors      = get_option('rex_design_colors');
-//
-//        // convert serialized string to array
-//        $un_data                = unserialize($template);
-//        $lb_data                = unserialize($rex_design_lb);
-//        $color_data             = unserialize($rex_design_colors);
-//
-//        $this->enable_template        = $un_data['enable_template'];
-//        $this->logo_width             = $lb_data['logo_width'];
-//
-//        $this->logo_height            = $lb_data['logo_height'];
-//        $this->design_background      = $lb_data['design_background'];
-//        $this->background_overlay     = $lb_data['background_overlay'];
-//        $this->overlay_color          = $lb_data['overlay_color'];
-//        $this->overlay_opacity        = $lb_data['overlay_opacity'];
-//
-//        $this->icon_size              = $color_data['icon_size'];
-//        $this->icon_color             = $color_data['icon_color'];
-//        $this->icon_bg_color          = $color_data['icon_bg_color'];
-//        $this->icon_border_color      = $color_data['icon_border_color'];
-
-
-        // convert serialized string to array
-
-        //unserialize data
-
-
-    }
+    public function __construct(){}
 
     public function ajax_rex_design() {
 
