@@ -35,19 +35,6 @@ class Rex_Social
     public function __construct()
     {
 
-//        // get data from database
-//        $social = get_option('rex_social');
-//        // unserialize data
-//        $uns_data = unserialize($social);
-//        $this->show_social = $uns_data['show_social'];
-//        $this->facebook = $uns_data['social_fb'];
-//        $this->twitter = $uns_data['social_twitter'];
-//        $this->linkedin = $uns_data['social_linkedin'];
-//        $this->youtube = $uns_data['social_youtube'];
-//        $this->instagram = $uns_data['social_instagram'];
-//        $this->pinterest = $uns_data['social_pintrest'];
-//        $this->quora = $uns_data['social_quora'];
-//        $this->behance = $uns_data['social_behance'];
     }
 
     public function ajax_rex_social() {

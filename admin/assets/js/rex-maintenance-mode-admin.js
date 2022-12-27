@@ -331,8 +331,8 @@ jQuery(function ($) {
         $('.disable_media').on('click', disableSingleMedia);
         $('.disable_media').load(disableSingleMedia());        
 
-        // $('.login_url_field').hide();
-        function enableDisableLoginIcon() {            
+        $('.login_url_field').hide();
+        function enableDisableLoginIcon() {
             if($('.enable_login_icon').is(":checked")) {
                 $('.login_url_field').show();
             } else {
@@ -340,7 +340,7 @@ jQuery(function ($) {
             }
         }
         $('.enable_login_icon').on('click', enableDisableLoginIcon);
-        $('.enable_login_icon').load(enableDisableLoginIcon);          
+        $('.enable_login_icon').load(enableDisableLoginIcon);
     })
 
     // Drag and Drop JQuery
@@ -406,8 +406,11 @@ jQuery(function ($) {
         });
     });
 
-
+    $('#rex-social').submit(function() {
+        alert('test');
+    });
     $( "#rex-social" ).submit(function( event ) {
+        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-social");
         const formData = new FormData(form);
@@ -492,6 +495,7 @@ jQuery(function ($) {
     });
 
     $( "#rex-seo" ).submit(function( event ) {
+        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-seo");
         const formData = new FormData(form);

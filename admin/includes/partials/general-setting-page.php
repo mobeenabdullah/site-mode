@@ -44,18 +44,20 @@
                     <span class="arrow-down"></span>
                 </div>
                  <!-- Hidden fields -->
-                 <div class="redirect_options">
-                    <div class="um_input_cover label_top">
-                        <label for="redirect_url"><?php _e('Redirect Url','rex-maintenance-mode');?></label>
-                        <input type="text" id="redirect_url" name="wprex-redirect-url-settings" value="<?php echo $url; ?>" <?php checked(1, $url, true); ?> />
-                    </div>
-                    <div class="um_input_cover label_top">
-                        <label for="delay_seconds"><?php _e('Delay (Seconds)','rex-maintenance-mode');?></label>
-                        <div class="um_number-cover">
-                            <input type="number" min="0" max="9" id="delay_seconds" data-inc="1" name="wprex-delay-settings" value="<?php echo $delay; ?>" <?php checked(1, $delay, true); ?> />
+                <?php if($mode==='redirect') { ?>
+                    <div class="redirect_options">
+                        <div class="um_input_cover label_top">
+                            <label for="redirect_url"><?php _e('Redirect Url','rex-maintenance-mode');?></label>
+                            <input type="text" id="redirect_url" name="wprex-redirect-url-settings" value="<?php echo $url; ?>" <?php checked(1, $url, true); ?> />
+                        </div>
+                        <div class="um_input_cover label_top">
+                            <label for="delay_seconds"><?php _e('Delay (Seconds)','rex-maintenance-mode');?></label>
+                            <div class="um_number-cover">
+                                <input type="number" min="0" max="9" id="delay_seconds" data-inc="1" name="wprex-delay-settings" value="<?php echo $delay; ?>" <?php checked(1, $delay, true); ?> />
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php }?>
             </div>
         </div>        
         
@@ -71,7 +73,10 @@
                 </div>
                 <div class="um_input_cover label_top login_url_field">
                     <label for="redirect_url"><?php _e('Login URL','rex-maintenance-mode');?></label>
-                    <input type="text" id="redirect_url" name="wprex-login-url-setting" value="<?php echo esc_attr($login_url); ?>"/>
+                    <?php
+                    if($login_url) { ?>
+                        <input type="text" id="redirect_url" name="wprex-login-url-setting" value="<?php echo esc_attr($login_url); ?>"/>
+                   <?php } ?>
                 </div>
             </div>
         </div>

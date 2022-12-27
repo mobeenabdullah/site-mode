@@ -1,25 +1,23 @@
 <div class="wrap">
-
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-
-    <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form id="rex-social" method="post">
         <?php
-            // display error message
-            settings_errors();
-            // get data from database
-            $social = get_option('rex_social');
-            // unserialize data
-            $uns_data = unserialize($social);
-            // check if values set or not and set default values
-            $show_social    = isset($uns_data['show_social']) ? $uns_data['show_social'] : '';
-            $facebook       = isset($uns_data['facebook']) ? $uns_data['facebook'] : 'facebookusername';
-            $twitter        = isset($uns_data['twitter']) ? $uns_data['twitter'] : 'twitterusername';
-            $linkedin       = isset($uns_data['linkedin']) ? $uns_data['linkedin'] : 'linkedinusername';
-            $youtube        = isset($uns_data['youtube']) ? $uns_data['youtube'] : 'youtubeusername';
-            $instagram      = isset($uns_data['instagram']) ? $uns_data['instagram'] : 'instagramusername';
-            $pinterest      = isset($uns_data['pinterest']) ? $uns_data['pinterest'] : 'pinterestusername';
-            $quora          = isset($uns_data['quora']) ? $uns_data['quora'] : 'quorausername';
-            $behance        = isset($uns_data['behance']) ? $uns_data['behance'] : 'behanceusername';
+        // display error message
+        settings_errors();
+        // get data from database
+        $social = get_option('rex_social');
+        // unserialize data
+        $uns_data = unserialize($social);
+        // check if values set or not and set default values
+        $show_social    = isset($uns_data['show_social']) ? $uns_data['show_social'] : '';
+        $facebook       = isset($uns_data['social_fb']) ? $uns_data['social_fb'] : 'facebookusername';
+        $twitter        = isset($uns_data['social_twitter']) ? $uns_data['social_twitter'] : 'twitterusername';
+        $linkedin       = isset($uns_data['social_linkedin']) ? $uns_data['social_linkedin'] : 'linkedinusername';
+        $youtube        = isset($uns_data['social_youtube']) ? $uns_data['social_youtube'] : 'youtubeusername';
+        $instagram      = isset($uns_data['social_instagram']) ? $uns_data['social_instagram'] : 'instagramusername';
+        $pinterest      = isset($uns_data['social_pintrest']) ? $uns_data['social_pintrest'] : 'pinterestusername';
+        $quora          = isset($uns_data['social_quora']) ? $uns_data['social_quora'] : 'quorausername';
+        $behance        = isset($uns_data['social_behance']) ? $uns_data['social_behance'] : 'behanceusername';
 
         ?>
         <div class="um_checkbox_wrapper">
@@ -223,9 +221,9 @@
                 </li>
             </ul>
         </div>
+        <?php
+        wp_nonce_field('social-settings-save', 'social-custom-message');
+        submit_button();
+        ?>
     </form>
-    <?php
-    wp_nonce_field('social-settings-save', 'social-custom-message');
-    submit_button();
-    ?>
 </div>
