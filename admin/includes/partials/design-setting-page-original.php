@@ -2,7 +2,7 @@
     <div class="rex__wrap--cover-content-form">
         <form id="rex-design" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <div id="universal-message-container">
-                <h2>Themes</h2>
+                <h2><?php _e('Themes','rex-maintenance-mode');?></h2>
                 <div class="template__wrapper">
                     <?php
                         $template = get_option('rex_design');
@@ -79,7 +79,7 @@
                 submit_button();
                 ?>
         </form>
-        <form id="rex-design-logo-background" method="post">
+        <form id="rex-design-logo-rex-design-logo-background" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
             $rex_design_lb = get_option('rex_design_lb');
             // convert serialized string to array
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="background_section">
-                <h3>Background</h3>
+                <h3><?php _e('Background','rex-maintenance-mode');?></h3>
                 <div class="um_checkbox_wrapper">
                     <?php
                         //get image url from id
@@ -129,11 +129,11 @@
                             <img src="<?php echo esc_url($image_url[0]) ?>" width="150" height="150" />
                         </div>
                     </div>
-                    <a href="#" class="button um_btn_outline logo-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
+                    <a href="#" class="button um_btn_outline logo-remove"><?php _e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
                     <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>">
                 <?php else : ?>
-                    <a href="#" class="logo-upload button um_btn_outline"><?php esc_html_e('Background Image', 'rex-maintenance-mode'); ?></a>
-                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php esc_html_e('Background Overlay', 'rex-maintenance-mode'); ?></a>
+                    <a href="#" class="logo-upload button um_btn_outline"><?php _e('Background Image', 'rex-maintenance-mode'); ?></a>
+                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php _e('Background Overlay', 'rex-maintenance-mode'); ?></a>
                     <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>>
                 <?php endif; ?>
                 <div class="background_overlay">
@@ -199,10 +199,10 @@
             //unserialize data
             $color_data = unserialize($rex_design_colors);
             //check if values are set or not and assign default values
-            $icon_size = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
-            $icon_color = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
-            $icon_bg_color = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
-            $icon_border_color = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
+            $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
+            $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
+            $icon_bg_color          = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
+            $icon_border_color      = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
 
 
             ?>

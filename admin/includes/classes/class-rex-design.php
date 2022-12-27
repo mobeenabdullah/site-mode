@@ -90,22 +90,22 @@ class Rex_Design
         $nonce = $_POST['design-icon-color'];
         if(!wp_verify_nonce( $nonce, 'design-icon-color-settings-save' )) {
             die(__('Security Check', 'rex-maintenance-mode'));
-        }
-        else {
-            $data = array(
+        } else {
+            $color_section_data = array(
                 'icon_size'                 => $_POST['icon-size-setting'],
                 'icon_color'                => $_POST['icon-color-setting'],
                 'icon_bg_color'             => $_POST['icon-bg-setting'],
                 'icon_border_color'         => $_POST['icon-border-color-setting'],
+                'design_icon_color'         => $_POST['design-icon-color'],
             );
         }
 
         if(get_option( 'rex_design_colors' )) {
-            update_option('rex_design_colors',serialize($data));
+            update_option('rex_design_colors',serialize($color_section_data));
             wp_send_json_success(get_option( 'rex_design_colors' ));
         }
         else {
-            add_option('rex_design_colors',serialize($data));
+            add_option('rex_design_colors',serialize($color_section_data));
             wp_send_json_success(get_option( 'rex_design_colors' ));
         }
         die();

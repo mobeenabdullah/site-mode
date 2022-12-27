@@ -31,7 +31,15 @@ class Rex_General
 
     public function __construct()
     {
-
+//        $general = get_option('rex_general');
+//        if(!empty($general)){
+//            $un_data = unserialize($general);
+//            $this->status       = ($un_data['status']) ? true : false;
+//            $this->url          = ($un_data['url']) ? $un_data['url'] : '';
+//            $this->delay        = ($un_data['delay']) ? $un_data['delay'] : 0;
+//            $this->login_icon   = ($un_data['login_icon']) ? true : false;
+//            $this->login_url    = ($un_data['login_url']) ? $un_data['login_url'] : '';
+//        }
     }
 
     public function ajax_rex_general() {
