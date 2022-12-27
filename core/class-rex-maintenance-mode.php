@@ -197,7 +197,7 @@ class Rex_Maintenance_Mode
 
         //design
         $this->loader->add_action('wp_ajax_ajax_rex_design',$this->classes_loader->get_design(), 'ajax_rex_design');
-        $this->loader->add_action('wp_ajax__ajax_rex_design_lb',$this->classes_loader->get_design(),'_ajax_rex_design_lb');
+        $this->loader->add_action('wp_ajax_ajax_rex_design_lb',$this->classes_loader->get_design(),'ajax_rex_design_lb');
         $this->loader->add_action('wp_ajax_ajax_rex_design_color_section',$this->classes_loader->get_design(),'ajax_rex_design_color_section');
 
 

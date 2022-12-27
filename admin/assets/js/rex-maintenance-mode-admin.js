@@ -451,9 +451,12 @@ jQuery(function ($) {
     });
 
     $("#rex-design-logo-background").submit(function( event ) {
+        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-design-logo-background");
+        alert(form);
         const formData = new FormData(form);
+        console.log(formData);
         formData.append('action', 'ajax_rex_design_lb');
         formData.append('ajax_rex_design_lb',form);
         $.ajax({
