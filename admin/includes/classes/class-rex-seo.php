@@ -25,12 +25,9 @@ class Rex_Seo
 
 
 
-    public function __construct()
-    {
-    }
+    public function __construct(){}
 
     public function ajax_rex_seo() {
-
 
         $nonce = $_POST['seo-custom-message'];
         if(!wp_verify_nonce( $nonce, 'seo-settings-save' )) {
@@ -46,11 +43,11 @@ class Rex_Seo
         }
 
         if(get_option( 'rex_seo' )) {
-            update_option('rex_seo',$this->rex_seralize($data) );
+            update_option('rex_seo',serialize($data) );
             wp_send_json_success(get_option( 'rex_seo' ));
         }
         else {
-            add_option('rex_seo',$this->rex_seralize($data));
+            add_option('rex_seo',serialize($data));
             wp_send_json_success(get_option( 'rex_seo' ));
         }
         die();

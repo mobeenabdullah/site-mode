@@ -120,4 +120,14 @@ class Rex_Advanced
         }
     }
 
+    public function rex_feed($access)
+    {
+        if ($this->enable_feed) {
+            return $access;
+        } else {
+            return new WP_Error('feed_cannot_access', __('The Feed on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
+        }
+    }
+
+
 }

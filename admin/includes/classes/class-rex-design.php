@@ -60,7 +60,6 @@ class Rex_Design
         die();
     }
     public function ajax_rex_design_lb() {
-
         $nonce = $_POST['design-logo-background'];
         if(!wp_verify_nonce( $nonce, 'design-logo-background-settings-save' )) {
             die(__('Security Check', 'rex-maintenance-mode'));

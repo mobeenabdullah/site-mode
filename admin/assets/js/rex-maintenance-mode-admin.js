@@ -406,9 +406,6 @@ jQuery(function ($) {
         });
     });
 
-    $('#rex-social').submit(function() {
-        alert('test');
-    });
     $( "#rex-social" ).submit(function( event ) {
         alert( "Handler for .submit() called." );
         event.preventDefault();
@@ -432,7 +429,7 @@ jQuery(function ($) {
     });
 
 
-    $( "#rex-design" ).submit(function( event ) {
+    $("#rex-design").submit(function( event ) {
         event.preventDefault();
         const form = document.getElementById("rex-design");
         const formData = new FormData(form);
@@ -453,7 +450,7 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-design-logo-background" ).submit(function( event ) {
+    $("#rex-design-logo-background").submit(function( event ) {
         event.preventDefault();
         const form = document.getElementById("rex-design-logo-background");
         const formData = new FormData(form);
@@ -473,6 +470,7 @@ jQuery(function ($) {
             }
         });
     });
+
     $( "#rex-design-color-section" ).submit(function( event ) {
         event.preventDefault();
         const form = document.getElementById("rex-design-color-section");
@@ -495,14 +493,14 @@ jQuery(function ($) {
     });
 
     $( "#rex-seo" ).submit(function( event ) {
-        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-seo");
+        console.log(form);
         const formData = new FormData(form);
         formData.append('action', 'ajax_rex_seo');
         formData.append('ajax_rex_seo',form);
         $.ajax({
-            url: ajaxObj.ajax_url,
+            url:ajaxObj.ajax_url,
             dataType : "json",
             method: "post",
             processData: false,
@@ -539,6 +537,7 @@ jQuery(function ($) {
     });
 
     $('.btn-export').on('click', function() {
+        alert("This is a button.");
         $.ajax({
             url: ajaxObj.ajax_url,
             type: "GET",
@@ -558,7 +557,6 @@ jQuery(function ($) {
         const formData = new FormData(form);
         formData.append('action', 'ajax_rex_import');
         formData.append('ajax_rex_import',form);
-
         // import json file and save it to database
         $.ajax({
             url: ajaxObj.ajax_url,

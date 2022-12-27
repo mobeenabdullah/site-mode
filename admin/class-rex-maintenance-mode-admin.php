@@ -53,12 +53,6 @@ class Rex_Maintenance_Mode_Admin
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
-        add_action('wp_ajax_nopriv_ajax_rex_seo',[$this,'ajax_rex_seo']);
-        add_action('wp_ajax_ajax_rex_seo',[$this,'ajax_rex_seo']);
-
-
-
         add_action('admin_enqueue_scripts', [$this,'enqueue_media']);
 
     }

@@ -79,7 +79,7 @@
                 submit_button();
                 ?>
         </form>
-        <form id="rex-design-logo-background" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="rex-design-logo-background" method="post">
             <?php
             $rex_design_lb = get_option('rex_design_lb');
             // convert serialized string to array
@@ -211,9 +211,9 @@
                     <div class="um_select">
                         <label for="site_mode" class="screen-reading"><?php _e('Icon Size','rex-maintenance-mode');?></label>
                         <select name="icon-size-setting" id="site_mode">
-                            <option value="32" ><?php _e('32','rex-maintenance-mode');?></option>
-                            <option value="64" ><?php _e('64','rex-maintenance-mode');?></option>
-                            <option value="128" ><?php _e('128','rex-maintenance-mode');?></option>
+                            <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','rex-maintenance-mode');?></option>
+                            <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','rex-maintenance-mode');?></option>
+                            <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','rex-maintenance-mode');?></option>
                         </select>
                 </div>
                 <div class="icon_color">
