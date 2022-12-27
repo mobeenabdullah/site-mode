@@ -31,20 +31,21 @@ class Rex_Export
     protected $social               = '';
     protected $settings             = '';
     protected $general              = '';
+    protected $data                 = array();
 
     public function __construct()
     {
-        $this->advance    = get_option('rex_advanced');
-        $this->content    = get_option('rex_content');
-        $this->design     = get_option('rex_design');
-        $this->rex_design_lb = get_option('rex_design_lb');
-        $this->rex_design_colors = get_option('rex_design_colors');
-        $this->seo = get_option('rex_seo');
-        $this->social = get_option('rex_social');
-        $this->settings = get_option('rex_settings');
-        $this->general = get_option('rex_general');
+        $this->advance              = get_option('rex_advanced');
+        $this->content              = get_option('rex_content');
+        $this->design               = get_option('rex_design');
+        $this->rex_design_lb        = get_option('rex_design_lb');
+        $this->rex_design_colors    = get_option('rex_design_colors');
+        $this->seo                  = get_option('rex_seo');
+        $this->social               = get_option('rex_social');
+        $this->settings             = get_option('rex_settings');
+        $this->general              = get_option('rex_general');
 
-        $data = array(
+        $this->data = array(
             'advance'   => $this->advance,
             'content'   => $this->content,
             'design'    => $this->design,
@@ -56,7 +57,6 @@ class Rex_Export
     }
 
     public function ajax_rex_export() {
-
         $json = json_encode($this->data);
         if(file_put_contents(plugin_dir_path(__FILE__) . "export.json", $json)) {
             echo $json;
@@ -67,7 +67,6 @@ class Rex_Export
 
             if (file_exists($filename)) {
                 // delete the file
-
 
             }
             else {

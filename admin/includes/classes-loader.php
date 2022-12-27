@@ -38,13 +38,14 @@ class Rex_Classes_loader
     {
         $this->files_loader();
 
-        $this->general_settings = new Rex_General();
-        $this->content_settings = new Rex_Content();
-        $this->social_settings = new Rex_Social();
-        $this->design_settings = new Rex_Design();
-        $this->seo_settings = new Rex_Seo();
-        $this->advanced_settings = new Rex_Advanced();
-        $this->import_settings = new Rex_Import();
+        $this->general_settings     = new Rex_General();
+        $this->content_settings     = new Rex_Content();
+        $this->social_settings      = new Rex_Social();
+        $this->design_settings      = new Rex_Design();
+        $this->seo_settings         = new Rex_Seo();
+        $this->advanced_settings    = new Rex_Advanced();
+        $this->import_settings      = new Rex_Import();
+        $this->export_settings      = new Rex_Export();
     }
 
     public function files_loader() {
@@ -88,9 +89,14 @@ class Rex_Classes_loader
         return $this->advanced_settings;
     }
 
-    public function get_import_export()
+    public function get_import()
     {
-        return $this->import_export_settings;
+        return $this->import_settings;
+    }
+
+    public function get_export()
+    {
+        return $this->export_settings;
     }
 
 
