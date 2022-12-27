@@ -79,7 +79,7 @@
                 submit_button();
                 ?>
         </form>
-        <form id="rex-design-logo-rex-design-logo-background" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="rex-design-logo-background" method="post">
             <?php
             $rex_design_lb = get_option('rex_design_lb');
             // convert serialized string to array
