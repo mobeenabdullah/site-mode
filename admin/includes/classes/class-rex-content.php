@@ -38,9 +38,7 @@ class Rex_Content
 
     public function ajax_rex_content() {
 
-        $nonce = $_POST['design-custom-message'];
-
-        if(!wp_verify_nonce( $nonce, 'design-settings-save' )) {
+        if(!wp_verify_nonce( $_POST['design-custom-message'], 'design-settings-save' ) || !isset($_POST['design-custom-message'])  || !empty($_POST['design-custom-message']) ) {
             die(__('Security Check', 'rex-maintenance-mode'));
         }
         else {

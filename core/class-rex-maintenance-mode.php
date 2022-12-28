@@ -181,8 +181,7 @@ class Rex_Maintenance_Mode
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
         $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_menu');
         $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_submenu_settings_page');
-//        $this->loader->add_action('admin_init', $plugin_pages, 'rex_maintenance_mode_init');
-//        add_action('admin_init', [$this, 'rex_maintenance_mode_init']);
+
 
         // ajax calling
 
@@ -201,16 +200,14 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('wp_ajax_ajax_rex_design_color_section',$this->classes_loader->get_design(),'ajax_rex_design_color_section');
 
 
-
         // SEO settings
         $this->loader->add_action('wp_ajax_ajax_rex_seo',$this->classes_loader->get_seo(),'ajax_rex_seo');
         // advanced settings
         $this->loader->add_action('wp_ajax_ajax_rex_advanced',$this->classes_loader->get_advanced(),'ajax_rex_advanced');
 
-        //export settings
+        //export  and export settings
         $this->loader->add_action('wp_ajax_ajax_rex_export',$this->classes_loader->get_export(),'ajax_rex_export');
         $this->loader->add_action('wp_ajax_ajax_rex_import',$this->classes_loader->get_import(),'ajax_rex_import');
-
 
 
         //feeds
@@ -242,30 +239,6 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
         $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'rex_rest_api');
         //general settings
-        // general
-        add_action('wp_ajax_nopriv_ajax_rex_general',$this->classes_loader->get_general(),'ajax_rex_general');
-        // content
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_content',$this->classes_loader->get_content(), 'ajax_rex_content');
-
-        // social
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_social',$this->classes_loader->get_social(),'ajax_rex_social');
-
-
-        //design
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_design',$this->classes_loader->get_design(), 'ajax_rex_design');
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_design_lb',$this->classes_loader->get_design(), 'ajax_rex_design_lb');
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_design_color_section',$this->classes_loader->get_design(),'ajax_rex_design_color_section');
-
-        // SEO settings
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_seo',$this->classes_loader->get_seo(),'ajax_rex_seo');
-
-
-        // advanced settings
-        $this->loader->add_action('wp_ajax_nopriv_ajax_rex_advanced',$this->classes_loader->get_advanced(), 'ajax_rex_advanced');
-
-
-
-
 
 
 	}
