@@ -545,8 +545,15 @@ jQuery(function ($) {
             url: ajaxObj.ajax_url,
             type: "GET",
             data:{action:'ajax_rex_export'},
-            success:function (res) {
-                alert(res);
+            success:function (data) {
+                console.log(data);
+                var blob = new Blob([data], {
+                    type: 'application/json'
+                });
+                var link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = "export.json";
+                link.click();
             }
         });
 

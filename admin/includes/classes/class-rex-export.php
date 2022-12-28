@@ -58,27 +58,14 @@ class Rex_Export
 
     public function ajax_rex_export() {
         $json = json_encode($this->data);
-        if(file_put_contents(plugin_dir_path(__FILE__) . "export.json", $json)) {
+        if($json) {
             echo $json;
-            $filename = plugin_dir_path(__FILE__) . "export.json";
-            //Clear the cache
-            wp_send_json_success($filename);
-            clearstatcache();
-
-            if (file_exists($filename)) {
-                // delete the file
-
-            }
-            else {
-                //generate error message
-                wp_send_json_error("File not found");
-            }
+            die();
         }
         else {
             echo 'error';
         }
 
-        $file = plugin_dir_path(__FILE__) . "export.json";
         die();
 
     }

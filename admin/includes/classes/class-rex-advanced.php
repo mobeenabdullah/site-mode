@@ -37,22 +37,38 @@ class Rex_Advanced
         protected $contributor_role = false;
         protected $subscriber_role  = false;
         protected $user_role        = false;
+        protected $rex_advanced     = array();
 
     public function __construct()
     {
-        $rex_advanced = get_option('rex_advanced');
-
+        $this->rex_advanced = get_option('rex_advanced');
+        $this->rex_advanced = unserialize($this->rex_advanced);
+        if($this->rex_advanced) {
+            $this->ga_id            = $this->rex_advanced['ga_id'];
+            $this->custom_cs        = $this->rex_advanced['custom_css'];
+            $this->enable_rest_api  = $this->rex_advanced['enable_rest_api'];
+            $this->enable_feed      = $this->rex_advanced['enable_feed'];
+            $this->include_pages    = $this->rex_advanced['include_pages'];
+            $this->exclude_pages    = $this->rex_advanced['exclude_pages'];
+            $this->header_code      = $this->rex_advanced['header_code'];
+            $this->footer_code      = $this->rex_advanced['footer_code'];
+            $this->admin_role       = $this->rex_advanced['admin_role'];
+            $this->editor_role      = $this->rex_advanced['editor_role'];
+            $this->author_role      = $this->rex_advanced['author_role'];
+            $this->contributor_role = $this->rex_advanced['contributor_role'];
+            $this->subscriber_role  = $this->rex_advanced['subscriber_role'];
+            $this->user_role        = $this->rex_advanced['user_role'];
+        }
 
     }
 
     public function rex_custom_css_include()
     {
         if (!empty($this->custom_css)) {
-            echo '<style type="text/css">' . $this->custom_css . '</style>';
+          echo  $this->custom_css;
 
         }
     }
-
     public function header_code_include()
     {
         if (!empty($this->header_code)) {
@@ -66,7 +82,6 @@ class Rex_Advanced
             echo $this->footer_code;
         }
     }
-
     public function  ajax_rex_advanced() {
         
         $nonce = $_POST['advance-custom-message'];

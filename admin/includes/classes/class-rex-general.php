@@ -29,24 +29,11 @@ class Rex_General
     protected $login_icon = false;
     protected $login_url = '';
 
-    public function __construct()
-    {
-//        $general = get_option('rex_general');
-//        if(!empty($general)){
-//            $un_data = unserialize($general);
-//            $this->status       = ($un_data['status']) ? true : false;
-//            $this->url          = ($un_data['url']) ? $un_data['url'] : '';
-//            $this->delay        = ($un_data['delay']) ? $un_data['delay'] : 0;
-//            $this->login_icon   = ($un_data['login_icon']) ? true : false;
-//            $this->login_url    = ($un_data['login_url']) ? $un_data['login_url'] : '';
-//        }
-    }
+    public function __construct(){}
 
     public function ajax_rex_general() {
 
-        $nonce = $_POST['general_section_field'];
-
-        if(!wp_verify_nonce( $nonce, 'general_settings_action' )) {
+        if(!wp_verify_nonce( $_POST['general_section_field'], 'general_settings_action' ) || !isset($_POST['general_section_field']) || !isset($_POST['general_settings_action'])) {
             die(__('Security Check', 'rex-maintenance-mode'));
         }
         else {
