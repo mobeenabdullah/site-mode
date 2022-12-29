@@ -29,12 +29,16 @@ class Rex_General
     protected $login_icon = false;
     protected $login_url = '';
 
-    public function __construct(){}
+    public function __construct(){
+
+    }
 
     public function ajax_rex_general() {
 
-        if(!wp_verify_nonce( $_POST['general_section_field'], 'general_settings_action' ) || !isset($_POST['general_section_field']) || !isset($_POST['general_settings_action'])) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+       //check  if nonce is valid
+
+        if ( ! isset( $_POST['general_section_field'] ) || ! wp_verify_nonce( $_POST['general_section_field'], 'general_settings_action' ) ) {
+            wp_send_json_error( 'Invalid nonce' );
         }
         else {
             $data = array(
@@ -59,4 +63,5 @@ class Rex_General
         die();
 
     }
+
 }

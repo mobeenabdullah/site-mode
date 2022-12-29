@@ -59,6 +59,7 @@ class Rex_Export
     public function ajax_rex_export() {
         $json = json_encode($this->data);
         if($json) {
+            // get plugin name dynamically
             echo $json;
             die();
         }

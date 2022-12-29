@@ -379,11 +379,10 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                alert(res);
+
             }
         });
     });
-
 
     $( "#rex-content" ).submit(function( event ) {
         event.preventDefault();
@@ -401,7 +400,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                console.log(res);
+
             }
         });
     });
@@ -423,7 +422,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                alert(res);
+
             }
         });
     });
@@ -445,7 +444,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                console.log(res);
+
             }
         });
     });
@@ -469,7 +468,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                console.log(res);
+
             }
         });
     });
@@ -490,7 +489,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                console.log(res);
+
             }
         });
     });
@@ -512,7 +511,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                alert(res);
+
             }
         });
     });
@@ -534,7 +533,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                alert(res);
+
             }
         });
     });
@@ -552,7 +551,20 @@ jQuery(function ($) {
                 });
                 var link = document.createElement('a');
                 link.href = window.URL.createObjectURL(blob);
-                link.download = "export.json";
+                //get site name using window.location and split it by dot
+                var siteName = window.location.hostname.split('.')[0];
+                //plugin name
+                var pluginName = 'rex-maintenance-mode';
+                //get current date and time
+                var date = new Date();
+                var dateStr = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
+                //create file name with site name and current date and time
+                var fileName = siteName + '-' + pluginName + '-' + dateStr + '.json';
+                link.download = fileName;
+
+                //name of the file with site name
+                // link.download = siteName + '.json';
+                // link.download = "export.json";
                 link.click();
             }
         });
@@ -579,7 +591,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                alert(res);
+
             }
         });
     });
