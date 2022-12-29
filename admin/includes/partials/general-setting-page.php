@@ -12,8 +12,6 @@
             $delay          = isset($un_data['delay'] ) ? $un_data['delay']  : '';
             $login_icon     = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
             $login_url      = isset($un_data['login_url'] ) ? $un_data['login_url']  : '';
-
-
         ?>
         <!-- Status Setting -->
         <div class="option__row">

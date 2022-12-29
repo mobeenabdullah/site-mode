@@ -84,18 +84,62 @@ class Rex_Maintenance_Mode_Public
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
 
         $selected_template = get_option('content-content-template-settings');
+        $template =  get_option('rex_general');
+        $un_data = unserialize($template);
 
-        switch (true) {
-            case ($selected_template == '1'):
+        //check if the values are set or not and then assign them to the variables
+        $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+        $mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
+        $url            = isset($un_data['url'] ) ? $un_data['url']  : '';
+
+
+
+        $template = get_option('rex_design');
+        // convert serialized string to array
+        $un_data = unserialize($template);
+        //check if value is set or not if not set then set default value.
+        $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
+
+        if($mode==='redirect') {
+            echo 'This is redirect is working fine';
+            //redirect mode to the give url
+            //wp redirect method with $url as parameter.
+            if(!empty($status) && !empty($url)) {
+                wp_redirect( $url, 301 );
+                exit;
+
+            }
+        }
+        else if($mode === 'maintenance') {
+                status_header( 200 );
+                nocache_headers();
+        }
+        else if($mode==='coming-soon') {
+                status_header( 503);
+                nocache_headers();
+            }
+            else {
+
+        }
+
+
+
+
+        switch (!empty($status)) {
+            case ($enable_template == '1'):
+                echo $enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
                 break;
-            case ($selected_template == '2'):
+            case ($enable_template == '2'):
+                echo $enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
                 break;
-            case ($selected_template == '3'):
+            case ($enable_template == '3'):
+                echo $enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
                 break;
-            case ($selected_template == '4'):
+            case ($enable_template == '4'):
+                echo $enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
                 break;
             default:
