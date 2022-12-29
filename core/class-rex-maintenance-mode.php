@@ -183,6 +183,9 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_submenu_settings_page');
 
 
+
+
+
         // ajax calling
 
         // general
@@ -234,10 +237,14 @@ class Rex_Maintenance_Mode
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
         $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
+//        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_code');
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_id');
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
         $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'rex_rest_api');
+
+
         //general settings
 
 
