@@ -81,6 +81,15 @@ class Rex_Maintenance_Mode_Public
         wp_enqueue_style('preconnect-font', 'https://fonts.googleapis.com');
         wp_enqueue_style('preconnect-static', 'https://fonts.gstatic.com');
         wp_enqueue_style('open-sans-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
+        if(!empty(get_option( 'rex_design_font' ))) {
+            $font_family = get_option( 'rex_design_font' );
+            //unseralize the font family
+            $font_family = unserialize($font_family);
+            $selected_font = $font_family['font_family'];
+            wp_enqueue_style($selected_font, "https://fonts.googleapis.com/css2?family=".$selected_font.":wght@300;400;500;600;700&display=swap");
+        }
+
+
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
 
         $selected_template = get_option('content-content-template-settings');

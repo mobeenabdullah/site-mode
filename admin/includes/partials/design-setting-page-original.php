@@ -156,31 +156,34 @@
             submit_button();
             ?>
         </form>
-        <form method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="rex-design-fonts" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
-            // api call for font family
-//            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
-
+//             api call for font family
+            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
+            $body = wp_remote_retrieve_body($response);
+            $data = json_decode($body);
+            //story font family in array
+            $font_family = array();
+            foreach ($data->items as $key => $value) {
+                $font_family[] = $value->family;
+            }
+            //serialize font family array then store in option
+            $font_family = serialize($font_family);
+            update_option('rex-font-family', $font_family);
+            //get font family from option
+            $font_family = get_option('rex-font-family');
             ?>
         <div class="color_font_section">
             <div class="font_family">
                 <div class="um_select">
-                    <label for="site_mode" class="screen-reading"><?php _e('Mode','rex-maintenance-mode');?></label>
-                    <select name="wprex-mode-settings" id="site_mode">
-
+                    <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
+                    <select name="font-family-setting" id="site_mode">
+                        <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
                         <?php
-//                        if ( ! is_wp_error( $response ) ) {
-//                        $fonts = json_decode( $response['body'] );
-//                        foreach ( $fonts->items as $font ) {
-                        ?>
-                        <option value="" >
-                            <?php
-//                            _e($font->family,'rex-maintenance-mode');
-                            ?>
-                        </option>
-                        <?php
-//                        }
-//                        }
+                        $font_family = unserialize($font_family);
+                        foreach ($font_family as $key => $value) {
+                            echo '<option value="' . $value . '">' . $value . '</option>';
+                        }
                         ?>
                     </select>
                     <span class="arrow-down"></span>
@@ -188,7 +191,7 @@
             </div>
         </div>
             <?php
-            wp_nonce_field('design-logo-background-settings-save', 'design-logo-background');
+            wp_nonce_field('design-fonts-settings-save', 'design-fonts');
             submit_button();
             ?>
         </form>

@@ -405,6 +405,29 @@ jQuery(function ($) {
         });
     });
 
+
+    $( "#rex-design-fonts" ).submit(function( event ) {
+        alert('font family saved');
+        event.preventDefault();
+        const form = document.getElementById("rex-design-fonts");
+        const formData = new FormData(form);
+        formData.append('action', 'ajax_rex_design_font');
+        formData.append('ajax_rex_design_font',form);
+        $.ajax({
+            url: ajaxObj.ajax_url,
+            dataType : "json",
+            method: "post",
+            processData: false,
+            contentType: false,
+            cache: false,
+            data: formData,
+            enctype: "multipart/form-data",
+            success:function (res) {
+                    console.log(res);
+            }
+        });
+    });
+
     $( "#rex-social" ).submit(function( event ) {
         alert( "Handler for .submit() called." );
         event.preventDefault();
