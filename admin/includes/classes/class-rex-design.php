@@ -86,6 +86,30 @@ class Rex_Design
         }
         die();
     }
+
+    public function ajax_rex_design_font() {
+
+//            $nonce = $_POST['design-fonts'];
+//            if(!wp_verify_nonce( $nonce, 'design-fonts-settings-save' )) {
+//                die(__('Security Check', 'rex-maintenance-mode'));
+//            }
+//            else {
+                $data = array(
+                    'font_family'         => $_POST['font-family-setting']
+                );
+//            }
+
+            if(get_option( 'rex_design_font' )) {
+                update_option('rex_design_font',serialize($data));
+                wp_send_json_success(get_option( 'rex_design_font' ));
+            }
+            else {
+                add_option('rex_design_font',serialize($data));
+                wp_send_json_success(get_option( 'rex_design_font' ));
+            }
+            die();
+    }
+
     public function ajax_rex_design_color_section() {
 
         $nonce = $_POST['design-icon-color'];
