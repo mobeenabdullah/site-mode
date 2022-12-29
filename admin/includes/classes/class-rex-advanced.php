@@ -98,7 +98,9 @@ class Rex_Advanced
         }
         else {
             $data = array(
+                'ga_type'               => $_POST['advanced-analytics-type-setting'],
                 'ga_id'                 => $_POST['advanced-ga-id-setting'],
+                'ga_code'               => $_POST['advanced-ga-code-setting'],
                 'custom_css'            => $_POST['advanced-custom-css-setting'],
                 'enable_rest_api'       => $_POST['advanced-wp-rest-api-setting'],
                 'enable_feed'           => $_POST['advanced-wp-feed-setting'],
@@ -152,6 +154,31 @@ class Rex_Advanced
 //        } else {
 //            return new WP_Error('feed_cannot_access', __('The Feed on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
 //        }
+    }
+
+    public function rex_google_analytics_code()
+    {
+        if (!empty($this->ga_code)) {
+            echo $this->ga_code;
+        }
+    }
+
+    public function rex_google_analytics_id()
+    {
+        if (!empty($this->ga_id)) {?>
+
+            <!-- Google tag (gtag.js) -->
+            <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $this->ga_id; ?>"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', '<?php echo $this->ga_id; ?>');
+            </script>
+
+        <?php
+        }
     }
 
 

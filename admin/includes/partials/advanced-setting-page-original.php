@@ -8,7 +8,9 @@
         //uniseralize data
         $uns_data = unserialize($rex_advanced);
     //check if value is set or not and set default value
+        $analytics_type     = isset($uns_data['analytics_type']) ? $uns_data['analytics_type'] : 'analytics-id';
         $ga_id              = isset($uns_data['ga_id']) ? $uns_data['ga_id'] : 'google analytics id';
+        $ga_code            = isset($uns_data['ga_code']) ? $uns_data['ga_code'] : 'google analytics code';
         $custom_css         = isset($uns_data['custom_css']) ? $uns_data['custom_css'] : 'custom css';
         $enable_rest_api    = isset($uns_data['enable_rest_api']) ? $uns_data['enable_rest_api'] : 'enable';
         $enable_feed        = isset($uns_data['enable_feed']) ? $uns_data['enable_feed'] : 'enable';
@@ -25,10 +27,27 @@
 
     ?>
     <form id="rex-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
-        <div class="um_input_cover">
-            <label class="screen-reading" for="ga"><?php _e('GA (ID/Code)', 'rex-maintenance-mode')?></label>
-            <input type="text" id="ga" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />
+        <div class="um_select">
+            <label for="site_mode" class="screen-reading"><?php _e('Google Analytics','rex-maintenance-mode');?></label>
+            <select name="advanced-analytics-type-setting" id="site_mode">
+                <option value="analytics-id" <?php selected( $analytics_type =='analytics-id', 1 ); ?>><?php _e('Analytics ID','rex-maintenance-mode');?></option>
+                <option value="analytics-code" <?php selected( $analytics_type ==='analytics-code', 1 ); ?>><?php _e('Analytics Code','rex-maintenance-mode');?></option>
+            </select>
+            <span class="arrow-down"></span>
         </div>
+        <?php if($analytics_type == 'analytics-id') {
+            ?>
+            <div class="um_input_cover">
+                <label class="screen-reading" for="ga"><?php _e(' enter just the ID', 'rex-maintenance-mode')?></label>
+                <input type="text" id="ga" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />
+            </div>
+        <?php }
+            if($analytics_type == 'analytics-code') { ?>
+        <div class="um_textarea_cover">
+            <label class="screen-reading" for="custom-ga-code"><?php _e(' inject all code', 'rex-maintenance-mode')?></label>
+            <textarea id="custom-ga-code" name="advanced-ga-code-setting" rows="6" cols="80"><?php echo esc_attr($ga_code); ?></textarea>
+        </div>
+        <?php  } ?>
         <div class="um_textarea_cover">
             <label class="screen-reading" for="custom-css"><?php _e('Custom CSS', 'rex-maintenance-mode')?></label>
             <textarea id="custom-css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_attr($custom_css); ?></textarea>
