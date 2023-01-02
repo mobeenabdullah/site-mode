@@ -71,6 +71,8 @@ class Rex_Maintenance_Mode
 	 */
 	public function __construct()
 	{
+
+
 		if (defined('REX_MAINTENANCE_MODE_VERSION')) {
 			$this->version = REX_MAINTENANCE_MODE_VERSION;
 		} else {
@@ -248,7 +250,14 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('template_include', $plugin_public, 'load_template_on_call');
+
+        $template =  get_option('rex_general');
+        $un_data = unserialize($template);
+        //check if the values are set or not and then assign them to the variables
+        $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+        if(!empty($status ) && $status == '1'){
+            $this->loader->add_action('template_include', $plugin_public, 'load_template_on_call');
+        }
 
 	}
 
