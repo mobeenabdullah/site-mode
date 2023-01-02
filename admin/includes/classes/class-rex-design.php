@@ -95,7 +95,12 @@ class Rex_Design
 //            }
 //            else {
                 $data = array(
-                    'font_family'         => $_POST['font-family-setting']
+                    'heading_font_family'               => $_POST['heading-font-family-setting'],
+                    'heading_font_size'                 => $_POST['heading-font-size-setting'],
+                    'description_font_family'           => $_POST['description-font-family-setting'],
+                    'description_font_size'             => $_POST['description-font-size-setting'],
+
+
                 );
 //            }
 

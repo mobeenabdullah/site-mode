@@ -215,13 +215,13 @@ class Rex_Maintenance_Mode
 
 
         //feeds
-        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'rex_feed', 1);
-        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'rex_feed', 1);
-        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'rex_feed', 1);
-        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'rex_feed', 1);
-        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_feed', 1);
-        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_feed', 1);
-        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_feed', 1);
+        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'rex_remove_rss_feed');
+        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
 	}
 
 	/**
@@ -304,3 +304,4 @@ class Rex_Maintenance_Mode
 
 
 }
+

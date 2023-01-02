@@ -58,7 +58,7 @@
                     <?php endif; ?>
                 </div>
                 <div class="um_input_cover label_top text_logo_wrapper">
-                    <label for="text_logo"><?php _e('Type Logo text','rex-maintenance-mode');?></label>
+                    <label for="text_logo"><?php _e('Logo text','rex-maintenance-mode');?></label>
                     <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'rex-maintenance-mode'); ?>" />
                 </div>               
             </div>
@@ -134,3 +134,5 @@
 
     </form>
 </div>
+
+

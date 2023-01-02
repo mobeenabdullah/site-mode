@@ -60,15 +60,15 @@ class Rex_Advanced
             $this->user_role        = $this->rex_advanced['user_role'];
         }
 
-        add_action('do_feed',array($this,'rex_feed'), 1);
-        add_action('do_feed_rdf',array($this,'rex_feed'), 1);
-        add_action('do_feed_rss',array($this,'rex_feed'), 1);
-        add_action('do_feed_rss2',array($this,'rex_feed'), 1);
-        add_action('do_feed_atom',array($this,'rex_feed'), 1);
-        add_action('do_feed_rss2_comments',array($this,'rex_feed'), 1);
-        add_action('do_feed_atom_comments',array($this,'rex_feed'), 1);
 
     }
+
+    public function rex_remove_rss_feed()
+    {
+        wp_die( __('No RSS FEEDS <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+    }
+
+
 
     public function rex_custom_css_include()
     {
@@ -145,16 +145,7 @@ class Rex_Advanced
         }
     }
 
-    public function rex_feed()
-    {
-        return new WP_Error('feed_cannot_access', __('The Feed on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
 
-//        if (empty($this->enable_feed)) {
-//            return;
-//        } else {
-//            return new WP_Error('feed_cannot_access', __('The Feed on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
-//        }
-    }
 
     public function rex_google_analytics_code()
     {
