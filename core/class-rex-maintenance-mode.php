@@ -214,14 +214,7 @@ class Rex_Maintenance_Mode
         $this->loader->add_action('wp_ajax_ajax_rex_import',$this->classes_loader->get_import(),'ajax_rex_import');
 
 
-        //feeds
-        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'rex_remove_rss_feed');
-        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+
 	}
 
 	/**
@@ -237,8 +230,9 @@ class Rex_Maintenance_Mode
 		$plugin_public = new Rex_Maintenance_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-        $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
-//        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
+//        $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
+
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_code');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_id');
@@ -246,8 +240,15 @@ class Rex_Maintenance_Mode
         $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'rex_rest_api');
 
 
-        //general settings
-
+        //feeds
+        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'rex_remove_rss_feed');
+        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('template_include', $plugin_public, 'load_template_on_call');
 
 	}
 

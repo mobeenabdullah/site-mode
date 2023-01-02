@@ -37,7 +37,6 @@ class Rex_Classes_loader
     public function __construct()
     {
         $this->files_loader();
-
         $this->general_settings     = new Rex_General();
         $this->content_settings     = new Rex_Content();
         $this->social_settings      = new Rex_Social();
