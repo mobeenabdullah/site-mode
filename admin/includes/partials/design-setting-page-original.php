@@ -160,29 +160,29 @@
             <?php
 //             api call for font family
 
-                $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
-                $body = wp_remote_retrieve_body($response);
-                $data = json_decode($body);
+                $response           = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
+                $body               = wp_remote_retrieve_body($response);
+                $data               = json_decode($body);
                 //story font family in array
-                $font_family = array();
+                $font_family        = array();
                 foreach ($data->items as $key => $value) {
-                    $font_family[] = $value->family;
+                    $font_family[]  = $value->family;
                 }
                 //serialize font family array then store in option
-                $font_family = serialize($font_family);
+                $font_family        = serialize($font_family);
                 update_option('rex-font-family', $font_family);
             //get font family from option
-            $font_family = get_option('rex-font-family');
+            $font_family            = get_option('rex-font-family');
 
             //font size
             //get data from option
-            $rex_design_font            = get_option('rex_design_font');
-            $rex_design_font            = unserialize($rex_design_font);
+            $rex_design_font                    = get_option('rex_design_font');
+            $rex_design_font                    = unserialize($rex_design_font);
             $heading_font_size                  = isset($rex_design_font['heading_font_size']) ? $rex_design_font['heading_font_size'] : '36';
             $heading_font_family                = isset($rex_design_font['heading_font_family']) ? $rex_design_font['heading_font_family'] : 'Arial';
 
-            $description_font_size      = isset($rex_design_font['description_font_size']) ? $rex_design_font['description_font_size'] : '18';
-            $description_font_family    = isset($rex_design_font['description_font_family']) ? $rex_design_font['description_font_family'] : 'Arial';
+            $description_font_size              = isset($rex_design_font['description_font_size']) ? $rex_design_font['description_font_size'] : '18';
+            $description_font_family            = isset($rex_design_font['description_font_family']) ? $rex_design_font['description_font_family'] : 'Arial';
 
 
             ?>
@@ -245,9 +245,9 @@
         <form id="rex-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
 
-            $rex_design_colors = get_option('rex_design_colors');
+            $rex_design_colors      = get_option('rex_design_colors');
             //unserialize data
-            $color_data = unserialize($rex_design_colors);
+            $color_data             = unserialize($rex_design_colors);
             //check if values are set or not and assign default values
             $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
             $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';

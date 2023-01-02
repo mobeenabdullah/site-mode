@@ -77,9 +77,6 @@ require plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode.php';
  */
 
 
-
-
-
 function run_rex_maintenance_mode()
 {
 
@@ -87,6 +84,5 @@ function run_rex_maintenance_mode()
 	$plugin->run();
 }
 run_rex_maintenance_mode();
-
 
 
