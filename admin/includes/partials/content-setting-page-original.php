@@ -7,7 +7,7 @@
             //unserialize data
             $uns_data = unserialize($content);
             // check values are set or not if not assign default values
-            $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : '';
+            $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : get_bloginfo( 'name' );
             $image_logo     = isset($uns_data['image_logo']) ? $uns_data['image_logo'] : '';
             $disable_logo   = isset($uns_data['disable_logo']) ? $uns_data['disable_logo'] : '';
             $heading        = isset($uns_data['heading']) ? $uns_data['heading'] : '';
@@ -50,7 +50,7 @@
                 <?php endif; ?>
             </div>
             <div class="um_input_cover label_top text_logo_wrapper">
-                <label for="text_logo"><?php _e('Type Logo text','rex-maintenance-mode');?></label>
+                <label for="text_logo"><?php _e('Logo text','rex-maintenance-mode');?></label>
                 <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e(get_option('content-text-logo-setting'),'rex-maintenance-mode'); ?>" />
             </div>
             <div class="um_input_cover">

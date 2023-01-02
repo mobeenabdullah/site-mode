@@ -159,37 +159,84 @@
         <form id="rex-design-fonts" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
 //             api call for font family
-            $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
-            $body = wp_remote_retrieve_body($response);
-            $data = json_decode($body);
-            //story font family in array
-            $font_family = array();
-            foreach ($data->items as $key => $value) {
-                $font_family[] = $value->family;
-            }
-            //serialize font family array then store in option
-            $font_family = serialize($font_family);
-            update_option('rex-font-family', $font_family);
+
+                $response = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
+                $body = wp_remote_retrieve_body($response);
+                $data = json_decode($body);
+                //story font family in array
+                $font_family = array();
+                foreach ($data->items as $key => $value) {
+                    $font_family[] = $value->family;
+                }
+                //serialize font family array then store in option
+                $font_family = serialize($font_family);
+                update_option('rex-font-family', $font_family);
             //get font family from option
             $font_family = get_option('rex-font-family');
+
+            //font size
+            //get data from option
+            $rex_design_font            = get_option('rex_design_font');
+            $rex_design_font            = unserialize($rex_design_font);
+            $heading_font_size                  = isset($rex_design_font['heading_font_size']) ? $rex_design_font['heading_font_size'] : '36';
+            $heading_font_family                = isset($rex_design_font['heading_font_family']) ? $rex_design_font['heading_font_family'] : 'Arial';
+
+            $description_font_size      = isset($rex_design_font['description_font_size']) ? $rex_design_font['description_font_size'] : '18';
+            $description_font_family    = isset($rex_design_font['description_font_family']) ? $rex_design_font['description_font_family'] : 'Arial';
+
+
             ?>
-        <div class="color_font_section">
-            <div class="font_family">
-                <div class="um_select">
-                    <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
-                    <select name="font-family-setting" id="site_mode">
-                        <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
-                        <?php
-                        $font_family = unserialize($font_family);
-                        foreach ($font_family as $key => $value) {
-                            echo '<option value="' . $value . '">' . $value . '</option>';
-                        }
-                        ?>
-                    </select>
-                    <span class="arrow-down"></span>
+            <div class="heading-section">
+                <h3><?php _e('Heading','rex-maintenance-mode');?></h3>
+                <div class="color_font_section">
+                    <div class="font_family">
+                        <div class="um_select">
+                            <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
+                            <select name="heading-font-family-setting" id="site_mode">
+                                <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
+                                <?php
+                                $font_family = unserialize($font_family);
+                                foreach ($font_family as $key => $value) { ?>
+                                    <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                            <span class="arrow-down"></span>
+                        </div>
+                    </div>
+                    <div class="font_size">
+                        <label for="font_size"><?php _e('Font Size','rex-maintenance-mode');?></label>
+                        <div class="font_size">
+                            <input type="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="description-section">
+                <h3><?php _e('Description','rex-maintenance-mode');?></h3>
+                <div class="color_font_section">
+                    <div class="font_family">
+                        <div class="um_select">
+                            <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
+                            <select name="description-font-family-setting" id="site_mode">
+                                <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
+                                <?php
+                                foreach ($font_family as $key => $value) { ?>
+                                    <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                <?php }
+                                ?>
+                            </select>
+                            <span class="arrow-down"></span>
+                        </div>
+                    </div>
+                    <div class="font_size">
+                        <label for="font_size"><?php _e('Font Size','rex-maintenance-mode');?></label>
+                        <div class="font_size">
+                            <input type="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $description_font_size; ?>" <?php checked(1, $description_font_size, true); ?> />
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php
             wp_nonce_field('design-fonts-settings-save', 'design-fonts');
             submit_button();
