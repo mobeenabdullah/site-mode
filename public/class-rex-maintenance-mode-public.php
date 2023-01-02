@@ -85,8 +85,17 @@ class Rex_Maintenance_Mode_Public
             $font_family = get_option( 'rex_design_font' );
             //unseralize the font family
             $font_family = unserialize($font_family);
-            $selected_font = $font_family['font_family'];
-            wp_enqueue_style($selected_font, "https://fonts.googleapis.com/css2?family=".$selected_font.":wght@300;400;500;600;700&display=swap");
+               $heading_font_family     = $font_family['heading_font_family'];
+               $description_font_family = $font_family['description_font_family'];
+
+            //            $selected_font = $font_family['font_family'];
+            if(!empty($heading_font_family)) {
+                wp_enqueue_style($heading_font_family, "https://fonts.googleapis.com/css2?family=".$heading_font_family.":wght@300;400;500;600;700&display=swap");
+            }
+            if(!empty($description_font_family)) {
+                wp_enqueue_style($description_font_family, "https://fonts.googleapis.com/css2?family=".$description_font_family.":wght@300;400;500;600;700&display=swap");
+            }
+
         }
 
 
