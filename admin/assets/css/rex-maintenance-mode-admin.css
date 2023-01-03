@@ -1018,7 +1018,7 @@ ul.tabs li.current{
 	font-size: 17px;
 	white-space: nowrap;
 }
-.toast-error{
+#toast-error{
 	visibility: hidden;
 	max-width: 50px;
 	height: 50px;
@@ -1028,7 +1028,6 @@ ul.tabs li.current{
 	color: #fff;
 	text-align: center;
 	border-radius: 2px;
-
 	position: fixed;
 	z-index: 1;
 	left: 0;right:0;
@@ -1048,7 +1047,6 @@ ul.tabs li.current{
 
 	box-sizing: border-box;
 
-
 	background-color: #111;
 	color: #fff;
 }
@@ -1062,23 +1060,19 @@ ul.tabs li.current{
 	padding-bottom: 16px;
 
 	box-sizing: border-box;
+	background-color: #111;
+	color: #fff;
 }
 
 #toast-success #desc{
-
-
 	color: #fff;
-
 	padding: 16px;
-
 	overflow: hidden;
 	white-space: nowrap;
 }
 #toast-error #desc{
 	color: #fff;
-
 	padding: 16px;
-
 	overflow: hidden;
 	white-space: nowrap;
 }

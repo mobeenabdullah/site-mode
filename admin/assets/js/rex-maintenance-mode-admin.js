@@ -363,13 +363,13 @@ jQuery(function ($) {
     })
 
     //toaster
-    function launch_toast(res) {
-        if(res == true) {
+    function launch_toast(response) {
+        if(response == true) {
             var x = document.getElementById("toast-success");
             x.className = "show";
             setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
         }
-        if(res == false) {
+        if(response == false) {
             var y = document.getElementById("toast-error");
             y.className = "show";
             setTimeout(function(){ y.className = y.className.replace("show", ""); }, 5000);
@@ -396,7 +396,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                    launch_toast(false);
+                    launch_toast(res.success);
             }
         });
     });
@@ -417,16 +417,13 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                if(res) {
-                    launch_toast();
-                }
+                    launch_toast(res.success);
             }
         });
     });
 
 
     $( "#rex-design-fonts" ).submit(function( event ) {
-        alert('font family saved');
         event.preventDefault();
         const form = document.getElementById("rex-design-fonts");
         const formData = new FormData(form);
@@ -442,13 +439,12 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-                    console.log(res);
+                launch_toast(res.success);
             }
         });
     });
 
     $( "#rex-social" ).submit(function( event ) {
-        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-social");
         const formData = new FormData(form);
@@ -464,7 +460,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
@@ -486,13 +482,12 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
 
     $("#rex-design-logo-background").submit(function( event ) {
-        alert( "Handler for .submit() called." );
         event.preventDefault();
         const form = document.getElementById("rex-design-logo-background");
         alert(form);
@@ -510,7 +505,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
@@ -531,7 +526,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
@@ -553,14 +548,13 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
 
     $( "#rex-advanced" ).submit(function( event ) {
         event.preventDefault();
-        alert('hello from adavnced');;
         const form = document.getElementById("rex-advanced");
         const formData = new FormData(form);
         formData.append('action', 'ajax_rex_advanced');
@@ -575,13 +569,12 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
 
     $('.btn-export').on('click', function() {
-        alert("This is a button.");
         $.ajax({
             url: ajaxObj.ajax_url,
             type: "GET",
@@ -633,7 +626,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                launch_toast(res.success);
             }
         });
     });
