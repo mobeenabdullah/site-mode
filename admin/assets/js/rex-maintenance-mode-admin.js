@@ -362,6 +362,23 @@ jQuery(function ($) {
         }
     })
 
+    //toaster
+    function launch_toast(res) {
+        if(res == true) {
+            var x = document.getElementById("toast-success");
+            x.className = "show";
+            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
+        }
+        if(res == false) {
+            var y = document.getElementById("toast-error");
+            y.className = "show";
+            setTimeout(function(){ y.className = y.className.replace("show", ""); }, 5000);
+
+        }
+
+    }
+
+
     // ajax calls
     $( "#rex-general" ).submit(function( event ) {
         event.preventDefault();
@@ -379,7 +396,7 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                    launch_toast(false);
             }
         });
     });
@@ -400,7 +417,9 @@ jQuery(function ($) {
             data: formData,
             enctype: "multipart/form-data",
             success:function (res) {
-
+                if(res) {
+                    launch_toast();
+                }
             }
         });
     });
@@ -641,5 +660,15 @@ jQuery(function ($) {
             }
         });
     }
+
+
+    $('ul.tabs li').click(function(){
+        var tab_id = $(this).attr('data-tab');
+        $('ul.tabs li').removeClass('current');
+        $('.tab-content').removeClass('current');
+        $(this).addClass('current');
+        $("#"+tab_id).addClass('current');
+    })
 });
+
 
