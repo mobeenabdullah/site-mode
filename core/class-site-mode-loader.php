@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -17,11 +17,11 @@
  * the plugin, and register them with the WordPress API. Call the
  * run function to execute the list of actions and filters.
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode_Loader
+class Site_Mode_Loader
 {
 
 	/**

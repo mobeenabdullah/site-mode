@@ -13,7 +13,7 @@ require_once 'header.php';
         <!--Section Overlay-->
         <div class="wrapper_overlay"></div>
         <?php
-        if(!empty('wprex-login-icon-setting')) {
+        if(!empty('site-mode-login-icon-setting')) {
             ?>
                 <div class="login_icon">
                     <a href="<?php echo get_home_url() . '/wp-login.php' ?>" style="display: block">
@@ -29,31 +29,31 @@ require_once 'header.php';
             <?php $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full'); ?>
             <?php if($logo_url) : ?>
                 <div class="construction_cover-logo">
-                    <img src="<?php echo  esc_url($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
+                    <img src="<?php echo  esc_url($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings'), 'site-mode'); ?>">
                 </div>
             <?php else : ?>
                 <div class="construction_cover-logo">
-                    <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>">
+                    <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="<?php esc_attr_e(get_option('content-headline-settings'), 'site-mode'); ?>">
                 </div>
             <?php endif; ?>
 
             <?php if(!empty(get_option('content-headline-settings'))) : ?>
                 <div class="construction_cover-heading">
-                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Here headline will be placed..!'), 'rex-maintenance-mode'); ?></h1>
+                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Here headline will be placed..!'), 'site-mode'); ?></h1>
                 </div>
             <?php else : ?>
                 <div class="construction_cover-heading">
-                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Headline Here'), 'rex-maintenance-mode'); ?></h1>
+                    <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Headline Here'), 'site-mode'); ?></h1>
                 </div>
             <?php endif; ?>
 
             <?php if(!empty(get_option('content-content-settings'))) : ?>
                 <div class="construction_cover-text">
-                    <p><?php esc_html_e(get_option('content-content-settings'), 'rex-maintenance-mode'); ?></p>
+                    <p><?php esc_html_e(get_option('content-content-settings'), 'site-mode'); ?></p>
                 </div>
             <?php else : ?>
                 <div class="construction_cover-text">
-                    <p><?php esc_html_e(get_option('content-content-settings', 'Write some content'), 'rex-maintenance-mode'); ?></p>
+                    <p><?php esc_html_e(get_option('content-content-settings', 'Write some content'), 'site-mode'); ?></p>
                 </div>
             <?php endif; ?>
 

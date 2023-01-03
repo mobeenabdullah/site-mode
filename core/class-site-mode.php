@@ -9,8 +9,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode
+class Site_Mode
 {
 
 	/**
@@ -36,7 +36,7 @@ class Rex_Maintenance_Mode
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Rex_Maintenance_Mode_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Site_Mode_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -73,12 +73,12 @@ class Rex_Maintenance_Mode
 	{
 
 
-		if (defined('REX_MAINTENANCE_MODE_VERSION')) {
-			$this->version = REX_MAINTENANCE_MODE_VERSION;
+		if (defined('SITE_MODE_VERSION')) {
+			$this->version = SITE_MODE_VERSION;
 		} else {
 			$this->version = '1.0.0';
 		}
-		$this->plugin_name = 'rex-maintenance-mode';
+		$this->plugin_name = 'site-mode';
 
 		$this->load_dependencies();
 		$this->set_locale();
@@ -93,10 +93,10 @@ class Rex_Maintenance_Mode
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Rex_Maintenance_Mode_Loader. Orchestrates the hooks of the plugin.
-	 * - Rex_Maintenance_Mode_i18n. Defines internationalization functionality.
-	 * - Rex_Maintenance_Mode_Admin. Defines all hooks for the admin area.
-	 * - Rex_Maintenance_Mode_Public. Defines all hooks for the public side of the site.
+	 * - Site_Mode_Loader. Orchestrates the hooks of the plugin.
+	 * - Site_Mode_i18n. Defines internationalization functionality.
+	 * - Site_Mode_Admin. Defines all hooks for the admin area.
+	 * - Site_Mode_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -111,18 +111,18 @@ class Rex_Maintenance_Mode
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-rex-maintenance-mode-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-site-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-rex-maintenance-mode-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-site-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-rex-maintenance-mode-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-site-mode-admin.php';
 
         /**
          * The class responsible for defining all actions that occur in the admin area.
@@ -132,7 +132,7 @@ class Rex_Maintenance_Mode
         /**
          * The class responsible for defining advanced settings page of the plugin
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/class-rex-advanced.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/class-site-mode-advanced.php';
 
 
 
@@ -141,18 +141,18 @@ class Rex_Maintenance_Mode
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-rex-maintenance-mode-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-site-mode-public.php';
 
-		$this->loader = new Rex_Maintenance_Mode_Loader();
+		$this->loader = new Site_Mode_Loader();
 
         require_once plugin_dir_path(dirname(__FILE__)) . 'admin/includes/classes-loader.php';
-        $this->classes_loader = new Rex_Classes_loader();
+        $this->classes_loader = new Site_Mode_Classes_loader();
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Rex_Maintenance_Mode_i18n class in order to set the domain and to register the hook
+	 * Uses the Site_Mode_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -161,7 +161,7 @@ class Rex_Maintenance_Mode
 	private function set_locale()
 	{
 
-		$plugin_i18n = new Rex_Maintenance_Mode_i18n();
+		$plugin_i18n = new Site_Mode_i18n();
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
@@ -176,13 +176,13 @@ class Rex_Maintenance_Mode
 	private function define_admin_hooks()
 	{
 
-		$plugin_admin = new Rex_Maintenance_Mode_Admin($this->get_plugin_name(), $this->get_version());
-        $plugin_menu = new Rex_Maintenance_Mode_Menu();
+		$plugin_admin = new Site_Mode_Admin($this->get_plugin_name(), $this->get_version());
+        $plugin_menu = new Site_Mode_Menu();
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-        $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_menu');
-        $this->loader->add_action('admin_menu', $plugin_menu, 'rex_maintenance_mode_submenu_settings_page');
+        $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_menu');
+        $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_submenu_settings_page');
 
 
 
@@ -191,29 +191,29 @@ class Rex_Maintenance_Mode
         // ajax calling
 
         // general
-        $this->loader->add_action('wp_ajax_ajax_rex_general',$this->classes_loader->get_general(),'ajax_rex_general');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_general',$this->classes_loader->get_general(),'ajax_site_mode_general');
 
         // content
-        $this->loader->add_action('wp_ajax_ajax_rex_content',$this->classes_loader->get_content(), 'ajax_rex_content');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_content',$this->classes_loader->get_content(), 'ajax_site_mode_content');
 
         // social
-        $this->loader->add_action('wp_ajax_ajax_rex_social',$this->classes_loader->get_social(),'ajax_rex_social');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_social',$this->classes_loader->get_social(),'ajax_site_mode_social');
 
         //design
-        $this->loader->add_action('wp_ajax_ajax_rex_design',$this->classes_loader->get_design(), 'ajax_rex_design');
-        $this->loader->add_action('wp_ajax_ajax_rex_design_lb',$this->classes_loader->get_design(),'ajax_rex_design_lb');
-        $this->loader->add_action('wp_ajax_ajax_rex_design_font',$this->classes_loader->get_design(),'ajax_rex_design_font');
-        $this->loader->add_action('wp_ajax_ajax_rex_design_color_section',$this->classes_loader->get_design(),'ajax_rex_design_color_section');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_design',$this->classes_loader->get_design(), 'ajax_site_mode_design');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_design_lb',$this->classes_loader->get_design(),'ajax_site_mode_design_lb');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_design_font',$this->classes_loader->get_design(),'ajax_site_mode_design_font');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_design_color_section',$this->classes_loader->get_design(),'ajax_site_mode_design_color_section');
 
 
         // SEO settings
-        $this->loader->add_action('wp_ajax_ajax_rex_seo',$this->classes_loader->get_seo(),'ajax_rex_seo');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_seo',$this->classes_loader->get_seo(),'ajax_site_mode_seo');
         // advanced settings
-        $this->loader->add_action('wp_ajax_ajax_rex_advanced',$this->classes_loader->get_advanced(),'ajax_rex_advanced');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_advanced',$this->classes_loader->get_advanced(),'ajax_site_mode_advanced');
 
         //export  and export settings
-        $this->loader->add_action('wp_ajax_ajax_rex_export',$this->classes_loader->get_export(),'ajax_rex_export');
-        $this->loader->add_action('wp_ajax_ajax_rex_import',$this->classes_loader->get_import(),'ajax_rex_import');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_export',$this->classes_loader->get_export(),'ajax_site_mode_export');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_import',$this->classes_loader->get_import(),'ajax_site_mode_import');
 
 
 
@@ -229,29 +229,29 @@ class Rex_Maintenance_Mode
 	private function define_public_hooks()
 	{
 
-		$plugin_public = new Rex_Maintenance_Mode_Public($this->get_plugin_name(), $this->get_version());
+		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
 //        $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
 
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_custom_css_include');
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_code');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'rex_google_analytics_id');
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_code');
+        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_id');
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
-        $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'rex_rest_api');
+        $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'site_mode_rest_api');
 
 
         //feeds
-        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'rex_remove_rss_feed');
-        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'rex_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'site_mode_remove_rss_feed');
+        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
 
-        $template =  get_option('rex_general');
+        $template =  get_option('site_mode_general');
         $un_data = unserialize($template);
         //check if the values are set or not and then assign them to the variables
         $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
@@ -261,11 +261,11 @@ class Rex_Maintenance_Mode
 
 	}
 
-	// menu 
+	// menu
 
 	public function get_menu()
 	{
-		$settings_menu = new Rex_Maintenance_Mode_Menu();
+		$settings_menu = new Site_Mode_Menu();
 	}
 
 	/**
@@ -294,7 +294,7 @@ class Rex_Maintenance_Mode
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Rex_Maintenance_Mode_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Site_Mode_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader()
 	{

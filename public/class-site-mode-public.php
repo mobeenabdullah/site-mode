@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/public
+ * @package    Site_Mode
+ * @subpackage Site_Mode/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the public-facing stylesheet and JavaScript.
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/public
+ * @package    Site_Mode
+ * @subpackage Site_Mode/public
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode_Public
+class Site_Mode_Public
 {
 
 	/**
@@ -70,10 +70,10 @@ class Rex_Maintenance_Mode_Public
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
+		 * defined in Site_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Rex_Maintenance_Mode_Loader will then create the relationship
+		 * The Site_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -81,8 +81,8 @@ class Rex_Maintenance_Mode_Public
         wp_enqueue_style('preconnect-font', 'https://fonts.googleapis.com');
         wp_enqueue_style('preconnect-static', 'https://fonts.gstatic.com');
         wp_enqueue_style('open-sans-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-        if(!empty(get_option( 'rex_design_font' ))) {
-            $font_family = get_option( 'rex_design_font' );
+        if(!empty(get_option( 'site_mode_design_font' ))) {
+            $font_family = get_option( 'site_mode_design_font' );
             //unseralize the font family
             $font_family = unserialize($font_family);
                $heading_font_family     = $font_family['heading_font_family'];
@@ -99,10 +99,10 @@ class Rex_Maintenance_Mode_Public
         }
 
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/rex-maintenance-mode-public.css', array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
 
         $selected_template = get_option('content-content-template-settings');
-        $template =  get_option('rex_general');
+        $template =  get_option('site_mode_general');
         $un_data = unserialize($template);
 
         //check if the values are set or not and then assign them to the variables
@@ -112,7 +112,7 @@ class Rex_Maintenance_Mode_Public
 
 
 
-        $template = get_option('rex_design');
+        $template = get_option('site_mode_design');
         // convert serialized string to array
         $un_data = unserialize($template);
         //check if value is set or not if not set then set default value.
@@ -178,15 +178,15 @@ class Rex_Maintenance_Mode_Public
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
+		 * defined in Site_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Rex_Maintenance_Mode_Loader will then create the relationship
+		 * The Site_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/rex-maintenance-mode-public.js', array('jquery'), $this->version, false);
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/site-mode-public.js', array('jquery'), $this->version, false);
 	}
 
    public function my_style_loader_tag_filter($html, $handle) {
@@ -214,19 +214,19 @@ class Rex_Maintenance_Mode_Public
     {
         $selected_template = get_option('content-content-template-settings');
         if ($selected_template == '1') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-one.php';
             exit;
         } elseif ($selected_template == '2') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-two.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-two.php';
             exit;
         } elseif ($selected_template == '3') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-three.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-three.php';
             exit;
         } elseif ($selected_template == '4') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-four.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-four.php';
             exit;
         } else {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/rex-maintenance-mode-template-one.php';
+            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-one.php';
             exit;
         }
     }

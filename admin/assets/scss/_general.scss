@@ -2,21 +2,21 @@
 // Base Structure
 //--------------------------------------------------
 
-.rex__wrap {
+.site_mode__wrap {
     & > h1 {
       margin: 0;
       margin-bottom: calculateRem(15px);
       padding: 0;
     }
-    
-    &--cover {    
+
+    &--cover {
       display: grid;
       grid-template-columns: 3fr 1fr;
       gap: calculateRem(30px);
-      
-      &-content {      
-        &-nav {        
-          @include flex_mixin(flex, null, center, null, calculateRem(1px));    
+
+      &-content {
+        &-nav {
+          @include flex_mixin(flex, null, center, null, calculateRem(1px));
           & .nav-tab {
             margin-left: 0;
             border: none;
@@ -24,12 +24,12 @@
         }
         &-form {
           background-color: $base-white-color;
-          padding: calculateRem(20px);      
+          padding: calculateRem(20px);
         }
       }
       &-sidebar {
         background-color: $base-white-color;
-        padding: calculateRem(20px);      
+        padding: calculateRem(20px);
       }
     }
     & p.submit {
@@ -48,7 +48,7 @@
   &:last-child {
     margin-bottom: 0;
   }
-  &--label {  
+  &--label {
     width: calculateRem(200px);
     & span {
       font-weight: 600;
@@ -180,7 +180,7 @@
   pointer-events: none;
 }
 .social_media_field_wrapper {
-  @include flex_mixin(flex, null, center, null, 10px);  
+  @include flex_mixin(flex, null, center, null, 10px);
   & .um_checkbox_wrapper {
     margin-bottom: 0;
     margin-top: -2px;
@@ -189,11 +189,11 @@
 .socialmedia__wrapper {
   & ul {
     & .disable_media {
-      opacity: 0.5;      
+      opacity: 0.5;
     }
   }
   & .social_media_field {
-    @include flex_mixin(flex, null, center, null, 5px);    
+    @include flex_mixin(flex, null, center, null, 5px);
     margin-bottom: 10px;
     & button {
       cursor: pointer;
@@ -217,7 +217,7 @@
     & .sortable_icon {
       margin-right: 10px;
       @extend %sort_icon;
-      & span {      
+      & span {
         cursor: ns-resize;
         & svg {
           width: 16px;
@@ -233,10 +233,10 @@
       height: 28px;
       background-color: $secondary-color;
       border-radius: .3rem;
-      @include flex_mixin(flex, center, center, null, null);        
-      
+      @include flex_mixin(flex, center, center, null, null);
+
       & span {
-        @include flex_mixin(flex, center, center, null, null);                
+        @include flex_mixin(flex, center, center, null, null);
         width: 18px;
         height: auto;
         & svg {
@@ -245,7 +245,7 @@
           }
         }
       }
-    }  
+    }
     & .social_delete {
       display: flex;
       align-items: center;
@@ -260,10 +260,10 @@
           width: 18px;
           height: 18px;
         }
-      }     
+      }
     }
   }
-}  
+}
 
 //--------------------------------------------------
 // Design Tab
@@ -278,7 +278,7 @@
 }
 
 .template_thumb {
-  @include flex_mixin(flex, null, null, column, null);  
+  @include flex_mixin(flex, null, null, column, null);
   width: 100%;
   height: auto;
   position: relative;
@@ -310,8 +310,8 @@
     }
   }
   & .template_actions {
-    @include flex_mixin(flex, space-between, center, null, 10px);    
-    padding: 20px;    
+    @include flex_mixin(flex, space-between, center, null, 10px);
+    padding: 20px;
     border-top: 1px solid rgba(255,255,255,0.4);
     & .template_title {
       &-title {
@@ -336,13 +336,13 @@
         padding: 0 10px;
         cursor: pointer;
         border-width: 1px;
-        border-style: solid;        
+        border-style: solid;
         border-radius: 3px;
         white-space: nowrap;
         box-sizing: border-box;
         background: #2271b1;
         border-color: #2271b1;
-        color: $base-white-color;       
+        color: $base-white-color;
         text-shadow: none;
         vertical-align: baseline;
         transition: all .2s;
@@ -384,8 +384,8 @@
 
 .image_logo_wrapper {
   & a {
-    display: block;    
-  }  
+    display: block;
+  }
 }
 
 .bg-image-upload {
@@ -441,7 +441,7 @@
 
 
 .logo_type_wrapper {
-  @include flex_mixin(flex, null, center, null, 10px);  
+  @include flex_mixin(flex, null, center, null, 10px);
 }
 .text_logo_wrapper {
   margin-top: calculateRem(20px);

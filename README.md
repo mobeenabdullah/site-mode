@@ -1,1 +1,1 @@
-# Rex Maintenance Mode
+# Site Mode

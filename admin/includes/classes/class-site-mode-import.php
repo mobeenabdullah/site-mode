@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,19 +16,19 @@
  * This class defines all code necessary to run during the plugin's menu
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Import
+class Site_Mode_Import
 {
         protected $file = '';
         protected $data = '';
         protected $advance = '';
         protected $content = '';
         protected $design = '';
-        protected $rex_design_lb = '';
-        protected $rex_design_colors = '';
+        protected $site_mode_design_lb = '';
+        protected $site_mode_design_colors = '';
         protected $seo = '';
         protected $social = '';
         protected $settings = '';
@@ -38,7 +38,7 @@ class Rex_Import
 
     }
 
-    public function ajax_rex_import() {
+    public function ajax_site_mode_import() {
 
         $this->file                 = $_FILES['json-file']['tmp_name'];
         $this->data                 = file_get_contents($this->file);
@@ -46,22 +46,22 @@ class Rex_Import
         $this->advance              = $data['advance'];
         $this->content              = $data['content'];
         $this->design               = $data['design'];
-        $this->rex_design_lb        = $data['rex_design_lb'];
-        $this->rex_design_colors    = $data['rex_design_colors'];
+        $this->site_mode_design_lb        = $data['site_mode_design_lb'];
+        $this->site_mode_design_colors    = $data['site_mode_design_colors'];
         $this->seo                  = $data['seo'];
         $this->social               = $data['social'];
         $this->settings             = $data['settings'];
         $this->general              = $data['general'];
 
-        update_option('rex_advanced',$this->advance);
-        update_option('rex_content',$this->content);
-        update_option('rex_design',$this->design);
-        update_option('rex_design_lb',$this->rex_design_lb);
-        update_option('rex_design_colors',$this->rex_design_colors);
-        update_option('rex_seo',$this->seo);
-        update_option('rex_social',$this->social);
-        update_option('rex_settings',$this->settings);
-        update_option('rex_general',$this->general);
+        update_option('site_mode_advanced',$this->advance);
+        update_option('site_mode_content',$this->content);
+        update_option('site_mode_design',$this->design);
+        update_option('site_mode_design_lb',$this->site_mode_design_lb);
+        update_option('site_mode_design_colors',$this->site_mode_design_colors);
+        update_option('site_mode_seo',$this->seo);
+        update_option('site_mode_social',$this->social);
+        update_option('site_mode_settings',$this->settings);
+        update_option('site_mode_general',$this->general);
         wp_send_json_success($this->data);
 //        }
         die();

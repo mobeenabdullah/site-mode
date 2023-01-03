@@ -4,9 +4,9 @@
         // error message
         settings_errors();
         // get data from database
-        $rex_advanced = get_option('rex_advanced');
+        $site_mode_advanced = get_option('site_mode_advanced');
         //uniseralize data
-        $uns_data = unserialize($rex_advanced);
+        $uns_data = unserialize($site_mode_advanced);
     //check if value is set or not and set default value
         $analytics_type     = isset($uns_data['analytics_type']) ? $uns_data['analytics_type'] : 'analytics-id';
         $ga_id              = isset($uns_data['ga_id']) ? $uns_data['ga_id'] : 'google analytics id';
@@ -26,39 +26,39 @@
         $user_role          = isset($uns_data['user_role']) ? $uns_data['user_role'] : 'user';
 
     ?>
-    <form id="rex-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form id="site-mode-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
         <div class="um_select">
-            <label for="site_mode" class="screen-reading"><?php _e('Google Analytics','rex-maintenance-mode');?></label>
+            <label for="site_mode" class="screen-reading"><?php _e('Google Analytics','site-mode');?></label>
             <select name="advanced-analytics-type-setting" id="site_mode">
-                <option value="analytics-id" <?php selected( $analytics_type =='analytics-id', 1 ); ?>><?php _e('Analytics ID','rex-maintenance-mode');?></option>
-                <option value="analytics-code" <?php selected( $analytics_type ==='analytics-code', 1 ); ?>><?php _e('Analytics Code','rex-maintenance-mode');?></option>
+                <option value="analytics-id" <?php selected( $analytics_type =='analytics-id', 1 ); ?>><?php _e('Analytics ID','site-mode');?></option>
+                <option value="analytics-code" <?php selected( $analytics_type ==='analytics-code', 1 ); ?>><?php _e('Analytics Code','site-mode');?></option>
             </select>
             <span class="arrow-down"></span>
         </div>
         <?php if($analytics_type == 'analytics-id') {
             ?>
             <div class="um_input_cover">
-                <label class="screen-reading" for="ga"><?php _e(' enter just the ID', 'rex-maintenance-mode')?></label>
+                <label class="screen-reading" for="ga"><?php _e(' enter just the ID', 'site-mode')?></label>
                 <input type="text" id="ga" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />
             </div>
         <?php }
             if($analytics_type == 'analytics-code') { ?>
         <div class="um_textarea_cover">
-            <label class="screen-reading" for="custom-ga-code"><?php _e(' inject all code', 'rex-maintenance-mode')?></label>
+            <label class="screen-reading" for="custom-ga-code"><?php _e(' inject all code', 'site-mode')?></label>
             <textarea id="custom-ga-code" name="advanced-ga-code-setting" rows="6" cols="80"><?php echo esc_attr($ga_code); ?></textarea>
         </div>
         <?php  } ?>
         <div class="um_textarea_cover">
-            <label class="screen-reading" for="custom-css"><?php _e('Custom CSS', 'rex-maintenance-mode')?></label>
+            <label class="screen-reading" for="custom-css"><?php _e('Custom CSS', 'site-mode')?></label>
             <textarea id="custom-css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_attr($custom_css); ?></textarea>
         </div>
         <div class="um_checkbox_wrapper">
             <input type="checkbox" id="rest_api" name="advanced-wp-rest-api-setting" value="1" <?php checked(1,$enable_rest_api,true); ?> />
-            <label for="rest_api"><?php _e('Rest API Enable/Disable', 'rex-maintenance-mode')?></label>
+            <label for="rest_api"><?php _e('Rest API Enable/Disable', 'site-mode')?></label>
         </div>
         <div class="um_checkbox_wrapper">
             <input type="checkbox" id="feed_enable" name="advanced-wp-feed-setting" value="1" <?php checked(1,$enable_feed,true); ?>/>
-            <label for="feed_enable"><?php _e('Feeds Enable/Disable', 'rex-maintenance-mode')?></label>
+            <label for="feed_enable"><?php _e('Feeds Enable/Disable', 'site-mode')?></label>
         </div>
             <?php $all_pages = get_pages(); ?>
         <div class="um_select">
@@ -79,11 +79,11 @@
             <span class="arrow-down"></span>
         </div>
         <div class="um_textarea_cover">
-            <label class="screen-reading" for="header-code"><?php _e('Header Code', 'rex-maintenance-mode')?></label>
+            <label class="screen-reading" for="header-code"><?php _e('Header Code', 'site-mode')?></label>
             <textarea id="header-code" name="advanced-header-code-setting" rows="6" cols="80"><?php echo $header_code; ?></textarea>
         </div>
         <div class="um_textarea_cover">
-            <label class="screen-reading" for="footer-code"><?php _e('Footer Code', 'rex-maintenance-mode')?></label>
+            <label class="screen-reading" for="footer-code"><?php _e('Footer Code', 'site-mode')?></label>
             <textarea id="footer-code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo $footer_code; ?></textarea>
         </div>
        <?php  global  $wp_roles;
