@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode_Deactivator
+class Site_Mode_Deactivator
 {
 
 	/**

@@ -8,8 +8,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/public/partials
+ * @package    Site_Mode
+ * @subpackage Site_Mode/public/partials
  */
 ?>
 

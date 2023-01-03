@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's menu
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Design
+class Site_Mode_Design
 {
         protected $enable_template      = false;
         protected $logo_width           = '';
@@ -37,11 +37,11 @@ class Rex_Design
 
     public function __construct(){}
 
-    public function ajax_rex_design() {
+    public function ajax_site_mode_design() {
 
         $nonce = $_POST['design-custom-message'];
         if(!wp_verify_nonce( $nonce, 'design-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         }
         else {
             $data = array(
@@ -49,21 +49,21 @@ class Rex_Design
             );
         }
 
-        if(get_option( 'rex_design' )) {
-            update_option('rex_design',serialize($data));
-            wp_send_json_success(get_option( 'rex_design' ));
+        if(get_option( 'site_mode_design' )) {
+            update_option('site_mode_design',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_design' ));
         }
         else {
-            add_option('rex_design',serialize($data));
-            wp_send_json_success(get_option( 'rex_design' ));
+            add_option('site_mode_design',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_design' ));
         }
         die();
     }
-    public function ajax_rex_design_lb() {
+    public function ajax_site_mode_design_lb() {
 
         $nonce = $_POST['design-logo-background'];
         if(!wp_verify_nonce( $nonce, 'design-logo-background-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         }
         else {
             $data = array(
@@ -76,22 +76,22 @@ class Rex_Design
             );
         }
 
-        if(get_option( 'rex_design_lb' )) {
-            update_option('rex_design_lb',serialize($data));
-            wp_send_json_success(get_option( 'rex_design_lb' ));
+        if(get_option( 'site_mode_design_lb' )) {
+            update_option('site_mode_design_lb',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_design_lb' ));
         }
         else {
-            add_option('rex_design_lb',serialize($data));
-            wp_send_json_success(get_option( 'rex_design_lb' ));
+            add_option('site_mode_design_lb',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_design_lb' ));
         }
         die();
     }
 
-    public function ajax_rex_design_font() {
+    public function ajax_site_mode_design_font() {
 
 //            $nonce = $_POST['design-fonts'];
 //            if(!wp_verify_nonce( $nonce, 'design-fonts-settings-save' )) {
-//                die(__('Security Check', 'rex-maintenance-mode'));
+//                die(__('Security Check', 'site-mode'));
 //            }
 //            else {
                 $data = array(
@@ -104,22 +104,22 @@ class Rex_Design
                 );
 //            }
 
-            if(get_option( 'rex_design_font' )) {
-                update_option('rex_design_font',serialize($data));
-                wp_send_json_success(get_option( 'rex_design_font' ));
+            if(get_option( 'site_mode_design_font' )) {
+                update_option('site_mode_design_font',serialize($data));
+                wp_send_json_success(get_option( 'site_mode_design_font' ));
             }
             else {
-                add_option('rex_design_font',serialize($data));
-                wp_send_json_success(get_option( 'rex_design_font' ));
+                add_option('site_mode_design_font',serialize($data));
+                wp_send_json_success(get_option( 'site_mode_design_font' ));
             }
             die();
     }
 
-    public function ajax_rex_design_color_section() {
+    public function ajax_site_mode_design_color_section() {
 
         $nonce = $_POST['design-icon-color'];
         if(!wp_verify_nonce( $nonce, 'design-icon-color-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         } else {
             $color_section_data = array(
                 'icon_size'                 => $_POST['icon-size-setting'],
@@ -130,13 +130,13 @@ class Rex_Design
             );
         }
 
-        if(get_option( 'rex_design_colors' )) {
-            update_option('rex_design_colors',serialize($color_section_data));
-            wp_send_json_success(get_option( 'rex_design_colors' ));
+        if(get_option( 'site_mode_design_colors' )) {
+            update_option('site_mode_design_colors',serialize($color_section_data));
+            wp_send_json_success(get_option( 'site_mode_design_colors' ));
         }
         else {
-            add_option('rex_design_colors',serialize($color_section_data));
-            wp_send_json_success(get_option( 'rex_design_colors' ));
+            add_option('site_mode_design_colors',serialize($color_section_data));
+            wp_send_json_success(get_option( 'site_mode_design_colors' ));
         }
         die();
     }

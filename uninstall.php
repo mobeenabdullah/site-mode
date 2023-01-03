@@ -22,7 +22,7 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
+ * @package    Site_Mode
  */
 
 // If uninstall not called from WordPress, then exit.
@@ -50,11 +50,11 @@ $options = [
     'content-content-settings',
     'content-bg-image-settings',
     'content-content-template-settings',
-    'wprex-status-settings',
-    'wprex-mode-settings',
-    'wprex-redirect-url-settings',
-    'wprex-delay-settings',
-    'wprex-login-icon-setting'
+    'site-mode-status-settings',
+    'site-mode-mode-settings',
+    'site-mode-redirect-url-settings',
+    'site-mode-delay-settings',
+    'site-mode-login-icon-setting'
 ];
 
 

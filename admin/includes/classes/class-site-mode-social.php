@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's menu
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Social
+class Site_Mode_Social
 {
 
         protected $show_social = false;
@@ -37,12 +37,12 @@ class Rex_Social
 
     }
 
-    public function ajax_rex_social() {
+    public function ajax_site_mode_social() {
 
 
         $nonce = $_POST['social-custom-message'];
         if(!wp_verify_nonce( $nonce, 'social-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         }
         else {
             $data = array(
@@ -58,13 +58,13 @@ class Rex_Social
             );
         }
 
-        if(get_option( 'rex_social' )) {
-            update_option('rex_social',serialize($data));
-            wp_send_json_success(get_option( 'rex_social' ));
+        if(get_option( 'site_mode_social' )) {
+            update_option('site_mode_social',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_social' ));
         }
         else {
-            add_option('rex_social',serialize($data));
-            wp_send_json_success(get_option( 'rex_social' ));
+            add_option('site_mode_social',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_social' ));
         }
 
         die();

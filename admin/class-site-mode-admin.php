@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/admin
+ * @package    Site_Mode
+ * @subpackage Site_Mode/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/admin
+ * @package    Site_Mode
+ * @subpackage Site_Mode/admin
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode_Admin
+class Site_Mode_Admin
 {
 
 	/**
@@ -75,15 +75,15 @@ class Rex_Maintenance_Mode_Admin
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
+		 * defined in Site_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Rex_Maintenance_Mode_Loader will then create the relationship
+		 * The Site_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/rex-maintenance-mode-admin.css', array(), $this->version, 'all');
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/site-mode-admin.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -98,10 +98,10 @@ class Rex_Maintenance_Mode_Admin
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Rex_Maintenance_Mode_Loader as all of the hooks are defined
+		 * defined in Site_Mode_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Rex_Maintenance_Mode_Loader will then create the relationship
+		 * The Site_Mode_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
@@ -112,10 +112,10 @@ class Rex_Maintenance_Mode_Admin
         if (!did_action('wp_enqueue_media')) {
             wp_enqueue_media();
         }
-        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/js/rex-maintenance-mode-admin.js', array('jquery'), $this->version, false);
+        wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/js/site-mode-admin.js', array('jquery'), $this->version, false);
         wp_localize_script( $this->plugin_name,'ajaxObj',array(
             'ajax_url'      => admin_url( 'admin-ajax.php' ),
-            'ajax_nonce'    =>wp_create_nonce('rex_nonce_field'),
+            'ajax_nonce'    =>wp_create_nonce('site_mode_nonce_field'),
         ));
 
     }

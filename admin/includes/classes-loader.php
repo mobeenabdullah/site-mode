@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/admin
+ * @package    Site_Mode
+ * @subpackage Site_Mode/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/admin
+ * @package    Site_Mode
+ * @subpackage Site_Mode/admin
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Classes_loader
+class Site_Mode_Classes_loader
 {
      protected $general_settings = '';
      protected $content_settings = '';
@@ -37,25 +37,25 @@ class Rex_Classes_loader
     public function __construct()
     {
         $this->files_loader();
-        $this->general_settings     = new Rex_General();
-        $this->content_settings     = new Rex_Content();
-        $this->social_settings      = new Rex_Social();
-        $this->design_settings      = new Rex_Design();
-        $this->seo_settings         = new Rex_Seo();
-        $this->advanced_settings    = new Rex_Advanced();
-        $this->import_settings      = new Rex_Import();
-        $this->export_settings      = new Rex_Export();
+        $this->general_settings     = new Site_Mode_General();
+        $this->content_settings     = new Site_Mode_Content();
+        $this->social_settings      = new Site_Mode_Social();
+        $this->design_settings      = new Site_Mode_Design();
+        $this->seo_settings         = new Site_Mode_Seo();
+        $this->advanced_settings    = new Site_Mode_Advanced();
+        $this->import_settings      = new Site_Mode_Import();
+        $this->export_settings      = new Site_Mode_Export();
     }
 
     public function files_loader() {
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-general.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-content.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-social.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-design.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-seo.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-advanced.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-import.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-rex-export.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-general.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-content.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-social.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-design.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-seo.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-advanced.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-import.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'includes/classes/class-site-mode-export.php';
     }
 
     public function get_general()

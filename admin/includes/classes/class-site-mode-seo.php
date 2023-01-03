@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,22 +16,22 @@
  * This class defines all code necessary to run during the plugin's menu
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Seo
+class Site_Mode_Seo
 {
 
 
 
     public function __construct(){}
 
-    public function ajax_rex_seo() {
+    public function ajax_site_mode_seo() {
 
         $nonce = $_POST['seo-custom-message'];
         if(!wp_verify_nonce( $nonce, 'seo-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         }
         else {
             $data = array(
@@ -42,13 +42,13 @@ class Rex_Seo
             );
         }
 
-        if(get_option( 'rex_seo' )) {
-            update_option('rex_seo',serialize($data) );
-            wp_send_json_success(get_option( 'rex_seo' ));
+        if(get_option( 'site_mode_seo' )) {
+            update_option('site_mode_seo',serialize($data) );
+            wp_send_json_success(get_option( 'site_mode_seo' ));
         }
         else {
-            add_option('rex_seo',serialize($data));
-            wp_send_json_success(get_option( 'rex_seo' ));
+            add_option('site_mode_seo',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_seo' ));
         }
         die();
     }

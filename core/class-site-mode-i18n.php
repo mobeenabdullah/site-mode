@@ -9,8 +9,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Maintenance_Mode_i18n
+class Site_Mode_i18n
 {
 
 
@@ -37,7 +37,7 @@ class Rex_Maintenance_Mode_i18n
 	{
 
 		load_plugin_textdomain(
-			'rex-maintenance-mode',
+			'site-mode',
 			false,
 			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);

@@ -14,13 +14,13 @@
     </div>
     <div class="content">
         <h1>
-            <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>
+            <?php esc_html_e(get_option('content-headline-settings', 'site-mode')); ?>
         </h1>
         <h3>
-            <?php esc_html_e(get_option('content-content-settings', 'rex-maintenance-mode')); ?>
+            <?php esc_html_e(get_option('content-content-settings', 'site-mode')); ?>
         </h3>
         <p>
-            <?php esc_html_e(get_option('content-subheading-settings', 'rex-maintenance-mode')); ?>
+            <?php esc_html_e(get_option('content-subheading-settings', 'site-mode')); ?>
         </p>
     </div>
     <?php require_once 'social-media.php' ?>

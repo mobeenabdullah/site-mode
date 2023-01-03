@@ -6,8 +6,8 @@
  * @link       https://https://mobeenabdullah.com
  * @since      1.0.0
  *
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's menu
  *
  * @since      1.0.0
- * @package    Rex_Maintenance_Mode
- * @subpackage Rex_Maintenance_Mode/includes
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Rex_Advanced
+class Site_Mode_Advanced
 {
 
         protected $ga_id            = '';
@@ -37,40 +37,40 @@ class Rex_Advanced
         protected $contributor_role = false;
         protected $subscriber_role  = false;
         protected $user_role        = false;
-        protected $rex_advanced     = array();
+        protected $site_mode_advanced     = array();
 
     public function __construct()
     {
-        $this->rex_advanced = get_option('rex_advanced');
-        $this->rex_advanced = unserialize($this->rex_advanced);
-        if($this->rex_advanced) {
-            $this->ga_id            = $this->rex_advanced['ga_id'];
-            $this->custom_cs        = $this->rex_advanced['custom_css'];
-            $this->enable_rest_api  = $this->rex_advanced['enable_rest_api'];
-            $this->enable_feed      = $this->rex_advanced['enable_feed'];
-            $this->include_pages    = $this->rex_advanced['include_pages'];
-            $this->exclude_pages    = $this->rex_advanced['exclude_pages'];
-            $this->header_code      = $this->rex_advanced['header_code'];
-            $this->footer_code      = $this->rex_advanced['footer_code'];
-            $this->admin_role       = $this->rex_advanced['admin_role'];
-            $this->editor_role      = $this->rex_advanced['editor_role'];
-            $this->author_role      = $this->rex_advanced['author_role'];
-            $this->contributor_role = $this->rex_advanced['contributor_role'];
-            $this->subscriber_role  = $this->rex_advanced['subscriber_role'];
-            $this->user_role        = $this->rex_advanced['user_role'];
+        $this->site_mode_advanced = get_option('site_mode_advanced');
+        $this->site_mode_advanced = unserialize($this->site_mode_advanced);
+        if($this->site_mode_advanced) {
+            $this->ga_id            = $this->site_mode_advanced['ga_id'];
+            $this->custom_cs        = $this->site_mode_advanced['custom_css'];
+            $this->enable_rest_api  = $this->site_mode_advanced['enable_rest_api'];
+            $this->enable_feed      = $this->site_mode_advanced['enable_feed'];
+            $this->include_pages    = $this->site_mode_advanced['include_pages'];
+            $this->exclude_pages    = $this->site_mode_advanced['exclude_pages'];
+            $this->header_code      = $this->site_mode_advanced['header_code'];
+            $this->footer_code      = $this->site_mode_advanced['footer_code'];
+            $this->admin_role       = $this->site_mode_advanced['admin_role'];
+            $this->editor_role      = $this->site_mode_advanced['editor_role'];
+            $this->author_role      = $this->site_mode_advanced['author_role'];
+            $this->contributor_role = $this->site_mode_advanced['contributor_role'];
+            $this->subscriber_role  = $this->site_mode_advanced['subscriber_role'];
+            $this->user_role        = $this->site_mode_advanced['user_role'];
         }
 
 
     }
 
-    public function rex_remove_rss_feed()
+    public function site_mode_remove_rss_feed()
     {
         wp_die( __('No RSS FEEDS <a href="'. get_bloginfo('url') .'">homepage</a>!') );
     }
 
 
 
-    public function rex_custom_css_include()
+    public function site_mode_custom_css_include()
     {
         if (!empty($this->custom_css)) {
           echo  $this->custom_css;
@@ -90,11 +90,11 @@ class Rex_Advanced
             echo $this->footer_code;
         }
     }
-    public function  ajax_rex_advanced() {
+    public function  ajax_site_mode_advanced() {
         
         $nonce = $_POST['advance-custom-message'];
         if(!wp_verify_nonce( $nonce, 'advance-settings-save' )) {
-            die(__('Security Check', 'rex-maintenance-mode'));
+            die(__('Security Check', 'site-mode'));
         }
         else {
             $data = array(
@@ -125,36 +125,36 @@ class Rex_Advanced
             );
         }
 
-        if(get_option( 'rex_advanced' )) {
-            update_option('rex_advanced',serialize($data) );
-            wp_send_json_success(get_option( 'rex_advanced' ));
+        if(get_option( 'site_mode_advanced' )) {
+            update_option('site_mode_advanced',serialize($data) );
+            wp_send_json_success(get_option( 'site_mode_advanced' ));
         }
         else {
-            add_option('rex_advanced',serialize($data));
-            wp_send_json_success(get_option( 'rex_advanced' ));
+            add_option('site_mode_advanced',serialize($data));
+            wp_send_json_success(get_option( 'site_mode_advanced' ));
         }
         die();
     }
 
-    public function rex_rest_api($access)
+    public function site_mode_rest_api($access)
     {
         if (empty($this->enable_rest_api)) {
             return $access;
         } else {
-            return new WP_Error('rest_cannot_access', __('The REST API on this site has been disabled.', 'rex-maintenance-mode'), array('status' => rest_authorization_required_code()));
+            return new WP_Error('rest_cannot_access', __('The REST API on this site has been disabled.', 'site-mode'), array('status' => rest_authorization_required_code()));
         }
     }
 
 
 
-    public function rex_google_analytics_code()
+    public function site_mode_google_analytics_code()
     {
         if (!empty($this->ga_code)) {
             echo $this->ga_code;
         }
     }
 
-    public function rex_google_analytics_id()
+    public function site_mode_google_analytics_id()
     {
         if (!empty($this->ga_id)) {?>
 

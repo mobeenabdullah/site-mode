@@ -1,11 +1,11 @@
 <div class="wrap">
-    <div class="rex__wrap--cover-content-form">
-        <form id="rex-design" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <div class="site_mode__wrap--cover-content-form">
+        <form id="site-mode-design" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <div id="universal-message-container">
-                <h2><?php _e('Themes','rex-maintenance-mode');?></h2>
+                <h2><?php _e('Themes','site-mode');?></h2>
                 <div class="template__wrapper">
                     <?php
-                        $template = get_option('rex_design');
+                        $template = get_option('site_mode_design');
                     // convert serialized string to array
                         $un_data = unserialize($template);
                         //check if value is set or not if not set then set default value.
@@ -20,7 +20,7 @@
                             </div>
                             <div class="template_actions">
                                 <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Food Template','rex-maintenance-mode');?></h2>
+                                    <h2 class="template_title-title"><?php _e('Food Template','site-mode');?></h2>
                                 </div>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="one" name="design-template-enable" value="1" <?php echo ($enable_template == '1') ? 'checked' : ''?> />
@@ -34,7 +34,7 @@
                             </div>
                             <div class="template_actions">
                                 <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Construction Template','rex-maintenance-mode');?></h2>
+                                    <h2 class="template_title-title"><?php _e('Construction Template','site-mode');?></h2>
                                 </div>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="two" name="design-template-enable" value="2" <?php echo ($enable_template == '2') ? 'checked' : ''?> />
@@ -49,7 +49,7 @@
                             </div>
                             <div class="template_actions">
                                 <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Fashion Template','rex-maintenance-mode');?></h2>
+                                    <h2 class="template_title-title"><?php _e('Fashion Template','site-mode');?></h2>
                                 </div>
 
                                 <label class="um_toggle">
@@ -64,7 +64,7 @@
                             </div>
                             <div class="template_actions">
                                 <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Travel Template','rex-maintenance-mode');?></h2>
+                                    <h2 class="template_title-title"><?php _e('Travel Template','site-mode');?></h2>
                                 </div>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="four" name="design-template-enable" value="4" <?php echo ($enable_template == '4') ? 'checked' : ''?> />
@@ -79,11 +79,11 @@
                 submit_button();
                 ?>
         </form>
-        <form id="rex-design-logo-background" method="post">
+        <form id="site-mode-design-logo-background" method="post">
             <?php
-            $rex_design_lb = get_option('rex_design_lb');
+            $site_mode_design_lb = get_option('site_mode_design_lb');
             // convert serialized string to array
-            $lb_data = unserialize($rex_design_lb);
+            $lb_data = unserialize($site_mode_design_lb);
             //check if value is set or not if not set then set default value.
             $logo_width         = isset($lb_data['logo_width']) ? $lb_data['logo_width'] : '200';
             $logo_height        = isset($lb_data['logo_height']) ? $lb_data['logo_height'] : '200';
@@ -98,13 +98,13 @@
                 <div class="logo">
                     <h3>Logo</h3>
                     <div class="logo_width_cover">
-                        <label for="logo_width"><?php _e('Logo Width','rex-maintenance-mode');?></label>
+                        <label for="logo_width"><?php _e('Logo Width','site-mode');?></label>
                         <div class="logo_width">
                             <input type="number" id="logo_width" data-inc="1" name="logo-width-setting" value="<?php echo $logo_width; ?>" <?php checked(1, $logo_width, true); ?> />
                         </div>
                     </div>
                     <div class="logo_height_cover">
-                        <label for="logo_height"><?php _e('Logo Height','rex-maintenance-mode');?></label>
+                        <label for="logo_height"><?php _e('Logo Height','site-mode');?></label>
                         <div class="logo_height">
                             <input type="number"  id="logo_height" data-inc="1" name="logo-height-setting" value="<?php echo $logo_height; ?>" <?php checked(1, $logo_height, true); ?> />
                         </div>
@@ -112,7 +112,7 @@
                 </div>
             </div>
             <div class="background_section">
-                <h3><?php _e('Background','rex-maintenance-mode');?></h3>
+                <h3><?php _e('Background','site-mode');?></h3>
                 <div class="um_checkbox_wrapper">
                     <?php
                         //get image url from id
@@ -120,7 +120,7 @@
 
                     ?>
                     <input type="checkbox" id="login_icon" class="enable_login_icon" name="design-background-setting" value="1"/>
-                    <label for="login_icon"><?php _e('Background','rex-maintenance-mode');?></label>
+                    <label for="login_icon"><?php _e('Background','site-mode');?></label>
                 </div>
                 <?php if ($image_url) : ?>
                     <div class="bg_image_wrapper">
@@ -129,25 +129,25 @@
                             <img src="<?php echo esc_url($image_url[0]) ?>" width="150" height="150" />
                         </div>
                     </div>
-                    <a href="#" class="button um_btn_outline logo-remove"><?php _e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>">
+                    <a href="#" class="button um_btn_outline logo-remove"><?php _e('Remove Background Image', 'site-mode'); ?></a>
+                    <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
                 <?php else : ?>
-                    <a href="#" class="logo-upload button um_btn_outline"><?php _e('Background Image', 'rex-maintenance-mode'); ?></a>
-                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php _e('Background Overlay', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>>
+                    <a href="#" class="logo-upload button um_btn_outline"><?php _e('Background Image', 'site-mode'); ?></a>
+                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php _e('Background Overlay', 'site-mode'); ?></a>
+                    <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>>
                 <?php endif; ?>
                 <div class="background_overlay">
                     <div class="um_checkbox_wrapper">
                         <input type="checkbox" id="background_overlay" class="background_overlay" name="design-background-overlay-setting" value="1"/>
-                        <label for="background_overlay"><?php _e('Background Overlay','rex-maintenance-mode');?></label>
+                        <label for="background_overlay"><?php _e('Background Overlay','site-mode');?></label>
                     </div>
                     <div class="overlay_color">
                         <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo $overlay_color; ?>">
-                        <label for="overlay_color"><?php _e('Overlay Color','rex-maintenance-mode');?></label>
+                        <label for="overlay_color"><?php _e('Overlay Color','site-mode');?></label>
                     </div>
                     <div class="overlay_opacity">
                         <input type="range" id="overlay_opacity" name="overlay-opacity-setting" min="0" max="10" value="<?php echo $overlay_opacity; ?>">
-                        <label for="overlay_opacity"><?php _e('Overlay Opacity','rex-maintenance-mode');?></label>
+                        <label for="overlay_opacity"><?php _e('Overlay Opacity','site-mode');?></label>
                     </div>
                 </div>
             </div>
@@ -156,7 +156,7 @@
             submit_button();
             ?>
         </form>
-        <form id="rex-design-fonts" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="site-mode-design-fonts" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
 //             api call for font family
 
@@ -170,30 +170,30 @@
                 }
                 //serialize font family array then store in option
                 $font_family        = serialize($font_family);
-                update_option('rex-font-family', $font_family);
+                update_option('site-mode-font-family', $font_family);
             //get font family from option
-            $font_family            = get_option('rex-font-family');
+            $font_family            = get_option('site-mode-font-family');
 
             //font size
             //get data from option
-            $rex_design_font                    = get_option('rex_design_font');
-            $rex_design_font                    = unserialize($rex_design_font);
-            $heading_font_size                  = isset($rex_design_font['heading_font_size']) ? $rex_design_font['heading_font_size'] : '36';
-            $heading_font_family                = isset($rex_design_font['heading_font_family']) ? $rex_design_font['heading_font_family'] : 'Arial';
+            $site_mode_design_font                    = get_option('site_mode_design_font');
+            $site_mode_design_font                    = unserialize($site_mode_design_font);
+            $heading_font_size                  = isset($site_mode_design_font['heading_font_size']) ? $site_mode_design_font['heading_font_size'] : '36';
+            $heading_font_family                = isset($site_mode_design_font['heading_font_family']) ? $site_mode_design_font['heading_font_family'] : 'Arial';
 
-            $description_font_size              = isset($rex_design_font['description_font_size']) ? $rex_design_font['description_font_size'] : '18';
-            $description_font_family            = isset($rex_design_font['description_font_family']) ? $rex_design_font['description_font_family'] : 'Arial';
+            $description_font_size              = isset($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '18';
+            $description_font_family            = isset($site_mode_design_font['description_font_family']) ? $site_mode_design_font['description_font_family'] : 'Arial';
 
 
             ?>
             <div class="heading-section">
-                <h3><?php _e('Heading','rex-maintenance-mode');?></h3>
+                <h3><?php _e('Heading','site-mode');?></h3>
                 <div class="color_font_section">
                     <div class="font_family">
                         <div class="um_select">
-                            <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
+                            <label for="site_mode" class="screen-reading"><?php _e('Font family','site-mode');?></label>
                             <select name="heading-font-family-setting" id="site_mode">
-                                <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
+                                <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                 <?php
                                 $font_family = unserialize($font_family);
                                 foreach ($font_family as $key => $value) { ?>
@@ -205,7 +205,7 @@
                         </div>
                     </div>
                     <div class="font_size">
-                        <label for="font_size"><?php _e('Font Size','rex-maintenance-mode');?></label>
+                        <label for="font_size"><?php _e('Font Size','site-mode');?></label>
                         <div class="font_size">
                             <input type="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
                         </div>
@@ -213,13 +213,13 @@
                 </div>
             </div>
             <div class="description-section">
-                <h3><?php _e('Description','rex-maintenance-mode');?></h3>
+                <h3><?php _e('Description','site-mode');?></h3>
                 <div class="color_font_section">
                     <div class="font_family">
                         <div class="um_select">
-                            <label for="site_mode" class="screen-reading"><?php _e('Font family','rex-maintenance-mode');?></label>
+                            <label for="site_mode" class="screen-reading"><?php _e('Font family','site-mode');?></label>
                             <select name="description-font-family-setting" id="site_mode">
-                                <option value=""><?php _e('Select Font Family','rex-maintenance-mode');?></option>
+                                <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                 <?php
                                 foreach ($font_family as $key => $value) { ?>
                                     <option value="<?php echo $value ?>"><?php echo $value ?></option>
@@ -230,7 +230,7 @@
                         </div>
                     </div>
                     <div class="font_size">
-                        <label for="font_size"><?php _e('Font Size','rex-maintenance-mode');?></label>
+                        <label for="font_size"><?php _e('Font Size','site-mode');?></label>
                         <div class="font_size">
                             <input type="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $description_font_size; ?>" <?php checked(1, $description_font_size, true); ?> />
                         </div>
@@ -242,12 +242,12 @@
             submit_button();
             ?>
         </form>
-        <form id="rex-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
 
-            $rex_design_colors      = get_option('rex_design_colors');
+            $site_mode_design_colors      = get_option('site_mode_design_colors');
             //unserialize data
-            $color_data             = unserialize($rex_design_colors);
+            $color_data             = unserialize($site_mode_design_colors);
             //check if values are set or not and assign default values
             $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
             $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
@@ -259,24 +259,24 @@
             <div class="social_icon_section">
                 <div class="icon_size">
                     <div class="um_select">
-                        <label for="site_mode" class="screen-reading"><?php _e('Icon Size','rex-maintenance-mode');?></label>
+                        <label for="site_mode" class="screen-reading"><?php _e('Icon Size','site-mode');?></label>
                         <select name="icon-size-setting" id="site_mode">
-                            <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','rex-maintenance-mode');?></option>
-                            <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','rex-maintenance-mode');?></option>
-                            <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','rex-maintenance-mode');?></option>
+                            <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
+                            <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
+                            <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
                         </select>
                 </div>
                 <div class="icon_color">
-                    <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($icon_color, 'rex-maintenance-mode');?>">
-                    <label for="icon_color"><?php _e('Icons Color','rex-maintenance-mode');?></label>
+                    <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($icon_color, 'site-mode');?>">
+                    <label for="icon_color"><?php _e('Icons Color','site-mode');?></label>
                 </div>
                 <div class="icon_bg_color">
-                    <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($icon_bg_color, 'rex-maintenance-mode'); ?>">
-                    <label for="icon_bg_color"><?php _e('Icons Background Color','rex-maintenance-mode');?></label>
+                    <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($icon_bg_color, 'site-mode'); ?>">
+                    <label for="icon_bg_color"><?php _e('Icons Background Color','site-mode');?></label>
                 </div>
                 <div class="icon_border_color">
-                    <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($icon_border_color,'rex-maintenance-mode'); ?>">
-                    <label for="icon_border_color"><?php _e('Icons Border Color','rex-maintenance-mode');?></label>
+                    <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($icon_border_color,'site-mode'); ?>">
+                    <label for="icon_border_color"><?php _e('Icons Border Color','site-mode');?></label>
                 </div>
             </div>
             <?php

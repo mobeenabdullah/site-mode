@@ -1,11 +1,11 @@
 <div class="wrap">
     <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-    <form id="rex-social" method="post">
+    <form id="site-mode-social" method="post">
         <?php
         // display error message
         settings_errors();
         // get data from database
-        $social = get_option('rex_social');
+        $social = get_option('site_mode_social');
         // unserialize data
         $uns_data = unserialize($social);
         // check if values set or not and set default values
@@ -21,8 +21,8 @@
 
         ?>
         <div class="um_checkbox_wrapper">
-            <input type="checkbox" id="show-social-icons-setting" class="enable_disable-rows"  name="show-social-icons-setting" value="<?php esc_attr_e($show_social,'rex-maintenance-mode'); ?> " <?php checked(1, !empty($show_social),true); ?> />
-            <label for="show-social-icons-setting"><?php _e('Enable/Disable','rex-maintenance-mode');?></label>
+            <input type="checkbox" id="show-social-icons-setting" class="enable_disable-rows"  name="show-social-icons-setting" value="<?php esc_attr_e($show_social,'site-mode'); ?> " <?php checked(1, !empty($show_social),true); ?> />
+            <label for="show-social-icons-setting"><?php _e('Enable/Disable','site-mode');?></label>
         </div>
 
         <div class="socialmedia__wrapper">
@@ -40,8 +40,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_fb"><?php _e('Facebook','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_fb" name="content-social-fb-setting" value="<?php esc_attr_e($facebook, 'rex-maintenance-mode') ?>" />
+                            <label for="social_fb"><?php _e('Facebook','site-mode');?></label>
+                            <input type="text" id="social_fb" name="content-social-fb-setting" value="<?php esc_attr_e($facebook, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -65,8 +65,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_tw"><?php _e('Twitter','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_tw" name="content-social-twitter-setting" value="<?php esc_attr_e($twitter, 'rex-maintenance-mode') ?>" />
+                            <label for="social_tw"><?php _e('Twitter','site-mode');?></label>
+                            <input type="text" id="social_tw" name="content-social-twitter-setting" value="<?php esc_attr_e($twitter, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -90,8 +90,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_fb"><?php _e('Facebook','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_fb" name="content-social-linkedin-setting" value="<?php esc_attr_e($linkedin, 'rex-maintenance-mode') ?>" />
+                            <label for="social_fb"><?php _e('Facebook','site-mode');?></label>
+                            <input type="text" id="social_fb" name="content-social-linkedin-setting" value="<?php esc_attr_e($linkedin, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -115,8 +115,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_youtube"><?php _e('Youtube','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_youtube" name="content-social-youtube-setting" value="<?php esc_attr_e($youtube, 'rex-maintenance-mode') ?>" />
+                            <label for="social_youtube"><?php _e('Youtube','site-mode');?></label>
+                            <input type="text" id="social_youtube" name="content-social-youtube-setting" value="<?php esc_attr_e($youtube, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -140,8 +140,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_instagram"><?php _e('Instagram','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_instagram" name="content-social-instagram-setting" value="<?php esc_attr_e($instagram, 'rex-maintenance-mode') ?>" />
+                            <label for="social_instagram"><?php _e('Instagram','site-mode');?></label>
+                            <input type="text" id="social_instagram" name="content-social-instagram-setting" value="<?php esc_attr_e($instagram, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -165,8 +165,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_pintrest"><?php _e('Pintrest','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_pintrest" name="content-social-pintrest-setting" value="<?php esc_attr_e($pinterest, 'rex-maintenance-mode') ?>" />
+                            <label for="social_pintrest"><?php _e('Pintrest','site-mode');?></label>
+                            <input type="text" id="social_pintrest" name="content-social-pintrest-setting" value="<?php esc_attr_e($pinterest, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -190,8 +190,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_linkedin"><?php _e('Linkedin','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_linkedin" name="content-social-quora-setting" value="<?php esc_attr_e($quora, 'rex-maintenance-mode') ?>" />
+                            <label for="social_linkedin"><?php _e('Linkedin','site-mode');?></label>
+                            <input type="text" id="social_linkedin" name="content-social-quora-setting" value="<?php esc_attr_e($quora, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">
@@ -215,8 +215,8 @@
                             </span>
                         </div>
                         <div class="social_field">
-                            <label for="social_behance"><?php _e('Behance','rex-maintenance-mode');?></label>
-                            <input type="text" id="social_behance" name="content-social-behance-setting" value="<?php esc_attr_e($behance, 'rex-maintenance-mode') ?>" />
+                            <label for="social_behance"><?php _e('Behance','site-mode');?></label>
+                            <input type="text" id="social_behance" name="content-social-behance-setting" value="<?php esc_attr_e($behance, 'site-mode') ?>" />
                         </div>
                         <div class="social_delete">
                             <div class="um_checkbox_wrapper um_checkbox_show_hide">

@@ -3,7 +3,7 @@
             // Show error/update messages
             settings_errors();
             //get content data
-            $content = get_option('rex_content');
+            $content = get_option('site_mode_content');
             //unserialize data
             $uns_data = unserialize($content);
             // check values are set or not if not assign default values
@@ -19,15 +19,15 @@
             <div class="logo_type_wrapper">
                 <div class="um_radio_wrapper">
                     <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked(1,!empty($text_logo), true); ?> />
-                    <label for="text-logo"><?php _e('Text','rex-maintenance-mode');?></label>
+                    <label for="text-logo"><?php _e('Text','site-mode');?></label>
                 </div>
                 <div class="um_radio_wrapper">
                     <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked(1, !empty($image_logo), true); ?> />
-                    <label for="image-logo"><?php _e('Image','rex-maintenance-mode');?></label>
+                    <label for="image-logo"><?php _e('Image','site-mode');?></label>
                 </div>
                 <div class="um_radio_wrapper">
                     <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  <?php checked(1,!empty($disable_logo), true); ?> />
-                    <label for="disable-logo"><?php _e('disable','rex-maintenance-mode');?></label>
+                    <label for="disable-logo"><?php _e('disable','site-mode');?></label>
                 </div>
             </div>
                 <?php
@@ -41,21 +41,21 @@
                             <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
                         </div>
                     </div>
-                    <a href="#" class="button um_btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>">
+                    <a href="#" class="button um_btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
                 <?php else : ?>
-                    <a href="#" class="logo-upload button um_btn_outline"><?php esc_html_e('Upload Logo', 'rex-maintenance-mode'); ?></a>
-                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php esc_html_e('Remove Logo', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'rex-maintenance-mode'); ?>>
+                    <a href="#" class="logo-upload button um_btn_outline"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
+                    <a href="#" class="logo-remove button um_btn_outline" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>>
                 <?php endif; ?>
             </div>
             <div class="um_input_cover label_top text_logo_wrapper">
-                <label for="text_logo"><?php _e('Logo text','rex-maintenance-mode');?></label>
-                <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e(get_option('content-text-logo-setting'),'rex-maintenance-mode'); ?>" />
+                <label for="text_logo"><?php _e('Logo text','site-mode');?></label>
+                <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e(get_option('content-text-logo-setting'),'site-mode'); ?>" />
             </div>
             <div class="um_input_cover">
-                <label class="screen-reading" for="headline"><?php _e('Headline','rex-maintenance-mode');?></label>
-                <input type="text" id="headline" name="content-heading-setting" value="<?php esc_attr_e($heading,'rex-maintenance-mode'); ?>" />
+                <label class="screen-reading" for="headline"><?php _e('Headline','site-mode');?></label>
+                <input type="text" id="headline" name="content-heading-setting" value="<?php esc_attr_e($heading,'site-mode'); ?>" />
             </div>
             <div class="description_editor">
                 <?php
@@ -82,12 +82,12 @@
                         <img src="<?php echo esc_url($bg_img_id) ?>" width="350" height="350" alt="background Image" />
                     </div>
                 </div>
-                    <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>">
+                    <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e(get_option('content-bg-image-setting'),'site-mode'); ?>">
                     <?php else : ?>
-                    <a href="#" class="button um_btn_outline bg-image-upload"><?php esc_html_e('Upload Background Image', 'rex-maintenance-mode'); ?></a>
-                    <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'rex-maintenance-mode'); ?></a>
-                    <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e(get_option('content-bg-image-setting'),'rex-maintenance-mode'); ?>>
+                    <a href="#" class="button um_btn_outline bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
+                    <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e(get_option('content-bg-image-setting'),'site-mode'); ?>>
                         <?php endif; ?>
             </div>
         </form>

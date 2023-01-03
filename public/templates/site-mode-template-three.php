@@ -16,11 +16,11 @@
                     ?>
                     <?php if($bg_url) : ?>
                         <div class="construction_cover__left--img">
-                            <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>"/>
+                            <img src="<?php echo esc_url($bg_url);?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings', 'site-mode')); ?>"/>
                         </div>
                     <?php else : ?>
                         <div class="construction_cover__left--img">
-                            <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); ?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'rex-maintenance-mode'); ?>"/>
+                            <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); ?>" width="1920" height="1080" alt="Background image | <?php esc_html_e(get_option('content-headline-settings'), 'site-mode'); ?>"/>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -30,31 +30,31 @@
                         <?php $logo_url = wp_get_attachment_image_url(get_option('content-logo-settings'), 'full'); ?>
                         <?php if($logo_url) : ?>
                             <div class="uc_content-logo">
-                                <img src="<?php echo  esc_attr($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
+                                <img src="<?php echo  esc_attr($logo_url) ?>" alt="Logo |<?php esc_html_e(get_option('content-headline-settings', 'site-mode')); ?>">
                             </div>
                         <?php else : ?>
                             <div class="uc_content-logo">
-                                <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="<?php esc_html_e(get_option('content-headline-settings', 'rex-maintenance-mode')); ?>">
+                                <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="<?php esc_html_e(get_option('content-headline-settings', 'site-mode')); ?>">
                             </div>
                         <?php endif; ?>
 
                         <?php if(!empty(get_option('content-headline-settings'))) : ?>
                             <div class="uc_content-heading">
-                                <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Here headline will be placed..!'), 'rex-maintenance-mode'); ?></h1>
+                                <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Here headline will be placed..!'), 'site-mode'); ?></h1>
                             </div>
                         <?php else : ?>
                             <div class="uc_content-heading">
-                                <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Headline Here'), 'rex-maintenance-mode'); ?></h1>
+                                <h1 class="main_title"><?php esc_html_e(get_option('content-headline-settings','Headline Here'), 'site-mode'); ?></h1>
                             </div>
                         <?php endif; ?>
 
                         <?php if(!empty(get_option('content-content-settings'))) : ?>
                             <div class="uc_content-text">
-                                <p><?php esc_html_e(get_option('content-content-settings'), 'rex-maintenance-mode'); ?></p>
+                                <p><?php esc_html_e(get_option('content-content-settings'), 'site-mode'); ?></p>
                             </div>
                         <?php else : ?>
                             <div class="uc_content-text">
-                                <p><?php esc_html_e(get_option('content-content-settings', 'Write some content'), 'rex-maintenance-mode'); ?></p>
+                                <p><?php esc_html_e(get_option('content-content-settings', 'Write some content'), 'site-mode'); ?></p>
                             </div>
                         <?php endif; ?>
 

@@ -10,18 +10,18 @@
  *
  * @link              https://https://mobeenabdullah.com
  * @since             1.0.0
- * @package           Rex_Maintenance_Mode
+ * @package           Site_Mode
  *
  * @wordpress-plugin
- * Plugin Name:       REX Maintenance Mode
+ * Plugin Name:       Site Mode - Under Construction & Maintenance Mode
  * Plugin URI:        https://https://mobeenabdullah.com/plugins
- * Description:       This is a minimalistic coming soon or Maintenance plugin. 
+ * Description:       Easily put your WordPress site into maintenance mode while you work on updates or make changes
  * Version:           1.0.0
  * Author:            Mobeen Abdullah
  * Author URI:        https://https://mobeenabdullah.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       rex-maintenance-mode
+ * Text Domain:       site-mode
  * Domain Path:       /languages
  */
 
@@ -35,36 +35,36 @@ if (!defined('WPINC')) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define('REX_MAINTENANCE_MODE_VERSION', '1.0.0');
+define('SITE_MODE_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-rex-maintenance-mode-activator.php
+ * This action is documented in includes/class-site-mode-activator.php
  */
-function activate_rex_maintenance_mode()
+function activate_site_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode-activator.php';
-	Rex_Maintenance_Mode_Activator::activate();
+	require_once plugin_dir_path(__FILE__) . 'core/class-site-mode-activator.php';
+	Site_Mode_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-rex-maintenance-mode-deactivator.php
+ * This action is documented in includes/class-site-mode-deactivator.php
  */
-function deactivate_rex_maintenance_mode()
+function deactivate_site_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode-deactivator.php';
-	Rex_Maintenance_Mode_Deactivator::deactivate();
+	require_once plugin_dir_path(__FILE__) . 'core/class-site-mode-deactivator.php';
+	Site_Mode_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_rex_maintenance_mode');
-register_deactivation_hook(__FILE__, 'deactivate_rex_maintenance_mode');
+register_activation_hook(__FILE__, 'activate_site_mode');
+register_deactivation_hook(__FILE__, 'deactivate_site_mode');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode.php';
+require plugin_dir_path(__FILE__) . 'core/class-site-mode.php';
 
 /**
  * Begins execution of the plugin.
@@ -77,12 +77,12 @@ require plugin_dir_path(__FILE__) . 'core/class-rex-maintenance-mode.php';
  */
 
 
-function run_rex_maintenance_mode()
+function run_site_mode()
 {
 
-	$plugin = new Rex_Maintenance_Mode();
+	$plugin = new Site_Mode();
 	$plugin->run();
 }
-run_rex_maintenance_mode();
+run_site_mode();
 
 

@@ -251,7 +251,7 @@ jQuery(function ($) {
             jQuery(
                 '<div class="um_number-cover--nav"><div class="um_InputButton um_InputUp" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></div><div class="um_InputButton um_InputDown" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 11h14v2H5z"></path></svg></div></div>'
             ).insertAfter(".um_number-cover input");
-            
+
             jQuery(".um_number-cover").each(function() {
                 var spinner = jQuery(this),
                     input = spinner.find('input[type="number"]'),
@@ -329,7 +329,7 @@ jQuery(function ($) {
         $('.enable_disable-rows').load(showTableRowOnEnableDisable());
 
         $('.disable_media').on('click', disableSingleMedia);
-        $('.disable_media').load(disableSingleMedia());        
+        $('.disable_media').load(disableSingleMedia());
 
         $('.login_url_field').hide();
         function enableDisableLoginIcon() {
@@ -380,12 +380,12 @@ jQuery(function ($) {
 
 
     // ajax calls
-    $( "#rex-general" ).submit(function( event ) {
+    $( "#site-mode-general" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-general");
+        const form = document.getElementById("site-mode-general");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_general');
-        formData.append('ajax_rex_general',form);
+        formData.append('action', 'ajax_site_mode_general');
+        formData.append('ajax_site_mode_general',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -401,12 +401,12 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-content" ).submit(function( event ) {
+    $( "#site-mode-content" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-content");
+        const form = document.getElementById("site-mode-content");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_content');
-        formData.append('ajax_rex_content',form);
+        formData.append('action', 'ajax_site_mode_content');
+        formData.append('ajax_site_mode_content',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -423,12 +423,12 @@ jQuery(function ($) {
     });
 
 
-    $( "#rex-design-fonts" ).submit(function( event ) {
+    $( "#site-mode-design-fonts" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-design-fonts");
+        const form = document.getElementById("site-mode-design-fonts");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_design_font');
-        formData.append('ajax_rex_design_font',form);
+        formData.append('action', 'ajax_site_mode_design_font');
+        formData.append('ajax_site_mode_design_font',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -444,12 +444,12 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-social" ).submit(function( event ) {
+    $( "#site-mode-social" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-social");
+        const form = document.getElementById("site-mode-social");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_social');
-        formData.append('ajax_rex_social',form);
+        formData.append('action', 'ajax_site_mode_social');
+        formData.append('ajax_site_mode_social',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -466,12 +466,12 @@ jQuery(function ($) {
     });
 
 
-    $("#rex-design").submit(function( event ) {
+    $("#site-mode-design").submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-design");
+        const form = document.getElementById("site-mode-design");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_design');
-        formData.append('ajax_rex_design',form);
+        formData.append('action', 'ajax_site_mode_design');
+        formData.append('ajax_site_mode_design',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -487,14 +487,14 @@ jQuery(function ($) {
         });
     });
 
-    $("#rex-design-logo-background").submit(function( event ) {
+    $("#site-mode-design-logo-background").submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-design-logo-background");
+        const form = document.getElementById("site-mode-design-logo-background");
         alert(form);
         const formData = new FormData(form);
         console.log(formData);
-        formData.append('action', 'ajax_rex_design_lb');
-        formData.append('ajax_rex_design_lb',form);
+        formData.append('action', 'ajax_site_mode_design_lb');
+        formData.append('ajax_site_mode_design_lb',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -510,12 +510,12 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-design-color-section" ).submit(function( event ) {
+    $( "#site-mode-design-color-section" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-design-color-section");
+        const form = document.getElementById("site-mode-design-color-section");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_design_color_section');
-        formData.append('ajax_rex_design_color_section',form);
+        formData.append('action', 'ajax_site_mode_design_color_section');
+        formData.append('ajax_site_mode_design_color_section',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -531,13 +531,13 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-seo" ).submit(function( event ) {
+    $( "#site-mode-seo" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-seo");
+        const form = document.getElementById("site-mode-seo");
         console.log(form);
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_seo');
-        formData.append('ajax_rex_seo',form);
+        formData.append('action', 'ajax_site_mode_seo');
+        formData.append('ajax_site_mode_seo',form);
         $.ajax({
             url:ajaxObj.ajax_url,
             dataType : "json",
@@ -553,12 +553,12 @@ jQuery(function ($) {
         });
     });
 
-    $( "#rex-advanced" ).submit(function( event ) {
+    $( "#site-mode-advanced" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-advanced");
+        const form = document.getElementById("site-mode-advanced");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_advanced');
-        formData.append('ajax_rex_advanced',form);
+        formData.append('action', 'ajax_site_mode_advanced');
+        formData.append('ajax_site_mode_advanced',form);
         $.ajax({
             url: ajaxObj.ajax_url,
             dataType : "json",
@@ -578,7 +578,7 @@ jQuery(function ($) {
         $.ajax({
             url: ajaxObj.ajax_url,
             type: "GET",
-            data:{action:'ajax_rex_export'},
+            data:{action:'ajax_site_mode_export'},
             success:function (data) {
                 console.log(data);
                 var blob = new Blob([data], {
@@ -589,7 +589,7 @@ jQuery(function ($) {
                 //get site name using window.location and split it by dot
                 var siteName = window.location.hostname.split('.')[0];
                 //plugin name
-                var pluginName = 'rex-maintenance-mode';
+                var pluginName = 'site-mode';
                 //get current date and time
                 var date = new Date();
                 var dateStr = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + '-' + date.getHours() + '-' + date.getMinutes() + '-' + date.getSeconds();
@@ -608,12 +608,12 @@ jQuery(function ($) {
 
     // ajax call for import
 
-    $( "#rex-import" ).submit(function( event ) {
+    $( "#site-mode-import" ).submit(function( event ) {
         event.preventDefault();
-        const form = document.getElementById("rex-import");
+        const form = document.getElementById("site-mode-import");
         const formData = new FormData(form);
-        formData.append('action', 'ajax_rex_import');
-        formData.append('ajax_rex_import',form);
+        formData.append('action', 'ajax_site_mode_import');
+        formData.append('ajax_site_mode_import',form);
         // import json file and save it to database
         $.ajax({
             url: ajaxObj.ajax_url,
