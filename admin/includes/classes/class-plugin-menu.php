@@ -74,8 +74,9 @@ class Rex_Maintenance_Mode_Menu
             <div class="rex__wrap--cover">
                 <div class="rex__wrap--cover-content">
                     <?php
-                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
-                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
+//                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
+//                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
+                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/nav-tab.php';
                     ?>
                 </div>                
                 <div class="rex__wrap--cover-sidebar">
