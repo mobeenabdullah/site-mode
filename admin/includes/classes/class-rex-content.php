@@ -37,8 +37,8 @@ class Rex_Content
     }
 
     public function ajax_rex_content() {
-
-        if(!wp_verify_nonce( $_POST['design-custom-message'], 'design-settings-save' ) || !isset($_POST['design-custom-message'])  || !empty($_POST['design-custom-message']) ) {
+        wp_nonce_field('design-settings-save', 'design-custom-message');
+        if(!wp_verify_nonce( $_POST['design-custom-message'], 'design-settings-save' ) ) {
             die(__('Security Check', 'rex-maintenance-mode'));
         }
         else {
