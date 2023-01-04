@@ -9,9 +9,9 @@
             $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
             $mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
             $url            = isset($un_data['url'] ) ? $un_data['url']  : '';
-            $delay          = isset($un_data['delay'] ) ? $un_data['delay']  : '';
+            $delay          = isset($un_data['delay'] ) ? $un_data['delay']  : '0';
             $login_icon     = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
-            $login_url      = isset($un_data['login_url'] ) ? $un_data['login_url']  : '';
+            $login_url      = isset($un_data['login_url'] ) ? $un_data['login_url']  : 'example.com';
         ?>
         <!-- Status Setting -->
         <div class="option__row">
@@ -42,7 +42,7 @@
                     <span class="arrow-down"></span>
                 </div>
                  <!-- Hidden fields -->
-                <?php if($mode==='redirect') { ?>
+                <?php if($mode === 'redirect') { ?>
                     <div class="redirect_options">
                         <div class="um_input_cover label_top">
                             <label for="redirect_url"><?php _e('Redirect Url','site-mode');?></label>
@@ -73,7 +73,7 @@
                     <label for="redirect_url"><?php _e('Login URL','site-mode');?></label>
                     <?php
                     if($login_url) { ?>
-                        <input type="text" id="redirect_url" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>"/>
+                        <input type="text" id="redirect_url" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>" checked/>
                    <?php } ?>
                 </div>
             </div>

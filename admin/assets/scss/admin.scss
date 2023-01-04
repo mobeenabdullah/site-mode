@@ -2,7 +2,7 @@
 @import './functions';
 @import './mixins';
 @import './general';
-@import 'layout/tabs';
+//@import 'layout/tabs';
 @import 'components/simple-checkbox';
 @import 'components/simple-radio';
 @import 'components/select';
@@ -11,6 +11,8 @@
 @import 'components/input-number';
 @import 'components/textarea';
 @import 'components/drag-drop';
+@import 'components/tabs';
+@import 'components/toast';
 
 
 

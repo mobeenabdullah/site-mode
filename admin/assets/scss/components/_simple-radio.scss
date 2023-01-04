@@ -1,4 +1,4 @@
-.#{$prefix}_radio_wrapper {
+.um_radio_wrapper {
   position: relative;
   // margin-bottom: $input-bottom-spacing;
   & label {
@@ -21,9 +21,9 @@
       width: $checkbox-width-before;
       left: 0;
       position: absolute;
-      top: 0;
+      top: -1px;
       border-radius: $border-radius-50;
-      border: $border-width solid $secondary-color;
+      border: $border-width solid var(--sm-secondary-color);
     }
     & + label::after {
       content: '\002B24';
@@ -33,13 +33,13 @@
       height: $checkbox-height-after;
       width: $checkbox-width-after;
       left: 0;
-      top: -(calculateRem(1px));
+      top: -1px;
       transition: $transition-all;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: $checkbox-height-after - 3;
-      color: $primary-color;
+      color: var(--sm-primary-color);
       border: $border-width solid transparent;
     }
     &:checked + label::after {

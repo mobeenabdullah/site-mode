@@ -14,10 +14,10 @@ input[type="number"] {
   overflow: hidden;
   position: relative;
   & input {
-    color: $secondary-color;
+    color: var(--sm-secondary-color);
     border-radius: $form-field-border-radius;
-    background-color: $base-white-color;
-    border: $border-width solid $secondary-color;
+    background-color: var(--sm-base-white-color);
+    border: $border-width solid var(--sm-secondary-color);
     font-size: $form-field-font-size;
     display: block;
     padding: 0 2.5rem 0 1em;
@@ -56,13 +56,13 @@ input[type="number"] {
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: $secondary-color;
+      background-color: var(--sm-secondary-color);
       transition: $transition-all;
       & svg {
         width: 1rem;
         height: 1rem;
         & path {
-          fill: $base-white-color;
+          fill: var(--sm-base-white-color);
         }
       }
       &:active {
@@ -84,7 +84,7 @@ input[type="number"] {
         border-bottom: $border-width solid transparent;        
         & svg {
           & path {
-            fill: $base-white-color;
+            fill: var(--sm-base-white-color);
           }
         }
       }

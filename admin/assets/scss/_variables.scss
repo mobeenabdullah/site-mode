@@ -1,18 +1,45 @@
-$prefix: 'um';
+//-------------------------------------------
+//Site Mode Sass structure
+//    1. General Variables
+//    2. Colors Variables
+//    3. Colors Array for root css variables
+//    4. Buttons variables
+//    5. Transition variables
+//    6. Borders variables
+//    7. Checkbox/Radio variables
+//    8. Form fields variables
+//--------------------------------------------
 
-// Base variables
-$base-font-family: 'Open Sans', sans-serif;
+//  1. General variables
+$base-font-family: 'Open Sans', sans-serif !default;
 $base-html-font: 62.5%;
 
-// Colors variables
-$primary-color: #6F73D2;
-$secondary-color:  #202020;
-$base-white-color: #ffffff;
-$base-black-color: #141414;
+//  2. Colors variables
+$primary-color: #6F73D2 !default;
+$secondary-color:  #202020 !default;
+$base-white-color: #ffffff !default;
+$base-black-color: #141414 !default;
+$error-color: #fa3f39 !default;
 
+// 3. Colors Array for root css variables
+$colors: (
+    'primary-color': $primary-color,
+    'secondary-color': $secondary-color,
+    'base-white-color': $base-white-color,
+    'base-black-color': $base-black-color,
+    'toast-base-color': $primary-color,
+    'toast-icon-bg': $secondary-color,
+    'toast-text-color': $base-white-color,
+    'toast-error-color': $error-color,
+    'button-bg-color': $primary-color,
+    'button-border-color': $primary-color,    
+) !default;
 
+$font-families: (
+    'open-sans': $base-font-family,
+) !default;
 
-// Button Variables
+//  4. Buttons variables
 $btn-bg-color: $primary-color;
 $btn-border-color: $primary-color;
 $btn-border-width: 1px;
@@ -21,16 +48,15 @@ $btn-radius: 0.5rem;
 $btn-font-size: 0.8rem;
 $btn-line-height: 1.5;
 
-
-// Transitions variables
+//  5. Transition variables
 $transition-all: all 0.2s;
 
-// Border Variables
+//  6. Borders variables
 $border-width: 1px;
 $border-radius-50: 50%;
 
 
-// Checkbox
+//  7. Checkbox/Radio variables
 $checkbox-width-height: 19px;
 $checkbox-width-before: $checkbox-width-height;
 $checkbox-height-before: $checkbox-width-height;
@@ -40,7 +66,7 @@ $checkbox-mark-top: $border-width + 3;
 $padding-top-bottom: $checkbox-width-height / 3;
 $padding-left-right: $checkbox-width-height + 20px;
 
-// Form Field Variables
+//  8. Form fields variables
 $input-bottom-spacing: 1.5rem;
 $width: 2.5em;
 $height: $width/2;
@@ -50,4 +76,3 @@ $form-field-border-radius: .25em;
 $form-field-padding: 0 1em;
 $form-field-font-size: 14px;
 $outline-width: $border-width;
-
