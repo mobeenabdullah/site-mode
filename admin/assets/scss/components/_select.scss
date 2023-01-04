@@ -1,10 +1,10 @@
-.#{$prefix}_select {
+.um_select {
   position: relative;
   display: flex;
   width: $form-fields-width;
   height: $form-fields-height;
   line-height: 3;
-  background: $base-white-color;
+  background: var(--sm-base-white-color);
   border-radius: $form-field-border-radius;
   margin-bottom: $input-bottom-spacing;  
   select {
@@ -14,15 +14,15 @@
     appearance:none;
     outline:0;
     box-shadow:none;
-    border: $border-width solid $secondary-color !important;
-    background: $base-white-color;
+    border: $border-width solid var(--sm-secondary-color) !important;
+    background: var(--sm-base-white-color);
     background-image: none;
     flex: 1;
     padding: 0 3rem 0 1rem;
     color:black;
     cursor:pointer;
     font-size: $form-field-font-size;
-    font-family: $base-font-family;
+    font-family: var(--sm-open-sans);
     max-width: 100%;
     width: 100%;
 
@@ -30,11 +30,11 @@
       display: none;
     }
     &:hover {
-      color: $secondary-color;
+      color: var(--sm-secondary-color);
     }
     &:focus {
       @include box-shadow();
-      border: $border-width solid $primary-color !important;
+      border: $border-width solid var(--sm-primary-color) !important;
       outline: $outline-width solid transparent;
 
     }
@@ -45,7 +45,7 @@
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid $secondary-color;
+    border-top: 5px solid var(--sm-secondary-color);
     position: absolute;
     top: 50%;
     right: 15px;
@@ -55,10 +55,10 @@
     pointer-events:none;
   }
   &:hover {
-    color: $secondary-color;
+    color: var(--sm-secondary-color);
     opacity: 1;
     & .arrow-down {
-      border-top: 5px solid $primary-color;
+      border-top: 5px solid var(--sm-primary-color);
     }
   }
 }

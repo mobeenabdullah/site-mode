@@ -238,12 +238,7 @@ jQuery(function ($) {
     // Start document ready function
     $(document).ready(function () {
         // Show and hide redirect options
-        $('#site_mode').on('change', function() {
-            $('.redirect_options').css('display', 'none');
-            if ( $(this).val() === 'redirect' ) {
-                $('.redirect_options').css('display', 'flex');
-            }
-        });
+      
 
         // Input Number
         function customInputNumber() {
@@ -651,17 +646,24 @@ jQuery(function ($) {
                 link.download = "export.json";
                 link.click();
             }
-        });
+        });        
     }
-
-
-    $('ul.tabs li').click(function(){
+    $('#site_mode').on('change', function() {
+        $('.redirect_options').css('display', 'none');
+        if ( $(this).val() === 'redirect' ) {
+            $('.redirect_options').css('display', 'flex');
+        }
+    });
+    $('.sm_tabs li').click(function(){
         var tab_id = $(this).attr('data-tab');
-        $('ul.tabs li').removeClass('current');
+        $('.sm_tabs li').removeClass('current');
         $('.tab-content').removeClass('current');
         $(this).addClass('current');
         $("#"+tab_id).addClass('current');
     })
+
+
+    
 });
 
 

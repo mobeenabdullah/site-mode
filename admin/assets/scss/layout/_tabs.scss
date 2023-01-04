@@ -4,7 +4,7 @@
 
   & .nav-tab {
     @include flex_mixin(flex, center, center, null, calculateRem(10px));
-    background-color: $base-white-color;
+    background-color: var(--sm-base-white-color);
     padding: calculateRem(14px);
     @include fontSize(16px);
     @include border(top, 1px, solid, rgba($secondary-color, 0.15));
@@ -27,20 +27,20 @@
     &.nav-tab-active {
       margin: 0;
       @include border(top, 1px, solid, rgba($secondary-color, .1));
-      background-color: $primary-color;
-      color: $base-white-color;
+      background-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
 
       & svg {
         & path, & circle {
-          fill: rgba($base-white-color, 1);
+          fill: var(--sm-base-white-color);
         }
       }
 
       &:hover {
-        color: rgba($base-white-color, 1);
+        color: var(--sm-base-white-color);
         & svg {
           & path, & circle {
-            fill: rgba($base-white-color, 1);
+            fill: var(--sm-base-white-color);
           }
         }
       }
@@ -48,10 +48,10 @@
     }
 
     &:hover {
-      color: rgba($secondary-color, 1);
+      color: var(--sm-base-black-color);
       & svg {
         & path, & circle {
-          fill: rgba($secondary-color, 1);
+          fill: var(--sm-base-black-color);
         }
       }
     }

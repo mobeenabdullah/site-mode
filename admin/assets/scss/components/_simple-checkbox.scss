@@ -1,4 +1,4 @@
-.#{$prefix}_checkbox_wrapper {
+.um_checkbox_wrapper {
   position: relative;
   margin-bottom: $input-bottom-spacing;
   & label {
@@ -21,7 +21,7 @@
     }
   }
   & input + label::before {
-    border: $border-width solid $secondary-color;
+    border: $border-width solid var(--sm-secondary-color);
     content: "";
     height: $checkbox-height-before;
     width: $checkbox-width-before;
@@ -49,12 +49,12 @@
     border: $border-width solid transparent;
   }
   & input:checked + label::before {
-    background-color: $primary-color;
-    border-color: $primary-color
+    background-color: var(--sm-primary-color);
+    border-color: var(--sm-primary-color)
   }
   & input:checked + label::after {
     opacity: 1;
-    color: $base-white-color;
+    color: var(--sm-base-white-color);
   }
   & input:focus + label::before {
     @include box-shadow();
@@ -63,7 +63,7 @@
 }
 
 
-.#{$prefix}_checkbox_show_hide {
+.um_checkbox_show_hide {
   margin-bottom: 0 !important;
   height: 100%;
   width: 100%;

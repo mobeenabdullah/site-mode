@@ -1,16 +1,16 @@
-.#{$prefix}_input_cover {
+.um_input_cover {
   & input[type="text"] {
     width: $form-fields-width;
     height: $form-fields-height;
     line-height: 3;
-    background: $base-white-color;
-    border: $border-width solid $secondary-color;
+    background: var(--sm-base-white-color);
+    border: $border-width solid var(--sm-secondary-color);
     border-radius: $form-field-border-radius;
     padding: $form-field-padding;
     font-size: $form-field-font-size;
-    font-family: $base-font-family;
+    font-family: var(--sm-open-sans);
     &:active, &:hover, &:focus-visible {
-      border-color: $primary-color;
+      border-color: var(--sm-primary-color);
     }
     &:focus {
       @include box-shadow();
