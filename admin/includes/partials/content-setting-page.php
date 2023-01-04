@@ -1,4 +1,4 @@
-<div class="site_mode__wrap--cover-content-form">    
+<div class="site_mode__wrap-form">    
         <?php
             // Show error/update messages
             settings_errors();
@@ -37,7 +37,7 @@
                         <label for="image-logo"><?php _e('Image','site-mode');?></label>
                     </div>
                     <div class="um_radio_wrapper">
-                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  <?php checked($logo_setting=='type-disable',true, true); ?> />
+                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($logo_setting=='type-disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('disable','site-mode');?></label>
                     </div>
                 </div>

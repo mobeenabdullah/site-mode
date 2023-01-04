@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div class="site_mode__wrap--cover-content-form">
+    <div class="site_mode__wrap-form">
         <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
         <button class="button button-primary btn-export" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
 

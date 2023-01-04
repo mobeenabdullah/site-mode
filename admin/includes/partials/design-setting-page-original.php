@@ -1,5 +1,5 @@
 <div class="wrap">
-    <div class="site_mode__wrap--cover-content-form">
+    <div class="site_mode__wrap-form">
         <form id="site-mode-design" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <div id="universal-message-container">
                 <h2><?php _e('Themes','site-mode');?></h2>

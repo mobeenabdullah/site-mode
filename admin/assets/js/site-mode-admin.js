@@ -301,41 +301,39 @@ jQuery(function ($) {
         });
 
         // hide Social Media
-        function showTableRowOnEnableDisable() {
-            let enableDisableParentRow = $('.enable_disable-rows').parent().parent().parent();
-            if($('.enable_disable-rows').is(':checked')) {
-                enableDisableParentRow.nextAll().removeClass('hide_socialmedia');
+        const enableDisable = $('.enable_disable-rows'); 
+        const socialMediaCover = $('.social-media-cover');
+        const socialMediaLabel = $('.social-media-label');
+
+        function showTableRowOnEnableDisable() {            
+            if(enableDisable.is(':checked')) {
+                socialMediaCover.removeClass('hide_socialmedia');
+                socialMediaLabel.removeClass('hide_socialmedia');
             } else {
-                enableDisableParentRow.nextAll().addClass('hide_socialmedia');
+                socialMediaCover.addClass('hide_socialmedia');
+                socialMediaLabel.addClass('hide_socialmedia');
             }
-        }
+        }        
 
-        function disableSingleMedia() {
-            if($('.disable_media').is(':checked')) {
-                let disableMediaInput = $(this).parent().prev();
-                disableMediaInput.addClass('disable_media_input');
+        enableDisable.on('click', showTableRowOnEnableDisable);
+        enableDisable.load(showTableRowOnEnableDisable());        
+
+        const loginUrlField = $('.login_url_field');
+        const enableLoginIcon = $('.enable_login_icon');
+        //loginUrlField.hide();
+
+        function enableDisableLoginIcon() {            
+            if(enableLoginIcon.is(':checked')) {
+                loginUrlField.removeClass('hide_url');                
             } else {
-                let disableMediaInput = $(this).parent().prev();
-                disableMediaInput.removeClass('disable_media_input');
+                loginUrlField.addClass('hide_url');
+                
             }
-        }
-
-        $('.enable_disable-rows').on('click', showTableRowOnEnableDisable);
-        $('.enable_disable-rows').load(showTableRowOnEnableDisable());
-
-        $('.disable_media').on('click', disableSingleMedia);
-        $('.disable_media').load(disableSingleMedia());
-
-        $('.login_url_field').hide();
-        function enableDisableLoginIcon() {
-            if($('.enable_login_icon').is(":checked")) {
-                $('.login_url_field').show();
-            } else {
-                $('.login_url_field').hide();
-            }
-        }
-        $('.enable_login_icon').on('click', enableDisableLoginIcon);
-        $('.enable_login_icon').load(enableDisableLoginIcon);
+        } 
+        
+        enableLoginIcon.on('click', enableDisableLoginIcon);
+        // enableLoginIcon.on('load', enableDisableLoginIcon);
+        //$('.enable_login_icon').trigger( "click" );
     })
 
     // Drag and Drop JQuery
@@ -411,8 +409,8 @@ jQuery(function ($) {
             cache: false,
             data: formData,
             enctype: "multipart/form-data",
-            success:function (res) {
-                    launch_toast(res.success);
+            success:function (res) {                
+                launch_toast(res.success);
             }
         });
     });
@@ -654,6 +652,8 @@ jQuery(function ($) {
             $('.redirect_options').css('display', 'flex');
         }
     });
+    $('#site_mode').trigger( "change" );
+
     $('.sm_tabs li').click(function(){
         var tab_id = $(this).attr('data-tab');
         $('.sm_tabs li').removeClass('current');
