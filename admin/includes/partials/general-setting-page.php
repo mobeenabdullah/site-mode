@@ -1,4 +1,4 @@
-<div class="site_mode__wrap--cover-content-form">   
+<div class="site_mode__wrap-form">   
     <form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">     
         <?php
             $template =  get_option('site_mode_general');    
@@ -42,7 +42,7 @@
                     <span class="arrow-down"></span>
                 </div>
                  <!-- Hidden fields -->
-                <?php if($mode === 'redirect') { ?>
+                
                     <div class="redirect_options">
                         <div class="um_input_cover label_top">
                             <label for="redirect_url"><?php _e('Redirect Url','site-mode');?></label>
@@ -55,7 +55,7 @@
                             </div>
                         </div>
                     </div>
-                <?php }?>
+                
             </div>
         </div>        
         
@@ -65,17 +65,15 @@
                 <span><?php _e('Login Icon','site-mode');?></span>
             </div>
             <div class="option__row--field">
-                <div class="um_checkbox_wrapper">
+                <div class="um_checkbox_wrapper mb-15">
                     <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-login-icon-setting" value="1" <?php checked(1, $login_icon, true); ?> />
                     <label for="login_icon"><?php _e('Login Icon','site-mode');?></label>
                 </div>
-                <div class="um_input_cover label_top login_url_field">
-                    <label for="redirect_url"><?php _e('Login URL','site-mode');?></label>
-                    <?php
-                    if($login_url) { ?>
-                        <input type="text" id="redirect_url" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>" checked/>
-                   <?php } ?>
-                </div>
+                
+                <div class="um_input_cover label_top login_url_field <?php echo (!empty($login_icon)) ? '' : 'hide_url'; ?>">
+                    <label for="redirect_url"><?php _e('Login URL','site-mode');?></label>                    
+                    <input type="text" id="redirect_url" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>" />                   
+                </div>                
             </div>
         </div>
         <?php wp_nonce_field('general_settings_action', 'general_section_field'); ?>

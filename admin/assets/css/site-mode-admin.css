@@ -56,9 +56,12 @@ Plugin general styling
 }
 
 .redirect_options {
-	display: none;
 	align-items: start;
 	gap: 2rem;
+}
+
+.mb-15 {
+	margin-bottom: 0.9375rem;
 }
 
 /*-----------------------------------------------
@@ -80,11 +83,6 @@ body {
 	gap: 1.875rem;
 }
 
-.site_mode__wrap--cover-content-form {
-	background-color: var(--sm-base-white-color);
-	padding: 1.25rem;
-}
-
 .site_mode__wrap--cover-sidebar {
 	background-color: var(--sm-base-white-color);
 	padding: 1.25rem;
@@ -93,6 +91,11 @@ body {
 .site_mode__wrap p.submit {
 	margin: 0;
 	padding: 0;
+}
+
+.site_mode__wrap-form {
+	background-color: var(--sm-base-white-color);
+	padding: 1.25rem;
 }
 
 /*-----------------------------------------------
@@ -254,7 +257,7 @@ body {
 	width: 60%;
 }
 
-.hide_socialmedia {
+.hide_socialmedia, .hide_url {
 	display: none;
 }
 
@@ -283,9 +286,9 @@ body {
 }
 
 .socialmedia__wrapper .social_media_field {
-	display: flex;
-	align-items: center;
-	gap: 5px;
+	display: grid;
+	grid-template-columns: 16px 32px 1fr auto;
+	grid-gap: 10px;
 	margin-bottom: 10px;
 }
 
@@ -324,8 +327,8 @@ body {
 
 .socialmedia__wrapper .social_media_field .social_icon {
 	border: 1px solid var(--sm-secondary-color);
-	width: 28px;
-	height: 28px;
+	width: 30px;
+	height: 30px;
 	background-color: var(--sm-secondary-color);
 	border-radius: .3rem;
 	display: flex;
@@ -345,8 +348,12 @@ body {
 	fill: var(--sm-base-white-color);
 }
 
+.socialmedia__wrapper .social_media_field .social_field {
+	flex: 1;
+}
+
 .socialmedia__wrapper .social_media_field .social_delete {
-	display: flex;
+	display: none !important;
 	align-items: center;
 	width: 30px;
 	height: 30px;
@@ -358,6 +365,10 @@ body {
 .socialmedia__wrapper .social_media_field .social_delete button svg {
 	width: 18px;
 	height: 18px;
+}
+
+.template__wrapper {
+	margin-bottom: 1.25rem;
 }
 
 .template__wrapper .template_options {
@@ -499,7 +510,6 @@ body {
 
 .um_checkbox_wrapper {
 	position: relative;
-	margin-bottom: 1.5rem;
 }
 
 .um_checkbox_wrapper label {
@@ -934,6 +944,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 
 #sortable {
 	max-width: 300px;
+	margin: 0;
 }
 
 .sm_tabs {
