@@ -33,28 +33,15 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 //Options cleanup during uninstall plugin
 
 $options = [
-    'advanced-ga-id-settings',
-    'advanced-custom-css-settings',
-    'advanced-wp-rest-api-settings',
-    'advanced-rss-feed-settings',
-    'advanced-page-whitelist-include-settings',
-    'advanced-page-whitelist-exclude-settings',
-    'advanced-header-code-settings',
-    'advanced-footer-code-settings',
-    'advanced-user-roles-settings',
-    'content-logo-type-setting',
-    'content-logo-settings',
-    'text-logo-setting',
-    'disable-logo-setting',
-    'content-headline-settings',
-    'content-content-settings',
-    'content-bg-image-settings',
-    'content-content-template-settings',
-    'site-mode-status-settings',
-    'site-mode-mode-settings',
-    'site-mode-redirect-url-settings',
-    'site-mode-delay-settings',
-    'site-mode-login-icon-setting'
+    "site_mode_advanced",
+    "site_mode_content",
+    "site_mode_design",
+    "site_mode_design_lb",
+    "site_mode_design_colors",
+    "site_mode_seo",
+    "site_mode_social",
+    "site_mode_settings",
+    "site_mode_general",
 ];
 
 
