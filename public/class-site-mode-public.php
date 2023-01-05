@@ -41,6 +41,11 @@ class Site_Mode_Public
 	 */
 	private $version;
 
+
+    protected  $site_mode_design;
+
+    protected  $enable_template;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -54,7 +59,14 @@ class Site_Mode_Public
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
-        add_filter('style_loader_tag', [$this, 'my_style_loader_tag_filter'], 10, 2);
+        $this->site_mode_design = get_option('site_mode_design');
+
+        // convert serialized string to array
+        $this->site_mode_design = unserialize($this->site_mode_design);
+        //check if value is set or not if not set then set default value.
+        $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
+
+        add_filter('style_loader_tag', [$this,'my_style_loader_tag_filter'], 10, 2);
 
 	}
 
@@ -101,63 +113,27 @@ class Site_Mode_Public
 
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
 
-        $selected_template = get_option('content-content-template-settings');
         $template =  get_option('site_mode_general');
         $un_data = unserialize($template);
 
         //check if the values are set or not and then assign them to the variables
         $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-        $mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
-        $url            = isset($un_data['url'] ) ? $un_data['url']  : '';
-
-
-
-        $template = get_option('site_mode_design');
-        // convert serialized string to array
-        $un_data = unserialize($template);
-        //check if value is set or not if not set then set default value.
-        $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
-
-        if($mode==='redirect') {
-            echo 'This is redirect is working fine';
-            //redirect mode to the give url
-            //wp redirect method with $url as parameter.
-            if(!empty($status) && !empty($url)) {
-                wp_redirect( $url, 301 );
-                exit;
-
-            }
-        }
-        else if($mode === 'maintenance') {
-                status_header( 200 );
-                nocache_headers();
-        }
-        else if($mode==='coming-soon') {
-                status_header( 503);
-                nocache_headers();
-            }
-            else {
-
-        }
-
-
-
 
         switch (!empty($status)) {
-            case ($enable_template == '1'):
-                echo $enable_template;
+            case ($this->enable_template == '1'):
+                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
                 break;
-            case ($enable_template == '2'):
-                echo $enable_template;
+            case ($this->enable_template == '2'):
+                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
                 break;
-            case ($enable_template == '3'):
-                echo $enable_template;
+            case ($this->enable_template == '3'):
+                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
                 break;
-            case ($enable_template == '4'):
-                echo $enable_template;
+            case ($this->enable_template == '4'):
+                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
                 break;
             default:
@@ -199,36 +175,6 @@ class Site_Mode_Public
                 "rel='preconnect' crossorigin", $html);
         }
         return $html;
-    }
-
-    public function load_template_on_call()
-    {
-        if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
-
-            esc_html($this->load_templates());
-            exit;
-        }
-    }
-
-    public function load_templates()
-    {
-        $selected_template = get_option('content-content-template-settings');
-        if ($selected_template == '1') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-one.php';
-            exit;
-        } elseif ($selected_template == '2') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-two.php';
-            exit;
-        } elseif ($selected_template == '3') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-three.php';
-            exit;
-        } elseif ($selected_template == '4') {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-four.php';
-            exit;
-        } else {
-            require_once plugin_dir_path(dirname(__FILE__)) . 'public/templates/site-mode-template-one.php';
-            exit;
-        }
     }
 
 }

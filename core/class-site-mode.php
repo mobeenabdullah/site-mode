@@ -184,10 +184,6 @@ class Site_Mode
         $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_menu');
         $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_submenu_settings_page');
 
-
-
-
-
         // ajax calling
 
         // general
@@ -232,7 +228,7 @@ class Site_Mode
 		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-//        $this->loader->add_action('template_redirect', $plugin_public, 'load_template_on_call');
+        $this->loader->add_action('template_redirect', $this->classes_loader->get_design(), 'load_template_on_call');
 
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
@@ -256,7 +252,8 @@ class Site_Mode
         //check if the values are set or not and then assign them to the variables
         $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
         if(!empty($status ) && $status == '1'){
-            $this->loader->add_action('template_include', $plugin_public, 'load_template_on_call');
+            $this->loader->add_action('load_template_on_call', $this->classes_loader->get_design(), 'load_template_on_call');
+//            $this->classes_loader->get_general()->redirect_status_code();
         }
 
 	}

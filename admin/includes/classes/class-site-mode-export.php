@@ -35,11 +35,11 @@ class Site_Mode_Export
 
     public function __construct()
     {
-        $this->advance              = get_option('site_mode_advanced');
-        $this->content              = get_option('site_mode_content');
-        $this->design               = get_option('site_mode_design');
-        $this->site_mode_design_lb        = get_option('site_mode_design_lb');
-        $this->site_mode_design_colors    = get_option('site_mode_design_colors');
+        $this->advance                       = get_option('site_mode_advanced');
+        $this->content                       = get_option('site_mode_content');
+        $this->design                        = get_option('site_mode_design');
+        $this->site_mode_design_lb           = get_option('site_mode_design_lb');
+        $this->site_mode_design_colors       = get_option('site_mode_design_colors');
         $this->seo                  = get_option('site_mode_seo');
         $this->social               = get_option('site_mode_social');
         $this->settings             = get_option('site_mode_settings');
