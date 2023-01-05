@@ -10,6 +10,7 @@
     cursor: pointer;
     -webkit-transition: all 0.25s linear;
     font-weight: 500;
+    z-index: 20;
   }
   & .check {
     display: block;

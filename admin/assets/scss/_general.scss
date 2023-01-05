@@ -93,25 +93,33 @@ body {
   }
   &-form {
     background-color: var(--sm-base-white-color);
-    padding: calculateRem(20px);
+    padding: calculateRem(40px) calculateRem(20px) calculateRem(20px) calculateRem(20px);
   }
 }
+
 
 /*-----------------------------------------------
 //  4.  Form Layout
 -----------------------------------------------*/
 .option__row {
   display: flex;
-  margin-bottom: calculateRem(20px);
+  gap: calculateRem(30px);
+  margin-bottom: calculateRem(40px);
   &:last-child {
     margin-bottom: 0;
   }
   &--label {
-    width: calculateRem(200px);
+    width: calculateRem(300px);
     & span {
+      display: block;
       font-weight: 600;
       & label {
         font-weight: 600;
+      }
+      &.info_text {
+        @include fontSize(12px);
+        font-weight: 400;
+        line-height: 1.5;
       }
     }
   }
@@ -296,7 +304,8 @@ body {
   }
   & .social_media_field {
     display: grid;
-    grid-template-columns: 16px 32px 1fr auto;
+    grid-template-columns: 16px 32px 1fr;
+    align-items: center;
     grid-gap: 10px;
     margin-bottom: 10px;
     & button {

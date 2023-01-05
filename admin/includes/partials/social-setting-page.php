@@ -23,25 +23,27 @@
         $behance        = isset($uns_data['social_behance']) ? $uns_data['social_behance'] : 'behanceusername';
 
         ?>
+
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Enable/Disable','site-mode');?></span>
+                <span><label for="show-social-icons-setting"><?php _e('Show Social Icons','site-mode');?></label></span>                
             </div>
             <div class="option__row--field">
-                <div class="um_checkbox_wrapper">
-                    <input type="checkbox" id="show-social-icons-setting" class="enable_disable-rows screen-reading"  name="show-social-icons-setting" value="<?php esc_attr_e($show_social,'site-mode'); ?> " <?php checked(1, !empty($show_social),true); ?> />
-                    <label for="show-social-icons-setting"><?php _e('Show Social Icons','site-mode');?></label>
+                <div class="sm_checkbox_wrapper">
+                    <input type="checkbox" id="show-social-icons-setting" name="show-social-icons-setting" value="<?php esc_attr_e($show_social,'site-mode'); ?>" <?php checked(1, !empty($show_social),true); ?> />                                        
+                    <label for="show-social-icons-setting"></label>
                 </div>
             </div>
         </div>
-        <div class="option__row">
-            <div class="option__row--label social-media-label">
-                <span><?php _e('Social Media Profiles','site-mode');?></span>
-            </div>
-            <div class="option__row--field">
-                <div class="socialmedia__wrapper social-media-cover">
-                    <ul id="sortable">
-                        <li class="ui-state-default" id="1">
+
+        <div class="socialmedia__wrapper">
+            <ul id="sm_sortable">
+                <li class="ui-state-default" id="1">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_fb"><?php _e('Facebook','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -56,19 +58,18 @@
                                 <div class="social_field">                                    
                                     <input type="text" id="social_fb" name="content-social-fb-setting" value="<?php esc_attr_e($facebook, 'site-mode') ?>" />
                                 </div>
-                                <div class="social_field-label">
-                                    <label for="social_fb"><?php _e('Facebook','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="facebook" name="facebook" value="1" class="show_icon">
-                                        <label for="facebook"></label>
-                                    </div>
-                                </div>
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="2">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="2">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_tw"><?php _e('Twitter','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -82,20 +83,19 @@
                                 </div>                                
                                 <div class="social_field">                                    
                                     <input type="text" id="social_tw" name="content-social-twitter-setting" value="<?php esc_attr_e($twitter, 'site-mode') ?>" />
-                                </div>
-                                <div class="social_field-label">
-                                    <label for="social_tw"><?php _e('Twitter','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="twitter" name="twitter" value="1" class="show_icon">
-                                        <label for="twitter"></label>
-                                    </div>
-                                </div>
+                                </div>                                      
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="3">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="3">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_fb"><?php _e('Linkedin','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -110,19 +110,18 @@
                                 <div class="social_field">                                    
                                     <input type="text" id="social_fb" name="content-social-linkedin-setting" value="<?php esc_attr_e($linkedin, 'site-mode') ?>" />
                                 </div>
-                                <div class="social_field-label">
-                                    <label for="social_fb"><?php _e('Facebook','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="linkedin" name="linkedin" value="1" class="show_icon">
-                                        <label for="linkedin"></label>
-                                    </div>
-                                </div>
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="4">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="4">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_youtube"><?php _e('Youtube','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -137,19 +136,18 @@
                                 <div class="social_field">                                    
                                     <input type="text" id="social_youtube" name="content-social-youtube-setting" value="<?php esc_attr_e($youtube, 'site-mode') ?>" />
                                 </div>
-                                <div class="social_field-label">
-                                    <label for="social_youtube"><?php _e('Youtube','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="youtube" name="youtube" value="1" class="show_icon">
-                                        <label for="youtube"></label>
-                                    </div>
-                                </div>
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="5">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="5">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_instagram"><?php _e('Instagram','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -163,20 +161,19 @@
                                 </div>                                
                                 <div class="social_field">                                    
                                     <input type="text" id="social_instagram" name="content-social-instagram-setting" value="<?php esc_attr_e($instagram, 'site-mode') ?>" />
-                                </div>
-                                <div class="social_field-label">
-                                    <label for="social_instagram"><?php _e('Instagram','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="instagram" name="instagram" value="1" class="show_icon">
-                                        <label for="instagram"></label>
-                                    </div>
-                                </div>
+                                </div>                                                                
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="6">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="6">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_pintrest"><?php _e('Pintrest','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -191,19 +188,18 @@
                                 <div class="social_field">                                    
                                     <input type="text" id="social_pintrest" name="content-social-pintrest-setting" value="<?php esc_attr_e($pinterest, 'site-mode') ?>" />
                                 </div>
-                                <div class="social_field-label">
-                                    <label for="social_pintrest"><?php _e('Pintrest','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="pintrest" name="pintrest" value="1" class="show_icon">
-                                        <label for="pintrest"></label>
-                                    </div>
-                                </div>
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="7">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="7">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_linkedin"><?php _e('Quora','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -218,19 +214,18 @@
                                 <div class="social_field">                                    
                                     <input type="text" id="social_linkedin" name="content-social-quora-setting" value="<?php esc_attr_e($quora, 'site-mode') ?>" />
                                 </div>
-                                <div class="social_field-label">
-                                    <label for="social_linkedin"><?php _e('Linkedin','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="quora" name="quora" value="1" class="show_icon">
-                                        <label for="quora"></label>
-                                    </div>
-                                </div>
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                        <li class="ui-state-default" id="8">
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+
+                <li class="ui-state-default" id="8">
+                    <div class="option__row">
+                        <div class="option__row--label">                            
+                            <span><label for="social_behance"><?php _e('Behance','site-mode');?></label></span>                            
+                        </div>
+                        <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
                                     <span>
@@ -244,23 +239,15 @@
                                 </div>                                
                                 <div class="social_field">                                    
                                     <input type="text" id="social_behance" name="content-social-behance-setting" value="<?php esc_attr_e($behance, 'site-mode') ?>" />
-                                </div>
-                                <div class="social_field-label">
-                                    <label for="social_behance"><?php _e('Behance','site-mode');?></label>
-                                </div>
-                                <div class="social_delete">
-                                    <div class="um_checkbox_wrapper um_checkbox_show_hide">
-                                        <input type="checkbox" id="behance" name="behance" value="1" class="show_icon">
-                                        <label for="behance"></label>
-                                    </div>
-                                </div>
+                                </div>                                
                             </div>
-                            <input type="hidden" name="" />
-                        </li>
-                    </ul>
-                </div>
-            </div>
+                        </div>
+                    </div>                   
+                    <input type="hidden" name="" />
+                </li>
+            </ul>
         </div>
+            
         <?php
             wp_nonce_field('social-settings-save', 'social-custom-message');            
         ?>

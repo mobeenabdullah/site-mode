@@ -254,25 +254,7 @@ jQuery(function ($) {
                 $('.image_logo_wrapper').hide();
                 $('.text_logo_wrapper').hide();
             }
-        });
-
-        // hide Social Media
-        const enableDisable = $('.enable_disable-rows'); 
-        const socialMediaCover = $('.social-media-cover');
-        const socialMediaLabel = $('.social-media-label');
-
-        function showTableRowOnEnableDisable() {            
-            if(enableDisable.is(':checked')) {
-                socialMediaCover.removeClass('hide_socialmedia');
-                socialMediaLabel.removeClass('hide_socialmedia');
-            } else {
-                socialMediaCover.addClass('hide_socialmedia');
-                socialMediaLabel.addClass('hide_socialmedia');
-            }
-        }        
-
-        enableDisable.on('click', showTableRowOnEnableDisable);
-        enableDisable.load(showTableRowOnEnableDisable());        
+        });              
 
         const loginUrlField = $('.login_url_field');
         const enableLoginIcon = $('.enable_login_icon');
@@ -293,12 +275,12 @@ jQuery(function ($) {
     })
 
     // Drag and Drop JQuery
-    $( "#sortable" ).sortable({
+    $( "#sm_sortable" ).sortable({
         cursor: "move"
     });
 
-    $( "#sortable" ).on( "sortchange", function( event, ui ) {
-        var sortedIDs = $( "#sortable" ).sortable( "toArray" );
+    $( "#sm_sortable" ).on( "sortchange", function( event, ui ) {
+        var sortedIDs = $( "#sm_sortable" ).sortable( "toArray" );
         console.log(sortedIDs);
     } );
 
@@ -610,6 +592,7 @@ jQuery(function ($) {
     });
     $('#site_mode').trigger( "change" );
 
+    
     $('.sm_tabs li').click(function(){
         var tab_id = $(this).attr('data-tab');
         $('.sm_tabs li').removeClass('current');
