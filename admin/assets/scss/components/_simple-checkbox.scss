@@ -1,6 +1,5 @@
-.um_checkbox_wrapper {
-  position: relative;
-  // margin-bottom: $input-bottom-spacing;
+.sm_checkbox_wrapper {
+  position: relative;  
   & label {
     padding: 0 $padding-left-right;
     height: $checkbox-height-before + $border-width;

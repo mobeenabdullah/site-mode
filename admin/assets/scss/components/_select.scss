@@ -1,12 +1,11 @@
-.um_select {
+.sm_select {
   position: relative;
   display: flex;
   width: $form-fields-width;
   height: $form-fields-height;
   line-height: 3;
   background: var(--sm-base-white-color);
-  border-radius: $form-field-border-radius;
-  margin-bottom: $input-bottom-spacing;  
+  border-radius: $form-field-border-radius;  
   select {
     -webkit-appearance:none;
     -moz-appearance:none;

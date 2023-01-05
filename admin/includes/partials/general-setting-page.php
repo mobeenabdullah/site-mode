@@ -13,27 +13,27 @@
             $login_icon     = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
             $login_url      = isset($un_data['login_url'] ) ? $un_data['login_url']  : 'example.com';
         ?>
-        <!-- Status Setting -->
+        
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Status','site-mode');?></span>
+                <span><label for="status"><?php _e('Status','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_checkbox_wrapper">
-                    <input type="checkbox" id="status" name="site-mode-status-settings" value="1" <?php checked(1, $status, true); ?> />
-                    <label for="status" aria-label="<?php _e('Status','site-mode');?>"></label>
+                <div class="sm_checkbox_wrapper">
+                    <input type="checkbox" id="status" name="site-mode-status-settings" value="1" <?php checked(1, $status, true); ?> />                    
+                    <label for="status"></label>
                 </div>
             </div>
         </div>
+        
 
         <!-- Mode Setting -->
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Mode','site-mode');?></span>
+                <span><label for="site_mode"><?php _e('Mode','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_select">
-                    <label for="site_mode" class="screen-reading"><?php _e('Mode','site-mode');?></label>
+                <div class="sm_select">                    
                     <select name="site-mode-mode-settings" id="site_mode">
                         <option value="maintenance" <?php selected( $mode==='maintenance', 1 ); ?>><?php _e('Maintenance - Returns HTTP 200 OK response','site-mode');?></option>
                         <option value="coming-soon" <?php selected( $mode==='coming-soon', 1 ); ?>><?php _e('Coming Soon - Returns 503 HTTP Service response','site-mode');?></option>
@@ -41,39 +41,53 @@
                     </select>
                     <span class="arrow-down"></span>
                 </div>
-                 <!-- Hidden fields -->
-                
-                    <div class="redirect_options">
-                        <div class="um_input_cover label_top">
-                            <label for="redirect_url"><?php _e('Redirect Url','site-mode');?></label>
-                            <input type="text" id="redirect_url" name="site-mode-redirect-url-settings" value="<?php echo $url; ?>" <?php checked(1, $url, true); ?> />
-                        </div>
-                        <div class="um_input_cover label_top">
-                            <label for="delay_seconds"><?php _e('Delay (Seconds)','site-mode');?></label>
-                            <div class="um_number-cover">
-                                <input type="number" min="0" max="9" id="delay_seconds" data-inc="1" name="site-mode-delay-settings" value="<?php echo $delay; ?>" <?php checked(1, $delay, true); ?> />
-                            </div>
-                        </div>
-                    </div>
-                
             </div>
-        </div>        
-        
+        </div>
+        <div class="redirect_options">
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="redirect_url"><?php _e('Redirect Url','site-mode');?></label></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">
+                        <input type="text" id="redirect_url" name="site-mode-redirect-url-settings" value="<?php echo $url; ?>" <?php checked(1, $url, true); ?> />
+                    </div>
+                </div>
+            </div>
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="delay_seconds"><?php _e('Delay (Seconds)','site-mode');?></label></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">
+                        <input type="number" min="0" max="9" id="delay_seconds" class="number" data-inc="1" name="site-mode-delay-settings" value="<?php echo $delay; ?>" <?php checked(1, $delay, true); ?> />
+                    </div>
+                </div>
+            </div>        
+        </div>
+
         <!-- Logo Setting -->
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Login Icon','site-mode');?></span>
+                <span><label for="login_icon"><?php _e('Login Icon','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_checkbox_wrapper mb-15">
-                    <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-login-icon-setting" value="1" <?php checked(1, $login_icon, true); ?> />
-                    <label for="login_icon"><?php _e('Login Icon','site-mode');?></label>
+                <div class="sm_checkbox_wrapper mb-15">
+                    <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-login-icon-setting" value="1" <?php checked(1, $login_icon, true); ?> />                    
+                    <label for="login_icon"></label>
+                </div>          
+            </div>
+        </div>
+        <div class="login_url_field <?php echo (!empty($login_icon)) ? '' : 'hide_url'; ?>">
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="redirect_url_field"><?php _e('Login URL','site-mode');?></label></span>                    
                 </div>
-                
-                <div class="um_input_cover label_top login_url_field <?php echo (!empty($login_icon)) ? '' : 'hide_url'; ?>">
-                    <label for="redirect_url"><?php _e('Login URL','site-mode');?></label>                    
-                    <input type="text" id="redirect_url" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>" />                   
-                </div>                
+                <div class="option__row--field">
+                    <div class="sm_input_cover">                    
+                        <input type="text" id="redirect_url_field" name="site-mode-login-url-setting" value="<?php echo esc_attr($login_url); ?>" />                                           
+                    </div>
+                </div>
             </div>
         </div>
         <?php wp_nonce_field('general_settings_action', 'general_section_field'); ?>

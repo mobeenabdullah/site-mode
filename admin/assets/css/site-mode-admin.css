@@ -48,16 +48,10 @@ Plugin general styling
 	word-wrap: normal;
 }
 
-.label_top label {
-	width: 100%;
-	display: block;
-	margin-bottom: 1rem;
-	font-size: 14px;
-}
-
 .redirect_options {
 	align-items: start;
 	gap: 2rem;
+	margin-bottom: 1.5rem;
 }
 
 .mb-15 {
@@ -103,7 +97,7 @@ body {
 -----------------------------------------------*/
 .option__row {
 	display: flex;
-	margin-bottom: 1.875rem;
+	margin-bottom: 1.25rem;
 }
 
 .option__row:last-child {
@@ -115,6 +109,10 @@ body {
 }
 
 .option__row--label span {
+	font-weight: 600;
+}
+
+.option__row--label span label {
 	font-weight: 600;
 }
 
@@ -184,6 +182,10 @@ body {
 /*-----------------------------------------------
 //  6.  Tabs
 -----------------------------------------------*/
+.login_url_field {
+	margin-bottom: 1.5rem;
+}
+
 .image_logo_wrapper a {
 	display: block;
 }
@@ -511,11 +513,11 @@ body {
 	}
 }
 
-.um_checkbox_wrapper {
+.sm_checkbox_wrapper {
 	position: relative;
 }
 
-.um_checkbox_wrapper label {
+.sm_checkbox_wrapper label {
 	padding: 0 39px;
 	height: 20px;
 	display: inline-flex;
@@ -523,7 +525,7 @@ body {
 	font-size: 14px;
 }
 
-.um_checkbox_wrapper input {
+.sm_checkbox_wrapper input {
 	height: 19px;
 	width: 19px;
 	left: 0;
@@ -532,11 +534,11 @@ body {
 	top: 0;
 }
 
-.um_checkbox_wrapper input::before {
+.sm_checkbox_wrapper input::before {
 	display: none;
 }
 
-.um_checkbox_wrapper input + label::before {
+.sm_checkbox_wrapper input + label::before {
 	border: 1px solid var(--sm-secondary-color);
 	content: "";
 	height: 19px;
@@ -544,10 +546,10 @@ body {
 	left: 0;
 	position: absolute;
 	top: 0;
-	border-radius: 0.25em;
+	border-radius: 0.25rem;
 }
 
-.um_checkbox_wrapper input + label::after {
+.sm_checkbox_wrapper input + label::after {
 	content: "\2713";
 	opacity: 0;
 	font-size: 15px;
@@ -562,21 +564,21 @@ body {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-radius: 0.25em;
+	border-radius: 0.25rem;
 	border: 1px solid transparent;
 }
 
-.um_checkbox_wrapper input:checked + label::before {
+.sm_checkbox_wrapper input:checked + label::before {
 	background-color: var(--sm-primary-color);
 	border-color: var(--sm-primary-color);
 }
 
-.um_checkbox_wrapper input:checked + label::after {
+.sm_checkbox_wrapper input:checked + label::after {
 	opacity: 1;
 	color: var(--sm-base-white-color);
 }
 
-.um_checkbox_wrapper input:focus + label::before {
+.sm_checkbox_wrapper input:focus + label::before {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
 	outline: 1px solid transparent;
 }
@@ -622,77 +624,80 @@ body {
 	border-color: transparent;
 }
 
-.um_radio_wrapper {
+.radio_wrapper {
 	position: relative;
 }
 
-.um_radio_wrapper label {
-	padding: 0 39px;
-	height: 20px;
-	display: inline-flex;
-	align-items: center;
-	font-size: 14px;
+.radio_wrapper input[type=radio] {
+	position: absolute;
+	visibility: hidden;
 }
 
-.um_radio_wrapper input {
-	height: 19px;
-	width: 19px;
-	left: 0;
-	opacity: 0;
+.radio_wrapper label {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	-webkit-transition: all 0.25s linear;
+	font-weight: 500;
+}
+
+.radio_wrapper .check {
+	display: block;
 	position: absolute;
+	border: 1px solid #AAAAAA;
+	border-radius: 100%;
+	height: 25px;
+	width: 25px;
 	top: 0;
+	left: 0;
+	z-index: 5;
+	transition: border .25s linear;
+	-webkit-transition: border .25s linear;
 }
 
-.um_radio_wrapper input + label::before {
-	content: "";
-	height: 19px;
-	width: 19px;
-	left: 0;
+.radio_wrapper .check::before {
+	display: block;
 	position: absolute;
-	top: -1px;
-	border-radius: 50%;
-	border: 1px solid var(--sm-secondary-color);
+	content: '';
+	border-radius: 100%;
+	height: 15px;
+	width: 15px;
+	top: 5px;
+	left: 5px;
+	margin: auto;
+	transition: background 0.25s linear;
+	-webkit-transition: background 0.25s linear;
 }
 
-.um_radio_wrapper input + label::after {
-	content: '\002B24';
-	opacity: 0;
-	border-radius: 50%;
-	position: absolute;
-	height: 19px;
-	width: 19px;
-	left: 0;
-	top: -1px;
-	transition: all 0.2s;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 16px;
+.radio_wrapper input[type=radio]:checked ~ .check {
+	border: 1px solid var(--sm-primary-color);
+}
+
+.radio_wrapper input[type=radio]:checked ~ .check::before {
+	background: var(--sm-primary-color);
+}
+
+.radio_wrapper input[type=radio]:checked ~ label {
 	color: var(--sm-primary-color);
-	border: 1px solid transparent;
 }
 
-.um_radio_wrapper input:checked + label::after {
-	opacity: 1;
+.logo_radio_wrapper label {
+	padding-left: 40px;
+	padding-right: 40px;
+	font-weight: 300;
 }
 
-.um_radio_wrapper input:focus + label::before {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	outline: 1px solid transparent;
-}
-
-.um_select {
+.sm_select {
 	position: relative;
 	display: flex;
-	width: 20em;
-	height: 3em;
+	width: 20rem;
+	height: 3rem;
 	line-height: 3;
 	background: var(--sm-base-white-color);
-	border-radius: 0.25em;
-	margin-bottom: 1.5rem;
+	border-radius: 0.25rem;
 }
 
-.um_select select {
+.sm_select select {
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	-ms-appearance: none;
@@ -712,21 +717,21 @@ body {
 	width: 100%;
 }
 
-.um_select select::-ms-expand {
+.sm_select select::-ms-expand {
 	display: none;
 }
 
-.um_select select:hover {
+.sm_select select:hover {
 	color: var(--sm-secondary-color);
 }
 
-.um_select select:focus {
+.sm_select select:focus {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
 	border: 1px solid var(--sm-primary-color) !important;
 	outline: 1px solid transparent;
 }
 
-.um_select .arrow-down {
+.sm_select .arrow-down {
 	width: 0;
 	height: 0;
 	border-left: 5px solid transparent;
@@ -741,32 +746,32 @@ body {
 	pointer-events: none;
 }
 
-.um_select:hover {
+.sm_select:hover {
 	color: var(--sm-secondary-color);
 	opacity: 1;
 }
 
-.um_select:hover .arrow-down {
+.sm_select:hover .arrow-down {
 	border-top: 5px solid var(--sm-primary-color);
 }
 
-.um_input_cover input[type="text"], .um_input_cover input.number[type="number"] {
-	width: 20em;
-	height: 3em;
+.sm_input_cover input[type="text"], .sm_input_cover input.number[type="number"] {
+	width: 20rem;
+	height: 3rem;
 	line-height: 3;
 	background: var(--sm-base-white-color);
 	border: 1px solid var(--sm-secondary-color);
-	border-radius: 0.25em;
+	border-radius: 0.25rem;
 	padding: 0 1em;
 	font-size: 14px;
 	font-family: var(--sm-open-sans);
 }
 
-.um_input_cover input[type="text"]:active, .um_input_cover input[type="text"]:hover, .um_input_cover input[type="text"]:focus-visible, .um_input_cover input.number[type="number"]:active, .um_input_cover input.number[type="number"]:hover, .um_input_cover input.number[type="number"]:focus-visible {
+.sm_input_cover input[type="text"]:active, .sm_input_cover input[type="text"]:hover, .sm_input_cover input[type="text"]:focus-visible, .sm_input_cover input.number[type="number"]:active, .sm_input_cover input.number[type="number"]:hover, .sm_input_cover input.number[type="number"]:focus-visible {
 	border-color: var(--sm-primary-color);
 }
 
-.um_input_cover input[type="text"]:focus, .um_input_cover input.number[type="number"]:focus {
+.sm_input_cover input[type="text"]:focus, .sm_input_cover input.number[type="number"]:focus {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
 	outline: 1px solid transparent;
 }
@@ -778,11 +783,11 @@ body {
 
 .um_toggle .toggle-control {
 	transition: all 0.2s;
-	width: 2.5em;
-	height: 1.25em;
+	width: 2.5rem;
+	height: 1.25rem;
 	display: block;
 	border: 2px solid var(--sm-secondary-color);
-	border-radius: 1.25em;
+	border-radius: 1.25rem;
 	background-color: var(--sm-secondary-color);
 	position: relative;
 	cursor: pointer;
@@ -791,8 +796,8 @@ body {
 .um_toggle .toggle-control:after {
 	transition: all 0.2s;
 	content: "";
-	width: 1.25em;
-	height: 1.25em;
+	width: 1.25rem;
+	height: 1.25rem;
 	display: block;
 	background-color: var(--sm-base-white-color);
 	border-radius: 50%;
@@ -812,109 +817,8 @@ body {
 }
 
 .um_toggle input:checked + .toggle-control:after {
-	left: 1.25em;
+	left: 1.25rem;
 	top: 0;
-}
-
-input[type="number"] {
-	-moz-appearance: textfield;
-}
-
-input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-outer-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-.um_number-cover {
-	display: flex;
-	margin: 0;
-	position: relative;
-	justify-content: space-between;
-	overflow: hidden;
-	position: relative;
-}
-
-.um_number-cover input {
-	color: var(--sm-secondary-color);
-	border-radius: 0.25em;
-	background-color: var(--sm-base-white-color);
-	border: 1px solid var(--sm-secondary-color);
-	font-size: 14px;
-	display: block;
-	padding: 0 2.5rem 0 1em;
-	margin: 0;
-	text-align: center;
-	width: 8rem;
-	height: 3em;
-}
-
-.um_number-cover input:focus {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	outline: 1px solid transparent;
-}
-
-.um_number-cover .um_number-cover--nav {
-	width: 2rem;
-	height: 100%;
-	border-top-right-radius: 0.25em;
-	border-bottom-right-radius: 0.25em;
-	display: grid;
-	grid-template-rows: repeat(2, 1fr);
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	right: 0;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton {
-	font-size: 14px;
-	cursor: pointer;
-	border-bottom: 1px solid #181818;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	font-weight: 700;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--sm-secondary-color);
-	transition: all 0.2s;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton svg {
-	width: 1rem;
-	height: 1rem;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton svg path {
-	fill: var(--sm-base-white-color);
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton:active {
-	outline: 1px solid transparent;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton.um_InputUp {
-	padding-top: 2px;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton:last-child {
-	border-bottom: none;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton:last-child:hover {
-	border-bottom: none;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton:hover {
-	background-color: #131313;
-	border-bottom: 1px solid transparent;
-}
-
-.um_number-cover .um_number-cover--nav .um_InputButton:hover svg path {
-	fill: var(--sm-base-white-color);
 }
 
 .um_textarea_cover textarea {
@@ -923,7 +827,7 @@ input[type="number"]::-webkit-inner-spin-button, input[type="number"]::-webkit-o
 	line-height: 3;
 	background: var(--sm-base-white-color);
 	border: 1px solid var(--sm-secondary-color);
-	border-radius: 0.25em;
+	border-radius: 0.25rem;
 	padding: 0 1em;
 	font-size: 14px;
 	font-family: var(--sm-open-sans);
