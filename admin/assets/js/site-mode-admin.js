@@ -237,51 +237,7 @@ jQuery(function ($) {
 
     // Start document ready function
     $(document).ready(function () {
-        // Show and hide redirect options
-      
-
-        // Input Number
-        function customInputNumber() {
-            /** Custom Input number increment js **/
-            jQuery(
-                '<div class="um_number-cover--nav"><div class="um_InputButton um_InputUp" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></div><div class="um_InputButton um_InputDown" role="button" tabindex="1"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 11h14v2H5z"></path></svg></div></div>'
-            ).insertAfter(".um_number-cover input");
-
-            jQuery(".um_number-cover").each(function() {
-                var spinner = jQuery(this),
-                    input = spinner.find('input[type="number"]'),
-                    btnUp = spinner.find(".um_InputUp"),
-                    btnDown = spinner.find(".um_InputDown"),
-                    min = input.attr("min"),
-                    max = input.attr("max"),
-                    valOfAmout = input.val(),
-                    newVal = 0;
-
-                btnUp.on("click", function() {
-                    var oldValue = parseFloat(input.val());
-
-                    if (oldValue >= max) {
-                        var newVal = oldValue;
-                    } else {
-                        var newVal = oldValue + 1;
-                    }
-                    spinner.find("input").val(newVal);
-                    spinner.find("input").trigger("change");
-                });
-                btnDown.on("click", function() {
-                    var oldValue = parseFloat(input.val());
-                    if (oldValue <= min) {
-                        var newVal = oldValue;
-                    } else {
-                        var newVal = oldValue - 1;
-                    }
-                    spinner.find("input").val(newVal);
-                    spinner.find("input").trigger("change");
-                });
-            });
-        }
-        customInputNumber();
-
+        
         // Image and text logo toggle
         $('.image_logo_wrapper').hide();
         $('.text_logo_wrapper').hide();
@@ -649,7 +605,7 @@ jQuery(function ($) {
     $('#site_mode').on('change', function() {
         $('.redirect_options').css('display', 'none');
         if ( $(this).val() === 'redirect' ) {
-            $('.redirect_options').css('display', 'flex');
+            $('.redirect_options').css('display', 'block');
         }
     });
     $('#site_mode').trigger( "change" );

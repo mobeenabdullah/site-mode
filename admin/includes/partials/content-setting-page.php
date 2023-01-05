@@ -26,19 +26,24 @@
             <div class="option__row--label">
                 <span><?php _e('Logo Type','site-mode');?></span>
             </div>
+            
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
-                    <div class="um_radio_wrapper">
+                    <div class="radio_wrapper logo_radio_wrapper">                        
                         <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($logo_setting=='type-text',true,true); ?> />
                         <label for="text-logo"><?php _e('Text','site-mode');?></label>
+                        <div class="check"><div class="inside"></div></div>
                     </div>
-                    <div class="um_radio_wrapper">
+                    
+                    <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked($logo_setting=='type-image',true, true); ?> />
                         <label for="image-logo"><?php _e('Image','site-mode');?></label>
+                        <div class="check"><div class="inside"></div></div>
                     </div>
-                    <div class="um_radio_wrapper">
+                    <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($logo_setting=='type-disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('disable','site-mode');?></label>
+                        <div class="check"><div class="inside"></div></div> 
                     </div>
                 </div>
                 <div class="image_logo_wrapper">
