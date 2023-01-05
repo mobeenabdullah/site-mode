@@ -15,16 +15,27 @@ $general              = get_option('site_mode_general');
 //unserialize data
 $content_un = unserialize($content);
 
-$logo_settings   = $content_un['logo_settings'];
-$image_logo      = $content_un['image_logo'];
-$text_logo       = $content_un['text_logo'];
-$heading         = $content_un['heading'];
-$description     = $content_un['description'];
-$bg_image        = $content_un['bg_image'];
-//unserialize data for social
-$social_un = unserialize($social);
+echo '<pre>';
+print_r($content_un);
+echo '</pre>';
+
+
+if(!empty($content_un)) {
+    $logo_settings   = isset($content_un['logo_settings'] ) ? $content_un['logo_settings']  : '';
+    $image_logo      = isset($content_un['image_logo'] ) ? $content_un['image_logo']  : '';
+    $text_logo       = isset($content_un['text_logo'] ) ? $content_un['text_logo']  : '';
+    $heading         = isset($content_un['heading'] ) ? $content_un['heading']  : '';
+    $description     = isset($content_un['description'] ) ? $content_un['description']  : '';
+    $bg_image        = isset($content_un['bg_image'] ) ? $content_un['bg_image']  : '';
+}
+
 $logo_url = wp_get_attachment_image_url($image_logo , 'full');
 $bg_url = wp_get_attachment_image_url($bg_image , 'full');
+//unserialize data for social
+$social_un = unserialize($social);
+if(!empty($social_un)) {
+
+}
 
 require_once 'header.php';
 
@@ -64,7 +75,7 @@ require_once 'header.php';
                         <ul class="social_media">
                             <?php if($social_un['social_fb']) : ?>
                                 <li>
-                                    <a href="hhttps://www.facebook.com/<?php echo esc_attr($social_un['social_fb'])?>" aria-label="Linkedin profile">
+                                    <a href="hhttps://www.facebook.com/<?php echo (social_un['social_fb']) ? esc_attr($social_un['social_fb']) : ''?>" aria-label="Linkedin profile">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="9.979" height="19.236" viewBox="0 0 9.979 19.236"><path id="bxl-facebook"  d="M13.814,22.236v-8.76H16.77l.439-3.43H13.814V7.861c0-.99.276-1.667,1.7-1.667h1.8V3.136A23.873,23.873,0,0,0,14.674,3c-2.612,0-4.406,1.595-4.406,4.522v2.517H7.332v3.43h2.942v8.767Z" transform="translate(-7.332 -3)" /></svg>
                                     </a>
                                 </li>

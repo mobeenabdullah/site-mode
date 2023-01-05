@@ -86,6 +86,7 @@ class Site_Mode
 		$this->define_public_hooks();
 		$this->get_menu();
 
+
 	}
 
 	/**
@@ -252,7 +253,7 @@ class Site_Mode
         //check if the values are set or not and then assign them to the variables
         $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
         if(!empty($status ) && $status == '1'){
-            $this->loader->add_action('load_template_on_call', $this->classes_loader->get_design(), 'load_template_on_call');
+//            $this->loader->add_action('load_template_on_call', $this->classes_loader->get_design(), 'load_template_on_call');
 //            $this->classes_loader->get_general()->redirect_status_code();
         }
 
