@@ -264,13 +264,10 @@ body {
 .logo_type_wrapper {
   @include flex_mixin(flex, null, center, null, 10px);
 }
-.text_logo_wrapper {
-  margin-top: calculateRem(20px);
-}
 
-.image_logo_wrapper, .text_logo_type {
+.image_logo_wrapper, .text_logo_wrapper {
   display: none;
-  margin-top: calculateRem(20px);
+  margin-bottom: calculateRem(40px);
 }
 
 .description_editor {
@@ -278,7 +275,7 @@ body {
 }
 
 //  (c) Social Media Tab
-.hide_socialmedia, .hide_url {
+.hide_socialmedia, .hide_url, .sm_hide_field {
   display: none;
 }
 .disable_media_input {

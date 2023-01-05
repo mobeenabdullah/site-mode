@@ -49,7 +49,7 @@
         <?php require_once plugin_dir_path( __FILE__ ) . "seo-setting-page.php"; ?>
     </div>
     <div id="tab-advanced" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "advanced-setting-page-original.php"; ?>
+        <?php require_once plugin_dir_path( __FILE__ ) . "advanced-setting-page.php"; ?>
     </div>
     <div id="tab-import-export" class="tab-content">
         <?php require_once plugin_dir_path( __FILE__ ) . "export-import-setting-page-original.php"; ?>

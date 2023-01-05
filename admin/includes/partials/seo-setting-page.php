@@ -17,30 +17,30 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="headline"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>
+                <span><label for="seo-meta-title"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_input_cover">                    
+                <div class="sm_input_cover">
                     <input type="text" id="seo-meta-title" name="soe-meta-title-setting" value="<?php echo $meta_title; ?>" />
                 </div>
             </div>
-        </div>
-
+        </div> 
+        
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="headline"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>
+                <span><label for="seo-meta-description"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_input_cover">                    
-                    <input type="text" id="seo-meta-description" name="soe-meta-description-setting" value="<?php echo $meta_description; ?>" />
+                <div class="sm_input_cover">
+                <input type="text" id="seo-meta-description" name="soe-meta-description-setting" value="<?php echo $meta_description; ?>" />
                 </div>
             </div>
-        </div>
+        </div>       
 
         <?php $favicon_url = wp_get_attachment_image_url($meta_favicon, 'medium'); ?>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="headline"><?php esc_html_e('Upload Favicon', 'site-mode'); ?></label></span>
+                <span><label class="logo-upload" for="logo_upload"><?php esc_html_e('Upload Favicon', 'site-mode'); ?></label></span>
             </div>
             <div class="option__row--field">
                 <div>
@@ -51,11 +51,11 @@
                             ?>
                         </a>
                         <a href="#" class="logo-remove"><?php _e('Remove Favicon', 'site-mode'); ?></a>
-                        <input type="hidden" name="soe-meta-favicon-setting" value="<?php esc_attr_e($meta_favicon,'site-mode'); ?>">
+                        <input type="hidden" id="logo_upload" name="soe-meta-favicon-setting" value="<?php esc_attr_e($meta_favicon,'site-mode'); ?>">
                     <?php else : ?>
                         <a href="#" class="favicon-upload button btn_outline"><?php esc_html_e('Upload Favicon', 'site-mode'); ?></a>
                         <a href="#" class="favicon-remove button btn_outline" style="display:none"><?php esc_html_e('Remove Favicon', 'site-mode'); ?></a>
-                        <input type="hidden" name="soe-meta-favicon-setting" value=<?php esc_attr_e($meta_favicon,'site-mode'); ?>>
+                        <input type="hidden" id="logo_upload" name="soe-meta-favicon-setting" value=<?php esc_attr_e($meta_favicon,'site-mode'); ?>>
                     <?php endif; ?>
                 </div>
             </div>
@@ -64,7 +64,7 @@
         <?php $image_url = wp_get_attachment_image_url($meta_image, 'medium'); ?>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="headline"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>
+                <span><label class="image-upload" for="headline"><?php esc_html_e('SEO Image', 'site-mode'); ?></label></span>
             </div>
             <div class="option__row--field">
                 <div>
@@ -90,9 +90,11 @@
         
        
 
-        <?php
-            wp_nonce_field('seo-settings-save', 'seo-custom-message');
-            submit_button();
-        ?>
+        <?php wp_nonce_field('seo-settings-save', 'seo-custom-message'); ?>
+        <div class="option__row">
+            <div class="option__row--label submit_button">                
+                <?php submit_button(); ?>
+            </div>            
+        </div>
     </form>
 </div>

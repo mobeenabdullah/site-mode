@@ -44,7 +44,8 @@
                 </div>
             </div>
         </div>
-        <div class="redirect_options">
+
+        <div class="redirect_options <?php echo ($mode === 'redirect') ? '' : 'sm_hide_field'; ?>">
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="redirect_url"><?php _e('Redirect Url','site-mode');?></label></span>
