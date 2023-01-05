@@ -120,15 +120,15 @@ body {
 /*-----------------------------------------------
 //  5.  Buttons
 -----------------------------------------------*/
-.um_btn {
+.btn_primary {
   background: var(--sm-button-bg-color) !important;
   border-color: var(--sm-button-border-color) !important;
   border-width: $btn-border-width !important;
   color: var(--sm-base-white-color) !important;
-  padding: $btn-padding !important;
-  border-radius: $btn-radius !important;
-  font-size: $btn-font-size !important;
-  line-height: $btn-line-height !important;
+  padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+  border-radius: 0.2rem !important;
+  font-size: 1rem !important;
+  line-height: 1.5 !important;
   width: auto !important;
   height: auto !important;
 
@@ -138,20 +138,22 @@ body {
   }
 }
 
-.um_btn_outline {
-  background: var(--sm-secondary-color) !important;
+.btn_outline {
+  background: transparent !important;
   border-color: var(--sm-secondary-color) !important;
-  color: var(--sm-base-white-color) !important;
-  padding: $btn-padding !important;
-  border-radius: $btn-radius !important;
-  font-size: $btn-font-size !important;
-  line-height: $btn-line-height !important;
+  color: var(--sm-secondary-color) !important;
+  padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+  border-radius: 0.2rem !important;
+  font-size: 0.8rem !important;
+  line-height: 1.5 !important;
+  min-width: calculateRem(136px);
   width: auto !important;
   height: auto !important;
-
+  transition: all .2s;
   &:hover {
-    background-color: darken($btn-bg-color, 3) !important;
-    border-color: darken($btn-bg-color, 3) !important;
+    background-color: darken($secondary-color, 3) !important;
+    border-color: darken($secondary-color, 3) !important;
+    color: var(--sm-base-white-color) !important;
   }
 }
 
@@ -175,7 +177,7 @@ body {
 
 .submit_button {
   & input {
-    @extend .um_btn;
+    @extend .btn_primary;
   }
 }
 
@@ -239,7 +241,7 @@ body {
 }
 
 .button.bg-image-upload, .button.logo-upload {
-  @extend .um_btn_outline;
+  @extend .btn_outline;
   &:focus {
     outline: none !important;
     box-shadow: none !important;

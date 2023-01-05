@@ -43,7 +43,6 @@
             <?php endif; ?>
         </div>
         <?php
-
         $image_url = wp_get_attachment_image_url($meta_image, 'medium'); ?>
         <div>
             <?php if ($image_url) : ?>

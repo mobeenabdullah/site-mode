@@ -1,5 +1,5 @@
 .um_input_cover {
-  & input[type="text"] {
+  & input[type="text"], & input.number[type="number"] {
     width: $form-fields-width;
     height: $form-fields-height;
     line-height: 3;
@@ -16,5 +16,5 @@
       @include box-shadow();
       outline: $outline-width solid transparent;
     }
-  }
+  }  
 }
