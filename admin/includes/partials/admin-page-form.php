@@ -7,11 +7,11 @@
             require_once plugin_dir_path( __FILE__ ) . "social-setting-page.php";
             break;
         case 'design':                        
-            require_once plugin_dir_path( __FILE__ ) . "design-setting-page-original.php";
+            require_once plugin_dir_path( __FILE__ ) . "design-setting-page.php";
             break;
 
         case 'seo':                        
-            require_once plugin_dir_path( __FILE__ ) . "seo-setting-page-original.php";
+            require_once plugin_dir_path( __FILE__ ) . "seo-setting-page.php";
             break;
 
         case 'advanced':                        

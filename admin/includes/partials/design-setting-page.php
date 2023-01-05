@@ -99,21 +99,30 @@
         ?>
             <div class="logo_section">
                 <h3>Logo & Background</h3>
-                <div class="logo">
-                    <h3>Logo</h3>
-                    <div class="logo_width_cover">
-                        <label for="logo_width"><?php _e('Logo Width','site-mode');?></label>
-                        <div class="logo_width">
-                            <input type="number" id="logo_width" data-inc="1" name="logo-width-setting" value="<?php echo $logo_width; ?>" <?php checked(1, $logo_width, true); ?> />
-                        </div>
+                <!-- Logo Width -->
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><?php _e('Logo Width','site-mode');?></span>
                     </div>
-                    <div class="logo_height_cover">
-                        <label for="logo_height"><?php _e('Logo Height','site-mode');?></label>
-                        <div class="logo_height">
-                            <input type="number"  id="logo_height" data-inc="1" name="logo-height-setting" value="<?php echo $logo_height; ?>" <?php checked(1, $logo_height, true); ?> />
+                    <div class="option__row--field">
+                        <div class="um_input_cover label_top">
+                            <label for="logo_width" class="screen-reading"><?php _e('Redirect Url','site-mode');?></label>
+                            <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo $logo_width; ?>" <?php checked(1, $logo_width, true); ?>  />                            
                         </div>
                     </div>
                 </div>
+                <!-- Logo Height -->
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><?php _e('Logo Width','site-mode');?></span>
+                    </div>
+                    <div class="option__row--field">
+                        <div class="um_input_cover label_top">
+                            <label for="logo_width" class="screen-reading"><?php _e('Logo Height','site-mode');?></label>                            
+                            <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo $logo_height; ?>" <?php checked(1, $logo_height, true); ?> />
+                        </div>
+                    </div>
+                </div>              
             </div>
             <div class="background_section">
                 <h3><?php _e('Background','site-mode');?></h3>

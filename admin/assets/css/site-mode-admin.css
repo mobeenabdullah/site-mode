@@ -125,39 +125,42 @@ body {
 /*-----------------------------------------------
 //  5.  Buttons
 -----------------------------------------------*/
-.um_btn, .submit_button input {
+.btn_primary, .submit_button input {
 	background: var(--sm-button-bg-color) !important;
 	border-color: var(--sm-button-border-color) !important;
 	border-width: 1px !important;
 	color: var(--sm-base-white-color) !important;
-	padding: 0.5rem 1.5rem 0.6rem 1.5rem !important;
-	border-radius: 0.5rem !important;
-	font-size: 0.8rem !important;
+	padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+	border-radius: 0.2rem !important;
+	font-size: 1rem !important;
 	line-height: 1.5 !important;
 	width: auto !important;
 	height: auto !important;
 }
 
-.um_btn:hover, .submit_button input:hover {
+.btn_primary:hover, .submit_button input:hover {
 	background-color: #6368ce !important;
 	border-color: #6368ce !important;
 }
 
-.um_btn_outline, .button.bg-image-upload, .button.logo-upload {
-	background: var(--sm-secondary-color) !important;
+.btn_outline, .button.bg-image-upload, .button.logo-upload {
+	background: transparent !important;
 	border-color: var(--sm-secondary-color) !important;
-	color: var(--sm-base-white-color) !important;
-	padding: 0.5rem 1.5rem 0.6rem 1.5rem !important;
-	border-radius: 0.5rem !important;
+	color: var(--sm-secondary-color) !important;
+	padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+	border-radius: 0.2rem !important;
 	font-size: 0.8rem !important;
 	line-height: 1.5 !important;
+	min-width: 8.5rem;
 	width: auto !important;
 	height: auto !important;
+	transition: all .2s;
 }
 
-.um_btn_outline:hover, .button.bg-image-upload:hover, .button.logo-upload:hover {
-	background-color: #6368ce !important;
-	border-color: #6368ce !important;
+.btn_outline:hover, .button.bg-image-upload:hover, .button.logo-upload:hover {
+	background-color: #181818 !important;
+	border-color: #181818 !important;
+	color: var(--sm-base-white-color) !important;
 }
 
 .normal_btn {
@@ -747,7 +750,7 @@ body {
 	border-top: 5px solid var(--sm-primary-color);
 }
 
-.um_input_cover input[type="text"] {
+.um_input_cover input[type="text"], .um_input_cover input.number[type="number"] {
 	width: 20em;
 	height: 3em;
 	line-height: 3;
@@ -759,11 +762,11 @@ body {
 	font-family: var(--sm-open-sans);
 }
 
-.um_input_cover input[type="text"]:active, .um_input_cover input[type="text"]:hover, .um_input_cover input[type="text"]:focus-visible {
+.um_input_cover input[type="text"]:active, .um_input_cover input[type="text"]:hover, .um_input_cover input[type="text"]:focus-visible, .um_input_cover input.number[type="number"]:active, .um_input_cover input.number[type="number"]:hover, .um_input_cover input.number[type="number"]:focus-visible {
 	border-color: var(--sm-primary-color);
 }
 
-.um_input_cover input[type="text"]:focus {
+.um_input_cover input[type="text"]:focus, .um_input_cover input.number[type="number"]:focus {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
 	outline: 1px solid transparent;
 }
