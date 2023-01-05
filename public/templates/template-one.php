@@ -15,11 +15,6 @@ $general              = get_option('site_mode_general');
 //unserialize data
 $content_un = unserialize($content);
 
-echo '<pre>';
-print_r($content_un);
-echo '</pre>';
-
-
 if(!empty($content_un)) {
     $logo_settings   = isset($content_un['logo_settings'] ) ? $content_un['logo_settings']  : '';
     $image_logo      = isset($content_un['image_logo'] ) ? $content_un['image_logo']  : '';
