@@ -35,7 +35,12 @@ class Site_Mode_Design
         protected $icon_border_color    = '';
 
 
-    public function __construct(){}
+    public function __construct(){
+
+        $this->site_mode_design = get_option('site_mode_design');
+        $this->site_mode_design = unserialize($this->site_mode_design);
+        $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
+    }
 
     public function ajax_site_mode_design() {
 
@@ -139,5 +144,35 @@ class Site_Mode_Design
             wp_send_json_success(get_option( 'site_mode_design_colors' ));
         }
         die();
+    }
+
+    public function load_template_on_call()
+    {
+        if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
+
+            esc_html($this->load_templates());
+            exit;
+        }
+    }
+
+    public function load_templates()
+    {
+
+        if ($this->enable_template == '1') {
+            echo require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+            exit;
+        } elseif ($this->enable_template == '2') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
+            exit;
+        } elseif ($this->enable_template == '3') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
+            exit;
+        } elseif ($this->enable_template == '4') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
+            exit;
+        } else {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+            exit;
+        }
     }
 }
