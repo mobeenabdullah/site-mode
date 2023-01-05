@@ -47,7 +47,7 @@ class Site_Mode_Design
         $this->site_mode_general =  get_option('site_mode_general');
         $un_data = unserialize($this->site_mode_general);
         //check if the values are set or not and then assign them to the variables
-        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '1';
+        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
     }
 
     public function ajax_site_mode_design() {
@@ -156,7 +156,7 @@ class Site_Mode_Design
 
     public function load_template_on_call()
     {
-        if (!is_user_logged_in() && !empty($this->status) ) {
+        if (!is_user_logged_in() &&  $this->status == '1' ) {
 
             esc_html($this->load_templates());
             exit;
