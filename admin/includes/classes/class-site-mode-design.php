@@ -33,6 +33,9 @@ class Site_Mode_Design
         protected $icon_color           = '';
         protected $icon_bg_color        = '';
         protected $icon_border_color    = '';
+        protected $status              = '';
+        protected $site_mode_general    = array();
+
 
 
     public function __construct(){
@@ -40,6 +43,11 @@ class Site_Mode_Design
         $this->site_mode_design = get_option('site_mode_design');
         $this->site_mode_design = unserialize($this->site_mode_design);
         $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
+
+        $this->site_mode_general =  get_option('site_mode_general');
+        $un_data = unserialize($this->site_mode_general);
+        //check if the values are set or not and then assign them to the variables
+        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
     }
 
     public function ajax_site_mode_design() {
@@ -148,7 +156,7 @@ class Site_Mode_Design
 
     public function load_template_on_call()
     {
-        if (!is_user_logged_in() && !empty(get_option('enable-disable-settings'))) {
+        if (!is_user_logged_in() &&  $this->status == '1' ) {
 
             esc_html($this->load_templates());
             exit;
@@ -159,7 +167,7 @@ class Site_Mode_Design
     {
 
         if ($this->enable_template == '1') {
-            echo require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
             exit;
         } elseif ($this->enable_template == '2') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
@@ -175,4 +183,5 @@ class Site_Mode_Design
             exit;
         }
     }
+
 }
