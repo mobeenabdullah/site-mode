@@ -16,7 +16,7 @@
         
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="status"><?php _e('Status','site-mode');?></label></span>
+                <span><label for="status"><?php _e('Status','site-mode');?></label></span>                
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -31,6 +31,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="site_mode"><?php _e('Mode','site-mode');?></label></span>
+                <span class="info_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus at eros tincidunt elementum.</span>
             </div>
             <div class="option__row--field">
                 <div class="sm_select">                    
@@ -72,7 +73,7 @@
                 <span><label for="login_icon"><?php _e('Login Icon','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="sm_checkbox_wrapper mb-15">
+                <div class="sm_checkbox_wrapper">
                     <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-login-icon-setting" value="1" <?php checked(1, $login_icon, true); ?> />                    
                     <label for="login_icon"></label>
                 </div>          

@@ -89,7 +89,7 @@ body {
 
 .site_mode__wrap-form {
 	background-color: var(--sm-base-white-color);
-	padding: 1.25rem;
+	padding: 2.5rem 1.25rem 1.25rem 1.25rem;
 }
 
 /*-----------------------------------------------
@@ -97,7 +97,8 @@ body {
 -----------------------------------------------*/
 .option__row {
 	display: flex;
-	margin-bottom: 1.25rem;
+	gap: 1.875rem;
+	margin-bottom: 2.5rem;
 }
 
 .option__row:last-child {
@@ -105,15 +106,23 @@ body {
 }
 
 .option__row--label {
-	width: 12.5rem;
+	width: 18.75rem;
 }
 
 .option__row--label span {
+	display: block;
 	font-weight: 600;
 }
 
 .option__row--label span label {
 	font-weight: 600;
+}
+
+.option__row--label span.info_text {
+	font-size: 12px;
+	font-size: 0.75rem;
+	font-weight: 400;
+	line-height: 1.5;
 }
 
 .option__row--field {
@@ -292,7 +301,8 @@ body {
 
 .socialmedia__wrapper .social_media_field {
 	display: grid;
-	grid-template-columns: 16px 32px 1fr auto;
+	grid-template-columns: 16px 32px 1fr;
+	align-items: center;
 	grid-gap: 10px;
 	margin-bottom: 10px;
 }
@@ -639,6 +649,7 @@ body {
 	cursor: pointer;
 	-webkit-transition: all 0.25s linear;
 	font-weight: 500;
+	z-index: 20;
 }
 
 .radio_wrapper .check {
@@ -849,9 +860,16 @@ body {
 	font-size: 14px;
 }
 
-#sortable {
-	max-width: 300px;
+#sm_sortable {
 	margin: 0;
+	max-width: 400px;
+	background-color: rgba(111, 115, 210, 0.05);
+	padding: 1.25rem;
+	margin-bottom: 1.875rem;
+}
+
+#sm_sortable .ui-state-default .option__row {
+	margin-bottom: 0.9375rem;
 }
 
 .sm_tabs {

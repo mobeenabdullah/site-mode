@@ -15,8 +15,7 @@
             $description    = isset($uns_data['description']) ? $uns_data['description'] : 'description goes here';
             $bg_image       = isset($uns_data['bg_image']) ? $uns_data['bg_image'] : '';
 
-            //if logo_setting is image-logo then disable text logo field
-        echo $bg_image;
+            //if logo_setting is image-logo then disable text logo field        
         ?>
     <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">        
 
@@ -42,40 +41,52 @@
                     </div>
                     <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($logo_setting=='type-disable',true, true); ?> />
-                        <label for="disable-logo"><?php _e('disable','site-mode');?></label>
+                        <label for="disable-logo"><?php _e('Disable','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div> 
                     </div>
-                </div>
-                <div class="image_logo_wrapper">
-                    <?php if ($logo_url) : ?>
-                        <div class="bg_image_wrapper">
-                            <a href="#" class="logo-upload image_btn"></a>
-                            <div class="display_logo_img">
-                                <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
-                            </div>
+                </div>                               
+            </div>
+        </div>
+        
+        <div class="option__row image_logo_wrapper">
+            <div class="option__row--label">
+                <span><?php _e('Logo Image','site-mode');?></span>
+            </div>
+            <div class="option__row--field">
+                <?php if ($logo_url) : ?>
+                    <div class="bg_image_wrapper">
+                        <a href="#" class="logo-upload image_btn"></a>
+                        <div class="display_logo_img">
+                            <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
                         </div>
-                        <a href="#" class="button um_btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
-                    <?php else : ?>
-                        <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
-                        <a href="#" class="logo-remove um_btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'site-mode'); ?>>
-                    <?php endif; ?>
-                </div>
-                <div class="um_input_cover label_top text_logo_wrapper">
-                    <label for="text_logo"><?php _e('Logo text','site-mode');?></label>
-                    <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'site-mode'); ?>" />
-                </div>               
+                    </div>
+                    <a href="#" class="button btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
+                <?php else : ?>
+                    <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
+                    <a href="#" class="logo-remove btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                    <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'site-mode'); ?>>
+                <?php endif; ?>
             </div>
         </div>
 
-        <div class="option__row">
+        <div class="option__row text_logo_wrapper">
             <div class="option__row--label">
-                <span><?php _e('Heading','site-mode');?></span>
+                <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="um_input_cover">
-                    <label class="screen-reading" for="headline"><?php _e('Headline','site-mode');?></label>
+                <div class="sm_input_cover label_top">                        
+                    <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'site-mode'); ?>" />
+                </div>
+            </div>
+        </div>
+        
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><label for="headline"><?php _e('Headline','site-mode');?></label></span>                    
+            </div>
+            <div class="option__row--field">
+                <div class="sm_input_cover">                    
                     <input type="text" id="headline" name="content-heading-setting" value="<?php esc_attr_e($heading,'site-mode'); ?>" />
                 </div>
             </div>
@@ -83,10 +94,10 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Description','site-mode');?></span>
+                <span><label for="description"><?php _e('Description','site-mode');?></label></span>                                    
             </div>
             <div class="option__row--field">
-                <div class="description_editor">
+                <div class="description_editor" id="description">
                     <?php
                         $content = $description;
                         $custom_editor_id = "editorid";
@@ -109,18 +120,18 @@
         <?php $bg_img_url = wp_get_attachment_image_url($bg_image, 'full'); ?>
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Background Image','site-mode');?></span>
+                <span><label for="upload_image"><?php _e('Background Image','site-mode');?></label></span>                
             </div>
             <div class="option__row--field">
                 <div>
                     <?php if ($bg_img_url) : ?>
                         <img src="<?php echo esc_url($bg_img_url) ?>" width="150" height="150" />
-                        <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
-                        <a href="#" class="button um_btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
+                        <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
+                        <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
                         <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e($bg_image,'site-mode'); ?>">
                         <?php else : ?>
-                        <a href="#" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
-                        <a href="#" class="button um_btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
+                        <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
+                        <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
                         <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e($bg_image,'site-mode'); ?>>
                     <?php endif; ?>
                 </div>
