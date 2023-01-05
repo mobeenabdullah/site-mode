@@ -27,6 +27,8 @@
 
     ?>
     <form id="site-mode-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+
+
         <div class="um_select">
             <label for="site_mode" class="screen-reading"><?php _e('Google Analytics','site-mode');?></label>
             <select name="advanced-analytics-type-setting" id="site_mode">
@@ -35,6 +37,7 @@
             </select>
             <span class="arrow-down"></span>
         </div>
+        
         <?php if($analytics_type == 'analytics-id') {
             ?>
             <div class="um_input_cover">

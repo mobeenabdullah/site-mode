@@ -258,20 +258,16 @@ body {
 	gap: 10px;
 }
 
-.text_logo_wrapper {
-	margin-top: 1.25rem;
-}
-
-.image_logo_wrapper, .text_logo_type {
+.image_logo_wrapper, .text_logo_wrapper {
 	display: none;
-	margin-top: 1.25rem;
+	margin-bottom: 2.5rem;
 }
 
 .description_editor {
 	width: 60%;
 }
 
-.hide_socialmedia, .hide_url {
+.hide_socialmedia, .hide_url, .sm_hide_field {
 	display: none;
 }
 
@@ -832,7 +828,7 @@ body {
 	top: 0;
 }
 
-.um_textarea_cover textarea {
+.sm_textarea_cover textarea {
 	width: auto;
 	height: auto;
 	line-height: 3;
@@ -844,11 +840,11 @@ body {
 	font-family: var(--sm-open-sans);
 }
 
-.um_textarea_cover textarea:active, .um_textarea_cover textarea:hover, .um_textarea_cover textarea:focus-visible {
+.sm_textarea_cover textarea:active, .sm_textarea_cover textarea:hover, .sm_textarea_cover textarea:focus-visible {
 	border-color: var(--sm-primary-color);
 }
 
-.um_textarea_cover textarea:focus {
+.sm_textarea_cover textarea:focus {
 	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
 	outline: 1px solid transparent;
 }

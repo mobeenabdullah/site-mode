@@ -47,40 +47,43 @@
                 </div>                               
             </div>
         </div>
-        
-        <div class="option__row image_logo_wrapper">
-            <div class="option__row--label">
-                <span><?php _e('Logo Image','site-mode');?></span>
-            </div>
-            <div class="option__row--field">
-                <?php if ($logo_url) : ?>
-                    <div class="bg_image_wrapper">
-                        <a href="#" class="logo-upload image_btn"></a>
-                        <div class="display_logo_img">
-                            <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
-                        </div>
+        <div class="image_logo_wrapper">
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><?php _e('Logo Image','site-mode');?></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="upload_image_cover">
+                        <?php if ($logo_url) : ?>
+                            <div class="bg_image_wrapper">
+                                <a href="#" class="logo-upload image_btn"></a>
+                                <div class="display_logo_img">
+                                    <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
+                                </div>
+                            </div>
+                            <a href="#" class="button btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                            <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
+                        <?php else : ?>
+                            <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
+                            <a href="#" class="logo-remove btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
+                            <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'site-mode'); ?>>
+                        <?php endif; ?>
                     </div>
-                    <a href="#" class="button btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                    <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
-                <?php else : ?>
-                    <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
-                    <a href="#" class="logo-remove btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                    <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'site-mode'); ?>>
-                <?php endif; ?>
-            </div>
-        </div>
-
-        <div class="option__row text_logo_wrapper">
-            <div class="option__row--label">
-                <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
-            </div>
-            <div class="option__row--field">
-                <div class="sm_input_cover label_top">                        
-                    <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'site-mode'); ?>" />
                 </div>
             </div>
         </div>
-        
+        <div class="text_logo_wrapper">
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover label_top">                        
+                        <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'site-mode'); ?>" />
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="headline"><?php _e('Headline','site-mode');?></label></span>                    
