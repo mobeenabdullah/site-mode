@@ -107,6 +107,12 @@ body {
     border-bottom: calculateRem(1px) solid rgba($secondary-color, 0.1);
     margin-bottom: calculateRem(30px);
   }  
+  &:last-child {
+    & .section__wrapper-content {
+      border-bottom: none;
+      margin-bottom: 0;
+    }    
+  }
 }
 
 
@@ -455,9 +461,9 @@ body {
   }
 }
 
-.section_social_icon {
+.section_social_icons {  
   & .social_icon_section {
-    margin-bottom: calculateRem(40px);
+    margin-bottom: calculateRem(40px);    
   }
 }
 
