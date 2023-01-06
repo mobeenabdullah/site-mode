@@ -342,53 +342,78 @@
             </div>
         </div>
         <div class="section__wrapper-content section_theme">
-        </div>
-    </div>
+        <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+            <?php
+                $site_mode_design_colors      = get_option('site_mode_design_colors');
+                
+                //unserialize data
+                $color_data             = unserialize($site_mode_design_colors);
+                
+                //check if values are set or not and assign default values
+                $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
+                $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
+                $icon_bg_color          = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
+                $icon_border_color      = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
+            ?>
 
+            <div class="social_icon_section">
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><label for="site_mode"><?php _e('Icon Size','site-mode');?></label></span>
+                    </div>
+                    <div class="option__row--field">
+                        <div class="sm_select">                        
+                            <select name="icon-size-setting" id="site_mode">
+                                <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
+                                <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
+                                <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
+                            </select>
+                            <span class="arrow-down"></span>
+                        </div>
+                    </div>
+                </div>
 
-    <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
-        <?php
-            $site_mode_design_colors      = get_option('site_mode_design_colors');
-            
-            //unserialize data
-            $color_data             = unserialize($site_mode_design_colors);
-            
-            //check if values are set or not and assign default values
-            $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
-            $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
-            $icon_bg_color          = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
-            $icon_border_color      = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
-        ?>
-
-        <div class="social_icon_section">
-            <div class="icon_size">
-                <div class="um_select">
-                    <label for="site_mode" class="screen-reading"><?php _e('Icon Size','site-mode');?></label>
-                    <select name="icon-size-setting" id="site_mode">
-                        <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
-                        <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
-                        <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
-                    </select>
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><label for="icon_color"><?php _e('Icons Color','site-mode');?></label></span>
+                    </div>
+                    <div class="option__row--field">
+                        <div class="sm_input_cover">                        
+                            <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($icon_color, 'site-mode');?>">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><label for="icon_bg_color"><?php _e('Icons Background Color','site-mode');?></label></span>
+                    </div>
+                    <div class="option__row--field">
+                        <div class="sm_input_cover">                        
+                            <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($icon_bg_color, 'site-mode'); ?>">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="option__row">
+                    <div class="option__row--label">
+                        <span><label for="icon_border_color"><?php _e('Icons Border Color','site-mode');?></label></span>
+                    </div>
+                    <div class="option__row--field">
+                        <div class="sm_input_cover">                        
+                            <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($icon_border_color,'site-mode'); ?>">
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="icon_color">
-                <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($icon_color, 'site-mode');?>">
-                <label for="icon_color"><?php _e('Icons Color','site-mode');?></label>
+            <?php wp_nonce_field('design-icon-color-settings-save', 'design-icon-color'); ?>
+            <div class="option__row">
+                <div class="option__row--label submit_button">                
+                    <?php submit_button(); ?>
+                </div>            
             </div>
-            <div class="icon_bg_color">
-                <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($icon_bg_color, 'site-mode'); ?>">
-                <label for="icon_bg_color"><?php _e('Icons Background Color','site-mode');?></label>
-            </div>
-            <div class="icon_border_color">
-                <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($icon_border_color,'site-mode'); ?>">
-                <label for="icon_border_color"><?php _e('Icons Border Color','site-mode');?></label>
-            </div>
+        </form>
+
         </div>
-        <?php wp_nonce_field('design-icon-color-settings-save', 'design-icon-color'); ?>
-        <div class="option__row">
-            <div class="option__row--label submit_button">                
-                <?php submit_button(); ?>
-            </div>            
-        </div>
-    </form>
+    </div>
 </div>
