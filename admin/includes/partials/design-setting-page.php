@@ -341,7 +341,7 @@
                 <h3 class="section_title-title">Social Icons</h3>
             </div>
         </div>
-        <div class="section__wrapper-content section_theme">
+        <div class="section__wrapper-content section_social_icons">
         <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
             <?php
                 $site_mode_design_colors      = get_option('site_mode_design_colors');

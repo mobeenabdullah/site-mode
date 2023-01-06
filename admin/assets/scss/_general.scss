@@ -455,6 +455,12 @@ body {
   }
 }
 
+.section_social_icon {
+  & .social_icon_section {
+    margin-bottom: calculateRem(40px);
+  }
+}
+
 
 //  (e) SEO tab
 
