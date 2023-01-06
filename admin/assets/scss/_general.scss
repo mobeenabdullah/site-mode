@@ -112,9 +112,9 @@ body {
     width: calculateRem(300px);
     & span {
       display: block;
-      font-weight: 600;
+      font-weight: 400;
       & label {
-        font-weight: 600;
+        font-weight: 400;
       }
       &.info_text {
         @include fontSize(12px);
@@ -126,6 +126,9 @@ body {
 
   &--field {
     flex: 1;
+    & .role_checkbox {
+      margin-bottom: 1.5rem;
+    }
   }
 }
 

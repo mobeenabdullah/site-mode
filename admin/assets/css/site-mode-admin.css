@@ -111,11 +111,11 @@ body {
 
 .option__row--label span {
 	display: block;
-	font-weight: 600;
+	font-weight: 400;
 }
 
 .option__row--label span label {
-	font-weight: 600;
+	font-weight: 400;
 }
 
 .option__row--label span.info_text {
@@ -127,6 +127,10 @@ body {
 
 .option__row--field {
 	flex: 1;
+}
+
+.option__row--field .role_checkbox {
+	margin-bottom: 1.5rem;
 }
 
 /*-----------------------------------------------
