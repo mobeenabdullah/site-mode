@@ -1,0 +1,60 @@
+.btn_primary {
+    background: var(--sm-button-bg-color) !important;
+    border-color: var(--sm-button-border-color) !important;
+    border-width: $btn-border-width !important;
+    color: var(--sm-base-white-color) !important;
+    padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+    border-radius: 0.2rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    width: auto !important;
+    height: auto !important;
+  
+    &:hover {
+      background-color: darken($btn-bg-color, 3) !important;
+      border-color: darken($btn-bg-color, 3) !important;
+    }
+  }
+  
+  .btn_outline {
+    background: transparent !important;
+    border-color: var(--sm-secondary-color) !important;
+    color: var(--sm-secondary-color) !important;
+    padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+    border-radius: 0.2rem !important;
+    font-size: 0.8rem !important;
+    line-height: 1.5 !important;
+    min-width: calculateRem(136px);
+    width: auto !important;
+    height: auto !important;
+    transition: all .2s;
+    &:hover {
+      background-color: darken($secondary-color, 3) !important;
+      border-color: darken($secondary-color, 3) !important;
+      color: var(--sm-base-white-color) !important;
+    }
+  }
+  
+  .normal_btn {
+    position: relative;
+    width: auto !important;
+    height: auto !important;
+    display: inline-block;
+    background: var(--sm-secondary-color) !important;
+    border-color: var(--sm-secondary-color) !important;
+    color: var(--sm-base-white-color) !important;
+    width: auto !important;
+    height: auto !important;
+  
+    &:hover {
+      background-color: var(--sm-primary-color) !important;
+      border-color: var(--sm-primary-color) !important;
+      color: var(--sm-base-white-color) !important;
+    }
+  }
+  
+  .submit_button {
+    & input {
+      @extend .btn_primary;
+    }
+  }

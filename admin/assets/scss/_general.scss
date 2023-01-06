@@ -29,7 +29,7 @@ Plugin general styling
 }
 
 /*-----------------------------------------------
-//  2.  Utilities
+2.  Utilities
 -----------------------------------------------*/
 .screen-reading {
   border: 0;
@@ -44,15 +44,6 @@ Plugin general styling
   word-wrap: normal;
 }
 
-// .label_top {
-//   & label {
-//     width: 100%;
-//     display: block;
-//     margin-bottom: 1rem;
-//     font-size: $form-field-font-size;
-//   }
-// }
-
 .redirect_options {  
   align-items: start;
   gap: 2rem;
@@ -63,8 +54,12 @@ Plugin general styling
   margin-bottom: calculateRem(15px);
 }
 
+.hide_socialmedia, .hide_field, .sm_hide_field {
+  display: none;
+}
+
 /*-----------------------------------------------
-//  3.  Base structure classes
+3.  Base structure classes
 -----------------------------------------------*/
 body {
   font-size: 16px !important;
@@ -97,9 +92,26 @@ body {
   }
 }
 
+.section__wrapper {
+  .section__wrapper-header {
+    .section_title {
+      margin-bottom: calculateRem(30px);
+      &-title {
+        margin: 0;
+        padding: 0;
+      }
+    }
+  }
+  .section__wrapper-content {
+    padding-bottom: calculateRem(30px);
+    border-bottom: calculateRem(1px) solid rgba($secondary-color, 0.1);
+    margin-bottom: calculateRem(30px);
+  }  
+}
+
 
 /*-----------------------------------------------
-//  4.  Form Layout
+4.  Form Layout
 -----------------------------------------------*/
 .option__row {
   display: flex;
@@ -133,71 +145,12 @@ body {
 }
 
 /*-----------------------------------------------
-//  5.  Buttons
+5.  Buttons
 -----------------------------------------------*/
-.btn_primary {
-  background: var(--sm-button-bg-color) !important;
-  border-color: var(--sm-button-border-color) !important;
-  border-width: $btn-border-width !important;
-  color: var(--sm-base-white-color) !important;
-  padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
-  border-radius: 0.2rem !important;
-  font-size: 1rem !important;
-  line-height: 1.5 !important;
-  width: auto !important;
-  height: auto !important;
-
-  &:hover {
-    background-color: darken($btn-bg-color, 3) !important;
-    border-color: darken($btn-bg-color, 3) !important;
-  }
-}
-
-.btn_outline {
-  background: transparent !important;
-  border-color: var(--sm-secondary-color) !important;
-  color: var(--sm-secondary-color) !important;
-  padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
-  border-radius: 0.2rem !important;
-  font-size: 0.8rem !important;
-  line-height: 1.5 !important;
-  min-width: calculateRem(136px);
-  width: auto !important;
-  height: auto !important;
-  transition: all .2s;
-  &:hover {
-    background-color: darken($secondary-color, 3) !important;
-    border-color: darken($secondary-color, 3) !important;
-    color: var(--sm-base-white-color) !important;
-  }
-}
-
-.normal_btn {
-  position: relative;
-  width: auto !important;
-  height: auto !important;
-  display: inline-block;
-  background: var(--sm-secondary-color) !important;
-  border-color: var(--sm-secondary-color) !important;
-  color: var(--sm-base-white-color) !important;
-  width: auto !important;
-  height: auto !important;
-
-  &:hover {
-    background-color: var(--sm-primary-color) !important;
-    border-color: var(--sm-primary-color) !important;
-    color: var(--sm-base-white-color) !important;
-  }
-}
-
-.submit_button {
-  & input {
-    @extend .btn_primary;
-  }
-}
+@import './components/button';
 
 /*-----------------------------------------------
-//  6.  Tabs
+6.  Tabs
 -----------------------------------------------*/
 
 //  (a) General Tab
@@ -229,9 +182,6 @@ body {
       display: block;
       object-fit: cover;
     }
-  }
-  .image_display & {
-    background-color: red !important;
   }
 }
 
@@ -278,9 +228,7 @@ body {
 }
 
 //  (c) Social Media Tab
-.hide_socialmedia, .hide_url, .sm_hide_field {
-  display: none;
-}
+
 .disable_media_input {
   background-clip: padding-box;
   -webkit-appearance: none !important;
@@ -366,15 +314,15 @@ body {
       display: none !important;
       align-items: center;
       @extend %sort_icon;
-      width: 30px;
-      height: 30px;
+      width: calculateRem(30px);
+      height: calculateRem(30px);
       position: relative;
       z-index: 2;
       transition: opacity 0.2s ease-in-out, width 0.2s ease-in-out, height 0.2s ease-in-out;
       & button {
         & svg {
-          width: 18px;
-          height: 18px;
+          width: calculateRem(18px);
+          height: calculateRem(18px);
         }
       }
     }
@@ -382,115 +330,131 @@ body {
 }
 
 //  (d) Design Tab
-.template__wrapper {
-  margin-bottom: calculateRem(20px);
-  & .template_options {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 40px;
-  }
-}
 
-.template_thumb {
-  @include flex_mixin(flex, null, null, column, null);
-  width: 100%;
-  height: auto;
-  position: relative;
-  background: var(--sm-base-white-color);
-  border: 1px solid rgba($base-black-color,0.1);
-  overflow: hidden;
-  border-radius: 0.25rem;
-  & .radio-img {
-    display: flex;
-    width: 100%;
-    height: auto;
-    & > .image {
-      cursor: pointer;
-      aspect-ratio: 3 / 2;
+.section_theme {
+  .template__wrapper {
+    margin-bottom: calculateRem(40px);
+    & .template_options {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 40px;
     }
   }
-  & .image {
-    opacity: 0.8;
+  
+  .template_thumb {
+    @include flex_mixin(flex, null, null, column, null);
     width: 100%;
     height: auto;
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-color: gray;
-    background-size: cover;
-    display: inline-block;
-    transition: all .2s;
-    &:hover {
-      opacity: 1;
-    }
-  }
-  & .template_actions {
-    @include flex_mixin(flex, space-between, center, null, 10px);
-    padding: 20px;
-    border-top: 1px solid rgba($base-white-color,0.4);
-    & .template_title {
-      &-title {
-        margin: 0;
-        padding: 0;
-        font-size: 15px;
-        font-weight: 600;
-        height: 18px;
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
-    & .active_template-btn {
-      & a, span {
-        display: inline-block;
-        text-decoration: none;
-        font-size: 13px;
-        line-height: 1.8;
-        min-height: 30px;
-        margin: 0;
-        padding: 0 10px;
+    position: relative;
+    background: var(--sm-base-white-color);
+    border: 1px solid rgba($base-black-color,0.1);
+    overflow: hidden;
+    border-radius: 0.25rem;
+    & .radio-img {
+      display: flex;
+      width: 100%;
+      height: auto;
+      & > .image {
         cursor: pointer;
-        border-width: 1px;
-        border-style: solid;
-        border-radius: 3px;
-        white-space: nowrap;
-        box-sizing: border-box;
-        background: #2271b1;
-        border-color: #2271b1;
-        color: var(--sm-base-white-color);
-        text-shadow: none;
-        vertical-align: baseline;
-        transition: all .2s;
-        &:hover {
-          background: #135e96;
-          border-color: #135e96;
-          color: var(--sm-base-white-color)       }
+        aspect-ratio: 3 / 2;
       }
     }
-  }
-}
-.activated_template {
-  background-color: #141414;
-  & .template_actions {
-    & .template_title {
-      &-title {
-        color: var(--sm-base-white-color);
+    & .image {
+      opacity: 0.8;
+      width: 100%;
+      height: auto;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-color: gray;
+      background-size: cover;
+      display: inline-block;
+      transition: all .2s;
+      &:hover {
+        opacity: 1;
       }
     }
-    & .active_template-btn {
-      & span {
-        background-color: #d7d7d8;
-        border-color: #d7d7d8;
-        color: #515151;
-        cursor: not-allowed;
-        &:hover {
-          background-color: #d7d7d8;
-          border-color: #d7d7d8;
-          color: #515151;
+    & .template_actions {
+      @include flex_mixin(flex, space-between, center, null, 10px);
+      padding: 20px;
+      border-top: 1px solid rgba($base-white-color,0.4);
+      & .template_title {
+        &-title {
+          margin: 0;
+          padding: 0;
+          font-size: 15px;
+          font-weight: 600;
+          height: 18px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+      }
+      & .active_template-btn {
+        & a, span {
+          display: inline-block;
+          text-decoration: none;
+          font-size: 13px;
+          line-height: 1.8;
+          min-height: 30px;
+          margin: 0;
+          padding: 0 10px;
+          cursor: pointer;
+          border-width: 1px;
+          border-style: solid;
+          border-radius: 3px;
+          white-space: nowrap;
+          box-sizing: border-box;
+          background: #2271b1;
+          border-color: #2271b1;
+          color: var(--sm-base-white-color);
+          text-shadow: none;
+          vertical-align: baseline;
+          transition: all .2s;
+          &:hover {
+            background: #135e96;
+            border-color: #135e96;
+            color: var(--sm-base-white-color)       }
         }
       }
     }
   }
+  .activated_template {
+    background-color: #141414;
+    & .template_actions {
+      & .template_title {
+        &-title {
+          color: var(--sm-base-white-color);
+        }
+      }
+      & .active_template-btn {
+        & span {
+          background-color: #d7d7d8;
+          border-color: #d7d7d8;
+          color: #515151;
+          cursor: not-allowed;
+          &:hover {
+            background-color: #d7d7d8;
+            border-color: #d7d7d8;
+            color: #515151;
+          }
+        }
+      }
+    }
+  }  
 }
+
+.section_logo {
+  & .background_logo_wrapper {
+    margin-bottom: calculateRem(40px);
+  }
+}
+
+.section_colors_fonts {
+  & .description_section {
+    margin-bottom: calculateRem(40px);
+  }
+}
+
 
 //  (e) SEO tab
 
