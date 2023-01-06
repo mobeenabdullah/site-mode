@@ -335,7 +335,7 @@
    
 
 
-    <div class="section__wrapper">
+    <div class="section__wrapper social_wrapper">
         <div class="section__wrapper-header">
             <div class="section_title">
                 <h3 class="section_title-title">Social Icons</h3>

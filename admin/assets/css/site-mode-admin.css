@@ -111,6 +111,11 @@ body {
 	margin-bottom: 1.875rem;
 }
 
+.section__wrapper:last-child .section__wrapper-content {
+	border-bottom: none;
+	margin-bottom: 0;
+}
+
 /*-----------------------------------------------
 4.  Form Layout
 -----------------------------------------------*/
@@ -519,7 +524,7 @@ body {
 	margin-bottom: 2.5rem;
 }
 
-.section_social_icon .social_icon_section {
+.section_social_icons .social_icon_section {
 	margin-bottom: 2.5rem;
 }
 
