@@ -161,21 +161,49 @@ class Site_Mode_Design
             esc_html($this->load_templates());
             exit;
         }
+        if(is_user_logged_in() && $this->status == '1' && $_GET['site_mode_preview'] == 'true') {
+            esc_html($this->load_templates());
+            exit;
+        }
+
+        if(is_user_logged_in() && $this->status == '1') {
+            esc_html($this->load_templates());
+            exit;
+        }
+
     }
 
     public function load_templates()
     {
 
-        if ($this->enable_template == '1') {
+        if($this->mode==='redirect') {
+            if(!empty($this->status) && !empty($this->url)) {
+                wp_redirect( $this->url, 301 );
+            }
+        }
+        else if($this->mode==='coming-soon') {
+            status_header( 503);
+            nocache_headers();
+        }
+        else if($this->mode === 'maintenance') {
+            status_header( 200 );
+            nocache_headers();
+        }
+        else {
+            status_header( 200 );
+            nocache_headers();
+        }
+
+        if ($this->enable_template == '1' || $_GET['template'] == 'foodTemplate') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
             exit;
-        } elseif ($this->enable_template == '2') {
+        } elseif ($this->enable_template == '2' || $_GET['template'] == 'constructionTemplate') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
             exit;
-        } elseif ($this->enable_template == '3') {
+        } elseif ($this->enable_template == '3' || $_GET['template'] == 'fashionTemplate') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
             exit;
-        } elseif ($this->enable_template == '4') {
+        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travelTemplate') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
             exit;
         } else {
