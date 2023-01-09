@@ -54,8 +54,8 @@ Plugin general styling
   margin-bottom: calculateRem(15px);
 }
 
-.hide_socialmedia, .hide_field, .sm_hide_field {
-  display: none;
+.sm_hide_field {
+  display: none !important;
 }
 
 /*-----------------------------------------------
@@ -342,7 +342,7 @@ body {
     margin-bottom: calculateRem(40px);
     & .template_options {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       grid-gap: 40px;
     }
   }

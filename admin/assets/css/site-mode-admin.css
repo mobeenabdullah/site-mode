@@ -58,8 +58,8 @@ Plugin general styling
 	margin-bottom: 0.9375rem;
 }
 
-.hide_socialmedia, .hide_field, .sm_hide_field {
-	display: none;
+.sm_hide_field {
+	display: none !important;
 }
 
 /*-----------------------------------------------
@@ -404,7 +404,7 @@ body {
 
 .section_theme .template__wrapper .template_options {
 	display: grid;
-	grid-template-columns: repeat(4, 1fr);
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 40px;
 }
 

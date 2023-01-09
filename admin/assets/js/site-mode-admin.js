@@ -285,7 +285,7 @@ jQuery(function ($) {
     }
 
     /*------------------------------------------------
-    1.  Mode change on general tab
+    1.  Show and hide fields on change
     2.  Google Analytic on advance tab
     3.  Tabs setting page
     4.  Logo Type
@@ -302,27 +302,14 @@ jQuery(function ($) {
     
     $(document).ready(function () {
 
-        // 1.   Mode change on general tab 
+        // 1.   Show and hide fields on change
         const siteMode = $('#site_mode');
         const redirectOption = $('.redirect_options');
-
-        function showHideURLOptions() {            
-            if($(this).val() === 'redirect') {
-                redirectOption.removeClass('sm_hide_field');                
-            } else {
-                redirectOption.addClass('sm_hide_field');
-                
-            }
-        }
-        siteMode.on('change', showHideURLOptions);
-
-        // 2.   Google Analytic on advance tab
         const googleAnalyticSelect = $('#google_analytics');
         const analyticId = $('.analytic_id');
         const analyticCode = $('.analytic_code');    
 
-        function showHideGoogleAnalytics() {  
-            console.log($(this).val());
+        function showHideGoogleAnalytics() {              
             if($(this).val() === 'analytics-id') {
                 analyticId.removeClass('sm_hide_field');                                        
             } else {
@@ -336,8 +323,16 @@ jQuery(function ($) {
                 analyticCode.addClass('sm_hide_field');       
                 analyticId.removeClass('sm_hide_field');     
             }
+            if($(this).val() === 'redirect') {
+                redirectOption.removeClass('sm_hide_field');                
+            } else {
+                redirectOption.addClass('sm_hide_field');
+                
+            }
         }
         googleAnalyticSelect.on('change', showHideGoogleAnalytics);
+        siteMode.on('change', showHideGoogleAnalytics);
+
 
         // 3.  Tabs setting page
         const tabLink = $('.sm_tabs li');
@@ -377,18 +372,37 @@ jQuery(function ($) {
 
         // 5.   Show Login URL field
         const loginUrlField = $('.login_url_field');
-        const enableLoginIcon = $('.enable_login_icon');        
+        const enableLoginIcon = $('.enable_login_icon');  
+        
+        
+        // function showHideField(clickedElement, hideElement) {
+        //     console.log('test');
+        //     if($(clickedElement).is(':checked')) {
+        //         $(hideElement).removeClass('sm_hide_field');
+        //     } else {
+        //         $(hideElement).addClass('sm_hide_field');
+        //     }
+        // }
+
+        // enableLoginIcon.on('click', showHideField(enableLoginIcon, loginUrlField));
+
+        
 
         function enableDisableLoginIcon() {            
             if(enableLoginIcon.is(':checked')) {
-                loginUrlField.removeClass('hide_url');                
+                loginUrlField.removeClass('sm_hide_field');                
             } else {
-                loginUrlField.addClass('hide_url');
+                loginUrlField.addClass('sm_hide_field');
                 
             }
         } 
-        
+
         enableLoginIcon.on('click', enableDisableLoginIcon);  
+
+
+
+
+
         
         // 6.  Sort social media
         const smSortable = $( "#sm_sortable" );
