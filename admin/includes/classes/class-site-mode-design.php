@@ -33,8 +33,11 @@ class Site_Mode_Design
         protected $icon_color           = '';
         protected $icon_bg_color        = '';
         protected $icon_border_color    = '';
-        protected $status              = '';
+        protected $status               = '';
+        protected $mode                 = '';
         protected $site_mode_general    = array();
+        protected $site_mode_design     = array();
+
 
 
 
@@ -48,6 +51,7 @@ class Site_Mode_Design
         $un_data = unserialize($this->site_mode_general);
         //check if the values are set or not and then assign them to the variables
         $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+        $this->mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
     }
 
     public function ajax_site_mode_design() {
@@ -102,11 +106,6 @@ class Site_Mode_Design
 
     public function ajax_site_mode_design_font() {
 
-//            $nonce = $_POST['design-fonts'];
-//            if(!wp_verify_nonce( $nonce, 'design-fonts-settings-save' )) {
-//                die(__('Security Check', 'site-mode'));
-//            }
-//            else {
                 $data = array(
                     'heading_font_family'               => $_POST['heading-font-family-setting'],
                     'heading_font_size'                 => $_POST['heading-font-size-setting'],
@@ -115,7 +114,6 @@ class Site_Mode_Design
 
 
                 );
-//            }
 
             if(get_option( 'site_mode_design_font' )) {
                 update_option('site_mode_design_font',serialize($data));
@@ -161,7 +159,7 @@ class Site_Mode_Design
             esc_html($this->load_templates());
             exit;
         }
-        if(is_user_logged_in() && $_GET['site_mode_preview'] == 'true') {
+        if(is_user_logged_in() && $_GET['site-mode-preview'] == 'true') {
             esc_html($this->load_templates());
             exit;
         }

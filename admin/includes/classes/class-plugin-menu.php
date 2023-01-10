@@ -50,7 +50,6 @@ class Site_Mode_Menu
             'site-mode',
             [$this, 'site_mode_settings_page_cb']
         );
-
         add_submenu_page(
             'site-mode',
             'about',
@@ -74,8 +73,6 @@ class Site_Mode_Menu
             <div class="site_mode__wrap--cover">
                 <div class="site_mode__wrap--cover-content">
                     <?php
-//                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/menu_nav.php';
-//                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/admin-page-form.php';
                         require_once plugin_dir_path(dirname(__FILE__)) . 'partials/nav-tab.php';
                     ?>
                 </div>

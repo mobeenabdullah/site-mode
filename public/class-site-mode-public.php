@@ -121,19 +121,15 @@ class Site_Mode_Public
 
         switch (!empty($status)) {
             case ($this->enable_template == '1'):
-                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
                 break;
             case ($this->enable_template == '2'):
-                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
                 break;
             case ($this->enable_template == '3'):
-                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
                 break;
             case ($this->enable_template == '4'):
-                echo $this->enable_template;
                 wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
                 break;
             default:
