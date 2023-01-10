@@ -6,7 +6,7 @@
 ?>
 <?php require_once 'header.php' ?>
 <main>
-    <section id="under_constructon" class="wrapper" style="background-image: url('<?php if($bg_url) : echo esc_url($bg_url); else : echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); endif; ?>')">
+    <section id="under_constructon" class="wrapper" style="background-image: url('<?php  echo esc_url(plugin_dir_url( __FILE__ ).'../img/bg-placeholder.jpg'); ?>')">
 
         <!--Section Overlay-->
         <div class="wrapper_overlay"></div>
