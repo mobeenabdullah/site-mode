@@ -18,7 +18,6 @@
                     $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
                 ?>                
                 <div class="template__wrapper">
-                    <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" class="preview-btn" target="_blank"><?php _e('Preview Active Theme','site-mode');?></a>
                     <div class="template_options">            
                         <div class="template_thumb <?php echo ($enable_template== '1') ? 'activated_template' : '' ?>">
                             <div class="radio-img">
@@ -28,7 +27,7 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Food Template','site-mode');?></h2>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=foodTemplate")); ?>" class="preview-btn" target="_blank">Preview</a>
+                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=food_template")); ?>" class="preview-btn" target="_blank">Preview</a>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="one" name="design-template-enable" value="1" <?php echo ($enable_template == '1') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
@@ -43,7 +42,7 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Construction Template','site-mode');?></h2>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=constructionTemplate")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="two" name="design-template-enable" value="2" <?php echo ($enable_template == '2') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
@@ -58,7 +57,7 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Fashion Template','site-mode');?></h2>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashionTemplate")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashion_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="three" name="design-template-enable" value="3" <?php echo ($enable_template == '3') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
@@ -73,7 +72,7 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Travel Template','site-mode');?></h2>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=travelTemplate")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=travel_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="four" name="design-template-enable" value="4" <?php echo ($enable_template == '4') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
