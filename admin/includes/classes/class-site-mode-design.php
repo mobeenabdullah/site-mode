@@ -161,12 +161,12 @@ class Site_Mode_Design
             esc_html($this->load_templates());
             exit;
         }
-        if(is_user_logged_in() && $this->status == '1' && $_GET['site_mode_preview'] == 'true') {
+        if(is_user_logged_in() && $_GET['site_mode_preview'] == 'true') {
             esc_html($this->load_templates());
             exit;
         }
 
-        if(is_user_logged_in() && $this->status == '1') {
+        if(is_user_logged_in()) {
             esc_html($this->load_templates());
             exit;
         }
