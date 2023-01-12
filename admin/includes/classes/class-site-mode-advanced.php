@@ -24,6 +24,7 @@ class Site_Mode_Advanced
 {
 
         protected $ga_id            = '';
+        protected $fb_id            = '';
         protected $custom_cs        = '';
         protected $enable_rest_api  = false;
         protected $enable_feed      = false;
@@ -45,6 +46,7 @@ class Site_Mode_Advanced
         $this->site_mode_advanced = unserialize($this->site_mode_advanced);
         if($this->site_mode_advanced) {
             $this->ga_id            = $this->site_mode_advanced['ga_id'];
+            $this->fb_id            = $this->site_mode_advanced['fb_id'];
             $this->custom_cs        = $this->site_mode_advanced['custom_css'];
             $this->enable_rest_api  = $this->site_mode_advanced['enable_rest_api'];
             $this->enable_feed      = $this->site_mode_advanced['enable_feed'];
@@ -100,27 +102,12 @@ class Site_Mode_Advanced
             $data = array(
                 'ga_type'               => $_POST['advanced-analytics-type-setting'],
                 'ga_id'                 => $_POST['advanced-ga-id-setting'],
-                'ga_code'               => $_POST['advanced-ga-code-setting'],
+                'fb_id'                 => $_POST['advanced-facebook-id-setting'],
                 'custom_css'            => $_POST['advanced-custom-css-setting'],
                 'enable_rest_api'       => $_POST['advanced-wp-rest-api-setting'],
                 'enable_feed'           => $_POST['advanced-wp-feed-setting'],
-                'include_pages'         => $_POST['advanced-include-pages-setting'],
-                'exclude_pages'         => $_POST['advanced-exclude-pages-setting'],
                 'header_code'           => $_POST['advanced-header-code-setting'],
                 'footer_code'           => $_POST['advanced-footer-code-setting'],
-                'admin_role'            => $_POST['advanced-user-administrator-role-setting'],
-                'editor_role'           => $_POST['advanced-user-editor-role-setting'],
-                'author_role'           => $_POST['advanced-user-author-role-setting'],
-                'contributor_role'      => $_POST['advanced-user-contributor-role-setting'],
-                'subscriber_role'       => $_POST['advanced-user-subscriber-role-setting'],
-                'user_role'             => array(
-                    'administrator' => $_POST['advanced-administrator-role-setting'],
-                    'editor'        => $_POST['advanced-editor-role-setting'],
-                    'author'        => $_POST['advanced-author-role-setting'],
-                    'contributor'   => $_POST['advanced-contributor-role-setting'],
-                    'subscriber'    => $_POST['advanced-subscriber-role-setting'],
-                ),
-
 
             );
         }
@@ -147,12 +134,12 @@ class Site_Mode_Advanced
 
 
 
-    public function site_mode_google_analytics_code()
-    {
-        if (!empty($this->ga_code)) {
-            echo $this->ga_code;
-        }
-    }
+//    public function site_mode_google_analytics_code()
+//    {
+//        if (!empty($this->ga_code)) {
+//            echo $this->ga_code;
+//        }
+//    }
 
     public function site_mode_google_analytics_id()
     {
@@ -169,6 +156,26 @@ class Site_Mode_Advanced
             </script>
 
         <?php
+        }
+        if(!empty($this->fb_id)) { ?>
+
+            <script>
+                        !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                  n.queue=[];t=b.createElement(e);t.async=!0;
+                  t.src=v;s=b.getElementsByTagName(e)[0];
+                  s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '{<?php echo $this->fb_id; ?>}');
+              fbq('track', 'PageView');
+            </script>
+            <noscript>
+              <img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id={your-pixel-id-goes-here}&ev=PageView&noscript=1"/>
+            </noscript>
+<?php
         }
     }
 

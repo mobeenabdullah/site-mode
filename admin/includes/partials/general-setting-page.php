@@ -5,14 +5,16 @@
             $un_data = unserialize($template);
 
         //check if the values are set or not and then assign them to the variables
-            $site_mode_title      = isset($un_data['site_mode_title']) ? $un_data['site_mode_title'] : '';
-            $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-            $mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
-            $url            = isset($un_data['url'] ) ? $un_data['url']  : '';
-            $delay          = isset($un_data['delay'] ) ? $un_data['delay']  : '0';
-            $login_icon     = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
-            $login_url      = isset($un_data['login_url'] ) ? $un_data['login_url']  : 'example.com';
-        ?>
+            $site_mode_title        = isset($un_data['site_mode_title']) ? $un_data['site_mode_title'] : '';
+            $status                 = isset($un_data['status'] ) ? $un_data['status']  : '';
+            $include_pages          = isset($uns_data['include_pages']) ? $uns_data['include_pages'] : '';
+            $mode                   = isset($un_data['mode'] ) ? $un_data['mode']  : '';
+            $url                    = isset($un_data['url'] ) ? $un_data['url']  : '';
+            $delay                  = isset($un_data['delay'] ) ? $un_data['delay']  : '0';
+            $login_icon             = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
+            $login_url              = isset($un_data['login_url'] ) ? $un_data['login_url']  : 'example.com';
+
+    ?>
         
         <div class="option__row">
             <div class="option__row--label">
@@ -25,13 +27,43 @@
                 </div>
             </div>
         </div>
-        
+
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><?php _e('Show site to these roles', 'site-mode')?></span>
+            </div>
+            <div class="option__row--field">
+                <?php  global  $wp_roles; ?>
+                <?php foreach ( $wp_roles->roles as $key=>$value ): ?>
+                    <div class="sm_checkbox_wrapper role_checkbox">
+                        <input type="checkbox" id="<?php echo $key; ?>" name="site-mode-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
+                        <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><label for="whitelist_include"><?php _e('Whitelist Pages', 'site-mode')?></label></span>
+            </div>
+            <div class="option__row--field">
+                <?php $all_pages = get_pages(); ?>
+                <div class="sm_select">
+                    <select name="site-mode-include-pages-setting" id="whitelist_include">
+                        <?php foreach($all_pages as $value ) : ?>
+                            <option value="<?php echo $value->post_name; ?>" <?php selected($value->post_name, $include_pages);?>><?php echo $value->post_name;?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <span class="arrow-down"></span>
+                </div>
+            </div>
+        </div>
 
         <!-- Mode Setting -->
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="site_mode"><?php _e('Mode','site-mode');?></label></span>
-                <span class="info_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus at eros tincidunt elementum.</span>
+                <span class="info_text"><?php _e('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus at eros tincidunt elementum.','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_select">                    
