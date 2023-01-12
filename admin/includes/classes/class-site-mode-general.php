@@ -48,13 +48,20 @@ class Site_Mode_General
             wp_send_json_error( 'Invalid nonce' );
         }
         else {
+
+             global  $wp_roles;
+                foreach ( $wp_roles->roles as $key=>$value ):
+                    $user_roles["${key}-role-setting"] = $_POST["site-mode-${key}-role-setting"];
+               endforeach;
             $data = array(
-                "status"      =>$_POST['site-mode-status-settings'],
-                "mode"        =>$_POST['site-mode-mode-settings'],
-                "url"         =>$_POST['site-mode-redirect-url-settings'],
-                'delay'       =>$_POST['site-mode-delay-settings'],
-                'login_icon'  =>$_POST['site-mode-login-icon-setting'],
-                'login_url'   =>$_POST['site-mode-login-url-setting'],
+                "status"                =>$_POST['site-mode-status-settings'],
+                'include_pages'         =>$_POST['site-mode-include-pages-setting'],
+                "mode"                  =>$_POST['site-mode-mode-settings'],
+                "url"                   =>$_POST['site-mode-redirect-url-settings'],
+                'delay'                 =>$_POST['site-mode-delay-settings'],
+                'login_icon'            =>$_POST['site-mode-login-icon-setting'],
+                'login_url'             =>$_POST['site-mode-login-url-setting'],
+                'user_role'             => $user_roles,
             );
         }
 
@@ -70,13 +77,48 @@ class Site_Mode_General
 
     }
 
+    public function load_template_on_call()
+    {
+        $this->site_mode_general = get_option('site_mode_general');
+        $un_data                 = unserialize($this->site_mode_general);
+        if ( $this->status == '1' ) {
 
-    public function redirect_status_code() {
+            $current_user = wp_get_current_user();
+            $user_roles = $current_user->roles;
+            if ($user_roles[0] != $un_data['user_role']["administrator-role-setting"]) {
+//                $this->loader->add_action('template_redirect', $this->classes_loader->get_general(), 'load_template_on_call');
+
+
+            } else {
+                echo 'no';
+            }
+        }
+
+        if (!is_user_logged_in()) {
+
+            esc_html($this->load_templates());
+            exit;
+        }
+        if(is_user_logged_in() && isset($_GET['site-mode-preview']) == 'true') {
+            esc_html($this->load_templates());
+            exit;
+        }
+
+        if(is_user_logged_in()) {
+            esc_html($this->load_templates());
+            exit;
+        }
+
+
+
+    }
+
+    public function load_templates()
+    {
 
         if($this->mode==='redirect') {
             if(!empty($this->status) && !empty($this->url)) {
-//                wp_redirect( $this->url, 301 );
-                exit;
+                wp_redirect( $this->url, 301 );
             }
         }
         else if($this->mode==='coming-soon') {
@@ -92,6 +134,22 @@ class Site_Mode_General
             nocache_headers();
         }
 
+        if ($this->enable_template == '1' || $_GET['template'] == 'foodTemplate') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+            exit;
+        } elseif ($this->enable_template == '2' || $_GET['template'] == 'constructionTemplate') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
+            exit;
+        } elseif ($this->enable_template == '3' || $_GET['template'] == 'fashionTemplate') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
+            exit;
+        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travelTemplate') {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
+            exit;
+        } else {
+            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+            exit;
+        }
     }
 
 }

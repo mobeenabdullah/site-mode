@@ -60,6 +60,9 @@ class Site_Mode
 	protected $version;
     protected $classes_loader = '';
 
+    protected $utilities = '';
+
+
 	/**
 	 * Define the core functionality of the plugin.
 	 *
@@ -72,6 +75,8 @@ class Site_Mode
 	public function __construct()
 	{
 
+//        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/utilities.php';
+//        $this->utilities = new Utilities();
 
 		if (defined('SITE_MODE_VERSION')) {
 			$this->version = SITE_MODE_VERSION;
@@ -137,7 +142,6 @@ class Site_Mode
 
 
 
-
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
@@ -165,6 +169,7 @@ class Site_Mode
 		$plugin_i18n = new Site_Mode_i18n();
 
 		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
+
 	}
 
 	/**
@@ -229,11 +234,11 @@ class Site_Mode
 		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-        $this->loader->add_action('template_redirect', $this->classes_loader->get_design(), 'load_template_on_call');
+//        $this->loader->add_action('template_redirect', $this->classes_loader->get_design(), 'load_template_on_call');
 
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_code');
+//        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_code');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_id');
         $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
         $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'site_mode_rest_api');
@@ -247,15 +252,7 @@ class Site_Mode
         $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-
-        $template =  get_option('site_mode_general');
-        $un_data = unserialize($template);
-        //check if the values are set or not and then assign them to the variables
-        $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-        if(!empty($status ) && $status == '1'){
-//            $this->loader->add_action('load_template_on_call', $this->classes_loader->get_design(), 'load_template_on_call');
-//            $this->classes_loader->get_general()->redirect_status_code();
-        }
+        // init hook
 
 	}
 
@@ -309,6 +306,8 @@ class Site_Mode
 	{
 		return $this->version;
 	}
+
+
 
 
 }

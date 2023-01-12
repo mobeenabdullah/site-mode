@@ -47,11 +47,6 @@ class Site_Mode_Design
         $this->site_mode_design = unserialize($this->site_mode_design);
         $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
 
-        $this->site_mode_general =  get_option('site_mode_general');
-        $un_data = unserialize($this->site_mode_general);
-        //check if the values are set or not and then assign them to the variables
-        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-        $this->mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
     }
 
     public function ajax_site_mode_design() {
@@ -150,64 +145,6 @@ class Site_Mode_Design
             wp_send_json_success(get_option( 'site_mode_design_colors' ));
         }
         die();
-    }
-
-    public function load_template_on_call()
-    {
-        if (!is_user_logged_in() &&  $this->status == '1' ) {
-
-            esc_html($this->load_templates());
-            exit;
-        }
-        if(is_user_logged_in() && $_GET['site-mode-preview'] == 'true') {
-            esc_html($this->load_templates());
-            exit;
-        }
-
-        if(is_user_logged_in()) {
-            esc_html($this->load_templates());
-            exit;
-        }
-
-    }
-
-    public function load_templates()
-    {
-
-        if($this->mode==='redirect') {
-            if(!empty($this->status) && !empty($this->url)) {
-                wp_redirect( $this->url, 301 );
-            }
-        }
-        else if($this->mode==='coming-soon') {
-            status_header( 503);
-            nocache_headers();
-        }
-        else if($this->mode === 'maintenance') {
-            status_header( 200 );
-            nocache_headers();
-        }
-        else {
-            status_header( 200 );
-            nocache_headers();
-        }
-
-        if ($this->enable_template == '1' || $_GET['template'] == 'foodTemplate') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
-            exit;
-        } elseif ($this->enable_template == '2' || $_GET['template'] == 'constructionTemplate') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
-            exit;
-        } elseif ($this->enable_template == '3' || $_GET['template'] == 'fashionTemplate') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
-            exit;
-        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travelTemplate') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
-            exit;
-        } else {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
-            exit;
-        }
     }
 
 }
