@@ -20,7 +20,7 @@
                 <div class="template__wrapper">
                     <div class="template_options">  
 
-                        <div class="template_card active_template">
+                        <div class="template_card <?php echo ($enable_template== '1') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
@@ -35,7 +35,7 @@
                             </div>                            
                         </div>
 
-                        <div class="template_card">
+                        <div class="template_card <?php echo ($enable_template== '2') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
@@ -50,7 +50,7 @@
                             </div>                            
                         </div>
 
-                        <div class="template_card">
+                        <div class="template_card <?php echo ($enable_template== '3') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
@@ -65,7 +65,7 @@
                             </div>                            
                         </div>
 
-                        <div class="template_card">
+                        <div class="template_card <?php echo ($enable_template== '4') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
