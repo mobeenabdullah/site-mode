@@ -35,7 +35,6 @@ class Site_Mode_Design
         protected $icon_border_color    = '';
         protected $status               = '';
         protected $mode                 = '';
-        protected $site_mode_general    = array();
         protected $site_mode_design     = array();
 
 
