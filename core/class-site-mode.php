@@ -62,6 +62,11 @@ class Site_Mode
 
     protected $utilities = '';
 
+    protected $site_mode_general = '';
+
+    protected $status = '';
+
+
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -252,7 +257,16 @@ class Site_Mode
         $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        // init hook
+        // redirect template
+        $this->site_mode_general = get_option('site_mode_general');
+        $un_data                 = unserialize($this->site_mode_general);
+
+        //check if the values are set or not and then assign them to the variables
+        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+        if(!empty($this->status) && $this->status == '1'){
+            $this->loader->add_action('template_redirect', $this->classes_loader->get_general(), 'load_template_on_call');
+        }
+
 
 	}
 
@@ -306,8 +320,6 @@ class Site_Mode
 	{
 		return $this->version;
 	}
-
-
 
 
 }
