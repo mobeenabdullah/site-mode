@@ -140,22 +140,55 @@ class Site_Mode_General
             nocache_headers();
         }
 
-        if ($this->enable_template == '1' || $_GET['template'] == 'food_template') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
-            exit;
-        } elseif ($this->enable_template == '2' || $_GET['template'] == 'construction_template') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
-            exit;
-        } elseif ($this->enable_template == '3' || isset($_GET['template']) == 'fashion_template') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
-            exit;
-        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travel_template') {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
-            exit;
-        } else {
-            require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
-            exit;
+        if(!is_user_logged_in()){
+
+            if ( $this->enable_template == '1' ) {
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+                exit;
+            } elseif ($this->enable_template == '2') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
+                exit;
+            } elseif ($this->enable_template == '3' ) {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
+                exit;
+            } elseif ($this->enable_template == '4') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
+                exit;
+            } else {
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+                exit;
+            }
         }
+        else {
+            $template_preview = isset($_GET['template']) ? $_GET['template'] : '';
+
+            if ( $template_preview === 'food_template') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+                exit;
+            } elseif ( $template_preview === 'construction_template') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
+                exit;
+            } elseif ( $template_preview === 'fashion_template') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
+                exit;
+            } elseif ( $template_preview === 'travel_template') {
+
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
+                exit;
+            } else {
+                require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
+                exit;
+            }
+
+
+        }
+
     }
 
 }
