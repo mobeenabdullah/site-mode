@@ -82,7 +82,7 @@ class Site_Mode_Admin
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
-
+		wp_enqueue_style('select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/site-mode-admin.css', array(), $this->version, 'all');
 	}
 
@@ -108,7 +108,7 @@ class Site_Mode_Admin
 
         //enqueue jquery
         wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-ui-draggable', array('jquery'), $this->version, false);
+		wp_enqueue_script('jquery-ui-draggable', array('jquery'), $this->version, false);		
         if (!did_action('wp_enqueue_media')) {
             wp_enqueue_media();
         }
@@ -118,6 +118,6 @@ class Site_Mode_Admin
             'ajax_nonce'    =>wp_create_nonce('site_mode_nonce_field'),
         ));
 
+		wp_enqueue_script ( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js' );
     }
-
 }

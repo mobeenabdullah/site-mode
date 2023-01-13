@@ -657,6 +657,9 @@ jQuery(function ($) {
                 }
             });    
         });
+
+        // Multi Select 
+        $('.js-example-basic-multiple').select2();
     })
 
 });

@@ -22,10 +22,10 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Food Template','site-mode');?></h2>
                                 </div>
-                                <label class="um_toggle">
+                                <!-- <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="one" name="design-template-enable" value="1" <?php echo ($enable_template == '1') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
-                                </label>
+                                </label> -->
                             </div>
                         </div>
                         <div class="template_thumb <?php echo ($enable_template == '2') ? 'activated_template' : '' ?>">
@@ -36,10 +36,10 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Construction Template','site-mode');?></h2>
                                 </div>
-                                <label class="um_toggle">
+                                <!-- <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="two" name="design-template-enable" value="2" <?php echo ($enable_template == '2') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
-                                </label>
+                                </label> -->
                             </div>
 
                         </div>
@@ -52,10 +52,10 @@
                                     <h2 class="template_title-title"><?php _e('Fashion Template','site-mode');?></h2>
                                 </div>
 
-                                <label class="um_toggle">
+                                <!-- <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="three" name="design-template-enable" value="3" <?php echo ($enable_template == '3') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
-                                </label>
+                                </label> -->
                             </div>
                         </div>
                         <div class="template_thumb <?php echo ($enable_template == '4') ? 'activated_template' : '' ?>">
@@ -66,10 +66,10 @@
                                 <div class="template_title">
                                     <h2 class="template_title-title"><?php _e('Travel Template','site-mode');?></h2>
                                 </div>
-                                <label class="um_toggle">
+                                <!-- <label class="um_toggle">
                                     <input type="radio" class="toggle_input" id="four" name="design-template-enable" value="4" <?php echo ($enable_template == '4') ? 'checked' : ''?> />
                                     <div class="toggle-control"></div>
-                                </label>
+                                </label> -->
                             </div>
                         </div>
                     </div>

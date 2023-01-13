@@ -18,67 +18,68 @@
                     $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
                 ?>                
                 <div class="template__wrapper">
-                    <div class="template_options">            
-                        <div class="template_thumb <?php echo ($enable_template== '1') ? 'activated_template' : '' ?>">
-                            <div class="radio-img">
-                                <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>)"></div>
-                            </div>
-                            <div class="template_actions">
-                                <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Food Template','site-mode');?></h2>
+                    <div class="template_options">  
+
+                        <div class="template_card <?php echo ($enable_template== '1') ? 'active_template' : '' ?>">
+                            <div class="template_card-image">
+                                <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
+                                <div class="template_card-actions">
+                                    <a class="btn_primary btn_sm" href="#">
+                                        <?php echo ($enable_template== '1') ? 'Activated' : _e('Activate','site-mode') ?>                                        
+                                    </a>
+                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=food_template")); ?>" class="preview-btn" target="_blank">Preview</a>
-                                <label class="um_toggle">
-                                    <input type="radio" class="toggle_input" id="one" name="design-template-enable" value="1" <?php echo ($enable_template == '1') ? 'checked' : ''?> />
-                                    <div class="toggle-control"></div>
-                                </label>
                             </div>
+                            <div class="template_card-content">
+                                <h2 class="template_card-content--title"><?php _e('Food Template','site-mode');?></h2>
+                            </div>                            
                         </div>
-                        <div class="template_thumb <?php echo ($enable_template == '2') ? 'activated_template' : '' ?>">
-                            <div class="radio-img">
-                                <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>)"></div>
-                            </div>
-                            <div class="template_actions">
-                                <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Construction Template','site-mode');?></h2>
+
+                        <div class="template_card <?php echo ($enable_template== '2') ? 'active_template' : '' ?>">
+                            <div class="template_card-image">
+                                <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>" alt="" />
+                                <div class="template_card-actions">
+                                    <a class="btn_primary btn_sm" href="#">
+                                        <?php echo ($enable_template== '2') ? 'Activated' : _e('Activate','site-mode') ?>                                        
+                                    </a>
+                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
-                                <label class="um_toggle">
-                                    <input type="radio" class="toggle_input" id="two" name="design-template-enable" value="2" <?php echo ($enable_template == '2') ? 'checked' : ''?> />
-                                    <div class="toggle-control"></div>
-                                </label>
                             </div>
+                            <div class="template_card-content">
+                                <h2 class="template_card-content--title"><?php _e('Construction Template','site-mode');?></h2>
+                            </div>                            
                         </div>
-                        <div class="template_thumb <?php echo ($enable_template == '3') ? 'activated_template' : '' ?>">
-                            <div class="radio-img">
-                                <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>)"></div>
-                            </div>
-                            <div class="template_actions">
-                                <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Fashion Template','site-mode');?></h2>
+
+                        <div class="template_card <?php echo ($enable_template== '3') ? 'active_template' : '' ?>">
+                            <div class="template_card-image">
+                                <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>" alt="" />
+                                <div class="template_card-actions">
+                                    <a class="btn_primary btn_sm" href="#">
+                                        <?php echo ($enable_template== '3') ? 'Activated' : _e('Activate','site-mode') ?>                                        
+                                    </a>
+                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashion_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
-                                <label class="um_toggle">
-                                    <input type="radio" class="toggle_input" id="three" name="design-template-enable" value="3" <?php echo ($enable_template == '3') ? 'checked' : ''?> />
-                                    <div class="toggle-control"></div>
-                                </label>
                             </div>
+                            <div class="template_card-content">
+                                <h2 class="template_card-content--title"><?php _e('Fashion Template','site-mode');?></h2>
+                            </div>                            
                         </div>
-                        <div class="template_thumb <?php echo ($enable_template == '4') ? 'activated_template' : '' ?>">
-                            <div class="radio-img">
-                                <div class="image" style="background-image: url(<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'; ?>)"></div>
-                            </div>
-                            <div class="template_actions">
-                                <div class="template_title">
-                                    <h2 class="template_title-title"><?php _e('Travel Template','site-mode');?></h2>
+
+                        <div class="template_card <?php echo ($enable_template== '4') ? 'active_template' : '' ?>">
+                            <div class="template_card-image">
+                                <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'; ?>" alt="" />
+                                <div class="template_card-actions">
+                                    <a class="btn_primary btn_sm" href="#">
+                                        <?php echo ($enable_template== '4') ? 'Activated' : _e('Activate','site-mode') ?>                                        
+                                    </a>
+                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
-                                <a href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=travel_template")); ?>" class="preview-btn" target="_blank"><?php _e('Preview','site-mode');?></a>
-                                <label class="um_toggle">
-                                    <input type="radio" class="toggle_input" id="four" name="design-template-enable" value="4" <?php echo ($enable_template == '4') ? 'checked' : ''?> />
-                                    <div class="toggle-control"></div>
-                                </label>
                             </div>
+                            <div class="template_card-content">
+                                <h2 class="template_card-content--title"><?php _e('Travel Template','site-mode');?></h2>
+                            </div>                            
                         </div>
+
                     </div>
                 </div>
                 <?php
