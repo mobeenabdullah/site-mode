@@ -1,60 +1,121 @@
 .btn_primary {
-    background: var(--sm-button-bg-color) !important;
-    border-color: var(--sm-button-border-color) !important;
-    border-width: $btn-border-width !important;
-    color: var(--sm-base-white-color) !important;
-    padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
-    border-radius: 0.2rem !important;
-    font-size: 1rem !important;
-    line-height: 1.5 !important;
-    width: auto !important;
-    height: auto !important;
-  
-    &:hover {
-      background-color: darken($btn-bg-color, 3) !important;
-      border-color: darken($btn-bg-color, 3) !important;
+    background: var(--sm-button-bg-color);
+    border-color: var(--sm-button-border-color);
+    border-width: 1px;
+    border-style: solid;
+    color: var(--sm-base-white-color);
+    padding: calculateRem(8px) calculateRem(24px) calculateRem(10px) calculateRem(24px);
+    border-radius: 0.2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    width: auto;
+    height: auto;
+    text-decoration: none;
+    display: block;  
+    text-align: center;
+    &:hover, &:focus {
+      background-color: var(--sm-primary-color);
+      border-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
     }
   }
   
   .btn_outline {
-    background: transparent !important;
-    border-color: var(--sm-secondary-color) !important;
-    color: var(--sm-secondary-color) !important;
-    padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
-    border-radius: 0.2rem !important;
-    font-size: 0.8rem !important;
-    line-height: 1.5 !important;
+    background: transparent;
+    border-color: var(--sm-secondary-color);
+    color: var(--sm-secondary-color);
+    padding: 0.3rem 1.5rem 0.4rem 1.5rem;
+    border-radius: 0.2rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
     min-width: calculateRem(136px);
-    width: auto !important;
-    height: auto !important;
+    width: auto;
+    height: auto;
     transition: all .2s;
-    &:hover {
-      background-color: darken($secondary-color, 3) !important;
-      border-color: darken($secondary-color, 3) !important;
-      color: var(--sm-base-white-color) !important;
+    &:hover, &:focus {
+      background-color: darken($secondary-color, 3);
+      border-color: darken($secondary-color, 3);
+      color: var(--sm-base-white-color);
     }
   }
   
   .normal_btn {
     position: relative;
-    width: auto !important;
-    height: auto !important;
+    width: auto;
+    height: auto;
     display: inline-block;
-    background: var(--sm-secondary-color) !important;
-    border-color: var(--sm-secondary-color) !important;
-    color: var(--sm-base-white-color) !important;
-    width: auto !important;
-    height: auto !important;
+    background: var(--sm-secondary-color);
+    border-color: var(--sm-secondary-color);
+    color: var(--sm-base-white-color);
+    width: auto;
+    height: auto;
   
-    &:hover {
-      background-color: var(--sm-primary-color) !important;
-      border-color: var(--sm-primary-color) !important;
-      color: var(--sm-base-white-color) !important;
+    &:hover, &:focus {
+      background-color: var(--sm-primary-color);
+      border-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
     }
   }
+
+  .btn_secondary {
+      background-color: var(--sm-secondary-color);
+      border-color: var(--sm-secondary-color);
+      color: var(--sm-base-white-color);
+      border-width: 1px;
+      border-style: solid;
+      &:hover, &:focus {
+        background-color: var(--sm-primary-color);
+        border-color: var(--sm-primary-color);
+        color: var(--sm-base-white-color);
+      }
+  }
   
+  .btn_ghost {
+    background-color: transparent;
+    border-color: var(--sm-secondary-color);
+    color: var(--sm-secondary-color);
+    border-width: 1px;
+    border-style: solid;
+    &:hover, &:focus {
+      background-color: var(--sm-primary-color);
+      border-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
+    }
+  }
+
+  .btn_sm {
+    padding: calculateRem(4px) calculateRem(16px) calculateRem(6px) calculateRem(16px);
+    font-size: calculateRem(12px);
+    line-height: 1;
+  }
+
+  .btn_white {
+    background-color: var(--sm-base-white-color);
+    border-color: rgba($base-black-color, 0.15);
+    color: var(--sm-base-black-color);
+    &:hover, &:focus {     
+      color: var(--sm-base-white-color);
+    }
+  }
+
   .submit_button {
     & input {
-      @extend .btn_primary;
+      background: var(--sm-button-bg-color) !important;
+      border-color: var(--sm-button-border-color) !important;
+      border-width: $btn-border-width !important;
+      color: var(--sm-base-white-color) !important;
+      padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+      border-radius: 0.2rem !important;
+      font-size: 1rem !important;
+      line-height: 1.5 !important;
+      width: auto !important;
+      height: auto !important;
+      text-decoration: none !important;
+      display: block !important;  
+      text-align: center !important;
+      &:hover, &:focus {
+        background-color: darken($btn-bg-color, 3) !important;
+        border-color: darken($btn-bg-color, 3) !important;
+      }
     }
   }

@@ -134,16 +134,16 @@ class Site_Mode_General
             nocache_headers();
         }
 
-        if ($this->enable_template == '1' || $_GET['template'] == 'foodTemplate') {
+        if ($this->enable_template == '1' || $_GET['template'] == 'food_template') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-one.php';
             exit;
-        } elseif ($this->enable_template == '2' || $_GET['template'] == 'constructionTemplate') {
+        } elseif ($this->enable_template == '2' || $_GET['template'] == 'construction_template') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-two.php';
             exit;
         } elseif ($this->enable_template == '3' || $_GET['template'] == 'fashionTemplate') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-three.php';
             exit;
-        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travelTemplate') {
+        } elseif ($this->enable_template == '4' || $_GET['template'] == 'travel_template') {
             require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/template-four.php';
             exit;
         } else {

@@ -49,7 +49,7 @@
             <div class="option__row--field">
                 <?php $all_pages = get_pages(); ?>
                 <div class="sm_select">
-                    <select name="site-mode-include-pages-setting" id="whitelist_include">
+                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple" id="whitelist_include_">                    
                         <?php foreach($all_pages as $value ) : ?>
                             <option value="<?php echo $value->post_name; ?>" <?php selected($value->post_name, $include_pages);?>><?php echo $value->post_name;?></option>
                         <?php endforeach; ?>
