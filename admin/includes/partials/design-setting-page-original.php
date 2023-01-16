@@ -10,8 +10,6 @@
                         $un_data = unserialize($template);
                         //check if value is set or not if not set then set default value.
                         $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
-
-
                     ?>
                     <div class="template_options">
                         <div class="template_thumb <?php echo ($enable_template== '1') ? 'activated_template' : '' ?>">
