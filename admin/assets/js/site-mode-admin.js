@@ -672,6 +672,30 @@ jQuery(function ($) {
         });
     })
 
+    const mobileMenu = document.querySelector('.mobile_menu');
+    const smTabs = document.querySelector('.sm_tabs');
+    const smTabsList = document.querySelectorAll('.sm_tabs li');
+    const menuLabel = document.querySelector('.menu_label');
+
+    mobileMenu.addEventListener('click', function() {    
+        smTabs.classList.toggle('active_tabs');
+    });
+
+    if(window.innerWidth < 768) {
+        smTabsList.forEach(function(item) {
+            item.addEventListener('click', function() {
+                smTabs.classList.remove('active_tabs');  
+                let tabName = item.getAttribute('data-tab').replace('-', ' ');
+                tabName = tabName.replace('tab ','').toLowerCase();                
+                tabNameChar = tabName.split('');                                
+                let tabLabel = tabNameChar[0].toUpperCase() + tabNameChar.slice(1).join('').toLowerCase();
+                menuLabel.innerText = tabLabel + ' Setting';
+            });
+        });
+    }
 });
+
+
+
 
 
