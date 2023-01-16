@@ -23,6 +23,7 @@
 class Site_Mode_Advanced
 {
 
+        protected  $ga_type = '';
         protected $ga_id            = '';
         protected $fb_id            = '';
         protected $custom_cs        = '';
@@ -45,21 +46,22 @@ class Site_Mode_Advanced
         $this->site_mode_advanced = get_option('site_mode_advanced');
         $this->site_mode_advanced = unserialize($this->site_mode_advanced);
         if($this->site_mode_advanced) {
-            $this->ga_id            = $this->site_mode_advanced['ga_id'];
-            $this->fb_id            = $this->site_mode_advanced['fb_id'];
-            $this->custom_cs        = $this->site_mode_advanced['custom_css'];
-            $this->enable_rest_api  = $this->site_mode_advanced['enable_rest_api'];
-            $this->enable_feed      = $this->site_mode_advanced['enable_feed'];
-            $this->include_pages    = $this->site_mode_advanced['include_pages'];
-            $this->exclude_pages    = $this->site_mode_advanced['exclude_pages'];
-            $this->header_code      = $this->site_mode_advanced['header_code'];
-            $this->footer_code      = $this->site_mode_advanced['footer_code'];
-            $this->admin_role       = $this->site_mode_advanced['admin_role'];
-            $this->editor_role      = $this->site_mode_advanced['editor_role'];
-            $this->author_role      = $this->site_mode_advanced['author_role'];
-            $this->contributor_role = $this->site_mode_advanced['contributor_role'];
-            $this->subscriber_role  = $this->site_mode_advanced['subscriber_role'];
-            $this->user_role        = $this->site_mode_advanced['user_role'];
+            $this->ga_type = isset($this->site_mode_advanced['ga_type'] ) ? $this->site_mode_advanced['ga_type']  : '';
+            $this->ga_id            = isset($this->site_mode_advanced['ga_id'] ) ? $this->site_mode_advanced['ga_id']  : '';
+            $this->fb_id            = isset($this->site_mode_advanced['fb_id'] ) ? $this->site_mode_advanced['fb_id']  : '';
+            $this->custom_cs        = isset($this->site_mode_advanced['custom_cs'] ) ? $this->site_mode_advanced['custom_cs']  : '';
+            $this->enable_rest_api  = isset($this->site_mode_advanced['enable_rest_api'] ) ? $this->site_mode_advanced['enable_rest_api']  : '';
+            $this->enable_feed      = isset($this->site_mode_advanced['enable_feed'] ) ? $this->site_mode_advanced['enable_feed']  : '';
+            $this->include_pages    = isset($this->site_mode_advanced['include_pages'] ) ? $this->site_mode_advanced['include_pages']  : '';
+            $this->exclude_pages    = isset($this->site_mode_advanced['exclude_pages'] ) ? $this->site_mode_advanced['exclude_pages']  : '';
+            $this->header_code      = isset($this->site_mode_advanced['header_code'] ) ? $this->site_mode_advanced['header_code']  : '';
+            $this->footer_code      = isset($this->site_mode_advanced['footer_code'] ) ? $this->site_mode_advanced['footer_code']  : '';
+            $this->admin_role       = isset($this->site_mode_advanced['admin_role'] ) ? $this->site_mode_advanced['admin_role']  : '';
+            $this->editor_role      = isset($this->site_mode_advanced['editor_role'] ) ? $this->site_mode_advanced['editor_role']  : '';
+            $this->author_role      = isset($this->site_mode_advanced['author_role'] ) ? $this->site_mode_advanced['author_role']  : '';
+            $this->contributor_role = isset($this->site_mode_advanced['contributor_role'] ) ? $this->site_mode_advanced['contributor_role']  : '';
+            $this->subscriber_role  = isset($this->site_mode_advanced['subscriber_role'] ) ? $this->site_mode_advanced['subscriber_role']  : '';
+            $this->user_role        = isset($this->site_mode_advanced['user_role'] ) ? $this->site_mode_advanced['user_role']  : '';
         }
 
 
