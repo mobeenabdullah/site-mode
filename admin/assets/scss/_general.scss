@@ -570,6 +570,9 @@ body {
   }
 }
 
+.mobile_menu {
+  display: none;
+}
 /*-----------------------------------------------
 7.  Responsiveness
 -----------------------------------------------*/
@@ -584,18 +587,63 @@ body {
 }
 
 @media screen and (max-width: 767px) {
+  .option__row {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .site_mode__wrap--cover {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .sm_textarea_cover textarea {
+    width: 100% !important;
+  }
+  
+  .description_editor {
+    width: 100% !important;
+  }
+
   .template__wrapper {
     & .template_options {
-      grid-template-columns: repeat(1, 1fr);
-      grid-gap: 20px;
+      grid-template-columns: repeat(1, 1fr) !important;
+      grid-gap: 20px !important;
     }
   }
-  // .template_thumb {
-  //   & .radio-img {
-  //     height: 210px;
-  //   }
-  //   & .image {
-  //     height: 210px;
-  //   }
-  // }
+  
+  .mobile_menu {
+    text-align: center;
+    min-width: auto;
+    width: auto;
+    padding: 0.2rem 0.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    background: var(--sm-secondary-color);
+    color: var(--sm-base-white-color);
+    padding: 0.8rem;
+    & svg {
+      & path {
+        fill: var(--sm-base-white-color);
+      }
+    }    
+  }
+  .sm_tabs {
+    display: none !important;
+  }
+  .active_tabs {
+    display: block !important;
+    & .sm_tabs-link {
+      justify-content: flex-start;
+    }
+  }
+
+  .logo_type_wrapper {
+    flex-wrap: wrap;
+    gap: calculateRem(20px);
+    & .radio_wrapper {
+      width: 33%;
+    }
+  }
 }

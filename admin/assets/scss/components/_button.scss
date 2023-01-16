@@ -34,6 +34,9 @@
     height: auto;
     transition: all .2s;
     cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    display: inline-block;
     &:hover, &:focus {
       background-color: darken($secondary-color, 3);
       border-color: darken($secondary-color, 3);

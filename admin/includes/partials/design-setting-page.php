@@ -28,8 +28,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
-                                    <button type="button" class="btn_primary btn_sm" id="active-btn" name="design-template-enable" value="1">Activate<button
-                                    </button>
+                                    <button type="button" class="btn_primary btn_sm" id="active-btn" name="design-template-enable" value="1">Activate<button>                                    
                                     <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
                             </div>

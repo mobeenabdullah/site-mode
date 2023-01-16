@@ -106,8 +106,6 @@ class Site_Mode_Design
                     'heading_font_size'                 => $_POST['heading-font-size-setting'],
                     'description_font_family'           => $_POST['description-font-family-setting'],
                     'description_font_size'             => $_POST['description-font-size-setting'],
-
-
                 );
 
             if(get_option( 'site_mode_design_font' )) {

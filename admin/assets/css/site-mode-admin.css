@@ -197,6 +197,9 @@ body {
 	height: auto;
 	transition: all .2s;
 	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	display: inline-block;
 }
 
 .btn_outline:hover, .choose-btn:hover, .button.bg-image-upload:hover, .button.logo-upload:hover, .btn_outline:focus, .choose-btn:focus, .button.bg-image-upload:focus, .button.logo-upload:focus {
@@ -604,6 +607,10 @@ input[type=file] {
 	line-height: 1;
 }
 
+.mobile_menu {
+	display: none;
+}
+
 /*-----------------------------------------------
 7.  Responsiveness
 -----------------------------------------------*/
@@ -615,9 +622,54 @@ input[type=file] {
 }
 
 @media screen and (max-width: 767px) {
-	.template__wrapper .template_options {
+	.option__row {
+		flex-direction: column;
+		gap: 10px;
+	}
+	.site_mode__wrap--cover {
 		grid-template-columns: repeat(1, 1fr);
-		grid-gap: 20px;
+	}
+	.sm_textarea_cover textarea {
+		width: 100% !important;
+	}
+	.description_editor {
+		width: 100% !important;
+	}
+	.template__wrapper .template_options {
+		grid-template-columns: repeat(1, 1fr) !important;
+		grid-gap: 20px !important;
+	}
+	.mobile_menu {
+		text-align: center;
+		min-width: auto;
+		width: auto;
+		padding: 0.2rem 0.8rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+		background: var(--sm-secondary-color);
+		color: var(--sm-base-white-color);
+		padding: 0.8rem;
+	}
+	.mobile_menu svg path {
+		fill: var(--sm-base-white-color);
+	}
+	.sm_tabs {
+		display: none !important;
+	}
+	.active_tabs {
+		display: block !important;
+	}
+	.active_tabs .sm_tabs-link {
+		justify-content: flex-start;
+	}
+	.logo_type_wrapper {
+		flex-wrap: wrap;
+		gap: 1.25rem;
+	}
+	.logo_type_wrapper .radio_wrapper {
+		width: 33%;
 	}
 }
 
