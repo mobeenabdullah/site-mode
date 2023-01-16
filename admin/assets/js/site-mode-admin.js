@@ -246,9 +246,7 @@ jQuery(function ($) {
             var y = document.getElementById("toast-error");
             y.className = "show";
             setTimeout(function(){ y.className = y.className.replace("show", ""); }, 5000);
-
         }
-
     }
 
 
@@ -658,6 +656,20 @@ jQuery(function ($) {
 
         // Multi Select 
         $('.js-example-basic-multiple').select2();
+
+        // Upload file 
+        const hiddenBtn = document.querySelector('.hiddenBtn');
+        const chooseBtn = document.querySelector('.chooseBtn');
+
+        hiddenBtn.addEventListener('change', function() {
+            if (hiddenBtn.files.length > 0) {
+                //chooseBtn.innerText = hiddenBtn.files[0].name;                
+                chooseBtn.insertAdjacentHTML("afterend", `<div class="file_name">${hiddenBtn.files[0].name}</div>`);
+            } else {
+                chooseBtn.innerText = 'Choose';
+                chooseBtn.removeAdjacentHTML("afterend", `<div class="file_name">${hiddenBtn.files[0].name}</div>`);
+            }
+        });
     })
 
 });

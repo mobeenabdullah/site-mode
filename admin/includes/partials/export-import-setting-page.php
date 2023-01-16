@@ -1,6 +1,38 @@
-<div class="site_mode__wrap-form">
-    <h1>Import & Export tab settings</h1>
+<div class="site_mode__wrap-form">    
     <form id="site-mode-import" method="post" enctype="multipart/form-data">
-        Form content
+        <div class="option__row">
+            <div class="option__row--label">
+                <label for="btn-export" class="screen-reading-text">Export</label>
+            </div>
+            <div class="option__row--field">
+                <button class="btn_primary btn_outline btn-export" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
+            </div>
+        </div>
+        <div class="option__row">
+            <div class="option__row--label">
+                <label for="fileSelect"><?php _e('Upload File', 'site-mode');?></label>
+                <span class="info_text"><?php _e('upload json file to import json into db', 'site-mode');?></span>
+            </div>
+            <div class="option__row--field upload_file_wrapper">
+                <label for="fileSelect" class="choose-btn chooseBtn" id="chooseBtn">Choose</label>
+                <input type="file" class="hiddenBtn" name="json-file" id="fileSelect" accept=".json">
+            </div>
+        </div>   
+        
+        <div class="option__row submit_button">
+            <div class="option__row--label">                
+                <?php submit_button(); ?>
+            </div>            
+        </div>
+
+
+        <!-- <div class="option__row">
+            <div class="option__row--label">
+                <label for="submit"><?php _e('submit', 'site-mode');?></label>
+            </div>
+            <div class="option__row--field">
+                <input type="submit" name="submit" value="Submit">
+            </div>
+        </div> -->
     </form>
 </div>

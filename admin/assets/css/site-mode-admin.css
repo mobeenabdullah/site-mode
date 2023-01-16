@@ -26,7 +26,7 @@ Plugin general styling
 	--sm-toast-base-color: #6F73D2;
 	--sm-toast-icon-bg: #202020;
 	--sm-toast-text-color: #ffffff;
-	--sm-toast-error-color: #fa3f39;
+	--sm-toast-error-color: #dc3545;
 	--sm-button-bg-color: #6F73D2;
 	--sm-button-border-color: #6F73D2;
 	--sm-open-sans: Open Sans, sans-serif;
@@ -175,6 +175,7 @@ body {
 	text-decoration: none;
 	display: block;
 	text-align: center;
+	cursor: pointer;
 }
 
 .btn_primary:hover, .btn_primary:focus {
@@ -183,7 +184,7 @@ body {
 	color: var(--sm-base-white-color);
 }
 
-.btn_outline, .button.bg-image-upload, .button.logo-upload {
+.btn_outline, .choose-btn, .button.bg-image-upload, .button.logo-upload {
 	background: transparent;
 	border-color: var(--sm-secondary-color);
 	color: var(--sm-secondary-color);
@@ -195,9 +196,10 @@ body {
 	width: auto;
 	height: auto;
 	transition: all .2s;
+	cursor: pointer;
 }
 
-.btn_outline:hover, .button.bg-image-upload:hover, .button.logo-upload:hover, .btn_outline:focus, .button.bg-image-upload:focus, .button.logo-upload:focus {
+.btn_outline:hover, .choose-btn:hover, .button.bg-image-upload:hover, .button.logo-upload:hover, .btn_outline:focus, .choose-btn:focus, .button.bg-image-upload:focus, .button.logo-upload:focus {
 	background-color: #181818;
 	border-color: #181818;
 	color: var(--sm-base-white-color);
@@ -284,6 +286,17 @@ body {
 .submit_button input:hover, .submit_button input:focus {
 	background-color: #6368ce !important;
 	border-color: #6368ce !important;
+}
+
+input[type=file] {
+	display: none;
+}
+
+.choose-btn {
+	min-width: auto;
+	width: auto;
+	border-width: 1px;
+	border-style: solid;
 }
 
 /*-----------------------------------------------
@@ -579,6 +592,18 @@ body {
 	margin-bottom: 2.5rem;
 }
 
+.upload_file_wrapper {
+	position: relative;
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+}
+
+.upload_file_wrapper .file_name {
+	font-size: 0.8rem;
+	line-height: 1;
+}
+
 /*-----------------------------------------------
 7.  Responsiveness
 -----------------------------------------------*/
@@ -730,8 +755,8 @@ body {
 	position: absolute;
 	border: 1px solid #AAAAAA;
 	border-radius: 100%;
-	height: 25px;
-	width: 25px;
+	height: 1.25rem;
+	width: 1.25rem;
 	top: 0;
 	left: 0;
 	z-index: 5;
@@ -744,10 +769,10 @@ body {
 	position: absolute;
 	content: '';
 	border-radius: 100%;
-	height: 15px;
-	width: 15px;
-	top: 5px;
-	left: 5px;
+	height: 0.875rem;
+	width: 0.875rem;
+	top: 0.1875rem;
+	left: 0.1875rem;
 	margin: auto;
 	transition: background 0.25s linear;
 	-webkit-transition: background 0.25s linear;
@@ -1060,76 +1085,53 @@ body {
 	display: inherit;
 }
 
-#toast-success {
+#toast-success, #toast-error {
 	visibility: hidden;
-	max-width: 50px;
-	height: 50px;
-	margin: auto;
-	background-color: var(--sm-primary-color);
-	color: var(--sm-base-white-color);
-	text-align: center;
-	border-radius: 2px;
+	height: auto;
 	position: fixed;
 	z-index: 1;
 	left: 0;
 	right: 0;
-	bottom: 30px;
-	font-size: 17px;
-	white-space: nowrap;
+	bottom: 1.875rem;
 }
 
-#toast-error {
-	visibility: hidden;
-	max-width: 50px;
-	height: 50px;
+.toast-error-msg, .toast-success-msg {
+	padding: 0.6rem;
 	margin: auto;
-	background-color: #fa3f39;
+	background-color: transparent;
 	color: var(--sm-base-white-color);
-	text-align: center;
-	border-radius: 2px;
-	position: fixed;
-	z-index: 1;
-	left: 0;
-	right: 0;
-	bottom: 30px;
-	font-size: 17px;
+	border-radius: 0.4rem;
+	font-size: 0.875rem;
 	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.8rem;
 }
 
-#toast-success #img {
-	width: 50px;
-	height: 50px;
-	float: left;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	box-sizing: border-box;
-	background-color: var(--sm-secondary-color);
-	color: var(--sm-base-white-color);
+.toast-error-msg .toast-icon, .toast-success-msg .toast-icon {
+	width: 1.5rem;
+	height: 1.5rem;
 }
 
-#toast-error #img {
-	width: 50px;
-	height: 50px;
-	float: left;
-	padding-top: 16px;
-	padding-bottom: 16px;
-	box-sizing: border-box;
-	background-color: var(--sm-secondary-color);
-	color: var(--sm-base-white-color);
+.toast-error-msg .toast-icon svg path, .toast-success-msg .toast-icon svg path {
+	fill: var(--sm-base-white-color);
 }
 
-#toast-success #desc {
-	color: var(--sm-base-white-color);
-	padding: 16px;
-	overflow: hidden;
-	white-space: nowrap;
+.toast-error-msg .toast-description, .toast-success-msg .toast-description {
+	text-align: left;
 }
 
-#toast-error #desc {
-	color: var(--sm-base-white-color);
-	padding: 16px;
-	overflow: hidden;
-	white-space: nowrap;
+.toast-error-msg {
+	background-color: #dc3545;
+	border: 1px solid #dc3545;
+	max-width: 12.5rem;
+}
+
+.toast-success-msg {
+	background-color: #28a745;
+	border: 1px solid #28a745;
+	max-width: 12.5rem;
 }
 
 #toast-success.show {
