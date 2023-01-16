@@ -15,11 +15,11 @@
             break;
 
         case 'advanced':                        
-            require_once plugin_dir_path( __FILE__ ) . "advanced-setting-page-original.php";
+            require_once plugin_dir_path( __FILE__ ) . "advanced-setting-page.php";
             break;
 
         case 'import-export':                        
-            require_once plugin_dir_path( __FILE__ ) . "export-import-setting-page-original.php";
+            require_once plugin_dir_path( __FILE__ ) . "export-import-setting-page.php";
             break;
 
         default:                        
