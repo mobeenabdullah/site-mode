@@ -32,6 +32,7 @@
     width: auto;
     height: auto;
     transition: all .2s;
+    text-align: center;
     &:hover, &:focus {
       background-color: darken($secondary-color, 3);
       border-color: darken($secondary-color, 3);
@@ -49,7 +50,7 @@
     color: var(--sm-base-white-color);
     width: auto;
     height: auto;
-  
+    text-align: center;
     &:hover, &:focus {
       background-color: var(--sm-primary-color);
       border-color: var(--sm-primary-color);

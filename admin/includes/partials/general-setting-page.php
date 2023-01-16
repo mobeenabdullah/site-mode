@@ -27,38 +27,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="option__row">
-            <div class="option__row--label">
-                <span><?php _e('Show site to these roles', 'site-mode')?></span>
-            </div>
-            <div class="option__row--field">
-                <?php  global  $wp_roles; ?>
-                <?php foreach ( $wp_roles->roles as $key=>$value ): ?>
-                    <div class="sm_checkbox_wrapper role_checkbox">
-                        <input type="checkbox" id="<?php echo $key; ?>" name="site-mode-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
-                        <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
-                    </div>
-                <?php endforeach; ?>
-            </div>
-        </div>
-        <div class="option__row">
-            <div class="option__row--label">
-                <span><label for="whitelist_include"><?php _e('Whitelist Pages', 'site-mode')?></label></span>
-            </div>
-            <div class="option__row--field">
-                <?php $all_pages = get_pages(); ?>
-                <div class="sm_select">
-                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple" id="whitelist_include_">                    
-                        <?php foreach($all_pages as $value ) : ?>
-                            <option value="<?php echo $value->post_name; ?>" <?php selected($value->post_name, $include_pages);?>><?php echo $value->post_name;?></option>
-                        <?php endforeach; ?>
-                    </select>
-                    <span class="arrow-down"></span>
-                </div>
-            </div>
-        </div>
-
         <!-- Mode Setting -->
         <div class="option__row">
             <div class="option__row--label">
@@ -112,7 +80,7 @@
                 </div>          
             </div>
         </div>
-        <div class="login_url_field <?php echo (!empty($login_icon)) ? '' : 'hide_url'; ?>">
+        <div class="login_url_field <?php echo (!empty($login_icon)) ? '' : 'sm_hide_field'; ?>">
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="redirect_url_field"><?php _e('Login URL','site-mode');?></label></span>                    
@@ -124,6 +92,39 @@
                 </div>
             </div>
         </div>
+
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><label for="whitelist_include"><?php _e('Whitelist Pages', 'site-mode')?></label></span>
+            </div>
+            <div class="option__row--field">
+                <?php $all_pages = get_pages(); ?>
+                <div class="sm_select">
+                    <select class="js-example-basic-multiple" name="states[]" multiple="multiple" id="whitelist_include_">                    
+                        <?php foreach($all_pages as $value ) : ?>
+                            <option value="<?php echo $value->post_name; ?>" <?php selected($value->post_name, $include_pages);?>><?php echo $value->post_name;?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <span class="arrow-down"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><?php _e('Show site to these roles', 'site-mode')?></span>
+            </div>
+            <div class="option__row--field">
+                <?php  global  $wp_roles; ?>
+                <?php foreach ( $wp_roles->roles as $key=>$value ): ?>
+                    <div class="sm_checkbox_wrapper role_checkbox">
+                        <input type="checkbox" id="<?php echo $key; ?>" name="site-mode-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
+                        <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>        
+
         <?php wp_nonce_field('general_settings_action', 'general_section_field'); ?>
 
         <!-- Submit setting -->
