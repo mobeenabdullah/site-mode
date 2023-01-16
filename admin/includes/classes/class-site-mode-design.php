@@ -49,7 +49,8 @@ class Site_Mode_Design
     }
 
     public function ajax_site_mode_design() {
-
+        print_r($_POST);
+        exit;
         $nonce = $_POST['design-custom-message'];
         if(!wp_verify_nonce( $nonce, 'design-settings-save' )) {
             die(__('Security Check', 'site-mode'));

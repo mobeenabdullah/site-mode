@@ -13,6 +13,10 @@
                     
                     // convert serialized string to array
                     $un_data = unserialize($template);
+
+                    echo '<pre>';
+                    print_r($un_data);
+                    echo '</pre>';
                     
                     //check if value is set or not if not set then set default value.
                     $enable_template = isset($un_data['enable_template']) ? $un_data['enable_template'] : '1';
@@ -24,15 +28,14 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
                                 <div class="template_card-actions">
-                                    <a class="btn_primary btn_sm" href="#">
-                                        <?php echo ($enable_template== '1') ? 'Activated' : _e('Activate','site-mode') ?>                                        
-                                    </a>
+                                    <button type="button" class="btn_primary btn_sm" id="active-btn" name="design-template-enable" value="1">Activate<button
+                                    </button>
                                     <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
                             </div>
                             <div class="template_card-content">
                                 <h2 class="template_card-content--title"><?php _e('Food Template','site-mode');?></h2>
-                            </div>                            
+                            </div>
                         </div>
 
                         <div class="template_card <?php echo ($enable_template== '2') ? 'active_template' : '' ?>">

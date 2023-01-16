@@ -557,26 +557,24 @@ jQuery(function ($) {
         });
     
         // 10.  Ajax calls for design tab
-        $("#site-mode-design").submit(function( event ) {
+        $("#active-btn").on('click', function( event ) {
+            alert("button working");
             event.preventDefault();
-            const form = document.getElementById("site-mode-design");
-            const formData = new FormData(form);
-            formData.append('action', 'ajax_site_mode_design');
-            formData.append('ajax_site_mode_design',form);
+            const data = document.getElementById("active-btn").value;
+            console.log(data);
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
                 method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
+                data: data,
+                action: 'ajax_site_mode_design',
                 success:function (res) {
                     launch_toast(res.success);
                 }
             });
         });
+
+
         
         $("#site-mode-design-logo-background").submit(function( event ) {
             event.preventDefault();
