@@ -50,7 +50,7 @@
         <div class="image_logo_wrapper">
             <div class="option__row">
                 <div class="option__row--label">
-                    <span><?php _e('Logo Image','site-mode');?></span>
+                    <span><?php _e('Select Logo','site-mode');?></span>
                 </div>
                 <div class="option__row--field">
                     <div class="upload_image_cover">
@@ -86,11 +86,11 @@
         </div>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="headline"><?php _e('Headline','site-mode');?></label></span>                    
+                <span><label for="heading"><?php _e('Heading','site-mode');?></label></span>                    
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">                    
-                    <input type="text" id="headline" name="content-heading-setting" value="<?php esc_attr_e($heading,'site-mode'); ?>" />
+                    <input type="text" id="heading" name="content-heading-setting" value="<?php esc_attr_e($heading,'site-mode'); ?>" />
                 </div>
             </div>
         </div>

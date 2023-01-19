@@ -1,138 +1,96 @@
-.btn_primary {
-    background: var(--sm-button-bg-color);
-    border-color: var(--sm-button-border-color);
-    border-width: 1px;
-    border-style: solid;
-    color: var(--sm-base-white-color);
-    padding: calculateRem(8px) calculateRem(24px) calculateRem(10px) calculateRem(24px);
-    border-radius: 0.2rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    width: auto;
-    height: auto;
-    text-decoration: none;
-    display: block;  
-    text-align: center;
-    cursor: pointer;
-    &:hover, &:focus {
-      background-color: var(--sm-primary-color);
-      border-color: var(--sm-primary-color);
-      color: var(--sm-base-white-color);
-    }
-  }
-  
-  .btn_outline {
-    background: transparent;
-    border-color: var(--sm-secondary-color);
-    color: var(--sm-secondary-color);
-    padding: 0.3rem 1.5rem 0.4rem 1.5rem;
-    border-radius: 0.2rem;
-    font-size: 0.8rem;
-    line-height: 1.5;
-    min-width: calculateRem(136px);
-    width: auto;
-    height: auto;
-    transition: all .2s;
-    cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
-    display: inline-block;
-    &:hover, &:focus {
-      background-color: darken($secondary-color, 3);
-      border-color: darken($secondary-color, 3);
-      color: var(--sm-base-white-color);
-    }
-  }
-  
-  .normal_btn {
-    position: relative;
-    width: auto;
-    height: auto;
-    display: inline-block;
-    background: var(--sm-secondary-color);
-    border-color: var(--sm-secondary-color);
-    color: var(--sm-base-white-color);
-    width: auto;
-    height: auto;
-  
-    &:hover, &:focus {
-      background-color: var(--sm-primary-color);
-      border-color: var(--sm-primary-color);
-      color: var(--sm-base-white-color);
-    }
-  }
+.button_wrapper {
+  --btn-bg: var(--sm-button-bg-color);
+  --btn-border-color: var(--sm-button-border-color);
+  --btn-text-color: var(--sm-base-white-color);
+  --btn-padding: 0.5rem 1.5rem 0.625rem 1.5rem;
+  --btn-radius: 0.2rem;
+  --btn-font-size: 1rem;
+  --btn-line-height: 1.5;
+  --btn-text-align: center;
+  --btn-border-width: 1px;
+  --btn-border-style: solid;  
+}
 
-  .btn_secondary {
-      background-color: var(--sm-secondary-color);
-      border-color: var(--sm-secondary-color);
-      color: var(--sm-base-white-color);
-      border-width: 1px;
-      border-style: solid;
-      &:hover, &:focus {
-        background-color: var(--sm-primary-color);
-        border-color: var(--sm-primary-color);
-        color: var(--sm-base-white-color);
-      }
+.btn {
+  background: var(--btn-bg);
+  border-color: var(--btn-border-color);
+  border-width: var(--btn-border-width);
+  border-style: var(--btn-border-style);
+  color: var(--btn-text-color);
+  padding: var(--btn-padding);
+  border-radius: var(--btn-radius);
+  font-size: var(--btn-font-size);
+  line-height: var(--btn-line-height);    
+  text-decoration: none;
+  display: inline-block;  
+  text-align: var(--btn-text-align);
+  cursor: pointer;
+  transition: all .2s;
+  &:hover, &:focus {
+    --btn-bg: var(--sm-primary-color);
+    --btn-border-color: var(--sm-primary-color);
+    --btn-text-color: var(--sm-base-white-color);
   }
+}
   
-  .btn_ghost {
-    background-color: transparent;
-    border-color: var(--sm-secondary-color);
-    color: var(--sm-secondary-color);
-    border-width: 1px;
-    border-style: solid;
+.btn_outline {
+  --btn-bg: transparent;
+  --btn-border-color: var(--sm-secondary-color);      
+  --btn-text-color: var(--sm-secondary-color);
+  --btn-padding: 0.3rem 1.5rem 0.4rem 1.5rem;
+  --btn-radius: 0.2rem;
+  --btn-font-size: 0.8rem;
+  --btn-line-height: 1.5;                
+  &:hover, &:focus {
+    --btn-bg: var(--sm-secondary-color);
+    --btn-border-color: var(--sm-secondary-color);
+    --btn-text-color: var(--sm-base-white-color);
+  }
+} 
+
+
+
+.btn_sm {
+  
+  --btn-padding: 0.25rem 1rem 0.375rem 1rem;
+  --btn-font-size: 0.75rem;
+  --btn-line-height: 1;
+}
+
+.btn_white {
+  --btn-bg: var(--sm-base-white-color);
+  --btn-border-color: var(--sm-base-white-color);
+  --btn-text-color: var(--sm-base-black-color);
+  &:hover, &:focus {     
+    --btn-bg: transparent;
+    --btn-border-color: var(--sm-base-white-color);
+    color: var(--sm-base-white-color) !important;
+  }
+}
+
+.submit_button {
+  & input {
+    background: var(--sm-button-bg-color) !important;
+    border-color: var(--sm-button-border-color) !important;
+    border-width: $btn-border-width !important;
+    color: var(--sm-base-white-color) !important;
+    padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
+    border-radius: 0.2rem !important;
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+    width: auto !important;
+    height: auto !important;
+    text-decoration: none !important;
+    display: block !important;  
+    text-align: center !important;
     &:hover, &:focus {
-      background-color: var(--sm-primary-color);
-      border-color: var(--sm-primary-color);
-      color: var(--sm-base-white-color);
+      background-color: darken($btn-bg-color, 3) !important;
+      border-color: darken($btn-bg-color, 3) !important;
     }
   }
-
-  .btn_sm {
-    padding: calculateRem(4px) calculateRem(16px) calculateRem(6px) calculateRem(16px);
-    font-size: calculateRem(12px);
-    line-height: 1;
-  }
-
-  .btn_white {
-    background-color: var(--sm-base-white-color);
-    border-color: rgba($base-black-color, 0.15);
-    color: var(--sm-base-black-color);
-    &:hover, &:focus {     
-      color: var(--sm-base-white-color);
-    }
-  }
-
-  .submit_button {
-    & input {
-      background: var(--sm-button-bg-color) !important;
-      border-color: var(--sm-button-border-color) !important;
-      border-width: $btn-border-width !important;
-      color: var(--sm-base-white-color) !important;
-      padding: 0.3rem 1.5rem 0.4rem 1.5rem !important;
-      border-radius: 0.2rem !important;
-      font-size: 1rem !important;
-      line-height: 1.5 !important;
-      width: auto !important;
-      height: auto !important;
-      text-decoration: none !important;
-      display: block !important;  
-      text-align: center !important;
-      &:hover, &:focus {
-        background-color: darken($btn-bg-color, 3) !important;
-        border-color: darken($btn-bg-color, 3) !important;
-      }
-    }
-  }
+}
 
   
 input[type=file] {
     display: none;
 }
-.choose-btn {
-  @extend .btn_outline;  
-  min-width: auto;
-  width: auto;  
-  border-width: 1px;
-  border-style: solid;  
-} 

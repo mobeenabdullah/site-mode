@@ -27,7 +27,7 @@
     ?>
 
     <form id="site-mode-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
-        <div class="option__row">
+        <!-- <div class="option__row">
             <div class="option__row--label">
                 <span><label for="google_analytics"><?php _e('Google Analytics','site-mode');?></label></span>                
             </div>
@@ -40,28 +40,31 @@
                     <span class="arrow-down"></span>
                 </div>
             </div>
-        </div>
-        <div class="option__row analytic_id <?php echo ($analytics_type !== 'ga-id') ? 'sm_hide_field' : ''; ?>">
-            <div class="option__row--label">
-                <span><label for="google_analytic_id"><?php _e(' Enter just the ID', 'site-mode')?></label></span>
-            </div>
-            <div class="option__row--field">
-                <div class="sm_input_cover">                    
-                    <input type="text" id="google_analytic_id" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />
+        </div> -->
+        
+            <div class="option__row <?php echo ($analytics_type !== 'ga-id') ? 'sm_hide_field' : ''; ?>">
+                <div class="option__row--label">
+                    <span><label for="google_analytic_id"><?php _e('Google Analytic ID', 'site-mode')?></label></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">                    
+                        <input type="text" id="google_analytic_id" name="advanced-ga-id-setting" value="<?php echo esc_attr($ga_id); ?>" />
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="option__row analytic_id <?php echo ($analytics_type !== 'pixel-id') ? 'sm_hide_field' : ''; ?>">
-            <div class="option__row--label">
-                <span><label for="google_analytic_id"><?php _e(' Enter just Pixel ID', 'site-mode')?></label></span>
-            </div>
-            <div class="option__row--field">
-                <div class="sm_input_cover">
-                    <input type="text" id="facebook_pixel_id" name="advanced-facebook-id-setting" value="<?php echo esc_attr($fb_id); ?>" />
+        
+        
+            <div class="option__row <?php echo ($analytics_type !== 'pixel-id') ? 'sm_hide_field' : ''; ?>">
+                <div class="option__row--label">
+                    <span><label for="facebook_pixel_id"><?php _e('Facebook Pixel ID', 'site-mode')?></label></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">
+                        <input type="text" id="facebook_pixel_id" name="advanced-facebook-id-setting" value="<?php echo esc_attr($fb_id); ?>" />
+                    </div>
                 </div>
             </div>
-        </div>
+        
 
         <div class="option__row">
             <div class="option__row--label">
@@ -85,7 +88,7 @@
                     <label for="feed_enable"></label>
                 </div>
             </div>
-        </div>
+        </div>    
 
         <div class="option__row">
             <div class="option__row--label">
@@ -93,10 +96,15 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover">                    
-                    <textarea id="header-code" name="advanced-header-code-setting" rows="6" cols="80"><?php echo $header_code; ?></textarea>
-                </div>
+                    <textarea id="header_code" name="advanced-header-code-setting" rows="6" cols="80">
+                        <?php echo $header_code; ?>                            
+                    </textarea>                    
+                </div>                  
             </div>
         </div>
+        <style>
+          
+        </style>
 
         <div class="option__row">
             <div class="option__row--label">
