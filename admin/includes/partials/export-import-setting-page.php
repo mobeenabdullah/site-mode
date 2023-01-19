@@ -5,7 +5,9 @@
                 <label for="btn-export" class="screen-reading-text">Export</label>
             </div>
             <div class="option__row--field">
-                <button class="btn_primary btn_outline btn-export" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
+                <div class="button_wrapper">
+                    <button class="btn btn_outline btn-export" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
+                </div>
             </div>
         </div>
         <div class="option__row">
@@ -14,8 +16,10 @@
                 <span class="info_text"><?php _e('upload json file to import json into db', 'site-mode');?></span>
             </div>
             <div class="option__row--field upload_file_wrapper">
-                <label for="fileSelect" class="choose-btn chooseBtn" id="chooseBtn">Choose</label>
-                <input type="file" class="hiddenBtn" name="json-file" id="fileSelect" accept=".json">
+                <div class="button_wrapper">
+                    <label for="fileSelect" class="btn btn_outline choose-btn chooseBtn" id="chooseBtn">Choose</label>
+                    <input type="file" class="hiddenBtn" name="json-file" id="fileSelect" accept=".json">
+                </div>
             </div>
         </div>   
         

@@ -114,6 +114,9 @@ body {
     }    
   }
 }
+.section_subheading {
+  font-size: calculateRem(16px);
+}
 
 
 /*-----------------------------------------------
@@ -144,6 +147,7 @@ body {
 
   &--field {
     flex: 1;
+    position: relative;
     & .role_checkbox {
       margin-bottom: 1.5rem;
     }
@@ -211,13 +215,13 @@ body {
   }
 }
 
-.button.bg-image-upload, .button.logo-upload {
-  @extend .btn_outline;
-  &:focus {
-    outline: none !important;
-    box-shadow: none !important;
-  }
-}
+// .button.bg-image-upload, .button.logo-upload {
+//   @extend .btn_outline;
+//   &:focus {
+//     outline: none !important;
+//     box-shadow: none !important;
+//   }
+// }
 
 
 .logo_type_wrapper {
@@ -336,7 +340,9 @@ body {
 }
 
 //  (d) Design Tab
-
+.show_background {
+  margin-bottom: calculateRem(40px);
+}
 .section_theme {
   .template__wrapper {
     margin-bottom: calculateRem(40px);
@@ -388,10 +394,10 @@ body {
       gap: calculateRem(10px);      
       visibility: hidden;
       opacity: 0;
-      pointer-events: none;
+      // pointer-events: none;
       transition: all .2s;
-      & a {
-        pointer-events: none;
+      & a, & button {
+        // pointer-events: none;
         position: relative;
         z-index: 10;
       }
@@ -556,7 +562,15 @@ body {
 
 //  (f) Advance Tab
 
-
+.CodeMirror {
+  &.cm-s-default {
+    border: 1px solid;
+    border-radius: 0.4rem;
+    height: 20rem;
+    overflow: hidden;
+    max-width: 38rem;
+  }      
+}
 
 //  (g) Import/Export Tab
 .upload_file_wrapper {

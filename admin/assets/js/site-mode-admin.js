@@ -315,27 +315,26 @@ jQuery(function ($) {
         siteMode.on('change', showHideURLOptions);
 
         // 2.   Google Analytic on advance tab
-        const googleAnalyticSelect = $('#google_analytics');
-        const analyticId = $('.analytic_id');
-        const analyticCode = $('.analytic_code');    
+       
+        // function showHideGoogleAnalytics() {  
+        //     console.log($(this).val());
+        //     if($(this).val() === 'analytics-id') {
+        //         analyticId.removeClass('sm_hide_field');                                        
+        //     } else {
+        //         analyticId.addClass('sm_hide_field');     
+        //         analyticCode.removeClass('sm_hide_field');       
+        //     }
 
-        function showHideGoogleAnalytics() {  
-            console.log($(this).val());
-            if($(this).val() === 'analytics-id') {
-                analyticId.removeClass('sm_hide_field');                                        
-            } else {
-                analyticId.addClass('sm_hide_field');     
-                analyticCode.removeClass('sm_hide_field');       
-            }
+        //     if($(this).val() === 'analytics-code') {            
+        //         analyticCode.removeClass('sm_hide_field');
+        //     } else {
+        //         analyticCode.addClass('sm_hide_field');       
+        //         analyticId.removeClass('sm_hide_field');     
+        //     }
+        // }
 
-            if($(this).val() === 'analytics-code') {            
-                analyticCode.removeClass('sm_hide_field');
-            } else {
-                analyticCode.addClass('sm_hide_field');       
-                analyticId.removeClass('sm_hide_field');     
-            }
-        }
-        googleAnalyticSelect.on('change', showHideGoogleAnalytics);
+
+        
 
         // 3.  Tabs setting page
         const tabLink = $('.sm_tabs li');
@@ -354,7 +353,7 @@ jQuery(function ($) {
         const imageLogoWrapper = $('.image_logo_wrapper');
         const textLogoWrapper = $('.text_logo_wrapper');
         const logoInput = $('input[name="content-logo-settings"]');
-
+        
         imageLogoWrapper.hide();
         textLogoWrapper.hide();
 
@@ -375,19 +374,35 @@ jQuery(function ($) {
 
         // 5.   Show Login URL field
         const loginUrlField = $('.login_url_field');
-        const enableLoginIcon = $('.enable_login_icon');        
+        const enableLoginIcon = $('.enable_login_icon');   
+        const enableBackground = $('.check_background');     
+        const showBackgroundField = $('.show_background');
+        const enableOverlay = $('.background_overlay');
+        const showOverlayFields = $('.background_overlay');
+        const googleAnalyticSelect = $('#google_analytics');        
+        const analyticId = $('.analytic_id');
+        const analyticCode = $('.analytic_code');  
 
-        function enableDisableLoginIcon() {            
-            if(enableLoginIcon.is(':checked')) {
-                loginUrlField.removeClass('hide_url');                
+        function enableDisableField(element, field) {            
+            if(element.is(':checked')) {
+                field.removeClass('sm_hide_field');                
             } else {
-                loginUrlField.addClass('hide_url');
-                
+                field.addClass('sm_hide_field');                
             }
         } 
-        
-        enableLoginIcon.on('click', enableDisableLoginIcon);  
-        
+
+        enableLoginIcon.on('click', (function() {
+            enableDisableField(enableLoginIcon, loginUrlField)
+        }));  
+
+        enableBackground.on('click', (function() {
+            enableDisableField(enableBackground, showBackgroundField)
+        }));
+
+        enableOverlay.on('click', (function() {
+            enableDisableField(enableOverlay, showOverlayFields)
+        }));    
+
         // 6.  Sort social media
         const smSortable = $( "#sm_sortable" );
         
@@ -490,7 +505,8 @@ jQuery(function ($) {
             });
         });
     
-        // 10.  Ajax calls for design tab
+        // 10.  Ajax calls for design tab      
+
         $("#active-btn").on('click', function( event ) {
             alert("button working");
             event.preventDefault();
@@ -507,7 +523,6 @@ jQuery(function ($) {
                 }
             });
         });
-
 
         
         $("#site-mode-design-logo-background").submit(function( event ) {
@@ -693,6 +708,15 @@ jQuery(function ($) {
             });
         });
     }
+
+
+    // Santax highlighter 
+    var htmlEditor = CodeMirror.fromTextArea(document.getElementById("header_code"), {
+        lineNumbers: true,
+        mode: 'htmlmixed',
+        // theme: 'default',
+    });
+
 });
 
 

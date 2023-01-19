@@ -27,9 +27,11 @@
                         <div class="template_card <?php echo ($enable_template== '1') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
-                                <div class="template_card-actions">
-                                    <button type="button" class="btn_primary btn_sm" id="active-btn" name="design-template-enable" value="1">Activate<button>                                    
-                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                <div class="template_card-actions button_wrapper">
+                                    <button type="button" class="btn btn_sm" id="template_food" name="design-template-enable" value="1">Activate</button>                                    
+                                    <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=food_template")); ?>" target="_blank">
+                                        <?php _e('Preview','site-mode');?>
+                                    </a>
                                 </div>
                             </div>
                             <div class="template_card-content">
@@ -40,11 +42,11 @@
                         <div class="template_card <?php echo ($enable_template== '2') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>" alt="" />
-                                <div class="template_card-actions">
-                                    <a class="btn_primary btn_sm" href="#">
+                                <div class="template_card-actions button_wrapper">
+                                    <button class="btn btn_sm" id="template_construction" name="design-template-enable" value="2">
                                         <?php echo ($enable_template== '2') ? 'Activated' : _e('Activate','site-mode') ?>                                        
-                                    </a>
-                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                    </button>
+                                    <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
                             </div>
                             <div class="template_card-content">
@@ -55,11 +57,11 @@
                         <div class="template_card <?php echo ($enable_template== '3') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>" alt="" />
-                                <div class="template_card-actions">
-                                    <a class="btn_primary btn_sm" href="#">
+                                <div class="template_card-actions button_wrapper">
+                                    <button class="btn btn_sm" id="template_fashion" name="design-template-enable" value="3">
                                         <?php echo ($enable_template== '3') ? 'Activated' : _e('Activate','site-mode') ?>                                        
-                                    </a>
-                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                    </button>
+                                    <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashion_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
                             </div>
                             <div class="template_card-content">
@@ -70,11 +72,11 @@
                         <div class="template_card <?php echo ($enable_template== '4') ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'; ?>" alt="" />
-                                <div class="template_card-actions">
-                                    <a class="btn_primary btn_sm" href="#">
+                                <div class="template_card-actions button_wrapper">
+                                    <button class="btn btn_sm" id="template_travel" name="design-template-enable" value="4">
                                         <?php echo ($enable_template== '4') ? 'Activated' : _e('Activate','site-mode') ?>                                        
-                                    </a>
-                                    <a class="btn_primary btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
+                                    </button>
+                                    <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=travel_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
                                 </div>
                             </div>
                             <div class="template_card-content">
@@ -119,7 +121,9 @@
                     $overlay_opacity    = isset($lb_data['overlay_opacity']) ? $lb_data['overlay_opacity'] : '0.5';
                 
                 ?>
+                
                 <div class="background_logo_wrapper">
+                    <h4 class="section_subheading"><?php _e('Logo Settings','site-mode');?></h4>
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="logo_width"><?php _e('Logo Width','site-mode');?></label></span>
@@ -141,6 +145,7 @@
                             </div>
                         </div>
                     </div>
+                    <h4 class="section_subheading"><?php _e('Background Settings','site-mode');?></h4>
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="check_background"><?php _e('Background','site-mode');?></label></span>
@@ -152,27 +157,28 @@
                             </div>                        
                         </div>
                     </div>
-                    
-                    <div class="option__row show_background">
-                        <div class="option__row--label">
-                            <span><label for="background"><?php _e('Upload Background','site-mode');?></label></span>
-                        </div>
-                        <div class="option__row--field">
-                            <?php $image_url = wp_get_attachment_image_src($design_background, 'full'); ?>
-                            <?php if ($image_url) : ?>
-                                <div class="bg_image_wrapper">
-                                    <a href="#" class="logo-upload um_btn_outline image_btn"></a>
-                                    <div class="display_logo_img">
-                                        <img src="<?php echo esc_url($image_url[0]) ?>" width="150" height="150" />
+                    <div class="show_background sm_hide_field">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="background"><?php _e('Upload Background','site-mode');?></label></span>
+                            </div>
+                            <div class="option__row--field">
+                                <?php $image_url = wp_get_attachment_image_src($design_background, 'full'); ?>
+                                <?php if ($image_url) : ?>
+                                    <div class="bg_image_wrapper">
+                                        <a href="#" class="logo-upload um_btn_outline image_btn"></a>
+                                        <div class="display_logo_img">
+                                            <img src="<?php echo esc_url($image_url[0]) ?>" width="150" height="150" />
+                                        </div>
                                     </div>
-                                </div>
-                                <a href="#" class="button btn_outline logo-remove"><?php _e('Remove Background Image', 'site-mode'); ?></a>
-                                <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
-                            <?php else : ?>
-                                <a href="#" class="logo-upload button btn_outline"><?php _e('Background Image', 'site-mode'); ?></a>
-                                <a href="#" class="logo-remove button btn_outline" style="display: none;"><?php _e('Background Overlay', 'site-mode'); ?></a>
-                                <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>>
-                            <?php endif; ?>
+                                    <a href="#" class="button btn_outline logo-remove"><?php _e('Remove Background Image', 'site-mode'); ?></a>
+                                    <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
+                                <?php else : ?>
+                                    <a href="#" class="logo-upload button btn_outline"><?php _e('Background Image', 'site-mode'); ?></a>
+                                    <a href="#" class="logo-remove button btn_outline" style="display: none;"><?php _e('Background Overlay', 'site-mode'); ?></a>
+                                    <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     </div>
 
@@ -187,8 +193,8 @@
                             </div>                        
                         </div>
                     </div>
-
-                    <div class="background_overlay">                    
+                   
+                    <div class="background_overlay sm_hide_field">                    
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="overlay_color"><?php _e('Overlay Color','site-mode');?></label></span>
@@ -200,13 +206,14 @@
                                 </div>                        
                             </div>
                         </div>
+
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="overlay_opacity"><?php _e('Overlay Opacity','site-mode');?></label></span>
                             </div>
                             <div class="option__row--field">
                                 <div class="sm_checkbox_wrapper">
-                                <input type="range" id="overlay_opacity" name="overlay-opacity-setting" min="0" max="10" value="<?php echo $overlay_opacity; ?>">
+                                    <input type="checkbox" id="overlay_opacity" name="overlay-opacity-setting" min="0" max="10" value="<?php echo $overlay_opacity; ?>">
                                     <label for="overlay_opacity"></label>
                                 </div>                        
                             </div>
