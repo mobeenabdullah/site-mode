@@ -455,7 +455,8 @@ jQuery(function ($) {
                 cache: false,
                 data: formData,
                 enctype: "multipart/form-data",
-                success:function (res) {                
+                success:function (res) {
+                    console.log(res);
                     launch_toast(res.success);
                 }
             });
