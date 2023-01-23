@@ -7,7 +7,7 @@
         </div>
         <div class="section__wrapper-content section_theme">
             <!-- Template Form -->
-            <form id="site-mode-design" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+            <form class="active-btnss" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
                 <?php
                     $template = get_option('site_mode_design');
                     
@@ -28,7 +28,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button type="button" class="btn btn_sm" id="template_food" name="design-template-enable" value="1">Activate</button>                                    
+                                    <button type="button" class="btn btn_sm active-btn" id="template_food" name="design-template-enable" value="1">Activate</button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=food_template")); ?>" target="_blank">
                                         <?php _e('Preview','site-mode');?>
                                     </a>
@@ -43,7 +43,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button class="btn btn_sm" id="template_construction" name="design-template-enable" value="2">
+                                    <button class="btn btn_sm active-btn" id="template_construction" name="design-template-enable" value="2">
                                         <?php echo ($enable_template== '2') ? 'Activated' : _e('Activate','site-mode') ?>                                        
                                     </button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
@@ -58,7 +58,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button class="btn btn_sm" id="template_fashion" name="design-template-enable" value="3">
+                                    <button class="btn btn_sm active-btn" id="template_fashion" name="design-template-enable" value="3">
                                         <?php echo ($enable_template== '3') ? 'Activated' : _e('Activate','site-mode') ?>                                        
                                     </button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashion_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
@@ -111,7 +111,6 @@
 
                     // convert serialized string to array
                     $lb_data = unserialize($site_mode_design_lb);
-
                     //check if value is set or not if not set then set default value.
                     $logo_width         = isset($lb_data['logo_width']) ? $lb_data['logo_width'] : '200';
                     $logo_height        = isset($lb_data['logo_height']) ? $lb_data['logo_height'] : '200';
@@ -119,9 +118,7 @@
                     $background_overlay = isset($lb_data['background_overlay']) ? $lb_data['background_overlay'] : '#000000';
                     $overlay_color      = isset($lb_data['overlay_color']) ? $lb_data['overlay_color'] : '#000000';
                     $overlay_opacity    = isset($lb_data['overlay_opacity']) ? $lb_data['overlay_opacity'] : '0.5';
-                
                 ?>
-                
                 <div class="background_logo_wrapper">
                     <h4 class="section_subheading"><?php _e('Logo Settings','site-mode');?></h4>
                     <div class="option__row">
@@ -134,7 +131,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="logo_height"><?php _e('Logo Height','site-mode');?></label></span>
@@ -228,7 +224,6 @@
                     </div>            
                 </div>
             </form>
-            
         </div>
     </div>
     
@@ -263,10 +258,11 @@
                     //get data from option
                     $site_mode_design_font                    = get_option('site_mode_design_font');
                     $site_mode_design_font                    = unserialize($site_mode_design_font);
-                    $heading_font_size                  = isset($site_mode_design_font['heading_font_size']) ? $site_mode_design_font['heading_font_size'] : '36';
-                    $heading_font_family                = isset($site_mode_design_font['heading_font_family']) ? $site_mode_design_font['heading_font_family'] : 'Arial';
-                    $description_font_size              = isset($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '18';
-                    $description_font_family            = isset($site_mode_design_font['description_font_family']) ? $site_mode_design_font['description_font_family'] : 'Arial';
+        // use ternary operator for check data is empty or not.
+                    $heading_font_size                  = !empty($site_mode_design_font['heading_font_size']) ? $site_mode_design_font['heading_font_size'] : '36';
+                    $heading_font_family                = !empty($site_mode_design_font['heading_font_family']) ? $site_mode_design_font['heading_font_family'] : 'Open Sans';
+                    $description_font_size              = !empty($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '16';
+                    $description_font_family            = !empty($site_mode_design_font['description_font_family']) ? $site_mode_design_font['description_font_family'] : 'Open Sans';
                 ?>
                 <div class="heading-section">
                     <h4><?php _e('Heading','site-mode');?></h4>
@@ -281,7 +277,7 @@
                                     <?php
                                     $font_family = unserialize($font_family);
                                     foreach ($font_family as $key => $value) { ?>
-                                        <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                        <option value="<?php echo $value ?>" <?php selected( $value===$heading_font_family, 1 ); ?>><?php echo $value ?></option>
                                     <?php }
                                     ?>
                                 </select>
@@ -312,7 +308,7 @@
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                     <?php
                                     foreach ($font_family as $key => $value) { ?>
-                                        <option value="<?php echo $value ?>"><?php echo $value ?></option>
+                                        <option value="<?php echo $value ?>" <?php selected( $value===$description_font_family, 1 ); ?>><?php echo $value ?></option>
                                     <?php }
                                     ?>
                                 </select>
@@ -339,19 +335,14 @@
                     </div>            
                 </div>
         </form>
-            
-
 
         </div>
     </div>
 
-   
-
-
     <div class="section__wrapper social_wrapper">
         <div class="section__wrapper-header">
             <div class="section_title">
-                <h3 class="section_title-title">Social Icons</h3>
+                <h3 class="section_title-title"><?php _e('Social Icons','site-mode');?></h3>
             </div>
         </div>
         <div class="section__wrapper-content section_social_icons">
@@ -368,7 +359,6 @@
                 $icon_bg_color          = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
                 $icon_border_color      = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
             ?>
-
             <div class="social_icon_section">
                 <div class="option__row">
                     <div class="option__row--label">
