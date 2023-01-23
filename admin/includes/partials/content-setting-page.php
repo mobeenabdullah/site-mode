@@ -6,6 +6,9 @@
             $content = get_option('site_mode_content');
             //unserialize data
             $uns_data = unserialize($content);
+            echo '<pre>';
+            print_r($uns_data);
+            echo '</pre>';
 
             // check values are set or not if not assign default values
             $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : '';
@@ -79,7 +82,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover label_top">                        
-                        <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($image_logo,'site-mode'); ?>" />
+                        <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($text_logo,'site-mode'); ?>" />
                     </div>
                 </div>
             </div>
