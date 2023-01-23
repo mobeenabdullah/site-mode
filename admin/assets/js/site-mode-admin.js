@@ -461,6 +461,29 @@ jQuery(function ($) {
                 }
             });
         });
+
+        // 10.  Ajax calls for design tab
+        $("#site-mode-design").submit(function( event ) {
+            alert('Click');
+            event.preventDefault();
+            const form = document.getElementById("site-mode-design");
+            const formData = new FormData(form);
+            formData.append('action', 'ajax_site_mode_design');
+            formData.append('ajax_site_mode_design',form);
+            $.ajax({
+                url: ajaxObj.ajax_url,
+                dataType : "json",
+                method: "post",
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: formData,
+                enctype: "multipart/form-data",
+                success:function (res) {
+                    launch_toast(res.success);
+                }
+            });
+        });
     
         
         $( "#site-mode-design-fonts" ).submit(function( event ) {
@@ -483,6 +506,8 @@ jQuery(function ($) {
                 }
             });
         });
+
+
         
         // 9.  Ajax call for social tab
         $( "#site-mode-social" ).submit(function( event ) {
@@ -506,12 +531,12 @@ jQuery(function ($) {
             });
         });
     
-        // 10.  Ajax calls for design tab      
+        // 10.  Ajax calls for design tab
 
-        $("#active-btn").on('click', function( event ) {
+        $("active-btn").on('click', function( event ) {
             alert("button working");
             event.preventDefault();
-            const data = document.getElementById("active-btn").value;
+            const data = document.getElementsByClassName("active-btn").value;
             console.log(data);
             $.ajax({
                 url: ajaxObj.ajax_url,

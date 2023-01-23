@@ -49,17 +49,10 @@ class Site_Mode_Design
     }
 
     public function ajax_site_mode_design() {
-        print_r($_POST);
-        exit;
-        $nonce = $_POST['design-custom-message'];
-        if(!wp_verify_nonce( $nonce, 'design-settings-save' )) {
-            die(__('Security Check', 'site-mode'));
-        }
-        else {
+          echo 'Test data';
             $data = array(
                 'enable_template'     => $_POST['design-template-enable'],
             );
-        }
 
         if(get_option( 'site_mode_design' )) {
             update_option('site_mode_design',serialize($data));
@@ -72,7 +65,6 @@ class Site_Mode_Design
         die();
     }
     public function ajax_site_mode_design_lb() {
-
         $nonce = $_POST['design-logo-background'];
         if(!wp_verify_nonce( $nonce, 'design-logo-background-settings-save' )) {
             die(__('Security Check', 'site-mode'));
@@ -120,7 +112,6 @@ class Site_Mode_Design
     }
 
     public function ajax_site_mode_design_color_section() {
-
         $nonce = $_POST['design-icon-color'];
         if(!wp_verify_nonce( $nonce, 'design-icon-color-settings-save' )) {
             die(__('Security Check', 'site-mode'));
