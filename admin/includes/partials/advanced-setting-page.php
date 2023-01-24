@@ -94,8 +94,8 @@
             <div class="option__row--label">
                 <span><label for="header-code"><?php _e('Header Code', 'site-mode')?></label></span>                
             </div>
-            <div class="option__row--field">
-                <div class="sm_textarea_cover">                    
+            <div class="option__row--field">                
+                <div class="sm_textarea_cover header_code">                    
                     <textarea id="header_code" name="advanced-header-code-setting" rows="6" cols="80">
                         <?php echo $header_code; ?>                            
                     </textarea>                    
@@ -111,8 +111,8 @@
                 <span><label for="footer-code"><?php _e('Footer Code', 'site-mode')?></label></span>                
             </div>
             <div class="option__row--field">
-                <div class="sm_textarea_cover">                    
-                    <textarea id="footer-code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo $footer_code; ?></textarea>
+                <div class="sm_textarea_cove footer_code">                    
+                    <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo $footer_code; ?></textarea>
                 </div>
             </div>
         </div>
@@ -121,8 +121,8 @@
                 <span><label for="custom-css"><?php _e('Custom CSS', 'site-mode')?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="sm_textarea_cover">
-                    <textarea id="custom-css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_attr($custom_css); ?></textarea>
+                <div class="sm_textarea_cover custom_css">
+                    <textarea id="custom_css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_attr($custom_css); ?></textarea>
                 </div>
             </div>
         </div>

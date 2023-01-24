@@ -736,13 +736,18 @@ jQuery(function ($) {
     }
 
 
-    // Santax highlighter 
-    var htmlEditor = CodeMirror.fromTextArea(document.getElementById("header_code"), {
-        lineNumbers: true,
-        mode: 'htmlmixed',
-        // theme: 'default',
-    });
+    // ACE Editor
+    let headerEditor = ace.edit('header_code');    
+    headerEditor.setTheme("ace/theme/ambiance");
+    headerEditor.session.setMode("ace/mode/html");
 
+    let footerEditor = ace.edit('header_code');    
+    footerEditor.setTheme("ace/theme/ambiance");
+    footerEditor.session.setMode("ace/mode/html");
+
+    let customCssEditor = ace.edit('header_code');    
+    customCssEditor.setTheme("ace/theme/ambiance");
+    customCssEditor.session.setMode("ace/mode/html");
 });
 
 
