@@ -233,7 +233,7 @@ jQuery(function ($) {
 
     // end of seo media upload
 
-    
+
 
     //toaster
     function launch_toast(response) {
@@ -251,13 +251,13 @@ jQuery(function ($) {
 
 
     // ajax calls
-    
 
-   
 
-    
 
-    
+
+
+
+
 
 
     // ajax call for download json file from server
@@ -279,7 +279,7 @@ jQuery(function ($) {
                 link.download = "export.json";
                 link.click();
             }
-        });        
+        });
     }
 
     /*------------------------------------------------
@@ -297,49 +297,49 @@ jQuery(function ($) {
     12.  Ajax call for advance Tab
     13.  Ajax call for import and export
     ------------------------------------------------*/
-    
+
     $(document).ready(function () {
 
-        // 1.   Mode change on general tab 
+        // 1.   Mode change on general tab
         const siteMode = $('#site_mode');
         const redirectOption = $('.redirect_options');
 
-        function showHideURLOptions() {            
+        function showHideURLOptions() {
             if($(this).val() === 'redirect') {
-                redirectOption.removeClass('sm_hide_field');                
+                redirectOption.removeClass('sm_hide_field');
             } else {
                 redirectOption.addClass('sm_hide_field');
-                
+
             }
         }
         siteMode.on('change', showHideURLOptions);
 
         // 2.   Google Analytic on advance tab
-       
-        // function showHideGoogleAnalytics() {  
+
+        // function showHideGoogleAnalytics() {
         //     console.log($(this).val());
         //     if($(this).val() === 'analytics-id') {
-        //         analyticId.removeClass('sm_hide_field');                                        
+        //         analyticId.removeClass('sm_hide_field');
         //     } else {
-        //         analyticId.addClass('sm_hide_field');     
-        //         analyticCode.removeClass('sm_hide_field');       
+        //         analyticId.addClass('sm_hide_field');
+        //         analyticCode.removeClass('sm_hide_field');
         //     }
 
-        //     if($(this).val() === 'analytics-code') {            
+        //     if($(this).val() === 'analytics-code') {
         //         analyticCode.removeClass('sm_hide_field');
         //     } else {
-        //         analyticCode.addClass('sm_hide_field');       
-        //         analyticId.removeClass('sm_hide_field');     
+        //         analyticCode.addClass('sm_hide_field');
+        //         analyticId.removeClass('sm_hide_field');
         //     }
         // }
 
 
-        
+
 
         // 3.  Tabs setting page
         const tabLink = $('.sm_tabs li');
         const tabContent = $('.tab-content');
-        
+
         function smTabs() {
             let tab_id = $(this).attr('data-tab');
             tabLink.removeClass('current');
@@ -348,12 +348,12 @@ jQuery(function ($) {
             $("#"+tab_id).addClass('current');
         }
         tabLink.on('click', smTabs);
-        
+
         // 4.   Logo Type
         const imageLogoWrapper = $('.image_logo_wrapper');
         const textLogoWrapper = $('.text_logo_wrapper');
         const logoInput = $('input[name="content-logo-settings"]');
-        
+
         imageLogoWrapper.hide();
         textLogoWrapper.hide();
 
@@ -374,26 +374,26 @@ jQuery(function ($) {
 
         // 5.   Show Login URL field
         const loginUrlField = $('.login_url_field');
-        const enableLoginIcon = $('.enable_login_icon');   
-        const enableBackground = $('.check_background');     
+        const enableLoginIcon = $('.enable_login_icon');
+        const enableBackground = $('.check_background');
         const showBackgroundField = $('.show_background');
         const enableOverlay = $('.background_overlay');
         const showOverlayFields = $('.background_overlay');
-        const googleAnalyticSelect = $('#google_analytics');        
+        const googleAnalyticSelect = $('#google_analytics');
         const analyticId = $('.analytic_id');
-        const analyticCode = $('.analytic_code');  
+        const analyticCode = $('.analytic_code');
 
-        function enableDisableField(element, field) {            
+        function enableDisableField(element, field) {
             if(element.is(':checked')) {
-                field.removeClass('sm_hide_field');                
+                field.removeClass('sm_hide_field');
             } else {
-                field.addClass('sm_hide_field');                
+                field.addClass('sm_hide_field');
             }
-        } 
+        }
 
         enableLoginIcon.on('click', (function() {
             enableDisableField(enableLoginIcon, loginUrlField)
-        }));  
+        }));
 
         enableBackground.on('click', (function() {
             enableDisableField(enableBackground, showBackgroundField)
@@ -401,17 +401,17 @@ jQuery(function ($) {
 
         enableOverlay.on('click', (function() {
             enableDisableField(enableOverlay, showOverlayFields)
-        }));    
+        }));
 
         // 6.  Sort social media
         const smSortable = $( "#sm_sortable" );
-        
+
         // sortable library setting object
         smSortable.sortable({
             cursor: "move"
         });
 
-        // Sort change function 
+        // Sort change function
         smSortable.on( "sortchange", function( event, ui ) {
             var sortedIDs = smSortable.sortable( "toArray" );
             console.log(sortedIDs);
@@ -484,8 +484,8 @@ jQuery(function ($) {
                 }
             });
         });
-    
-        
+
+
         $( "#site-mode-design-fonts" ).submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-design-fonts");
@@ -508,7 +508,7 @@ jQuery(function ($) {
         });
 
 
-        
+
         // 9.  Ajax call for social tab
         $( "#site-mode-social" ).submit(function( event ) {
             event.preventDefault();
@@ -530,32 +530,31 @@ jQuery(function ($) {
                 }
             });
         });
-    
+
         // 10.  Ajax calls for design tab
 
-        $("#template_activation").submit( function( event ) {
-            alert("button working");
-            event.preventDefault();
-            const form = document.getElementById("template_activation");
-            alert(form);
-            const formData = new FormData(form);
-            console.log(formData);
-            formData.append('action', 'ajax_site_mode_design');
-            formData.append('ajax_site_mode_design',form);
+        $("body").on( 'click', '.activate-template-btn', function(e) {
+            const templateName = e.target.value;
+            // save template name to wp_options
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
                 method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
+                data: {
+                    action: 'ajax_site_mode_design',
+                    template_name: templateName
+                },
                 success:function (res) {
+                    const activatedTemplate = res.data;
+                    $('.template_card').removeClass('active_template');
+                    $('.template_card .activate-template-btn').text('Active');
+                    $(`.template-${activatedTemplate}`).addClass('active_template');
+                    $('.active_template .activate-template-btn').text('Activated');
                     launch_toast(res.success);
                 }
             });
         });
+
         // ajax call for this form id test_form
         $("#test_form").submit( function( event ) {
             event.preventDefault();
@@ -564,7 +563,7 @@ jQuery(function ($) {
             //select clicked form input data.
             var form_data = $(this).serialize();
             alert(form_data);
-            
+
             var data =  $('input[name="submit"]').val();
             console.log(data);
             alert(data);
@@ -600,8 +599,8 @@ jQuery(function ($) {
                     launch_toast(res.success);
                 }
             });
-        });        
-        
+        });
+
         $( "#site-mode-design-color-section" ).submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-design-color-section");
@@ -622,7 +621,7 @@ jQuery(function ($) {
                 }
             });
         });
-        
+
         // 11.  Ajax call for SEO tab
         $( "#site-mode-seo" ).submit(function( event ) {
             event.preventDefault();
@@ -714,25 +713,25 @@ jQuery(function ($) {
                     //create file name with site name and current date and time
                     var fileName = siteName + '-' + pluginName + '-' + dateStr + '.json';
                     link.download = fileName;
-    
+
                     //name of the file with site name
                     // link.download = siteName + '.json';
                     // link.download = "export.json";
                     link.click();
                 }
-            });    
+            });
         });
 
-        // Multi Select 
+        // Multi Select
         $('.js-example-basic-multiple').select2();
 
-        // Upload file 
+        // Upload file
         const hiddenBtn = document.querySelector('.hiddenBtn');
         const chooseBtn = document.querySelector('.chooseBtn');
 
         hiddenBtn.addEventListener('change', function() {
             if (hiddenBtn.files.length > 0) {
-                //chooseBtn.innerText = hiddenBtn.files[0].name;                
+                //chooseBtn.innerText = hiddenBtn.files[0].name;
                 chooseBtn.insertAdjacentHTML("afterend", `<div class="file_name">${hiddenBtn.files[0].name}</div>`);
             } else {
                 chooseBtn.innerText = 'Choose';
@@ -746,17 +745,17 @@ jQuery(function ($) {
     const smTabsList = document.querySelectorAll('.sm_tabs li');
     const menuLabel = document.querySelector('.menu_label');
 
-    mobileMenu.addEventListener('click', function() {    
+    mobileMenu.addEventListener('click', function() {
         smTabs.classList.toggle('active_tabs');
     });
 
     if(window.innerWidth < 768) {
         smTabsList.forEach(function(item) {
             item.addEventListener('click', function() {
-                smTabs.classList.remove('active_tabs');  
+                smTabs.classList.remove('active_tabs');
                 let tabName = item.getAttribute('data-tab').replace('-', ' ');
-                tabName = tabName.replace('tab ','').toLowerCase();                
-                tabNameChar = tabName.split('');                                
+                tabName = tabName.replace('tab ','').toLowerCase();
+                tabNameChar = tabName.split('');
                 let tabLabel = tabNameChar[0].toUpperCase() + tabNameChar.slice(1).join('').toLowerCase();
                 menuLabel.innerText = tabLabel + ' Setting';
             });
@@ -765,7 +764,7 @@ jQuery(function ($) {
 
 
     // ACE Editor
-    let headerEditor = ace.edit('header_code');    
+    let headerEditor = ace.edit('header_code');
     headerEditor.setTheme("ace/theme/ambiance");
     headerEditor.session.setMode("ace/mode/html");
 
