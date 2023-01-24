@@ -207,11 +207,9 @@
                             <div class="option__row--label">
                                 <span><label for="overlay_opacity"><?php _e('Overlay Opacity','site-mode');?></label></span>
                             </div>
-                            <div class="option__row--field">
-                                <div class="sm_checkbox_wrapper">
-                                    <input type="checkbox" id="overlay_opacity" name="overlay-opacity-setting" min="0" max="10" value="<?php echo $overlay_opacity; ?>">
-                                    <label for="overlay_opacity"></label>
-                                </div>                        
+                            <div class="option__row--field">                                
+                                    <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php echo $overlay_opacity; ?>">
+                                    <label for="overlay_opacity"></label>                                
                             </div>
                         </div>                    
                     </div>
