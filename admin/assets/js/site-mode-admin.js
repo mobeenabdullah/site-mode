@@ -559,15 +559,20 @@ jQuery(function ($) {
         // ajax call for this form id test_form
         $("#test_form").submit( function( event ) {
             event.preventDefault();
-            console.log($(this));
-            var that = $(this)
-            var name = that.attr('name').val();
-            alert(name);
+            alert("This is working fine..");
+    // get form input data using jquery input field nam is submit .
+            //select clicked form input data.
+            var form_data = $(this).serialize();
+            alert(form_data);
+            
+            var data =  $('input[name="submit"]').val();
+            console.log(data);
+            alert(data);
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
                 method: "post",
-                data: formData,
+                data: data,
                 success:function (res) {
                     launch_toast(res.success);
                 }
@@ -764,11 +769,11 @@ jQuery(function ($) {
     headerEditor.setTheme("ace/theme/ambiance");
     headerEditor.session.setMode("ace/mode/html");
 
-    let footerEditor = ace.edit('header_code');    
+    let footerEditor = ace.edit('footer_code');
     footerEditor.setTheme("ace/theme/ambiance");
     footerEditor.session.setMode("ace/mode/html");
 
-    let customCssEditor = ace.edit('header_code');    
+    let customCssEditor = ace.edit('custom_css');
     customCssEditor.setTheme("ace/theme/ambiance");
     customCssEditor.session.setMode("ace/mode/html");
 });
