@@ -110,32 +110,24 @@ class Site_Mode_Public
 
         }
 
+		$activatedTemplate =  unserialize(get_option('site_mode_design'));
+		$status =  unserialize(get_option('site_mode_general'));
 
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
+		if((isset($_GET['site-mode-preview']) && $_GET['site-mode-preview'] === 'true') || $status['status'] === 1) {
 
-        $template =  get_option('site_mode_general');
-        $un_data = unserialize($template);
+			if(isset($_GET['template'])) {
+				$template = $_GET['template'];
+			} else {
+				$template = $activatedTemplate;
+			}
 
-        //check if the values are set or not and then assign them to the variables
-        $status         = isset($un_data['status'] ) ? $un_data['status']  : '';
+			if(!empty($template)) {
+				wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
+				wp_enqueue_style($template, plugin_dir_url(__FILE__) . 'css/'.$template.'.css', array(), $this->version, 'all');
+			}
 
-        switch (!empty($status)) {
-            case ($this->enable_template == '1'):
-                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
-                break;
-            case ($this->enable_template == '2'):
-                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-2.css', array(), $this->version, 'all');
-                break;
-            case ($this->enable_template == '3'):
-                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-3.css', array(), $this->version, 'all');
-                break;
-            case ($this->enable_template == '4'):
-                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-4.css', array(), $this->version, 'all');
-                break;
-            default:
-                wp_enqueue_style('template-one', plugin_dir_url(__FILE__) . 'css/template-1.css', array(), $this->version, 'all');
+		}
 
-        }
 	}
 
 	/**
