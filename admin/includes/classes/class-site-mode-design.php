@@ -41,26 +41,17 @@ class Site_Mode_Design
 
 
     public function __construct(){
-
         $this->site_mode_design = get_option('site_mode_design');
         $this->site_mode_design = unserialize($this->site_mode_design);
         $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
-
     }
 
     public function ajax_site_mode_design() {
-
-        var_dump($_POST);
-
-        if(get_option( 'site_mode_design' )) {
-            update_option('site_mode_design',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_design' ));
-        }
-        else {
-            add_option('site_mode_design',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_design' ));
-        }
-        die();
+		if(isset($_POST['template_name'])) {
+			$template_name = $_POST['template_name'];
+			update_option('site_mode_design', serialize($template_name));
+			wp_send_json_success(unserialize(get_option( 'site_mode_design' )));
+		}
     }
     public function ajax_site_mode_design_lb() {
         print_r($_POST);
