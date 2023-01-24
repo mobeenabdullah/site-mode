@@ -533,24 +533,47 @@ jQuery(function ($) {
     
         // 10.  Ajax calls for design tab
 
-        $("active-btn").on('click', function( event ) {
+        $("#template_activation").submit( function( event ) {
             alert("button working");
             event.preventDefault();
-            const data = document.getElementsByClassName("active-btn").value;
-            console.log(data);
+            const form = document.getElementById("template_activation");
+            alert(form);
+            const formData = new FormData(form);
+            console.log(formData);
+            formData.append('action', 'ajax_site_mode_design');
+            formData.append('ajax_site_mode_design',form);
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
                 method: "post",
-                data: data,
-                action: 'ajax_site_mode_design',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: formData,
+                enctype: "multipart/form-data",
                 success:function (res) {
                     launch_toast(res.success);
                 }
             });
         });
-
-        
+        // ajax call for this form id test_form
+        $("#test_form").submit( function( event ) {
+            event.preventDefault();
+            console.log($(this));
+            var that = $(this)
+            var name = that.attr('name').val();
+            alert(name);
+            $.ajax({
+                url: ajaxObj.ajax_url,
+                dataType : "json",
+                method: "post",
+                data: formData,
+                success:function (res) {
+                    launch_toast(res.success);
+                }
+            });
+        }
+    );
         $("#site-mode-design-logo-background").submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-design-logo-background");

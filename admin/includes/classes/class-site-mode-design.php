@@ -49,10 +49,8 @@ class Site_Mode_Design
     }
 
     public function ajax_site_mode_design() {
-          echo 'Test data';
-            $data = array(
-                'enable_template'     => $_POST['design-template-enable'],
-            );
+
+        var_dump($_POST);
 
         if(get_option( 'site_mode_design' )) {
             update_option('site_mode_design',serialize($data));
@@ -65,6 +63,7 @@ class Site_Mode_Design
         die();
     }
     public function ajax_site_mode_design_lb() {
+        print_r($_POST);
         $nonce = $_POST['design-logo-background'];
         if(!wp_verify_nonce( $nonce, 'design-logo-background-settings-save' )) {
             die(__('Security Check', 'site-mode'));
