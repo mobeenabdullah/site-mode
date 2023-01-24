@@ -86,7 +86,7 @@ body {
 	height: 100vh;
 }
 
-.wrapper .uc_image img, .construction_cover__left, .construction_cover__left--logo img, .construction_cover__right, .construction_cover__right--logo img, .construction_cover__right--icons .social_media li a svg, .construction_cover__right--icons .social_media li a:hover svg {
+.wrapper .uc_image img, .construction_cover, .construction_cover__left, .construction_cover__left--logo img, .construction_cover__right, .construction_cover__right--logo img, .construction_cover__right--icons .social_media li a svg, .construction_cover__right--icons .social_media li a:hover svg {
 	width: 100%;
 	height: 100%;
 }
@@ -194,6 +194,8 @@ body {
 	align-items: center;
 	gap: 2.98rem;
 	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .construction_cover__right--icons .social_media li a {
