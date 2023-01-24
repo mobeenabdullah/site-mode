@@ -13,6 +13,8 @@ $design_colors          = unserialize(get_option('site_mode_design_colors'));
 $social                 = unserialize(get_option('site_mode_social'));
 $seo                    = unserialize(get_option('site_mode_seo'));
 
+require_once 'footer.php';
+
 ?>
 
 
