@@ -1,3 +1,4 @@
+<h1>Template 1<h1>
 <?php
 
 /**
@@ -12,10 +13,9 @@ $design_colors          = unserialize(get_option('site_mode_design_colors'));
 $social                 = unserialize(get_option('site_mode_social'));
 $seo                    = unserialize(get_option('site_mode_seo'));
 
-
-
-
 ?>
+
+
 
 
 

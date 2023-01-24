@@ -39,7 +39,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 0;
     @extend %position-relative;
-    @include width_height_mixin(100%, null);
+    @extend %width-100-height-100;
 
     &__left {
         @extend %width-100-height-100;
@@ -97,7 +97,8 @@
         &--icons .social_media {
             @include flex_mixin(flex, null, center, null, 2.98rem);
             list-style: none;
-
+            margin: 0;
+            padding: 0;
             & li {
                 @include width_height_mixin(null, 2.2rem);
 
