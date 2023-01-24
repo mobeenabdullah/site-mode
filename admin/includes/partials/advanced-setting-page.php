@@ -111,7 +111,7 @@
                 <span><label for="footer-code"><?php _e('Footer Code', 'site-mode')?></label></span>                
             </div>
             <div class="option__row--field">
-                <div class="sm_textarea_cove footer_code">                    
+                <div class="sm_textarea_cover footer_code">
                     <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo $footer_code; ?></textarea>
                 </div>
             </div>

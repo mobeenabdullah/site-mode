@@ -533,24 +533,52 @@ jQuery(function ($) {
     
         // 10.  Ajax calls for design tab
 
-        $("active-btn").on('click', function( event ) {
+        $("#template_activation").submit( function( event ) {
             alert("button working");
             event.preventDefault();
-            const data = document.getElementsByClassName("active-btn").value;
-            console.log(data);
+            const form = document.getElementById("template_activation");
+            alert(form);
+            const formData = new FormData(form);
+            console.log(formData);
+            formData.append('action', 'ajax_site_mode_design');
+            formData.append('ajax_site_mode_design',form);
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
                 method: "post",
-                data: data,
-                action: 'ajax_site_mode_design',
+                processData: false,
+                contentType: false,
+                cache: false,
+                data: formData,
+                enctype: "multipart/form-data",
                 success:function (res) {
                     launch_toast(res.success);
                 }
             });
         });
-
-        
+        // ajax call for this form id test_form
+        $("#test_form").submit( function( event ) {
+            event.preventDefault();
+            alert("This is working fine..");
+    // get form input data using jquery input field nam is submit .
+            //select clicked form input data.
+            var form_data = $(this).serialize();
+            alert(form_data);
+            
+            var data =  $('input[name="submit"]').val();
+            console.log(data);
+            alert(data);
+            $.ajax({
+                url: ajaxObj.ajax_url,
+                dataType : "json",
+                method: "post",
+                data: data,
+                success:function (res) {
+                    launch_toast(res.success);
+                }
+            });
+        }
+    );
         $("#site-mode-design-logo-background").submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-design-logo-background");
@@ -741,11 +769,11 @@ jQuery(function ($) {
     headerEditor.setTheme("ace/theme/ambiance");
     headerEditor.session.setMode("ace/mode/html");
 
-    let footerEditor = ace.edit('header_code');    
+    let footerEditor = ace.edit('footer_code');
     footerEditor.setTheme("ace/theme/ambiance");
     footerEditor.session.setMode("ace/mode/html");
 
-    let customCssEditor = ace.edit('header_code');    
+    let customCssEditor = ace.edit('custom_css');
     customCssEditor.setTheme("ace/theme/ambiance");
     customCssEditor.session.setMode("ace/mode/html");
 });

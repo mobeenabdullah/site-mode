@@ -6,8 +6,13 @@
             </div>
         </div>
         <div class="section__wrapper-content section_theme">
+            <form id="test_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>" method="post">
+                Choose your favorite subject:
+                <input id="tea-submit" type="submit" name="submit" value="Tea">
+                <input id="coffee-submit" type="submit" name="submit" value="Coffee">
+            </form>
             <!-- Template Form -->
-            <form class="active-btnss" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+            <form id="template_activation" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
                 <?php
                     $template = get_option('site_mode_design');
                     
@@ -28,7 +33,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button type="button" class="btn btn_sm active-btn" id="template_food" name="design-template-enable" value="1">Activate</button>
+                                    <button type="submit" class="btn btn_sm" id="template_food" name="design-template-enable" value="1">Activate</button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=food_template")); ?>" target="_blank">
                                         <?php _e('Preview','site-mode');?>
                                     </a>
@@ -43,7 +48,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button class="btn btn_sm active-btn" id="template_construction" name="design-template-enable" value="2">
+                                    <button type="submit" class="btn btn_sm" id="template_construction" name="design-template-enable" value="2">
                                         <?php echo ($enable_template== '2') ? 'Activated' : _e('Activate','site-mode') ?>                                        
                                     </button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=construction_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
@@ -58,7 +63,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button class="btn btn_sm active-btn" id="template_fashion" name="design-template-enable" value="3">
+                                    <button type="submit" class="btn btn_sm" id="template_fashion" name="design-template-enable" value="3">
                                         <?php echo ($enable_template== '3') ? 'Activated' : _e('Activate','site-mode') ?>                                        
                                     </button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=fashion_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
@@ -73,7 +78,7 @@
                             <div class="template_card-image">
                                 <img src="<?php echo plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'; ?>" alt="" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button class="btn btn_sm" id="template_travel" name="design-template-enable" value="4">
+                                    <button type="submit" class="btn btn_sm" id="template_travel" name="design-template-enable" value="4">
                                         <?php echo ($enable_template== '4') ? 'Activated' : _e('Activate','site-mode') ?>                                        
                                     </button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template=travel_template")); ?>" target="_blank"><?php _e('Preview','site-mode');?></a>
@@ -83,16 +88,7 @@
                                 <h2 class="template_card-content--title"><?php _e('Travel Template','site-mode');?></h2>
                             </div>                            
                         </div>
-
                     </div>
-                </div>
-                <?php
-                    wp_nonce_field('design-settings-save', 'design-custom-message');            
-                ?>
-                <div class="option__row submit_button">
-                    <div class="option__row--label">                
-                        <?php submit_button(); ?>
-                    </div>            
                 </div>
             </form>
         </div>
