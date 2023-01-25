@@ -210,10 +210,17 @@
                     $data               = json_decode($body);
 
                     //story font family in array
-                    $font_family        = array();
+                    $font_family        = [];
                     foreach ($data->items as $key => $value) {
-                        $font_family[]  = $value->family;
+
+                        $font_family['font-faimly']     = $value->family;
+                        $font_family['font-variants']   = $value->variants;
+
                     }
+
+                    echo '<pre>';
+                    print_r($font_family);
+                    echo '</pre>';
 
                     //serialize font family array then store in option
                     $font_family        = serialize($font_family);
@@ -221,6 +228,7 @@
 
                     //get font family from option
                     $font_family            = get_option('site-mode-font-family');
+                    $font_family = unserialize($font_family);
 
                     //get data from option
                     $site_mode_design_font                    = get_option('site_mode_design_font');
@@ -228,8 +236,16 @@
         // use ternary operator for check data is empty or not.
                     $heading_font_size                  = !empty($site_mode_design_font['heading_font_size']) ? $site_mode_design_font['heading_font_size'] : '36';
                     $heading_font_family                = !empty($site_mode_design_font['heading_font_family']) ? $site_mode_design_font['heading_font_family'] : 'Open Sans';
-                    $description_font_size              = !empty($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '16';
+                    $heading_font_weight                = !empty($site_mode_design_font['heading_font_weight']) ? $site_mode_design_font['heading_font_weight'] : '400';
+                    $heading_letter_spacing             = !empty($site_mode_design_font['heading_letter_spacing']) ? $site_mode_design_font['heading_letter_spacing'] : '0';
+                    $heading_line_height                = !empty($site_mode_design_font['heading_line_height']) ? $site_mode_design_font['heading_line_height'] : '1.5';
+                    $heading_font_color                 = !empty($site_mode_design_font['heading_font_color']) ? $site_mode_design_font['heading_font_color'] : '#000000';
                     $description_font_family            = !empty($site_mode_design_font['description_font_family']) ? $site_mode_design_font['description_font_family'] : 'Open Sans';
+                    $description_font_size              = !empty($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '16';
+                    $description_font_weight            = !empty($site_mode_design_font['description_font_weight']) ? $site_mode_design_font['description_font_weight'] : '400';
+                    $description_letter_spacing         = !empty($site_mode_design_font['description_letter_spacing']) ? $site_mode_design_font['description_letter_spacing'] : '0';
+                    $description_line_height            = !empty($site_mode_design_font['description_line_height']) ? $site_mode_design_font['description_line_height'] : '1.5';
+                    $description_font_color             = !empty($site_mode_design_font['description_font_color']) ? $site_mode_design_font['description_font_color'] : '#000000';
                 ?>
                 <div class="heading-section">
                     <h4><?php _e('Heading','site-mode');?></h4>
@@ -242,7 +258,6 @@
                                 <select name="heading-font-family-setting" id="font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                     <?php
-                                    $font_family = unserialize($font_family);
                                     foreach ($font_family as $key => $value) { ?>
                                         <option value="<?php echo $value ?>" <?php selected( $value===$heading_font_family, 1 ); ?>><?php echo $value ?></option>
                                     <?php }
@@ -259,6 +274,56 @@
                         <div class="option__row--field">
                             <div class="sm_input_cover">
                                 <input type="number" class="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row--label">
+                            <span><label for="heading_font_weight"><?php _e('Font Weight','site-mode');?></label></span>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_select">
+                                <select name="heading-font-weight-setting" id="heading_font_weight">
+                                    <option value=""><?php _e('Select Font Weight','site-mode');?></option>
+                                        <option value="normal" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                        <option value="bold" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                        <option value="italic" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                </select>
+                                <span class="arrow-down"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="heading_letter_spacing"><?php _e('Letter Spacing','site-mode');?></label></span>
+                            </div>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="number" class="number" id="heading_letter_spacing" data-inc="1" name="heading-letter-spacing-setting" value="<?php echo esc_attr($heading_letter_spacing); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="line_height"><?php _e('Light Height','site-mode');?></label></span>
+                            </div>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-line-hight-setting" value="<?php echo esc_attr($heading_font_size); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row--label">
+                            <span><label for="heading_font_color"><?php _e('Heading Font Color','site-mode');?></label></span>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="color" id="heading_font_color" name="heading-font-color-setting" value="<?php echo esc_attr($heading_font_color); ?>">
                             </div>
                         </div>
                     </div>
@@ -290,6 +355,56 @@
                         <div class="option__row--field">
                             <div class="sm_input_cover">
                                 <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $description_font_size; ?>" <?php checked(1, $description_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row--label">
+                            <span><label for="description_font_weight"><?php _e('Description Font Weight','site-mode');?></label></span>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_select">
+                                <select name="description-font-weight-setting" id="font_family">
+                                    <option value=""><?php _e('Select Font Weight','site-mode');?></option>
+                                    <option value="normal" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                    <option value="bold" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                    <option value="italic" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                </select>
+                                <span class="arrow-down"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="description_line_height"><?php _e('Description Line Height','site-mode');?></label></span>
+                            </div>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="number" class="number" id="description_line_height" data-inc="1" name="description-line-height-setting" value="<?php echo esc_attr($description_font_size); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="description_letter_spacing"><?php _e('Description Letter Spacing','site-mode');?></label></span>
+                            </div>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="option__row">
+                        <div class="option__row--label">
+                            <span><label for="description_font_color"><?php _e('Description Font Color','site-mode');?></label></span>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="sm_input_cover">
+                                <input type="color" id="description_font_color" name="description-font-color-setting" value="<?php echo esc_attr($description_font_color); ?>">
                             </div>
                         </div>
                     </div>
