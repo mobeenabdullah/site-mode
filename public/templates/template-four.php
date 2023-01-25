@@ -46,7 +46,7 @@
                         <div class="construction_cover__right">
 
                                 <div class="construction_cover__right--img">
-                                    <img src="" width="1920" height="1080" alt="Background image | ?>"/>
+                                    <img src="" width="1920" height="1080" alt="Background image"/>
                                 </div>
 
                                 <div class="construction_cover__right--img">

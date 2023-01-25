@@ -6,29 +6,35 @@
 ?>
 <?php require_once 'header.php' ?>
 
-<?php 
+<?php
     $content                = unserialize(get_option('site_mode_content'));
     $design                 = unserialize(get_option('site_mode_design'));
     $design_logo_background = unserialize(get_option('site_mode_design_lb'));
     $design_typo          = unserialize(get_option('site_mode_design_font'));
     $social                 = unserialize(get_option('site_mode_social'));
     $seo                    = unserialize(get_option('site_mode_seo'));
-    
+
+    echo '<pre>';
+    echo '<h1>Content</h1>';
+    print_r($content);
+    echo '</pre>';
+
+
     $logo_url = wp_get_attachment_image_url($content['image_logo'], 'full');
-    $image_url = wp_get_attachment_image_url($content['bg_image'], 'full');    
+    $image_url = wp_get_attachment_image_url($content['bg_image'], 'full');
 
     echo '<pre>';
     print_r($social);
-    echo '</pre>';    
+    echo '</pre>';
 ?>
 <style>
     .construction_cover__right--heading .main_title {
         font-family: <?php echo $design_typo['heading_font_family'] ? esc_html($design_typo['heading_font_family']) : 'var(--base-open-sans)' ?>;
-        font-size: <?php echo $design_typo['heading_font_size']. 'px' ?>;        
+        font-size: <?php echo $design_typo['heading_font_size']. 'px' ?>;
     }
     .construction_cover__right--text p {
         font-family: <?php echo $design_typo['description_font_family'] ?>;
-        font-size: <?php echo $design_typo['description_font_size'] . 'px' ?>;        
+        font-size: <?php echo $design_typo['description_font_size'] . 'px' ?>;
     }
     .construction_cover__left--logo {
         width: <?php echo $design_logo_background['logo_width'] . 'px' ?>;
@@ -39,12 +45,12 @@
         background-color: <?php echo $design_logo_background['overlay_color']; ?>;
         opacity: <?php echo $design_logo_background['overlay_opacity'] / 10; ?>;
     }
-     
+
 </style>
 
 
 
-<main>    
+<main>
     <section id="under_constructon" class="wrapper" style="background-image: url('<?php echo  esc_url($image_url) ?>')">
         <!--Section Overlay-->
         <div class="wrapper_overlay"></div>
@@ -59,18 +65,18 @@
                         </div>
                     </div>
 
-                    <div class="construction_cover__right">                        
+                    <div class="construction_cover__right">
                         <div class="construction_cover__right--heading">
-                            <h1 class="main_title"><?php echo _e($content['heading'],'site-mode'); ?></h1>                            
+                            <h1 class="main_title"><?php echo _e($content['heading'],'site-mode'); ?></h1>
                         </div>
 
-                        
+
                         <div class="construction_cover__right--text">
                             <p><?php echo _e($content['description'],'site-mode'); ?></p>
                         </div>
 
                         <div class="construction_cover__right--icons">
-                            <ul class="social_media">                                
+                            <ul class="social_media">
                                 <li>
                                     <a href="https://www.facebook.com/" aria-label="Facebook profile">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="9.979" height="19.236" viewBox="0 0 9.979 19.236"><path id="bxl-facebook"  d="M13.814,22.236v-8.76H16.77l.439-3.43H13.814V7.861c0-.99.276-1.667,1.7-1.667h1.8V3.136A23.873,23.873,0,0,0,14.674,3c-2.612,0-4.406,1.595-4.406,4.522v2.517H7.332v3.43h2.942v8.767Z" transform="translate(-7.332 -3)" /></svg>
@@ -88,11 +94,12 @@
                                 </li>
                             </ul>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
         </div>
     </section>
 </main>
+
 <?php require_once 'footer.php' ?>
