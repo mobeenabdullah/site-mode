@@ -189,7 +189,7 @@
                             </div>                        
                         </div>
                     </div>
-                   
+                   <!-- background_overlay sm_hide_field -->
                     <div class="background_overlay sm_hide_field">                    
                         <div class="option__row">
                             <div class="option__row--label">
@@ -208,9 +208,13 @@
                                 <span><label for="overlay_opacity"><?php _e('Overlay Opacity','site-mode');?></label></span>
                             </div>
                             <div class="option__row--field">                                
-                                    <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php echo $overlay_opacity; ?>">
-                                    <label for="overlay_opacity"></label>                                
-                            </div>
+                                    <!-- <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php //echo $overlay_opacity; ?>">
+                                    <label for="overlay_opacity"></label>                                 -->
+                                    <div id="range-slider">
+                                        <div id="slider-range"></div>                                    
+                                        <input type="text" id="amount" readonly style="border:0;">                                        
+                                    </div>
+                            </div>                           
                         </div>                    
                     </div>
                 </div>
