@@ -86,8 +86,17 @@ class Site_Mode_Design
                 $data = array(
                     'heading_font_family'               => $_POST['heading-font-family-setting'],
                     'heading_font_size'                 => $_POST['heading-font-size-setting'],
+                    'heading_font_color'                => $_POST['heading-font-color-setting'],
+                    'heading_font_weight'               => $_POST['heading-font-weight-setting'],
+                    'heading_letter_spacing'            => $_POST['heading-letter-spacing-setting'],
+                    'heading_line_height'               => $_POST['heading-line-hight-setting'],
                     'description_font_family'           => $_POST['description-font-family-setting'],
                     'description_font_size'             => $_POST['description-font-size-setting'],
+                    'description_font_color'            => $_POST['description-font-color-setting'],
+                    'description_font_weight'           => $_POST['description-font-weight-setting'],
+                    'description_letter_spacing'        => $_POST['description-letter-spacing-setting'],
+                    'description_line_height'           => $_POST['description-line-height-setting'],
+
                 );
 
             if(get_option( 'site_mode_design_font' )) {
