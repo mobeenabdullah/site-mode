@@ -775,6 +775,47 @@ jQuery(function ($) {
     let customCssEditor = ace.edit('custom_css');
     customCssEditor.setTheme("ace/theme/ambiance");
     customCssEditor.session.setMode("ace/mode/html");
+
+    // Range slider - gravity forms
+    /*
+     * Range Slider
+     */
+    let range_selector = "[data-rangeSlider]";
+    let $element = $(range_selector);
+    
+
+    function valueOutput(element) {
+      let value = element.value;      
+      let output =
+        element.parentNode.getElementsByClassName("output-value")[0] ||
+        element.parentNode.parentNode.getElementsByClassName("output-value")[0];        
+      output.textContent = value / 10;
+    }
+
+    /**
+     * Input range event
+     */
+    $(document).on(
+      "input",
+      'input[type="range"], ' + range_selector,
+      function (e) {        
+        valueOutput(e.target);
+      }
+    );
+    $(document).on("input", "input[data-rangeslider]", function (e) {
+      $(range_selector, e.target.parentNode).rangeslider({
+        polyfill: false,
+      });
+    });
+    $element.rangeslider({
+      polyfill: false,
+      onInit: function () {
+        valueOutput(this.$element[0]);
+      },
+    });
+
+
+
 });
 
 

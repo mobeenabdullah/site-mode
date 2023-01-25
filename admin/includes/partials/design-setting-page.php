@@ -175,9 +175,12 @@
                             <div class="option__row--field">                                
                                     <!-- <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php //echo $overlay_opacity; ?>">
                                     <label for="overlay_opacity"></label>                                 -->
-                                    <div id="range-slider">
-                                        <div id="slider-range"></div>                                    
-                                        <input type="text" id="amount" readonly style="border:0;">                                        
+                                    <div class="range__slider slider_bg-transparent">
+                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo $overlay_opacity; ?>" data-rangeSlider>
+                                        <div class="display__value-wrapper">
+                                            <span class="output-value"></span>
+                                            <!-- <span>%</span> -->
+                                        </div>
                                     </div>
                             </div>                           
                         </div>                    
