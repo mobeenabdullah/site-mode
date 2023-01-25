@@ -213,26 +213,19 @@
                     $data               = json_decode($body);
 
                     //story font family in array
-                    $font_family        = [];
+                    $fonts = array();
                     foreach ($data->items as $key => $value) {
-
-                        $font_family['font-faimly']     = $value->family;
-                        $font_family['font-variants']   = $value->variants;
-
+                        $fonts[$value->family] = array(
+                            'font_variant' => $value->variants,
+                        );
                     }
 
-                    echo '<pre>';
-                    print_r($font_family);
-                    echo '</pre>';
-
                     //serialize font family array then store in option
-                    $font_family        = serialize($font_family);
-                    update_option('site-mode-font-family', $font_family);
+                    $fonts_data        = serialize($fonts);
+                    update_option('site-mode-font-family', $fonts_data);
 
                     //get font family from option
-                    $font_family            = get_option('site-mode-font-family');
-                    $font_family = unserialize($font_family);
-
+                    $fonts_un            = unserialize(get_option('site-mode-font-family'));
                     //get data from option
                     $site_mode_design_font                    = get_option('site_mode_design_font');
                     $site_mode_design_font                    = unserialize($site_mode_design_font);
@@ -260,11 +253,9 @@
                             <div class="sm_select">
                                 <select name="heading-font-family-setting" id="font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
-                                    <?php
-                                    foreach ($font_family as $key => $value) { ?>
-                                        <option value="<?php echo $value ?>" <?php selected( $value===$heading_font_family, 1 ); ?>><?php echo $value ?></option>
-                                    <?php }
-                                    ?>
+                                    <?php  foreach ($fonts_un as $key => $value) { ?>
+                                    <option value="<?php echo $key; ?>" <?php selected($heading_font_family, $key); ?>><?php echo $key; ?></option>
+                                    <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
                             </div>
@@ -288,9 +279,16 @@
                             <div class="sm_select">
                                 <select name="heading-font-weight-setting" id="heading_font_weight">
                                     <option value=""><?php _e('Select Font Weight','site-mode');?></option>
-                                        <option value="normal" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
-                                        <option value="bold" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
-                                        <option value="italic" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                       <?php
+                                            // if select font family selected then show font weight.
+                                            if (!empty($heading_font_family)) {
+                                                foreach ($fonts_un[$heading_font_family]['font_variant'] as $key => $value) {
+                                                    ?>
+                                                    <option value="<?php echo $value; ?>" <?php selected($heading_font_weight, $value); ?>><?php echo $value; ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                       ?>
                                 </select>
                                 <span class="arrow-down"></span>
                             </div>
@@ -341,11 +339,9 @@
                             <div class="sm_select">
                                 <select name="description-font-family-setting" id="description_font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
-                                    <?php
-                                    foreach ($font_family as $key => $value) { ?>
-                                        <option value="<?php echo $value ?>" <?php selected( $value===$description_font_family, 1 ); ?>><?php echo $value ?></option>
-                                    <?php }
-                                    ?>
+                                    <?php  foreach ($fonts_un as $key => $value) { ?>
+                                        <option value="<?php echo $key; ?>" <?php selected($description_font_family, $key); ?>><?php echo $key; ?></option>
+                                    <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
                             </div>
@@ -369,9 +365,16 @@
                             <div class="sm_select">
                                 <select name="description-font-weight-setting" id="font_family">
                                     <option value=""><?php _e('Select Font Weight','site-mode');?></option>
-                                    <option value="normal" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
-                                    <option value="bold" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
-                                    <option value="italic" <?php selected( $value===$heading_font_family, 1 ); ?>><?php _e('Font family','site-mode');?></option>
+                                    <?php
+                                    // if select font family selected then show font weight.
+                                    if (!empty($description_font_family)) {
+                                        foreach ($fonts_un[$description_font_family]['font_variant'] as $key => $value) {
+                                            ?>
+                                            <option value="<?php echo $value; ?>" <?php selected($description_font_family, $value); ?>><?php echo $value; ?></option>
+                                            <?php
+                                        }
+                                    }
+                                    ?>
                                 </select>
                                 <span class="arrow-down"></span>
                             </div>
