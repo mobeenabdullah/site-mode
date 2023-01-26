@@ -1,4 +1,5 @@
-<?php 
+<?php
+
     switch ($tab):
         case 'content':                        
             require_once plugin_dir_path( __FILE__ ) . "content-setting-page.php";                        
@@ -11,7 +12,9 @@
             break;
 
         case 'seo':                        
-            require_once plugin_dir_path( __FILE__ ) . "seo-setting-page.php";
+//            require_once plugin_dir_path( __FILE__ ) . "seo-setting-page.php";
+//            $seo->display_seo_settings_page();
+            echo '<h1>SEO Tab</h1>';
             break;
 
         case 'advanced':                        

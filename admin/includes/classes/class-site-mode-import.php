@@ -9,7 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,7 +20,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Import
+class Site_Mode_Import extends Settings
 {
         protected $file = '';
         protected $data = '';
@@ -53,17 +53,32 @@ class Site_Mode_Import
         $this->settings             = $data['settings'];
         $this->general              = $data['general'];
 
-        update_option('site_mode_advanced',$this->advance);
-        update_option('site_mode_content',$this->content);
-        update_option('site_mode_design',$this->design);
-        update_option('site_mode_design_lb',$this->site_mode_design_lb);
-        update_option('site_mode_design_colors',$this->site_mode_design_colors);
-        update_option('site_mode_seo',$this->seo);
-        update_option('site_mode_social',$this->social);
-        update_option('site_mode_settings',$this->settings);
-        update_option('site_mode_general',$this->general);
+//        update_option('site_mode_advanced',$this->advance);
+//        update_option('site_mode_content',$this->content);
+//        update_option('site_mode_design',$this->design);
+//        update_option('site_mode_design_lb',$this->site_mode_design_lb);
+//        update_option('site_mode_design_colors',$this->site_mode_design_colors);
+//        update_option('site_mode_seo',$this->seo);
+//        update_option('site_mode_social',$this->social);
+//        update_option('site_mode_settings',$this->settings);
+//        update_option('site_mode_general',$this->general);
+
+        $this->save_data('site_mode_advanced',$this->advance);
+        $this->save_data('site_mode_content',$this->content);
+        $this->save_data('site_mode_design',$this->design);
+        $this->save_data('site_mode_design_lb',$this->site_mode_design_lb);
+        $this->save_data('site_mode_design_colors',$this->site_mode_design_colors);
+        $this->save_data('site_mode_seo',$this->seo);
+        $this->save_data('site_mode_social',$this->social);
+        $this->save_data('site_mode_settings',$this->settings);
+        $this->save_data('site_mode_general',$this->general);
+
         wp_send_json_success($this->data);
 //        }
         die();
+    }
+
+    public function display_settings_page_cb() {
+        $this->display_settings_page('export-import');
     }
 }

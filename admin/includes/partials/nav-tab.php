@@ -56,29 +56,23 @@
 
     </ul>
 
-    <div id="tab-general" class="tab-content current">
-        <?php require_once plugin_dir_path( __FILE__ ) . "general-setting-page.php"; ?>
-    </div>
-    <div id="tab-content" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "content-setting-page.php"; ?>
-    </div>
-    <div id="tab-social" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "social-setting-page.php"; ?>
-    </div>
-    <div id="tab-design" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "design-setting-page.php"; ?>
-    </div>
-    <div id="tab-seo" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "seo-setting-page.php"; ?>
-    </div>
-    <div id="tab-advanced" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "advanced-setting-page.php"; ?>
-    </div>
-    <div id="tab-import-export" class="tab-content">
-        <?php require_once plugin_dir_path( __FILE__ ) . "export-import-setting-page.php"; ?>
-    </div>
-    <div id="tab-8" class="tab-content">
-        <h1>Tab 8</h1>
-    </div>
+    <?php
+    $tabs = array('general', 'content', 'social', 'design', 'seo', 'advanced', 'import');
+    $i = 1;
+    foreach ($tabs as $tab) {
+        ?>
+        <div id="tab-<?php  echo ($tab == 'import') ? "import-export": $tab;?>" class="tab-content <?php echo ($i == 1) ? "current": " " ?>">
+            <?php
+
+            echo require_once plugin_dir_path( dirname( __FILE__ ) ) . "classes/class-site-mode-{$tab}.php";
+            $class_name = "Site_Mode_".ucfirst($tab);
+            $class = new $class_name();
+            $class->display_settings_page_cb();
+
+            ?>
+        </div>
+        <?php
+    }
+    ?>
 
 </div>

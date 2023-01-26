@@ -10,6 +10,7 @@
  * @subpackage Site_Mode/includes
  */
 
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,7 +21,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Social
+class Site_Mode_Social extends Settings
 {
 
         protected $show_social = false;
@@ -49,27 +50,24 @@ class Site_Mode_Social
                 'show_social'       =>$_POST['show-social-icons-setting'],
                 'social_fb'         =>$_POST['content-social-fb-setting'],
                 'social_twitter'    =>$_POST['content-social-twitter-setting'],
-                'social_linkedin'   => $_POST['content-social-linkedin-setting'],
-                'social_youtube'    => $_POST['content-social-youtube-setting'],
-                'social_instagram'  => $_POST['content-social-instagram-setting'],
-                'social_pintrest'   => $_POST['content-social-pintrest-setting'],
-                'social_quora'      => $_POST['content-social-quora-setting'],
-                'social_behance'    => $_POST['content-social-behance-setting'],
+                'social_linkedin'   =>$_POST['content-social-linkedin-setting'],
+                'social_youtube'    =>$_POST['content-social-youtube-setting'],
+                'social_instagram'  =>$_POST['content-social-instagram-setting'],
+                'social_pintrest'   =>$_POST['content-social-pintrest-setting'],
+                'social_quora'      =>$_POST['content-social-quora-setting'],
+                'social_behance'    =>$_POST['content-social-behance-setting'],
             );
         }
 
-        if(get_option( 'site_mode_social' )) {
-            update_option('site_mode_social',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_social' ));
-        }
-        else {
-            add_option('site_mode_social',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_social' ));
-        }
+        return $this->save_data($this->option_name, $data);
 
         die();
 
     }
+
+      public function display_settings_page_cb() {
+          $this->display_settings_page('social');
+      }
 }
 
 

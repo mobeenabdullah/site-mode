@@ -9,7 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,9 +20,9 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Advanced
+class Site_Mode_Advanced extends Settings
 {
-
+    protected $option_name = 'site_mode_advanced';
         protected  $ga_type = '';
         protected $ga_id            = '';
         protected $fb_id            = '';
@@ -114,14 +114,8 @@ class Site_Mode_Advanced
             );
         }
 
-        if(get_option( 'site_mode_advanced' )) {
-            update_option('site_mode_advanced',serialize($data) );
-            wp_send_json_success(get_option( 'site_mode_advanced' ));
-        }
-        else {
-            add_option('site_mode_advanced',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_advanced' ));
-        }
+        return $this->save_data($this->option_name, $data);
+
         die();
     }
 
@@ -179,6 +173,10 @@ class Site_Mode_Advanced
             </noscript>
 <?php
         }
+    }
+
+    public function display_settings_page_cb() {
+        $this->display_settings_page('advanced');
     }
 
 

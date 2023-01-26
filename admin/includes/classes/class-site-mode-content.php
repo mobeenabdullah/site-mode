@@ -10,6 +10,7 @@
  * @subpackage Site_Mode/includes
  */
 
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,8 +21,9 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Content
+class Site_Mode_Content extends Settings
 {
+    protected $option_name = 'site_mode_content';
     protected $text_logo    = '';
     protected $image_logo   = '';
     protected $disable_logo = false;
@@ -52,17 +54,14 @@ class Site_Mode_Content
             );
         }
 
-        if(get_option( 'site_mode_content' )) {
-            update_option('site_mode_content',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_content' ));
-        }
-        else {
-            add_option('site_mode_content',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_content' ));
-        }
+        return $this->save_data($this->option_name, $data);
 
         die();
 
+    }
+
+    public function display_settings_page_cb() {
+        $this->display_settings_page('content');
     }
 
 
