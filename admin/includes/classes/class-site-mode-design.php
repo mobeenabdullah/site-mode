@@ -9,7 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,8 +20,9 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Design
+class Site_Mode_Design extends  Settings
 {
+    protected $option_name = 'site_mode_design';
         protected $enable_template      = false;
         protected $logo_width           = '';
         protected $logo_height          ='';
@@ -70,14 +71,7 @@ class Site_Mode_Design
             );
         }
 
-        if(get_option( 'site_mode_design_lb' )) {
-            update_option('site_mode_design_lb',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_design_lb' ));
-        }
-        else {
-            add_option('site_mode_design_lb',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_design_lb' ));
-        }
+          return $this->save_data($this->option_name, $data);
         die();
     }
 
@@ -99,14 +93,7 @@ class Site_Mode_Design
 
                 );
 
-            if(get_option( 'site_mode_design_font' )) {
-                update_option('site_mode_design_font',serialize($data));
-                wp_send_json_success(get_option( 'site_mode_design_font' ));
-            }
-            else {
-                add_option('site_mode_design_font',serialize($data));
-                wp_send_json_success(get_option( 'site_mode_design_font' ));
-            }
+        return $this->save_data('site_mode_design_font', $data);
             die();
     }
 
@@ -124,15 +111,13 @@ class Site_Mode_Design
             );
         }
 
-        if(get_option( 'site_mode_design_colors' )) {
-            update_option('site_mode_design_colors',serialize($color_section_data));
-            wp_send_json_success(get_option( 'site_mode_design_colors' ));
-        }
-        else {
-            add_option('site_mode_design_colors',serialize($color_section_data));
-            wp_send_json_success(get_option( 'site_mode_design_colors' ));
-        }
+        return $this->save_data('site_mode_design_color_section', $color_section_data);
+
         die();
+    }
+
+    public function display_settings_page_cb() {
+        $this->display_settings_page('design');
     }
 
 }

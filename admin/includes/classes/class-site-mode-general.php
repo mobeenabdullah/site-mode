@@ -9,7 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-
+require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *
@@ -20,8 +20,9 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_General
+class Site_Mode_General extends Settings
 {
+    protected $option_name = 'site_mode_general';
     protected $enable_site_mode     = array();
     protected $status = false;
     protected $url = '';
@@ -32,16 +33,15 @@ class Site_Mode_General
     protected $enable_template      = false;
 
     public function __construct(){
-        $this->site_mode_general = get_option('site_mode_general');
-        $un_data                 = unserialize($this->site_mode_general);
+        $this->site_mode_general = $this->get_data($this->option_name);
+
 
         //check if the values are set or not and then assign them to the variables
-        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-        $this->mode           = isset($un_data['mode'] ) ? $un_data['mode']  : '';
-        $this->url            = isset($un_data['url'] ) ? $un_data['url']  : '';
+        $this->status         = isset($this->site_mode_general['status'] ) ? $this->site_mode_general['status']  : '';
+        $this->mode           = isset($this->site_mode_general['mode'] ) ? $this->site_mode_general['mode']  : '';
+        $this->url            = isset($this->site_mode_general['url'] ) ? $this->site_mode_general['url']  : '';
 
-        $this->site_mode_design = get_option('site_mode_design');
-        $this->site_mode_design = unserialize($this->site_mode_design);
+        $this->site_mode_design = unserialize(get_option('site_mode_design'));
         $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
 
 
@@ -72,14 +72,8 @@ class Site_Mode_General
             );
 //        }
 
-        if(get_option( 'site_mode_general' )) {
-            update_option('site_mode_general',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_general' ));
-        }
-        else {
-            add_option('site_mode_general',serialize($data));
-            wp_send_json_success(get_option( 'site_mode_general' ));
-        }
+        $this->save_data($this->option_name, $data);
+        return $this->save_data($this->option_name, $data);
         die();
 
     }
@@ -178,6 +172,11 @@ class Site_Mode_General
                     exit;
                 }
             }
+    }
+
+    // function to display the template
+    public function display_settings_page_cb() {
+        $this->display_settings_page('general');
     }
 
 }
