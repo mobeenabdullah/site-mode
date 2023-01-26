@@ -1,19 +1,19 @@
 <div class="site_mode__wrap-form">   
     <form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">     
         <?php
-            $template =  get_option('site_mode_general');    
-            $un_data = unserialize($template);
+            $general_settings = unserialize( get_option('site_mode_general'));
+
 
         //check if the values are set or not and then assign them to the variables
-            $site_mode_title        = isset($un_data['site_mode_title']) ? $un_data['site_mode_title'] : '';
-            $status                 = isset($un_data['status'] ) ? $un_data['status']  : '';
-            $include_pages          = isset($uns_data['include_pages']) ? $uns_data['include_pages'] : '';
-            $mode                   = isset($un_data['mode'] ) ? $un_data['mode']  : '';
-            $url                    = isset($un_data['url'] ) ? $un_data['url']  : '';
-            $delay                  = isset($un_data['delay'] ) ? $un_data['delay']  : '0';
-            $login_icon             = isset($un_data['login_icon'] ) ? $un_data['login_icon']  : '';
-            $login_url              = isset($un_data['login_url'] ) ? $un_data['login_url']  : 'example.com';
-
+            $site_mode_title        = isset($general_settings['site_mode_title']) ? $general_settings['site_mode_title'] : '';
+            $status                 = isset($general_settings['status'] ) ? $general_settings['status']  : '';
+            $include_pages          = isset($general_settings['include_pages']) ? $general_settings['include_pages'] : '';
+            $mode                   = isset($general_settings['mode'] ) ? $general_settings['mode']  : '';
+            $url                    = isset($general_settings['url'] ) ? $general_settings['url']  : '';
+            $delay                  = isset($general_settings['delay'] ) ? $general_settings['delay']  : '0';
+            $login_icon             = isset($general_settings['login_icon'] ) ? $general_settings['login_icon']  : '';
+            $login_url              = isset($general_settings['login_url'] ) ? $general_settings['login_url']  : 'example.com';
+            $user_role              = isset($general_settings['user_role'] ) ? $general_settings['user_role']  : '';
     ?>
         
         <div class="option__row">
@@ -118,7 +118,8 @@
                 <?php  global  $wp_roles; ?>
                 <?php foreach ( $wp_roles->roles as $key=>$value ): ?>
                     <div class="sm_checkbox_wrapper role_checkbox">
-                        <input type="checkbox" id="<?php echo $key; ?>" name="site-mode-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php checked($key,isset($user_role[$key]) ? $user_role[$key] : 'administrator'); ?> />
+                        <?php $checked = (in_array($key, $user_role)) ? 'checked' : ''; ?>
+                        <input type="checkbox" id="<?php echo $key; ?>" name="site-mode-<?php echo $key; ?>-role-setting" value="<?php echo $key; ?>" <?php echo $checked; ?> />
                         <label for="<?php echo $key; ?>"><?php echo $value['name']; ?></label>
                     </div>
                 <?php endforeach; ?>
