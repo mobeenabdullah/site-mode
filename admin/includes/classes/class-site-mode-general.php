@@ -86,8 +86,7 @@ class Site_Mode_General
 
     public function load_template_on_call()
     {
-        $this->site_mode_general = get_option('site_mode_general');
-        $un_data                 = unserialize($this->site_mode_general);
+        $this->site_mode_general = unserialize(get_option('site_mode_general'));
 
         if(is_user_logged_in() && isset($_GET['site-mode-preview']) == 'true') {
             esc_html($this->load_templates());
@@ -98,7 +97,7 @@ class Site_Mode_General
 
             $current_user = wp_get_current_user();
             $user_roles = $current_user->roles;
-            foreach ($un_data['user_role'] as $key=>$value){
+            foreach ($this->site_mode_general['user_role'] as $key=>$value){
                 if($current_user->roles[0] == $value ) {
 
                     return;
@@ -158,7 +157,7 @@ class Site_Mode_General
         {
             $this->design_active_template($active_template);
         }
-        if (!is_user_logged_in() && $this->status == '1')
+        if (!is_user_logged_in() && $this->status === '1')
         {
             $this->design_active_template($active_template);
         }
