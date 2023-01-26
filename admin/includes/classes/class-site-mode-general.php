@@ -44,7 +44,6 @@ class Site_Mode_General extends Settings
         $this->site_mode_design = unserialize(get_option('site_mode_design'));
         $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
 
-
     }
 
     public function ajax_site_mode_general() {
@@ -175,7 +174,7 @@ class Site_Mode_General extends Settings
     }
 
     // function to display the template
-    public function display_settings_page_cb() {
+    public function render() {
         $this->display_settings_page('general');
     }
 
