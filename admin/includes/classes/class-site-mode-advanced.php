@@ -175,7 +175,7 @@ class Site_Mode_Advanced extends Settings
         }
     }
 
-    public function display_settings_page_cb() {
+    public function render() {
         $this->display_settings_page('advanced');
     }
 

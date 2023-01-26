@@ -63,7 +63,7 @@ class Site_Mode_Seo extends Settings
         die();
     }
 
-    public function display_settings_page_cb() {
+    public function render() {
         $this->display_settings_page('seo');
     }
 
