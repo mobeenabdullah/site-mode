@@ -20,11 +20,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Menu
-{
-    public function  __construct() {
-
-    }
+class Site_Mode_Menu {
 
     public function site_mode_menu() {
         add_menu_page(
@@ -35,10 +31,6 @@ class Site_Mode_Menu
             [$this, 'site_mode_settings_page_cb'],
             'dashicons-welcome-add-page',
         );
-    }
-
-    public function add_page() {
-
     }
 
     public function site_mode_submenu_settings_page() {

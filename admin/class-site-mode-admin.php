@@ -41,6 +41,15 @@ class Site_Mode_Admin
 	 */
 	private $version;
 
+    protected $general_settings;
+    protected $content_settings;
+    protected $social_settings;
+    protected $design_settings;
+    protected $seo_settings;
+    protected $advanced_settings;
+    protected $import_settings;
+    protected $export_settings;
+
 	/**
 	 * Initialize the class and set its properties.
 	 *
@@ -48,15 +57,24 @@ class Site_Mode_Admin
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
+
 	public function __construct($plugin_name, $version)
 	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
+
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/classes/class-init.php';
+
+        // Enqueueing media
         add_action('admin_enqueue_scripts', [$this,'enqueue_media']);
 
     }
 
+
+    /**
+     * @return void
+     */
     public function enqueue_media() {
         if( function_exists( 'wp_enqueue_media' ) ) {
             wp_enqueue_media();
@@ -65,52 +83,21 @@ class Site_Mode_Admin
 
 	/**
 	 * Register the stylesheets for the admin area.
-	 *
-	 * @since    1.0.0
 	 */
-	public function enqueue_styles()
-	{
+	public function enqueue_styles() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Site_Mode_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Site_Mode_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
 		wp_enqueue_style('select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
 		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', array(), $this->version, 'all' );
-		
+
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/site-mode-admin.css', array(), $this->version, 'all');
 	}
 
 	/**
 	 * Register the JavaScript for the admin area.
-	 *
-	 * @since    1.0.0
 	 */
-	public function enqueue_scripts()
-	{
+	public function enqueue_scripts() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Site_Mode_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Site_Mode_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
-
-        //enqueue jquery
-        wp_enqueue_script('jquery');
-		wp_enqueue_script('jquery-ui-draggable', array('jquery'), $this->version, false);		
+		wp_enqueue_script('jquery-ui-draggable', array('jquery'), $this->version, false);
         if (!did_action('wp_enqueue_media')) {
             wp_enqueue_media();
         }
@@ -121,7 +108,7 @@ class Site_Mode_Admin
         ));
 
 		wp_enqueue_script ( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), '1.0.0', false );
-		wp_enqueue_script ( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js', array('jquery'), '1.0.0', false );		
+		wp_enqueue_script ( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js', array('jquery'), '1.0.0', false );
 		wp_enqueue_script('range-slider', plugin_dir_url(__FILE__) . 'assets/js/rangeslider.js', array( 'jquery' ), '1.0.0', false);
     }
 }
