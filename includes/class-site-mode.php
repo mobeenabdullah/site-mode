@@ -80,9 +80,6 @@ class Site_Mode
 	public function __construct()
 	{
 
-//        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/utilities.php';
-//        $this->utilities = new Utilities();
-
 		if (defined('SITE_MODE_VERSION')) {
 			$this->version = SITE_MODE_VERSION;
 		} else {
@@ -122,28 +119,31 @@ class Site_Mode
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-site-mode-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-site-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'core/class-site-mode-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-site-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-site-mode-admin.php';
 
+//        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/classes/class-init.php';
+//
+
         /**
          * The class responsible for defining all actions that occur in the admin area.
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/includes/classes/class-plugin-menu.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/classes/class-plugin-menu.php';
 
         /**
          * The class responsible for defining advanced settings page of the plugin
          */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/includes/classes/class-site-mode-advanced.php';
+        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/classes/class-site-mode-advanced.php';
 
 
 
@@ -155,8 +155,7 @@ class Site_Mode
 
 		$this->loader = new Site_Mode_Loader();
 
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/includes/classes-loader.php';
-        $this->classes_loader = new Site_Mode_Classes_loader();
+//        $this->classes_loader = new init();
 	}
 
 	/**
@@ -188,12 +187,12 @@ class Site_Mode
 	{
 
 		$plugin_admin = new Site_Mode_Admin($this->get_plugin_name(), $this->get_version());
-        $plugin_menu = new Site_Mode_Menu();
+        $this->classes_loader = new init();
 
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
 		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-        $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_menu');
-        $this->loader->add_action('admin_menu', $plugin_menu, 'site_mode_submenu_settings_page');
+        $this->loader->add_action('admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu');
+        $this->loader->add_action('admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page');
 
         // ajax calling
 

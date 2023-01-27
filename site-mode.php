@@ -43,7 +43,7 @@ define('SITE_MODE_VERSION', '1.0.0');
  */
 function activate_site_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'core/class-site-mode-activator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
 }
 
@@ -53,7 +53,7 @@ function activate_site_mode()
  */
 function deactivate_site_mode()
 {
-	require_once plugin_dir_path(__FILE__) . 'core/class-site-mode-deactivator.php';
+	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-deactivator.php';
 	Site_Mode_Deactivator::deactivate();
 }
 
@@ -64,7 +64,7 @@ register_deactivation_hook(__FILE__, 'deactivate_site_mode');
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'core/class-site-mode.php';
+require plugin_dir_path(__FILE__) . 'includes/class-site-mode.php';
 
 /**
  * Begins execution of the plugin.

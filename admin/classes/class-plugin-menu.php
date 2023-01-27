@@ -20,11 +20,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Menu
-{
-    public function  __construct() {
-
-    }
+class Site_Mode_Menu {
 
     public function site_mode_menu() {
         add_menu_page(
@@ -35,10 +31,6 @@ class Site_Mode_Menu
             [$this, 'site_mode_settings_page_cb'],
             'dashicons-welcome-add-page',
         );
-    }
-
-    public function add_page() {
-
     }
 
     public function site_mode_submenu_settings_page() {
@@ -64,28 +56,10 @@ class Site_Mode_Menu
         if (!current_user_can('manage_options')) {
             return;
         }
-        $default_tab = null;
-        $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
-    ?>
-
-        <div class="wrap site_mode__wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <div class="site_mode__wrap--cover">
-                <div class="site_mode__wrap--cover-content">
-                    <?php
-                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/nav-tab.php';
-                    ?>
-                </div>
-                <div class="site_mode__wrap--cover-sidebar">
-                    <?php require_once plugin_dir_path(dirname(__FILE__)) . 'partials/sidebar.php'; ?>
-                </div>
-            </div>
-        </div>
-<?php
+	    require_once plugin_dir_path(dirname(__FILE__)) . 'partials/settings-layout.php';
     }
 
-    public function site_mode_content_page_html()
-    {
+    public function site_mode_content_page_html() {
         echo 'About page';
     }
 }

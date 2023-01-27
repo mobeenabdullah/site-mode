@@ -9,7 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
+
 /**
  * Responsible for plugin menu
  *
@@ -20,8 +20,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.ph
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_General extends Settings
-{
+class Site_Mode_General extends Settings {
     protected $option_name = 'site_mode_general';
     protected $enable_site_mode     = array();
     protected $status = false;
@@ -167,7 +166,7 @@ class Site_Mode_General extends Settings
             );
             foreach ($templates as $template) {
                 if ($show_template === $template) {
-                    require_once plugin_dir_path(dirname(__DIR__)) . '../public/templates/' . $template . '.php';
+                    require_once plugin_dir_path(dirname(__DIR__)) . 'public/templates/' . $template . '.php';
                     exit;
                 }
             }

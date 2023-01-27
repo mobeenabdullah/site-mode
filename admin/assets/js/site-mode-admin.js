@@ -284,18 +284,17 @@ jQuery(function ($) {
 
     /*------------------------------------------------
     1.  Mode change on general tab
-    2.  Google Analytic on advance tab
-    3.  Tabs setting page
-    4.  Logo Type
-    5.   Show Login URL field
-    6.  Sort social media
-    7.  Ajax call for general tab
-    8.  Ajax call for content tab
-    9.  Ajax call for social tab
-    10.  Ajax calls for design tab
-    11.  Ajax call for SEO tab
-    12.  Ajax call for advance Tab
-    13.  Ajax call for import and export
+    2.  Tabs setting page
+    3.  Logo Type
+    4.   Show Login URL field
+    5.  Sort social media
+    6.  Ajax call for general tab
+    7.  Ajax call for content tab
+    8.  Ajax call for social tab
+    9.  Ajax calls for design tab
+    10.  Ajax call for SEO tab
+    11.  Ajax call for advance Tab
+    12.  Ajax call for import and export
     ------------------------------------------------*/
 
     $(document).ready(function () {
@@ -314,42 +313,28 @@ jQuery(function ($) {
         }
         siteMode.on('change', showHideURLOptions);
 
-        // 2.   Google Analytic on advance tab
+        // 2.  Tabs setting page
+        const allTabs = $('.sm_tabs li');
+        const allTabsContent = $('.tab-content');
 
-        // function showHideGoogleAnalytics() {
-        //     console.log($(this).val());
-        //     if($(this).val() === 'analytics-id') {
-        //         analyticId.removeClass('sm_hide_field');
-        //     } else {
-        //         analyticId.addClass('sm_hide_field');
-        //         analyticCode.removeClass('sm_hide_field');
-        //     }
+        function changeTab() {
+            let selectedTabID = $(this).attr('data-tab');
+            let selectedTabSlug = selectedTabID.replace('tab-', '');
 
-        //     if($(this).val() === 'analytics-code') {
-        //         analyticCode.removeClass('sm_hide_field');
-        //     } else {
-        //         analyticCode.addClass('sm_hide_field');
-        //         analyticId.removeClass('sm_hide_field');
-        //     }
-        // }
+            // remove current class from all tabs and tab content
+            allTabs.removeClass('current');
+            allTabsContent.removeClass('current');
 
-
-
-
-        // 3.  Tabs setting page
-        const tabLink = $('.sm_tabs li');
-        const tabContent = $('.tab-content');
-
-        function smTabs() {
-            let tab_id = $(this).attr('data-tab');
-            tabLink.removeClass('current');
-            tabContent.removeClass('current');
+            // add current class to selected tab and tab content
             $(this).addClass('current');
-            $("#"+tab_id).addClass('current');
-        }
-        tabLink.on('click', smTabs);
+            $("#"+selectedTabID).addClass('current');
 
-        // 4.   Logo Type
+            // update the url
+            window.history.pushState("", "", "?page=site-mode&tab="+selectedTabSlug);
+        }
+        allTabs.on('click', changeTab);
+
+        // 3.   Logo Type
         const imageLogoWrapper = $('.image_logo_wrapper');
         const textLogoWrapper = $('.text_logo_wrapper');
         const logoInput = $('input[name="content-logo-settings"]');
@@ -372,7 +357,7 @@ jQuery(function ($) {
         }
         logoInput.on('click', logoType);
 
-        // 5.   Show Login URL field
+        // 4.   Show Login URL field
         const loginUrlField = $('.login_url_field');
         const enableLoginIcon = $('.enable_login_icon');
         const enableBackground = $('.check_background');
@@ -403,7 +388,7 @@ jQuery(function ($) {
             enableDisableField(enableOverlay, showOverlayFields)
         }));
 
-        // 6.  Sort social media
+        // 5.  Sort social media
         const smSortable = $( "#sm_sortable" );
 
         // sortable library setting object
@@ -417,7 +402,7 @@ jQuery(function ($) {
             console.log(sortedIDs);
         });
 
-        // 7.  Ajax call for general tab
+        // 6.  Ajax call for general tab
         $( "#site-mode-general" ).submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-general");
@@ -439,7 +424,7 @@ jQuery(function ($) {
             });
         });
 
-        // 8.  Ajax call for content tab
+        // 7.  Ajax call for content tab
         $( "#site-mode-content" ).submit(function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-content");
@@ -462,7 +447,7 @@ jQuery(function ($) {
             });
         });
 
-        // 10.  Ajax calls for design tab
+        // 8.  Ajax calls for design tab
         $("#site-mode-design").submit(function( event ) {
             alert('Click');
             event.preventDefault();
@@ -782,13 +767,13 @@ jQuery(function ($) {
      */
     let range_selector = "[data-rangeSlider]";
     let $element = $(range_selector);
-    
+
 
     function valueOutput(element) {
-      let value = element.value;      
+      let value = element.value;
       let output =
         element.parentNode.getElementsByClassName("output-value")[0] ||
-        element.parentNode.parentNode.getElementsByClassName("output-value")[0];        
+        element.parentNode.parentNode.getElementsByClassName("output-value")[0];
       output.textContent = value / 10;
     }
 
@@ -798,7 +783,7 @@ jQuery(function ($) {
     $(document).on(
       "input",
       'input[type="range"], ' + range_selector,
-      function (e) {        
+      function (e) {
         valueOutput(e.target);
       }
     );

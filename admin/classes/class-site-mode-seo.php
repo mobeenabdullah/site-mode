@@ -9,8 +9,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-//includes the class-settings.php file
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
+
 /**
  * Responsible for plugin menu
  *
