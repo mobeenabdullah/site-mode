@@ -29,6 +29,7 @@ class init {
 
     public function files_loader() {
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-plugin-menu.php';
+	    require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-settings.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-general.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-content.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-social.php';
