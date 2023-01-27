@@ -56,8 +56,6 @@ class Site_Mode_Menu {
         if (!current_user_can('manage_options')) {
             return;
         }
-        $default_tab = null;
-        $tab = isset($_GET['tab']) ? $_GET['tab'] : $default_tab;
     ?>
 
         <div class="wrap site_mode__wrap">
@@ -65,7 +63,7 @@ class Site_Mode_Menu {
             <div class="site_mode__wrap--cover">
                 <div class="site_mode__wrap--cover-content">
                     <?php
-                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/nav-tab.php';
+                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/main-content.php';
                     ?>
                 </div>
                 <div class="site_mode__wrap--cover-sidebar">
