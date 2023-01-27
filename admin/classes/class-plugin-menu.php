@@ -56,26 +56,10 @@ class Site_Mode_Menu {
         if (!current_user_can('manage_options')) {
             return;
         }
-    ?>
-
-        <div class="wrap site_mode__wrap">
-            <h1><?php echo esc_html(get_admin_page_title()); ?></h1>
-            <div class="site_mode__wrap--cover">
-                <div class="site_mode__wrap--cover-content">
-                    <?php
-                        require_once plugin_dir_path(dirname(__FILE__)) . 'partials/main-content.php';
-                    ?>
-                </div>
-                <div class="site_mode__wrap--cover-sidebar">
-                    <?php require_once plugin_dir_path(dirname(__FILE__)) . 'partials/sidebar.php'; ?>
-                </div>
-            </div>
-        </div>
-<?php
+	    require_once plugin_dir_path(dirname(__FILE__)) . 'partials/settings-layout.php';
     }
 
-    public function site_mode_content_page_html()
-    {
+    public function site_mode_content_page_html() {
         echo 'About page';
     }
 }
