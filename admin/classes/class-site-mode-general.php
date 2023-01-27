@@ -22,62 +22,54 @@
  */
 class Site_Mode_General extends Settings {
     protected $option_name = 'site_mode_general';
-    protected $enable_site_mode     = array();
-    protected $status = false;
-    protected $url = '';
-    protected $delay = 0;
-    protected $login_icon = false;
-    protected $login_url = '';
-    protected $site_mode_design     = array();
-    protected $enable_template      = false;
 
-    public function __construct(){
-        $this->site_mode_general = $this->get_data($this->option_name);
+	protected $mode_status;
+
+    protected $mode_type;
+    protected $redirect_url;
+    protected $redirect_delay;
+    protected $show_login_icon;
+    protected $custom_login_url;
+	protected $whitelist_pages;
+	protected $user_roles;
 
 
-        //check if the values are set or not and then assign them to the variables
-        $this->status         = isset($this->site_mode_general['status'] ) ? $this->site_mode_general['status']  : '';
-        $this->mode           = isset($this->site_mode_general['mode'] ) ? $this->site_mode_general['mode']  : '';
-        $this->url            = isset($this->site_mode_general['url'] ) ? $this->site_mode_general['url']  : '';
+    public function __construct() {
+        $this->site_mode_general    = $this->get_data($this->option_name);
 
-        $this->site_mode_design = unserialize(get_option('site_mode_design'));
-        $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
 
+
+        $this->mode_status          = $this->site_mode_general['mode_status'];
+        $this->mode_type            = $this->site_mode_general['mode_type'];
+        $this->redirect_url         = $this->site_mode_general['redirect_url'];
+	    $this->redirect_delay       = $this->site_mode_general['redirect_delay'];
+	    $this->show_login_icon      = $this->site_mode_general['show_login_icon'];
+	    $this->custom_login_url     = $this->site_mode_general['custom_login_url'];
+	    $this->whitelist_pages      = $this->site_mode_general['whitelist_pages'];
+	    $this->user_roles           = $this->site_mode_general['user_roles'];
     }
 
     public function ajax_site_mode_general() {
+	    $this->verify_nonce('general_section_field', 'general_settings_action');
 
-       //check  if nonce is valid
-
-//        if ( ! isset( $_POST['general_section_field'] ) || ! wp_verify_nonce( $_POST['general_section_field'], 'general_settings_action' ) ) {
-//            wp_send_json_error( 'Invalid nonce' );
-//        }
-//        else {
-
-             global  $wp_roles;
-                foreach ( $wp_roles->roles as $key=>$value ):
-                    $user_roles["${key}-role-setting"] = $_POST["site-mode-${key}-role-setting"];
-               endforeach;
-            $data = array(
-                "status"                =>$_POST['site-mode-status-settings'],
-                'include_pages'         =>$_POST['site-mode-include-pages-setting'],
-                "mode"                  =>$_POST['site-mode-mode-settings'],
-                "url"                   =>$_POST['site-mode-redirect-url-settings'],
-                'delay'                 =>$_POST['site-mode-delay-settings'],
-                'login_icon'            =>$_POST['site-mode-login-icon-setting'],
-                'login_url'             =>$_POST['site-mode-login-url-setting'],
-                'user_role'             => $user_roles,
-            );
-//        }
+        $data = [
+            "mode_status"           => $_POST['site-mode-mode-status'],
+            "mode_type"             => $_POST['site-mode-mode-type'],
+            "redirect_url"          => $_POST['site-mode-redirect-url'],
+            'redirect_delay'        => $_POST['site-mode-redirect-delay'],
+            'show_login_icon'       => $_POST['site-mode-show-login-icon'],
+            'custom_login_url'      => $_POST['site-mode-custom-login-url'],
+	        'whitelist_pages'       => $_POST['site-mode-whitelist-pages'],
+            'user_roles'            => $_POST['site-mode-user-roles']
+        ];
 
         $this->save_data($this->option_name, $data);
         return $this->save_data($this->option_name, $data);
-        die();
+        wp_die();
 
     }
 
-    public function load_template_on_call()
-    {
+    public function load_template_on_call() {
         $this->site_mode_general = unserialize(get_option('site_mode_general'));
 
         if(is_user_logged_in() && isset($_GET['site-mode-preview']) == 'true') {
@@ -89,7 +81,7 @@ class Site_Mode_General extends Settings {
 
             $current_user = wp_get_current_user();
             $user_roles = $current_user->roles;
-            foreach ($this->site_mode_general['user_role'] as $key=>$value){
+            foreach ($this->site_mode_general['user_roles'] as $key=>$value){
                 if($current_user->roles[0] == $value ) {
 
                     return;
@@ -110,19 +102,18 @@ class Site_Mode_General extends Settings {
 
     }
 
-    public function load_templates()
-    {
+    public function load_templates() {
 
-        if($this->mode==='redirect') {
-            if(!empty($this->status) && !empty($this->url)) {
+        if($this->mode_type === 'redirect') {
+            if(!empty($this->mode_status) && !empty($this->redirect_url)) {
                 wp_redirect( $this->url, 301 );
             }
         }
-        else if($this->mode==='coming-soon') {
+        else if($this->mode_type === 'coming-soon') {
             status_header( 503);
             nocache_headers();
         }
-        else if($this->mode === 'maintenance') {
+        else if($this->mode_type === 'maintenance') {
             status_header( 200 );
             nocache_headers();
         }
@@ -133,8 +124,7 @@ class Site_Mode_General extends Settings {
             $this->redirect_to_previous_page();
     }
 
-    public function redirect_to_previous_page()
-    {
+    public function redirect_to_previous_page() {
 
         $active_template = unserialize(get_option('site_mode_design'));
         $template_preview = isset($_GET['template']) ? $_GET['template'] : '';
@@ -155,26 +145,24 @@ class Site_Mode_General extends Settings {
         }
     }
 
-    public function design_active_template($show_template)
-    {
+    public function design_active_template($show_template) {
 
-            $templates = array(
-                'food_template',
-                'construction_template',
-                'fashion_template',
-                'travel_template'
-            );
-            foreach ($templates as $template) {
-                if ($show_template === $template) {
-                    require_once plugin_dir_path(dirname(__DIR__)) . 'public/templates/' . $template . '.php';
-                    exit;
-                }
+        $templates = array(
+            'food_template',
+            'construction_template',
+            'fashion_template',
+            'travel_template'
+        );
+        foreach ($templates as $template) {
+            if ($show_template === $template) {
+                require_once plugin_dir_path(dirname(__DIR__)) . 'public/templates/' . $template . '.php';
+                exit;
             }
+        }
     }
 
     // function to display the template
     public function render() {
         $this->display_settings_page('general');
     }
-
 }

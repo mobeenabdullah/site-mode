@@ -34,14 +34,14 @@ class Site_Mode_Activator
 	{
         // Add default options to database for general settings
         $general_settings = array(
-            "status"                => "1",
-            'include_pages'         => array(),
-            "mode"                  =>'maintenance',
-            "url"                   => '',
-            'delay'                 => '0',
-            'login_icon'            => '1',
-            'login_url'             => '',
-            'user_role'             => 'administrator',
+            "mode_status"                => 1,
+            "mode_type"                  =>'maintenance',
+            "redirect_url"                   => '',
+            'redirect_delay'                 => 2,
+            'show_login_icon'            => 1,
+            'custom_login_url'             => '',
+            'whitelist_pages'         => [],
+            'user_roles'             => ['administrator']
         );
 
         // Add default options to database for content settings.

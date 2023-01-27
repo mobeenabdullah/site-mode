@@ -409,6 +409,7 @@ jQuery(function ($) {
             const formData = new FormData(form);
             formData.append('action', 'ajax_site_mode_general');
             formData.append('ajax_site_mode_general',form);
+            $('.save-btn-loader').show();
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType : "json",
@@ -419,7 +420,10 @@ jQuery(function ($) {
                 data: formData,
                 enctype: "multipart/form-data",
                 success:function (res) {
+                    setTimeout(function () {
+                        $('.save-btn-loader').hide();
                         launch_toast(res.success);
+                    }, 1000)
                 }
             });
         });
