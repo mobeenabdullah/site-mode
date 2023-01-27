@@ -35,6 +35,12 @@ class Settings {
         return $data;
     }
 
+	public function verify_nonce($key, $action) {
+		if ( ! isset( $_POST[$key] ) || ! wp_verify_nonce( $_POST[$key], $action ) ) {
+			wp_send_json_error( 'Invalid nonce' );
+		}
+	}
+
     public function display_settings_page($page_name) {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . "partials/{$page_name}-setting-page.php";
     }
