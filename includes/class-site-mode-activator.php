@@ -20,8 +20,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Activator
-{
+class Site_Mode_Activator {
 
 	/**
 	 * Short Description. (use period)
@@ -30,8 +29,8 @@ class Site_Mode_Activator
 	 *
 	 * @since    1.0.0
 	 */
-	public static function activate()
-	{
+	public static function activate() {
+
         // Add default options to database for general settings
         $general_settings = array(
             "mode_status"                => 1,
@@ -133,8 +132,6 @@ class Site_Mode_Activator
         foreach ($settings as $key => $value) {
             add_option($key, serialize($value));
         }
-
-
 
 	}
 }

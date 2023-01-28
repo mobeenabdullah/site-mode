@@ -20,23 +20,18 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Import extends Settings
-{
-        protected $file = '';
-        protected $data = '';
-        protected $advance = '';
-        protected $content = '';
-        protected $design = '';
-        protected $site_mode_design_lb = '';
-        protected $site_mode_design_colors = '';
-        protected $seo = '';
-        protected $social = '';
-        protected $settings = '';
-        protected $general = '';
-    public function __construct()
-    {
-
-    }
+class Site_Mode_Import extends Settings {
+    protected $file;
+    protected $data;
+    protected $advance;
+    protected $content;
+    protected $design;
+    protected $seo;
+    protected $social;
+    protected $settings;
+    protected $general;
+	protected $site_mode_design_lb;
+	protected $site_mode_design_colors;
 
     public function ajax_site_mode_import() {
 
@@ -53,16 +48,6 @@ class Site_Mode_Import extends Settings
         $this->settings             = $data['settings'];
         $this->general              = $data['general'];
 
-//        update_option('site_mode_advanced',$this->advance);
-//        update_option('site_mode_content',$this->content);
-//        update_option('site_mode_design',$this->design);
-//        update_option('site_mode_design_lb',$this->site_mode_design_lb);
-//        update_option('site_mode_design_colors',$this->site_mode_design_colors);
-//        update_option('site_mode_seo',$this->seo);
-//        update_option('site_mode_social',$this->social);
-//        update_option('site_mode_settings',$this->settings);
-//        update_option('site_mode_general',$this->general);
-
         $this->save_data('site_mode_advanced',$this->advance);
         $this->save_data('site_mode_content',$this->content);
         $this->save_data('site_mode_design',$this->design);
@@ -74,7 +59,6 @@ class Site_Mode_Import extends Settings
         $this->save_data('site_mode_general',$this->general);
 
         wp_send_json_success($this->data);
-//        }
         die();
     }
 

@@ -90,43 +90,8 @@ class Site_Mode_Public
 		 * class.
 		 */
 
-        wp_enqueue_style('preconnect-font', 'https://fonts.googleapis.com');
-        wp_enqueue_style('preconnect-static', 'https://fonts.gstatic.com');
-        wp_enqueue_style('open-sans-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap');
-        if(!empty(get_option( 'site_mode_design_font' ))) {
-            $font_family = get_option( 'site_mode_design_font' );
-            //unseralize the font family
-            $font_family = unserialize($font_family);
-               $heading_font_family     = $font_family['heading_font_family'];
-               $description_font_family = $font_family['description_font_family'];
 
-            //            $selected_font = $font_family['font_family'];
-            if(!empty($heading_font_family)) {
-                wp_enqueue_style($heading_font_family, "https://fonts.googleapis.com/css2?family=".$heading_font_family.":wght@300;400;500;600;700&display=swap");
-            }
-            if(!empty($description_font_family)) {
-                wp_enqueue_style($description_font_family, "https://fonts.googleapis.com/css2?family=".$description_font_family.":wght@300;400;500;600;700&display=swap");
-            }
-
-        }
-
-		$activatedTemplate =  unserialize(get_option('site_mode_design'));
-		$status =  unserialize(get_option('site_mode_general'));
-
-		if((isset($_GET['site-mode-preview']) && $_GET['site-mode-preview'] === 'true') || $status['status'] === 1) {
-
-			if(isset($_GET['template'])) {
-				$template = $_GET['template'];
-			} else {
-				$template = $activatedTemplate;
-			}
-
-			if(!empty($template)) {
-				wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
-				wp_enqueue_style($template, plugin_dir_url(__FILE__) . 'css/'.$template.'.css', array(), $this->version, 'all');
-			}
-
-		}
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
 
 	}
 
