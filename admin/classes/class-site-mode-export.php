@@ -22,16 +22,16 @@
  */
 class Site_Mode_Export
 {
-    protected $advance              = '';
-    protected $content              = '';
-    protected $design               = '';
-    protected $site_mode_design_lb        = '';
-    protected $site_mode_design_colors    = '';
-    protected $seo                  = '';
-    protected $social               = '';
-    protected $settings             = '';
-    protected $general              = '';
-    protected $data                 = array();
+    protected $advance;
+    protected $content;
+    protected $design ;
+    protected $site_mode_design_lb;
+    protected $site_mode_design_colors;
+    protected $seo;
+    protected $social;
+    protected $settings ;
+    protected $general;
+    protected $data = [];
 
     public function __construct()
     {

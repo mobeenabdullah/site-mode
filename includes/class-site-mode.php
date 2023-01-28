@@ -77,8 +77,7 @@ class Site_Mode
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
 		if (defined('SITE_MODE_VERSION')) {
 			$this->version = SITE_MODE_VERSION;
@@ -92,7 +91,6 @@ class Site_Mode
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
 		$this->get_menu();
-
 
 	}
 
@@ -119,6 +117,7 @@ class Site_Mode
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
+
 		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-site-mode-loader.php';
 
 		/**
@@ -145,7 +144,7 @@ class Site_Mode
          */
         require_once plugin_dir_path(dirname(__FILE__)) . '/admin/classes/class-site-mode-advanced.php';
 
-
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/template-load.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -155,7 +154,7 @@ class Site_Mode
 
 		$this->loader = new Site_Mode_Loader();
 
-//        $this->classes_loader = new init();
+
 	}
 
 	/**
@@ -238,7 +237,6 @@ class Site_Mode
 		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-//        $this->loader->add_action('template_redirect', $this->classes_loader->get_design(), 'load_template_on_call');
 
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_custom_css_include');
         $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
@@ -257,14 +255,11 @@ class Site_Mode
         $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
         // redirect template
-        $this->site_mode_general = get_option('site_mode_general');
-        $un_data                 = unserialize($this->site_mode_general);
+
+		$template_load =  new Template_Load();
 
         //check if the values are set or not and then assign them to the variables
-        $this->status         = isset($un_data['status'] ) ? $un_data['status']  : '';
-        if(!empty($this->status) && $this->status == '1'){
-            $this->loader->add_action('template_redirect', $this->classes_loader->get_general(), 'load_template_on_call');
-        }
+		$this->loader->add_action('template_redirect', $template_load, 'template_initialize');
 
 
 	}

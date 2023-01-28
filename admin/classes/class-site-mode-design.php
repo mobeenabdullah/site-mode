@@ -23,20 +23,20 @@
 class Site_Mode_Design extends  Settings
 {
     protected $option_name = 'site_mode_design';
-        protected $enable_template      = false;
-        protected $logo_width           = '';
-        protected $logo_height          ='';
-        protected $design_background    = '';
-        protected $background_overlay   = '';
-        protected $overlay_color        = '';
-        protected $overlay_opacity      = '';
-        protected $icon_size            = '';
-        protected $icon_color           = '';
-        protected $icon_bg_color        = '';
-        protected $icon_border_color    = '';
-        protected $status               = '';
-        protected $mode                 = '';
-        protected $site_mode_design     = array();
+        protected $enable_template;
+        protected $logo_width;
+        protected $logo_height;
+        protected $design_background;
+        protected $background_overlay ;
+        protected $overlay_color;
+        protected $overlay_opacity;
+        protected $icon_size;
+        protected $icon_color;
+        protected $icon_bg_color;
+        protected $icon_border_color;
+        protected $status;
+        protected $mode;
+        protected $site_mode_design = [];
 
 
 
@@ -55,23 +55,17 @@ class Site_Mode_Design extends  Settings
 		}
     }
     public function ajax_site_mode_design_lb() {
-        print_r($_POST);
-        $nonce = $_POST['design-logo-background'];
-        if(!wp_verify_nonce( $nonce, 'design-logo-background-settings-save' )) {
-            die(__('Security Check', 'site-mode'));
-        }
-        else {
-            $data = array(
-                'logo_width'            => $_POST['logo-width-setting'],
-                'logo_height'           => $_POST['logo-height-setting'],
-                'design_background'     => $_POST['design-background-setting'],
-                'background_overlay'    => $_POST['design-background-overlay-setting'],
-                'overlay_color'         => $_POST['overlay-color-setting'],
-                'overlay_opacity'       => $_POST['overlay-opacity-setting'],
-            );
-        }
+	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
+        $data = array(
+            'logo_width'            => $_POST['logo-width-setting'],
+            'logo_height'           => $_POST['logo-height-setting'],
+            'design_background'     => $_POST['design-background-setting'],
+            'background_overlay'    => $_POST['design-background-overlay-setting'],
+            'overlay_color'         => $_POST['overlay-color-setting'],
+            'overlay_opacity'       => $_POST['overlay-opacity-setting'],
+        );
 
-          return $this->save_data($this->option_name, $data);
+		return $this->save_data($this->option_name, $data);
         die();
     }
 
@@ -98,22 +92,19 @@ class Site_Mode_Design extends  Settings
     }
 
     public function ajax_site_mode_design_color_section() {
-        $nonce = $_POST['design-icon-color'];
-        if(!wp_verify_nonce( $nonce, 'design-icon-color-settings-save' )) {
-            die(__('Security Check', 'site-mode'));
-        } else {
-            $color_section_data = array(
-                'icon_size'                 => $_POST['icon-size-setting'],
-                'icon_color'                => $_POST['icon-color-setting'],
-                'icon_bg_color'             => $_POST['icon-bg-setting'],
-                'icon_border_color'         => $_POST['icon-border-color-setting'],
-                'design_icon_color'         => $_POST['design-icon-color'],
-            );
-        }
+
+	    $this->verify_nonce('design-icon-color', 'design-icon-color-settings-save');
+        $color_section_data = array(
+            'icon_size'                 => $_POST['icon-size-setting'],
+            'icon_color'                => $_POST['icon-color-setting'],
+            'icon_bg_color'             => $_POST['icon-bg-setting'],
+            'icon_border_color'         => $_POST['icon-border-color-setting'],
+            'design_icon_color'         => $_POST['design-icon-color'],
+        );
 
         return $this->save_data('site_mode_design_color_section', $color_section_data);
 
-        die();
+        wp_die();
     }
 
     public function render() {

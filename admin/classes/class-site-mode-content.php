@@ -23,19 +23,13 @@
 class Site_Mode_Content extends Settings
 {
     protected $option_name = 'site_mode_content';
-    protected $text_logo    = '';
-    protected $image_logo   = '';
-    protected $disable_logo = false;
-    protected $heading      = '';
-    protected $sub_heading  = '';
-    protected $description  = '';
-    protected $bg_image     = '';
-
-
-    public function __construct()
-    {
-
-    }
+    protected $text_logo;
+    protected $image_logo;
+    protected $disable_logo;
+    protected $heading ;
+	protected $sub_heading;
+    protected $description;
+    protected $bg_image;
 
     public function ajax_site_mode_content() {
         wp_nonce_field('design-settings-save', 'design-custom-message');
@@ -62,6 +56,5 @@ class Site_Mode_Content extends Settings
     public function render() {
         $this->display_settings_page('content');
     }
-
 
 }

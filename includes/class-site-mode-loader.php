@@ -52,6 +52,7 @@ class Site_Mode_Loader
 
 		$this->actions = array();
 		$this->filters = array();
+
 	}
 
 	/**

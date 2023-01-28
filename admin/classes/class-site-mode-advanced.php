@@ -35,6 +35,7 @@ class Site_Mode_Advanced extends Settings {
 
     public function __construct() {
         $this->site_mode_advanced = unserialize(get_option('site_mode_advanced'));
+
         if($this->site_mode_advanced) {
             $this->ga_type          = $this->site_mode_advanced['ga_type'] || '';
             $this->ga_id            = $this->site_mode_advanced['ga_id']  || '';

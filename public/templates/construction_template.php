@@ -13,19 +13,9 @@
     $design_typo          = unserialize(get_option('site_mode_design_font'));
     $social                 = unserialize(get_option('site_mode_social'));
     $seo                    = unserialize(get_option('site_mode_seo'));
-
-    echo '<pre>';
-    echo '<h1>Content</h1>';
-    print_r($content);
-    echo '</pre>';
-
-
     $logo_url = wp_get_attachment_image_url($content['image_logo'], 'full');
     $image_url = wp_get_attachment_image_url($content['bg_image'], 'full');
 
-    echo '<pre>';
-    print_r($social);
-    echo '</pre>';
 ?>
 <style>
     .construction_cover__right--heading .main_title {
