@@ -35,16 +35,16 @@ class Site_Mode_Advanced extends Settings {
 
     public function __construct() {
         $this->site_mode_advanced = unserialize(get_option('site_mode_advanced'));
-
         if($this->site_mode_advanced) {
-            $this->ga_type          = $this->site_mode_advanced['ga_type'] || '';
-            $this->ga_id            = $this->site_mode_advanced['ga_id']  || '';
-            $this->fb_id            = $this->site_mode_advanced['fb_id']  || '';
-            $this->custom_css        = $this->site_mode_advanced['custom_css']  || '';
-            $this->enable_rest_api  = $this->site_mode_advanced['enable_rest_api']  || '';
-            $this->enable_feed      = $this->site_mode_advanced['enable_feed'] || '';
-            $this->header_code      = $this->site_mode_advanced['header_code']  || '';
-            $this->footer_code      = $this->site_mode_advanced['footer_code']  || '';
+            $this->ga_type          = isset($this->site_mode_advanced['ga_type']) ? $this->site_mode_advanced['ga_type'] : '1';
+            $this->ga_id            = isset($this->site_mode_advanced['ga_id']) ? $this->site_mode_advanced['ga_id'] : '';
+            $this->fb_id            = isset($this->site_mode_advanced['fb_id']) ? $this->site_mode_advanced['fb_id'] : '';
+            $this->custom_css       = isset($this->site_mode_advanced['custom_css']) ? $this->site_mode_advanced['custom_css'] : '';
+            $this->enable_rest_api  = isset($this->site_mode_advanced['enable_rest_api']) ? $this->site_mode_advanced['enable_rest_api'] : '1';
+            $this->enable_feed      = isset($this->site_mode_advanced['enable_feed']) ? $this->site_mode_advanced['enable_feed'] : '1';
+            $this->header_code      = isset($this->site_mode_advanced['header_code']) ? $this->site_mode_advanced['header_code'] : '';
+            $this->footer_code      = isset($this->site_mode_advanced['footer_code']) ? $this->site_mode_advanced['footer_code'] : '';
+
         }
     }
 

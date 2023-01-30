@@ -534,6 +534,7 @@ jQuery(function ($) {
                     template_name: templateName
                 },
                 success:function (res) {
+                    console.log(res);
                     const activatedTemplate = res.data;
                     $('.template_card').removeClass('active_template');
                     $('.template_card .activate-template-btn').text('Active');

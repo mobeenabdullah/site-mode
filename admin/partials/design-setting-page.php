@@ -6,9 +6,6 @@
             </div>
         </div>
         <div class="section__wrapper-content section_theme">
-                <?php
-                    $active_template = unserialize(get_option('site_mode_design'));
-                ?>
                 <div class="template__wrapper">
                     <div class="template_options">
 
@@ -43,11 +40,11 @@
                         ?>
 
                         <?php foreach ($templates as $template) : ?>
-                        <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $active_template ? 'active_template' : '' ?>">
+                        <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
                             <div class="template_card-image">
                                 <img src="<?php echo esc_attr($template['image'])  ?>" alt="<?php _e($template['title'],'site-mode'); ?>" />
                                 <div class="template_card-actions button_wrapper">
-                                    <button type="button" class="btn btn_sm activate-template-btn" value="<?php echo esc_attr($template['name']) ?>"><?php echo $template['name'] === $active_template ? 'Activated' : 'Active' ?></button>
+                                    <button type="button" class="btn btn_sm activate-template-btn" value="<?php echo esc_attr($template['name']) ?>"><?php echo $template['name'] === $this->active_template ? 'Activated' : 'Active' ?></button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
                                         <?php _e('Preview','site-mode');?>
                                     </a>
@@ -71,19 +68,6 @@
         </div>
         <div class="section__wrapper-content section_logo">
             <form id="site-mode-design-logo-background" method="post">
-                <?php
-                    $site_mode_design_lb = get_option('site_mode_design_lb');
-
-                    // convert serialized string to array
-                    $lb_data = unserialize($site_mode_design_lb);
-                    //check if value is set or not if not set then set default value.
-                    $logo_width         = isset($lb_data['logo_width']) ? $lb_data['logo_width'] : '200';
-                    $logo_height        = isset($lb_data['logo_height']) ? $lb_data['logo_height'] : '200';
-                    $design_background  = isset($lb_data['design_background']) ? $lb_data['design_background'] : '#ffffff';
-                    $background_overlay = isset($lb_data['background_overlay']) ? $lb_data['background_overlay'] : '#000000';
-                    $overlay_color      = isset($lb_data['overlay_color']) ? $lb_data['overlay_color'] : '#000000';
-                    $overlay_opacity    = isset($lb_data['overlay_opacity']) ? $lb_data['overlay_opacity'] : '0.5';
-                ?>
                 <div class="background_logo_wrapper">
                     <h4 class="section_subheading"><?php _e('Logo Settings','site-mode');?></h4>
                     <div class="option__row">
@@ -92,7 +76,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo $logo_width; ?>" <?php checked(1, $logo_width, true); ?>  />
+                                <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo $this->logo_width; ?>" <?php checked(1, $this->logo_width, true); ?>  />
                             </div>
                         </div>
                     </div>
@@ -102,7 +86,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo $logo_height; ?>" <?php checked(1, $logo_height, true); ?> />
+                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo $this->logo_height; ?>" <?php checked(1, $this->logo_height, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -113,7 +97,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_checkbox_wrapper">
-                                <input type="checkbox" id="check_background" class="check_background" name="design-background-setting" value="" <?php checked(1, $design_background, true); ?> />
+                                <input type="checkbox" id="check_background" class="check_background" name="design-background-setting" value="" <?php checked(1, $this->design_background, true); ?> />
                                 <label for="check_background"></label>
                             </div>
                         </div>
@@ -124,7 +108,7 @@
                                 <span><label for="background"><?php _e('Upload Background','site-mode');?></label></span>
                             </div>
                             <div class="option__row--field">
-                                <?php $image_url = wp_get_attachment_image_src($design_background, 'full'); ?>
+                                <?php $image_url = wp_get_attachment_image_src($this->design_background, 'full'); ?>
                                 <?php if ($image_url) : ?>
                                     <div class="bg_image_wrapper">
                                         <a href="#" class="logo-upload um_btn_outline image_btn"></a>
@@ -162,7 +146,7 @@
                             </div>
                             <div class="option__row--field">
                                 <div class="sm_input_wrapper">
-                                    <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo $overlay_color; ?>">
+                                    <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo $this->overlay_color; ?>">
                                     <label for="overlay_color"></label>
                                 </div>
                             </div>
@@ -176,7 +160,7 @@
                                     <!-- <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php //echo $overlay_opacity; ?>">
                                     <label for="overlay_opacity"></label>                                 -->
                                     <div class="range__slider slider_bg-transparent">
-                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo $overlay_opacity; ?>" data-rangeSlider>
+                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo $this->overlay_opacity; ?>" data-rangeSlider>
                                         <div class="display__value-wrapper">
                                             <span class="output-value"></span>
                                             <!-- <span>%</span> -->
@@ -224,24 +208,13 @@
                     $fonts_data        = serialize($fonts);
                     update_option('site-mode-font-family', $fonts_data);
 
+
+
                     //get font family from option
-                    $fonts_un            = unserialize(get_option('site-mode-font-family'));
-                    //get data from option
-                    $site_mode_design_font                    = get_option('site_mode_design_font');
-                    $site_mode_design_font                    = unserialize($site_mode_design_font);
-        // use ternary operator for check data is empty or not.
-                    $heading_font_size                  = !empty($site_mode_design_font['heading_font_size']) ? $site_mode_design_font['heading_font_size'] : '36';
-                    $heading_font_family                = !empty($site_mode_design_font['heading_font_family']) ? $site_mode_design_font['heading_font_family'] : 'Open Sans';
-                    $heading_font_weight                = !empty($site_mode_design_font['heading_font_weight']) ? $site_mode_design_font['heading_font_weight'] : '400';
-                    $heading_letter_spacing             = !empty($site_mode_design_font['heading_letter_spacing']) ? $site_mode_design_font['heading_letter_spacing'] : '0';
-                    $heading_line_height                = !empty($site_mode_design_font['heading_line_height']) ? $site_mode_design_font['heading_line_height'] : '1.5';
-                    $heading_font_color                 = !empty($site_mode_design_font['heading_font_color']) ? $site_mode_design_font['heading_font_color'] : '#000000';
-                    $description_font_family            = !empty($site_mode_design_font['description_font_family']) ? $site_mode_design_font['description_font_family'] : 'Open Sans';
-                    $description_font_size              = !empty($site_mode_design_font['description_font_size']) ? $site_mode_design_font['description_font_size'] : '16';
-                    $description_font_weight            = !empty($site_mode_design_font['description_font_weight']) ? $site_mode_design_font['description_font_weight'] : '400';
-                    $description_letter_spacing         = !empty($site_mode_design_font['description_letter_spacing']) ? $site_mode_design_font['description_letter_spacing'] : '0';
-                    $description_line_height            = !empty($site_mode_design_font['description_line_height']) ? $site_mode_design_font['description_line_height'] : '1.5';
-                    $description_font_color             = !empty($site_mode_design_font['description_font_color']) ? $site_mode_design_font['description_font_color'] : '#000000';
+                    $fonts_data        = get_option('site-mode-font-family');
+                    $fonts             = unserialize($fonts_data);
+
+
                 ?>
                 <div class="heading-section">
                     <h4><?php _e('Heading','site-mode');?></h4>
@@ -253,8 +226,8 @@
                             <div class="sm_select">
                                 <select name="heading-font-family-setting" id="font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
-                                    <?php  foreach ($fonts_un as $key => $value) { ?>
-                                    <option value="<?php echo $key; ?>" <?php selected($heading_font_family, $key); ?>><?php echo $key; ?></option>
+                                    <?php  foreach ($fonts  as $key => $value) { ?>
+                                    <option value="<?php echo $key; ?>" <?php selected($this->heading_font_family, $key); ?>><?php echo $key; ?></option>
                                     <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
@@ -267,7 +240,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
+                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $this->heading_font_size; ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -281,10 +254,10 @@
                                     <option value=""><?php _e('Select Font Weight','site-mode');?></option>
                                        <?php
                                             // if select font family selected then show font weight.
-                                            if (!empty($heading_font_family)) {
-                                                foreach ($fonts_un[$heading_font_family]['font_variant'] as $key => $value) {
+                                            if (!empty($this->heading_font_family)) {
+                                                foreach ($fonts[$this->heading_font_family]['font_variant'] as $key => $value) {
                                                     ?>
-                                                    <option value="<?php echo $value; ?>" <?php selected($heading_font_weight, $value); ?>><?php echo $value; ?></option>
+                                                    <option value="<?php echo $value; ?>" <?php selected($this->heading_font_weight, $value); ?>><?php echo $value; ?></option>
                                                     <?php
                                                 }
                                             }
@@ -302,7 +275,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="heading_letter_spacing" data-inc="1" name="heading-letter-spacing-setting" value="<?php echo esc_attr($heading_letter_spacing); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                                <input type="number" class="number" id="heading_letter_spacing" data-inc="1" name="heading-letter-spacing-setting" value="<?php echo esc_attr($this->heading_letter_spacing); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -314,7 +287,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-line-hight-setting" value="<?php echo esc_attr($heading_font_size); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-line-hight-setting" value="<?php echo esc_attr($this->heading_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -324,7 +297,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="color" id="heading_font_color" name="heading-font-color-setting" value="<?php echo esc_attr($heading_font_color); ?>">
+                                <input type="color" id="heading_font_color" name="heading-font-color-setting" value="<?php echo esc_attr($this->heading_font_color); ?>">
                             </div>
                         </div>
                     </div>
@@ -339,8 +312,8 @@
                             <div class="sm_select">
                                 <select name="description-font-family-setting" id="description_font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
-                                    <?php  foreach ($fonts_un as $key => $value) { ?>
-                                        <option value="<?php echo $key; ?>" <?php selected($description_font_family, $key); ?>><?php echo $key; ?></option>
+                                    <?php  foreach ($fonts as $key => $value) { ?>
+                                        <option value="<?php echo $key; ?>" <?php selected($this->description_font_family, $key); ?>><?php echo $key; ?></option>
                                     <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
@@ -353,7 +326,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $description_font_size; ?>" <?php checked(1, $description_font_size, true); ?> />
+                                <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $this->description_font_size; ?>" <?php checked(1, $this->description_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -367,10 +340,10 @@
                                     <option value=""><?php _e('Select Font Weight','site-mode');?></option>
                                     <?php
                                     // if select font family selected then show font weight.
-                                    if (!empty($description_font_family)) {
-                                        foreach ($fonts_un[$description_font_family]['font_variant'] as $key => $value) {
+                                    if (!empty($this->description_font_family)) {
+                                        foreach ($fonts[$this->description_font_family]['font_variant'] as $key => $value) {
                                             ?>
-                                            <option value="<?php echo $value; ?>" <?php selected($description_font_family, $value); ?>><?php echo $value; ?></option>
+                                            <option value="<?php echo $value; ?>" <?php selected($this->description_font_family, $value); ?>><?php echo $value; ?></option>
                                             <?php
                                         }
                                     }
@@ -388,7 +361,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="description_line_height" data-inc="1" name="description-line-height-setting" value="<?php echo esc_attr($description_font_size); ?>" <?php checked(1, $heading_font_size, true); ?> />
+                                <input type="number" class="number" id="description_line_height" data-inc="1" name="description-line-height-setting" value="<?php echo esc_attr($this->description_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -400,7 +373,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $heading_font_size; ?>" <?php checked(1, $heading_font_size, true); ?> />
+                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $this->heading_font_size; ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -410,7 +383,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="color" id="description_font_color" name="description-font-color-setting" value="<?php echo esc_attr($description_font_color); ?>">
+                                <input type="color" id="description_font_color" name="description-font-color-setting" value="<?php echo esc_attr($this->description_font_color); ?>">
                             </div>
                         </div>
                     </div>
@@ -435,18 +408,7 @@
         </div>
         <div class="section__wrapper-content section_social_icons">
         <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
-            <?php
-                $site_mode_design_colors      = get_option('site_mode_design_colors');
 
-                //unserialize data
-                $color_data             = unserialize($site_mode_design_colors);
-
-                //check if values are set or not and assign default values
-                $icon_size              = isset($color_data['icon_size']) ? $color_data['icon_size'] : '32';
-                $icon_color             = isset($color_data['icon_color']) ? $color_data['icon_color'] : '#ffffff';
-                $icon_bg_color          = isset($color_data['icon_bg_color']) ? $color_data['icon_bg_color'] : '#000000';
-                $icon_border_color      = isset($color_data['icon_border_color']) ? $color_data['icon_border_color'] : '#000000';
-            ?>
             <div class="social_icon_section">
                 <div class="option__row">
                     <div class="option__row--label">
@@ -455,9 +417,9 @@
                     <div class="option__row--field">
                         <div class="sm_select">
                             <select name="icon-size-setting" id="site_mode">
-                                <option value="32" <?php selected( $icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
-                                <option value="64" <?php selected( $icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
-                                <option value="128" <?php selected( $icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
+                                <option value="32" <?php selected( $this->icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
+                                <option value="64" <?php selected( $this->icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
+                                <option value="128" <?php selected( $this->icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
                             </select>
                             <span class="arrow-down"></span>
                         </div>
@@ -470,7 +432,7 @@
                     </div>
                     <div class="option__row--field">
                         <div class="sm_input_cover">
-                            <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($icon_color, 'site-mode');?>">
+                            <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($this->icon_color, 'site-mode');?>">
                         </div>
                     </div>
                 </div>
@@ -481,7 +443,7 @@
                     </div>
                     <div class="option__row--field">
                         <div class="sm_input_cover">
-                            <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($icon_bg_color, 'site-mode'); ?>">
+                            <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>">
                         </div>
                     </div>
                 </div>
@@ -492,7 +454,7 @@
                     </div>
                     <div class="option__row--field">
                         <div class="sm_input_cover">
-                            <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($icon_border_color,'site-mode'); ?>">
+                            <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($this->icon_border_color,'site-mode'); ?>">
                         </div>
                     </div>
                 </div>
