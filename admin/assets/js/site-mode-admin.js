@@ -388,18 +388,20 @@ jQuery(function ($) {
         }));
 
         // 5.  Sort social media
-        const smSortable = $( "#sm_sortable" );
+        const smSortable = $( ".sm_sortable" );
 
-        // sortable library setting object
-        smSortable.sortable({
-            cursor: "move"
-        });
+        if(smSortable) {
 
-        // Sort change function
-        smSortable.on( "sortchange", function( event, ui ) {
-            var sortedIDs = smSortable.sortable( "toArray" );
-            console.log(sortedIDs);
-        });
+            // sortable library setting object
+            smSortable.sortable({
+                cursor: "move"
+            });
+
+            // Sort change function
+            smSortable.on("sortchange", function (event, ui) {
+                var sortedIDs = smSortable.sortable("toArray");
+            });
+        }
 
         // 6.  Ajax call for general tab
         $( "#site-mode-general" ).submit(function( event ) {
@@ -753,17 +755,23 @@ jQuery(function ($) {
 
 
     // ACE Editor
-    let headerEditor = ace.edit('header_code');
-    headerEditor.setTheme("ace/theme/ambiance");
-    headerEditor.session.setMode("ace/mode/html");
+    if($('#header_code').length > 0) {
+        let headerEditor = ace.edit('header_code');
+        headerEditor.setTheme("ace/theme/ambiance");
+        headerEditor.session.setMode("ace/mode/html");
+    }
 
-    let footerEditor = ace.edit('footer_code');
-    footerEditor.setTheme("ace/theme/ambiance");
-    footerEditor.session.setMode("ace/mode/html");
+    if($('#footer_code').length > 0) {
+        let footerEditor = ace.edit('footer_code');
+        footerEditor.setTheme("ace/theme/ambiance");
+        footerEditor.session.setMode("ace/mode/html");
+    }
 
-    let customCssEditor = ace.edit('custom_css');
-    customCssEditor.setTheme("ace/theme/ambiance");
-    customCssEditor.session.setMode("ace/mode/html");
+    if($('#custom_css').length > 0) {
+        let customCssEditor = ace.edit('custom_css');
+        customCssEditor.setTheme("ace/theme/ambiance");
+        customCssEditor.session.setMode("ace/mode/html");
+    }
 
     // Range slider - gravity forms
     /*
