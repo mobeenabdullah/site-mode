@@ -361,7 +361,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="description_line_height" data-inc="1" name="description-line-height-setting" value="<?php echo esc_attr($this->description_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="description_line_height" data-inc="1" name="description-line-height-setting" value="<?php echo esc_attr($this->description_line_height); ?>" <?php checked(1, $this->description_line_height, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -373,7 +373,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $this->heading_font_size; ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $this->description_letter_spacing; ?>" <?php checked(1, $this->description_letter_spacing, true); ?> />
                             </div>
                         </div>
                     </div>
