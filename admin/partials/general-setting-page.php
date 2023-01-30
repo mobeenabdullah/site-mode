@@ -85,15 +85,13 @@
                 <?php $all_pages = get_pages(); ?>
                 <div class="sm_select">
                     <select class="js-example-basic-multiple" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include_">
-                        <?php
-                            foreach($all_pages as $value ) :
-                                if($this->whitelist_pages && in_array($value->post_name, $this->whitelist_pages) ) {
-                                    $selected = 'selected';
-                                } else {
-                                    $selected = '';
-                                }
-                            ?>
-                            <option value="<?php echo $value->post_name; ?>" > <?php echo $value->post_name;?></option>
+                        <?php foreach($all_pages as $value ) :
+                            if(in_array($value->post_name, $this->whitelist_pages) ) {
+                                $selected = 'selected';
+                            } else {
+                                $selected = '';
+                            } ?>
+                            <option value="<?php echo $value->post_name; ?>" <?php echo $selected ?>> <?php echo $value->post_name;?></option>
                         <?php endforeach; ?>
                     </select>
                     <span class="arrow-down"></span>

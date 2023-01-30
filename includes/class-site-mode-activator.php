@@ -127,6 +127,7 @@ class Site_Mode_Activator {
             'site_mode_design_icon_color'   => $design_icon_color,
             'site_mode_seo'                 => $seo_settings,
             'site_mode_advanced'            => $advance_settings,
+
         );
 
         foreach ($settings as $key => $value) {

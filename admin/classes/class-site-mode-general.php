@@ -42,8 +42,8 @@ class Site_Mode_General extends Settings {
 	    $this->redirect_delay       = $this->site_mode_general['redirect_delay'];
 	    $this->show_login_icon      = $this->site_mode_general['show_login_icon'];
 	    $this->custom_login_url     = $this->site_mode_general['custom_login_url'];
-	    $this->whitelist_pages      = $this->site_mode_general['whitelist_pages'] || [];
-	    $this->user_roles           = $this->site_mode_general['user_roles'];
+	    $this->whitelist_pages      = isset($this->site_mode_general['whitelist_pages']) ? $this->site_mode_general['whitelist_pages'] : [];
+	    $this->user_roles           = isset($this->site_mode_general['user_roles']) ? $this->site_mode_general['user_roles'] : [];
     }
 
     public function ajax_site_mode_general() {

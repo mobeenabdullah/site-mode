@@ -18,25 +18,25 @@
                                     'id' => 1,
                                     'name' => 'food_template',
                                     'title' => 'Food Template',
-                                    'image' => plugin_dir_url( __DIR__ ).'../assets/img/template-1.jpg'
+                                    'image' => plugin_dir_url( __DIR__ ).'assets/img/template-1.jpg'
                                 ],
 	                            [
 		                            'id' => 2,
 		                            'name' => 'construction_template',
 		                            'title' => 'Construction Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'../assets/img/template-2.jpg'
+		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-2.jpg'
 	                            ],
 	                            [
 		                            'id' => 3,
 		                            'name' => 'fashion_template',
 		                            'title' => 'Fashion Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'../assets/img/template-3.jpg'
+		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-3.jpg'
 	                            ],
 	                            [
 		                            'id' => 4,
 		                            'name' => 'travel_template',
 		                            'title' => 'Travel Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'../assets/img/template-4.jpg'
+		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-4.jpg'
 	                            ],
                             ];
 
