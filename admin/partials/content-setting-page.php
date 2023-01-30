@@ -1,37 +1,35 @@
-<div class="site_mode__wrap-form">    
+<div class="site_mode__wrap-form">
         <?php
             // Show error/update messages
             settings_errors();
-            //if logo_setting is image-logo then disable text logo field        
+            //if logo_setting is image-logo then disable text logo field
         ?>
-    <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">        
+    <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
 
-        <?php $logo_url = wp_get_attachment_image_url($this->image_logo, 'medium'); ?>
-        
         <div class="option__row">
             <div class="option__row--label">
                 <span><?php _e('Logo Type','site-mode');?></span>
             </div>
-            
+
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
-                    <div class="radio_wrapper logo_radio_wrapper">                        
-                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($this->logo_setting=='type-text',true,true); ?> />
+                    <div class="radio_wrapper logo_radio_wrapper">
+                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($this->logo_setting === 'type-text',true,true); ?> />
                         <label for="text-logo"><?php _e('Text','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
-                    
+
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked($this->logo_setting=='type-image',true, true); ?> />
+                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image" <?php checked($this->logo_setting === 'type-image',true, true); ?> />
                         <label for="image-logo"><?php _e('Image','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($this->logo_setting=='type-disable',true, true); ?> />
+                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable" <?php checked($this->logo_setting === 'type-disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('Disable','site-mode');?></label>
-                        <div class="check"><div class="inside"></div></div> 
+                        <div class="check"><div class="inside"></div></div>
                     </div>
-                </div>                               
+                </div>
             </div>
         </div>
         <div class="image_logo_wrapper">
@@ -39,22 +37,51 @@
                 <div class="option__row--label">
                     <span><?php _e('Select Logo','site-mode');?></span>
                 </div>
+	            <?php
+	                $image_url = wp_get_attachment_image_url($this->image_logo, 'medium');
+
+                    $image_alt_text = get_post_meta($this->image_logo, '_wp_attachment_image_alt', true);
+
+                    if(!$image_alt_text){
+	                    $image_alt_text = get_the_title( $this->image_logo );
+                    }
+                ?>
                 <div class="option__row--field">
                     <div class="upload_image_cover">
-                        <?php if ($logo_url) : ?>
-                            <div class="bg_image_wrapper">
-                                <a href="#" class="logo-upload image_btn"></a>
-                                <div class="display_logo_img">
-                                    <img src="<?php echo esc_url($logo_url) ?>" width="150" height="150" />
-                                </div>
+
+                        <?php if ($image_url) : ?>
+
+                            <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+                            <div class="sm_image_wrapper">
+                                <img src="<?php echo esc_url($image_url) ?>" alt="<?php echo esc_attr($image_alt_text); ?>" />
                             </div>
-                            <a href="#" class="button btn_outline logo-remove"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                            <input type="hidden" name="content-image-logo-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
+
+                            <div class="sm-image-fields" style="display: flex; gap: 10px;">
+                                <button type="button" class="button sm-upload-image" data-image-type="Logo">
+                                    <?php esc_html_e('Change Logo', 'site-mode'); ?>
+                                </button>
+                                <button type="button" class="button sm-remove-image" data-image-type="Logo">
+                                    <?php esc_html_e('Remove Logo', 'site-mode'); ?>
+                                </button>
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo); ?>">
+                            </div>
+
                         <?php else : ?>
-                            <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
-                            <a href="#" class="logo-remove btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                            <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($this->image_logo,'site-mode'); ?>>
+
+                            <div class="sm_image_wrapper"></div>
+
+                            <div class="sm-image-fields" style="display: flex; gap: 10px;">
+                                <button type="button" class="button sm-upload-image" data-image-type="Logo">
+                                    <?php esc_html_e('Upload Logo', 'site-mode'); ?>
+                                </button>
+                                <button type="button" class="button sm-remove-image" data-image-type="Logo" style="display: none;">
+                                    <?php esc_html_e('Remove Logo', 'site-mode'); ?>
+                                </button>
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo); ?>">
+                            </div>
+
                         <?php endif; ?>
+
                     </div>
                 </div>
             </div>
@@ -65,7 +92,7 @@
                     <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
                 </div>
                 <div class="option__row--field">
-                    <div class="sm_input_cover label_top">                        
+                    <div class="sm_input_cover label_top">
                         <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($this->text_logo,'site-mode'); ?>" />
                     </div>
                 </div>
@@ -73,10 +100,10 @@
         </div>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="heading"><?php _e('Heading','site-mode');?></label></span>                    
+                <span><label for="heading"><?php _e('Heading','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="sm_input_cover">                    
+                <div class="sm_input_cover">
                     <input type="text" id="heading" name="content-heading-setting" value="<?php esc_attr_e($this->heading,'site-mode'); ?>" />
                 </div>
             </div>
@@ -84,7 +111,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="description"><?php _e('Description','site-mode');?></label></span>                                    
+                <span><label for="description"><?php _e('Description','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="description_editor" id="description">
@@ -101,42 +128,73 @@
                             'tinymce' => true,
                             'teeny' => true,
                         );
-                        
+
                         wp_editor( $content, $custom_editor_id, $args );
                     ?>
                 </div>
             </div>
         </div>
-        <?php $bg_img_url = wp_get_attachment_image_url($this->bg_image, 'full'); ?>
+        <?php
+            $bg_img_url = wp_get_attachment_image_url($this->bg_image, 'full');
+            $bg_image_alt_text = get_post_meta($this->bg_image, '_wp_attachment_image_alt', true);
+
+            if(!$bg_image_alt_text){
+	            $bg_image_alt_text = get_the_title( $this->bg_image );
+            }
+        ?>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="upload_image"><?php _e('Background Image','site-mode');?></label></span>                
+                <span><label for="upload_image"><?php _e('Background Image','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div>
-                    <?php if ($bg_img_url) : ?>
-                        <img src="<?php echo esc_url($bg_img_url) ?>" width="150" height="150" />
-                        <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
-                        <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e($this->bg_image,'site-mode'); ?>">
-                        <?php else : ?>
-                        <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
-                        <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e($this->bg_image,'site-mode'); ?>>
-                    <?php endif; ?>
+                <div class="upload_image_cover">
+
+		            <?php if ($bg_img_url) : ?>
+
+                        <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+                        <div class="sm_image_wrapper">
+                            <img src="<?php echo esc_url($bg_img_url) ?>" alt="<?php echo esc_attr($bg_image_alt_text); ?>" />
+                        </div>
+
+                        <div class="sm-image-fields" style="display: flex; gap: 10px;">
+                            <button type="button" class="button sm-upload-image" data-image-type="Background Image">
+					            <?php esc_html_e('Change Background Image', 'site-mode'); ?>
+                            </button>
+                            <button type="button" class="button sm-remove-image" data-image-type="Background Image">
+					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
+                            </button>
+                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image); ?>">
+                        </div>
+
+		            <?php else : ?>
+
+                        <div class="sm_image_wrapper"></div>
+
+                        <div class="sm-image-fields" style="display: flex; gap: 10px;">
+                            <button type="button" class="button sm-upload-image" data-image-type="Background Image">
+					            <?php esc_html_e('Upload Background Image', 'site-mode'); ?>
+                            </button>
+                            <button type="button" class="button sm-remove-image" data-image-type="Background Image" style="display: none;">
+					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
+                            </button>
+                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image); ?>">
+                        </div>
+
+		            <?php endif; ?>
+
                 </div>
             </div>
         </div>
-        
+
         <?php wp_nonce_field('design-settings-save', 'design-custom-message'); ?>
 
         <!-- Submit setting -->
         <div class="option__row">
-            <div class="option__row--label submit_button">                
+            <div class="option__row--label submit_button">
                 <?php submit_button(); ?>
-            </div>            
+            </div>
         </div>
-        
+
 
     </form>
 </div>

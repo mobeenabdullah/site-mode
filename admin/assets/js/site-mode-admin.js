@@ -1,34 +1,33 @@
 
 jQuery(function ($) {
 
-    $("body").on("click", ".logo-upload", function (event) {
-        event.preventDefault(); // prevent default link click and page refresh
+    // Custom Image Uploader
+    $("body").on("click", ".sm-upload-image", function () {
 
-        const button = $(this);
-        const imageId = button.next().next().val();
+        const uploadButton = $(this);
+        const imageType = uploadButton.attr('data-image-type');
+        const imageId = uploadButton.next().next().val();
 
         const customUploader = wp
             .media({
-                title: "Insert logo", // modal window title
-                library: {
-                    // uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
-                    type: "image",
-                },
-                button: {
-                    text: "Use this logo", // button label text
-                },
+                title: "Insert " + imageType,
+                library: { type: "image" },
+                button: { text: "Use this " + imageType },
                 multiple: false,
             })
             .on("select", function () {
-                // it also has "open" and "close" events
                 const attachment = customUploader
                     .state()
                     .get("selection")
                     .first()
                     .toJSON();
-                button.removeClass("button").html('<div class="image_logo_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
-                button.next().show(); // show "Remove image" link
-                button.next().next().val(attachment.id); // Populate the hidden field with image ID
+                uploadButton.text("Change " + imageType);
+
+                let altText = attachment.alt || attachment.title;
+
+                uploadButton.parent().siblings('.sm_image_wrapper').html('<img src="' + attachment.url + '" alt="'+ altText +'">');
+                uploadButton.next().show();
+                uploadButton.next().next().val(attachment.id);
             });
 
         // already selected images
@@ -44,13 +43,13 @@ jQuery(function ($) {
         customUploader.open();
     });
     // on remove button click
-    $("body").on("click", ".logo-remove", function (event) {
-        let image_logo_display = $('.image_display');
-        event.preventDefault();
-        const button = $(this);
-        button.next().val(""); // emptying the hidden field
-        button.hide().prev().addClass("button").html("Upload Logo"); // replace the image with text
-        image_logo_display.hide();
+    $("body").on("click", ".sm-remove-image", function () {
+        let imageWrapper = $(this).parent().siblings('.sm_image_wrapper');
+        imageWrapper.hide();
+        const removeButton = $(this);
+        const imageType = removeButton.attr('data-image-type');
+        removeButton.next().val("");
+        removeButton.hide().prev().addClass("button").html("Upload " + imageType);
     });
 
     /*
@@ -58,66 +57,66 @@ jQuery(function ($) {
     */
 
 
-    // on upload button click
-    $("body").on("click", ".bg-image-upload", function (event) {
-        event.preventDefault(); // prevent default link click and page refresh
-
-        const button = $(this);
-        const imageId = button.next().next().val();
-
-        const customUploader = wp
-            .media({
-                title: "Insert Background Image", // modal window title
-                library: {
-                    // uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
-                    type: "image",
-                },
-                button: {
-                    text: "Use this background", // button label text
-                },
-                multiple: false,
-            })
-            .on("select", function () {
-                // it also has "open" and "close" events
-                const attachment = customUploader
-                    .state()
-                    .get("selection")
-                    .first()
-                    .toJSON();
-                button.removeClass("button").html('<div class="image_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
-                button.next().show(); // show "Remove image" link
-                button.next().next().val(attachment.id); // Populate the hidden field with image ID
-            });
-
-        // already selected images
-        customUploader.on("open", function () {
-            if (imageId) {
-                const selection = customUploader.state().get("selection");
-                attachment = wp.media.attachment(imageId);
-                attachment.fetch();
-                selection.add(attachment ? [attachment] : []);
-            }
-        });
-
-        customUploader.open();
-    });
-    // on remove button click
-    $("body").on("click", ".bg-image-remove", function (event) {
-        let image_btn = $('.bg-image-upload');
-        let image_display = $('.image_display');
-        let bg_image = $('.display_bg_img');
-        event.preventDefault();
-        const button = $(this);
-
-        console.log("image_btn", image_btn, "bg_image", bg_image, "button", button);
-
-        button.next().val(""); // emptying the hidden field
-        button.hide().prev(); // replace the image with text
-
-        image_btn.addClass("button").html("Upload Background Image");
-        bg_image.hide();
-        image_display.hide();
-    });
+    // // on upload button click
+    // $("body").on("click", ".bg-image-upload", function (event) {
+    //     event.preventDefault(); // prevent default link click and page refresh
+    //
+    //     const button = $(this);
+    //     const imageId = button.next().next().val();
+    //
+    //     const customUploader = wp
+    //         .media({
+    //             title: "Insert Background Image", // modal window title
+    //             library: {
+    //                 // uploadedTo : wp.media.view.settings.post.id, // attach to the current post?
+    //                 type: "image",
+    //             },
+    //             button: {
+    //                 text: "Use this background", // button label text
+    //             },
+    //             multiple: false,
+    //         })
+    //         .on("select", function () {
+    //             // it also has "open" and "close" events
+    //             const attachment = customUploader
+    //                 .state()
+    //                 .get("selection")
+    //                 .first()
+    //                 .toJSON();
+    //             button.removeClass("button").html('<div class="image_display"><img src="' + attachment.url + '"></div>'); // add image instead of "Upload Image"
+    //             button.next().show(); // show "Remove image" link
+    //             button.next().next().val(attachment.id); // Populate the hidden field with image ID
+    //         });
+    //
+    //     // already selected images
+    //     customUploader.on("open", function () {
+    //         if (imageId) {
+    //             const selection = customUploader.state().get("selection");
+    //             attachment = wp.media.attachment(imageId);
+    //             attachment.fetch();
+    //             selection.add(attachment ? [attachment] : []);
+    //         }
+    //     });
+    //
+    //     customUploader.open();
+    // });
+    // // on remove button click
+    // $("body").on("click", ".bg-image-remove", function (event) {
+    //     let image_btn = $('.bg-image-upload');
+    //     let image_display = $('.image_display');
+    //     let bg_image = $('.display_bg_img');
+    //     event.preventDefault();
+    //     const button = $(this);
+    //
+    //     console.log("image_btn", image_btn, "bg_image", bg_image, "button", button);
+    //
+    //     button.next().val(""); // emptying the hidden field
+    //     button.hide().prev(); // replace the image with text
+    //
+    //     image_btn.addClass("button").html("Upload Background Image");
+    //     bg_image.hide();
+    //     image_display.hide();
+    // });
 
 
     /*
