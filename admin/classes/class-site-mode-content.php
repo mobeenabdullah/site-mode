@@ -23,6 +23,8 @@
 class Site_Mode_Content extends Settings
 {
     protected $option_name = 'site_mode_content';
+    protected $site_mode_content;
+    protected $logo_settings;
     protected $text_logo;
     protected $image_logo;
     protected $disable_logo;
@@ -30,6 +32,20 @@ class Site_Mode_Content extends Settings
 	protected $sub_heading;
     protected $description;
     protected $bg_image;
+
+    public function __construct()
+    {
+        $this->site_mode_content    = $this->get_data($this->option_name);
+        
+        $this->logo_setting        = $this->site_mode_content['logo_settings'];
+        $this->text_logo            = $this->site_mode_content['text_logo'];
+        $this->image_logo           = $this->site_mode_content['image_logo'];
+        $this->heading              = $this->site_mode_content['heading'];
+        $this->sub_heading          = $this->site_mode_content['heading'];
+        $this->description          = $this->site_mode_content['description'];
+        $this->bg_image             = $this->site_mode_content['bg_image'];
+
+    }
 
     public function ajax_site_mode_content() {
         wp_nonce_field('design-settings-save', 'design-custom-message');

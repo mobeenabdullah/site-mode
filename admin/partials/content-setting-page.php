@@ -2,27 +2,11 @@
         <?php
             // Show error/update messages
             settings_errors();
-            //get content data
-            $content = get_option('site_mode_content');
-            //unserialize data
-            $uns_data = unserialize($content);
-            echo '<pre>';
-            print_r($uns_data);
-            echo '</pre>';
-
-            // check values are set or not if not assign default values
-            $text_logo      = isset($uns_data['text_logo']) ? $uns_data['text_logo'] : '';
-            $image_logo     = isset($uns_data['image_logo']) ? $uns_data['image_logo'] : '';
-            $logo_setting   = isset($uns_data['logo_settings']) ? $uns_data['logo_settings'] : 'image-logo';
-            $heading        = isset($uns_data['heading']) ? $uns_data['heading'] : ' heading goes here';
-            $description    = isset($uns_data['description']) ? $uns_data['description'] : 'description goes here';
-            $bg_image       = isset($uns_data['bg_image']) ? $uns_data['bg_image'] : '';
-
             //if logo_setting is image-logo then disable text logo field        
         ?>
     <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">        
 
-        <?php $logo_url = wp_get_attachment_image_url($image_logo, 'medium'); ?>
+        <?php $logo_url = wp_get_attachment_image_url($this->image_logo, 'medium'); ?>
         
         <div class="option__row">
             <div class="option__row--label">
@@ -32,18 +16,18 @@
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
                     <div class="radio_wrapper logo_radio_wrapper">                        
-                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($logo_setting=='type-text',true,true); ?> />
+                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($this->logo_setting=='type-text',true,true); ?> />
                         <label for="text-logo"><?php _e('Text','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                     
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked($logo_setting=='type-image',true, true); ?> />
+                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image"  <?php checked($this->logo_setting=='type-image',true, true); ?> />
                         <label for="image-logo"><?php _e('Image','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($logo_setting=='type-disable',true, true); ?> />
+                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable"  checked <?php checked($this->logo_setting=='type-disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('Disable','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div> 
                     </div>
@@ -69,7 +53,7 @@
                         <?php else : ?>
                             <a href="#" class="logo-upload button"><?php esc_html_e('Upload Logo', 'site-mode'); ?></a>
                             <a href="#" class="logo-remove btn_outline button" style="display: none;"><?php esc_html_e('Remove Logo', 'site-mode'); ?></a>
-                            <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($image_logo,'site-mode'); ?>>
+                            <input type="hidden" name="content-image-logo-setting" value=<?php esc_attr_e($this->image_logo,'site-mode'); ?>>
                         <?php endif; ?>
                     </div>
                 </div>
@@ -82,7 +66,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover label_top">                        
-                        <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($text_logo,'site-mode'); ?>" />
+                        <input type="text" id="text_logo" name="content-text-logo-setting" value="<?php esc_attr_e($this->text_logo,'site-mode'); ?>" />
                     </div>
                 </div>
             </div>
@@ -93,7 +77,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">                    
-                    <input type="text" id="heading" name="content-heading-setting" value="<?php esc_attr_e($heading,'site-mode'); ?>" />
+                    <input type="text" id="heading" name="content-heading-setting" value="<?php esc_attr_e($this->heading,'site-mode'); ?>" />
                 </div>
             </div>
         </div>
@@ -105,7 +89,7 @@
             <div class="option__row--field">
                 <div class="description_editor" id="description">
                     <?php
-                        $content = $description;
+                        $content = $this->description;
                         $custom_editor_id = "editorid";
                         $custom_editor_name = "content-description-setting";
 
@@ -123,7 +107,7 @@
                 </div>
             </div>
         </div>
-        <?php $bg_img_url = wp_get_attachment_image_url($bg_image, 'full'); ?>
+        <?php $bg_img_url = wp_get_attachment_image_url($this->bg_image, 'full'); ?>
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="upload_image"><?php _e('Background Image','site-mode');?></label></span>                
@@ -134,11 +118,11 @@
                         <img src="<?php echo esc_url($bg_img_url) ?>" width="150" height="150" />
                         <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
                         <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e($bg_image,'site-mode'); ?>">
+                        <input type="hidden" name="content-bg-image-setting" value="<?php esc_attr_e($this->bg_image,'site-mode'); ?>">
                         <?php else : ?>
                         <a href="#" role="button" aria-labelledby="upload_image" class="button bg-image-upload"><?php esc_html_e('Upload Background Image', 'site-mode'); ?></a>
                         <a href="#" role="button" aria-labelledby="upload_image" class="button btn_outline bg-image-remove" style="display:none"><?php esc_html_e('Remove Background Image', 'site-mode'); ?></a>
-                        <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e($bg_image,'site-mode'); ?>>
+                        <input type="hidden" name="content-bg-image-setting" value=<?php esc_attr_e($this->bg_image,'site-mode'); ?>>
                     <?php endif; ?>
                 </div>
             </div>
