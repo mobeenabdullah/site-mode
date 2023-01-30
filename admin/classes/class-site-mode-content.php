@@ -54,12 +54,12 @@ class Site_Mode_Content extends Settings
         }
         else {
             $data = array(
-                "logo_settings" =>$_POST['content-logo-settings'],
-                "image_logo"    =>$_POST['content-image-logo-setting'],
-                "text_logo"     =>$_POST['content-text-logo-setting'],
-                "heading"       =>$_POST['content-heading-setting'],
-                'description'   =>$_POST['content-description-setting'],
-                'bg_image'      =>$_POST['content-bg-image-setting'],
+                "logo_settings" =>sanitize_text_field($_POST['content-logo-settings']),
+                "image_logo"    =>intval($_POST['content-image-logo-setting']),
+                "text_logo"     =>sanitize_text_field($_POST['content-text-logo-setting']),
+                "heading"       =>sanitize_text_field($_POST['content-heading-setting']),
+                'description'   =>sanitize_text_field($_POST['content-description-setting']),
+                'bg_image'      =>intval($_POST['content-bg-image-setting']),
             );
         }
 

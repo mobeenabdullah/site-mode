@@ -37,7 +37,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
-                        <input type="text" id="redirect_url" name="site-mode-redirect-url" value="<?php echo $this->redirect_url; ?>" <?php checked(1, $this->redirect_url, true); ?> />
+                        <input type="text" id="redirect_url" name="site-mode-redirect-url" value="<?php echo esc_attr($this->redirect_url); ?>" <?php checked(1, $this->redirect_url, true); ?> />
                     </div>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
-                        <input type="number" min="0" max="9" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo $this->redirect_delay; ?>" <?php checked(1, $this->redirect_delay, true); ?> />
+                        <input type="number" min="0" max="9" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo esc_attr($this->redirect_delay); ?>" <?php checked(1, $this->redirect_delay, true); ?> />
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                             } else {
                                 $selected = '';
                             } ?>
-                            <option value="<?php echo $value->post_name; ?>" <?php echo $selected ?>> <?php echo $value->post_name;?></option>
+                            <option value="<?php echo esc_attr($value->post_name); ?>" <?php echo $selected ?>> <?php esc_html_e($value->post_name);?></option>
                         <?php endforeach; ?>
                     </select>
                     <span class="arrow-down"></span>
@@ -108,8 +108,8 @@
 	            <?php foreach ( $wp_roles->roles as $key => $value ): ?>
                 <div class="sm_checkbox_wrapper role_checkbox">
 		            <?php $checked = (in_array($key, $this->user_roles)) ? 'checked' : ''; ?>
-                    <input type="checkbox" id="<?php echo $value['name'] . '-' .$key; ?>" name="site-mode-user-roles[]" value="<?php echo strtolower($value['name']); ?>" <?php echo $checked; ?> />
-                    <label for="<?php echo $value['name'] . '-' .$key; ?>"><?php echo $value['name'] ?></label>
+                    <input type="checkbox" id="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr(strtolower($value['name'])); ?>" <?php echo $checked; ?> />
+                    <label for="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>"><?php echo $value['name'] ?></label>
                 </div>
 	            <?php endforeach; ?>
             </div>

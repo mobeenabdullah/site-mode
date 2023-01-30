@@ -27,14 +27,14 @@
 
 
                                 <div class="construction_cover__left--heading">
-                                    <h1 class="main_title">Heading goes here</h1>
+                                    <h1 class="main_title"><?php esc_attr('Heading goes here', 'side-mode');?></h1>
                                 </div>
 
                                 <div class="construction_cover__left--heading">
-                                    <h1 class="main_title">Subheading</h1>
+                                    <h1 class="main_title"></h1>
                                 </div>
                                 <div class="construction_cover__left--text">
-                                    <p>Description goes here</p>
+                                    <p><?php esc_attr('Description goes here', 'side-mode');?></p>
                                 </div>
 
                                 <div class="construction_cover__left--text">

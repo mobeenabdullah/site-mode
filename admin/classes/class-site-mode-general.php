@@ -50,14 +50,15 @@ class Site_Mode_General extends Settings {
 	    $this->verify_nonce('general_section_field', 'general_settings_action');
 
         $data = [
-            "mode_status"           => $_POST['site-mode-mode-status'],
-            "mode_type"             => $_POST['site-mode-mode-type'],
-            "redirect_url"          => $_POST['site-mode-redirect-url'],
-            'redirect_delay'        => $_POST['site-mode-redirect-delay'],
-            'show_login_icon'       => $_POST['site-mode-show-login-icon'],
-            'custom_login_url'      => $_POST['site-mode-custom-login-url'],
-	        'whitelist_pages'       => $_POST['site-mode-whitelist-pages'],
-            'user_roles'            => $_POST['site-mode-user-roles']
+            // sanitize_text_field() is used to sanitize the data
+            "mode_status"           => sanitize_text_field($_POST['site-mode-mode-status']),
+            "mode_type"             => sanitize_text_field($_POST['site-mode-mode-type']),
+            "redirect_url"          => sanitize_text_field($_POST['site-mode-redirect-url']),
+            'redirect_delay'        => sanitize_text_field($_POST['site-mode-redirect-delay']),
+            'show_login_icon'       => sanitize_text_field($_POST['site-mode-show-login-icon']),
+            'custom_login_url'      => sanitize_text_field($_POST['site-mode-custom-login-url']),
+	        'whitelist_pages'       => sanitize_text_field($_POST['site-mode-whitelist-pages']),
+            'user_roles'            => sanitize_user($_POST['site-mode-user-roles']),
         ];
 
         return $this->save_data($this->option_name, $data);

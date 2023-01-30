@@ -43,10 +43,10 @@ class Site_Mode_Seo extends Settings {
 
 	    $this->verify_nonce('seo-custom-message', 'seo-settings-save');
         $data = array(
-            'meta_title'            => $_POST['soe-meta-title-setting'],
-            'meta_description'      => $_POST['soe-meta-description-setting'],
-            'meta_favicon'          => $_POST['soe-meta-favicon-setting'],
-            'meta_image'            => $_POST['soe-meta-image-setting'],
+            'meta_title'            => sanitize_text_field($_POST['soe-meta-title-setting']),
+            'meta_description'      => sanitize_text_field($_POST['soe-meta-description-setting']),
+            'meta_favicon'          => intval($_POST['soe-meta-favicon-setting']),
+            'meta_image'            => intval($_POST['soe-meta-image-setting']),
         );
 
         return $this->save_data($this->option_name, $data);

@@ -67,13 +67,13 @@ class Site_Mode_Design extends  Settings
         $this->active_template = $this->get_data($this->option_name_1);
 
         //logo  and background settings
-        $this->site_mode_design = $this->get_data($this->option_name_2);
-        $this->logo_width = isset($this->site_mode_design['logo_width']) ? $this->site_mode_design['logo_width'] : '200';
-        $this->logo_height = isset($this->site_mode_design['logo_height']) ? $this->site_mode_design['logo_height'] : '200';
-        $this->design_background = isset($this->site_mode_design['design_background']) ? $this->site_mode_design['design_background'] : '#ffffff';
-        $this->background_overlay = isset($this->site_mode_design['background_overlay']) ? $this->site_mode_design['background_overlay'] : '#000000';
-        $this->overlay_color = isset($this->site_mode_design['overlay_color']) ? $this->site_mode_design['overlay_color'] : '#000000';
-        $this->overlay_opacity = isset($this->site_mode_design['overlay_opacity']) ? $this->site_mode_design['overlay_opacity'] : '0.5';
+        $this->site_mode_design     = $this->get_data($this->option_name_2);
+        $this->logo_width           = isset($this->site_mode_design['logo_width']) ? $this->site_mode_design['logo_width'] : '200';
+        $this->logo_height          = isset($this->site_mode_design['logo_height']) ? $this->site_mode_design['logo_height'] : '200';
+        $this->design_background    = isset($this->site_mode_design['design_background']) ? $this->site_mode_design['design_background'] : '#ffffff';
+        $this->background_overlay   = isset($this->site_mode_design['background_overlay']) ? $this->site_mode_design['background_overlay'] : '#000000';
+        $this->overlay_color        = isset($this->site_mode_design['overlay_color']) ? $this->site_mode_design['overlay_color'] : '#000000';
+        $this->overlay_opacity      = isset($this->site_mode_design['overlay_opacity']) ? $this->site_mode_design['overlay_opacity'] : '0.5';
 
        // font and color settings
 
@@ -116,12 +116,12 @@ class Site_Mode_Design extends  Settings
     public function ajax_site_mode_design_lb() {
 	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
         $data = array(
-            'logo_width'            => $_POST['logo-width-setting'],
-            'logo_height'           => $_POST['logo-height-setting'],
-            'design_background'     => $_POST['design-background-setting'],
-            'background_overlay'    => $_POST['design-background-overlay-setting'],
-            'overlay_color'         => $_POST['overlay-color-setting'],
-            'overlay_opacity'       => $_POST['overlay-opacity-setting'],
+            'logo_width'            => intval($_POST['logo_width']),
+            'logo_height'           => intval($_POST['logo_height']),
+            'design_background'     => sanitize_text_field($_POST['design_background']),
+            'background_overlay'    => sanitize_text_field($_POST['background_overlay']),
+            'overlay_color'         => sanitize_text_field($_POST['overlay_color']),
+            'overlay_opacity'       => sanitize_text_field($_POST['overlay_opacity']),
         );
 
 		return $this->save_data($this->option_name_2, $data);
@@ -131,18 +131,18 @@ class Site_Mode_Design extends  Settings
     public function ajax_site_mode_design_font() {
 
                 $data = array(
-                    'heading_font_family'               => $_POST['heading-font-family-setting'],
-                    'heading_font_size'                 => $_POST['heading-font-size-setting'],
-                    'heading_font_color'                => $_POST['heading-font-color-setting'],
-                    'heading_font_weight'               => $_POST['heading-font-weight-setting'],
-                    'heading_letter_spacing'            => $_POST['heading-letter-spacing-setting'],
-                    'heading_line_height'               => $_POST['heading-line-hight-setting'],
-                    'description_font_family'           => $_POST['description-font-family-setting'],
-                    'description_font_size'             => $_POST['description-font-size-setting'],
-                    'description_font_color'            => $_POST['description-font-color-setting'],
-                    'description_font_weight'           => $_POST['description-font-weight-setting'],
-                    'description_letter_spacing'        => $_POST['description-letter-spacing-setting'],
-                    'description_line_height'           => $_POST['description-line-height-setting'],
+                    'heading_font_family'               => sanitize_text_field($_POST['heading_font_family']),
+                    'heading_font_size'                 => intval($_POST['heading_font_size']),
+                    'heading_font_color'                => sanitize_hex_color($_POST['heading_font_color']),
+                    'heading_font_weight'               => intval($_POST['heading_font_weight']),
+                    'heading_letter_spacing'            => intval($_POST['heading_letter_spacing']),
+                    'heading_line_height'               => intval($_POST['heading_line_height']),
+                    'description_font_family'           => sanitize_text_field($_POST['description_font_family']),
+                    'description_font_size'             => intval($_POST['description_font_size']),
+                    'description_font_color'            => sanitize_hex_color($_POST['description_font_color']),
+                    'description_font_weight'           => intval($_POST['description_font_weight']),
+                    'description_letter_spacing'        => intval($_POST['description_letter_spacing']),
+                    'description_line_height'           => intval($_POST['description_line_height']),
 
                 );
 
@@ -154,11 +154,11 @@ class Site_Mode_Design extends  Settings
 
 	    $this->verify_nonce('design-icon-color', 'design-icon-color-settings-save');
         $color_section_data = array(
-            'icon_size'                 => $_POST['icon-size-setting'],
-            'icon_color'                => $_POST['icon-color-setting'],
-            'icon_bg_color'             => $_POST['icon-bg-setting'],
-            'icon_border_color'         => $_POST['icon-border-color-setting'],
-            'design_icon_color'         => $_POST['design-icon-color'],
+            'icon_size'                 => intval($_POST['icon-size-setting']),
+            'icon_color'                => sanitize_hex_color($_POST['icon-color-setting']),
+            'icon_bg_color'             => sanitize_hex_color($_POST['icon-bg-setting']),
+            'icon_border_color'         => sanitize_hex_color($_POST['icon-border-color-setting']),
+            'design_icon_color'         => sanitize_text_field($_POST['design-icon-color']),
         );
 
         return $this->save_data($this->option_name_4, $color_section_data);
