@@ -49,7 +49,7 @@ class Site_Mode_Advanced extends Settings {
     }
 
     public function site_mode_remove_rss_feed() {
-        wp_die( __('No RSS FEEDS <a href="'. get_bloginfo('url') .'">homepage</a>!') );
+        wp_die( __('No RSS FEEDS <a href="'. get_bloginfo('url') .'">__("homepage")</a>!') );
     }
 
 
@@ -77,14 +77,14 @@ class Site_Mode_Advanced extends Settings {
         }
         else {
             $data = array(
-                'ga_type'               => $_POST['advanced-analytics-type-setting'],
-                'ga_id'                 => $_POST['advanced-ga-id-setting'],
-                'fb_id'                 => $_POST['advanced-facebook-id-setting'],
-                'custom_css'            => $_POST['advanced-custom-css-setting'],
-                'enable_rest_api'       => $_POST['advanced-wp-rest-api-setting'],
-                'enable_feed'           => $_POST['advanced-wp-feed-setting'],
-                'header_code'           => $_POST['advanced-header-code-setting'],
-                'footer_code'           => $_POST['advanced-footer-code-setting'],
+                'ga_type'               => sanitize_text_field($_POST['advanced-analytics-type-setting']),
+                'ga_id'                 => sanitize_text_field($_POST['advanced-ga-id-setting']),
+                'fb_id'                 => sanitize_text_field($_POST['advanced-facebook-id-setting']),
+                'custom_css'            => sanitize_text_field($_POST['advanced-custom-css-setting']),
+                'enable_rest_api'       => sanitize_text_field($_POST['advanced-wp-rest-api-setting']),
+                'enable_feed'           => sanitize_text_field($_POST['advanced-wp-feed-setting']),
+                'header_code'           => sanitize_text_field($_POST['advanced-header-code-setting']),
+                'footer_code'           => sanitize_text_field($_POST['advanced-footer-code-setting']),
 
             );
         }

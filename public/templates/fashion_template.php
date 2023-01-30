@@ -28,17 +28,17 @@
                             </div>
 
                             <div class="uc_content-logo">
-                                <img src="<?php echo plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'; ?>" width="150" height="150" alt="">
+                                <img src="<?php echo esc_url(plugin_dir_url( __FILE__ ).'../img/logo-placeholder.png'); ?>" width="150" height="150" alt="">
                             </div>
                             <div class="uc_content-heading">
-                                <h1 class="main_title">Heading goes here</h1>
+                                <h1 class="main_title"></h1>
                             </div>
 
                             <div class="uc_content-heading">
                                 <h1 class="main_title"></h1>
                             </div>
                             <div class="uc_content-text">
-                                <p>Description goes here</p>
+                                <p><?php _e('Description goes here','site-mode')?></p>
                             </div>
 
                             <div class="uc_content-text">
@@ -46,7 +46,7 @@
                             </div>
 
                             <div class="uc_content-social">
-                                <h3 class="sub_title">Follow us on:</h3>
+                                <h3 class="sub_title"><?php _e('Follow us on:','site-mode')?></h3>
                                 <ul class="social_media">
                                         <li>
                                             <a href="https://www.facebook.com/" aria-label="Facebook profile">

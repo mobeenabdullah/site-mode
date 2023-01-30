@@ -36,15 +36,15 @@ class Site_Mode_Social extends Settings {
 
 	    $this->verify_nonce('social-custom-message', 'social-settings-save');
         $data = array(
-            'show_social'       =>$_POST['show-social-icons-setting'],
-            'social_fb'         =>$_POST['content-social-fb-setting'],
-            'social_twitter'    =>$_POST['content-social-twitter-setting'],
-            'social_linkedin'   =>$_POST['content-social-linkedin-setting'],
-            'social_youtube'    =>$_POST['content-social-youtube-setting'],
-            'social_instagram'  =>$_POST['content-social-instagram-setting'],
-            'social_pintrest'   =>$_POST['content-social-pintrest-setting'],
-            'social_quora'      =>$_POST['content-social-quora-setting'],
-            'social_behance'    =>$_POST['content-social-behance-setting'],
+            'show_social'       => sanitize_text_field($_POST['show-social-icons-setting']),
+            'social_fb'         => sanitize_url($_POST['content-social-fb-setting']),
+            'social_twitter'    => sanitize_url($_POST['content-social-twitter-setting']),
+            'social_linkedin'   => sanitize_url($_POST['content-social-linkedin-setting']),
+            'social_youtube'    => sanitize_url($_POST['content-social-youtube-setting']),
+            'social_instagram'  => sanitize_url($_POST['content-social-instagram-setting']),
+            'social_pintrest'   => sanitize_url($_POST['content-social-pintrest-setting']),
+            'social_quora'      => sanitize_url($_POST['content-social-quora-setting']),
+            'social_behance'    => sanitize_url($_POST['content-social-behance-setting']),
         );
 
         return $this->save_data($this->option_name, $data);

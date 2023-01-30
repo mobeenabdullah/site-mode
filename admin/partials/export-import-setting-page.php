@@ -2,7 +2,7 @@
     <form id="site-mode-import" method="post" enctype="multipart/form-data">
         <div class="option__row">
             <div class="option__row--label">
-                <label for="btn-export" class="screen-reading-text">Export</label>
+                <label for="btn-export" class="screen-reading-text"><?php _e('Export','site-mode');?></label>
             </div>
             <div class="option__row--field">
                 <div class="button_wrapper">
@@ -17,7 +17,7 @@
             </div>
             <div class="option__row--field upload_file_wrapper">
                 <div class="button_wrapper">
-                    <label for="fileSelect" class="btn btn_outline choose-btn chooseBtn" id="chooseBtn">Choose</label>
+                    <label for="fileSelect" class="btn btn_outline choose-btn chooseBtn" id="chooseBtn"><?php _e('Choose', 'site-mode')?></label>
                     <input type="file" class="hiddenBtn" name="json-file" id="fileSelect" accept=".json">
                 </div>
             </div>

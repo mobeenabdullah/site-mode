@@ -6,7 +6,7 @@
     ?>
 
     <form id="site-mode-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
-            <div class="option__row <?php echo ($this->analytics_type !== 'ga-id') ? 'sm_hide_field' : ''; ?>">
+            <div class="option__row <?php echo (esc_attr($this->analytics_type) !== 'ga-id') ? 'sm_hide_field' : ''; ?>">
                 <div class="option__row--label">
                     <span><label for="google_analytic_id"><?php _e('Google Analytic ID', 'site-mode')?></label></span>
                 </div>
@@ -18,7 +18,7 @@
             </div>
         
         
-            <div class="option__row <?php echo ($this->analytics_type !== 'pixel-id') ? 'sm_hide_field' : ''; ?>">
+            <div class="option__row <?php echo (esc_attr($this->analytics_type) !== 'pixel-id') ? 'sm_hide_field' : ''; ?>">
                 <div class="option__row--label">
                     <span><label for="facebook_pixel_id"><?php _e('Facebook Pixel ID', 'site-mode')?></label></span>
                 </div>
@@ -61,7 +61,7 @@
             <div class="option__row--field">                
                 <div class="sm_textarea_cover header_code">                    
                     <textarea id="header_code" name="advanced-header-code-setting" rows="6" cols="80">
-                        <?php echo $this->header_code; ?>
+                        <?php echo esc_attr($this->header_code); ?>
                     </textarea>                    
                 </div>                  
             </div>
@@ -76,7 +76,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover footer_code">
-                    <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo $this->footer_code; ?></textarea>
+                    <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo esc; ?></textarea>
                 </div>
             </div>
         </div>

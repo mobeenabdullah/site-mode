@@ -23,17 +23,17 @@
         font-size: <?php echo $design_typo['heading_font_size']. 'px' ?>;
     }
     .construction_cover__right--text p {
-        font-family: <?php echo $design_typo['description_font_family'] ?>;
-        font-size: <?php echo $design_typo['description_font_size'] . 'px' ?>;
+        font-family: <?php echo esc_attr($design_typo['description_font_family']) ?>;
+        font-size: <?php echo esc_attr($design_typo['description_font_size']) . 'px' ?>;
     }
     .construction_cover__left--logo {
-        width: <?php echo $design_logo_background['logo_width'] . 'px' ?>;
-        height: <?php echo $design_logo_background['logo_height'] . 'px' ?>;
+        width: <?php echo esc_attr($design_logo_background['logo_width']) . 'px' ?>;
+        height: <?php echo esc_attr($design_logo_background['logo_height']) . 'px' ?>;
     }
 
     .wrapper_overlay {
-        background-color: <?php echo $design_logo_background['overlay_color']; ?>;
-        opacity: <?php echo $design_logo_background['overlay_opacity'] / 10; ?>;
+        background-color: <?php echo esc_attr($design_logo_background['overlay_color']); ?>;
+        opacity: <?php echo esc_attr($design_logo_background['overlay_opacity']) / 10; ?>;
     }
 
 </style>
