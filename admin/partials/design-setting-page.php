@@ -76,7 +76,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo $this->logo_width; ?>" <?php checked(1, $this->logo_width, true); ?>  />
+                                <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo esc_attr($this->logo_width); ?>" <?php checked(1, $this->logo_width, true); ?>  />
                             </div>
                         </div>
                     </div>
@@ -86,7 +86,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo $this->logo_height; ?>" <?php checked(1, $this->logo_height, true); ?> />
+                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo esc_attr($this->logo_height); ?>" <?php checked(1, $this->logo_height, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -97,7 +97,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_checkbox_wrapper">
-                                <input type="checkbox" id="check_background" class="check_background" name="design-background-setting" value="" <?php checked(1, $this->design_background, true); ?> />
+                                <input type="checkbox" id="check_background" class="check_background" name="design-background-setting" value="" <?php checked(1, esc_attr($this->design_background), true); ?> />
                                 <label for="check_background"></label>
                             </div>
                         </div>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="option__row--field">
                                 <div class="sm_input_wrapper">
-                                    <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo $this->overlay_color; ?>">
+                                    <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo esc_attr($this->overlay_color); ?>">
                                     <label for="overlay_color"></label>
                                 </div>
                             </div>
@@ -160,7 +160,7 @@
                                     <!-- <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php //echo $overlay_opacity; ?>">
                                     <label for="overlay_opacity"></label>                                 -->
                                     <div class="range__slider slider_bg-transparent">
-                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo $this->overlay_opacity; ?>" data-rangeSlider>
+                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo esc_attr($this->overlay_opacity); ?>" data-rangeSlider>
                                         <div class="display__value-wrapper">
                                             <span class="output-value"></span>
                                             <!-- <span>%</span> -->
@@ -227,7 +227,7 @@
                                 <select name="heading-font-family-setting" id="font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                     <?php  foreach ($fonts  as $key => $value) { ?>
-                                    <option value="<?php echo $key; ?>" <?php selected($this->heading_font_family, $key); ?>><?php echo $key; ?></option>
+                                    <option value="<?php echo esc_attr($key); ?>" <?php selected($this->heading_font_family, $key); ?>><?php echo esc_attr($key); ?></option>
                                     <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
@@ -240,7 +240,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo $this->heading_font_size; ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-font-size-setting" value="<?php echo esc_attr($this->heading_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -257,7 +257,7 @@
                                             if (!empty($this->heading_font_family)) {
                                                 foreach ($fonts[$this->heading_font_family]['font_variant'] as $key => $value) {
                                                     ?>
-                                                    <option value="<?php echo $value; ?>" <?php selected($this->heading_font_weight, $value); ?>><?php echo $value; ?></option>
+                                                    <option value="<?php echo esc_attr($value); ?>" <?php selected($this->heading_font_weight, $value); ?>><?php echo esc_attr($value); ?></option>
                                                     <?php
                                                 }
                                             }
@@ -313,7 +313,7 @@
                                 <select name="description-font-family-setting" id="description_font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                     <?php  foreach ($fonts as $key => $value) { ?>
-                                        <option value="<?php echo $key; ?>" <?php selected($this->description_font_family, $key); ?>><?php echo $key; ?></option>
+                                        <option value="<?php echo esc_attr($key); ?>" <?php selected($this->description_font_family, $key); ?>><?php echo esc_attr($key); ?></option>
                                     <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
@@ -326,7 +326,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo $this->description_font_size; ?>" <?php checked(1, $this->description_font_size, true); ?> />
+                                <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo esc_attr($this->description_font_size); ?>" <?php checked(1, $this->description_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -343,7 +343,7 @@
                                     if (!empty($this->description_font_family)) {
                                         foreach ($fonts[$this->description_font_family]['font_variant'] as $key => $value) {
                                             ?>
-                                            <option value="<?php echo $value; ?>" <?php selected($this->description_font_family, $value); ?>><?php echo $value; ?></option>
+                                            <option value="<?php echo esc_attr($value); ?>" <?php selected($this->description_font_family, $value); ?>><?php echo esc_attr($value); ?></option>
                                             <?php
                                         }
                                     }
@@ -373,7 +373,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo $this->description_letter_spacing; ?>" <?php checked(1, $this->description_letter_spacing, true); ?> />
+                                <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo esc_attr($this->description_letter_spacing); ?>" <?php checked(1, $this->description_letter_spacing, true); ?> />
                             </div>
                         </div>
                     </div>
