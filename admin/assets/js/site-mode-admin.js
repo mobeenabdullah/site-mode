@@ -146,25 +146,20 @@ jQuery(function ($) {
         // 3.   Logo Type
         const imageLogoWrapper = $('.image_logo_wrapper');
         const textLogoWrapper = $('.text_logo_wrapper');
-        const logoInput = $('input[name="content-logo-settings"]');
+        const logoInput = $('.logo_type_selector');
 
-        imageLogoWrapper.hide();
-        textLogoWrapper.hide();
+        function showLogoWrapper() {
+            const logoType = $(this).val();
+            $('.logo_wrapper').removeClass('show_logo_wrapper');
 
-        function logoType() {
-            if($(this).val() === 'type-image'){
-                imageLogoWrapper.show();
-                textLogoWrapper.hide();
+            if(logoType === 'image'){
+                imageLogoWrapper.addClass('show_logo_wrapper');
             }
-            else if($(this).val() === 'type-text'){
-                textLogoWrapper.show();
-                imageLogoWrapper.hide();
-            } else if($(this).val() === 'type-disable') {
-                imageLogoWrapper.hide();
-                textLogoWrapper.hide();
+            else if($(this).val() === 'text'){
+                textLogoWrapper.addClass('show_logo_wrapper');
             }
         }
-        logoInput.on('click', logoType);
+        logoInput.on('click', showLogoWrapper);
 
         // 4.   Show Login URL field
         const loginUrlField = $('.login_url_field');

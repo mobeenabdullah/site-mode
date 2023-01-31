@@ -14,34 +14,43 @@
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="text-logo" name="content-logo-settings" value="type-text" <?php checked($this->logo_setting === 'type-text',true,true); ?> />
+                        <input type="radio" id="text-logo" class="logo_type_selector" name="content-logo-settings" value="text" <?php checked($this->logo_setting === 'text',true,true); ?> />
                         <label for="text-logo"><?php _e('Text','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
 
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="image-logo" name="content-logo-settings" value="type-image" <?php checked($this->logo_setting === 'type-image',true, true); ?> />
+                        <input type="radio" id="image-logo" class="logo_type_selector" name="content-logo-settings" value="image" <?php checked($this->logo_setting === 'image',true, true); ?> />
                         <label for="image-logo"><?php _e('Image','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                     <div class="radio_wrapper logo_radio_wrapper">
-                        <input type="radio" id="disable-logo" name="content-logo-settings" value="type-disable" <?php checked($this->logo_setting === 'type-disable',true, true); ?> />
+                        <input type="radio" id="disable-logo" class="logo_type_selector" name="content-logo-settings" value="disable" <?php checked($this->logo_setting === 'disable',true, true); ?> />
                         <label for="disable-logo"><?php _e('Disable','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="image_logo_wrapper">
+        <!-- Todo: Move Below Temporary CSS -->
+        <style>
+            .logo_wrapper {
+                display: none;
+            }
+            .show_logo_wrapper {
+                display: block !important;
+            }
+        </style>
+        <div class="logo_wrapper image_logo_wrapper <?php echo $this->logo_setting === 'image' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
-                    <span><?php _e('Select Logo','site-mode');?></span>
+                    <span>
+                        <label for="logo-image"><?php _e('Select Logo','site-mode');?></label>
+                    </span>
                 </div>
 	            <?php
 	                $image_url = wp_get_attachment_image_url($this->image_logo, 'medium');
-
                     $image_alt_text = get_post_meta($this->image_logo, '_wp_attachment_image_alt', true);
-
                     if(!$image_alt_text){
 	                    $image_alt_text = get_the_title( $this->image_logo );
                     }
@@ -57,7 +66,7 @@
                             </div>
 
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                                <button type="button" class="button sm-upload-image" data-image-type="Logo">
+                                <button type="button" id="logo-image" class="button sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Change Logo', 'site-mode'); ?>
                                 </button>
                                 <button type="button" class="button sm-remove-image" data-image-type="Logo">
@@ -71,7 +80,7 @@
                             <div class="sm_image_wrapper"></div>
 
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                                <button type="button" class="button sm-upload-image" data-image-type="Logo">
+                                <button type="button" id="logo-image" class="button sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Upload Logo', 'site-mode'); ?>
                                 </button>
                                 <button type="button" class="button sm-remove-image" data-image-type="Logo" style="display: none;">
@@ -86,7 +95,7 @@
                 </div>
             </div>
         </div>
-        <div class="text_logo_wrapper">
+        <div class="logo_wrapper text_logo_wrapper <?php echo $this->logo_setting === 'text' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
@@ -144,7 +153,7 @@
         ?>
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="upload_image"><?php _e('Background Image','site-mode');?></label></span>
+                <span><label for="background-image"><?php _e('Background Image','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="upload_image_cover">
@@ -157,7 +166,7 @@
                         </div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" class="button sm-upload-image" data-image-type="Background Image">
+                            <button type="button" id="background-image" class="button sm-upload-image" data-image-type="Background Image">
 					            <?php esc_html_e('Change Background Image', 'site-mode'); ?>
                             </button>
                             <button type="button" class="button sm-remove-image" data-image-type="Background Image">
@@ -171,7 +180,7 @@
                         <div class="sm_image_wrapper"></div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" class="button sm-upload-image" data-image-type="Background Image">
+                            <button type="button" id="background-image" class="button sm-upload-image" data-image-type="Background Image">
 					            <?php esc_html_e('Upload Background Image', 'site-mode'); ?>
                             </button>
                             <button type="button" class="button sm-remove-image" data-image-type="Background Image" style="display: none;">
