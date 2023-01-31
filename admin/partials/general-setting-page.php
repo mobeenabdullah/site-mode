@@ -72,7 +72,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
-                        <input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr($this->custom_login_url); ?>" />
+                        <input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr($this->custom_login_url); ?>" placeholder="/login/" />
                     </div>
                 </div>
             </div>
