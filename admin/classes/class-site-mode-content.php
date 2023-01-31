@@ -36,7 +36,7 @@ class Site_Mode_Content extends Settings
     public function __construct()
     {
         $this->site_mode_content    = $this->get_data($this->option_name);
-        
+
         $this->logo_setting        = $this->site_mode_content['logo_settings'];
         $this->text_logo            = $this->site_mode_content['text_logo'];
         $this->image_logo           = $this->site_mode_content['image_logo'];
@@ -48,20 +48,17 @@ class Site_Mode_Content extends Settings
     }
 
     public function ajax_site_mode_content() {
-        wp_nonce_field('design-settings-save', 'design-custom-message');
-        if(!wp_verify_nonce( $_POST['design-custom-message'], 'design-settings-save' ) ) {
-            die(__('Security Check', 'site-mode'));
-        }
-        else {
-            $data = array(
-                "logo_settings" =>sanitize_text_field($_POST['content-logo-settings']),
-                "image_logo"    =>intval($_POST['content-image-logo-setting']),
-                "text_logo"     =>sanitize_text_field($_POST['content-text-logo-setting']),
-                "heading"       =>sanitize_text_field($_POST['content-heading-setting']),
-                'description'   =>sanitize_text_field($_POST['content-description-setting']),
-                'bg_image'      =>intval($_POST['content-bg-image-setting']),
-            );
-        }
+
+	    $this->verify_nonce('design-custom-message', 'design-settings-save');
+
+        $data = array(
+            "logo_settings" =>sanitize_text_field($_POST['content-logo-settings']),
+            "image_logo"    =>intval($_POST['content-image-logo-setting']),
+            "text_logo"     =>sanitize_text_field($_POST['content-text-logo-setting']),
+            "heading"       =>sanitize_text_field($_POST['content-heading-setting']),
+            'description'   =>sanitize_text_field($_POST['content-description-setting']),
+            'bg_image'      =>intval($_POST['content-bg-image-setting']),
+        );
 
         return $this->save_data($this->option_name, $data);
 

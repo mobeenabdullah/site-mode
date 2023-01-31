@@ -256,7 +256,6 @@ jQuery(function ($) {
                 data: formData,
                 enctype: "multipart/form-data",
                 success:function (res) {
-                    console.log(res);
                     launch_toast(res.success);
                 }
             });
