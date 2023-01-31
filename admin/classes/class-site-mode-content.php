@@ -20,8 +20,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Content extends Settings
-{
+class Site_Mode_Content extends Settings {
     protected $option_name = 'site_mode_content';
     protected $site_mode_content;
     protected $logo_settings;
@@ -33,17 +32,15 @@ class Site_Mode_Content extends Settings
     protected $description;
     protected $bg_image;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->site_mode_content    = $this->get_data($this->option_name);
-
         $this->logo_setting        = $this->site_mode_content['logo_settings'];
         $this->text_logo            = $this->site_mode_content['text_logo'];
-        $this->image_logo           = $this->site_mode_content['image_logo'];
         $this->heading              = $this->site_mode_content['heading'];
         $this->sub_heading          = $this->site_mode_content['heading'];
         $this->description          = $this->site_mode_content['description'];
-        $this->bg_image             = $this->site_mode_content['bg_image'];
+	    $this->image_logo           = $this->get_attachments_details($this->site_mode_content['image_logo']);
+        $this->bg_image             = $this->get_attachments_details($this->site_mode_content['bg_image']);
 
     }
 
@@ -65,6 +62,27 @@ class Site_Mode_Content extends Settings
         die();
 
     }
+
+	public function get_attachments_details($id) {
+		if($id) {
+			$image_url = wp_get_attachment_image_url($id, 'medium');
+			$image_alt_text = get_post_meta($id, '_wp_attachment_image_alt', true);
+			if(!$image_alt_text){
+				$image_alt_text = get_the_title( $id );
+			}
+
+			if(!$image_url){
+				return false;
+			}
+
+			return [
+				'url' => $image_url,
+				'alt' => $image_alt_text
+			];
+		} else {
+			return false;
+		}
+	}
 
     public function render() {
         $this->display_settings_page('content');

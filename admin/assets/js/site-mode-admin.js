@@ -199,13 +199,17 @@ jQuery(function ($) {
 
             // sortable library setting object
             smSortable.sortable({
-                cursor: "move"
+                cursor: "move",
+                update: function(event, ui) {
+                    $('li.ui-state-default').each(function(index){
+                        $(this).attr('id', index + 1);
+                        const input =  $(this).find(".social-order");
+                        $(input).val(index + 1);
+
+                    });
+                }
             });
 
-            // Sort change function
-            smSortable.on("sortchange", function (event, ui) {
-                var sortedIDs = smSortable.sortable("toArray");
-            });
         }
 
         // 6.  Ajax call for general tab

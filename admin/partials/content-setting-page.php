@@ -48,21 +48,14 @@
                         <label for="logo-image"><?php _e('Select Logo','site-mode');?></label>
                     </span>
                 </div>
-	            <?php
-	                $image_url = wp_get_attachment_image_url($this->image_logo, 'medium');
-                    $image_alt_text = get_post_meta($this->image_logo, '_wp_attachment_image_alt', true);
-                    if(!$image_alt_text){
-	                    $image_alt_text = get_the_title( $this->image_logo );
-                    }
-                ?>
                 <div class="option__row--field">
                     <div class="upload_image_cover">
 
-                        <?php if ($image_url) : ?>
+                        <?php if ($this->image_logo) : ?>
 
                             <!-- Todo: Remove inline CSS and adjust structure accordingly -->
                             <div class="sm_image_wrapper">
-                                <img src="<?php echo esc_url($image_url) ?>" alt="<?php echo esc_attr($image_alt_text); ?>" />
+                                <img src="<?php echo esc_url($this->image_logo['url']) ?>" alt="<?php echo esc_attr($this->image_logo['alt']); ?>" />
                             </div>
 
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
@@ -72,7 +65,7 @@
                                 <button type="button" class="button sm-remove-image" data-image-type="Logo">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
-                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo); ?>">
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
                             </div>
 
                         <?php else : ?>
@@ -86,7 +79,7 @@
                                 <button type="button" class="button sm-remove-image" data-image-type="Logo" style="display: none;">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
-                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo); ?>">
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
                             </div>
 
                         <?php endif; ?>
@@ -143,14 +136,6 @@
                 </div>
             </div>
         </div>
-        <?php
-            $bg_img_url = wp_get_attachment_image_url($this->bg_image, 'full');
-            $bg_image_alt_text = get_post_meta($this->bg_image, '_wp_attachment_image_alt', true);
-
-            if(!$bg_image_alt_text){
-	            $bg_image_alt_text = get_the_title( $this->bg_image );
-            }
-        ?>
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="background-image"><?php _e('Background Image','site-mode');?></label></span>
@@ -158,11 +143,11 @@
             <div class="option__row--field">
                 <div class="upload_image_cover">
 
-		            <?php if ($bg_img_url) : ?>
+		            <?php if ($this->bg_image) : ?>
 
                         <!-- Todo: Remove inline CSS and adjust structure accordingly -->
                         <div class="sm_image_wrapper">
-                            <img src="<?php echo esc_url($bg_img_url) ?>" alt="<?php echo esc_attr($bg_image_alt_text); ?>" />
+                            <img src="<?php echo esc_url($this->bg_image['url']) ?>" alt="<?php echo esc_attr($this->bg_image['alt']); ?>" />
                         </div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
@@ -186,7 +171,7 @@
                             <button type="button" class="button sm-remove-image" data-image-type="Background Image" style="display: none;">
 					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
                             </button>
-                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image); ?>">
+                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image['url']); ?>">
                         </div>
 
 		            <?php endif; ?>
