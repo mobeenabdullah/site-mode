@@ -13,7 +13,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
-                    <input type="checkbox" id="show-social-icons-setting" name="show-social-icons-setting" value="<?php esc_attr_e($this->show_social,'site-mode'); ?>" <?php checked(1, !empty($this->show_social),true); ?> />
+                    <input type="checkbox" id="show-social-icons-setting" name="show-social-icons"  <?php checked('on', !empty($this->show_social),true); ?> />
                     <label for="show-social-icons-setting"></label>
                 </div>
             </div>
@@ -22,9 +22,7 @@
         <div class="socialmedia__wrapper">
             <ul class="sm_sortable" id="sm_sortable">
 
-
                 <?php foreach ($this->social_content as $key => $item) : ?>
-
 
                 <li class="ui-state-default" id="<?php esc_attr_e($key + 1); ?>">
                     <div class="option__row">
