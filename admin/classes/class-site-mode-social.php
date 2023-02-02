@@ -31,60 +31,63 @@ class Site_Mode_Social extends Settings {
         protected $pinterest;
         protected $quora;
         protected $behance;
-
 		protected $social_content;
 
 		public function __construct() {
 			$this->option_name = 'site_mode_social';
 
 			$social_content     =   $this->get_data('site_mode_social');
-			$this->show_social  =   $social_content['show_social'];
-			$this->facebook     =   $social_content['social_fb'];
-			$this->twitter      =   $social_content['social_twitter'];
-			$this->linkedin     =   $social_content['social_linkedin'];
-			$this->youtube      =   $social_content['social_youtube'];
-			$this->instagram    =   $social_content['social_instagram'];
-			$this->pinterest    =   $social_content['social_pintrest'];
-			$this->quora        =   $social_content['social_quora'];
-			$this->behance      =   $social_content['social_behance'];
+
+			$this->show_social  =   isset($social_content['show-social-icons']) ? $social_content['show-social-icons'] : '';
+			$this->facebook     =   isset($social_content['fb']) ? $social_content['fb'] : '';
+			$this->twitter      =   isset($social_content['twitter']) ? $social_content['twitter'] : '';
+			$this->linkedin     =   isset($social_content['linkedin']) ? $social_content['linkedin'] : '';
+			$this->youtube      =   isset($social_content['youtube']) ? $social_content['youtube'] : '';
+			$this->instagram    =   isset($social_content['instagram']) ? $social_content['instagram'] : '';
+			$this->pinterest    =   isset($social_content['pintrest']) ? $social_content['pintrest'] : '';
+			$this->quora        =   isset($social_content['quora']) ? $social_content['quora'] : '';
+			$this->behance      =   isset($social_content['behance']) ? $social_content['behance'] : '';
 			$this->sort_social_content();
+
+			print_r($this->social_content);
 		}
 
     public function ajax_site_mode_social() {
 
 	    $this->verify_nonce('social-custom-message', 'social-settings-save');
+
         $data = [
-            'show_social'       => sanitize_text_field($_POST['show-social-icons-setting']),
-            'social_fb'         => [
-	            'content'   =>     sanitize_url($_POST['content-social-fb-setting']),
+            'show-social-icons'   => sanitize_text_field($_POST['show-social-icons']),
+            'fb'                  => [
+	            'content'   =>     sanitize_text_field($_POST['fb']),
 	            'order'     =>     sanitize_text_field($_POST['fb_order']),
             ],
-            'social_twitter'         => [
-	            'content'   =>     sanitize_url($_POST['content-social-twitter-setting']),
+            'twitter'             => [
+	            'content'   =>     sanitize_text_field($_POST['twitter']),
 	            'order'     =>     sanitize_text_field($_POST['tw_order']),
             ],
-            'social_linkedin'         => [
-	            'content'   =>     sanitize_url($_POST['content-social-linkedin-setting']),
+            'linkedin'            => [
+	            'content'   =>     sanitize_text_field($_POST['linkedin']),
 	            'order'     =>     sanitize_text_field($_POST['linkedin-order']),
             ],
-            'social_youtube'         => [
-	            'content'   =>     sanitize_url($_POST['content-social-youtube-setting']),
+            'youtube'             => [
+	            'content'   =>     sanitize_text_field($_POST['youtube']),
 	            'order'     =>     sanitize_text_field($_POST['youtube-order']),
             ],
-            'social_instagram'         => [
-	            'content'   =>     sanitize_url($_POST['content-social-instagram-setting']),
+            'instagram'           => [
+	            'content'   =>     sanitize_text_field($_POST['instagram']),
 	            'order'     =>     sanitize_text_field($_POST['instagram-order']),
             ],
-			'social_pintrest'   => [
-	            'content'   =>     sanitize_url($_POST['content-social-pintrest-setting']),
+			'pintrest'            => [
+	            'content'   =>     sanitize_text_field($_POST['pinterest']),
 	            'order'     =>     sanitize_text_field($_POST['pinterest-order']),
 			],
-			'social_quora'      => [
-	            'content'   =>     sanitize_url($_POST['content-social-quora-setting']),
+			'quora'               => [
+	            'content'   =>     sanitize_text_field($_POST['quora']),
 	            'order'     =>     sanitize_text_field($_POST['quora-order']),
 			],
-			'social_behance'    => [
-	            'content'   =>     sanitize_url($_POST['content-social-behance-setting']),
+			'behance'             => [
+	            'content'   =>     sanitize_text_field($_POST['behance']),
 	            'order'     =>     sanitize_text_field($_POST['behance-order']),
 			],
         ];
@@ -97,7 +100,7 @@ class Site_Mode_Social extends Settings {
 		$social_media = [
 			[
 				'label' => 'Facebook',
-				'key' => 'content-social-fb-setting',
+				'key' => 'fb',
 				'value' => $this->facebook['content'],
 				'order_key' => 'fb_order',
 				'order_value' => $this->facebook['order'],
@@ -105,7 +108,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Twitter',
-				'key' => 'content-social-twitter-setting',
+				'key' => 'twitter',
 				'value' => $this->twitter['content'],
 				'order_key' => 'tw_order',
 				'order_value' => $this->twitter['order'],
@@ -113,7 +116,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Linkedin',
-				'key' => 'content-social-linkedin-setting',
+				'key' => 'linkedin',
 				'value' => $this->linkedin['content'],
 				'order_key' => 'linkedin-order',
 				'order_value' => $this->linkedin['order'],
@@ -121,7 +124,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Youtube',
-				'key' => 'content-social-youtube-setting',
+				'key' => 'youtube',
 				'value' => $this->youtube['content'],
 				'order_key' => 'youtube-order',
 				'order_value' => $this->youtube['order'],
@@ -129,7 +132,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Instagram',
-				'key' => 'content-social-instagram-setting',
+				'key' => 'instagram',
 				'value' => $this->instagram['content'],
 				'order_key' => 'instagram-order',
 				'order_value' => $this->instagram['order'],
@@ -137,7 +140,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Pinterest',
-				'key' => 'content-social-pinterest-setting',
+				'key' => 'pinterest',
 				'value' => $this->pinterest['content'],
 				'order_key' => 'pinterest-order',
 				'order_value' => $this->pinterest['order'],
@@ -145,7 +148,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Quora',
-				'key' => 'content-social-quora-setting',
+				'key' => 'quora',
 				'value' => $this->quora['content'],
 				'order_key' => 'quora-order',
 				'order_value' => $this->quora['order'],
@@ -153,7 +156,7 @@ class Site_Mode_Social extends Settings {
 			],
 			[
 				'label' => 'Behance',
-				'key' => 'content-social-behance-setting',
+				'key' => 'behance',
 				'value' => $this->behance['content'],
 				'order_key' => 'behance-order',
 				'order_value' => $this->behance['order'],
