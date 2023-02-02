@@ -1,11 +1,7 @@
 <div class="site_mode__wrap-form">
 
     <form id="site-mode-social" method="post">
-        <?php
-        // display error message
-        settings_errors();
-
-        ?>
+        <?php settings_errors(); ?>
 
         <div class="option__row">
             <div class="option__row--label">
@@ -19,36 +15,111 @@
             </div>
         </div>
 
-        <div class="socialmedia__wrapper">
-            <ul class="sm_sortable" id="sm_sortable">
+        <div class="option__row">
+            <div class="option__row--label">
+                <span>Social Icons</span>
+            </div>
+            <div class="option__row--field">
+                <style>
+                    .social_icons_selectors {
+                        display: flex;
+                        flex-wrap: wrap;
+                        max-width: 60%;
+                        gap: 20px;
+                    }
+                    .sm-social_icon_selector {
+                        width: 50px;
+                        height: 50px;
+                        border: 2px solid #eee;
+                        border-radius: 5px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        cursor: pointer;
+                    }
+                    .sm-social_icon:hover, .sm-social_icon.sm-social_icon--checked {
+                        border-color: #000;
+                    }
+                    .sm-social_icon_selector span {
+                        pointer-events: none;
+                    }
+                </style>
+                <?php
+                    $di_social_icons = [
+                        [
+                            'title' => 'Facebook',
+                            'icon' => 'facebook-alt'
+                        ],
+                        [
+                            'title' => 'Twitter',
+                            'icon' => 'twitter'
+                        ],
+                        [
+                            'title' => 'Linkedin',
+                            'icon' => 'linkedin'
+                        ],
+                        [
+                            'title' => 'Instagram',
+                            'icon' => 'instagram'
+                        ],
+                        [
+                            'title' => 'Pinterest',
+                            'icon' => 'pinterest'
+                        ],
+                        [
+                            'title' => 'Whatsapp',
+                            'icon' => 'whatsapp'
+                        ],
+                        [
+                            'title' => 'Google',
+                            'icon' => 'google'
+                        ]
+                    ];
 
-                <?php foreach ($this->social_content as $key => $item) : ?>
-
-                <li class="ui-state-default" id="<?php esc_attr_e($key + 1); ?>">
-                    <div class="option__row">
-                        <div class="option__row--label">
-                            <span><label for="social_fb"><?php echo esc_attr($item['label']);?></label></span>
+                ?>
+                <div class="social_icons_selectors">
+                    <?php foreach ($di_social_icons as $icon) : ?>
+                        <div class="sm-social_icon_selector" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
+                            <span class="dashicons dashicons-<?php esc_attr_e($icon['icon']); ?>"></span>
                         </div>
-                        <div class="option__row--field">
-                            <div class="social_media_field">
-                                <div class="sortable_icon">
-                                    <span>
-                                        <svg fill="none" height="15" viewBox="0 0 15 15" width="15" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="M4.49999 2.5C4.49999 1.94772 4.9477 1.5 5.49999 1.5C6.05227 1.5 6.49999 1.94772 6.49999 2.5C6.49999 3.05228 6.05227 3.5 5.49999 3.5C4.9477 3.5 4.49999 3.05228 4.49999 2.5ZM8.49999 2.5C8.49999 1.94772 8.9477 1.5 9.49999 1.5C10.0523 1.5 10.5 1.94772 10.5 2.5C10.5 3.05228 10.0523 3.5 9.49999 3.5C8.9477 3.5 8.49999 3.05229 8.49999 2.5ZM4.49998 7.5C4.49998 6.94772 4.9477 6.5 5.49998 6.5C6.05227 6.5 6.49998 6.94772 6.49998 7.5C6.49998 8.05228 6.05227 8.5 5.49998 8.5C4.9477 8.5 4.49998 8.05228 4.49998 7.5ZM8.49998 7.5C8.49998 6.94771 8.9477 6.5 9.49999 6.5C10.0523 6.5 10.5 6.94772 10.5 7.5C10.5 8.05228 10.0523 8.5 9.49998 8.5C8.9477 8.5 8.49998 8.05228 8.49998 7.5ZM4.49998 12.5C4.49998 11.9477 4.9477 11.5 5.49998 11.5C6.05227 11.5 6.49998 11.9477 6.49998 12.5C6.49998 13.0523 6.05227 13.5 5.49998 13.5C4.9477 13.5 4.49998 13.0523 4.49998 12.5ZM8.49998 12.5C8.49998 11.9477 8.9477 11.5 9.49998 11.5C10.0523 11.5 10.5 11.9477 10.5 12.5C10.5 13.0523 10.0523 13.5 9.49998 13.5C8.9477 13.5 8.49998 13.0523 8.49998 12.5Z" fill="black" fill-rule="evenodd"/></svg>
-                                    </span>
-                                </div>
-                                <div class="social_icon">
-                                    <span><?php echo esc_html($item['icon']); ?></span>
-                                </div>
-                                <div class="social_field">
-                                    <input type="text" id="social_fb" name="<?php esc_attr_e($item['key']); ?>" value="<?php esc_attr_e($item['value']); ?>" />
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
+
+        <div class="socialmedia__wrapper">
+            <ul class="sm-social_icons sm_sortable" id="sm_sortable">
+
+                <?php foreach ($this->social_icons as $key => $icon) : ?>
+
+                    <li class="sm-social_icon ui-state-default" id="<?php esc_attr_e($key); ?>">
+                        <div class="option__row">
+                            <div class="option__row--label">
+                                <span><label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php echo esc_attr($icon['title']);?></label></span>
+                            </div>
+                            <div class="option__row--field">
+                                <div class="social_media_field">
+                                    <div class="sortable_icon">
+                                        <span class="dashicons dashicons-sort"></span>
+                                    </div>
+                                    <div class="social_icon">
+                                        <span class="dashicons dashicons-<?php echo esc_attr($icon['icon']); ?>"></span>
+                                    </div>
+                                    <div class="social_field">
+                                        <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social-icons[<?php esc_attr_e($key); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" />
+                                    </div>
                                 </div>
                             </div>
+                            <div class="option__row--remove">
+                                <span class="dashicons dashicons-no-alt"></span>
+                            </div>
                         </div>
-                    </div>
-                    <input type="hidden" name="<?php esc_attr_e($item['order_key']); ?>" value="<?php esc_attr_e($key + 1); ?>" class="social-order" />
-                </li>
+                        <input type="hidden" name="social-icons[<?php esc_attr_e($key); ?>][title]" value="<?php esc_attr_e($icon['title']); ?>" />
+                        <input type="hidden" name="social-icons[<?php esc_attr_e($key); ?>][icon]" value="<?php esc_attr_e($icon['icon']); ?>" />
+                    </li>
 
                 <?php endforeach; ?>
+
             </ul>
         </div>
 

@@ -56,10 +56,11 @@
 	            ],
             ];
             $active_tab = isset($_GET['tab']) ? strtolower($_GET['tab']) : 'general';
+
             foreach ($site_mode_tabs as $tab) :
                 $tab_class = strtolower($tab['title']) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
                 $tab_data = 'tab-' . strtolower($tab['title']);
-                echo '<li class="' . esc_attr($tab_class) . '" data-tab="' . esc_attr($tab_data) . '">' . esc_attr($tab['icon']) . esc_html_e($tab['title'], 'site-mode') . '</li>';
+                echo '<li class="' . esc_attr($tab_class) . '" data-tab="' . esc_attr($tab_data) . '">' . $this->wp_kses_svg($tab['icon']) . esc_html($tab['title'], 'site-mode') . '</li>';
             endforeach; ?>
     </ul>
 

@@ -192,22 +192,65 @@ jQuery(function ($) {
             enableDisableField(enableOverlay, showOverlayFields)
         }));
 
-        // 5.  Sort social media
+        // 5. Manage Social Icons
+        const addSocialIcon = (index, title, iconClass) => {
+            const formSocial = $('#site-mode-social .sm-social_icons');
+            const socialIcons = $('.sm-social_icons');
+            const iconMarkup = `
+                <li class="sm-social_icon ui-state-default" id="${index}">
+                    <div class="option__row">
+                        <div class="option__row--label">
+                            <span><label for="icon_${title.toLowerCase()}">${title}</label></span>
+                        </div>
+                        <div class="option__row--field">
+                            <div class="social_media_field">
+                                <div class="sortable_icon">
+                                    <span class="dashicons dashicons-sort"></span>
+                                </div>
+                                <div class="social_icon">
+                                    <span class="dashicons dashicons-${iconClass}"></span>
+                                </div>
+                                <div class="social_field">
+                                    <input type="text" id="icon_${title.toLowerCase()}" name="social_icons[icon-${index}][link]" value="" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="option__row--remove">
+                            <span class="dashicons dashicons-no-alt"></span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="social_icons[icon-${index}][title]" value="${title}" />
+                    <input type="hidden" name="social_icons[icon-${index}][icon]" value="${iconClass}" />
+                </li>
+            `;
+
+            // socialIcons.append(iconMarkup);
+            formSocial.append(iconMarkup);
+
+        }
+        const selectSocialIcon = $('.sm-social_icon_selector');
+        selectSocialIcon.on('click', function (e) {
+
+            console.log(e.target, this);
+
+            if(e.target !== this) {
+                return;
+            }
+
+            const iconTitle = $(this).attr('data-icon-title');
+            const iconClass = $(this).attr('data-icon-class');
+            const totalIcons = $('.sm-social_icon').length;
+
+            console.log(iconTitle, iconClass, totalIcons);
+
+            addSocialIcon(totalIcons + 1, iconTitle, iconClass);
+        });
+
+        // 5. Sort Social Icons
         const smSortable = $( ".sm_sortable" );
-
         if(smSortable) {
-
-            // sortable library setting object
             smSortable.sortable({
-                cursor: "move",
-                update: function(event, ui) {
-                    $('li.ui-state-default').each(function(index){
-                        $(this).attr('id', index + 1);
-                        const input =  $(this).find(".social-order");
-                        $(input).val(index + 1);
-
-                    });
-                }
+                cursor: "move"
             });
 
         }
@@ -308,7 +351,7 @@ jQuery(function ($) {
 
 
         // 9.  Ajax call for social tab
-        $( "#site-mode-social" ).submit(function( event ) {
+        $( "body" ).on('submit', '#site-mode-social', function( event ) {
             event.preventDefault();
             const form = document.getElementById("site-mode-social");
             const formData = new FormData(form);

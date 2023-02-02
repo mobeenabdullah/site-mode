@@ -66,4 +66,30 @@ class Site_Mode_Menu {
     public function site_mode_content_page_html() {
         echo 'About page';
     }
+
+	public function wp_kses_svg($svg_content) {
+		$kses_defaults = wp_kses_allowed_html( 'post' );
+
+		$svg_args = array(
+			'svg'   => array(
+				'class'           => true,
+				'aria-hidden'     => true,
+				'aria-labelledby' => true,
+				'role'            => true,
+				'xmlns'           => true,
+				'width'           => true,
+				'height'          => true,
+				'viewbox'         => true // <= Must be lower case!
+			),
+			'g'     => array( 'fill' => true ),
+			'title' => array( 'title' => true ),
+			'path'  => array(
+				'd'               => true,
+				'fill'            => true
+			)
+		);
+
+		$allowed_tags = array_merge( $kses_defaults, $svg_args );
+		return wp_kses( $svg_content, $allowed_tags );
+	}
 }
