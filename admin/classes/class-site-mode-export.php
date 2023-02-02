@@ -60,7 +60,7 @@ class Site_Mode_Export
         $json = json_encode($this->data);
         if($json) {
             // get plugin name dynamically
-            echo $json;
+            echo wp_json_encode($json);
             die();
         }
         else {

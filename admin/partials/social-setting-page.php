@@ -29,7 +29,7 @@
                 <li class="ui-state-default" id="<?php esc_attr_e($key + 1); ?>">
                     <div class="option__row">
                         <div class="option__row--label">
-                            <span><label for="social_fb"><?php _e($item['label'],'site-mode');?></label></span>
+                            <span><label for="social_fb"><?php echo esc_attr($item['label']);?></label></span>
                         </div>
                         <div class="option__row--field">
                             <div class="social_media_field">
@@ -39,7 +39,7 @@
                                     </span>
                                 </div>
                                 <div class="social_icon">
-                                    <span><?php echo $item['icon']; ?></span>
+                                    <span><?php echo esc_html($item['icon']); ?></span>
                                 </div>
                                 <div class="social_field">
                                     <input type="text" id="social_fb" name="<?php esc_attr_e($item['key']); ?>" value="<?php esc_attr_e($item['value']); ?>" />

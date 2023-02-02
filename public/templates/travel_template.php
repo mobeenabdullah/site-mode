@@ -34,7 +34,7 @@
                                     <h1 class="main_title"></h1>
                                 </div>
                                 <div class="construction_cover__left--text">
-                                    <p><?php esc_attr('Description goes here', 'side-mode');?></p>
+                                    <p><?php esc_html_e('Description goes here', 'side-mode');?></p>
                                 </div>
 
                                 <div class="construction_cover__left--text">

@@ -1,5 +1,5 @@
 <div class="site_mode__wrap-form">
-    <form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="status"><?php _e('Status','site-mode');?></label></span>
@@ -91,7 +91,7 @@
                             } else {
                                 $selected = '';
                             } ?>
-                            <option value="<?php echo esc_attr($value->post_name); ?>" <?php echo $selected ?>> <?php esc_html_e($value->post_name);?></option>
+                            <option value="<?php echo esc_attr($value->post_name); ?>" <?php echo esc_attr($selected) ?>> <?php esc_html_e($value->post_name);?></option>
                         <?php endforeach; ?>
                     </select>
                     <span class="arrow-down"></span>
@@ -108,8 +108,8 @@
 	            <?php foreach ( $wp_roles->roles as $key => $value ): ?>
                 <div class="sm_checkbox_wrapper role_checkbox">
 		            <?php $checked = (in_array($key, $this->user_roles)) ? 'checked' : ''; ?>
-                    <input type="checkbox" id="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr(strtolower($value['name'])); ?>" <?php echo $checked; ?> />
-                    <label for="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>"><?php echo $value['name'] ?></label>
+                    <input type="checkbox" id="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr(strtolower($value['name'])); ?>" <?php echo esc_attr( $checked); ?> />
+                    <label for="<?php echo esc_attr($value['name']) . '-' .esc_attr($key); ?>"><?php echo esc_html($value['name']) ?></label>
                 </div>
 	            <?php endforeach; ?>
             </div>

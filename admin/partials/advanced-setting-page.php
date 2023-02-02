@@ -5,7 +5,7 @@
 
     ?>
 
-    <form id="site-mode-advanced" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form id="site-mode-advanced" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
             <div class="option__row <?php echo (esc_attr($this->analytics_type) !== 'ga-id') ? 'sm_hide_field' : ''; ?>">
                 <div class="option__row--label">
                     <span><label for="google_analytic_id"><?php _e('Google Analytic ID', 'site-mode')?></label></span>
@@ -76,7 +76,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover footer_code">
-                    <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo esc_attr($this->footer_code); ?></textarea>
+                    <textarea id="footer_code" name="advanced-footer-code-setting" rows="6" cols="80"><?php echo esc_html($this->footer_code); ?></textarea>
                 </div>
             </div>
         </div>
@@ -86,7 +86,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover custom_css">
-                    <textarea id="custom_css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_attr($this->custom_css); ?></textarea>
+                    <textarea id="custom_css" name="advanced-custom-css-setting" rows="6" cols="80"><?php echo esc_html($this->custom_css); ?></textarea>
                 </div>
             </div>
         </div>

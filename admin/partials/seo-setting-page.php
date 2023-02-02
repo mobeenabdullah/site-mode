@@ -1,6 +1,6 @@
 <div class="site_mode__wrap-form">
 
-    <form id="site-mode-seo" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>" >
+    <form id="site-mode-seo" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>" >
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="seo-meta-title"><?php esc_html_e('SEO Meta Title', 'site-mode'); ?></label></span>

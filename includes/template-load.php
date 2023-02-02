@@ -63,7 +63,7 @@ class Template_Load  {
 			if($redirect_url) {
 				sleep($redirect_delay);
 				wp_redirect( $redirect_url, 301 );
-				wp_die();
+				exit();
 			}
 			return  false;
 		} else {

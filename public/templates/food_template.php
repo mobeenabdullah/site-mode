@@ -15,8 +15,6 @@ $seo                    = unserialize(get_option('site_mode_seo'));
 
 require_once 'footer.php';
 
-?>
-
 
 
 

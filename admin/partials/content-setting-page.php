@@ -4,7 +4,7 @@
             settings_errors();
             //if logo_setting is image-logo then disable text logo field
         ?>
-    <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+    <form method="post" id="site-mode-content" class="site_mode_form content_form" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
         <div class="option__row">
             <div class="option__row--label">
