@@ -42,7 +42,7 @@
                         <?php foreach ($templates as $template) : ?>
                         <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
                             <div class="template_card-image">
-                                <img src="<?php echo esc_attr($template['image'])  ?>" alt="<?php _e($template['title'],'site-mode'); ?>" />
+                                <img src="<?php echo esc_url($template['image'])  ?>" alt="<?php echo esc_attr($template['title']); ?>" />
                                 <div class="template_card-actions button_wrapper">
                                     <button type="button" class="btn btn_sm activate-template-btn" value="<?php echo esc_attr($template['name']) ?>"><?php echo $template['name'] === $this->active_template ? 'Activated' : 'Active' ?></button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="template_card-content">
-                                <h2 class="template_card-content--title"><?php _e($template['title'],'site-mode'); ?></h2>
+                                <h2 class="template_card-content--title"><?php echo esc_attr($template['title']); ?></h2>
                             </div>
                         </div>
                         <?php endforeach; ?>
@@ -189,7 +189,7 @@
             </div>
         </div>
         <div class="section__wrapper-content section_colors_fonts">
-            <form id="site-mode-design-fonts" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+            <form id="site-mode-design-fonts" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
                 <?php
                     // api call for font family
                     $response           = wp_remote_get('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8');
@@ -225,7 +225,7 @@
                         <div class="option__row--field">
                             <div class="sm_select">
                                 <select name="heading-font-family-setting" id="font_family">
-                                    <option value=""><?php _e('Select Font Family','site-mode');?></option>
+                                    <option value=""><?php echo esc_attr('Select Font Family');?></option>
                                     <?php  foreach ($fonts  as $key => $value) { ?>
                                     <option value="<?php echo esc_attr($key); ?>" <?php selected($this->heading_font_family, $key); ?>><?php echo esc_attr($key); ?></option>
                                     <?php }?>
@@ -251,7 +251,7 @@
                         <div class="option__row--field">
                             <div class="sm_select">
                                 <select name="heading-font-weight-setting" id="heading_font_weight">
-                                    <option value=""><?php _e('Select Font Weight','site-mode');?></option>
+                                    <option value=""><?php echo esc_attr('Select Font Weight');?></option>
                                        <?php
                                             // if select font family selected then show font weight.
                                             if (!empty($this->heading_font_family)) {
@@ -313,7 +313,7 @@
                                 <select name="description-font-family-setting" id="description_font_family">
                                     <option value=""><?php _e('Select Font Family','site-mode');?></option>
                                     <?php  foreach ($fonts as $key => $value) { ?>
-                                        <option value="<?php echo esc_attr($key); ?>" <?php selected($this->description_font_family, $key); ?>><?php echo esc_attr($key); ?></option>
+                                        <option value="<?php echo esc_attr($key); ?>" <?php selected($this->description_font_family, $key); ?>><?php echo esc_html($key); ?></option>
                                     <?php }?>
                                 </select>
                                 <span class="arrow-down"></span>
@@ -343,7 +343,7 @@
                                     if (!empty($this->description_font_family)) {
                                         foreach ($fonts[$this->description_font_family]['font_variant'] as $key => $value) {
                                             ?>
-                                            <option value="<?php echo esc_attr($value); ?>" <?php selected($this->description_font_family, $value); ?>><?php echo esc_attr($value); ?></option>
+                                            <option value="<?php echo esc_attr($value); ?>" <?php selected($this->description_font_family, $value); ?>><?php echo esc_html($value); ?></option>
                                             <?php
                                         }
                                     }
@@ -407,7 +407,7 @@
             </div>
         </div>
         <div class="section__wrapper-content section_social_icons">
-        <form id="site-mode-design-color-section" method="post" action="<?php echo esc_html(admin_url('admin-post.php')); ?>">
+        <form id="site-mode-design-color-section" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
             <div class="social_icon_section">
                 <div class="option__row">

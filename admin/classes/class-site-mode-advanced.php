@@ -49,44 +49,60 @@ class Site_Mode_Advanced extends Settings {
     }
 
     public function site_mode_remove_rss_feed() {
-        wp_die( __('No RSS FEEDS <a href="'. get_bloginfo('url') .'">__("homepage")</a>!') );
+        wp_die( 'RSS feed is disabled' );
     }
 
 
 
     public function site_mode_custom_css_include() {
         if (!empty($this->custom_css)) {
-          echo  $this->custom_css;
+          echo  esc_html($this->custom_css);
         }
     }
     public function header_code_include() {
         if (!empty($this->header_code)) {
-            echo $this->header_code;
+            echo esc_html($this->header_code);
         }
     }
 
     public function footer_code_include() {
         if (!empty($this->footer_code)) {
-            echo $this->footer_code;
+            echo esc_html($this->footer_code);
         }
     }
     public function  ajax_site_mode_advanced() {
-        $nonce = $_POST['advance-custom-message'];
-        if(!wp_verify_nonce( $nonce, 'advance-settings-save' )) {
-            wp_die(__('Security Check', 'site-mode'));
+        $nonce = isset($_POST['nonce']) ? $_POST['nonce'] : '';
+        if(!wp_verify_nonce( $nonce, 'advance-settings-save' ) || empty($nonce)) {
+            wp_die('Security Check');
         }
         else {
-            $data = array(
-                'ga_type'               => sanitize_text_field($_POST['advanced-analytics-type-setting']),
-                'ga_id'                 => sanitize_text_field($_POST['advanced-ga-id-setting']),
-                'fb_id'                 => sanitize_text_field($_POST['advanced-facebook-id-setting']),
-                'custom_css'            => sanitize_text_field($_POST['advanced-custom-css-setting']),
-                'enable_rest_api'       => sanitize_text_field($_POST['advanced-wp-rest-api-setting']),
-                'enable_feed'           => sanitize_text_field($_POST['advanced-wp-feed-setting']),
-                'header_code'           => sanitize_text_field($_POST['advanced-header-code-setting']),
-                'footer_code'           => sanitize_text_field($_POST['advanced-footer-code-setting']),
+            // validate using isset and sanitize inputs before storing in database.
+            $data = array();
+            if(isset($_POST['advanced-ga-type-setting'])){
+                $data['ga_type'] = sanitize_text_field($_POST['advanced-ga-type-setting']);
+            }
+            if(isset($_POST['advanced-ga-id-setting'])){
+                $data['ga_id'] = sanitize_text_field($_POST['advanced-ga-id-setting']);
+            }
+            if(isset($_POST['advanced-facebook-id-setting'])){
+                $data['fb_id'] = sanitize_text_field($_POST['advanced-facebook-id-setting']);
+            }
+            if(isset($_POST['advanced-custom-css-setting'])){
+                $data['custom_css'] = sanitize_textarea_field($_POST['advanced-custom-css-setting']);
+            }
+            if(isset($_POST['advanced-wp-rest-api-setting'])){
+                $data['enable_rest_api'] = sanitize_text_field($_POST['advanced-wp-rest-api-setting']);
+            }
+            if(isset($_POST['advanced-wp-feed-setting'])){
+                $data['enable_feed'] = sanitize_text_field($_POST['advanced-wp-feed-setting']);
+            }
+            if(isset($_POST['advanced-header-code-setting'])){
+                $data['header_code'] = sanitize_textarea_field($_POST['advanced-header-code-setting']);
+            }
+            if(isset($_POST['advanced-footer-code-setting'])){
+                $data['footer_code'] = sanitize_textarea_field($_POST['advanced-footer-code-setting']);
+            }
 
-            );
         }
 
         return $this->save_data($this->option_name, $data);
@@ -106,13 +122,13 @@ class Site_Mode_Advanced extends Settings {
         if (!empty($this->ga_id)) {?>
 
             <!-- Google tag (gtag.js) -->
-            <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo $this->ga_id; ?>"></script>
+            <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr($this->ga_id); ?>"></script>
             <script>
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
 
-                gtag('config', '<?php echo $this->ga_id; ?>');
+                gtag('config', '<?php echo esc_attr($this->ga_id); ?>');
             </script>
 
         <?php
@@ -128,7 +144,7 @@ class Site_Mode_Advanced extends Settings {
                   t.src=v;s=b.getElementsByTagName(e)[0];
                   s.parentNode.insertBefore(t,s)}(window, document,'script',
               'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '{<?php echo $this->fb_id; ?>}');
+              fbq('init', '{<?php echo esc_attr($this->fb_id); ?>}');
               fbq('track', 'PageView');
             </script>
             <noscript>

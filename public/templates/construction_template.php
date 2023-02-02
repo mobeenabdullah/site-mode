@@ -20,7 +20,7 @@
 <style>
     .construction_cover__right--heading .main_title {
         font-family: <?php echo $design_typo['heading_font_family'] ? esc_html($design_typo['heading_font_family']) : 'var(--base-open-sans)' ?>;
-        font-size: <?php echo $design_typo['heading_font_size']. 'px' ?>;
+        font-size: <?php echo esc_attr($design_typo['heading_font_size']). 'px' ?>;
     }
     .construction_cover__right--text p {
         font-family: <?php echo esc_attr($design_typo['description_font_family']) ?>;
@@ -51,18 +51,18 @@
                 <div class="construction_cover">
                     <div class="construction_cover__left">
                         <div class="construction_cover__left--logo">
-                            <img src="<?php echo esc_url($logo_url)?>" width="<?php echo _e($design_logo_background['logo_width']); ?>" height="<?php echo _e($design_logo_background['logo_height']); ?>" alt="alt text">
+                            <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo_width']); ?>" height="<?php echo esc_attr($design_logo_background['logo_height']); ?>" alt="alt text">
                         </div>
                     </div>
 
                     <div class="construction_cover__right">
                         <div class="construction_cover__right--heading">
-                            <h1 class="main_title"><?php echo _e($content['heading'],'site-mode'); ?></h1>
+                            <h1 class="main_title"><?php echo esc_attr($content['heading']); ?></h1>
                         </div>
 
 
                         <div class="construction_cover__right--text">
-                            <p><?php echo _e($content['description'],'site-mode'); ?></p>
+                            <p><?php echo esc_attr($content['description']); ?></p>
                         </div>
 
                         <div class="construction_cover__right--icons">

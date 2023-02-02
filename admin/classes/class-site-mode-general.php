@@ -49,17 +49,31 @@ class Site_Mode_General extends Settings {
     public function ajax_site_mode_general() {
 	    $this->verify_nonce('general_section_field', 'general_settings_action');
 
-        $data = [
-            // sanitize_text_field() is used to sanitize the data
-            "mode_status"           => sanitize_text_field($_POST['site-mode-mode-status']),
-            "mode_type"             => sanitize_text_field($_POST['site-mode-mode-type']),
-            "redirect_url"          => sanitize_text_field($_POST['site-mode-redirect-url']),
-            'redirect_delay'        => sanitize_text_field($_POST['site-mode-redirect-delay']),
-            'show_login_icon'       => sanitize_text_field($_POST['site-mode-show-login-icon']),
-            'custom_login_url'      => sanitize_text_field($_POST['site-mode-custom-login-url']),
-	        'whitelist_pages'       => sanitize_text_field($_POST['site-mode-whitelist-pages']),
-            'user_roles'            => sanitize_user($_POST['site-mode-user-roles']),
-        ];
+        $data = [];
+		if (isset($_POST['site-mode-mode-status'])) {
+			$data['mode_status'] = sanitize_text_field($_POST['site-mode-mode-status']);
+		}
+		if (isset($_POST['site-mode-mode-type'])) {
+			$data['mode_type'] = sanitize_text_field($_POST['site-mode-mode-type']);
+		}
+		if (isset($_POST['site-mode-redirect-url'])) {
+			$data['redirect_url'] = sanitize_text_field($_POST['site-mode-redirect-url']);
+		}
+		if (isset($_POST['site-mode-redirect-delay'])) {
+			$data['redirect_delay'] = intval($_POST['site-mode-redirect-delay']);
+		}
+		if (isset($_POST['site-mode-redirect-url'])) {
+			$data['show_login_icon'] =  sanitize_url($_POST['site-mode-redirect-url']);
+		}
+		if (isset($_POST['site-mode-custom-login-url'])) {
+			$data['custom_login_url'] = sanitize_text_field($_POST['site-mode-custom-login-url']);
+		}
+		if (isset($_POST['site-mode-whitelist-pages'])) {
+			$data['custom_login_url'] = sanitize_text_field($_POST['site-mode-whitelist-pages']);
+		}
+		if (isset($_POST['site-mode-user-roles'])) {
+			$data['user_roles'] = sanitize_user($_POST['site-mode-user-roles']);
+		}
 
         return $this->save_data($this->option_name, $data);
 

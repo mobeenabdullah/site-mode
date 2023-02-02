@@ -34,3 +34,5 @@ class Site_Mode_Deactivator
 	{
 	}
 }
+
+$qry = new WP_Query();

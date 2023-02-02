@@ -108,21 +108,33 @@ class Site_Mode_Design extends  Settings
 
     public function ajax_site_mode_design() {
 		if(isset($_POST['template_name'])) {
-			$template_name = $_POST['template_name'];
+			$template_name = sanitize_text_field($_POST['template_name']);
             return $this->save_data($this->option_name_1, $template_name);
             die();
 		}
     }
     public function ajax_site_mode_design_lb() {
 	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
-        $data = array(
-            'logo_width'            => intval($_POST['logo_width']),
-            'logo_height'           => intval($_POST['logo_height']),
-            'design_background'     => sanitize_text_field($_POST['design_background']),
-            'background_overlay'    => sanitize_text_field($_POST['background_overlay']),
-            'overlay_color'         => sanitize_text_field($_POST['overlay_color']),
-            'overlay_opacity'       => sanitize_text_field($_POST['overlay_opacity']),
-        );
+		// validate data and sanitize
+	    $data = array();
+		    if(isset($_POST['logo_width'])) {
+				$data['logo_width'] = intval($_POST['logo_width']);
+		    }
+			if(isset($_POST['logo_height'])) {
+				$data['logo_height'] = intval($_POST['logo_height']);
+			}
+			if(isset($_POST['design_background'])) {
+				$data['design_background'] = sanitize_text_field($_POST['design_background']);
+			}
+			if(isset($_POST['background_overlay'])) {
+				$data['background_overlay'] = intval($_POST['background_overlay']);
+			}
+			if(isset($_POST['overlay_color'])) {
+				$data['overlay_color'] = sanitize_hex_color($_POST['overlay_color']);
+			}
+			if(isset($_POST['overlay_opacity'])) {
+				$data['overlay_opacity'] = intval($_POST['overlay_opacity']);
+			}
 
 		return $this->save_data($this->option_name_2, $data);
         die();
@@ -130,21 +142,44 @@ class Site_Mode_Design extends  Settings
 
     public function ajax_site_mode_design_font() {
 
-                $data = array(
-                    'heading_font_family'               => sanitize_text_field($_POST['heading_font_family']),
-                    'heading_font_size'                 => intval($_POST['heading_font_size']),
-                    'heading_font_color'                => sanitize_hex_color($_POST['heading_font_color']),
-                    'heading_font_weight'               => intval($_POST['heading_font_weight']),
-                    'heading_letter_spacing'            => intval($_POST['heading_letter_spacing']),
-                    'heading_line_height'               => intval($_POST['heading_line_height']),
-                    'description_font_family'           => sanitize_text_field($_POST['description_font_family']),
-                    'description_font_size'             => intval($_POST['description_font_size']),
-                    'description_font_color'            => sanitize_hex_color($_POST['description_font_color']),
-                    'description_font_weight'           => intval($_POST['description_font_weight']),
-                    'description_letter_spacing'        => intval($_POST['description_letter_spacing']),
-                    'description_line_height'           => intval($_POST['description_line_height']),
-
-                );
+	    // validate data and sanitize
+	    $data = array();
+		    if(isset($_POST['heading_font_family'])) {
+				$data['heading_font_family'] = sanitize_text_field($_POST['heading_font_family']);
+		    }
+			if(isset($_POST['heading_font_size'])) {
+				$data['heading_font_size'] = intval($_POST['heading_font_size']);
+			}
+			if(isset($_POST['heading_font_color'])) {
+				$data['heading_font_color'] = sanitize_hex_color($_POST['heading_font_color']);
+			}
+			if(isset($_POST['heading_font_weight'])) {
+				$data['heading_font_weight'] = intval($_POST['heading_font_weight']);
+			}
+			if(isset($_POST['heading_letter_spacing'])) {
+				$data['heading_letter_spacing'] = intval($_POST['heading_letter_spacing']);
+			}
+			if(isset($_POST['heading_line_height'])) {
+				$data['heading_line_height'] = intval($_POST['heading_line_height']);
+			}
+			if(isset($_POST['description_font_family'])) {
+				$data['description_font_family'] = sanitize_text_field($_POST['description_font_family']);
+			}
+			if(isset($_POST['description_font_size'])) {
+				$data['description_font_size'] = intval($_POST['description_font_size']);
+			}
+			if(isset($_POST['description_font_color'])) {
+				$data['description_font_color'] = sanitize_hex_color($_POST['description_font_color']);
+			}
+			if(isset($_POST['description_font_weight'])) {
+				$data['description_font_weight'] = intval($_POST['description_font_weight']);
+			}
+			if(isset($_POST['description_letter_spacing'])) {
+				$data['description_letter_spacing'] = intval($_POST['description_letter_spacing']);
+			}
+			if(isset($_POST['description_line_height'])) {
+				$data['description_line_height'] = intval($_POST['description_line_height']);
+			}
 
         return $this->save_data($this->option_name_3, $data);
             die();
@@ -153,17 +188,26 @@ class Site_Mode_Design extends  Settings
     public function ajax_site_mode_design_color_section() {
 
 	    $this->verify_nonce('design-icon-color', 'design-icon-color-settings-save');
-        $color_section_data = array(
-            'icon_size'                 => intval($_POST['icon-size-setting']),
-            'icon_color'                => sanitize_hex_color($_POST['icon-color-setting']),
-            'icon_bg_color'             => sanitize_hex_color($_POST['icon-bg-setting']),
-            'icon_border_color'         => sanitize_hex_color($_POST['icon-border-color-setting']),
-            'design_icon_color'         => sanitize_text_field($_POST['design-icon-color']),
-        );
+	    $color_section_data = array();
+	    if(isset($_POST['icon-size-setting'])) {
+		    $color_section_data['icon_size'] = intval($_POST['icon-size-setting']);
+	    }
+		if(isset($_POST['icon-color-setting'])) {
+		    $color_section_data['icon_color'] = sanitize_hex_color($_POST['icon-color-setting']);
+	    }
+		if(isset($_POST['icon-bg-setting'])) {
+		    $color_section_data['icon_bg_color'] = sanitize_hex_color($_POST['icon-bg-setting']);
+	    }
+		if(isset($_POST['icon-border-color-setting'])) {
+		    $color_section_data['icon_border_color'] = sanitize_hex_color($_POST['icon-border-color-setting']);
+	    }
+		if(isset($_POST['design-icon-color'])) {
+		    $color_section_data['design_icon_color'] = sanitize_hex_color($_POST['design-icon-color']);
+	    }
 
-        return $this->save_data($this->option_name_4, $color_section_data);
+		return $this->save_data($this->option_name_4, $color_section_data);
+		die();
 
-        wp_die();
     }
 
     public function render() {

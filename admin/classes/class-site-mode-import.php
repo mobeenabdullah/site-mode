@@ -35,7 +35,7 @@ class Site_Mode_Import extends Settings {
 
     public function ajax_site_mode_import() {
 
-        $this->file                 = $_FILES['json-file']['tmp_name'];
+        $this->file                 = !empty($_FILES['json-file']['tmp_name']) ? $_FILES['json-file']['tmp_name'] : '';
         $this->data                 = file_get_contents($this->file);
         $data                       = json_decode($this->data, true);
         $this->advance              = $data['advance'];

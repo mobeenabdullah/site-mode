@@ -48,14 +48,29 @@ class Site_Mode_Content extends Settings {
 
 	    $this->verify_nonce('design-custom-message', 'design-settings-save');
 
-        $data = array(
-            "logo_settings" =>sanitize_text_field($_POST['content-logo-settings']),
-            "image_logo"    =>intval($_POST['content-image-logo-setting']),
-            "text_logo"     =>sanitize_text_field($_POST['content-text-logo-setting']),
-            "heading"       =>sanitize_text_field($_POST['content-heading-setting']),
-            'description'   =>sanitize_text_field($_POST['content-description-setting']),
-            'bg_image'      =>intval($_POST['content-bg-image-setting']),
-        );
+		// validate using isset and sanitize inputs before storing in database.
+	    $data = array();
+			    if(isset($_POST['content-logo-settings'])){
+				    $data['logo_settings'] = sanitize_text_field($_POST['content-logo-settings']);
+			    }
+			    if(isset($_POST['content-image-logo-setting'])){
+					$data['image_logo'] = intval($_POST['content-image-logo-setting']);
+			    }
+				if(isset($_POST['content-text-logo-setting'])){
+					$data['text_logo'] = sanitize_text_field($_POST['content-text-logo-setting']);
+				}
+				if(isset($_POST['content-heading-setting'])){
+					$data['ga_type'] = sanitize_text_field($_POST['content-heading-setting']);
+				}
+				if(isset($_POST['content-sub-heading-setting'])){
+					$data['heading'] = sanitize_text_field($_POST['content-sub-heading-setting']);
+				}
+				if(isset($_POST['content-description-setting'])){
+					$data['description'] = sanitize_text_field($_POST['content-description-setting']);
+				}
+				if(isset($_POST['content-bg-image-setting'])){
+					$data['bg_image'] = intval($_POST['content-bg-image-setting']);
+				}
 
         return $this->save_data($this->option_name, $data);
 
