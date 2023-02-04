@@ -193,11 +193,11 @@ jQuery(function ($) {
         }));
 
         // 5. Manage Social Icons
-        const addSocialIcon = (index, title, iconClass) => {
+        const addSocialIcon = (title, iconClass) => {
             const formSocial = $('#site-mode-social .sm-social_icons');
             const socialIcons = $('.sm-social_icons');
             const iconMarkup = `
-                <li class="sm-social_icon ui-state-default" id="${index}">
+                <li class="sm-social_icon ui-state-default" id="sm-social_icon_${title.toLowerCase()}">
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="icon_${title.toLowerCase()}">${title}</label></span>
@@ -211,16 +211,16 @@ jQuery(function ($) {
                                     <span class="dashicons dashicons-${iconClass}"></span>
                                 </div>
                                 <div class="social_field">
-                                    <input type="text" id="icon_${title.toLowerCase()}" name="social_icons[icon-${index}][link]" value="" />
+                                    <input type="text" id="icon_${title.toLowerCase()}" name="social_icons[${title.toLowerCase()}][link]" value="" required />
                                 </div>
                             </div>
                         </div>
                         <div class="option__row--remove">
-                            <span class="dashicons dashicons-no-alt"></span>
+                            <span class="dashicons dashicons-no-alt remove-social-icon" data-icon-id="sm-social_icon_${title.toLowerCase()}"></span>
                         </div>
                     </div>
-                    <input type="hidden" name="social_icons[icon-${index}][title]" value="${title}" />
-                    <input type="hidden" name="social_icons[icon-${index}][icon]" value="${iconClass}" />
+                    <input type="hidden" name="social_icons[${title.toLowerCase()}][title]" value="${title}" />
+                    <input type="hidden" name="social_icons[${title.toLowerCase()}][icon]" value="${iconClass}" />
                 </li>
             `;
 
@@ -231,19 +231,29 @@ jQuery(function ($) {
         const selectSocialIcon = $('.sm-social_icon_selector');
         selectSocialIcon.on('click', function (e) {
 
-            console.log(e.target, this);
-
             if(e.target !== this) {
                 return;
             }
 
+            const iconId = $(this).attr('data-icon-id');
             const iconTitle = $(this).attr('data-icon-title');
             const iconClass = $(this).attr('data-icon-class');
-            const totalIcons = $('.sm-social_icon').length;
 
-            console.log(iconTitle, iconClass, totalIcons);
+            if($(this).hasClass('sm-social_icon--checked')) {
+                $(this).removeClass('sm-social_icon--checked');
+                $("#" + iconId).remove();
+            } else {
+                $(this).addClass('sm-social_icon--checked');
+                addSocialIcon( iconTitle, iconClass);
+            }
 
-            addSocialIcon(totalIcons + 1, iconTitle, iconClass);
+        });
+
+        $('body').on('click', '.remove-social-icon', function (e) {
+            const iconId = $(this).attr('data-icon-id');
+            $("#" + iconId).remove();
+            // remove the checked class
+            $(`[data-icon-id="${iconId}"]`).removeClass('sm-social_icon--checked');
         });
 
         // 5. Sort Social Icons
