@@ -9,7 +9,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
-                    <input type="checkbox" id="show-social-icons-setting" name="show-social-icons"  <?php checked('on', !empty($this->show_social),true); ?> />
+                    <input type="checkbox" id="show-social-icons-setting" name="show-social-icons" <?php echo $this->show_social === 'on' ? 'checked' : ''; ?> />
                     <label for="show-social-icons-setting"></label>
                 </div>
             </div>
@@ -37,49 +37,16 @@
                         align-items: center;
                         cursor: pointer;
                     }
-                    .sm-social_icon:hover, .sm-social_icon.sm-social_icon--checked {
-                        border-color: #000;
+                    .social_icon_selector:hover, .sm-social_icon_selector.sm-social_icon--checked {
+                        border-color: #6f73d2;
                     }
                     .sm-social_icon_selector span {
                         pointer-events: none;
                     }
                 </style>
-                <?php
-                    $di_social_icons = [
-                        [
-                            'title' => 'Facebook',
-                            'icon' => 'facebook-alt'
-                        ],
-                        [
-                            'title' => 'Twitter',
-                            'icon' => 'twitter'
-                        ],
-                        [
-                            'title' => 'Linkedin',
-                            'icon' => 'linkedin'
-                        ],
-                        [
-                            'title' => 'Instagram',
-                            'icon' => 'instagram'
-                        ],
-                        [
-                            'title' => 'Pinterest',
-                            'icon' => 'pinterest'
-                        ],
-                        [
-                            'title' => 'Whatsapp',
-                            'icon' => 'whatsapp'
-                        ],
-                        [
-                            'title' => 'Google',
-                            'icon' => 'google'
-                        ]
-                    ];
-
-                ?>
                 <div class="social_icons_selectors">
-                    <?php foreach ($di_social_icons as $icon) : ?>
-                        <div class="sm-social_icon_selector" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
+                    <?php foreach ($this->di_social_icons as $icon) : ?>
+                        <div class="sm-social_icon_selector <?php $this->check_selected_social_icon($icon['title']); ?>" data-icon-id="sm-social_icon_<?php esc_attr_e(strtolower($icon['title'])); ?>" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
                             <span class="dashicons dashicons-<?php esc_attr_e($icon['icon']); ?>"></span>
                         </div>
                     <?php endforeach; ?>
@@ -90,9 +57,9 @@
         <div class="socialmedia__wrapper">
             <ul class="sm-social_icons sm_sortable" id="sm_sortable">
 
-                <?php foreach ($this->social_icons as $key => $icon) : ?>
+                <?php foreach ($this->social_icons as $icon) : ?>
 
-                    <li class="sm-social_icon ui-state-default" id="<?php esc_attr_e($key); ?>">
+                    <li class="sm-social_icon ui-state-default" id="sm-social_icon_<?php echo esc_attr(strtolower($icon['title'])); ?>">
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php echo esc_attr($icon['title']);?></label></span>
@@ -106,16 +73,16 @@
                                         <span class="dashicons dashicons-<?php echo esc_attr($icon['icon']); ?>"></span>
                                     </div>
                                     <div class="social_field">
-                                        <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social-icons[<?php esc_attr_e($key); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" />
+                                        <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" required />
                                     </div>
                                 </div>
                             </div>
                             <div class="option__row--remove">
-                                <span class="dashicons dashicons-no-alt"></span>
+                                <span class="dashicons dashicons-no-alt remove-social-icon" data-icon-id="sm-social_icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"></span>
                             </div>
                         </div>
-                        <input type="hidden" name="social-icons[<?php esc_attr_e($key); ?>][title]" value="<?php esc_attr_e($icon['title']); ?>" />
-                        <input type="hidden" name="social-icons[<?php esc_attr_e($key); ?>][icon]" value="<?php esc_attr_e($icon['icon']); ?>" />
+                        <input type="hidden" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][title]" value="<?php esc_attr_e($icon['title']); ?>" />
+                        <input type="hidden" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][icon]" value="<?php esc_attr_e($icon['icon']); ?>" />
                     </li>
 
                 <?php endforeach; ?>
