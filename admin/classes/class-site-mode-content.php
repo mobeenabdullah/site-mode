@@ -34,11 +34,11 @@ class Site_Mode_Content extends Settings {
 
     public function __construct() {
         $this->site_mode_content    = $this->get_data($this->option_name);
-        $this->logo_setting        = $this->site_mode_content['logo_settings'];
-        $this->text_logo            = $this->site_mode_content['text_logo'];
-        $this->heading              = $this->site_mode_content['heading'];
-        $this->sub_heading          = $this->site_mode_content['heading'];
-        $this->description          = $this->site_mode_content['description'];
+        $this->logo_setting        	= (isset($this->site_mode_content['logo_settings'])) ? $this->site_mode_content['logo_settings'] : null;
+        $this->text_logo            = (isset($this->site_mode_content['text_logo'])) ? $this->site_mode_content['text_logo'] : null;
+        $this->heading              = (isset($this->site_mode_content['heading'])) ? $this->site_mode_content['heading'] : null;
+        $this->sub_heading          = (isset($this->site_mode_content['sub_heading'])) ? $this->site_mode_content['sub_heading'] : null;
+        $this->description          = (isset($this->site_mode_content['description'])) ? $this->site_mode_content['description'] : null;
 	    $this->image_logo           = $this->get_attachments_details($this->site_mode_content['image_logo']);
         $this->bg_image             = $this->get_attachments_details($this->site_mode_content['bg_image']);
 

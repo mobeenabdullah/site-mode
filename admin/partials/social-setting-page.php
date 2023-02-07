@@ -19,31 +19,7 @@
             <div class="option__row--label">
                 <span>Social Icons</span>
             </div>
-            <div class="option__row--field">
-                <style>
-                    .social_icons_selectors {
-                        display: flex;
-                        flex-wrap: wrap;
-                        max-width: 60%;
-                        gap: 20px;
-                    }
-                    .sm-social_icon_selector {
-                        width: 50px;
-                        height: 50px;
-                        border: 2px solid #eee;
-                        border-radius: 5px;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        cursor: pointer;
-                    }
-                    .social_icon_selector:hover, .sm-social_icon_selector.sm-social_icon--checked {
-                        border-color: #6f73d2;
-                    }
-                    .sm-social_icon_selector span {
-                        pointer-events: none;
-                    }
-                </style>
+            <div class="option__row--field">             
                 <div class="social_icons_selectors">
                     <?php foreach ($this->di_social_icons as $icon) : ?>
                         <div class="sm-social_icon_selector <?php $this->check_selected_social_icon($icon['title']); ?>" data-icon-id="sm-social_icon_<?php esc_attr_e(strtolower($icon['title'])); ?>" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
@@ -53,12 +29,10 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="socialmedia__wrapper">
             <ul class="sm-social_icons sm_sortable" id="sm_sortable">
-
                 <?php foreach ($this->social_icons as $icon) : ?>
-
                     <li class="sm-social_icon ui-state-default" id="sm-social_icon_<?php echo esc_attr(strtolower($icon['title'])); ?>">
                         <div class="option__row">
                             <div class="option__row--label">

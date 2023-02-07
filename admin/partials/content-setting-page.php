@@ -49,7 +49,7 @@
                     </span>
                 </div>
                 <div class="option__row--field">
-                    <div class="upload_image_cover">
+                    <div class="upload_image_cover logo_display">
 
                         <?php if ($this->image_logo) : ?>
 
@@ -59,10 +59,10 @@
                             </div>
 
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                                <button type="button" id="logo-image" class="button sm-upload-image" data-image-type="Logo">
+                                <button type="button" id="logo-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Change Logo', 'site-mode'); ?>
                                 </button>
-                                <button type="button" class="button sm-remove-image" data-image-type="Logo">
+                                <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Logo">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
                                 <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
@@ -73,10 +73,10 @@
                             <div class="sm_image_wrapper"></div>
 
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                                <button type="button" id="logo-image" class="button sm-upload-image" data-image-type="Logo">
+                                <button type="button" id="logo-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Upload Logo', 'site-mode'); ?>
                                 </button>
-                                <button type="button" class="button sm-remove-image" data-image-type="Logo" style="display: none;">
+                                <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Logo" style="display: none;">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
                                 <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
@@ -141,7 +141,7 @@
                 <span><label for="background-image"><?php _e('Background Image','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
-                <div class="upload_image_cover">
+                <div class="upload_image_cover bg_img_display">
 
 		            <?php if ($this->bg_image) : ?>
 
@@ -151,10 +151,10 @@
                         </div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="background-image" class="button sm-upload-image" data-image-type="Background Image">
+                            <button type="button" id="background-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Background Image">
 					            <?php esc_html_e('Change Background Image', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="Background Image">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Background Image">
 					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image); ?>">
@@ -165,10 +165,10 @@
                         <div class="sm_image_wrapper"></div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="background-image" class="button sm-upload-image" data-image-type="Background Image">
+                            <button type="button" id="background-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Background Image">
 					            <?php esc_html_e('Upload Background Image', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="Background Image" style="display: none;">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Background Image" style="display: none;">
 					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image['url']); ?>">

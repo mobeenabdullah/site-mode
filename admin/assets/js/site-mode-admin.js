@@ -49,7 +49,7 @@ jQuery(function ($) {
         const removeButton = $(this);
         const imageType = removeButton.attr('data-image-type');
         removeButton.next().val("");
-        removeButton.hide().prev().addClass("button").html("Upload " + imageType);
+        removeButton.hide().prev().addClass("btn btn_outline btn_sm").html("Upload " + imageType);
     });
 
 
@@ -194,8 +194,7 @@ jQuery(function ($) {
 
         // 5. Manage Social Icons
         const addSocialIcon = (title, iconClass) => {
-            const formSocial = $('#site-mode-social .sm-social_icons');
-            const socialIcons = $('.sm-social_icons');
+            const formSocial = $('#site-mode-social .sm-social_icons');            
             const iconMarkup = `
                 <li class="sm-social_icon ui-state-default" id="sm-social_icon_${title.toLowerCase()}">
                     <div class="option__row">
@@ -229,6 +228,7 @@ jQuery(function ($) {
 
         }
         const selectSocialIcon = $('.sm-social_icon_selector');
+        const socialIcons = $('.sm-social_icons');
         selectSocialIcon.on('click', function (e) {
 
             if(e.target !== this) {
@@ -241,11 +241,12 @@ jQuery(function ($) {
 
             if($(this).hasClass('sm-social_icon--checked')) {
                 $(this).removeClass('sm-social_icon--checked');
-                $("#" + iconId).remove();
+                $("#" + iconId).remove();                
             } else {
                 $(this).addClass('sm-social_icon--checked');
                 addSocialIcon( iconTitle, iconClass);
             }
+            socialIcons.removeClass('hide_wrapper');
 
         });
 
@@ -254,6 +255,9 @@ jQuery(function ($) {
             $("#" + iconId).remove();
             // remove the checked class
             $(`[data-icon-id="${iconId}"]`).removeClass('sm-social_icon--checked');
+            if($('.sm-social_icon').length === 0) {
+                socialIcons.addClass('hide_wrapper');
+            }
         });
 
         // 5. Sort Social Icons

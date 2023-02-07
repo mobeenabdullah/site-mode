@@ -35,7 +35,7 @@
                 }
 	        ?>
             <div class="option__row--field">
-                <div class="upload_image_cover">
+                <div class="upload_image_cover favicon_display">
 
 			        <?php if ($favicon_url) : ?>
 
@@ -45,10 +45,10 @@
                         </div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="favicon-image" class="button sm-upload-image" data-image-type="Favicon">
+                            <button type="button" id="favicon-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Favicon">
 						        <?php esc_html_e('Change Favicon', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="Favicon">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Favicon">
 						        <?php esc_html_e('Remove Favicon', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="seo-meta-favicon-setting" value="<?php echo esc_attr($this->meta_favicon); ?>">
@@ -59,10 +59,10 @@
                         <div class="sm_image_wrapper"></div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="favicon-image" class="button sm-upload-image" data-image-type="Favicon">
+                            <button type="button" id="favicon-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Favicon">
 						        <?php esc_html_e('Upload Favicon', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="Favicon" style="display: none;">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Favicon" style="display: none;">
 						        <?php esc_html_e('Remove Favicon', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="seo-meta-favicon-setting" value="<?php echo esc_attr($this->meta_favicon); ?>">
@@ -86,7 +86,7 @@
 	        }
 	        ?>
             <div class="option__row--field">
-                <div class="upload_image_cover">
+                <div class="upload_image_cover seo_image_display">
 
 			        <?php if ($seo_image_url) : ?>
 
@@ -96,10 +96,10 @@
                         </div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="seo-image" class="button sm-upload-image" data-image-type="SEO Image">
+                            <button type="button" id="seo-image" class="btn btn btn_outline btn_sm sm-upload-image" data-image-type="SEO Image">
 						        <?php esc_html_e('Change SEO Image', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="SEO Image">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="SEO Image">
 						        <?php esc_html_e('Remove SEO Image', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="seo-meta-image-setting" value="<?php echo esc_attr($this->meta_image); ?>">
@@ -110,10 +110,10 @@
                         <div class="sm_image_wrapper"></div>
 
                         <div class="sm-image-fields" style="display: flex; gap: 10px;">
-                            <button type="button" id="seo-image" class="button sm-upload-image" data-image-type="SEO Image">
+                            <button type="button" id="seo-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="SEO Image">
 						        <?php esc_html_e('Upload SEO Image', 'site-mode'); ?>
                             </button>
-                            <button type="button" class="button sm-remove-image" data-image-type="SEO Image" style="display: none;">
+                            <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="SEO Image" style="display: none;">
 						        <?php esc_html_e('Remove SEO Image', 'site-mode'); ?>
                             </button>
                             <input type="hidden" name="seo-meta-image-setting" value="<?php echo esc_attr($this->meta_image); ?>">

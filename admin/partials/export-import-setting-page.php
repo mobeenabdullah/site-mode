@@ -6,7 +6,7 @@
             </div>
             <div class="option__row--field">
                 <div class="button_wrapper">
-                    <button class="btn btn_outline btn-export" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
+                    <button class="btn btn_outline btn_sm" id="btn-export"><?php _e('Export Button', 'site-mode');?></button>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
             </div>
             <div class="option__row--field upload_file_wrapper">
                 <div class="button_wrapper">
-                    <label for="fileSelect" class="btn btn_outline choose-btn chooseBtn" id="chooseBtn"><?php _e('Choose', 'site-mode')?></label>
+                    <label for="fileSelect" class="btn btn_outline btn_sm" id="chooseBtn"><?php _e('Choose', 'site-mode')?></label>
                     <input type="file" class="hiddenBtn" name="json-file" id="fileSelect" accept=".json">
                 </div>
             </div>

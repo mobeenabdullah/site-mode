@@ -169,59 +169,46 @@ body {
 }
 
 //  (b) Content Tab
-.image_logo_wrapper {
-  & a {
-    display: block;
-  }
-}
-
-.bg-image-upload {
-  display: block;
-  height: auto;
-  margin-bottom: 20px;
-  & .image_display {
-    position: relative;
-    max-width: 400px;
-    max-height: 250px;
+.upload_image_cover {  
+  width: 100%;
+  & .sm_image_wrapper {
     width: 100%;
-    height: 100%;
-    overflow: hidden;
     & img {
       width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
     }
   }
 }
-
-.logo-upload {
-  display: block;
-  height: auto;
-  margin-bottom: 20px;
-  & .image_logo_display {
-    position: relative;
-    max-width: 150px;
-    max-height: 150px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    & img {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-    }
+.logo_display {
+  & .sm_image_wrapper{
+    max-width: calculateRem(140px);
   }
 }
 
-// .button.bg-image-upload, .button.logo-upload {
-//   @extend .btn_outline;
-//   &:focus {
-//     outline: none !important;
-//     box-shadow: none !important;
-//   }
-// }
+.bg_img_display {
+  & .sm_image_wrapper{
+    max-width: calculateRem(529px);
+  }
+}
+
+.favicon_display {
+  & .sm_image_wrapper{
+    max-width: calculateRem(32px);
+  }
+}
+
+.seo_image_display {
+  & .sm_image_wrapper{
+    max-width: calculateRem(120px);
+  }
+}
+#background-image {
+  &.btn {
+    //min-width: calculateRem(200px);
+  }
+  & + button.sm-remove-image {
+    //min-width: calculateRem(200px);
+  }
+}
 
 
 .logo_type_wrapper {
@@ -254,7 +241,65 @@ body {
     margin-top: -2px;
   }
 }
+
+.sm-social_icon {  
+  .option__row {
+    align-items: center;
+    gap: calculateRem(15px);     
+  }
+  &:last-child {
+    margin-bottom: 0;
+    .option__row {
+      margin-bottom: 0 !important;
+    }
+  }
+}
+
+.social_icons_selectors {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 60%;
+  gap: calculateRem(20px);
+  & .sm-social_icon_selector {
+    width: calculateRem(40px);
+    height: calculateRem(40px);
+    border: calculateRem(2px) solid var(--sm-secondary-color);
+    border-radius: calculateRem(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0.5;
+    border: 1px solid rgba($base-black-color, 0.6);
+    &:hover {
+      border-color: var(--sm-primary-color);
+      background-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
+      opacity: 1;
+    }
+    &.sm-social_icon--checked {
+      border-color: var(--sm-primary-color);
+      background-color: var(--sm-primary-color);
+      color: var(--sm-base-white-color);
+      opacity: 1;
+    }
+    & span {
+      pointer-events: none;
+    }
+  }
+}
+
+// .social_icon_selector:hover, .sm-social_icon_selector.sm-social_icon--checked {
+  
+// }
+
 .socialmedia__wrapper {
+  & .option__row--remove {
+    cursor: pointer;
+  }
+  &.hide_social_media {
+    display: none;
+  }
   & ul {
     & .disable_media {
       opacity: 0.5;
@@ -264,8 +309,7 @@ body {
     display: grid;
     grid-template-columns: 16px 32px 1fr;
     align-items: center;
-    grid-gap: 10px;
-    margin-bottom: 10px;
+    grid-gap: 10px;    
     & button {
       cursor: pointer;
       border: none;
@@ -305,6 +349,7 @@ body {
       background-color: var(--sm-secondary-color);
       border-radius: .3rem;
       @include flex_mixin(flex, center, center, null, null);
+      color: var(--sm-base-white-color);
 
       & span {
         @include flex_mixin(flex, center, center, null, null);
