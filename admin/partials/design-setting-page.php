@@ -36,7 +36,6 @@
 		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-4.jpg'
 	                            ],
                             ];
-
                         ?>
 
                         <?php foreach ($templates as $template) : ?>
@@ -69,14 +68,13 @@
         <div class="section__wrapper-content section_logo">
             <form id="site-mode-design-logo-background" method="post">
                 <div class="background_logo_wrapper">
-                    <h4 class="section_subheading"><?php _e('Logo Settings','site-mode');?></h4>
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="logo_width"><?php _e('Logo Width','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_width" class="number" name="logo-width-setting" value="<?php echo esc_attr($this->logo_width); ?>" <?php checked(1, $this->logo_width, true); ?>  />
+                                <input type="number" id="logo_width" class="number" name="logo-width" value="<?php echo esc_attr($this->logo_width); ?>" />
                             </div>
                         </div>
                     </div>
@@ -86,67 +84,30 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height-setting" value="<?php echo esc_attr($this->logo_height); ?>" <?php checked(1, $this->logo_height, true); ?> />
+                                <input type="number" id="logo_height" class="number" data-inc="1" name="logo-height" value="<?php echo esc_attr($this->logo_height); ?>" />
                             </div>
                         </div>
                     </div>
-                    <h4 class="section_subheading"><?php _e('Background Settings','site-mode');?></h4>
-                    <div class="option__row">
-                        <div class="option__row--label">
-                            <span><label for="check_background"><?php _e('Background','site-mode');?></label></span>
-                        </div>
-                        <div class="option__row--field">
-                            <div class="sm_checkbox_wrapper">
-                                <input type="checkbox" id="check_background" class="check_background" name="design-background-setting" value="" <?php checked(1, esc_attr($this->design_background), true); ?> />
-                                <label for="check_background"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="show_background sm_hide_field">
-                        <div class="option__row">
-                            <div class="option__row--label">
-                                <span><label for="background"><?php _e('Upload Background','site-mode');?></label></span>
-                            </div>
-                            <div class="option__row--field">
-                                <?php $image_url = wp_get_attachment_image_src($this->design_background, 'full'); ?>
-                                <?php if ($image_url) : ?>
-                                    <div class="bg_image_wrapper">
-                                        <a href="#" class="logo-upload um_btn_outline image_btn"></a>
-                                        <div class="display_logo_img">
-                                            <img src="<?php echo esc_url($image_url[0]) ?>" width="150" height="150" />
-                                        </div>
-                                    </div>
-                                    <a href="#" class="button btn_outline logo-remove"><?php _e('Remove Background Image', 'site-mode'); ?></a>
-                                    <input type="hidden" name="design-background-setting" value="<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>">
-                                <?php else : ?>
-                                    <a href="#" class="logo-upload button btn_outline"><?php _e('Background Image', 'site-mode'); ?></a>
-                                    <a href="#" class="logo-remove button btn_outline" style="display: none;"><?php _e('Background Overlay', 'site-mode'); ?></a>
-                                    <input type="hidden" name="design-background-setting" value=<?php esc_attr_e(get_option('content-image-logo-setting'),'site-mode'); ?>>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="option__row">
                         <div class="option__row--label">
                             <span><label for="background_overlay"><?php _e('Background Overlay','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
                             <div class="sm_checkbox_wrapper">
-                                <input type="checkbox" id="background_overlay" class="background_overlay" name="design-background-overlay-setting" value="1"/>
+                                <input type="checkbox" id="background_overlay" class="background_overlay" name="background-overlay" value="1" <?php checked( $this->background_overlay, 1, true ); ?> />
                                 <label for="background_overlay"></label>
                             </div>
                         </div>
                     </div>
                    <!-- background_overlay sm_hide_field -->
-                    <div class="background_overlay sm_hide_field">                    
+                    <div class="background_overlay <?php echo $this->background_overlay !== 1 ? 'sm_hide_field' : ''; ?>">
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="overlay_color"><?php _e('Overlay Color','site-mode');?></label></span>
                             </div>
                             <div class="option__row--field">
                                 <div class="sm_input_wrapper">
-                                    <input type="color" id="overlay_color" name="overlay-color-setting" value="<?php echo esc_attr($this->overlay_color); ?>">
+                                    <input type="color" id="overlay_color" name="overlay-color" value="<?php echo esc_attr($this->overlay_color); ?>">
                                     <label for="overlay_color"></label>
                                 </div>
                             </div>
@@ -156,22 +117,20 @@
                             <div class="option__row--label">
                                 <span><label for="overlay_opacity"><?php _e('Overlay Opacity','site-mode');?></label></span>
                             </div>
-                            <div class="option__row--field">                                
-                                    <!-- <input type="range" id="overlay_opacity" name="overlay-opacity-setting" steps="0.1" min="0" max="9" value="<?php //echo $overlay_opacity; ?>">
-                                    <label for="overlay_opacity"></label>                                 -->
+                            <div class="option__row--field">
                                     <div class="range__slider slider_bg-transparent">
-                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity-setting" value="<?php echo esc_attr($this->overlay_opacity); ?>" data-rangeSlider>
+                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity" value="<?php echo esc_attr($this->overlay_opacity); ?>" data-rangeSlider>
                                         <div class="display__value-wrapper">
                                             <span class="output-value"></span>
-                                            <!-- <span>%</span> -->
                                         </div>
                                     </div>
-                            </div>                           
-                        </div>                    
+                            </div>
+                        </div>
                     </div>
                 </div>
 
                 <?php wp_nonce_field('design-logo-background-settings-save', 'design-logo-background'); ?>
+
                 <div class="option__row submit_button">
                     <div class="option__row--label">
                         <?php submit_button(); ?>
