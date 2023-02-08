@@ -197,26 +197,34 @@ jQuery(function ($) {
             const formSocial = $('#site-mode-social .sm-social_icons');            
             const iconMarkup = `
                 <li class="sm-social_icon ui-state-default" id="sm-social_icon_${title.toLowerCase()}">
-                    <div class="option__row">
-                        <div class="option__row--label">
-                            <span><label for="icon_${title.toLowerCase()}">${title}</label></span>
-                        </div>
+                    <div class="option__row">                       
                         <div class="option__row--field">
                             <div class="social_media_field">
                                 <div class="sortable_icon">
-                                    <span class="dashicons dashicons-sort"></span>
+                                    <svg width="800px" height="800px" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            fill-rule="evenodd"
+                                            clip-rule="evenodd"
+                                            d="M5.5 4.625C6.12132 4.625 6.625 4.12132 6.625 3.5C6.625 2.87868 6.12132 2.375 5.5 2.375C4.87868 2.375 4.375 2.87868 4.375 3.5C4.375 4.12132 4.87868 4.625 5.5 4.625ZM9.5 4.625C10.1213 4.625 10.625 4.12132 10.625 3.5C10.625 2.87868 10.1213 2.375 9.5 2.375C8.87868 2.375 8.375 2.87868 8.375 3.5C8.375 4.12132 8.87868 4.625 9.5 4.625ZM10.625 7.5C10.625 8.12132 10.1213 8.625 9.5 8.625C8.87868 8.625 8.375 8.12132 8.375 7.5C8.375 6.87868 8.87868 6.375 9.5 6.375C10.1213 6.375 10.625 6.87868 10.625 7.5ZM5.5 8.625C6.12132 8.625 6.625 8.12132 6.625 7.5C6.625 6.87868 6.12132 6.375 5.5 6.375C4.87868 6.375 4.375 6.87868 4.375 7.5C4.375 8.12132 4.87868 8.625 5.5 8.625ZM10.625 11.5C10.625 12.1213 10.1213 12.625 9.5 12.625C8.87868 12.625 8.375 12.1213 8.375 11.5C8.375 10.8787 8.87868 10.375 9.5 10.375C10.1213 10.375 10.625 10.8787 10.625 11.5ZM5.5 12.625C6.12132 12.625 6.625 12.1213 6.625 11.5C6.625 10.8787 6.12132 10.375 5.5 10.375C4.87868 10.375 4.375 10.8787 4.375 11.5C4.375 12.1213 4.87868 12.625 5.5 12.625Z"
+                                            fill="#000000"
+                                        />
+                                    </svg>
                                 </div>
                                 <div class="social_icon">
                                     <span class="dashicons dashicons-${iconClass}"></span>
                                 </div>
                                 <div class="social_field">
+                                    <label for="icon_${title.toLowerCase()}">${title}</label>
                                     <input type="text" id="icon_${title.toLowerCase()}" name="social_icons[${title.toLowerCase()}][link]" value="" required />
+                                </div>
+                                <div class="option__row--remove">
+                                    <span class="remove-social-icon" data-icon-id="sm-social_icon_${title.toLowerCase()}">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 20a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8h2V6h-4V4a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v2H3v2h2zM9 4h6v2H9zM8 8h9v12H7V8z"></path><path d="M9 10h2v8H9zm4 0h2v8h-2z"></path></svg>
+                                    </span>
                                 </div>
                             </div>
                         </div>
-                        <div class="option__row--remove">
-                            <span class="dashicons dashicons-no-alt remove-social-icon" data-icon-id="sm-social_icon_${title.toLowerCase()}"></span>
-                        </div>
+                        
                     </div>
                     <input type="hidden" name="social_icons[${title.toLowerCase()}][title]" value="${title}" />
                     <input type="hidden" name="social_icons[${title.toLowerCase()}][icon]" value="${iconClass}" />

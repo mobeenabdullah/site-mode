@@ -168,6 +168,25 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.site-mode-save-btn {
+  display: flex !important;
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+.save-btn-loader svg {
+  animation: spin 2s linear infinite;
+}
+
 //  (b) Content Tab
 .upload_image_cover {  
   width: 100%;
@@ -192,13 +211,13 @@ body {
 
 .favicon_display {
   & .sm_image_wrapper{
-    max-width: calculateRem(32px);
+    max-width: calculateRem(100px);
   }
 }
 
 .seo_image_display {
   & .sm_image_wrapper{
-    max-width: calculateRem(120px);
+    max-width: calculateRem(529px);
   }
 }
 #background-image {
@@ -261,8 +280,8 @@ body {
   max-width: 60%;
   gap: calculateRem(20px);
   & .sm-social_icon_selector {
-    width: calculateRem(40px);
-    height: calculateRem(40px);
+    width: calculateRem(30px);
+    height: calculateRem(30px);
     border: calculateRem(2px) solid var(--sm-secondary-color);
     border-radius: calculateRem(5px);
     display: flex;
@@ -273,18 +292,24 @@ body {
     border: 1px solid rgba($base-black-color, 0.6);
     &:hover {
       border-color: var(--sm-primary-color);
-      background-color: var(--sm-primary-color);
-      color: var(--sm-base-white-color);
+      background-color: transparent;
+      color: var(--sm-primary-color);
       opacity: 1;
     }
     &.sm-social_icon--checked {
       border-color: var(--sm-primary-color);
-      background-color: var(--sm-primary-color);
-      color: var(--sm-base-white-color);
+      background-color: transparent;
+      color: var(--sm-primary-color);
       opacity: 1;
     }
     & span {
       pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &.dashicons {
+        font-size: calculateRem(15px);
+      }
     }
   }
 }
@@ -296,6 +321,12 @@ body {
 .socialmedia__wrapper {
   & .option__row--remove {
     cursor: pointer;
+    align-self: flex-end;
+    & svg {     
+      & path {
+        fill: red;
+      }
+    }
   }
   &.hide_social_media {
     display: none;
@@ -307,7 +338,7 @@ body {
   }
   & .social_media_field {
     display: grid;
-    grid-template-columns: 16px 32px 1fr;
+    grid-template-columns: 20px 50px 1fr 30px;
     align-items: center;
     grid-gap: 10px;    
     & button {
@@ -329,23 +360,23 @@ body {
         }
       }
     }
-    & .sortable_icon {
-      margin-right: 10px;
-      @extend %sort_icon;
-      & span {
-        cursor: ns-resize;
-        & svg {
-          width: 16px;
-          & path {
-            fill: rgba($secondary-color,0.8);
-          }
+    & .sortable_icon {   
+      display: flex;
+      align-items: center;  
+      cursor: s-resize; 
+      @extend %sort_icon;      
+      & svg {
+        width: 100%;
+        height: 100%;
+        & path {
+          fill: rgba($secondary-color,0.3);
         }
       }
     }
     & .social_icon {
       border: 1px solid var(--sm-secondary-color);
-      width: 30px;
-      height: 30px;
+      width: calculateRem(40px);
+      height: calculateRem(40px);
       background-color: var(--sm-secondary-color);
       border-radius: .3rem;
       @include flex_mixin(flex, center, center, null, null);
@@ -364,6 +395,15 @@ body {
     }
     & .social_field {
       flex: 1;
+      & input, & label {
+        display: block;
+        width: 100%;
+      }
+      & label {
+        font-size: calculateRem(12px);
+        line-height: 1;
+        margin-bottom: calculateRem(3px);
+      }
     }
     & .social_delete {
       display: none !important;
@@ -384,7 +424,22 @@ body {
   }
 }
 
+.remove-social-icon {
+  padding: calculateRem(5px);
+  display: flex;
+  width: calculateRem(20px);
+  height: calculateRem(20px);
+  & svg {
+    width: 100%;
+    height: 100%;
+
+  }
+}
+
 //  (d) Design Tab
+.heading-section {
+  margin-bottom: calculateRem(30px);
+}
 .show_background {
   margin-bottom: calculateRem(40px);
 }
@@ -408,9 +463,12 @@ body {
     &-image {
       width: 100%;
       overflow: hidden;
-      height: 12rem;
+      height: auto;
       border-bottom: 1px solid rgba($base-black-color, 0.15);
       position: relative;
+      padding-bottom: 66%; /* 3:2 ratio = 2 / 3 = 0.6666 */
+      background-size: 100% auto;
+      background-repeat: no-repeat;
       & img {
         width: 100%;
         height: 100%;
@@ -587,6 +645,12 @@ body {
   }
 }
 
+.logo_wrapper {
+  display: none;
+}
+.show_logo_wrapper {
+  display: block !important;
+}
 .section_colors_fonts {
   & .description_section {
     margin-bottom: calculateRem(40px);
