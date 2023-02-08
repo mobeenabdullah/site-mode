@@ -40,8 +40,8 @@
 
                         <?php foreach ($templates as $template) : ?>
                         <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
-                            <div class="template_card-image">
-                                <img src="<?php echo esc_url($template['image'])  ?>" alt="<?php echo esc_attr($template['title']); ?>" />
+                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">
+                                <!-- <img src="<?php //echo esc_url($template['image'])  ?>" alt="<?php //echo esc_attr($template['title']); ?>" /> -->
                                 <div class="template_card-actions button_wrapper">
                                     <button type="button" class="btn btn_sm activate-template-btn" value="<?php echo esc_attr($template['name']) ?>"><?php echo $template['name'] === $this->active_template ? 'Activated' : 'Active' ?></button>
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
@@ -241,12 +241,12 @@
                     <div class="option__row">
                         <div class="option__row">
                             <div class="option__row--label">
-                                <span><label for="line_height"><?php _e('Light Height','site-mode');?></label></span>
+                                <span><label for="heading_line_height"><?php _e('Light Height','site-mode');?></label></span>
                             </div>
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="heading-line-hight-setting" value="<?php echo esc_attr($this->heading_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="heading_line_height" data-inc="1" name="heading-line-hight-setting" value="<?php echo esc_attr($this->heading_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
@@ -265,8 +265,8 @@
                     <h4><?php _e('Description','site-mode');?></h4>
                     <div class="option__row">
                         <div class="option__row--label">
-                            <span><label for="description_font_family" class="screen-reading"><?php _e('Font family','site-mode');?></label></span>
-                        </div>
+                            <span><label for="description_font_family"><?php _e('Font family','site-mode');?></label></span>
+                        </div>                        
                         <div class="option__row--field">
                             <div class="sm_select">
                                 <select name="description-font-family-setting" id="description_font_family">
@@ -285,17 +285,17 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="font_size" data-inc="1" name="description-font-size-setting" value="<?php echo esc_attr($this->description_font_size); ?>" <?php checked(1, $this->description_font_size, true); ?> />
+                                <input type="number" class="number" id="description_font_size" data-inc="1" name="description-font-size-setting" value="<?php echo esc_attr($this->description_font_size); ?>" <?php checked(1, $this->description_font_size, true); ?> />
                             </div>
                         </div>
                     </div>
                     <div class="option__row">
                         <div class="option__row--label">
-                            <span><label for="description_font_weight"><?php _e('Description Font Weight','site-mode');?></label></span>
+                            <span><label for="description_font_weight"><?php _e('Font Weight','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
                             <div class="sm_select">
-                                <select name="description-font-weight-setting" id="font_family">
+                                <select name="description-font-weight-setting" id="description_font_weight">
                                     <option value=""><?php _e('Select Font Weight','site-mode');?></option>
                                     <?php
                                     // if select font family selected then show font weight.
@@ -315,7 +315,7 @@
                     <div class="option__row">
                         <div class="option__row">
                             <div class="option__row--label">
-                                <span><label for="description_line_height"><?php _e('Description Line Height','site-mode');?></label></span>
+                                <span><label for="description_line_height"><?php _e('Line Height','site-mode');?></label></span>
                             </div>
                         </div>
                         <div class="option__row--field">
@@ -327,7 +327,7 @@
                     <div class="option__row">
                         <div class="option__row">
                             <div class="option__row--label">
-                                <span><label for="description_letter_spacing"><?php _e('Description Letter Spacing','site-mode');?></label></span>
+                                <span><label for="description_letter_spacing"><?php _e('Letter Spacing','site-mode');?></label></span>
                             </div>
                         </div>
                         <div class="option__row--field">
@@ -338,7 +338,7 @@
                     </div>
                     <div class="option__row">
                         <div class="option__row--label">
-                            <span><label for="description_font_color"><?php _e('Description Font Color','site-mode');?></label></span>
+                            <span><label for="description_font_color"><?php _e('Font Color','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">

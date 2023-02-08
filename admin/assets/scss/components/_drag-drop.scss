@@ -1,12 +1,16 @@
 #sm_sortable {
-  margin: 0;
-  max-width: 400px;
-  background-color: rgba($primary-color, .05);
-  padding: calculateRem(20px);
-  margin-bottom: calculateRem(30px);
+  margin: 0;  
   & .ui-state-default {
+    background-color: rgba($secondary-color, .03);
+    padding: calculateRem(16px);
+    margin-bottom: calculateRem(15px);
+    border-radius: 0.5rem;
     & .option__row {
-      margin-bottom: calculateRem(15px);
+      margin-bottom: 0;
     }
+  }
+  & .ui-sortable-helper {
+    border: 1px dashed red;
+    background-color: rgba(red, 0.02);
   }
 }

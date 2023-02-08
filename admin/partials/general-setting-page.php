@@ -115,29 +115,6 @@
             </div>
         </div>
         <?php wp_nonce_field('general_settings_action', 'general_section_field'); ?>
-
-        <!-- Todo: Move Temporary CSS -->
-        <style>
-            .site-mode-save-btn {
-                display: flex !important;
-            }
-            @-moz-keyframes spin {
-                from { -moz-transform: rotate(0deg); }
-                to { -moz-transform: rotate(360deg); }
-            }
-            @-webkit-keyframes spin {
-                from { -webkit-transform: rotate(0deg); }
-                to { -webkit-transform: rotate(360deg); }
-            }
-            @keyframes spin {
-                from {transform:rotate(0deg);}
-                to {transform:rotate(360deg);}
-            }
-            .save-btn-loader svg {
-                animation: spin 2s linear infinite;
-            }
-        </style>
-
         <!-- Submit setting -->
         <div class="option__row">
             <div class="option__row--label submit_button">
@@ -151,6 +128,5 @@
                 </button>
             </div>
         </div>
-
     </form>
 </div>
