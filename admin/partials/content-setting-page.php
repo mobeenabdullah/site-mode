@@ -31,16 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Todo: Move Below Temporary CSS -->
-        <style>
-            .logo_wrapper {
-                display: none;
-            }
-            .show_logo_wrapper {
-                display: block !important;
-            }
-        </style>
+        </div>        
         <div class="logo_wrapper image_logo_wrapper <?php echo $this->logo_setting === 'image' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
@@ -50,14 +41,10 @@
                 </div>
                 <div class="option__row--field">
                     <div class="upload_image_cover logo_display">
-
-                        <?php if ($this->image_logo) : ?>
-
-                            <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+                        <?php if ($this->image_logo) : ?>                                                        
                             <div class="sm_image_wrapper">
                                 <img src="<?php echo esc_url($this->image_logo['url']) ?>" alt="<?php echo esc_attr($this->image_logo['alt']); ?>" />
                             </div>
-
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
                                 <button type="button" id="logo-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Change Logo', 'site-mode'); ?>
@@ -67,11 +54,8 @@
                                 </button>
                                 <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
                             </div>
-
                         <?php else : ?>
-
                             <div class="sm_image_wrapper"></div>
-
                             <div class="sm-image-fields" style="display: flex; gap: 10px;">
                                 <button type="button" id="logo-image" class="btn btn_outline btn_sm sm-upload-image" data-image-type="Logo">
                                     <?php esc_html_e('Upload Logo', 'site-mode'); ?>
@@ -143,9 +127,7 @@
             <div class="option__row--field">
                 <div class="upload_image_cover bg_img_display">
 
-		            <?php if ($this->bg_image) : ?>
-
-                        <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+		            <?php if ($this->bg_image) : ?>                        
                         <div class="sm_image_wrapper">
                             <img src="<?php echo esc_url($this->bg_image['url']) ?>" alt="<?php echo esc_attr($this->bg_image['alt']); ?>" />
                         </div>
@@ -188,8 +170,6 @@
                 <?php submit_button(); ?>
             </div>
         </div>
-
-
     </form>
 </div>
 

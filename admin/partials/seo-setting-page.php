@@ -36,10 +36,7 @@
 	        ?>
             <div class="option__row--field">
                 <div class="upload_image_cover favicon_display">
-
-			        <?php if ($favicon_url) : ?>
-
-                        <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+			        <?php if ($favicon_url) : ?>                        
                         <div class="sm_image_wrapper">
                             <img src="<?php echo esc_url($favicon_url) ?>" alt="<?php echo esc_attr($favicon_alt_text); ?>" />
                         </div>
@@ -87,10 +84,7 @@
 	        ?>
             <div class="option__row--field">
                 <div class="upload_image_cover seo_image_display">
-
-			        <?php if ($seo_image_url) : ?>
-
-                        <!-- Todo: Remove inline CSS and adjust structure accordingly -->
+			        <?php if ($seo_image_url) : ?>                        
                         <div class="sm_image_wrapper">
                             <img src="<?php echo esc_url($seo_image_url) ?>" alt="<?php echo esc_attr($seo_image_url); ?>" />
                         </div>
