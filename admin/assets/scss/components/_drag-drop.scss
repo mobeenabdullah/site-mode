@@ -10,7 +10,7 @@
     }
   }
   & .ui-sortable-helper {
-    border: 1px dashed red;
-    background-color: rgba(red, 0.02);
+    border: 1px dashed $secondary-color;
+    background-color: rgba($secondary-color, 0.02);
   }
 }

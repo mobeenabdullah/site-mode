@@ -2,38 +2,46 @@
 	margin: 0;
 	padding: 0;
 	@include flex_mixin(flex, null, end, null, null);
-	@include border(bottom, 1px, solid, rgba($secondary-color, 0.15));
-
+	// @include border(bottom, 1px, solid, rgba($secondary-color, 0.15));
+	margin-bottom: 15px;
+    gap: 15px;
 	&-link {
 		@include flex_mixin(flex, center, center, null, calculateRem(10px));
 		background-color: var(--sm-base-white-color);
 		padding: calculateRem(14px);
-		@include fontSize(16px);
-		@include border(top, 1px, solid, rgba($secondary-color, 0.15));
-		@include border(right, 1px, solid, rgba($secondary-color, 0.15));
+		@include fontSize(14px);
+		font-weight: 600;
+		text-transform: uppercase;
+		// @include border(top, 1px, solid, rgba($secondary-color, 0.15));
+		// @include border(right, 1px, solid, rgba($secondary-color, 0.15));
 		border-bottom: none !important;
 		min-width: calculateRem(80px);
 		color: rgba($secondary-color, 0.7);
 		transition: $transition-all;
 		margin-bottom: 0;
+		border-radius: calculateRem(8px);
 		cursor: pointer;
 		& svg {
+			// width: calculateRem(18px);
+			// height: calculateRem(18px);
 			& path, & circle {
 			  fill: rgba($secondary-color, 0.5);
 			}
 		}
-		&:first-child {
-			@include border(left, 1px, solid, rgba($secondary-color, 0.15));
-		}
+		// &:first-child {
+		// 	@include border(left, 1px, solid, rgba($secondary-color, 0.15));
+		// }
 		&.current{
 			margin: 0;
-			@include border(top, 1px, solid, rgba($secondary-color, .1));
-			background-color: var(--sm-primary-color);
+			// @include border(top, 1px, solid, rgba($secondary-color, .1));
+			background-color: var(--sm-base-black-color);
 			color: var(--sm-base-white-color);
-
+			box-shadow: 0 15px 15px rgba(0, 0, 0,0.08);
 			& svg {
+				// width: calculateRem(18px);
+				// height: calculateRem(18px);
 				& path, & circle {
-				fill: var(--sm-base-white-color);
+					fill: var(--sm-base-white-color);
 				}
 			}
 
@@ -60,12 +68,22 @@
 			outline: none;
 		}
 	}	
+	& span.menu_icon {
+		width: 18px;
+		height: 18px;
+		& svg {
+			width: 100%;
+			height: 100%;
+		}
+	}
 }
 
 .tab-content{
 	display: none;	
 	&.current{
 		display: inherit;
+		border-radius: 8px;
+    	overflow: hidden;
 	}
 }
 

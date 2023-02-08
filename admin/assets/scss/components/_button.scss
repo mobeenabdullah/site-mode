@@ -62,6 +62,7 @@
   --btn-bg: var(--sm-base-white-color);
   --btn-border-color: var(--sm-base-white-color);
   --btn-text-color: var(--sm-base-black-color);
+  border: 1px solid var(--sm-base-white-color);
   &:hover, &:focus {     
     --btn-bg: transparent;
     --btn-border-color: var(--sm-base-white-color);

@@ -13,7 +13,8 @@ Plugin general styling
       (e) SEO tab
       (f) Advance Tab
       (g) Import/Export Tab
-  7.  Responsiveness
+  7.  Sidebar
+  8.  Responsiveness
 ------------------------------------------------*/
 /*-----------------------------------------------
 1.  CSS root variables
@@ -84,6 +85,7 @@ body {
 .site_mode__wrap--cover-sidebar {
 	background-color: var(--sm-base-white-color);
 	padding: 1.25rem;
+	border-radius: 8px;
 }
 
 .site_mode__wrap p.submit {
@@ -229,6 +231,7 @@ body {
 	--btn-bg: var(--sm-base-white-color);
 	--btn-border-color: var(--sm-base-white-color);
 	--btn-text-color: var(--sm-base-black-color);
+	border: 1px solid var(--sm-base-white-color);
 }
 
 .btn_white:hover, .btn_white:focus {
@@ -313,6 +316,10 @@ input[type=file] {
 
 .save-btn-loader svg {
 	animation: spin 2s linear infinite;
+}
+
+.sm_image_wrapper {
+	margin-bottom: 0.625rem;
 }
 
 .upload_image_cover {
@@ -528,7 +535,7 @@ input[type=file] {
 .socialmedia__wrapper .social_media_field .social_field label {
 	font-size: 0.75rem;
 	line-height: 1;
-	margin-bottom: 0.1875rem;
+	margin-bottom: 0.3125rem;
 }
 
 .socialmedia__wrapper .social_media_field .social_delete {
@@ -549,8 +556,8 @@ input[type=file] {
 .remove-social-icon {
 	padding: 0.3125rem;
 	display: flex;
-	width: 1.25rem;
-	height: 1.25rem;
+	width: 1rem;
+	height: 1rem;
 }
 
 .remove-social-icon svg {
@@ -741,7 +748,61 @@ input[type=file] {
 }
 
 /*-----------------------------------------------
-7.  Responsiveness
+7. Sidebar
+-----------------------------------------------*/
+.preview_box_header {
+	margin-bottom: 0.625rem;
+}
+
+.preview_box_header h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+.preview_active_template {
+	padding-bottom: 66%;
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	position: relative;
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.preview_active_template_link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(20, 20, 20, 0.8);
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s ease-in-out;
+	z-index: 1;
+}
+
+.preview_active_template_link a {
+	border-radius: 0.25rem;
+}
+
+.preview_active_template_link a:hover {
+	background-color: var(--sm-primary-color);
+	border-color: var(--sm-primary-color);
+}
+
+.preview_active_template:hover .preview_active_template_link {
+	opacity: 1;
+	visibility: visible;
+}
+
+/*-----------------------------------------------
+8.  Responsiveness
 -----------------------------------------------*/
 @media screen and (max-width: 1536px) {
 	.template__wrapper .template_options {
@@ -1215,8 +1276,8 @@ input[type=file] {
 }
 
 #sm_sortable .ui-sortable-helper {
-	border: 1px dashed red;
-	background-color: rgba(255, 0, 0, 0.02);
+	border: 1px dashed #202020;
+	background-color: rgba(32, 32, 32, 0.02);
 }
 
 .sm_tabs {
@@ -1224,7 +1285,8 @@ input[type=file] {
 	padding: 0;
 	display: flex;
 	align-items: end;
-	border-bottom: 1px solid rgba(32, 32, 32, 0.15);
+	margin-bottom: 15px;
+	gap: 15px;
 }
 
 .sm_tabs-link {
@@ -1234,15 +1296,16 @@ input[type=file] {
 	gap: 0.625rem;
 	background-color: var(--sm-base-white-color);
 	padding: 0.875rem;
-	font-size: 16px;
-	font-size: 1rem;
-	border-top: 1px solid rgba(32, 32, 32, 0.15);
-	border-right: 1px solid rgba(32, 32, 32, 0.15);
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-transform: uppercase;
 	border-bottom: none !important;
 	min-width: 5rem;
 	color: rgba(32, 32, 32, 0.7);
 	transition: all 0.2s;
 	margin-bottom: 0;
+	border-radius: 0.5rem;
 	cursor: pointer;
 }
 
@@ -1250,15 +1313,11 @@ input[type=file] {
 	fill: rgba(32, 32, 32, 0.5);
 }
 
-.sm_tabs-link:first-child {
-	border-left: 1px solid rgba(32, 32, 32, 0.15);
-}
-
 .sm_tabs-link.current {
 	margin: 0;
-	border-top: 1px solid rgba(32, 32, 32, 0.1);
-	background-color: var(--sm-primary-color);
+	background-color: var(--sm-base-black-color);
 	color: var(--sm-base-white-color);
+	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.08);
 }
 
 .sm_tabs-link.current svg path, .sm_tabs-link.current svg circle {
@@ -1286,12 +1345,24 @@ input[type=file] {
 	outline: none;
 }
 
+.sm_tabs span.menu_icon {
+	width: 18px;
+	height: 18px;
+}
+
+.sm_tabs span.menu_icon svg {
+	width: 100%;
+	height: 100%;
+}
+
 .tab-content {
 	display: none;
 }
 
 .tab-content.current {
 	display: inherit;
+	border-radius: 8px;
+	overflow: hidden;
 }
 
 #toast-success, #toast-error {
