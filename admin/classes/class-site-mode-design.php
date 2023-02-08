@@ -29,7 +29,6 @@ class Site_Mode_Design extends  Settings
         protected $active_template;
         protected $logo_width;
         protected $logo_height;
-        protected $design_background;
         protected $background_overlay ;
         protected $overlay_color;
         protected $overlay_opacity;
@@ -68,12 +67,11 @@ class Site_Mode_Design extends  Settings
 
         //logo  and background settings
         $this->site_mode_design     = $this->get_data($this->option_name_2);
-        $this->logo_width           = isset($this->site_mode_design['logo_width']) ? $this->site_mode_design['logo_width'] : '200';
-        $this->logo_height          = isset($this->site_mode_design['logo_height']) ? $this->site_mode_design['logo_height'] : '200';
-        $this->design_background    = isset($this->site_mode_design['design_background']) ? $this->site_mode_design['design_background'] : '#ffffff';
-        $this->background_overlay   = isset($this->site_mode_design['background_overlay']) ? $this->site_mode_design['background_overlay'] : '#000000';
-        $this->overlay_color        = isset($this->site_mode_design['overlay_color']) ? $this->site_mode_design['overlay_color'] : '#000000';
-        $this->overlay_opacity      = isset($this->site_mode_design['overlay_opacity']) ? $this->site_mode_design['overlay_opacity'] : '0.5';
+        $this->logo_width           = isset($this->site_mode_design['logo-width']) ? $this->site_mode_design['logo-width'] : '200';
+        $this->logo_height          = isset($this->site_mode_design['logo-height']) ? $this->site_mode_design['logo-height'] : '200';
+        $this->background_overlay   = isset($this->site_mode_design['background-overlay']) ? $this->site_mode_design['background-overlay'] : '#000000';
+        $this->overlay_color        = isset($this->site_mode_design['overlay-color']) ? $this->site_mode_design['overlay-color'] : '#000000';
+        $this->overlay_opacity      = isset($this->site_mode_design['overlay-opacity']) ? $this->site_mode_design['overlay-opacity'] : '0.5';
 
        // font and color settings
 
@@ -114,26 +112,24 @@ class Site_Mode_Design extends  Settings
 		}
     }
     public function ajax_site_mode_design_lb() {
+
 	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
 		// validate data and sanitize
-	    $data = array();
-		    if(isset($_POST['logo_width'])) {
-				$data['logo_width'] = intval($_POST['logo_width']);
+	    $data = [];
+		    if(isset($_POST['logo-width'])) {
+				$data['logo-width'] = intval($_POST['logo-width']);
 		    }
-			if(isset($_POST['logo_height'])) {
-				$data['logo_height'] = intval($_POST['logo_height']);
+			if(isset($_POST['logo-height'])) {
+				$data['logo-height'] = intval($_POST['logo-height']);
 			}
-			if(isset($_POST['design_background'])) {
-				$data['design_background'] = sanitize_text_field($_POST['design_background']);
+			if(isset($_POST['background-overlay'])) {
+				$data['background-overlay'] = intval($_POST['background-overlay']);
 			}
-			if(isset($_POST['background_overlay'])) {
-				$data['background_overlay'] = intval($_POST['background_overlay']);
+			if(isset($_POST['overlay-color'])) {
+				$data['overlay-color'] = sanitize_hex_color($_POST['overlay-color']);
 			}
-			if(isset($_POST['overlay_color'])) {
-				$data['overlay_color'] = sanitize_hex_color($_POST['overlay_color']);
-			}
-			if(isset($_POST['overlay_opacity'])) {
-				$data['overlay_opacity'] = intval($_POST['overlay_opacity']);
+			if(isset($_POST['overlay-opacity'])) {
+				$data['overlay-opacity'] = intval($_POST['overlay-opacity']);
 			}
 
 		return $this->save_data($this->option_name_2, $data);
