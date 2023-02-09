@@ -41,13 +41,13 @@
 
 .select2-container--default {
     & .select2-selection--multiple {
-        border-color: $border-width solid var(--sm-secondary-color) !important;
+        border: $border-width solid var(--sm-input-border-color);
     }
     &.select2-container--focus {
         & .select2-selection--multiple {
-            @include box-shadow();
-            border: $border-width solid var(--sm-primary-color) !important;
-            outline: $outline-width solid transparent  !important;
+            border: 1px solid var(--sm-input-focus-border-color);
+            outline-color: transparent;
+            box-shadow: none !important;
         }
     }
 }

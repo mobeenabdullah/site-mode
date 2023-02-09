@@ -37,15 +37,15 @@
   
 .btn_outline {
   --btn-bg: transparent;  
-  --btn-text-color: var(--sm-secondary-color);
+  --btn-text-color: var(--sm-primary-color);
   --btn-padding: 0.3rem 1.5rem 0.4rem 1.5rem;
   --btn-radius: 0.2rem;
   --btn-font-size: 0.8rem;
   --btn-line-height: 1.5;  
-  border: 1px solid var(--sm-secondary-color);
+  border: 1px solid var(--sm-primary-color);
   &:hover, &:focus {
-    --btn-bg: var(--sm-secondary-color);
-    --btn-border-color: var(--sm-secondary-color);
+    --btn-bg: var(--sm-primary-color);
+    --btn-border-color: var(--sm-primary-color);
     --btn-text-color: var(--sm-base-white-color);
   }
 } 

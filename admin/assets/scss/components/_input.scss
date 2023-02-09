@@ -4,17 +4,19 @@
     height: $form-fields-height;
     line-height: 3;
     background: var(--sm-base-white-color);
-    border: $border-width solid var(--sm-secondary-color);
+    border: $border-width solid var(--sm-input-border-color);
     border-radius: $form-field-border-radius;
     padding: $form-field-padding;
     font-size: $form-field-font-size;
     font-family: var(--sm-open-sans);
-    &:active, &:hover, &:focus-visible {
-      border-color: var(--sm-primary-color);
+    &:active, &:hover, &:focus-visible, &:focus {
+      border: 1px solid var(--sm-input-focus-border-color);
+      outline-color: transparent;
+      box-shadow: none !important;
     }
-    &:focus {
-      @include box-shadow();
-      outline: $outline-width solid transparent;
-    }
+    // &:focus {
+    //   //@include box-shadow();
+    //   outline: $outline-width solid transparent;
+    // }
   }  
 }
