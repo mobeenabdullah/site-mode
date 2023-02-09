@@ -33,7 +33,7 @@ Plugin general styling
 	--sm-button-border-color: #6B4BFD;
 	--sm-sidebar-title-color: #2b3e73;
 	--sm-sidebar-border-color: #EDEFF7;
-	--sm-input-border-color: #e6effb;
+	--sm-input-border-color: #cfd7e2;
 	--sm-input-focus-border-color: #7c8db5;
 	--sm-setting-page-bg-color: #F7F8FE;
 	--sm-social-media-color: #F6F7FE;
@@ -183,7 +183,7 @@ body {
 	--btn-border-color: var(--sm-button-border-color);
 	--btn-text-color: var(--sm-base-white-color);
 	--btn-padding: 0.5rem 1.5rem 0.625rem 1.5rem;
-	--btn-radius: 0.2rem;
+	--btn-radius: 0.4rem;
 	--btn-font-size: 1rem;
 	--btn-line-height: 1.5;
 	--btn-text-align: center;
@@ -217,13 +217,13 @@ body {
 }
 
 .btn_outline {
-	--btn-bg: transparent;
-	--btn-text-color: var(--sm-primary-color);
+	--btn-bg: var(--sm-primary-light-color);
+	--btn-text-color: var(--sm-base-black-color);
 	--btn-padding: 0.3rem 1.5rem 0.4rem 1.5rem;
 	--btn-radius: 0.2rem;
 	--btn-font-size: 0.8rem;
 	--btn-line-height: 1.5;
-	border: 1px solid var(--sm-primary-color);
+	border: 1px solid var(--sm-primary-light-color);
 }
 
 .btn_outline:hover, .btn_outline:focus {
@@ -236,6 +236,7 @@ body {
 	--btn-padding: 0.4rem 1rem 0.5rem 1rem;
 	--btn-font-size: 0.75rem;
 	--btn-line-height: 1;
+	border-radius: 0.4rem;
 }
 
 .btn_white {
@@ -257,7 +258,7 @@ body {
 	border-width: 1px !important;
 	color: var(--sm-base-white-color) !important;
 	padding: 0.3rem 1rem 0.4rem 1rem !important;
-	border-radius: 0.2rem !important;
+	border-radius: 0.4rem !important;
 	font-size: 1rem !important;
 	line-height: 1.5 !important;
 	width: auto !important;
@@ -270,6 +271,8 @@ body {
 .submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus {
 	background-color: #5f3cfd !important;
 	border-color: #5f3cfd !important;
+	outline: none !important;
+	box-shadow: none !important;
 }
 
 .submit_button button.site-mode-save-btn {
@@ -1091,8 +1094,9 @@ input[type=file] {
 }
 
 .logo_radio_wrapper label {
-	padding-left: 40px;
-	padding-right: 40px;
+	padding-left: 1.875rem;
+	padding-right: 0;
+	margin-right: 2.5rem;
 	font-weight: 300;
 }
 
@@ -1130,13 +1134,9 @@ input[type=file] {
 	display: none;
 }
 
-.sm_select select:hover {
-	color: var(--sm-secondary-color);
-}
-
 .sm_select select:active, .sm_select select:hover, .sm_select select:focus-visible, .sm_select select:focus {
-	border: 1px solid var(--sm-input-focus-border-color);
-	outline-color: transparent;
+	border: 1px solid var(--sm-input-focus-border-color) !important;
+	outline-color: transparent !important;
 	box-shadow: none !important;
 }
 
@@ -1653,7 +1653,7 @@ input[type=file] {
 
 .display__value-wrapper {
 	border-radius: 4px;
-	border: 1px solid var(--sm-button-bg-color);
+	border: 1px solid var(--sm-input-border-color);
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1675,4 +1675,10 @@ input[type=file] {
 	color: var(--sm-base-black-color);
 	font-size: 12px;
 	line-height: 16px;
+}
+
+.display__value-wrapper:active, .display__value-wrapper:hover, .display__value-wrapper:focus-visible, .display__value-wrapper:focus {
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
 }
