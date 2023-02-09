@@ -61,8 +61,9 @@
 
 .logo_radio_wrapper {
   & label {
-    padding-left: 40px;
-    padding-right: 40px;
+    padding-left: calculateRem(30px);
+    padding-right: 0;
+    margin-right: calculateRem(40px);
     font-weight: 300;
   }
 }

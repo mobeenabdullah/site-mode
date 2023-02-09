@@ -67,7 +67,7 @@
   
   .display__value-wrapper {
     border-radius: 4px;
-    border: 1px solid var(--sm-button-bg-color);
+    border: $border-width solid var(--sm-input-border-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,5 +87,10 @@
       color: var(--sm-base-black-color);
       font-size: 12px;
       line-height: 16px;
+    }
+    &:active, &:hover, &:focus-visible, &:focus {
+      border: 1px solid var(--sm-input-focus-border-color);
+      outline-color: transparent;
+      box-shadow: none !important;
     }
   }

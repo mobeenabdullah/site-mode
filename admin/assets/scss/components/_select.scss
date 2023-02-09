@@ -27,15 +27,11 @@
 
     &::-ms-expand {
       display: none;
-    }
-    &:hover {
-      color: var(--sm-secondary-color);
-    }
+    }   
     &:active, &:hover, &:focus-visible, &:focus {
-      border: 1px solid var(--sm-input-focus-border-color);
-      outline-color: transparent;
+      border: 1px solid var(--sm-input-focus-border-color) !important;
+      outline-color: transparent !important;
       box-shadow: none !important;
-
     }
   }
 
