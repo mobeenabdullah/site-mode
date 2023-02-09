@@ -15,7 +15,7 @@
   & .check {
     display: block;
     position: absolute;
-    border: 1px solid #AAAAAA;
+    border: $border-width solid var(--sm-input-border-color);
     border-radius: 100%;
     height: calculateRem(20px);
     width: calculateRem(20px);
@@ -50,6 +50,13 @@
   & input[type=radio]:checked ~ label{
     color: var(--sm-primary-color);
   }
+  &:hover {
+    .check {
+      border: 1px solid var(--sm-input-focus-border-color);
+      outline-color: transparent;
+      box-shadow: none !important;
+    }
+  }  
 }
 
 .logo_radio_wrapper {

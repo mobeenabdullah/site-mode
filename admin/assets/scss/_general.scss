@@ -66,6 +66,13 @@ body {
   font-size: 16px !important;
 }
 
+.wp-admin.toplevel_page_site-mode {
+  background-color: var(--sm-setting-page-bg-color) !important;
+  #wpcontent {
+    background-color: var(--sm-setting-page-bg-color) !important;
+    padding: calculateRem(20px) calculateRem(20px) calculateRem(30px) calculateRem(30px);
+  }
+}
 .site_mode__wrap {
   & > h1 {
     margin: 0;
@@ -75,13 +82,10 @@ body {
 
   &--cover {
     display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: calculateRem(30px);
-    
+    grid-template-columns: 4fr 1fr;
+    gap: calculateRem(30px);    
     &-sidebar {
-      background-color: var(--sm-base-white-color);
-      padding: calculateRem(20px);      
-      border-radius: 8px;
+      
     }
   }
   & p.submit {
@@ -246,6 +250,24 @@ body {
 
 .description_editor {
   width: 60%;
+  & .wp-editor-container {
+    border: $border-width solid var(--sm-input-border-color) !important;
+  }
+  & .mce-container-body {
+    border-radius: calculateRem(4px);    
+    & .mce-container-body {
+      padding: 0 !important;
+      & .mce-toolbar-grp {
+        background-color: transparent !important;
+        border-bottom: $border-width solid var(--sm-input-border-color) !important;
+      }      
+    }
+    & .mce-top-part {
+      &::before {
+        box-shadow: none !important;
+      }        
+    }
+  }
 }
 
 //  (c) Social Media Tab
@@ -324,6 +346,7 @@ body {
 // }
 
 .socialmedia__wrapper {
+  max-width: calculateRem(529px);
   & .option__row--remove {
     cursor: pointer;
     align-self: flex-end;
@@ -379,10 +402,10 @@ body {
       }
     }
     & .social_icon {
-      border: 1px solid var(--sm-secondary-color);
+      border: 1px solid var(--sm-primary-color);
       width: calculateRem(40px);
       height: calculateRem(40px);
-      background-color: var(--sm-secondary-color);
+      background-color: var(--sm-primary-color);
       border-radius: .3rem;
       @include flex_mixin(flex, center, center, null, null);
       color: var(--sm-base-white-color);
@@ -734,15 +757,28 @@ body {
 /*-----------------------------------------------
 7. Sidebar
 -----------------------------------------------*/
-.preview_box {
+.sidebar_card {
+    background-color: var(--sm-base-white-color);    
+    border-radius: calculateRem(8px);
+    &:not(:last-child) {
+      margin-bottom: calculateRem(30px);
+    }
   &_header {
-    margin-bottom: calculateRem(10px);
-    & h3 {
+    padding: calculateRem(10px) calculateRem(10px) calculateRem(10px) calculateRem(20px);          
+    border-bottom: 1px solid var(--sm-sidebar-border-color);
+    & .card_title {
       margin: 0;
       padding: 0;
       font-size: 15px;
       font-weight: 600;
       line-height: 1.5;
+      color: var(--sm-sidebar-title-color);
+    }
+  }
+  &_body {
+    padding: calculateRem(10px) calculateRem(20px) calculateRem(20px) calculateRem(20px);      
+    &_content {
+
     }
   }
 }

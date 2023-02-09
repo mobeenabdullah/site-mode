@@ -15,16 +15,28 @@ $base-font-family: 'Open Sans', sans-serif !default;
 $base-html-font: 62.5%;
 
 //  2. Colors variables
-$primary-color: #6F73D2 !default;
+//$primary-color: #6F73D2 !default;
+$primary-color: #6B4BFD !default;
+$primary-light:#ECECFC !default;
+$setting-page-bg: #F7F8FE !default;
 $secondary-color:  #202020 !default;
 $base-white-color: #ffffff !default;
 $base-black-color: #141414 !default;
 $error-color: #dc3545 !default;
 $success-color: #28a745 !default;
+$input-border: #e6effb !default;
+$input-focus-border: #7c8db5 !default;
+$social-media-color: #F6F7FE !default;
+$social-media-border: #cbd6e5 !default;
+
+// Sidebar colors
+$sidebar-title: #2b3e73 !default;
+$sidebar-border: #EDEFF7 !default;
 
 // 3. Colors Array for root css variables
 $colors: (
     'primary-color': $primary-color,
+    'primary-light-color': $primary-light,
     'secondary-color': $secondary-color,
     'base-white-color': $base-white-color,
     'base-black-color': $base-black-color,
@@ -33,7 +45,14 @@ $colors: (
     'toast-text-color': $base-white-color,
     'toast-error-color': $error-color,
     'button-bg-color': $primary-color,
-    'button-border-color': $primary-color,    
+    'button-border-color': $primary-color, 
+    'sidebar-title-color': $sidebar-title,
+    'sidebar-border-color': $sidebar-border, 
+    'input-border-color': $input-border,
+    'input-focus-border-color': $input-focus-border,
+    'setting-page-bg-color': $setting-page-bg,
+    'social-media-color': $social-media-color,
+    'social-media-border': $social-media-border,
 ) !default;
 
 $font-families: (

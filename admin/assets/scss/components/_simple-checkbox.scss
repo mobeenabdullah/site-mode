@@ -20,7 +20,7 @@
     }
   }
   & input + label::before {
-    border: $border-width solid var(--sm-secondary-color);
+    border: $border-width solid var(--sm-input-border-color);
     content: "";
     height: $checkbox-height-before;
     width: $checkbox-width-before;
@@ -55,9 +55,10 @@
     opacity: 1;
     color: var(--sm-base-white-color);
   }
-  & input:focus + label::before {
-    @include box-shadow();
-    outline: $outline-width solid transparent;
+  & input:focus + label::before, input:hover + label::before {
+    border: 1px solid var(--sm-input-focus-border-color);
+    outline-color: transparent;
+    box-shadow: none !important;
   }
 }
 

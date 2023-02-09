@@ -13,7 +13,7 @@
 }
 
 //  2.  Box Shadow mixin
-@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($primary-color, 0.5)) {
+@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($input-focus-border, 0.5)) {
   box-shadow: $x-axis $y-axis $blur $spread $color;
 }
 

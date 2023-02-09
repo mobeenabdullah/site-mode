@@ -13,7 +13,7 @@
     appearance:none;
     outline:0;
     box-shadow:none;
-    border: $border-width solid var(--sm-secondary-color) !important;
+    border: $border-width solid var(--sm-input-border-color) !important;
     background: var(--sm-base-white-color);
     background-image: none;
     flex: 1;
@@ -31,10 +31,10 @@
     &:hover {
       color: var(--sm-secondary-color);
     }
-    &:focus {
-      @include box-shadow();
-      border: $border-width solid var(--sm-primary-color) !important;
-      outline: $outline-width solid transparent;
+    &:active, &:hover, &:focus-visible, &:focus {
+      border: 1px solid var(--sm-input-focus-border-color);
+      outline-color: transparent;
+      box-shadow: none !important;
 
     }
   }

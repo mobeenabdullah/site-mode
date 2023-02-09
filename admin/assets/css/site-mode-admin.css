@@ -20,16 +20,24 @@ Plugin general styling
 1.  CSS root variables
 -----------------------------------------------*/
 :root {
-	--sm-primary-color: #6F73D2;
+	--sm-primary-color: #6B4BFD;
+	--sm-primary-light-color: #ECECFC;
 	--sm-secondary-color: #202020;
 	--sm-base-white-color: #ffffff;
 	--sm-base-black-color: #141414;
-	--sm-toast-base-color: #6F73D2;
+	--sm-toast-base-color: #6B4BFD;
 	--sm-toast-icon-bg: #202020;
 	--sm-toast-text-color: #ffffff;
 	--sm-toast-error-color: #dc3545;
-	--sm-button-bg-color: #6F73D2;
-	--sm-button-border-color: #6F73D2;
+	--sm-button-bg-color: #6B4BFD;
+	--sm-button-border-color: #6B4BFD;
+	--sm-sidebar-title-color: #2b3e73;
+	--sm-sidebar-border-color: #EDEFF7;
+	--sm-input-border-color: #e6effb;
+	--sm-input-focus-border-color: #7c8db5;
+	--sm-setting-page-bg-color: #F7F8FE;
+	--sm-social-media-color: #F6F7FE;
+	--sm-social-media-border: #cbd6e5;
 	--sm-open-sans: Open Sans, sans-serif;
 }
 
@@ -70,6 +78,15 @@ body {
 	font-size: 16px !important;
 }
 
+.wp-admin.toplevel_page_site-mode {
+	background-color: var(--sm-setting-page-bg-color) !important;
+}
+
+.wp-admin.toplevel_page_site-mode #wpcontent {
+	background-color: var(--sm-setting-page-bg-color) !important;
+	padding: 1.25rem 1.25rem 1.875rem 1.875rem;
+}
+
 .site_mode__wrap > h1 {
 	margin: 0;
 	margin-bottom: 0.9375rem;
@@ -78,14 +95,8 @@ body {
 
 .site_mode__wrap--cover {
 	display: grid;
-	grid-template-columns: 3fr 1fr;
+	grid-template-columns: 4fr 1fr;
 	gap: 1.875rem;
-}
-
-.site_mode__wrap--cover-sidebar {
-	background-color: var(--sm-base-white-color);
-	padding: 1.25rem;
-	border-radius: 8px;
 }
 
 .site_mode__wrap p.submit {
@@ -207,17 +218,17 @@ body {
 
 .btn_outline {
 	--btn-bg: transparent;
-	--btn-text-color: var(--sm-secondary-color);
+	--btn-text-color: var(--sm-primary-color);
 	--btn-padding: 0.3rem 1.5rem 0.4rem 1.5rem;
 	--btn-radius: 0.2rem;
 	--btn-font-size: 0.8rem;
 	--btn-line-height: 1.5;
-	border: 1px solid var(--sm-secondary-color);
+	border: 1px solid var(--sm-primary-color);
 }
 
 .btn_outline:hover, .btn_outline:focus {
-	--btn-bg: var(--sm-secondary-color);
-	--btn-border-color: var(--sm-secondary-color);
+	--btn-bg: var(--sm-primary-color);
+	--btn-border-color: var(--sm-primary-color);
 	--btn-text-color: var(--sm-base-white-color);
 }
 
@@ -257,8 +268,8 @@ body {
 }
 
 .submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus {
-	background-color: #6368ce !important;
-	border-color: #6368ce !important;
+	background-color: #5f3cfd !important;
+	border-color: #5f3cfd !important;
 }
 
 .submit_button button.site-mode-save-btn {
@@ -365,6 +376,27 @@ input[type=file] {
 	width: 60%;
 }
 
+.description_editor .wp-editor-container {
+	border: 1px solid var(--sm-input-border-color) !important;
+}
+
+.description_editor .mce-container-body {
+	border-radius: 0.25rem;
+}
+
+.description_editor .mce-container-body .mce-container-body {
+	padding: 0 !important;
+}
+
+.description_editor .mce-container-body .mce-container-body .mce-toolbar-grp {
+	background-color: transparent !important;
+	border-bottom: 1px solid var(--sm-input-border-color) !important;
+}
+
+.description_editor .mce-container-body .mce-top-part::before {
+	box-shadow: none !important;
+}
+
 .disable_media_input {
 	background-clip: padding-box;
 	-webkit-appearance: none !important;
@@ -443,6 +475,10 @@ input[type=file] {
 	font-size: 0.9375rem;
 }
 
+.socialmedia__wrapper {
+	max-width: 33.0625rem;
+}
+
 .socialmedia__wrapper .option__row--remove {
 	cursor: pointer;
 	align-self: flex-end;
@@ -500,10 +536,10 @@ input[type=file] {
 }
 
 .socialmedia__wrapper .social_media_field .social_icon {
-	border: 1px solid var(--sm-secondary-color);
+	border: 1px solid var(--sm-primary-color);
 	width: 2.5rem;
 	height: 2.5rem;
-	background-color: var(--sm-secondary-color);
+	background-color: var(--sm-primary-color);
 	border-radius: .3rem;
 	display: flex;
 	align-items: center;
@@ -750,16 +786,31 @@ input[type=file] {
 /*-----------------------------------------------
 7. Sidebar
 -----------------------------------------------*/
-.preview_box_header {
-	margin-bottom: 0.625rem;
+.sidebar_card {
+	background-color: var(--sm-base-white-color);
+	border-radius: 0.5rem;
 }
 
-.preview_box_header h3 {
+.sidebar_card:not(:last-child) {
+	margin-bottom: 1.875rem;
+}
+
+.sidebar_card_header {
+	padding: 0.625rem 0.625rem 0.625rem 1.25rem;
+	border-bottom: 1px solid var(--sm-sidebar-border-color);
+}
+
+.sidebar_card_header .card_title {
 	margin: 0;
 	padding: 0;
 	font-size: 15px;
 	font-weight: 600;
 	line-height: 1.5;
+	color: var(--sm-sidebar-title-color);
+}
+
+.sidebar_card_body {
+	padding: 0.625rem 1.25rem 1.25rem 1.25rem;
 }
 
 .preview_active_template {
@@ -889,7 +940,7 @@ input[type=file] {
 }
 
 .sm_checkbox_wrapper input + label::before {
-	border: 1px solid var(--sm-secondary-color);
+	border: 1px solid var(--sm-input-border-color);
 	content: "";
 	height: 19px;
 	width: 19px;
@@ -928,9 +979,10 @@ input[type=file] {
 	color: var(--sm-base-white-color);
 }
 
-.sm_checkbox_wrapper input:focus + label::before {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	outline: 1px solid transparent;
+.sm_checkbox_wrapper input:focus + label::before, .sm_checkbox_wrapper input:hover + label::before {
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
 }
 
 .um_checkbox_show_hide {
@@ -995,7 +1047,7 @@ input[type=file] {
 .radio_wrapper .check {
 	display: block;
 	position: absolute;
-	border: 1px solid #AAAAAA;
+	border: 1px solid var(--sm-input-border-color);
 	border-radius: 100%;
 	height: 1.25rem;
 	width: 1.25rem;
@@ -1032,6 +1084,12 @@ input[type=file] {
 	color: var(--sm-primary-color);
 }
 
+.radio_wrapper:hover .check {
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
+}
+
 .logo_radio_wrapper label {
 	padding-left: 40px;
 	padding-right: 40px;
@@ -1055,7 +1113,7 @@ input[type=file] {
 	appearance: none;
 	outline: 0;
 	box-shadow: none;
-	border: 1px solid var(--sm-secondary-color) !important;
+	border: 1px solid var(--sm-input-border-color) !important;
 	background: var(--sm-base-white-color);
 	background-image: none;
 	flex: 1;
@@ -1076,10 +1134,10 @@ input[type=file] {
 	color: var(--sm-secondary-color);
 }
 
-.sm_select select:focus {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	border: 1px solid var(--sm-primary-color) !important;
-	outline: 1px solid transparent;
+.sm_select select:active, .sm_select select:hover, .sm_select select:focus-visible, .sm_select select:focus {
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
 }
 
 .sm_select .arrow-down {
@@ -1153,13 +1211,13 @@ input[type=file] {
 }
 
 .select2-container--default .select2-selection--multiple {
-	border-color: 1px solid var(--sm-secondary-color) !important;
+	border: 1px solid var(--sm-input-border-color);
 }
 
 .select2-container--default.select2-container--focus .select2-selection--multiple {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	border: 1px solid var(--sm-primary-color) !important;
-	outline: 1px solid transparent !important;
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
 }
 
 .select2-search--inline textarea {
@@ -1171,20 +1229,17 @@ input[type=file] {
 	height: 3rem;
 	line-height: 3;
 	background: var(--sm-base-white-color);
-	border: 1px solid var(--sm-secondary-color);
+	border: 1px solid var(--sm-input-border-color);
 	border-radius: 0.25rem;
 	padding: 0 1em;
 	font-size: 14px;
 	font-family: var(--sm-open-sans);
 }
 
-.sm_input_cover input[type="text"]:active, .sm_input_cover input[type="text"]:hover, .sm_input_cover input[type="text"]:focus-visible, .sm_input_cover input.number[type="number"]:active, .sm_input_cover input.number[type="number"]:hover, .sm_input_cover input.number[type="number"]:focus-visible {
-	border-color: var(--sm-primary-color);
-}
-
-.sm_input_cover input[type="text"]:focus, .sm_input_cover input.number[type="number"]:focus {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
-	outline: 1px solid transparent;
+.sm_input_cover input[type="text"]:active, .sm_input_cover input[type="text"]:hover, .sm_input_cover input[type="text"]:focus-visible, .sm_input_cover input[type="text"]:focus, .sm_input_cover input.number[type="number"]:active, .sm_input_cover input.number[type="number"]:hover, .sm_input_cover input.number[type="number"]:focus-visible, .sm_input_cover input.number[type="number"]:focus {
+	border: 1px solid var(--sm-input-focus-border-color);
+	outline-color: transparent;
+	box-shadow: none !important;
 }
 
 .um_toggle {
@@ -1249,7 +1304,7 @@ input[type=file] {
 }
 
 .sm_textarea_cover textarea:focus {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	box-shadow: 0 0 0 1px rgba(124, 141, 181, 0.5);
 	outline: 1px solid transparent;
 }
 
@@ -1265,7 +1320,7 @@ input[type=file] {
 }
 
 #sm_sortable .ui-state-default {
-	background-color: rgba(32, 32, 32, 0.03);
+	background-color: var(--sm-social-media-color);
 	padding: 1rem;
 	margin-bottom: 0.9375rem;
 	border-radius: 0.5rem;
@@ -1276,7 +1331,7 @@ input[type=file] {
 }
 
 #sm_sortable .ui-sortable-helper {
-	border: 1px dashed #202020;
+	border: 2px dashed var(--sm-social-media-border);
 	background-color: rgba(32, 32, 32, 0.02);
 }
 
@@ -1294,15 +1349,15 @@ input[type=file] {
 	align-items: center;
 	justify-content: center;
 	gap: 0.625rem;
-	background-color: var(--sm-base-white-color);
-	padding: 0.875rem;
+	background-color: var(--sm-primary-light-color);
+	padding: 0.875rem 1.5rem;
 	font-size: 14px;
 	font-size: 0.875rem;
 	font-weight: 600;
 	text-transform: uppercase;
 	border-bottom: none !important;
 	min-width: 5rem;
-	color: rgba(32, 32, 32, 0.7);
+	color: var(--sm-primary-color);
 	transition: all 0.2s;
 	margin-bottom: 0;
 	border-radius: 0.5rem;
@@ -1310,14 +1365,14 @@ input[type=file] {
 }
 
 .sm_tabs-link svg path, .sm_tabs-link svg circle {
-	fill: rgba(32, 32, 32, 0.5);
+	fill: var(--sm-primary-color);
 }
 
 .sm_tabs-link.current {
 	margin: 0;
-	background-color: var(--sm-base-black-color);
+	background-color: var(--sm-primary-color);
 	color: var(--sm-base-white-color);
-	box-shadow: 0 15px 15px rgba(0, 0, 0, 0.08);
+	box-shadow: rgba(107, 75, 253, 0.4) 0px 6px 20px 0px;
 }
 
 .sm_tabs-link.current svg path, .sm_tabs-link.current svg circle {
@@ -1333,15 +1388,15 @@ input[type=file] {
 }
 
 .sm_tabs-link:hover {
-	color: var(--sm-base-black-color);
+	color: var(--sm-primary-color);
 }
 
 .sm_tabs-link:hover svg path, .sm_tabs-link:hover svg circle {
-	fill: var(--sm-base-black-color);
+	fill: var(--sm-primary-color);
 }
 
 .sm_tabs-link:focus {
-	box-shadow: 0 0 0 1px rgba(111, 115, 210, 0.5);
+	box-shadow: 0 0 0 1px rgba(124, 141, 181, 0.5);
 	outline: none;
 }
 
