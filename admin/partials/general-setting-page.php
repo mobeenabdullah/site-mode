@@ -72,7 +72,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
-                        <input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr($this->custom_login_url); ?>" placeholder="/login/" />
+                        <input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr($this->custom_login_url); ?>" placeholder="<?php echo esc_attr(site_url()); ?>/login/" />
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
             <div class="option__row--field">
                 <?php $all_pages = get_pages(); ?>
                 <div class="sm_select">
-                    <select class="js-example-basic-multiple" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include_">
+                    <select class="whitelist-pages-multiselect" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include">
                         <?php foreach($all_pages as $value ) :
                             if(in_array($value->post_name, $this->whitelist_pages) ) {
                                 $selected = 'selected';
@@ -104,7 +104,7 @@
                 <span><?php _e('Show site to these roles', 'site-mode')?></span>
             </div>
             <div class="option__row--field">
-                <?php  global  $wp_roles; ?>
+                <?php global $wp_roles; ?>
 	            <?php foreach ( $wp_roles->roles as $key => $value ): ?>
                 <div class="sm_checkbox_wrapper role_checkbox">
 		            <?php $checked = (in_array($key, $this->user_roles)) ? 'checked' : ''; ?>

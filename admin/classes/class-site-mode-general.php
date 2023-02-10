@@ -63,16 +63,16 @@ class Site_Mode_General extends Settings {
 			$data['redirect_delay'] = intval($_POST['site-mode-redirect-delay']);
 		}
 		if (isset($_POST['site-mode-redirect-url'])) {
-			$data['show_login_icon'] =  sanitize_url($_POST['site-mode-redirect-url']);
+			$data['show_login_icon'] =  sanitize_text_field($_POST['site-mode-show-login-icon']);
 		}
 		if (isset($_POST['site-mode-custom-login-url'])) {
 			$data['custom_login_url'] = sanitize_text_field($_POST['site-mode-custom-login-url']);
 		}
 		if (isset($_POST['site-mode-whitelist-pages'])) {
-			$data['custom_login_url'] = sanitize_text_field($_POST['site-mode-whitelist-pages']);
+			$data['whitelist_pages'] = array_map('sanitize_text_field', $_POST['site-mode-whitelist-pages']);
 		}
 		if (isset($_POST['site-mode-user-roles'])) {
-			$data['user_roles'] = sanitize_user($_POST['site-mode-user-roles']);
+			$data['user_roles'] = array_map('sanitize_text_field', $_POST['site-mode-user-roles']);
 		}
 
         return $this->save_data($this->option_name, $data);
