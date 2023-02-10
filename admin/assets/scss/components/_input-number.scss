@@ -25,9 +25,10 @@ input[type="number"] {
     text-align: center;
     width: 8rem;
     height: $form-fields-height;
-    &:focus {
-      //@include box-shadow();
-      outline: $outline-width solid transparent;
+    &:active, &:hover, &:focus-visible, &:focus {
+      border: 1px solid var(--sm-input-focus-border-color);
+      outline-color: transparent;
+      box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
     }
   }
 
