@@ -58,7 +58,7 @@
   & input:focus + label::before, input:hover + label::before {
     border: 1px solid var(--sm-input-focus-border-color);
     outline-color: transparent;
-    box-shadow: none !important;
+    box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
   }
 }
 

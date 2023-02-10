@@ -47,11 +47,15 @@
         & .select2-selection--multiple {
             border: 1px solid var(--sm-input-focus-border-color);
             outline-color: transparent;
-            box-shadow: none !important;
+            box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
         }
     }
 }
-
+.select2-container:focus-visible {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
 .select2-search--inline {
     & textarea {
         height: 100% !important;

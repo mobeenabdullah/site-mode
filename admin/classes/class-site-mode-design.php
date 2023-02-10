@@ -138,6 +138,8 @@ class Site_Mode_Design extends  Settings
 
     public function ajax_site_mode_design_font() {
 
+        print_r($_POST);
+        die();
 	    // validate data and sanitize
 	    $data = array();
 		    if(isset($_POST['heading_font_family'])) {

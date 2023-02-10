@@ -718,10 +718,75 @@ jQuery(function ($) {
             polyfill: false,
         })
     })
+
+    // Range Slider
     $element.rangeslider({
         polyfill: false,
         onInit: function () {
             valueOutput(this.$element[0])
         },
     })
+
+    // Color 
+    const triggerOverlay = document.querySelector(".color-picker-overlay");
+    const colorBg = document.querySelector(".color_overlay input");     
+    const colorBgBox = document.querySelector(".color_overlay .color-box");
+    const containerOverlay = document.querySelector(".color_overlay");
+
+    const triggerHeading = document.querySelector(".color-picker-heading");
+    const headingColor = document.querySelector(".heading_color input");   
+    const headingColorBox = document.querySelector(".heading_color .color-box");       
+    const headingContainer = document.querySelector(".heading_color");
+
+    const triggerDesc = document.querySelector(".color-picker-description");
+    const descColor = document.querySelector(".description_font_color input");   
+    const descColorBox = document.querySelector(".description_font_color .color-box");       
+    const descContainer = document.querySelector(".description_font_color");
+
+    const triggerIcon = document.querySelector(".color-picker-icon");
+    const iconColor = document.querySelector(".icon_font_color input");   
+    const iconColorBox = document.querySelector(".icon_font_color .color-box");       
+    const iconContainer = document.querySelector(".icon_font_color");
+
+    const triggerIconBg = document.querySelector(".color-picker-icon-bg");
+    const iconBgColor = document.querySelector(".icon_bg_font_color input");   
+    const iconBgColorBox = document.querySelector(".icon_bg_font_color .color-box");       
+    const iconBgContainer = document.querySelector(".icon_bg_font_color");
+
+    const triggerIconBorder = document.querySelector(".color-picker-icon-border");
+    const iconBorderColor = document.querySelector(".icon_border_font_color input");   
+    const iconBorderColorBox = document.querySelector(".icon_border_font_color .color-box");       
+    const iconBorderContainer = document.querySelector(".icon_border_font_color");
+    
+    let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';
+    
+    
+    function colorPickerBox(pickerElement, triggerElement, containerElement, bgElement, boxElement) {
+        pickerElement = Pickr.create({
+        el: triggerElement,
+        container: containerElement,
+        position: 'right-end',
+        theme: "nano", // or 'monolith', or 'nano'
+        defaultRepresentation: "HEX",
+        components: {
+            preview: true,
+            hue: true,
+            interaction: {
+                input: true,
+                save: true,
+            },
+        },
+        }).on("save", (instance) => {            
+            bgElement.value = pickerElement.getColor().toHEXA().toString();
+            // console.log(bgElement.value)
+            boxElement.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
+            pickerElement.hide();
+        });
+    }
+    colorPickerBox(bgPickr,triggerOverlay, containerOverlay, colorBg, colorBgBox);
+    colorPickerBox(headingPickr,triggerHeading, headingContainer, headingColor, headingColorBox);
+    colorPickerBox(descPickr,triggerDesc, descContainer, descColor, descColorBox);
+    colorPickerBox(iconPickr,triggerIcon, iconContainer, iconColor, iconColorBox);
+    colorPickerBox(iconBgPickr,triggerIconBg, iconBgContainer, iconBgColor, iconBgColorBox);
+    colorPickerBox(iconBorderPickr,triggerIconBorder, iconBorderContainer, iconBorderColor, iconBorderColorBox);   
 })
