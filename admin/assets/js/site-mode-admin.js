@@ -462,7 +462,7 @@ jQuery(function ($) {
 
             // console formdata with loop through
             for (var pair of formData.entries()) {
-                console.log(pair[0] + ", " + pair[1])
+                //console.log(pair[0] + ", " + pair[1])
             }
 
             formData.append("action", "ajax_site_mode_design_lb")
@@ -727,43 +727,23 @@ jQuery(function ($) {
         },
     })
 
-    // Color 
-    const triggerOverlay = document.querySelector(".color-picker-overlay");
-    const colorBg = document.querySelector(".color_overlay input");     
-    const colorBgBox = document.querySelector(".color_overlay .color-box");
+    // Color Picker
     const containerOverlay = document.querySelector(".color_overlay");
-
-    const triggerHeading = document.querySelector(".color-picker-heading");
-    const headingColor = document.querySelector(".heading_color input");   
-    const headingColorBox = document.querySelector(".heading_color .color-box");       
     const headingContainer = document.querySelector(".heading_color");
-
-    const triggerDesc = document.querySelector(".color-picker-description");
-    const descColor = document.querySelector(".description_font_color input");   
-    const descColorBox = document.querySelector(".description_font_color .color-box");       
     const descContainer = document.querySelector(".description_font_color");
-
-    const triggerIcon = document.querySelector(".color-picker-icon");
-    const iconColor = document.querySelector(".icon_font_color input");   
-    const iconColorBox = document.querySelector(".icon_font_color .color-box");       
     const iconContainer = document.querySelector(".icon_font_color");
-
-    const triggerIconBg = document.querySelector(".color-picker-icon-bg");
-    const iconBgColor = document.querySelector(".icon_bg_font_color input");   
-    const iconBgColorBox = document.querySelector(".icon_bg_font_color .color-box");       
     const iconBgContainer = document.querySelector(".icon_bg_font_color");
-
-    const triggerIconBorder = document.querySelector(".color-picker-icon-border");
-    const iconBorderColor = document.querySelector(".icon_border_font_color input");   
-    const iconBorderColorBox = document.querySelector(".icon_border_font_color .color-box");       
     const iconBorderContainer = document.querySelector(".icon_border_font_color");
     
-    let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';
+    let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';    
     
-    
-    function colorPickerBox(pickerElement, triggerElement, containerElement, bgElement, boxElement) {
+    function colorPickerBox(pickerElement, containerElement) {
+        const colorBox = containerElement.children[2];
+        const colorTrigger = containerElement.children[1];
+        const colorInput = containerElement.children[3];
+
         pickerElement = Pickr.create({
-        el: triggerElement,
+        el: colorTrigger,
         container: containerElement,
         position: 'right-end',
         theme: "nano", // or 'monolith', or 'nano'
@@ -777,16 +757,16 @@ jQuery(function ($) {
             },
         },
         }).on("save", (instance) => {            
-            bgElement.value = pickerElement.getColor().toHEXA().toString();
-            // console.log(bgElement.value)
-            boxElement.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
+            colorInput.value = pickerElement.getColor().toHEXA().toString();            
+            colorBox.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
             pickerElement.hide();
         });
     }
-    colorPickerBox(bgPickr,triggerOverlay, containerOverlay, colorBg, colorBgBox);
-    colorPickerBox(headingPickr,triggerHeading, headingContainer, headingColor, headingColorBox);
-    colorPickerBox(descPickr,triggerDesc, descContainer, descColor, descColorBox);
-    colorPickerBox(iconPickr,triggerIcon, iconContainer, iconColor, iconColorBox);
-    colorPickerBox(iconBgPickr,triggerIconBg, iconBgContainer, iconBgColor, iconBgColorBox);
-    colorPickerBox(iconBorderPickr,triggerIconBorder, iconBorderContainer, iconBorderColor, iconBorderColorBox);   
+    
+    colorPickerBox(bgPickr, containerOverlay);
+    colorPickerBox(headingPickr, headingContainer);
+    colorPickerBox(descPickr, descContainer);
+    colorPickerBox(iconPickr, iconContainer);
+    colorPickerBox(iconBgPickr, iconBgContainer);
+    colorPickerBox(iconBorderPickr, iconBorderContainer);   
 })
