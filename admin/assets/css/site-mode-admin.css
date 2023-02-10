@@ -272,7 +272,7 @@ body {
 	background-color: #5f3cfd !important;
 	border-color: #5f3cfd !important;
 	outline: none !important;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
 }
 
 .submit_button button.site-mode-save-btn {
@@ -985,7 +985,7 @@ input[type=file] {
 .sm_checkbox_wrapper input:focus + label::before, .sm_checkbox_wrapper input:hover + label::before {
 	border: 1px solid var(--sm-input-focus-border-color);
 	outline-color: transparent;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
 }
 
 .um_checkbox_show_hide {
@@ -1137,7 +1137,7 @@ input[type=file] {
 .sm_select select:active, .sm_select select:hover, .sm_select select:focus-visible, .sm_select select:focus {
 	border: 1px solid var(--sm-input-focus-border-color) !important;
 	outline-color: transparent !important;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
 }
 
 .sm_select .arrow-down {
@@ -1217,6 +1217,12 @@ input[type=file] {
 .select2-container--default.select2-container--focus .select2-selection--multiple {
 	border: 1px solid var(--sm-input-focus-border-color);
 	outline-color: transparent;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
+}
+
+.select2-container:focus-visible {
+	border: none !important;
+	outline: none !important;
 	box-shadow: none !important;
 }
 
@@ -1239,7 +1245,7 @@ input[type=file] {
 .sm_input_cover input[type="text"]:active, .sm_input_cover input[type="text"]:hover, .sm_input_cover input[type="text"]:focus-visible, .sm_input_cover input[type="text"]:focus, .sm_input_cover input.number[type="number"]:active, .sm_input_cover input.number[type="number"]:hover, .sm_input_cover input.number[type="number"]:focus-visible, .sm_input_cover input.number[type="number"]:focus {
 	border: 1px solid var(--sm-input-focus-border-color);
 	outline-color: transparent;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
 }
 
 .um_toggle {
@@ -1417,7 +1423,6 @@ input[type=file] {
 .tab-content.current {
 	display: inherit;
 	border-radius: 8px;
-	overflow: hidden;
 }
 
 #toast-success, #toast-error {
@@ -1680,5 +1685,58 @@ input[type=file] {
 .display__value-wrapper:active, .display__value-wrapper:hover, .display__value-wrapper:focus-visible, .display__value-wrapper:focus {
 	border: 1px solid var(--sm-input-focus-border-color);
 	outline-color: transparent;
-	box-shadow: none !important;
+	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
+}
+
+.color_field-wrapper {
+	display: flex;
+	position: relative;
+	gap: 15px;
+	flex-direction: row-reverse;
+	max-width: 300px;
+	justify-content: start;
+}
+
+.color_field-wrapper .color-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	padding: 0.5em;
+	pointer-events: none;
+	border-radius: 0.1em;
+	border-radius: 50%;
+}
+
+.color_field-wrapper input {
+	border: 1px solid var(--omb-light-gray);
+	width: 150px;
+}
+
+.color_field-wrapper .color_switch-wrapper {
+	position: relative;
+	width: 28px;
+	height: 28px;
+}
+
+.pickr .pcr-button {
+	opacity: 0;
+}
+
+.pcr-app .pcr-interaction .pcr-save {
+	padding: 8.6px;
+}
+
+.sm_input_wrapper.color_field-wrapper.color_overlay,
+.sm_input_wrapper.color_field-wrapper.heading_color {
+	position: relative;
+}
+
+.pcr-app[data-theme='nano'] {
+	width: 14.25em;
+	position: absolute;
+	max-width: 95vw;
+	top: calc(50% + 20px) !important;
+	left: 0 !important;
 }

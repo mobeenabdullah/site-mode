@@ -106,9 +106,12 @@
                                 <span><label for="overlay_color"><?php _e('Overlay Color','site-mode');?></label></span>
                             </div>
                             <div class="option__row--field">
-                                <div class="sm_input_wrapper">
-                                    <input type="color" id="overlay_color" name="overlay-color" value="<?php echo esc_attr($this->overlay_color); ?>">
+                                <div class="sm_input_wrapper color_field-wrapper color_overlay">
+                                    <!-- <input type="color" id="overlay_color" name="overlay-color" value="<?php //echo esc_attr($this->overlay_color); ?>"> -->
                                     <label for="overlay_color"></label>
+                                    <div class="color-picker-overlay"></div>
+                                    <div class="color-box" style="background-color: <?php echo esc_attr($this->overlay_color); ?>"></div>
+                                    <input type="hidden" name="overlay-color" id="overlay_color" value="<?php echo esc_attr($this->overlay_color); ?>">
                                 </div>
                             </div>
                         </div>
@@ -255,10 +258,14 @@
                             <span><label for="heading_font_color"><?php _e('Heading Font Color','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
-                            <div class="sm_input_cover">
-                                <input type="color" id="heading_font_color" name="heading-font-color-setting" value="<?php echo esc_attr($this->heading_font_color); ?>">
+                            <div class="sm_input_wrapper color_field-wrapper heading_color">                                
+                                <label for="heading_font_color"></label>
+                                <div class="color-picker-heading"></div>
+                                <div class="color-box" style="background-color: <?php echo esc_attr($this->heading_font_color); ?>"></div>
+                                <input type="hidden" id="heading_font_color" name="heading-font-color-setting" value="<?php echo esc_attr($this->heading_font_color); ?>">
+                                <!-- <input type="hidden" name="heading-font-color-setting" id="heading_font_color" value="<?php //echo esc_attr($this->heading_font_color); ?>"> -->
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
                 <div class="description_section">
@@ -335,16 +342,20 @@
                                 <input type="number" class="number" id="description_letter_spacing" data-inc="1" name="description-letter-spacing-setting" value="<?php echo esc_attr($this->description_letter_spacing); ?>" <?php checked(1, $this->description_letter_spacing, true); ?> />
                             </div>
                         </div>
-                    </div>
+                    </div>                
                     <div class="option__row">
                         <div class="option__row--label">
-                            <span><label for="description_font_color"><?php _e('Font Color','site-mode');?></label></span>
+                        <span><label for="description_font_color"><?php _e('Font Color','site-mode');?></label></span>
                         </div>
                         <div class="option__row--field">
-                            <div class="sm_input_cover">
-                                <input type="color" id="description_font_color" name="description-font-color-setting" value="<?php echo esc_attr($this->description_font_color); ?>">
+                            <div class="sm_input_wrapper color_field-wrapper description_font_color">                                
+                                <label for="description_font_color"></label>
+                                <div class="color-picker-description"></div>
+                                <div class="color-box" style="background-color: <?php echo esc_attr($this->description_font_color); ?>"></div>
+                                <!-- <input type="hidden" id="heading_font_color" name="heading-font-color-setting" value="<?php //echo esc_attr($this->heading_font_color); ?>"> -->
+                                <input type="hidden" id="description_font_color" name="description-font-color-setting" value="<?php echo esc_attr($this->description_font_color); ?>">
                             </div>
-                        </div>
+                        </div>                       
                     </div>
                 </div>
 
@@ -390,21 +401,28 @@
                         <span><label for="icon_color"><?php _e('Icons Color','site-mode');?></label></span>
                     </div>
                     <div class="option__row--field">
-                        <div class="sm_input_cover">
-                            <input type="color" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($this->icon_color, 'site-mode');?>">
+                        <div class="sm_input_wrapper color_field-wrapper icon_font_color">                                
+                            <label for="icon_color"></label>
+                            <div class="color-picker-icon"></div>
+                            <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_color, 'site-mode');?>;"></div>
+                            <input type="hidden" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($this->icon_color, 'site-mode');?>">
                         </div>
                     </div>
+                    
                 </div>
 
                 <div class="option__row">
                     <div class="option__row--label">
                         <span><label for="icon_bg_color"><?php _e('Icons Background Color','site-mode');?></label></span>
-                    </div>
+                    </div>             
                     <div class="option__row--field">
-                        <div class="sm_input_cover">
-                            <input type="color" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>">
+                        <div class="sm_input_wrapper color_field-wrapper icon_bg_font_color">                                
+                            <label for="icon_bg_color"></label>
+                            <div class="color-picker-icon-bg"></div>
+                            <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>;"></div>
+                            <input type="hidden" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>">                                
                         </div>
-                    </div>
+                    </div> 
                 </div>
 
                 <div class="option__row">
@@ -412,10 +430,13 @@
                         <span><label for="icon_border_color"><?php _e('Icons Border Color','site-mode');?></label></span>
                     </div>
                     <div class="option__row--field">
-                        <div class="sm_input_cover">
-                            <input type="color" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($this->icon_border_color,'site-mode'); ?>">
+                        <div class="sm_input_wrapper color_field-wrapper icon_border_font_color">                                
+                            <label for="icon_border_color"></label>
+                            <div class="color-picker-icon-border"></div>
+                            <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_border_color,'site-mode'); ?>;"></div>
+                            <input type="hidden" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($this->icon_border_color,'site-mode'); ?>">
                         </div>
-                    </div>
+                    </div>                    
                 </div>
             </div>
             <?php wp_nonce_field('design-icon-color-settings-save', 'design-icon-color'); ?>

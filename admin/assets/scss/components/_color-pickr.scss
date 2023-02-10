@@ -1,0 +1,52 @@
+.color_field-wrapper {
+	display: flex;
+	position: relative;
+	gap: 15px;
+	flex-direction: row-reverse;
+	max-width: 300px;
+	justify-content: start;
+}
+
+.color_field-wrapper .color-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 14px;
+	height: 14px;
+	padding: 0.5em;
+	pointer-events: none;
+	border-radius: 0.1em;
+	border-radius: 50%;
+    //border: 1px solid var(--sm-input-border-color);
+}
+
+.color_field-wrapper input {
+	border: 1px solid var(--omb-light-gray);
+	width: 150px;
+}
+
+.color_field-wrapper .color_switch-wrapper {
+	position: relative;
+	width: 28px;
+	height: 28px;
+}
+
+.pickr .pcr-button {
+	opacity: 0;
+}
+
+.pcr-app .pcr-interaction .pcr-save {
+	padding: 8.6px;
+}
+.sm_input_wrapper.color_field-wrapper.color_overlay,
+.sm_input_wrapper.color_field-wrapper.heading_color {
+    position: relative;
+}
+
+.pcr-app[data-theme='nano'] {
+    width: 14.25em;
+    position: absolute;
+    max-width: 95vw;
+    top: calc(50% + 20px) !important;
+    left: 0!important;
+}

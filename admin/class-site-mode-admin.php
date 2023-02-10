@@ -88,7 +88,8 @@ class Site_Mode_Admin
 
 		wp_enqueue_style('select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
 		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style( 'nano-min', plugin_dir_url( __FILE__ ) . 'assets/css/nano.min.css', array(), $this->version, 'all' );
+		
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/site-mode-admin.css', array(), $this->version, 'all');
 	}
 
@@ -106,6 +107,7 @@ class Site_Mode_Admin
 		wp_enqueue_script ( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), '1.0.0', true );
 		wp_enqueue_script ( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js', array('jquery'), '1.0.0', true );
 		wp_enqueue_script('range-slider', plugin_dir_url(__FILE__) . 'assets/js/rangeslider.js', array( 'jquery' ), '1.0.0', true);
+		wp_enqueue_script('pickr-min', plugin_dir_url(__FILE__) . 'assets/js/pickr.min.js', array( 'jquery' ), '1.0.0', true);		
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/js/site-mode-admin.js', array('jquery'), $this->version, true);
 		wp_localize_script( $this->plugin_name,'ajaxObj',array(
