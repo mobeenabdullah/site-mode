@@ -91,6 +91,7 @@ class Site_Mode_Content extends Settings {
 			}
 
 			return [
+				'id' => $id,
 				'url' => $image_url,
 				'alt' => $image_alt_text
 			];
