@@ -288,6 +288,71 @@ jQuery(function ($) {
             })
         }
 
+
+        // 6. Get the font family and weight selectors
+        const fontSelectors = $('.font-selector');
+        const weightSelectors = $('.weight-selector');
+
+        // Make a request to the Google Fonts API to retrieve a list of available fonts
+        $.getJSON('https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyB0YDSD0wGZLd65KStCqyhZxCmYn7EM4x8', data => {
+            // Loop through each font family selector
+            fontSelectors.each((index, fontSelector) => {
+                // Get the saved font family and weight from the data attributes
+                const savedFont = $(fontSelector).data('savedFont');
+                const weightSelector = weightSelectors.eq(index);
+                const savedWeight = weightSelector.data('savedWeight');
+
+                // Loop through the fonts and add each font as an option to the font selector
+                $.each(data.items, (index, font) => {
+                    const option = $('<option></option>')
+                        .val(font.family)
+                        .text(font.family);
+
+                    // If the font family is the saved font, set it as the selected option
+                    if (font.family === savedFont) {
+                        option.prop('selected', true);
+                    }
+
+                    $(fontSelector).append(option);
+                });
+
+                // Listen for changes to the font selector
+                $(fontSelector).change(event => {
+                    // Clear any existing options in the weight selector
+                    weightSelector.empty();
+
+                    // Find the selected font
+                    const selectedFont = $.grep(data.items, font => font.family === event.target.value);
+
+                    // Add each available weight for the selected font as an option to the weight selector
+                    $.each(selectedFont[0].variants, (index, weight) => {
+                        const option = $('<option></option>')
+                            .val(weight)
+                            .text(weight);
+
+                        // If the weight is the saved weight, set it as the selected option
+                        if (weight && savedWeight && weight.toString() === savedWeight.toString()) {
+                            option.prop('selected', true);
+                        }
+
+                        weightSelector.append(option);
+                    });
+                });
+            });
+
+            // Trigger the change event for the first font selector on page load
+            fontSelectors.eq(0).change();
+            fontSelectors.eq(1).change();
+
+            if(fontSelectors.length > 0){
+                fontSelectors.each((index) => {
+                    fontSelectors.eq(index).change();
+                })
+            }
+        });
+
+
+
         // 6.  Ajax call for general tab
         $("#site-mode-general").submit(function (event) {
             event.preventDefault()
@@ -734,9 +799,9 @@ jQuery(function ($) {
     const iconContainer = document.querySelector(".icon_font_color");
     const iconBgContainer = document.querySelector(".icon_bg_font_color");
     const iconBorderContainer = document.querySelector(".icon_border_font_color");
-    
-    let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';    
-    
+
+    let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';
+
     function colorPickerBox(pickerElement, containerElement) {
         const colorBox = containerElement.children[2];
         const colorTrigger = containerElement.children[1];
@@ -756,17 +821,17 @@ jQuery(function ($) {
                 save: true,
             },
         },
-        }).on("save", (instance) => {            
-            colorInput.value = pickerElement.getColor().toHEXA().toString();            
+        }).on("save", (instance) => {
+            colorInput.value = pickerElement.getColor().toHEXA().toString();
             colorBox.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
             pickerElement.hide();
         });
     }
-    
+
     colorPickerBox(bgPickr, containerOverlay);
     colorPickerBox(headingPickr, headingContainer);
     colorPickerBox(descPickr, descContainer);
     colorPickerBox(iconPickr, iconContainer);
     colorPickerBox(iconBgPickr, iconBgContainer);
-    colorPickerBox(iconBorderPickr, iconBorderContainer);   
+    colorPickerBox(iconBorderPickr, iconBorderContainer);
 })

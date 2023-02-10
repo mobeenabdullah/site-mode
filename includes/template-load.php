@@ -10,17 +10,11 @@ class Template_Load  {
 	}
 	public function template_initialize () {
 
-		$mode_status = $this->general_settings['mode_status'];
-		$mode_type = $this->general_settings['mode_type'];
+		$mode_status = isset($this->general_settings['mode_status']) ? $this->general_settings['mode_status'] : false;
+		$mode_type = isset($this->general_settings['mode_type']) ? $this->general_settings['mode_type'] : 'maintenance';
 
 		if(is_user_logged_in() && isset($_GET['site-mode-preview']) == 'true') {
-			if(isset($_GET['template'])) {
-				$this->template = $_GET['template'];
-				$this->load_template();
-			} else {
-				$this->load_template();
-			}
-
+			$this->load_template();
 		} elseif ($mode_status && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status()) {
 			if($mode_type === 'maintenance' && !empty($this->template)) {
 				status_header( 200 );
@@ -35,10 +29,12 @@ class Template_Load  {
 	}
 
 	public function check_user_role () {
-		$current_user = wp_get_current_user()->roles;
-		$user_roles = $this->general_settings['user_roles'];
+		$current_user_roles = wp_get_current_user()->roles;
+		$wp_user_roles = isset($this->general_settings['user_roles']) ? $this->general_settings['user_roles'] : [];
 
-		if(in_array($current_user, $user_roles)) {
+		$role_exist = array_intersect($current_user_roles, $wp_user_roles);
+
+		if(!empty($role_exist)) {
 			return false;
 		}
 		return true;
@@ -46,10 +42,9 @@ class Template_Load  {
 
 	public function check_whitelist_pages () {
 		$whitelist_pages = isset($this->general_settings['whitelist_pages']) ? $this->general_settings['whitelist_pages'] : [];
+		$get_current_page_ID = get_the_ID();
 
-		$page_name = get_post_field( 'post_name', get_post() );
-
-		if(in_array($page_name, $whitelist_pages)) {
+		if(in_array($get_current_page_ID, $whitelist_pages)) {
 			return false;
 		}
 		return true;

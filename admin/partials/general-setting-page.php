@@ -86,12 +86,12 @@
                 <div class="sm_select">
                     <select class="whitelist-pages-multiselect" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include">
                         <?php foreach($all_pages as $value ) :
-                            if(in_array($value->post_name, $this->whitelist_pages) ) {
+                            if(in_array($value->ID, $this->whitelist_pages) ) {
                                 $selected = 'selected';
                             } else {
                                 $selected = '';
                             } ?>
-                            <option value="<?php echo esc_attr($value->post_name); ?>" <?php echo esc_attr($selected) ?>> <?php esc_html_e($value->post_name);?></option>
+                            <option value="<?php echo esc_attr($value->ID); ?>" <?php echo esc_attr($selected) ?>> <?php esc_html_e($value->post_name);?></option>
                         <?php endforeach; ?>
                     </select>
                     <span class="arrow-down"></span>

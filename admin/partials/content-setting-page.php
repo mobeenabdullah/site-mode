@@ -31,7 +31,7 @@
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
         <div class="logo_wrapper image_logo_wrapper <?php echo $this->logo_setting === 'image' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
@@ -41,7 +41,7 @@
                 </div>
                 <div class="option__row--field">
                     <div class="upload_image_cover logo_display">
-                        <?php if ($this->image_logo) : ?>                                                        
+                        <?php if ($this->image_logo) : ?>
                             <div class="sm_image_wrapper">
                                 <img src="<?php echo esc_url($this->image_logo['url']) ?>" alt="<?php echo esc_attr($this->image_logo['alt']); ?>" />
                             </div>
@@ -52,7 +52,7 @@
                                 <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Logo">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
-                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['id']); ?>">
                             </div>
                         <?php else : ?>
                             <div class="sm_image_wrapper"></div>
@@ -63,7 +63,7 @@
                                 <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Logo" style="display: none;">
                                     <?php esc_html_e('Remove Logo', 'site-mode'); ?>
                                 </button>
-                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['url']); ?>">
+                                <input type="hidden" name="content-image-logo-setting" value="<?php echo esc_attr($this->image_logo['id']); ?>">
                             </div>
 
                         <?php endif; ?>
@@ -127,7 +127,7 @@
             <div class="option__row--field">
                 <div class="upload_image_cover bg_img_display">
 
-		            <?php if ($this->bg_image) : ?>                        
+		            <?php if ($this->bg_image) : ?>
                         <div class="sm_image_wrapper">
                             <img src="<?php echo esc_url($this->bg_image['url']) ?>" alt="<?php echo esc_attr($this->bg_image['alt']); ?>" />
                         </div>
@@ -139,7 +139,7 @@
                             <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Background Image">
 					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
                             </button>
-                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image); ?>">
+                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image['id']); ?>">
                         </div>
 
 		            <?php else : ?>
@@ -153,7 +153,7 @@
                             <button type="button" class="btn btn_outline btn_sm sm-remove-image" data-image-type="Background Image" style="display: none;">
 					            <?php esc_html_e('Remove Background Image', 'site-mode'); ?>
                             </button>
-                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image['url']); ?>">
+                            <input type="hidden" name="content-bg-image-setting" value="<?php echo esc_attr($this->bg_image['id']); ?>">
                         </div>
 
 		            <?php endif; ?>

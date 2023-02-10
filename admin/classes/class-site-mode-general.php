@@ -22,9 +22,7 @@
  */
 class Site_Mode_General extends Settings {
     protected $option_name = 'site_mode_general';
-
 	protected $mode_status;
-
     protected $mode_type;
     protected $redirect_url;
     protected $redirect_delay;
@@ -33,15 +31,14 @@ class Site_Mode_General extends Settings {
 	protected $whitelist_pages;
 	protected $user_roles;
 
-
     public function __construct() {
         $this->site_mode_general    = $this->get_data($this->option_name);
-        $this->mode_status          = $this->site_mode_general['mode_status'];
-        $this->mode_type            = $this->site_mode_general['mode_type'];
-        $this->redirect_url         = $this->site_mode_general['redirect_url'];
-	    $this->redirect_delay       = $this->site_mode_general['redirect_delay'];
-	    $this->show_login_icon      = $this->site_mode_general['show_login_icon'];
-	    $this->custom_login_url     = $this->site_mode_general['custom_login_url'];
+        $this->mode_status          = isset($this->site_mode_general['mode_status']) ? $this->site_mode_general['mode_status'] : false;
+        $this->mode_type            = isset($this->site_mode_general['mode_type']) ? $this->site_mode_general['mode_type'] : 'maintenance';
+        $this->redirect_url         = isset($this->site_mode_general['redirect_url']) ? $this->site_mode_general['redirect_url'] : '';
+	    $this->redirect_delay       = isset($this->site_mode_general['redirect_delay']) ? $this->site_mode_general['redirect_delay'] : 2;
+	    $this->show_login_icon      = isset($this->site_mode_general['show_login_icon']) ? $this->site_mode_general['show_login_icon'] : false;
+	    $this->custom_login_url     = isset($this->site_mode_general['custom_login_url']) ? $this->site_mode_general['custom_login_url'] : '';
 	    $this->whitelist_pages      = isset($this->site_mode_general['whitelist_pages']) ? $this->site_mode_general['whitelist_pages'] : [];
 	    $this->user_roles           = isset($this->site_mode_general['user_roles']) ? $this->site_mode_general['user_roles'] : [];
     }
