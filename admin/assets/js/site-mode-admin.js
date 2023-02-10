@@ -620,7 +620,7 @@ jQuery(function ($) {
         })
 
         // Multi Select
-        $(".js-example-basic-multiple").select2()
+        $(".whitelist-pages-multiselect").select2()
 
         // Upload file
         const hiddenBtn = document.querySelector(".hiddenBtn")
