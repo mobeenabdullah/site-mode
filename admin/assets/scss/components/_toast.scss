@@ -1,9 +1,6 @@
-
-
 #toast-success, #toast-error{
 	visibility: hidden;	
-	height: auto;
-	// opacity: 1;		
+	height: auto;	
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -31,8 +28,7 @@
 			}
 		}
 	}
-	& .toast-description {
-		// flex: 1;
+	& .toast-description {		
 		text-align: left;
 	}
 	
@@ -47,43 +43,6 @@
 	background-color: $success-color;
 	border: 1px solid $success-color;
 	max-width: calculateRem(200px);	
-}
-
-#toast-success #img{
-	// width: 50px;
-	// height: 50px;
-	// float: left;
-	// padding-top: 16px;
-	// padding-bottom: 16px;
-	// box-sizing: border-box;
-	// background-color: var(--sm-secondary-color);
-	// color: var(--sm-base-white-color)
-}
-#toast-error #img {
-	// width: 50px;
-	// height: 50px;
-
-	// float: left;
-
-	// padding-top: 16px;
-	// padding-bottom: 16px;
-
-	// box-sizing: border-box;
-	// background-color: var(--sm-secondary-color);
-	// color: var(--sm-base-white-color);
-}
-
-#toast-success #desc{
-	// color: var(--sm-base-white-color);
-	// padding: 16px;
-	// overflow: hidden;
-	// white-space: nowrap;
-}
-#toast-error #desc{
-	// color: var(--sm-base-white-color);
-	// padding: 16px;
-	// overflow: hidden;
-	// white-space: nowrap;
 }
 
 #toast-success.show {
