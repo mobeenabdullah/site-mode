@@ -25,7 +25,7 @@ class Site_Mode_Design extends  Settings
         protected $option_name_1 = 'site_mode_design';
         protected $option_name_2 = 'site_mode_design_lb';
         protected $option_name_3 = 'site_mode_design_fonts';
-        protected $option_name_4 = 'site_mode_design_color_section';
+        protected $option_name_4 = 'site_mode_design_social';
         protected $active_template;
         protected $logo_width;
         protected $logo_height;
@@ -48,7 +48,7 @@ class Site_Mode_Design extends  Settings
         protected $description_letter_spacing;
         protected $description_line_height;
 
-        protected $site_mode_design_color_section;
+        protected $site_mode_design_social;
 
         protected $icon_size;
         protected $icon_color;
@@ -95,12 +95,12 @@ class Site_Mode_Design extends  Settings
 
 
         //color settings
-        $this->site_mode_design_color_section = $this->get_data($this->option_name_4);
+        $this->site_mode_design_social = $this->get_data($this->option_name_4);
         //check if values are set or not and assign default values
-        $this->icon_size              = isset($this->site_mode_design_color_section['icon_size']) ? $this->site_mode_design_color_section['icon_size'] : '32';
-        $this->icon_color             = isset($this->site_mode_design_color_section['icon_color']) ? $this->site_mode_design_color_section['icon_color'] : '#ffffff';
-        $this->icon_bg_color          = isset($this->site_mode_design_color_section['icon_bg_color']) ? $this->site_mode_design_color_section['icon_bg_color'] : '#000000';
-        $this->icon_border_color      = isset($this->site_mode_design_color_section['icon_border_color']) ? $this->site_mode_design_color_section['icon_border_color'] : '#000000';
+        $this->icon_size              = isset($this->site_mode_design_social['icon_size']) ? $this->site_mode_design_social['icon_size'] : '32';
+        $this->icon_color             = isset($this->site_mode_design_social['icon_color']) ? $this->site_mode_design_social['icon_color'] : '#ffffff';
+        $this->icon_bg_color          = isset($this->site_mode_design_social['icon_bg_color']) ? $this->site_mode_design_social['icon_bg_color'] : '#000000';
+        $this->icon_border_color      = isset($this->site_mode_design_social['icon_border_color']) ? $this->site_mode_design_social['icon_border_color'] : '#000000';
 
     }
 
@@ -170,7 +170,7 @@ class Site_Mode_Design extends  Settings
 				$data['description_font_color'] = sanitize_hex_color($_POST['description-font-color']);
 			}
 			if(isset($_POST['description-font-weight'])) {
-				$data['description_font_weight'] = intval($_POST['description-font-weight']);
+				$data['description_font_weight'] = sanitize_text_field($_POST['description-font-weight']);
 			}
 			if(isset($_POST['description-letter-spacing'])) {
 				$data['description_letter_spacing'] = intval($_POST['description-letter-spacing']);
@@ -183,21 +183,21 @@ class Site_Mode_Design extends  Settings
             die();
     }
 
-    public function ajax_site_mode_design_color_section() {
+    public function ajax_site_mode_design_social() {
 
 	    $this->verify_nonce('design-icon-color', 'design-icon-color-settings-save');
 	    $color_section_data = array();
-	    if(isset($_POST['icon-size-setting'])) {
-		    $color_section_data['icon_size'] = intval($_POST['icon-size-setting']);
+	    if(isset($_POST['icon-size'])) {
+		    $color_section_data['icon_size'] = intval($_POST['icon-size']);
 	    }
-		if(isset($_POST['icon-color-setting'])) {
-		    $color_section_data['icon_color'] = sanitize_hex_color($_POST['icon-color-setting']);
+		if(isset($_POST['icon-color'])) {
+		    $color_section_data['icon_color'] = sanitize_hex_color($_POST['icon-color']);
 	    }
-		if(isset($_POST['icon-bg-setting'])) {
-		    $color_section_data['icon_bg_color'] = sanitize_hex_color($_POST['icon-bg-setting']);
+		if(isset($_POST['icon-bg'])) {
+		    $color_section_data['icon_bg_color'] = sanitize_hex_color($_POST['icon-bg']);
 	    }
-		if(isset($_POST['icon-border-color-setting'])) {
-		    $color_section_data['icon_border_color'] = sanitize_hex_color($_POST['icon-border-color-setting']);
+		if(isset($_POST['icon-border-color'])) {
+		    $color_section_data['icon_border_color'] = sanitize_hex_color($_POST['icon-border-color']);
 	    }
 		if(isset($_POST['design-icon-color'])) {
 		    $color_section_data['design_icon_color'] = sanitize_hex_color($_POST['design-icon-color']);

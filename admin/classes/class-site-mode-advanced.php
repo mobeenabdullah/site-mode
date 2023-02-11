@@ -23,27 +23,25 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.ph
  */
 class Site_Mode_Advanced extends Settings {
         protected $option_name          = 'site_mode_advanced';
-        protected  $ga_type;
         protected $ga_id;
         protected $fb_id;
-        protected $custom_css;
-        protected $enable_rest_api;
-        protected $enable_feed;
+        protected $disable_rest_api;
+        protected $disable_rss_feed;
         protected $header_code;
         protected $footer_code;
+	    protected $custom_css;
         protected $site_mode_advanced   = [];
 
     public function __construct() {
         $this->site_mode_advanced = unserialize(get_option('site_mode_advanced'));
         if($this->site_mode_advanced) {
-            $this->ga_type          = isset($this->site_mode_advanced['ga_type']) ? $this->site_mode_advanced['ga_type'] : '1';
-            $this->ga_id            = isset($this->site_mode_advanced['ga_id']) ? $this->site_mode_advanced['ga_id'] : '';
-            $this->fb_id            = isset($this->site_mode_advanced['fb_id']) ? $this->site_mode_advanced['fb_id'] : '';
-            $this->custom_css       = isset($this->site_mode_advanced['custom_css']) ? $this->site_mode_advanced['custom_css'] : '';
-            $this->enable_rest_api  = isset($this->site_mode_advanced['enable_rest_api']) ? $this->site_mode_advanced['enable_rest_api'] : '1';
-            $this->enable_feed      = isset($this->site_mode_advanced['enable_feed']) ? $this->site_mode_advanced['enable_feed'] : '1';
-            $this->header_code      = isset($this->site_mode_advanced['header_code']) ? $this->site_mode_advanced['header_code'] : '';
-            $this->footer_code      = isset($this->site_mode_advanced['footer_code']) ? $this->site_mode_advanced['footer_code'] : '';
+            $this->ga_id                = isset($this->site_mode_advanced['ga_id']) ? $this->site_mode_advanced['ga_id'] : '';
+            $this->fb_id                = isset($this->site_mode_advanced['fb_id']) ? $this->site_mode_advanced['fb_id'] : '';
+            $this->disable_rest_api     = isset($this->site_mode_advanced['disable_rest_api']) ? $this->site_mode_advanced['disable_rest_api'] : 0;
+            $this->disable_rss_feed     = isset($this->site_mode_advanced['disable_rss_feed']) ? $this->site_mode_advanced['disable_rss_feed'] : '0';
+            $this->header_code          = isset($this->site_mode_advanced['header_code']) ? $this->site_mode_advanced['header_code'] : '';
+            $this->footer_code          = isset($this->site_mode_advanced['footer_code']) ? $this->site_mode_advanced['footer_code'] : '';
+	        $this->custom_css           = isset($this->site_mode_advanced['custom_css']) ? $this->site_mode_advanced['custom_css'] : '';
 
         }
     }
@@ -71,38 +69,31 @@ class Site_Mode_Advanced extends Settings {
         }
     }
     public function  ajax_site_mode_advanced() {
-        $nonce = isset($_POST['nonce']) ? $_POST['nonce'] : '';
-        if(!wp_verify_nonce( $nonce, 'advance-settings-save' ) || empty($nonce)) {
-            wp_die('Security Check');
-        }
-        else {
-            // validate using isset and sanitize inputs before storing in database.
-            $data = array();
-            if(isset($_POST['advanced-ga-type-setting'])){
-                $data['ga_type'] = sanitize_text_field($_POST['advanced-ga-type-setting']);
-            }
-            if(isset($_POST['advanced-ga-id-setting'])){
-                $data['ga_id'] = sanitize_text_field($_POST['advanced-ga-id-setting']);
-            }
-            if(isset($_POST['advanced-facebook-id-setting'])){
-                $data['fb_id'] = sanitize_text_field($_POST['advanced-facebook-id-setting']);
-            }
-            if(isset($_POST['advanced-custom-css-setting'])){
-                $data['custom_css'] = sanitize_textarea_field($_POST['advanced-custom-css-setting']);
-            }
-            if(isset($_POST['advanced-wp-rest-api-setting'])){
-                $data['enable_rest_api'] = sanitize_text_field($_POST['advanced-wp-rest-api-setting']);
-            }
-            if(isset($_POST['advanced-wp-feed-setting'])){
-                $data['enable_feed'] = sanitize_text_field($_POST['advanced-wp-feed-setting']);
-            }
-            if(isset($_POST['advanced-header-code-setting'])){
-                $data['header_code'] = sanitize_textarea_field($_POST['advanced-header-code-setting']);
-            }
-            if(isset($_POST['advanced-footer-code-setting'])){
-                $data['footer_code'] = sanitize_textarea_field($_POST['advanced-footer-code-setting']);
-            }
 
+	    $this->verify_nonce('advance-custom-message', 'advance-settings-save');
+
+        // validate using isset and sanitize inputs before storing in database.
+        $data = array();
+        if(isset($_POST['ga-id'])){
+            $data['ga_id'] = sanitize_text_field($_POST['ga-id']);
+        }
+        if(isset($_POST['facebook-id'])){
+            $data['fb_id'] = sanitize_text_field($_POST['facebook-id']);
+        }
+        if(isset($_POST['custom-css'])){
+            $data['custom_css'] = sanitize_textarea_field($_POST['custom-css']);
+        }
+        if(isset($_POST['disable-rest-api'])){
+            $data['disable_rest_api'] = sanitize_text_field($_POST['disable-rest-api']);
+        }
+        if(isset($_POST['disable-rss-feed'])){
+            $data['disable_rss_feed'] = sanitize_text_field($_POST['disable-rss-feed']);
+        }
+        if(isset($_POST['header-code'])){
+            $data['header_code'] = sanitize_textarea_field($_POST['header-code']);
+        }
+        if(isset($_POST['footer-code'])){
+            $data['footer_code'] = sanitize_textarea_field($_POST['footer-code']);
         }
 
         return $this->save_data($this->option_name, $data);

@@ -352,24 +352,21 @@ jQuery(function ($) {
         });
 
 
-
-        // 6.  Ajax call for general tab
-        $("#site-mode-general").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-general")
+        function sendAjaxRequest(selector, action, enctype = false) {
+            const form = document.getElementById(selector)
             const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_general")
-            formData.append("ajax_site_mode_general", form)
+            formData.append("action", action)
+            formData.append(action, form)
             $(".save-btn-loader").show()
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType: "json",
                 method: "post",
+                data: formData,
                 processData: false,
                 contentType: false,
                 cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
+                enctype: enctype ? "multipart/form-data" : '',
                 success: function (res) {
                     setTimeout(function () {
                         $(".save-btn-loader").hide()
@@ -377,97 +374,24 @@ jQuery(function ($) {
                     }, 1000)
                 },
             })
-        })
+        }
 
-        // 7.  Ajax call for content tab
-        $("#site-mode-content").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-content")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_content")
-            formData.append("ajax_site_mode_content", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
+        const formGeneral = $("#site-mode-general");
+        formGeneral.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-general", "ajax_site_mode_general");
+        });
 
-        // 8.  Ajax calls for design tab
-        $("#site-mode-design").submit(function (event) {
-            alert("Click")
-            event.preventDefault()
-            const form = document.getElementById("site-mode-design")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_design")
-            formData.append("ajax_site_mode_design", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
+        const formContent = $("#site-mode-content");
+        formContent.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-content", "ajax_site_mode_content", true);
+        });
 
-        $("#site-mode-design-fonts").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-design-fonts")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_design_font")
-            formData.append("ajax_site_mode_design_font", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
+        $("body").on("submit", "#site-mode-social", function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-social", "ajax_site_mode_social");
         })
-
-        // 9.  Ajax call for social tab
-        $("body").on("submit", "#site-mode-social", function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-social")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_social")
-            formData.append("ajax_site_mode_social", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
-
-        // 10.  Ajax calls for design tab
 
         $("body").on("click", ".activate-template-btn", function (e) {
             const templateName = e.target.value
@@ -496,126 +420,35 @@ jQuery(function ($) {
             })
         })
 
-        // ajax call for this form id test_form
-        $("#test_form").submit(function (event) {
-            event.preventDefault()
-            alert("This is working fine..")
-            // get form input data using jquery input field nam is submit .
-            //select clicked form input data.
-            var form_data = $(this).serialize()
-            alert(form_data)
+        const formDesignLogoBG = $("#site-mode-design-logo-background");
+        formDesignLogoBG.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-design-logo-background", "ajax_site_mode_design_lb");
+        });
 
-            var data = $('input[name="submit"]').val()
-            console.log(data)
-            alert(data)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                data: data,
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
-        $("#site-mode-design-logo-background").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById(
-                "site-mode-design-logo-background"
-            )
-            const formData = new FormData(form)
+        const formDesignFonts = $("#site-mode-design-fonts");
+        formDesignFonts.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-design-fonts", "ajax_site_mode_design_font");
+        });
 
-            // console formdata with loop through
-            for (var pair of formData.entries()) {
-                //console.log(pair[0] + ", " + pair[1])
-            }
-
-            formData.append("action", "ajax_site_mode_design_lb")
-            formData.append("ajax_site_mode_design_lb", form)
-
-            console.log(formData)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
+        const formDesignSocial = $("#site-mode-design-social");
+        formDesignSocial.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-design-social", "ajax_site_mode_design_social");
         })
 
-        $("#site-mode-design-color-section").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById(
-                "site-mode-design-color-section"
-            )
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_design_color_section")
-            formData.append("ajax_site_mode_design_color_section", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
+        const formSEO = $("#site-mode-seo");
+        formSEO.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-seo", "ajax_site_mode_seo", true);
+        });
 
-        // 11.  Ajax call for SEO tab
-        $("#site-mode-seo").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-seo")
-            console.log(form)
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_seo")
-            formData.append("ajax_site_mode_seo", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
-
-        // 12.  Ajax call for advance Tab
-        $("#site-mode-advanced").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-advanced")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_advanced")
-            formData.append("ajax_site_mode_advanced", form)
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
+        const formAdvanced = $("#site-mode-advanced");
+        formAdvanced.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced");
+        });
 
         // 13.  Ajax call for import and export Tab
         $("#site-mode-import").submit(function (event) {

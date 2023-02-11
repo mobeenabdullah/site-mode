@@ -316,7 +316,7 @@
             </div>
         </div>
         <div class="section__wrapper-content section_social_icons">
-        <form id="site-mode-design-color-section" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
+        <form id="site-mode-design-social" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
 
             <div class="social_icon_section">
                 <div class="option__row">
@@ -325,10 +325,10 @@
                     </div>
                     <div class="option__row--field">
                         <div class="sm_select">
-                            <select name="icon-size-setting" id="site_mode">
-                                <option value="32" <?php selected( $this->icon_size==='32', 1 ); ?> ><?php _e('32','site-mode');?></option>
-                                <option value="64" <?php selected( $this->icon_size==='64', 1 ); ?> ><?php _e('64','site-mode');?></option>
-                                <option value="128" <?php selected( $this->icon_size==='128', 1 ); ?> ><?php _e('128','site-mode');?></option>
+                            <select name="icon-size" id="site_mode">
+                                <option value="32" <?php selected( strval($this->icon_size) === '32', 1 ); ?> ><?php _e('32','site-mode');?></option>
+                                <option value="64" <?php selected( strval($this->icon_size) === '64', 1 ); ?> ><?php _e('64','site-mode');?></option>
+                                <option value="128" <?php selected( strval($this->icon_size) === '128', 1 ); ?> ><?php _e('128','site-mode');?></option>
                             </select>
                             <span class="arrow-down"></span>
                         </div>
@@ -344,7 +344,7 @@
                             <label for="icon_color"></label>
                             <div class="color-picker-icon"></div>
                             <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_color, 'site-mode');?>;"></div>
-                            <input type="hidden" id="icon_color" name="icon-color-setting" value="<?php echo esc_attr($this->icon_color, 'site-mode');?>">
+                            <input type="hidden" id="icon_color" name="icon-color" value="<?php echo esc_attr($this->icon_color, 'site-mode');?>">
                         </div>
                     </div>
 
@@ -359,7 +359,7 @@
                             <label for="icon_bg_color"></label>
                             <div class="color-picker-icon-bg"></div>
                             <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>;"></div>
-                            <input type="hidden" id="icon_bg_color" name="icon-bg-setting" value="<?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>">
+                            <input type="hidden" id="icon_bg_color" name="icon-bg" value="<?php echo esc_attr($this->icon_bg_color, 'site-mode'); ?>">
                         </div>
                     </div>
                 </div>
@@ -373,7 +373,7 @@
                             <label for="icon_border_color"></label>
                             <div class="color-picker-icon-border"></div>
                             <div class="color-box" style="background-color: <?php echo esc_attr($this->icon_border_color,'site-mode'); ?>;"></div>
-                            <input type="hidden" id="icon_border_color" name="icon-border-color-setting" value="<?php echo esc_attr($this->icon_border_color,'site-mode'); ?>">
+                            <input type="hidden" id="icon_border_color" name="icon-border-color" value="<?php echo esc_attr($this->icon_border_color,'site-mode'); ?>">
                         </div>
                     </div>
                 </div>
