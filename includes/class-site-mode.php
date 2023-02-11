@@ -208,7 +208,7 @@ class Site_Mode
         $this->loader->add_action('wp_ajax_ajax_site_mode_design',$this->classes_loader->get_design(), 'ajax_site_mode_design');
         $this->loader->add_action('wp_ajax_ajax_site_mode_design_lb',$this->classes_loader->get_design(),'ajax_site_mode_design_lb');
         $this->loader->add_action('wp_ajax_ajax_site_mode_design_font',$this->classes_loader->get_design(),'ajax_site_mode_design_font');
-        $this->loader->add_action('wp_ajax_ajax_site_mode_design_color_section',$this->classes_loader->get_design(),'ajax_site_mode_design_color_section');
+        $this->loader->add_action('wp_ajax_ajax_site_mode_design_social',$this->classes_loader->get_design(),'ajax_site_mode_design_social');
 
 
         // SEO settings

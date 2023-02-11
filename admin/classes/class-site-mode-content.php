@@ -23,24 +23,21 @@
 class Site_Mode_Content extends Settings {
     protected $option_name = 'site_mode_content';
     protected $site_mode_content;
-    protected $logo_settings;
-    protected $text_logo;
-    protected $image_logo;
-    protected $disable_logo;
-    protected $heading ;
-	protected $sub_heading;
-    protected $description;
+    protected $content_heading ;
+    protected $content_description;
+	protected $logo_type;
+	protected $logo_text;
+	protected $logo_image;
     protected $bg_image;
 
     public function __construct() {
-        $this->site_mode_content    = $this->get_data($this->option_name);
-        $this->logo_setting        	= (isset($this->site_mode_content['logo_settings'])) ? $this->site_mode_content['logo_settings'] : null;
-        $this->text_logo            = (isset($this->site_mode_content['text_logo'])) ? $this->site_mode_content['text_logo'] : null;
-        $this->heading              = (isset($this->site_mode_content['heading'])) ? $this->site_mode_content['heading'] : null;
-        $this->sub_heading          = (isset($this->site_mode_content['sub_heading'])) ? $this->site_mode_content['sub_heading'] : null;
-        $this->description          = (isset($this->site_mode_content['description'])) ? $this->site_mode_content['description'] : null;
-	    $this->image_logo           = $this->get_attachments_details($this->site_mode_content['image_logo']);
-        $this->bg_image             = $this->get_attachments_details($this->site_mode_content['bg_image']);
+        $this->site_mode_content        = $this->get_data($this->option_name);
+        $this->content_heading          = (isset($this->site_mode_content['content_heading'])) ? $this->site_mode_content['content_heading'] : null;
+        $this->content_description      = (isset($this->site_mode_content['content_description'])) ? $this->site_mode_content['content_description'] : null;
+	    $this->logo_type        	    = (isset($this->site_mode_content['logo_type'])) ? $this->site_mode_content['logo_type'] : null;
+	    $this->logo_text                = (isset($this->site_mode_content['logo_text'])) ? $this->site_mode_content['logo_text'] : null;
+	    $this->logo_image               = $this->get_attachments_details($this->site_mode_content['logo_image']);
+        $this->bg_image                 = $this->get_attachments_details($this->site_mode_content['bg_image']);
 
     }
 
@@ -50,26 +47,23 @@ class Site_Mode_Content extends Settings {
 
 		// validate using isset and sanitize inputs before storing in database.
 	    $data = array();
-			    if(isset($_POST['content-logo-settings'])){
-				    $data['logo_settings'] = sanitize_text_field($_POST['content-logo-settings']);
+				if(isset($_POST['content-heading'])){
+					$data['content_heading'] = sanitize_text_field($_POST['content-heading']);
+				}
+				if(isset($_POST['content-description'])){
+					$data['content_description'] = sanitize_text_field($_POST['content-description']);
+				}
+			    if(isset($_POST['logo-type'])){
+				    $data['logo_type'] = sanitize_text_field($_POST['logo-type']);
 			    }
-			    if(isset($_POST['content-image-logo-setting'])){
-					$data['image_logo'] = intval($_POST['content-image-logo-setting']);
+			    if(isset($_POST['logo-text'])){
+				    $data['logo_text'] = sanitize_text_field($_POST['logo-text']);
 			    }
-				if(isset($_POST['content-text-logo-setting'])){
-					$data['text_logo'] = sanitize_text_field($_POST['content-text-logo-setting']);
-				}
-				if(isset($_POST['content-heading-setting'])){
-					$data['ga_type'] = sanitize_text_field($_POST['content-heading-setting']);
-				}
-				if(isset($_POST['content-sub-heading-setting'])){
-					$data['heading'] = sanitize_text_field($_POST['content-sub-heading-setting']);
-				}
-				if(isset($_POST['content-description-setting'])){
-					$data['description'] = sanitize_text_field($_POST['content-description-setting']);
-				}
-				if(isset($_POST['content-bg-image-setting'])){
-					$data['bg_image'] = intval($_POST['content-bg-image-setting']);
+			    if(isset($_POST['logo-image'])){
+				    $data['logo_image'] = intval($_POST['logo-image']);
+			    }
+				if(isset($_POST['bg-image'])){
+					$data['bg_image'] = intval($_POST['bg-image']);
 				}
 
         return $this->save_data($this->option_name, $data);

@@ -114,7 +114,9 @@
 	            <?php endforeach; ?>
             </div>
         </div>
+
         <?php wp_nonce_field('general_settings_action', 'general_section_field'); ?>
+
         <!-- Submit setting -->
         <div class="option__row">
             <div class="option__row--label submit_button">
