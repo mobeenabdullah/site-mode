@@ -86,7 +86,7 @@ body {
 	height: 100vh;
 }
 
-.wrapper .uc_image img, .construction_cover, .construction_cover__left, .construction_cover__left--logo img, .construction_cover__right, .construction_cover__right--logo img, .construction_cover__right--icons .social_media li a svg, .construction_cover__right--icons .social_media li a:hover svg {
+.wrapper .uc_image img, .construction_cover, .construction_cover__left, .construction_cover__left--logo img, .construction_cover__right, .construction_cover__right--logo img {
 	width: 100%;
 	height: 100%;
 }
@@ -198,24 +198,20 @@ body {
 	padding: 0;
 }
 
-.construction_cover__right--icons .social_media li a {
+.construction_cover__right--icons .social_media_icon a {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 0;
 	text-align: center;
+	text-decoration: none;
+	color: var(--base-white-color);
+	font-size: 18px;
 }
 
-.construction_cover__right--icons .social_media li a svg path, .construction_cover__right--icons .social_media li a svg circle {
-	fill: var(--base-white-color);
-}
-
-.construction_cover__right--icons .social_media li a:hover {
+.construction_cover__right--icons .social_media_icon a:hover {
 	transition: all 0.4s;
-}
-
-.construction_cover__right--icons .social_media li a:hover svg path, .construction_cover__right--icons .social_media li a:hover svg circle {
-	fill: var(--template-two-primary-color);
+	color: var(--template-one-primary-color);
 }
 
 @media screen and (max-width: 1200px) {

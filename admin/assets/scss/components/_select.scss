@@ -29,8 +29,10 @@
     &::-ms-expand {
       display: none;
     }   
-    &:active, &:hover, &:focus-visible, &:focus {
+    &:hover {
       border: 1px solid var(--sm-input-focus-border-color) !important;
+    }
+    &:active, &:focus-visible, &:focus {      
       outline-color: transparent !important;
       box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 calculateRem(3px) var(--sm-primary-color) !important;
     }

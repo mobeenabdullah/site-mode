@@ -90,7 +90,7 @@ class Site_Mode_Public
 		 * class.
 		 */
 
-
+		wp_enqueue_style('fontawsome', plugin_dir_url(__FILE__) . 'css/all.min.css', array(), $this->version, 'all');
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
 
 	}
@@ -129,5 +129,4 @@ class Site_Mode_Public
         }
         return $html;
     }
-
 }

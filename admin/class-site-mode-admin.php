@@ -85,7 +85,7 @@ class Site_Mode_Admin
 	 * Register the stylesheets for the admin area.
 	 */
 	public function enqueue_styles() {
-
+		wp_enqueue_style('fontawsome', plugin_dir_url(__FILE__) . 'assets/css/all.min.css', array(), $this->version, 'all');
 		wp_enqueue_style('select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
 		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'nano-min', plugin_dir_url( __FILE__ ) . 'assets/css/nano.min.css', array(), $this->version, 'all' );

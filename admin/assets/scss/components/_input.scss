@@ -9,8 +9,10 @@
     padding: $form-field-padding;
     font-size: $form-field-font-size;
     font-family: var(--sm-open-sans);    
-    &:active, &:hover, &:focus-visible, &:focus {
+    &:hover {
       border: 1px solid var(--sm-input-focus-border-color);
+    }
+    &:active, &:focus-visible, &:focus {      
       outline-color: transparent;
       box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
     }
