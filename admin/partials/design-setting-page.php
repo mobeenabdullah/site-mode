@@ -13,28 +13,10 @@
                             $templates = [
                                 [
                                     'id' => 1,
-                                    'name' => 'food_template',
-                                    'title' => 'Food Template',
+                                    'name' => 'default_template',
+                                    'title' => 'Default Template',
                                     'image' => plugin_dir_url( __DIR__ ).'assets/img/template-1.jpg'
-                                ],
-	                            [
-		                            'id' => 2,
-		                            'name' => 'construction_template',
-		                            'title' => 'Construction Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-2.jpg'
-	                            ],
-	                            [
-		                            'id' => 3,
-		                            'name' => 'fashion_template',
-		                            'title' => 'Fashion Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-3.jpg'
-	                            ],
-	                            [
-		                            'id' => 4,
-		                            'name' => 'travel_template',
-		                            'title' => 'Travel Template',
-		                            'image' => plugin_dir_url( __DIR__ ).'assets/img/template-4.jpg'
-	                            ],
+                                ]	                           
                             ];
                         ?>
 
@@ -42,8 +24,7 @@
                         <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
                             <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">
                                 <!-- <img src="<?php //echo esc_url($template['image'])  ?>" alt="<?php //echo esc_attr($template['title']); ?>" /> -->
-                                <div class="template_card-actions button_wrapper">
-                                    <button type="button" class="btn btn_sm activate-template-btn" value="<?php echo esc_attr($template['name']) ?>"><?php echo $template['name'] === $this->active_template ? 'Activated' : 'Active' ?></button>
+                                <div class="template_card-actions button_wrapper">                                    
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
                                         <?php _e('Preview','site-mode');?>
                                     </a>
@@ -54,6 +35,9 @@
                             </div>
                         </div>
                         <?php endforeach; ?>
+                        <div class="template_card coming_soon">
+                            <h1>Coming Soon</h1>
+                        </div>  
                     </div>
                 </div>
         </div>
@@ -136,7 +120,12 @@
 
                 <div class="option__row submit_button">
                     <div class="option__row--label">
-                        <?php submit_button(); ?>
+                        <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+                            <span class="save-btn-loader" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+                            </span>
+                            <?php _e('Save Changes', 'site-mode'); ?>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -301,7 +290,12 @@
                 <?php wp_nonce_field('design-fonts-settings-save', 'design-fonts'); ?>
                 <div class="option__row">
                     <div class="option__row--label submit_button">
-                        <?php submit_button(); ?>
+                        <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+                            <span class="save-btn-loader" style="display: none;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+                            </span>
+                            <?php _e('Save Changes', 'site-mode'); ?>
+                        </button>
                     </div>
                 </div>
         </form>
@@ -326,9 +320,9 @@
                     <div class="option__row--field">
                         <div class="sm_select">
                             <select name="icon-size" id="site_mode">
-                                <option value="32" <?php selected( strval($this->icon_size) === '32', 1 ); ?> ><?php _e('32','site-mode');?></option>
-                                <option value="64" <?php selected( strval($this->icon_size) === '64', 1 ); ?> ><?php _e('64','site-mode');?></option>
-                                <option value="128" <?php selected( strval($this->icon_size) === '128', 1 ); ?> ><?php _e('128','site-mode');?></option>
+                                <option value="16" <?php selected( strval($this->icon_size) === '16', 1 ); ?> ><?php _e('16','site-mode');?></option>
+                                <option value="24" <?php selected( strval($this->icon_size) === '18', 1 ); ?> ><?php _e('18','site-mode');?></option>
+                                <option value="32" <?php selected( strval($this->icon_size) === '32', 1 ); ?> ><?php _e('32','site-mode');?></option>                                
                             </select>
                             <span class="arrow-down"></span>
                         </div>
@@ -381,7 +375,12 @@
             <?php wp_nonce_field('design-icon-color-settings-save', 'design-icon-color'); ?>
             <div class="option__row">
                 <div class="option__row--label submit_button">
-                    <?php submit_button(); ?>
+                    <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+                        <span class="save-btn-loader" style="display: none;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+                        </span>
+                        <?php _e('Save Changes', 'site-mode'); ?>
+                    </button>
                 </div>
             </div>
         </form>

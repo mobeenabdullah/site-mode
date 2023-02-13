@@ -421,6 +421,15 @@ body {
         line-height: 1;
         margin-bottom: calculateRem(5px);
       }
+      & input {
+        &:hover {
+          border: 1px solid var(--sm-input-focus-border-color);
+        }
+        &:active, &:focus-visible, &:focus {      
+          outline-color: transparent;
+          box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
+        }
+      }
     }
     & .social_delete {
       display: none !important;
@@ -552,6 +561,14 @@ body {
         }
       }
     }
+  }
+  .coming_soon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba($secondary-color, 0.05);
+    border-color: transparent;
+    cursor: initial;
   }
 }
 

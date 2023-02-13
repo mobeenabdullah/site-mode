@@ -94,37 +94,20 @@
 
         }
 
-        &--icons .social_media {
-            @include flex_mixin(flex, null, center, null, 2.98rem);
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            & li {
-                @include width_height_mixin(null, 2.2rem);
-
-                & a {
-                    @include flex_mixin(flex, center, center, null, 0);
-                    @include width_height_mixin(null, 100%);
-                    text-align: center;
-
-                    & svg {
-                        @extend %width-100-height-100;
-
-                        & path, & circle {
-                            fill: var(--base-white-color);
-                        }
-                    }
-
-                    &:hover {
-                        transition: all 0.4s;
-
-                        & svg {
-                            @extend %width-100-height-100;
-
-                            & path, & circle {
-                                fill: var(--template-two-primary-color);
-                            }
-                        }
+        &--icons {
+            & .social_media {
+                @include flex_mixin(flex, null, center, null, 2.98rem);
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                &_icon {
+                    @include width_height_mixin(null, 2.2rem);
+                    & a {
+                        @include flex_mixin(flex, center, center, null, 0);                      
+                        text-align: center;
+                        text-decoration: none;     
+                        color: var(--base-white-color); 
+                        font-size: 18px;
                     }
                 }
             }

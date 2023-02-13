@@ -224,7 +224,7 @@ jQuery(function ($) {
                                     </svg>
                                 </div>
                                 <div class="social_icon">
-                                    <span class="dashicons dashicons-${iconClass}"></span>
+                                    <span class="fa-brands ${iconClass}"></span>
                                 </div>
                                 <div class="social_field">
                                     <label for="icon_${title.toLowerCase()}">${title}</label>

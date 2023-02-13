@@ -23,7 +23,7 @@
                 <div class="social_icons_selectors">
                     <?php foreach ($this->di_social_icons as $icon) : ?>
                         <div class="sm-social_icon_selector <?php $this->check_selected_social_icon($icon['title']); ?>" data-icon-id="sm-social_icon_<?php esc_attr_e(strtolower($icon['title'])); ?>" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
-                            <span class="dashicons dashicons-<?php esc_attr_e($icon['icon']); ?>"></span>
+                            <span class="fa-brands <?php esc_attr_e($icon['icon']); ?>"></span>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -52,9 +52,9 @@
                                                     />
                                                 </svg>
                                             </div>
-                                            <div class="social_icon">
-                                                <span class="dashicons dashicons-<?php echo esc_attr($icon['icon']); ?>"></span>
-                                            </div>
+                                            <label class="social_icon" for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>">
+                                                <span class="fa-brands <?php echo esc_attr($icon['icon']); ?>"></span>
+                                            </label>
                                             <div class="social_field">
                                                 <label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php echo esc_attr($icon['title']);?></label>
                                                 <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" required />
@@ -81,7 +81,12 @@
         ?>
         <div class="option__row">
             <div class="option__row--label submit_button">
-                <?php submit_button(); ?>
+                <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+                    <span class="save-btn-loader" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+                    </span>
+                    <?php _e('Save Changes', 'site-mode'); ?>
+                </button>
             </div>
         </div>
     </form>

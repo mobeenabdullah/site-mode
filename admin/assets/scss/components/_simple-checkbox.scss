@@ -55,8 +55,10 @@
     opacity: 1;
     color: var(--sm-base-white-color);
   }
-  & input:focus + label::before, input:hover + label::before {
+  input:hover + label::before {
     border: 1px solid var(--sm-input-focus-border-color);
+  }
+  & input:focus + label::before {    
     outline-color: transparent;
     box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 calculateRem(3px) var(--sm-primary-color) !important;
   }

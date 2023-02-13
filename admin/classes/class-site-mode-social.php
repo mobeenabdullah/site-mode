@@ -25,13 +25,26 @@ class Site_Mode_Social extends Settings {
         protected $show_social;
 		protected $social_icons;
 		protected $di_social_icons = [
-			['title' => 'Facebook', 'icon' => 'facebook-alt'],
-			['title' => 'Twitter', 'icon' => 'twitter'],
-			['title' => 'Linkedin', 'icon' => 'linkedin'],
-			['title' => 'Instagram', 'icon' => 'instagram'],
-			['title' => 'Pinterest', 'icon' => 'pinterest'],
-			['title' => 'Whatsapp', 'icon' => 'whatsapp'],
-			['title' => 'Google', 'icon' => 'google']
+			['title' => 'Facebook', 'icon' => 'fa-facebook-f'],
+			['title' => 'Twitter', 'icon' => 'fa-twitter'],
+			['title' => 'Linkedin', 'icon' => 'fa-linkedin-in'],
+			['title' => 'Instagram', 'icon' => 'fa-instagram'],
+			['title' => 'Pinterest', 'icon' => 'fa-pinterest'],
+			['title' => 'Whatsapp', 'icon' => 'fa-whatsapp'],
+			['title' => 'Google', 'icon' => 'fa-google'],
+			['title' => 'Tiktok', 'icon' => 'fa-tiktok'],
+			['title' => 'Discord', 'icon' => 'fa-discord'],
+			['title' => 'Youtube', 'icon' => 'fa-youtube'],
+			['title' => 'Slack', 'icon' => 'fa-slack'],
+			['title' => 'Dribbble', 'icon' => 'fa-dribbble'],
+			['title' => 'Vimeo', 'icon' => 'fa-vimeo'],
+			['title' => 'Behance', 'icon' => 'fa-behance'],
+			['title' => 'Skype', 'icon' => 'fa-skype'],
+			['title' => 'Twitch', 'icon' => 'fa-twitch'],
+			['title' => 'Tumblr', 'icon' => 'fa-tumblr'],
+			['title' => 'Reddit', 'icon' => 'fa-reddit-alien'],
+			['title' => 'Google', 'icon' => 'fa-google'],
+			['title' => 'Google', 'icon' => 'fa-google']
 		];
 
 		public function __construct() {
