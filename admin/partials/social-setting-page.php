@@ -5,7 +5,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="show-social-icons-setting"><?php _e('Show Social Icons','site-mode');?></label></span>
+                <span><label for="show-social-icons-setting"><?php esc_html_e('Show Social Icons','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -17,7 +17,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Social Icons', 'site-mode');?></span>
+                <span><?php esc_html_e('Social Icons', 'site-mode');?></span>
             </div>
             <div class="option__row--field">             
                 <div class="social_icons_selectors">
@@ -32,7 +32,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span aria-labelledby="social_profiles"><?php _e('Social Profiles', 'site-mode');?></span>
+                <span aria-labelledby="social_profiles"><?php esc_html_e('Social Profiles', 'site-mode');?></span>
             </div>
             <div class="option__row--field" id='social_profiles'>             
                 <div class="socialmedia__wrapper">
@@ -56,7 +56,7 @@
                                                 <span class="fa-brands <?php echo esc_attr($icon['icon']); ?>"></span>
                                             </label>
                                             <div class="social_field">
-                                                <label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php echo esc_attr($icon['title']);?></label>
+                                                <label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php esc_htm_e($icon['title']);?></label>
                                                 <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" required />
                                             </div>
                                             <div class="option__row--remove">
@@ -85,7 +85,7 @@
                     <span class="save-btn-loader" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
                     </span>
-                    <?php _e('Save Changes', 'site-mode'); ?>
+                    <?php esc_html_e('Save Changes', 'site-mode'); ?>
                 </button>
             </div>
         </div>

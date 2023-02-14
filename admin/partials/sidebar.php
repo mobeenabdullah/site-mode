@@ -1,12 +1,12 @@
 
 <div class="sidebar_card">
     <div class="sidebar_card_header">
-        <h3 class="card_title"><?php _e('Preview','site-mode');?></h3>
+        <h3 class="card_title"><?php esc_html_e('Preview','site-mode');?></h3>
     </div>
     <div class="sidebar_card_body">
         <div class="sidebar_card_body_content">
             <div class="submit_button">
-                <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" target="_blank" class="preview_btn"><?php _e('Preview Active Template','site-mode');?></a>
+                <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" target="_blank" class="preview_btn"><?php esc_html_e('Preview Active Template','site-mode');?></a>
             </div>
         </div>       
     </div>    
@@ -14,7 +14,7 @@
 
 <div class="sidebar_card">
     <div class="sidebar_card_header">
-        <h3 class="card_title"><?php _e('About Plugin','site-mode');?></h3>
+        <h3 class="card_title"><?php esc_html_e('About Plugin','site-mode');?></h3>
     </div>
     <div class="sidebar_card_body">
         <div class="sidebar_card_body_content">
