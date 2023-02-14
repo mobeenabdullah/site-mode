@@ -315,7 +315,7 @@
                         <div class="sm_select">
                             <select name="icon-size" id="site_mode">
                                 <option value="16" <?php selected( strval($this->icon_size) === '16', 1 ); ?> ><?php _e('16','site-mode');?></option>
-                                <option value="24" <?php selected( strval($this->icon_size) === '18', 1 ); ?> ><?php _e('18','site-mode');?></option>
+                                <option value="24" <?php selected( strval($this->icon_size) === '24', 1 ); ?> ><?php _e('24','site-mode');?></option>
                                 <option value="32" <?php selected( strval($this->icon_size) === '32', 1 ); ?> ><?php _e('32','site-mode');?></option>                                
                             </select>
                             <span class="arrow-down"></span>

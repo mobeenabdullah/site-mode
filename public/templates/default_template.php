@@ -42,10 +42,26 @@ require_once 'footer.php';
     }
     .construction_cover-icons .social_media_icon a {
         font-size: <?php echo esc_attr($design_social['icon_size']) / 10 . 'rem' ?>;
+
         background-color: <?php echo esc_attr($design_social['icon_bg_color']) ?>;
         border: 1px solid <?php echo esc_attr($design_social['icon_border_color']) ?>;
-        width: calc(<?php echo esc_attr($design_social['icon_size']) / 10 . 'rem' ?> + 2rem);
-        height: calc(<?php echo esc_attr($design_social['icon_size']) / 10 . 'rem' ?> + 2rem);
+        
+
+        <?php if($design_social['icon_size'] === 16) : ?>
+            width: 3.8rem !important;
+            height: 3.8rem !important;
+        <?php endif; ?>
+
+        <?php if($design_social['icon_size'] === 24) : ?>
+            width: 5rem !important;
+            height: 5rem !important;
+        <?php endif; ?>
+
+        <?php if($design_social['icon_size'] === 32) : ?>
+            width: 6rem !important;
+            height: 6rem !important;
+        <?php endif; ?>
+           
         padding: 1rem;
     }
     .construction_cover-icons .social_media_icon a i {
@@ -58,7 +74,7 @@ require_once 'footer.php';
 
 </style>
 
-<main>
+<main>    
     <section id="under_constructon" class="wrapper" style="background-image: url('<?php echo  esc_url($image_url) ?>')">
         <!--Section Overlay-->
         <div class="wrapper_overlay"></div>
