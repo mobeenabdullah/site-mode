@@ -35,6 +35,20 @@ class Settings {
         return $data;
     }
 
+	public function get_post_data($key, $action, $nonce, $sanitize = 'text') {
+
+		if(isset($_POST[$key]) && isset($_POST[$nonce]) && wp_verify_nonce( sanitize_text_field($_POST[$nonce]), $action ) ){
+			if($sanitize === 'number') {
+				return intval($_POST[$key]);
+			} else if($sanitize === 'color') {
+				return sanitize_hex_color($_POST[$key]);
+			} else {
+				return sanitize_text_field($_POST[$key]);
+			}
+		}
+		return null;
+	}
+
 	public function verify_nonce($key, $action) {
 		if ( ! isset( $_POST[$key] ) || ! wp_verify_nonce( $_POST[$key], $action ) ) {
 			wp_send_json_error( 'Invalid nonce' );
@@ -72,8 +86,3 @@ class Settings {
 	}
 
 }
-
-
-
-
-

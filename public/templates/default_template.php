@@ -13,6 +13,8 @@ $design_typo                = unserialize(get_option('site_mode_design_fonts'));
 $design_social              = unserialize(get_option('site_mode_design_social'));
 $social                     = unserialize(get_option('site_mode_social'));
 $seo                        = unserialize(get_option('site_mode_seo'));
+$general                    = unserialize(get_option('site_mode_general'));
+$custom_login_url           = isset($general['custom_login_url']) ? $general['custom_login_url'] : '';
 $logo_url                   = isset($content['logo_image']) ? wp_get_attachment_image_url($content['logo_image'], 'full') : '';
 $image_url                  = isset($content['bg_image']) ? wp_get_attachment_image_url($content['bg_image'], 'full') : '';
 
@@ -63,9 +65,15 @@ require_once 'footer.php';
         <!--Section Overlay-->
         <div class="wrapper_overlay"></div>
             <div class="login_icon">
-                <a href="<?php echo get_home_url() . '/wp-login.php' ?>" style="display: block">
+                <?php if(empty($custom_login_url)) {?>
+                <a href="<?php  echo esc_url(get_home_url()) . '/wp-login.php' ?>" style="display: block">
                     <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
                 </a>
+                <?php } else {  ?>
+                    <a href="<?php echo  esc_url(get_home_url()) .'/'.$custom_login_url  ?>" style="display: block">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
+                </a>
+                <?php }?>
             </div>
         <!--Section Content-->
         <div class="container">

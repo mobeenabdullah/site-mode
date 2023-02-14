@@ -105,6 +105,9 @@ class Site_Mode_Design extends  Settings
     }
 
     public function ajax_site_mode_design() {
+
+//	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
+
 		if(isset($_POST['template_name'])) {
 			$template_name = sanitize_text_field($_POST['template_name']);
             return $this->save_data($this->option_name_1, $template_name);
@@ -138,20 +141,16 @@ class Site_Mode_Design extends  Settings
 
     public function ajax_site_mode_design_font() {
 
-        print_r($_POST);
-
-	    // validate data and sanitize
+	    $this->verify_nonce('design-fonts', 'design-fonts-settings-save');
 	    $data = array();
-		    if(isset($_POST['heading-font-family'])) {
-				$data['heading_font_family'] = sanitize_text_field($_POST['heading-font-family']);
-		    }
+		$data['heading_font_family'] = $this->get_post_data('heading-font-family', 'design-fonts-settings-save', 'design-fonts', 'text');
 			if(isset($_POST['heading-font-size'])) {
 				$data['heading_font_size'] = intval($_POST['heading-font-size']);
 			}
-			if(isset($_POST['heading-font-color'])) {
+			if(isset($_POST['heading-font-color']) ) {
 				$data['heading_font_color'] = sanitize_hex_color($_POST['heading-font-color']);
 			}
-			if(isset($_POST['heading-font-weight'])) {
+			if(isset($_POST['heading-font-weight']) ) {
 				$data['heading_font_weight'] = sanitize_text_field($_POST['heading-font-weight']);
 			}
 			if(isset($_POST['heading-letter-spacing'])) {
@@ -160,13 +159,13 @@ class Site_Mode_Design extends  Settings
 			if(isset($_POST['heading-line-height'])) {
 				$data['heading_line_height'] = intval($_POST['heading-line-height']);
 			}
-			if(isset($_POST['description-font-family'])) {
+			if(isset($_POST['description-font-family']) ) {
 				$data['description_font_family'] = sanitize_text_field($_POST['description-font-family']);
 			}
 			if(isset($_POST['description-font-size'])) {
 				$data['description_font_size'] = intval($_POST['description-font-size']);
 			}
-			if(isset($_POST['description-font-color'])) {
+			if(isset($_POST['description-font-color']) ) {
 				$data['description_font_color'] = sanitize_hex_color($_POST['description-font-color']);
 			}
 			if(isset($_POST['description-font-weight'])) {

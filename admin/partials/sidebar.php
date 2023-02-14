@@ -1,14 +1,14 @@
 
 <div class="sidebar_card">
     <div class="sidebar_card_header">
-        <h3 class="card_title"><?php _e('Active Theme','site-mode');?></h3>
+        <h3 class="card_title"><?php _e('Active Template','site-mode');?></h3>
     </div>
     <div class="sidebar_card_body">
         <div class="sidebar_card_body_content">
             <div class="preview_active_template" style="background-image: url('<?php echo plugin_dir_url( __DIR__ ) .'assets/img/template-1.jpg'; ?>)">    
                 <div class="preview_active_template_link">        
                     <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" class="btn btn_sm btn_white" target="_blank">
-                        <?php _e('Preview Active Theme','site-mode');?>
+                        <?php _e('Preview Active Template','site-mode');?>
                     </a>
                 </div>    
             </div>
