@@ -382,7 +382,6 @@ jQuery(function ($) {
                     formData.append(item.name, item.value)
                 })
             }
-            $(".save-btn-loader").show()
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType: "json",
@@ -398,23 +397,32 @@ jQuery(function ($) {
                         launch_toast(res.success)
                     }, 1000)
                 },
+                error: function (error) {
+                    setTimeout(function () {
+                        $(".save-btn-loader").hide()
+                        // launch_toast(true)
+                    }, 1000)
+                }
             })
         }
 
         const formGeneral = $("#site-mode-general");
         formGeneral.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-general .save-btn-loader').show();
             sendAjaxRequest("site-mode-general", "ajax_site_mode_general");
         });
 
         const formContent = $("#site-mode-content");
         formContent.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-content .save-btn-loader').show();
             sendAjaxRequest("site-mode-content", "ajax_site_mode_content", true);
         });
 
         $("body").on("submit", "#site-mode-social", function (e) {
             e.preventDefault()
+            $('#site-mode-social .save-btn-loader').show();
             sendAjaxRequest("site-mode-social", "ajax_site_mode_social");
         })
 
@@ -430,7 +438,6 @@ jQuery(function ($) {
                     template_name: templateName,
                 },
                 success: function (res) {
-                    console.log(res)
                     const activatedTemplate = res.data
                     $(".template_card").removeClass("active_template")
                     $(".template_card .activate-template-btn").text("Active")
@@ -440,6 +447,7 @@ jQuery(function ($) {
                     $(".active_template .activate-template-btn").text(
                         "Activated"
                     )
+                    $(".save-btn-loader").hide()
                     launch_toast(res.success)
                 },
             })
@@ -448,24 +456,28 @@ jQuery(function ($) {
         const formDesignLogoBG = $("#site-mode-design-logo-background");
         formDesignLogoBG.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-design-logo-background .save-btn-loader').show();
             sendAjaxRequest("site-mode-design-logo-background", "ajax_site_mode_design_lb");
         });
 
         const formDesignFonts = $("#site-mode-design-fonts");
         formDesignFonts.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-design-fonts .save-btn-loader').show();
             sendAjaxRequest("site-mode-design-fonts", "ajax_site_mode_design_font");
         });
 
         const formDesignSocial = $("#site-mode-design-social");
         formDesignSocial.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-design-social  .save-btn-loader').show();
             sendAjaxRequest("site-mode-design-social", "ajax_site_mode_design_social");
         })
 
         const formSEO = $("#site-mode-seo");
         formSEO.submit(function (e) {
             e.preventDefault()
+            $('#site-mode-seo  .save-btn-loader').show();
             sendAjaxRequest("site-mode-seo", "ajax_site_mode_seo", true);
         });
 
@@ -478,7 +490,7 @@ jQuery(function ($) {
                 { name: "footer-code", value: footerEditor.getSession().getValue() },
                 { name: "custom-css", value: customCssEditor.getSession().getValue() },
             ]
-
+            $('#site-mode-advanced .save-btn-loader').show();
             sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced", false, extraData);
         });
 
@@ -513,9 +525,11 @@ jQuery(function ($) {
     const smTabsList = document.querySelectorAll(".sm_tabs li")
     const menuLabel = document.querySelector(".menu_label")
 
-    mobileMenu.addEventListener("click", function () {
-        smTabs.classList.toggle("active_tabs")
-    })
+    if(mobileMenu) {
+        mobileMenu.addEventListener("click", function () {
+            smTabs.classList.toggle("active_tabs")
+        })
+    }
 
     if (window.innerWidth < 768) {
         smTabsList.forEach(function (item) {
@@ -584,29 +598,32 @@ jQuery(function ($) {
     let bgPickr, headingPickr, descPickr, iconPickr, iconBgPickr, iconBorderPickr = '';
 
     function colorPickerBox(pickerElement, containerElement) {
-        const colorBox = containerElement.children[2];
-        const colorTrigger = containerElement.children[1];
-        const colorInput = containerElement.children[3];
 
-        pickerElement = Pickr.create({
-        el: colorTrigger,
-        container: containerElement,
-        position: 'right-end',
-        theme: "nano", // or 'monolith', or 'nano'
-        defaultRepresentation: "HEX",
-        components: {
-            preview: true,
-            hue: true,
-            interaction: {
-                input: true,
-                save: true,
-            },
-        },
-        }).on("save", (instance) => {
-            colorInput.value = pickerElement.getColor().toHEXA().toString();
-            colorBox.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
-            pickerElement.hide();
-        });
+        if(containerElement && containerElement.children && containerElement.children.length > 0 ) {
+            const colorBox = containerElement.children[2];
+            const colorTrigger = containerElement.children[1];
+            const colorInput = containerElement.children[3];
+
+            pickerElement = Pickr.create({
+                el: colorTrigger,
+                container: containerElement,
+                position: 'right-end',
+                theme: "nano", // or 'monolith', or 'nano'
+                defaultRepresentation: "HEX",
+                components: {
+                    preview: true,
+                    hue: true,
+                    interaction: {
+                        input: true,
+                        save: true,
+                    },
+                },
+            }).on("save", (instance) => {
+                colorInput.value = pickerElement.getColor().toHEXA().toString();
+                colorBox.style.backgroundColor = pickerElement.getColor().toHEXA().toString();
+                pickerElement.hide();
+            });
+        }
     }
 
     colorPickerBox(bgPickr, containerOverlay);
