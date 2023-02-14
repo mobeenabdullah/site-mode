@@ -31,9 +31,10 @@
         transform: translateY(-50%);
         z-index: 9999;
         @include width_height_mixin(5rem, 5rem);
-        border-radius: 50%;
-        background-color: var(--template-one-primary-color);
+        border-radius: 50%;        
+        border: 1px solid var(--base-white-color);
         @include flex_mixin(flex, center, center, null, null);
+        transition: all .2s;
 
         &  a {
             @include flex_mixin(flex, center, center, null, null);
@@ -44,12 +45,14 @@
             }
             
         }
-        
+        &:hover {
+            transform: translateY(-50%) scale(1.2);
+        }
 
     }
 }
 
-.construction_cover {
+.default_template {
     @include flex_mixin(flex, center, center, column, null);
     @extend %width-100-height-100vh;
     @include position_mixin(relative, null, null, null, null);
@@ -57,7 +60,7 @@
     z-index: 2;
 
     &-logo {
-        margin-bottom: 10rem;
+        margin-bottom: 6rem;
 
         & img {
             display: block;
@@ -80,7 +83,7 @@
     }
 
     &-text {
-        max-width: 75rem;
+        max-width: 55rem;
         margin-bottom: 8rem;
         & p {
             @include font_mixin(2.2rem, 300, 1.5, center);
@@ -93,7 +96,7 @@
         & .social_media {
             padding: 0;
             margin: 0;
-            @include flex_mixin(flex, space-between, center, null, 4rem);
+            @include flex_mixin(flex, space-between, center, null, 2rem);
             list-style: none;
     
             &_icon {
@@ -103,13 +106,17 @@
                     padding: 1.2rem;                    
                     border: 1px solid transparent;
                     border-radius: 0.4rem;
-                    transform: rotate(45deg);
+                    // transform: rotate(45deg);
                     text-align: center;
                     text-decoration: none;     
                     color: var(--base-white-color); 
                     font-size: 18px;
-                    & i {
-                        transform: rotate(-45deg);
+                    transition: all .2s;
+                    // & i {
+                    //     transform: rotate(-45deg);
+                    // }
+                    &:hover {
+                        transform: scale(1.1);
                     }
                 }
             }

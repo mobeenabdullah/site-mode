@@ -1,16 +1,12 @@
 
 <div class="sidebar_card">
     <div class="sidebar_card_header">
-        <h3 class="card_title"><?php _e('Active Theme','site-mode');?></h3>
+        <h3 class="card_title"><?php _e('Preview','site-mode');?></h3>
     </div>
     <div class="sidebar_card_body">
         <div class="sidebar_card_body_content">
-            <div class="preview_active_template" style="background-image: url('<?php echo plugin_dir_url( __DIR__ ) .'assets/img/template-1.jpg'; ?>)">    
-                <div class="preview_active_template_link">        
-                    <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" class="btn btn_sm btn_white" target="_blank">
-                        <?php _e('Preview Active Theme','site-mode');?>
-                    </a>
-                </div>    
+            <div class="submit_button">
+                <a href="<?php echo esc_url(home_url( '?site-mode-preview=true')); ?>" target="_blank" class="preview_btn"><?php _e('Preview Active Template','site-mode');?></a>
             </div>
         </div>       
     </div>    
@@ -22,7 +18,7 @@
     </div>
     <div class="sidebar_card_body">
         <div class="sidebar_card_body_content">
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, odit minima soluta dolorum possimus magnam est eos fuga obcaecati fugiat, vitae molestiae aut nesciunt nihil iste architecto dicta nobis consequatur!</p>
+           <p>Easily put your WordPress site into maintenance mode while you work on updates or make changes</p>
         </div>       
     </div>    
 </div>

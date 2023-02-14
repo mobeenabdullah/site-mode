@@ -20,7 +20,7 @@ require_once 'footer.php';
 ?>
 
 <style>
-    .construction_cover-heading .main_title {
+    .default_template-heading .main_title {
         font-family: <?php echo $design_typo['heading_font_family'] ? esc_html($design_typo['heading_font_family']) : 'var(--base-open-sans)' ?>;
         font-size: <?php echo esc_attr($design_typo['heading_font_size']) / 10 . 'rem' ?>;
         color: <?php echo esc_attr($design_typo['heading_font_color']) ?>;
@@ -28,7 +28,7 @@ require_once 'footer.php';
         letter-spacing: <?php echo esc_attr($design_typo['heading_letter_spacing']) / 10 . 'rem' ?>;
         line-height: <?php echo esc_attr($design_typo['heading_line_height']) / 10 . 'rem' ?>;
     }
-    .construction_cover-text p {
+    .default_template-text p {
         font-family: <?php echo esc_attr($design_typo['description_font_family']) ?>;
         font-size: <?php echo esc_attr($design_typo['description_font_size']) / 10 . 'rem' ?>;
         color: <?php echo esc_attr($design_typo['description_font_color']) ?>;
@@ -36,11 +36,11 @@ require_once 'footer.php';
         letter-spacing: <?php echo esc_attr($design_typo['description_letter_spacing']) / 10 . 'rem' ?>;
         line-height: <?php echo esc_attr($design_typo['description_line_height']) / 10 . 'rem' ?>;
     }
-    .construction_cover-logo {
+    .default_template-logo {
         width: <?php echo esc_attr($design_logo_background['logo-width']) / 10 . 'rem' ?>;
         height: auto;
     }
-    .construction_cover-icons .social_media_icon a {
+    .default_template-icons .social_media_icon a {
         font-size: <?php echo esc_attr($design_social['icon_size']) / 10 . 'rem' ?>;
 
         background-color: <?php echo esc_attr($design_social['icon_bg_color']) ?>;
@@ -64,13 +64,15 @@ require_once 'footer.php';
            
         padding: 1rem;
     }
-    .construction_cover-icons .social_media_icon a i {
+    
+    .default_template-icons .social_media_icon a i {
         color: <?php echo esc_attr($design_social['icon_color']) ?>;
     }
+    
     .wrapper_overlay {
         background-color: <?php echo esc_attr($design_logo_background['overlay-color']); ?>;
         opacity: <?php echo esc_attr($design_logo_background['overlay-opacity']) / 10; ?>;
-    }
+    }  
 
 </style>
 
@@ -85,19 +87,19 @@ require_once 'footer.php';
             </div>
         <!--Section Content-->
         <div class="container">
-            <div class="construction_cover">
-                    <div class="construction_cover-logo">
+            <div class="default_template">
+                    <div class="default_template-logo">
                         <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
                     </div>
-                    <div class="construction_cover-heading">
+                    <div class="default_template-heading">
                         <h1 class="main_title">
                             <?php echo esc_attr($content['content_heading']); ?>
                         </h1>
                     </div>
-                    <div class="construction_cover-text">
+                    <div class="default_template-text">
                         <p><?php echo esc_attr($content['content_description']); ?></p>
                     </div>                    
-                    <div class="construction_cover-icons">
+                    <div class="default_template-icons">
                         <ul class="social_media">
                             <?php foreach ($social as $key => $value) : ?>                                    
                                 <?php if( is_array($value) || is_object($value)) : ?>
