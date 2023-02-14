@@ -35,34 +35,27 @@ class Site_Mode_Activator {
         $general_settings = array(
             "mode_status"                => 1,
             "mode_type"                  =>'maintenance',
-            "redirect_url"                   => '',
-            'redirect_delay'                 => 2,
+            "redirect_url"               => '',
+            'redirect_delay'             => 0,
             'show_login_icon'            => 1,
-            'custom_login_url'             => '',
-            'whitelist_pages'         => [],
-            'user_roles'             => ['administrator']
+            'custom_login_url'           => '',
+            'whitelist_pages'            => [],
+            'user_roles'                 => ['administrator']
         );
 
         // Add default options to database for content settings.
         $content_settings= array(
-            "logo_settings" =>'text-type',
-            "image_logo"    =>'',
-            "text_logo"     =>bloginfo('name'),
-            "heading"       =>"We are currently under maintenance",
-            'description'   =>"We are currently under maintenance. We will be back shortly. Thank you for your patience.",
-            'bg_image'      =>'',
+            "logo_type"                  =>'text-type',
+            "image_logo"                 =>'',
+            "logo_text"                  => bloginfo('name'),
+            "content_heading"            =>"Website Under Maintenance",
+            'content_description'        =>"Site will be available soon. Thank you for your patience!",
+            'bg_image'                   =>'',
         );
         // Add default options to database for social settings.
         $social_settings = array(
-            'show_social'       => '1',
-            'social_fb'         => 'rexnixtechnologies',
-            'social_twitter'    => 'rexnixtechnologies',
-            'social_linkedin'   => 'rexnixtechnologies',
-            'social_youtube'    => 'rexnixtechnologies',
-            'social_instagram'  => 'rexnixtechnologies',
-            'social_pintrest'   => 'rexnixtechnologies',
-            'social_quora'      => 'rexnixtechnologies',
-            'social_behance'    => 'rexnixtechnologies',
+            'show_social_icons'          => '1',
+            'social_icons'               => [],
         );
 
         // Add default options to database for Design settings.
@@ -70,49 +63,57 @@ class Site_Mode_Activator {
 
         // Add default options to database for Design logo and background settings.
         $design_lb_settings = array(
-            'logo_width'            =>'120',
-            'logo_height'           => '120',
-            'design_background'     => '1',
-            'background_overlay'    => '1',
-            'overlay_color'         => '#000000',
-            'overlay_opacity'       => '0.5',
+            'logo-width'                 =>'120',
+            'logo-height'                => '120',
+            'background-overlay'         => '1',
+            'overlay-color'              => '#000000',
+            'overlay-opacity'            => '0.5',
         );
 
         // Add default options to database for Design fonts  settings.
         $design_fonts_settings = array(
-            'heading_font_family'               => 'Open Sans',
-            'heading_font_size'                 => '48',
-            'description_font_family'           => 'Open Sans',
-            'description_font_size'             => '18',
+            'heading_font_family'        => 'Open Sans',
+            'heading_font_size'          => '48',
+			'heading_font_color'         => '#ffffff',
+			'heading_font_weight'        => '700',
+			'heading_letter_spacing'     => '0',
+			'heading_line_height'        => '1.2',
+            'description_font_family'    => 'Open Sans',
+            'description_font_size'      => '18',
+	        'description_font_color'     => '#ffffff',
+	        'description_font_weight'    => '400',
+	        'description_letter_spacing' => '0',
+	        'description_line_height'    => '1.8',
+
         );
 
         // Add default options to database for Design icons color settings.
         $design_icon_color = array(
-            'icon_size'                 => '32',
-            'icon_color'                => '#ffffff',
-            'icon_bg_color'             => '#000000',
-            'icon_border_color'         => '#000000',
-            'design_icon_color'         => '#ffffff',
+            'icon_size'                  => '32',
+            'icon_color'                 => '#ffffff',
+            'icon_bg_color'              => '#000000',
+            'icon_border_color'          => '#000000',
+            'design_icon_color'          => '#ffffff',
         );
 
         //add default options to database for SEO settings fields with placeholder text.
         $seo_settings = array(
-            'meta_title'            => 'Site is under maintenance',
-            'meta_description'      => 'Site is under maintenance',
-            'meta_favicon'          => '',
-            'meta_image'            => '',
+            'meta_title'                    => '',
+            'meta_description'              => '',
+            'meta_favicon'                  => '',
+            'meta_image'                    => '',
         );
 
         // adding default options to database for advanced settings.
         $advance_settings = array(
-            'ga_type'               => '',
-            'ga_id'                 => 'Google Analytics ID',
-            'fb_id'                 => 'Facebook Pixel ID',
-            'custom_css'            => 'Custom CSS',
-            'enable_rest_api'       => '1',
-            'enable_feed'           => '1',
-            'header_code'           => 'Header Code',
-            'footer_code'           => 'Footer Code',
+            'ga_id'                         => '',
+            'fb_id'                         => '',
+            'custom_css'                    => '',
+            'enable_rest_api'               => '0',
+			'disable_rss_feed'              => '0',
+            'enable_feed'                   => '1',
+            'header_code'                   => '',
+            'footer_code'                   => '',
 
         );
 

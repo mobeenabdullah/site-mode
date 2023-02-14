@@ -21,10 +21,6 @@
             require_once plugin_dir_path(__FILE__) . "advanced-setting-page.php";
             break;
 
-        case 'import-export':
-            require_once plugin_dir_path(__FILE__) . "export-import-setting-page.php";
-            break;
-
         default:
             require_once plugin_dir_path(__FILE__) . "general-setting-page.php";
             break;

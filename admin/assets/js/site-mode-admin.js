@@ -115,7 +115,6 @@ jQuery(function ($) {
     9.  Ajax calls for design tab
     10.  Ajax call for SEO tab
     11.  Ajax call for advance Tab
-    12.  Ajax call for import and export
     ------------------------------------------------*/
 
     $(document).ready(function () {
@@ -156,6 +155,27 @@ jQuery(function ($) {
             )
         }
         allTabs.on("click", changeTab)
+
+
+        // ACE Editor
+        if ($("#header_code").length > 0) {
+            var headerEditor = ace.edit("header_code")
+            headerEditor.setTheme("ace/theme/ambiance")
+            headerEditor.session.setMode("ace/mode/html")
+        }
+
+        if ($("#footer_code").length > 0) {
+            var footerEditor = ace.edit("footer_code")
+            footerEditor.setTheme("ace/theme/ambiance")
+            footerEditor.session.setMode("ace/mode/html")
+        }
+
+        if ($("#custom_css").length > 0) {
+            var customCssEditor = ace.edit("custom_css")
+            customCssEditor.setTheme("ace/theme/ambiance")
+            customCssEditor.session.setMode("ace/mode/css")
+        }
+
 
         // 3.   Logo Type
         const imageLogoWrapper = $(".image_logo_wrapper")
@@ -352,11 +372,16 @@ jQuery(function ($) {
         });
 
 
-        function sendAjaxRequest(selector, action, enctype = false) {
+        function sendAjaxRequest(selector, action, enctype = false, data = []) {
             const form = document.getElementById(selector)
             const formData = new FormData(form)
             formData.append("action", action)
             formData.append(action, form)
+            if(data.length > 0){
+                data.forEach((item) => {
+                    formData.append(item.name, item.value)
+                })
+            }
             $(".save-btn-loader").show()
             $.ajax({
                 url: ajaxObj.ajax_url,
@@ -447,75 +472,15 @@ jQuery(function ($) {
         const formAdvanced = $("#site-mode-advanced");
         formAdvanced.submit(function (e) {
             e.preventDefault()
-            sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced");
+
+            const extraData = [
+                { name: "header-code", value: headerEditor.getSession().getValue() },
+                { name: "footer-code", value: footerEditor.getSession().getValue() },
+                { name: "custom-css", value: customCssEditor.getSession().getValue() },
+            ]
+
+            sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced", false, extraData);
         });
-
-        // 13.  Ajax call for import and export Tab
-        $("#site-mode-import").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-import")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_import")
-            formData.append("ajax_site_mode_import", form)
-            // import json file and save it to database
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                type: "POST",
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
-
-        $(".btn-export").on("click", function () {
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                type: "GET",
-                data: { action: "ajax_site_mode_export" },
-                success: function (data) {
-                    console.log(data)
-                    var blob = new Blob([data], {
-                        type: "application/json",
-                    })
-                    var link = document.createElement("a")
-                    link.href = window.URL.createObjectURL(blob)
-                    //get site name using window.location and split it by dot
-                    var siteName = window.location.hostname.split(".")[0]
-                    //plugin name
-                    var pluginName = "site-mode"
-                    //get current date and time
-                    var date = new Date()
-                    var dateStr =
-                        date.getFullYear() +
-                        "-" +
-                        (date.getMonth() + 1) +
-                        "-" +
-                        date.getDate() +
-                        "-" +
-                        date.getHours() +
-                        "-" +
-                        date.getMinutes() +
-                        "-" +
-                        date.getSeconds()
-                    //create file name with site name and current date and time
-                    var fileName =
-                        siteName + "-" + pluginName + "-" + dateStr + ".json"
-                    link.download = fileName
-
-                    //name of the file with site name
-                    // link.download = siteName + '.json';
-                    // link.download = "export.json";
-                    link.click()
-                },
-            })
-        })
 
         // Multi Select
         $(".whitelist-pages-multiselect").select2()
@@ -524,21 +489,23 @@ jQuery(function ($) {
         const hiddenBtn = document.querySelector(".hiddenBtn")
         const chooseBtn = document.querySelector(".chooseBtn")
 
-        hiddenBtn.addEventListener("change", function () {
-            if (hiddenBtn.files.length > 0) {
-                //chooseBtn.innerText = hiddenBtn.files[0].name;
-                chooseBtn.insertAdjacentHTML(
-                    "afterend",
-                    `<div class="file_name">${hiddenBtn.files[0].name}</div>`
-                )
-            } else {
-                chooseBtn.innerText = "Choose"
-                chooseBtn.removeAdjacentHTML(
-                    "afterend",
-                    `<div class="file_name">${hiddenBtn.files[0].name}</div>`
-                )
-            }
-        })
+        if(hiddenBtn) {
+            hiddenBtn.addEventListener("change", function () {
+                if (hiddenBtn.files.length > 0) {
+                    //chooseBtn.innerText = hiddenBtn.files[0].name;
+                    chooseBtn.insertAdjacentHTML(
+                        "afterend",
+                        `<div class="file_name">${hiddenBtn.files[0].name}</div>`
+                    )
+                } else {
+                    chooseBtn.innerText = "Choose"
+                    chooseBtn.removeAdjacentHTML(
+                        "afterend",
+                        `<div class="file_name">${hiddenBtn.files[0].name}</div>`
+                    )
+                }
+            })
+        }
     })
 
     const mobileMenu = document.querySelector(".mobile_menu")
@@ -563,25 +530,6 @@ jQuery(function ($) {
                 menuLabel.innerText = tabLabel + " Setting"
             })
         })
-    }
-
-    // ACE Editor
-    if ($("#header_code").length > 0) {
-        let headerEditor = ace.edit("header_code")
-        headerEditor.setTheme("ace/theme/ambiance")
-        headerEditor.session.setMode("ace/mode/html")
-    }
-
-    if ($("#footer_code").length > 0) {
-        let footerEditor = ace.edit("footer_code")
-        footerEditor.setTheme("ace/theme/ambiance")
-        footerEditor.session.setMode("ace/mode/html")
-    }
-
-    if ($("#custom_css").length > 0) {
-        let customCssEditor = ace.edit("custom_css")
-        customCssEditor.setTheme("ace/theme/ambiance")
-        customCssEditor.session.setMode("ace/mode/html")
     }
 
     // Range slider - gravity forms

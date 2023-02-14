@@ -216,12 +216,6 @@ class Site_Mode
         // advanced settings
         $this->loader->add_action('wp_ajax_ajax_site_mode_advanced',$this->classes_loader->get_advanced(),'ajax_site_mode_advanced');
 
-        //export  and export settings
-        $this->loader->add_action('wp_ajax_ajax_site_mode_export',$this->classes_loader->get_export(),'ajax_site_mode_export');
-        $this->loader->add_action('wp_ajax_ajax_site_mode_import',$this->classes_loader->get_import(),'ajax_site_mode_import');
-
-
-
 	}
 
 	/**

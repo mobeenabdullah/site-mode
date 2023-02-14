@@ -9,8 +9,6 @@ class init {
     protected $design_settings;
     protected $seo_settings;
     protected $advanced_settings;
-    protected $import_settings;
-    protected $export_settings;
 
     public function __construct() {
 
@@ -23,8 +21,6 @@ class init {
         $this->design_settings      = new Site_Mode_Design();
         $this->seo_settings         = new Site_Mode_Seo();
         $this->advanced_settings    = new Site_Mode_Advanced();
-        $this->import_settings      = new Site_Mode_Import();
-        $this->export_settings      = new Site_Mode_Export();
     }
 
     public function files_loader() {
@@ -36,8 +32,6 @@ class init {
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-design.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-seo.php';
         require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-advanced.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-import.php';
-        require_once plugin_dir_path(dirname(__FILE__)) . 'classes/class-site-mode-export.php';
     }
 
     public function get_general() {
@@ -62,13 +56,5 @@ class init {
 
     public function get_advanced() {
         return new Site_Mode_Advanced();
-    }
-
-    public function get_import() {
-        return new Site_Mode_Import();
-    }
-
-    public function get_export() {
-        return new Site_Mode_Export();
     }
 }

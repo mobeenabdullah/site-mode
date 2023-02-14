@@ -36,8 +36,8 @@ class Site_Mode_Content extends Settings {
         $this->content_description      = (isset($this->site_mode_content['content_description'])) ? $this->site_mode_content['content_description'] : null;
 	    $this->logo_type        	    = (isset($this->site_mode_content['logo_type'])) ? $this->site_mode_content['logo_type'] : null;
 	    $this->logo_text                = (isset($this->site_mode_content['logo_text'])) ? $this->site_mode_content['logo_text'] : null;
-	    $this->logo_image               = $this->get_attachments_details($this->site_mode_content['logo_image']);
-        $this->bg_image                 = $this->get_attachments_details($this->site_mode_content['bg_image']);
+	    $this->logo_image               = isset($this->site_mode_content['logo_image']) ? $this->get_attachments_details($this->site_mode_content['logo_image']) : null;
+        $this->bg_image                 = isset($this->site_mode_content['bg_image']) ? $this->get_attachments_details($this->site_mode_content['bg_image']) : null;
 
     }
 
