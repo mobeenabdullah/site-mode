@@ -4,7 +4,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="content_heading"><?php _e('Heading','site-mode');?></label></span>
+                <span><label for="content_heading"><?php esc_html_e('Heading','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">
@@ -15,7 +15,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="content_description"><?php _e('Description','site-mode');?></label></span>
+                <span><label for="content_description"><?php esc_html_e('Description','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="description_editor" id="content_description">
@@ -40,24 +40,24 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php _e('Logo Type','site-mode');?></span>
+                <span><?php esc_html_e('Logo Type','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
                     <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="text-logo" class="logo_type_selector" name="logo-type" value="text" <?php checked($this->logo_type === 'text',true,true); ?> />
-                        <label for="text-logo"><?php _e('Text','site-mode');?></label>
+                        <label for="text-logo"><?php esc_html_e('Text','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
 
                     <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="image-logo" class="logo_type_selector" name="logo-type" value="image" <?php checked($this->logo_type === 'image',true, true); ?> />
-                        <label for="image-logo"><?php _e('Image','site-mode');?></label>
+                        <label for="image-logo"><?php esc_html_e('Image','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                     <div class="radio_wrapper logo_radio_wrapper">
                         <input type="radio" id="disable-logo" class="logo_type_selector" name="logo-type" value="disable" <?php checked($this->logo_type === 'disable',true, true); ?> />
-                        <label for="disable-logo"><?php _e('Disable','site-mode');?></label>
+                        <label for="disable-logo"><?php esc_html_e('Disable','site-mode');?></label>
                         <div class="check"><div class="inside"></div></div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
             <div class="option__row">
                 <div class="option__row--label">
                     <span>
-                        <label for="logo-image"><?php _e('Select Logo','site-mode');?></label>
+                        <label for="logo-image"><?php esc_html_e('Select Logo','site-mode');?></label>
                     </span>
                 </div>
                 <div class="option__row--field">
@@ -108,7 +108,7 @@
         <div class="logo_wrapper text_logo_wrapper <?php echo $this->logo_type === 'text' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
-                    <span><label for="text_logo"><?php _e('Logo text','site-mode');?></label></span>
+                    <span><label for="text_logo"><?php esc_html_e('Logo text','site-mode');?></label></span>
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover label_top">
@@ -120,7 +120,7 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="background-image"><?php _e('Background Image','site-mode');?></label></span>
+                <span><label for="background-image"><?php esc_html_e('Background Image','site-mode');?></label></span>
             </div>
             <div class="option__row--field">
                 <div class="upload_image_cover bg_img_display">
@@ -169,7 +169,7 @@
                     <span class="save-btn-loader" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
                     </span>
-                    <?php _e('Save Changes', 'site-mode'); ?>
+                    <?php esc_html_e('Save Changes', 'site-mode'); ?>
                 </button>
             </div>
         </div>

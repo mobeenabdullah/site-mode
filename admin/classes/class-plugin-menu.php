@@ -46,14 +46,6 @@ class Site_Mode_Menu {
             'site-mode',
             [$this, 'site_mode_settings_page_cb']
         );
-        add_submenu_page(
-            'site-mode',
-            'about',
-            'About',
-            'manage_options',
-            'site-mode-about',
-            [$this, 'site_mode_content_page_html']
-        );
     }
 
     public function site_mode_settings_page_cb() {
