@@ -56,9 +56,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover header_code">
-                    <textarea id="header_code" name="header-code" rows="6" cols="80">
-                        <?php echo esc_attr($this->header_code); ?>
-                    </textarea>
+                    <textarea id="header_code" name="header-code" rows="6" cols="80"><?php echo esc_attr($this->header_code); ?></textarea>
                 </div>
             </div>
         </div>

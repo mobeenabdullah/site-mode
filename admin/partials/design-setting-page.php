@@ -2,7 +2,7 @@
     <div class="section__wrapper">
         <div class="section__wrapper-header">
             <div class="section_title">
-                <h3 class="section_title-title"><?php _e('Themes','site-mode');?></h3>
+                <h3 class="section_title-title"><?php _e('Templates','site-mode');?></h3>
             </div>
         </div>
         <div class="section__wrapper-content section_theme">
