@@ -34,7 +34,7 @@ class Site_Mode_Activator {
         // Add default options to database for general settings
         $general_settings = array(
             "mode_status"                => 1,
-            "mode_type"                  =>'maintenance',
+            "mode_type"                  => 'maintenance',
             "redirect_url"               => '',
             'redirect_delay'             => 0,
             'show_login_icon'            => 1,
@@ -45,12 +45,12 @@ class Site_Mode_Activator {
 
         // Add default options to database for content settings.
         $content_settings= array(
-            "logo_type"                  =>'text-type',
-            "image_logo"                 =>'',
-            "logo_text"                  => bloginfo('name'),
-            "content_heading"            =>"Website Under Maintenance",
-            'content_description'        =>"Site will be available soon. Thank you for your patience!",
-            'bg_image'                   =>'',
+            "logo_type"                  => 'text-type',
+            "image_logo"                 => '',
+            "logo_text"                  => get_bloginfo('name'),
+            "content_heading"            => "Website Under Maintenance",
+            'content_description'        => "Site will be available soon. Thank you for your patience!",
+            'bg_image'                   => '',
         );
         // Add default options to database for social settings.
         $social_settings = array(
@@ -59,11 +59,11 @@ class Site_Mode_Activator {
         );
 
         // Add default options to database for Design settings.
-        $template_name = 'construction_template';
+        $template_name = 'default_template';
 
         // Add default options to database for Design logo and background settings.
         $design_lb_settings = array(
-            'logo-width'                 =>'120',
+            'logo-width'                 => '120',
             'logo-height'                => '120',
             'background-overlay'         => '1',
             'overlay-color'              => '#000000',

@@ -42,7 +42,6 @@ class Site_Mode_Advanced extends Settings {
             $this->header_code          = isset($this->site_mode_advanced['header_code']) ? $this->site_mode_advanced['header_code'] : '';
             $this->footer_code          = isset($this->site_mode_advanced['footer_code']) ? $this->site_mode_advanced['footer_code'] : '';
 	        $this->custom_css           = isset($this->site_mode_advanced['custom_css']) ? $this->site_mode_advanced['custom_css'] : '';
-
         }
     }
 
@@ -102,7 +101,8 @@ class Site_Mode_Advanced extends Settings {
     }
 
     public function site_mode_rest_api($access) {
-        if (empty($this->enable_rest_api)) {
+
+        if (empty($this->disable_rest_api)){
             return $access;
         } else {
             return new WP_Error('rest_cannot_access', __('The REST API on this site has been disabled.', 'site-mode'), array('status' => rest_authorization_required_code()));
