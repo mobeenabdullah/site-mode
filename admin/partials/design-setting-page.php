@@ -15,15 +15,14 @@
                                     'id' => 1,
                                     'name' => 'default_template',
                                     'title' => 'Default Template',
-                                    'image' => plugin_dir_url( __DIR__ ).'assets/img/template-1.jpg'
+                                    'image' => plugin_dir_url( __DIR__ ).'assets/img/default_template.jpg'
                                 ]	                           
                             ];
                         ?>
 
                         <?php foreach ($templates as $template) : ?>
                         <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
-                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">
-                                <!-- <img src="<?php //echo esc_url($template['image'])  ?>" alt="<?php //echo esc_attr($template['title']); ?>" /> -->
+                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">                                
                                 <div class="template_card-actions button_wrapper">                                    
                                     <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
                                         <?php _e('Preview','site-mode');?>

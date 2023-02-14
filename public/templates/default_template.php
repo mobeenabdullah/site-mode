@@ -1,7 +1,7 @@
 <?php
 
 /**
- *  Name : Template-one
+ *  Name : Default-Template
  */
 
 require_once 'header.php';
