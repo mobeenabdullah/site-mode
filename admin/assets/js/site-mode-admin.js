@@ -115,7 +115,6 @@ jQuery(function ($) {
     9.  Ajax calls for design tab
     10.  Ajax call for SEO tab
     11.  Ajax call for advance Tab
-    12.  Ajax call for import and export
     ------------------------------------------------*/
 
     $(document).ready(function () {
@@ -449,73 +448,6 @@ jQuery(function ($) {
             e.preventDefault()
             sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced");
         });
-
-        // 13.  Ajax call for import and export Tab
-        $("#site-mode-import").submit(function (event) {
-            event.preventDefault()
-            const form = document.getElementById("site-mode-import")
-            const formData = new FormData(form)
-            formData.append("action", "ajax_site_mode_import")
-            formData.append("ajax_site_mode_import", form)
-            // import json file and save it to database
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                type: "POST",
-                dataType: "json",
-                method: "post",
-                processData: false,
-                contentType: false,
-                cache: false,
-                data: formData,
-                enctype: "multipart/form-data",
-                success: function (res) {
-                    launch_toast(res.success)
-                },
-            })
-        })
-
-        $(".btn-export").on("click", function () {
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                type: "GET",
-                data: { action: "ajax_site_mode_export" },
-                success: function (data) {
-                    console.log(data)
-                    var blob = new Blob([data], {
-                        type: "application/json",
-                    })
-                    var link = document.createElement("a")
-                    link.href = window.URL.createObjectURL(blob)
-                    //get site name using window.location and split it by dot
-                    var siteName = window.location.hostname.split(".")[0]
-                    //plugin name
-                    var pluginName = "site-mode"
-                    //get current date and time
-                    var date = new Date()
-                    var dateStr =
-                        date.getFullYear() +
-                        "-" +
-                        (date.getMonth() + 1) +
-                        "-" +
-                        date.getDate() +
-                        "-" +
-                        date.getHours() +
-                        "-" +
-                        date.getMinutes() +
-                        "-" +
-                        date.getSeconds()
-                    //create file name with site name and current date and time
-                    var fileName =
-                        siteName + "-" + pluginName + "-" + dateStr + ".json"
-                    link.download = fileName
-
-                    //name of the file with site name
-                    // link.download = siteName + '.json';
-                    // link.download = "export.json";
-                    link.click()
-                },
-            })
-        })
 
         // Multi Select
         $(".whitelist-pages-multiselect").select2()
