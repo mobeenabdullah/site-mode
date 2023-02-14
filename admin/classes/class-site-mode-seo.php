@@ -43,19 +43,11 @@ class Site_Mode_Seo extends Settings {
 
 	    $this->verify_nonce('seo-custom-message', 'seo-settings-save');
         $data = [];
-		if(isset($_POST['seo-meta-title'])) {
-			$data['meta_title'] = sanitize_text_field($_POST['seo-meta-title']);
-		}
-		if(isset($_POST['seo-meta-description'])) {
-			$data['meta_description'] = sanitize_text_field($_POST['seo-meta-description']);
-		}
-		if(isset($_POST['seo-meta-favicon'])) {
-			$data['meta_favicon'] = intval($_POST['seo-meta-favicon']);
-		}
-		if(isset($_POST['seo-meta-image'])) {
-			$data['meta_image'] = intval($_POST['seo-meta-image']);
-		}
-
+        $data['meta_title'] = $this->get_post_data('seo-meta-title', 'seo-settings-save', 'seo-custom-message', 'text');
+        $data['meta_description'] = $this->get_post_data('seo-meta-description', 'seo-settings-save', 'seo-custom-message', 'text');
+        $data['meta_favicon'] = $this->get_post_data('seo-meta-favicon', 'seo-settings-save', 'seo-custom-message', 'text');
+        $data['meta_image'] = $this->get_post_data('seo-meta-image', 'seo-settings-save', 'seo-custom-message', 'text');
+        
         return $this->save_data($this->option_name, $data);
         die();
     }

@@ -73,28 +73,14 @@ class Site_Mode_Advanced extends Settings {
 
         // validate using isset and sanitize inputs before storing in database.
         $data = array();
-        if(isset($_POST['ga-id'])){
-            $data['ga_id'] = sanitize_text_field($_POST['ga-id']);
-        }
-        if(isset($_POST['facebook-id'])){
-            $data['fb_id'] = sanitize_text_field($_POST['facebook-id']);
-        }
-        if(isset($_POST['custom-css'])){
-            $data['custom_css'] = sanitize_textarea_field($_POST['custom-css']);
-        }
-        if(isset($_POST['disable-rest-api'])){
-            $data['disable_rest_api'] = sanitize_text_field($_POST['disable-rest-api']);
-        }
-        if(isset($_POST['disable-rss-feed'])){
-            $data['disable_rss_feed'] = sanitize_text_field($_POST['disable-rss-feed']);
-        }
-        if(isset($_POST['header-code'])){
-            $data['header_code'] = sanitize_textarea_field($_POST['header-code']);
-        }
-        if(isset($_POST['footer-code'])){
-            $data['footer_code'] = sanitize_textarea_field($_POST['footer-code']);
-        }
-
+        $data['ga_id'] = $this->get_post_data('ga-id', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['fb_id'] = $this->get_post_data('facebook-id', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['custom_css'] = $this->get_post_data('custom-css', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['disable_rest_api'] = $this->get_post_data('disable-rest-api', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['disable_rss_feed'] = $this->get_post_data('disable-rss-feed', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['header_code'] = $this->get_post_data('header-code', 'advance-settings-save', 'advance-custom-message', 'text');
+        $data['footer_code'] = $this->get_post_data('footer-code', 'advance-settings-save', 'advance-custom-message', 'text');
+        
         return $this->save_data($this->option_name, $data);
 
         wp_die();
