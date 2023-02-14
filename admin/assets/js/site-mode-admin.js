@@ -156,6 +156,27 @@ jQuery(function ($) {
         }
         allTabs.on("click", changeTab)
 
+
+        // ACE Editor
+        if ($("#header_code").length > 0) {
+            var headerEditor = ace.edit("header_code")
+            headerEditor.setTheme("ace/theme/ambiance")
+            headerEditor.session.setMode("ace/mode/html")
+        }
+
+        if ($("#footer_code").length > 0) {
+            var footerEditor = ace.edit("footer_code")
+            footerEditor.setTheme("ace/theme/ambiance")
+            footerEditor.session.setMode("ace/mode/html")
+        }
+
+        if ($("#custom_css").length > 0) {
+            var customCssEditor = ace.edit("custom_css")
+            customCssEditor.setTheme("ace/theme/ambiance")
+            customCssEditor.session.setMode("ace/mode/css")
+        }
+
+
         // 3.   Logo Type
         const imageLogoWrapper = $(".image_logo_wrapper")
         const textLogoWrapper = $(".text_logo_wrapper")
@@ -351,11 +372,16 @@ jQuery(function ($) {
         });
 
 
-        function sendAjaxRequest(selector, action, enctype = false) {
+        function sendAjaxRequest(selector, action, enctype = false, data = []) {
             const form = document.getElementById(selector)
             const formData = new FormData(form)
             formData.append("action", action)
             formData.append(action, form)
+            if(data.length > 0){
+                data.forEach((item) => {
+                    formData.append(item.name, item.value)
+                })
+            }
             $(".save-btn-loader").show()
             $.ajax({
                 url: ajaxObj.ajax_url,
@@ -446,7 +472,14 @@ jQuery(function ($) {
         const formAdvanced = $("#site-mode-advanced");
         formAdvanced.submit(function (e) {
             e.preventDefault()
-            sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced");
+
+            const extraData = [
+                { name: "header-code", value: headerEditor.getSession().getValue() },
+                { name: "footer-code", value: footerEditor.getSession().getValue() },
+                { name: "custom-css", value: customCssEditor.getSession().getValue() },
+            ]
+
+            sendAjaxRequest("site-mode-advanced", "ajax_site_mode_advanced", false, extraData);
         });
 
         // Multi Select
@@ -456,21 +489,23 @@ jQuery(function ($) {
         const hiddenBtn = document.querySelector(".hiddenBtn")
         const chooseBtn = document.querySelector(".chooseBtn")
 
-        hiddenBtn.addEventListener("change", function () {
-            if (hiddenBtn.files.length > 0) {
-                //chooseBtn.innerText = hiddenBtn.files[0].name;
-                chooseBtn.insertAdjacentHTML(
-                    "afterend",
-                    `<div class="file_name">${hiddenBtn.files[0].name}</div>`
-                )
-            } else {
-                chooseBtn.innerText = "Choose"
-                chooseBtn.removeAdjacentHTML(
-                    "afterend",
-                    `<div class="file_name">${hiddenBtn.files[0].name}</div>`
-                )
-            }
-        })
+        if(hiddenBtn) {
+            hiddenBtn.addEventListener("change", function () {
+                if (hiddenBtn.files.length > 0) {
+                    //chooseBtn.innerText = hiddenBtn.files[0].name;
+                    chooseBtn.insertAdjacentHTML(
+                        "afterend",
+                        `<div class="file_name">${hiddenBtn.files[0].name}</div>`
+                    )
+                } else {
+                    chooseBtn.innerText = "Choose"
+                    chooseBtn.removeAdjacentHTML(
+                        "afterend",
+                        `<div class="file_name">${hiddenBtn.files[0].name}</div>`
+                    )
+                }
+            })
+        }
     })
 
     const mobileMenu = document.querySelector(".mobile_menu")
@@ -495,25 +530,6 @@ jQuery(function ($) {
                 menuLabel.innerText = tabLabel + " Setting"
             })
         })
-    }
-
-    // ACE Editor
-    if ($("#header_code").length > 0) {
-        let headerEditor = ace.edit("header_code")
-        headerEditor.setTheme("ace/theme/ambiance")
-        headerEditor.session.setMode("ace/mode/html")
-    }
-
-    if ($("#footer_code").length > 0) {
-        let footerEditor = ace.edit("footer_code")
-        footerEditor.setTheme("ace/theme/ambiance")
-        footerEditor.session.setMode("ace/mode/html")
-    }
-
-    if ($("#custom_css").length > 0) {
-        let customCssEditor = ace.edit("custom_css")
-        customCssEditor.setTheme("ace/theme/ambiance")
-        customCssEditor.session.setMode("ace/mode/html")
     }
 
     // Range slider - gravity forms
