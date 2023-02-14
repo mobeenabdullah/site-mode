@@ -31,7 +31,7 @@
   &:hover, &:focus {
     --btn-bg: var(--sm-primary-color);
     --btn-border-color: var(--sm-primary-color);
-    --btn-text-color: var(--sm-base-white-color);
+    --btn-text-color: var(--sm-base-white-color) !important;
   }
 }
   
@@ -72,7 +72,7 @@
 }
 
 .submit_button {
-  & input, & button {
+  & input, & button, & a {
     background: var(--sm-button-bg-color) !important;
     border-color: var(--sm-button-border-color) !important;
     border-width: $btn-border-width !important;

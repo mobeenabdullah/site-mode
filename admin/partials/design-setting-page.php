@@ -22,12 +22,7 @@
 
                         <?php foreach ($templates as $template) : ?>
                         <div class="template_card template-<?php echo esc_attr($template['name']) ?> <?php echo $template['name'] === $this->active_template ? 'active_template' : '' ?>">
-                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">                                
-                                <div class="template_card-actions button_wrapper">                                    
-                                    <a class="btn btn_sm btn_white" href="<?php echo esc_url(home_url( "?site-mode-preview=true&template={$template['name']}")); ?>" target="_blank">
-                                        <?php _e('Preview','site-mode');?>
-                                    </a>
-                                </div>
+                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($template['image'])  ?>);">                                                              
                             </div>
                             <div class="template_card-content">
                                 <h2 class="template_card-content--title"><?php echo esc_attr($template['title']); ?></h2>
@@ -35,7 +30,7 @@
                         </div>
                         <?php endforeach; ?>
                         <div class="template_card coming_soon">
-                            <h1>Coming Soon</h1>
+                            <h3 class="coming_soon_text">More Templates <br>Coming Soon</h3>
                         </div>  
                     </div>
                 </div>

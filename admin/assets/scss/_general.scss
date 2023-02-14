@@ -482,8 +482,7 @@ body {
   .template_card {
     border: 1px solid rgba($base-black-color, 0.15);
     position: relative;
-    transition: all .2s;
-    cursor: pointer;
+    transition: all .2s;    
     overflow: hidden;
     border-radius: calculateRem(4px);
     &-image {
@@ -509,6 +508,7 @@ body {
         padding: 0;
         font-size: calculateRem(15px);
         color: rgba($secondary-color, 0.8);
+        line-height: 1.5;
       }
     }
     &-actions {
@@ -522,11 +522,9 @@ body {
       justify-content: center;
       gap: calculateRem(10px);      
       visibility: hidden;
-      opacity: 0;
-      // pointer-events: none;
+      opacity: 0;      
       transition: all .2s;
-      & a, & button {
-        // pointer-events: none;
+      & a, & button {        
         position: relative;
         z-index: 10;
       }
@@ -569,6 +567,12 @@ body {
     background-color: rgba($secondary-color, 0.05);
     border-color: transparent;
     cursor: initial;
+    & .coming_soon_text {
+      font-size: calculateRem(20px);
+      color: rgba($secondary-color, 0.8);
+      text-align: center;
+      line-height: 1.5;
+    }
   }
 }
 
@@ -685,6 +689,9 @@ body {
 
     }
   }
+}
+.submit_button a.preview_btn {  
+  font-size: 0.9rem !important;
 }
 .preview_active_template {
   padding-bottom: 66%;

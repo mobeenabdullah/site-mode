@@ -613,6 +613,7 @@ jQuery(function ($) {
                 components: {
                     preview: true,
                     hue: true,
+                    opacity: true,
                     interaction: {
                         input: true,
                         save: true,

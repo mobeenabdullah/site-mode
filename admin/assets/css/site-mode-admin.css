@@ -213,7 +213,7 @@ body {
 .btn:hover, .btn:focus {
 	--btn-bg: var(--sm-primary-color);
 	--btn-border-color: var(--sm-primary-color);
-	--btn-text-color: var(--sm-base-white-color);
+	--btn-text-color: var(--sm-base-white-color) !important;
 }
 
 .btn_outline {
@@ -252,7 +252,7 @@ body {
 	color: var(--sm-base-white-color) !important;
 }
 
-.submit_button input, .submit_button button {
+.submit_button input, .submit_button button, .submit_button a {
 	background: var(--sm-button-bg-color) !important;
 	border-color: var(--sm-button-border-color) !important;
 	border-width: 1px !important;
@@ -268,7 +268,7 @@ body {
 	text-align: center !important;
 }
 
-.submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus {
+.submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus, .submit_button a:hover, .submit_button a:focus {
 	background-color: #5f3cfd !important;
 	border-color: #5f3cfd !important;
 	outline: none !important;
@@ -636,7 +636,6 @@ input[type=file] {
 	border: 1px solid rgba(20, 20, 20, 0.15);
 	position: relative;
 	transition: all .2s;
-	cursor: pointer;
 	overflow: hidden;
 	border-radius: 0.25rem;
 }
@@ -669,6 +668,7 @@ input[type=file] {
 	padding: 0;
 	font-size: 0.9375rem;
 	color: rgba(32, 32, 32, 0.8);
+	line-height: 1.5;
 }
 
 .section_theme .template_card-actions {
@@ -730,6 +730,13 @@ input[type=file] {
 	background-color: rgba(32, 32, 32, 0.05);
 	border-color: transparent;
 	cursor: initial;
+}
+
+.section_theme .coming_soon .coming_soon_text {
+	font-size: 1.25rem;
+	color: rgba(32, 32, 32, 0.8);
+	text-align: center;
+	line-height: 1.5;
 }
 
 .section_logo .background_logo_wrapper {
@@ -833,6 +840,10 @@ input[type=file] {
 
 .sidebar_card_body {
 	padding: 0.625rem 1.25rem 1.25rem 1.25rem;
+}
+
+.submit_button a.preview_btn {
+	font-size: 0.9rem !important;
 }
 
 .preview_active_template {
