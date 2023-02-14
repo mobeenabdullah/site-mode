@@ -119,21 +119,11 @@ class Site_Mode_Design extends  Settings
 	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
 		// validate data and sanitize
 	    $data = [];
-		    if(isset($_POST['logo-width'])) {
-				$data['logo-width'] = intval($_POST['logo-width']);
-		    }
-			if(isset($_POST['logo-height'])) {
-				$data['logo-height'] = intval($_POST['logo-height']);
-			}
-			if(isset($_POST['background-overlay'])) {
-				$data['background-overlay'] = intval($_POST['background-overlay']);
-			}
-			if(isset($_POST['overlay-color'])) {
-				$data['overlay-color'] = sanitize_hex_color($_POST['overlay-color']);
-			}
-			if(isset($_POST['overlay-opacity'])) {
-				$data['overlay-opacity'] = intval($_POST['overlay-opacity']);
-			}
+        $data['logo-width'] = $this->get_post_data('logo-width', 'design-logo-background-settings-save', 'design-logo-background', 'text');
+        $data['logo-height'] = $this->get_post_data('logo-height', 'design-logo-background-settings-save', 'design-logo-background', 'text');
+        $data['background-overlay'] = $this->get_post_data('background-overlay', 'design-logo-background-settings-save', 'design-logo-background', 'text');
+        $data['overlay-color'] = $this->get_post_data('overlay-color', 'design-logo-background-settings-save', 'design-logo-background', 'text');
+        $data['overlay-opacity'] = $this->get_post_data('overlay-opacity', 'design-logo-background-settings-save', 'design-logo-background', 'text');
 
 		return $this->save_data($this->option_name_2, $data);
         die();
@@ -142,41 +132,19 @@ class Site_Mode_Design extends  Settings
     public function ajax_site_mode_design_font() {
 
 	    $this->verify_nonce('design-fonts', 'design-fonts-settings-save');
-	    $data = array();
+	    $data = [];
 		$data['heading_font_family'] = $this->get_post_data('heading-font-family', 'design-fonts-settings-save', 'design-fonts', 'text');
-			if(isset($_POST['heading-font-size'])) {
-				$data['heading_font_size'] = intval($_POST['heading-font-size']);
-			}
-			if(isset($_POST['heading-font-color']) ) {
-				$data['heading_font_color'] = sanitize_hex_color($_POST['heading-font-color']);
-			}
-			if(isset($_POST['heading-font-weight']) ) {
-				$data['heading_font_weight'] = sanitize_text_field($_POST['heading-font-weight']);
-			}
-			if(isset($_POST['heading-letter-spacing'])) {
-				$data['heading_letter_spacing'] = intval($_POST['heading-letter-spacing']);
-			}
-			if(isset($_POST['heading-line-height'])) {
-				$data['heading_line_height'] = intval($_POST['heading-line-height']);
-			}
-			if(isset($_POST['description-font-family']) ) {
-				$data['description_font_family'] = sanitize_text_field($_POST['description-font-family']);
-			}
-			if(isset($_POST['description-font-size'])) {
-				$data['description_font_size'] = intval($_POST['description-font-size']);
-			}
-			if(isset($_POST['description-font-color']) ) {
-				$data['description_font_color'] = sanitize_hex_color($_POST['description-font-color']);
-			}
-			if(isset($_POST['description-font-weight'])) {
-				$data['description_font_weight'] = sanitize_text_field($_POST['description-font-weight']);
-			}
-			if(isset($_POST['description-letter-spacing'])) {
-				$data['description_letter_spacing'] = intval($_POST['description-letter-spacing']);
-			}
-			if(isset($_POST['description-line-height'])) {
-				$data['description_line_height'] = intval($_POST['description-line-height']);
-			}
+        $data['heading_font_size'] = $this->get_post_data('heading-font-size', 'design-fonts-settings-save', 'design-fonts', 'number');
+        $data['heading_font_color'] = $this->get_post_data('heading-font-color', 'design-fonts-settings-save', 'design-fonts', 'color');
+        $data['heading_font_weight'] = $this->get_post_data('heading-font-weight', 'design-fonts-settings-save', 'design-fonts', 'text');
+        $data['heading_letter_spacing'] = $this->get_post_data('heading-letter-spacing', 'design-fonts-settings-save', 'design-fonts', 'number');
+        $data['heading_line_height'] = $this->get_post_data('heading-line-height', 'design-fonts-settings-save', 'design-fonts', 'number');
+        $data['description_font_family'] = $this->get_post_data('description-font-family', 'design-fonts-settings-save', 'design-fonts', 'text');
+        $data['description_font_size'] = $this->get_post_data('description-font-size', 'design-fonts-settings-save', 'design-fonts', 'number');
+        $data['description_font_color'] = $this->get_post_data('description-font-color', 'design-fonts-settings-save', 'design-fonts', 'color');
+        $data['description_font_weight'] = $this->get_post_data('description-font-weight', 'design-fonts-settings-save', 'design-fonts', 'text');
+        $data['description_letter_spacing'] = $this->get_post_data('description-letter-spacing', 'design-fonts-settings-save', 'design-fonts', 'number');
+        $data['description_line_height'] = $this->get_post_data('description-line-height', 'design-fonts-settings-save', 'design-fonts', 'number');
 
         return $this->save_data($this->option_name_3, $data);
             die();
@@ -185,22 +153,12 @@ class Site_Mode_Design extends  Settings
     public function ajax_site_mode_design_social() {
 
 	    $this->verify_nonce('design-icon-color', 'design-icon-color-settings-save');
-	    $color_section_data = array();
-	    if(isset($_POST['icon-size'])) {
-		    $color_section_data['icon_size'] = intval($_POST['icon-size']);
-	    }
-		if(isset($_POST['icon-color'])) {
-		    $color_section_data['icon_color'] = sanitize_hex_color($_POST['icon-color']);
-	    }
-		if(isset($_POST['icon-bg'])) {
-		    $color_section_data['icon_bg_color'] = sanitize_hex_color($_POST['icon-bg']);
-	    }
-		if(isset($_POST['icon-border-color'])) {
-		    $color_section_data['icon_border_color'] = sanitize_hex_color($_POST['icon-border-color']);
-	    }
-		if(isset($_POST['design-icon-color'])) {
-		    $color_section_data['design_icon_color'] = sanitize_hex_color($_POST['design-icon-color']);
-	    }
+	    $color_section_data = [];
+        $data['icon_size'] = $this->get_post_data('icon-size', 'design-icon-color-settings-save', 'design-icon-color', 'number');
+        $data['icon_color'] = $this->get_post_data('icon-color', 'design-icon-color-settings-save', 'design-icon-color', 'color');
+        $data['icon_bg_color'] = $this->get_post_data('icon-bg', 'design-icon-color-settings-save', 'design-icon-color', 'color');
+        $data['icon_border_color'] = $this->get_post_data('icon-border-color', 'design-icon-color-settings-save', 'design-icon-color', 'color');
+        $data['design_icon_color'] = $this->get_post_data('design-icon-color', 'design-icon-color-settings-save', 'design-icon-color', 'color');
 
 		return $this->save_data($this->option_name_4, $color_section_data);
 		die();

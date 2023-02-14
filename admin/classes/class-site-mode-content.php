@@ -47,25 +47,13 @@ class Site_Mode_Content extends Settings {
 
 		// validate using isset and sanitize inputs before storing in database.
 	    $data = array();
-				if(isset($_POST['content-heading'])){
-					$data['content_heading'] = sanitize_text_field($_POST['content-heading']);
-				}
-				if(isset($_POST['content-description'])){
-					$data['content_description'] = sanitize_text_field($_POST['content-description']);
-				}
-			    if(isset($_POST['logo-type'])){
-				    $data['logo_type'] = sanitize_text_field($_POST['logo-type']);
-			    }
-			    if(isset($_POST['logo-text'])){
-				    $data['logo_text'] = sanitize_text_field($_POST['logo-text']);
-			    }
-			    if(isset($_POST['logo-image'])){
-				    $data['logo_image'] = intval($_POST['logo-image']);
-			    }
-				if(isset($_POST['bg-image'])){
-					$data['bg_image'] = intval($_POST['bg-image']);
-				}
-
+		$data['content_heading'] = $this->get_post_data('content-heading', 'design-settings-save', 'design-custom-message', 'text');
+		$data['content_description'] = $this->get_post_data('content-description', 'design-settings-save', 'design-custom-message', 'text');
+		$data['logo_type'] = $this->get_post_data('logo-type', 'design-settings-save', 'design-custom-message', 'text');
+		$data['logo_text'] = $this->get_post_data('logo-text', 'design-settings-save', 'design-custom-message', 'text');
+		$data['logo_image'] = $this->get_post_data('logo-image', 'design-settings-save', 'design-custom-message', 'number');
+		$data['bg_image'] = $this->get_post_data('bg-image', 'design-settings-save', 'design-custom-message', 'number');
+		
         return $this->save_data($this->option_name, $data);
 
         die();

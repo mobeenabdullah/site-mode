@@ -47,28 +47,17 @@ class Site_Mode_General extends Settings {
 	    $this->verify_nonce('general_section_field', 'general_settings_action');
 
         $data = [];
-		if (isset($_POST['site-mode-mode-status'])) {
-			$data['mode_status'] = sanitize_text_field($_POST['site-mode-mode-status']);
-		}
-		if (isset($_POST['site-mode-mode-type'])) {
-			$data['mode_type'] = sanitize_text_field($_POST['site-mode-mode-type']);
-		}
-		if (isset($_POST['site-mode-redirect-url'])) {
-			$data['redirect_url'] = sanitize_text_field($_POST['site-mode-redirect-url']);
-		}
-		if (isset($_POST['site-mode-redirect-delay'])) {
-			$data['redirect_delay'] = intval($_POST['site-mode-redirect-delay']);
-		}
-		if (isset($_POST['site-mode-redirect-url'])) {
-			$data['show_login_icon'] =  sanitize_text_field($_POST['site-mode-show-login-icon']);
-		}
-		if (isset($_POST['site-mode-custom-login-url'])) {
-			$data['custom_login_url'] = sanitize_text_field($_POST['site-mode-custom-login-url']);
-		}
-		if (isset($_POST['site-mode-whitelist-pages'])) {
+		$data['mode_status'] = $this->get_post_data('site-mode-mode-status', 'general_settings_action', 'general_section_field', 'text');
+		$data['mode_type'] = $this->get_post_data('site-mode-mode-type', 'general_settings_action', 'general_section_field', 'text');
+		$data['redirect_url'] = $this->get_post_data('site-mode-redirect-url', 'general_settings_action', 'general_section_field', 'text');
+		$data['redirect_delay'] = $this->get_post_data('site-mode-redirect-delay', 'general_settings_action', 'general_section_field', 'number');
+		$data['show_login_icon'] = $this->get_post_data('site-mode-show-login-icon', 'general_settings_action', 'general_section_field', 'text');
+		$data['custom_login_url'] = $this->get_post_data('site-mode-custom-login-url', 'general_settings_action', 'general_section_field', 'text');
+		
+		if (isset($_POST['site-mode-whitelist-pages']) && isset($_POST['general_section_field']) && wp_verify_nonce( sanitize_text_field($_POST['general_section_field']), 'general_settings_action' )) {
 			$data['whitelist_pages'] = array_map('sanitize_text_field', $_POST['site-mode-whitelist-pages']);
 		}
-		if (isset($_POST['site-mode-user-roles'])) {
+		if (isset($_POST['site-mode-user-roles']) && isset($_POST['general_section_field']) && wp_verify_nonce( sanitize_text_field($_POST['general_section_field']), 'general_settings_action' )) {		
 			$data['user_roles'] = array_map('sanitize_text_field', $_POST['site-mode-user-roles']);
 		}
 
