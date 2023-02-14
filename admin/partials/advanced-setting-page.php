@@ -8,7 +8,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">
-                    <input type="text" id="google_analytic_id" name="ga-id" value="<?php echo esc_attr($this->ga_id); ?>" />
+                    <input type="text" id="google_analytic_id" name="ga-id" value="<?php echo esc_attr($this->ga_id); ?>" placeholder="e.g. G-XXXXXXXXXX" />
                 </div>
             </div>
         </div>
@@ -20,7 +20,7 @@
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">
-                    <input type="text" id="facebook_pixel_id" name="facebook-id" value="<?php echo esc_attr($this->fb_id); ?>" />
+                    <input type="text" id="facebook_pixel_id" name="facebook-id" value="<?php echo esc_attr($this->fb_id); ?>" placeholder="e.g. xxxxxxxxxxxxxxx" />
                 </div>
             </div>
         </div>

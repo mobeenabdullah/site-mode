@@ -85,6 +85,8 @@ class Template_Load  {
 			}
 
 		}
+		echo $this->template;
+
 		wp_enqueue_style($this->template , plugin_dir_url(__FILE__) . '../public/css/'.$this->template .'.css', array(), '1.0.0', 'all');
 		require_once plugin_dir_path(__DIR__) . 'public/templates/' . $this->template . '.php';
 		exit;
