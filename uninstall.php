@@ -42,6 +42,8 @@ $options = [
     "site_mode_social",
     "site_mode_settings",
     "site_mode_general",
+	"site_mode_design_fonts",
+	"site_mode_design_icon_color"
 ];
 
 

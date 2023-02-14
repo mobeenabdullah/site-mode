@@ -43,8 +43,6 @@ class Site_Mode_Social extends Settings {
 			['title' => 'Twitch', 'icon' => 'fa-twitch'],
 			['title' => 'Tumblr', 'icon' => 'fa-tumblr'],
 			['title' => 'Reddit', 'icon' => 'fa-reddit-alien'],
-			['title' => 'Google', 'icon' => 'fa-google'],
-			['title' => 'Google', 'icon' => 'fa-google']
 		];
 
 		public function __construct() {
