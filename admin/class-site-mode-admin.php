@@ -47,8 +47,6 @@ class Site_Mode_Admin
     protected $design_settings;
     protected $seo_settings;
     protected $advanced_settings;
-    protected $import_settings;
-    protected $export_settings;
 
 	/**
 	 * Initialize the class and set its properties.
