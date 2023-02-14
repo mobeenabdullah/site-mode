@@ -349,19 +349,27 @@ input[type=file] {
 }
 
 .logo_display .sm_image_wrapper {
+	display: flex;
 	max-width: 8.75rem;
+	background-color: rgba(20, 20, 20, 0.15);
 }
 
 .bg_img_display .sm_image_wrapper {
+	display: flex;
 	max-width: 33.0625rem;
+	background-color: rgba(20, 20, 20, 0.15);
 }
 
 .favicon_display .sm_image_wrapper {
+	display: flex;
 	max-width: 6.25rem;
+	background-color: rgba(20, 20, 20, 0.15);
 }
 
 .seo_image_display .sm_image_wrapper {
+	display: flex;
 	max-width: 33.0625rem;
+	background-color: rgba(20, 20, 20, 0.15);
 }
 
 .logo_type_wrapper {
