@@ -14,24 +14,24 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">    
 
      <!-- Facebook Meta Tags -->
-    <meta property="og:url" content="<?php echo site_url(); ?>">
+    <meta property="og:url" content="<?php echo esc_url(site_url()); ?>">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<?php echo $seo_info['meta_title'] ?>">
-    <meta property="og:description" content="<?php echo esc_html($seo_info['meta_description']); ?>">
-    <meta property="og:image" content="<?php echo $seo_image_url; ?>" />
+    <meta property="og:title" content="<?php echo esc_attr($seo_info['meta_title']); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($seo_info['meta_description']); ?>">
+    <meta property="og:image" content="<?php echo esc_url($seo_image_url); ?>" />
 
       <!-- Twitter Meta Tags -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="<?php echo $seo_info['meta_title'] ?>">
-    <meta name="twitter:description" content="<?php echo esc_html($seo_info['meta_description']); ?>">    
-    <meta name="twitter:image" content="<?php echo $seo_image_url; ?>">
+    <meta name="twitter:title" content="<?php echo esc_attr($seo_info['meta_title']); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($seo_info['meta_description']); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($seo_image_url); ?>">
 
     <?php if(isset($seo_info['meta_description'])) : ?>
-        <meta name="description" content="<?php echo esc_html($seo_info['meta_description']); ?>" />    
+        <meta name="description" content="<?php echo esc_attr($seo_info['meta_description']); ?>" />
     <?php endif; ?>
 
     <?php if(isset($seo_info['meta_favicon'])) : ?>
-        <link rel="icon" type="image/x-icon" href="<?php echo $favicon; ?>">
+        <link rel="icon" type="image/x-icon" href="<?php echo esc_url($favicon); ?>">
     <?php endif; ?>
     
     <?php if(isset($seo_info['meta_title'])) : ?>        

@@ -109,7 +109,7 @@ require_once 'footer.php';
                         </h1>
                     </div>
                     <div class="default_template-text">
-                        <p><?php echo esc_attr($content['content_description']); ?></p>
+                        <p><?php esc_html_e($content['content_description']); ?></p>
                     </div>                    
                     <div class="default_template-icons">
                         <ul class="social_media">
@@ -117,8 +117,8 @@ require_once 'footer.php';
                                 <?php if( is_array($value) || is_object($value)) : ?>
                                     <?php foreach ($value as $item) : ?>
                                         <li class="social_media_icon">
-                                            <a href="<?php echo $item['link'];?>" aria-label="<?php echo $item['title'];?> profile" target="_blank">
-                                                <i class="fa-brands <?php echo $item['icon'];?>"></i>
+                                            <a href="<?php echo esc_url($item['link']);?>" aria-label="<?php echo esc_attr($item['title']);?> profile" target="_blank">
+                                                <i class="fa-brands <?php echo esc_attr($item['icon']);?>"></i>
                                             </a>
                                         </li>
                                     <?php endforeach; ?>
