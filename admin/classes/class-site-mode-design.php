@@ -103,17 +103,6 @@ class Site_Mode_Design extends  Settings
         $this->icon_border_color      = isset($this->site_mode_design_social['icon_border_color']) ? $this->site_mode_design_social['icon_border_color'] : '#000000';
 
     }
-
-    public function ajax_site_mode_design() {
-
-//	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');
-
-		if(isset($_POST['template_name'])) {
-			$template_name = sanitize_text_field($_POST['template_name']);
-            return $this->save_data($this->option_name_1, $template_name);
-            die();
-		}
-    }
     public function ajax_site_mode_design_lb() {
 
 	    $this->verify_nonce('design-logo-background', 'design-logo-background-settings-save');

@@ -101,11 +101,11 @@ require_once 'footer.php';
                     </div>
                     <div class="default_template-heading">
                         <h1 class="main_title">
-                            <?php echo esc_attr($content['content_heading']); ?>
+                            <?php echo wp_kses_post($content['content_heading']); ?>
                         </h1>
                     </div>
                     <div class="default_template-text">
-                        <p><?php esc_html_e($content['content_description']); ?></p>
+                        <p><?php echo wp_kses_post($content['content_description']); ?></p>
                     </div>                    
                     <div class="default_template-icons">
                         <ul class="social_media">
