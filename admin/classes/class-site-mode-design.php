@@ -67,40 +67,39 @@ class Site_Mode_Design extends  Settings
 
         //logo  and background settings
         $this->site_mode_design     = $this->get_data($this->option_name_2);
-        $this->logo_width           = isset($this->site_mode_design['logo-width']) ? $this->site_mode_design['logo-width'] : '200';
-        $this->logo_height          = isset($this->site_mode_design['logo-height']) ? $this->site_mode_design['logo-height'] : '200';
+        $this->logo_width           = isset($this->site_mode_design['logo-width']) ? $this->site_mode_design['logo-width'] : '100';
+        $this->logo_height          = isset($this->site_mode_design['logo-height']) ? $this->site_mode_design['logo-height'] : '100';
         $this->background_overlay   = isset($this->site_mode_design['background-overlay']) ? $this->site_mode_design['background-overlay'] : '#000000';
         $this->overlay_color        = isset($this->site_mode_design['overlay-color']) ? $this->site_mode_design['overlay-color'] : '#000000';
-        $this->overlay_opacity      = isset($this->site_mode_design['overlay-opacity']) ? $this->site_mode_design['overlay-opacity'] : '0.5';
-
+        $this->overlay_opacity      = isset($this->site_mode_design['overlay-opacity']) ? $this->site_mode_design['overlay-opacity'] : '8';
        // font and color settings
 
 
         //font settings
         $this->site_mode_design_fonts = $this->get_data($this->option_name_3);
         // use ternary operator for check data is empty or not.
-        $this->heading_font_size                  = !empty($this->site_mode_design_fonts['heading_font_size']) ? $this->site_mode_design_fonts['heading_font_size'] : '36';
-        $this->heading_font_family                = !empty($this->site_mode_design_fonts['heading_font_family']) ? $this->site_mode_design_fonts['heading_font_family'] : 'Open Sans';
-        $this->heading_font_weight                = !empty($this->site_mode_design_fonts['heading_font_weight']) ? $this->site_mode_design_fonts['heading_font_weight'] : '400';
+        $this->heading_font_size                  = !empty($this->site_mode_design_fonts['heading_font_size']) ? $this->site_mode_design_fonts['heading_font_size'] : '90';
+        $this->heading_font_family                = !empty($this->site_mode_design_fonts['heading_font_family']) ? $this->site_mode_design_fonts['heading_font_family'] : 'Raleway';
+        $this->heading_font_weight                = !empty($this->site_mode_design_fonts['heading_font_weight']) ? $this->site_mode_design_fonts['heading_font_weight'] : '600';
         $this->heading_letter_spacing             = !empty($this->site_mode_design_fonts['heading_letter_spacing']) ? $this->site_mode_design_fonts['heading_letter_spacing'] : '0';
-        $this->heading_line_height                = !empty($this->site_mode_design_fonts['heading_line_height']) ? $this->site_mode_design_fonts['heading_line_height'] : '1.5';
-        $this->heading_font_color                 = !empty($this->site_mode_design_fonts['heading_font_color']) ? $this->site_mode_design_fonts['heading_font_color'] : '#000000';
-        $this->description_font_family            = !empty($this->site_mode_design_fonts['description_font_family']) ? $this->site_mode_design_fonts['description_font_family'] : 'Open Sans';
-        $this->description_font_size              = !empty($this->site_mode_design_fonts['description_font_size']) ? $this->site_mode_design_fonts['description_font_size'] : '16';
-        $this->description_font_weight            = !empty($this->site_mode_design_fonts['description_font_weight']) ? $this->site_mode_design_fonts['description_font_weight'] : '400';
+        $this->heading_line_height                = !empty($this->site_mode_design_fonts['heading_line_height']) ? $this->site_mode_design_fonts['heading_line_height'] : '110';
+        $this->heading_font_color                 = !empty($this->site_mode_design_fonts['heading_font_color']) ? $this->site_mode_design_fonts['heading_font_color'] : '#ffffff';
+        $this->description_font_family            = !empty($this->site_mode_design_fonts['description_font_family']) ? $this->site_mode_design_fonts['description_font_family'] : 'Raleway';
+        $this->description_font_size              = !empty($this->site_mode_design_fonts['description_font_size']) ? $this->site_mode_design_fonts['description_font_size'] : '24';
+        $this->description_font_weight            = !empty($this->site_mode_design_fonts['description_font_weight']) ? $this->site_mode_design_fonts['description_font_weight'] : '300';
         $this->description_letter_spacing         = !empty($this->site_mode_design_fonts['description_letter_spacing']) ? $this->site_mode_design_fonts['description_letter_spacing'] : '0';
-        $this->description_line_height            = !empty($this->site_mode_design_fonts['description_line_height']) ? $this->site_mode_design_fonts['description_line_height'] : '1.5';
-        $this->description_font_color             = !empty($this->site_mode_design_fonts['description_font_color']) ? $this->site_mode_design_fonts['description_font_color'] : '#000000';
+        $this->description_line_height            = !empty($this->site_mode_design_fonts['description_line_height']) ? $this->site_mode_design_fonts['description_line_height'] : '42';
+        $this->description_font_color             = !empty($this->site_mode_design_fonts['description_font_color']) ? $this->site_mode_design_fonts['description_font_color'] : '#ffffff';
 
 
 
         //color settings
         $this->site_mode_design_social = $this->get_data($this->option_name_4);
         //check if values are set or not and assign default values
-        $this->icon_size              = isset($this->site_mode_design_social['icon_size']) ? $this->site_mode_design_social['icon_size'] : '32';
+        $this->icon_size              = isset($this->site_mode_design_social['icon_size']) ? $this->site_mode_design_social['icon_size'] : '24';
         $this->icon_color             = isset($this->site_mode_design_social['icon_color']) ? $this->site_mode_design_social['icon_color'] : '#ffffff';
-        $this->icon_bg_color          = isset($this->site_mode_design_social['icon_bg_color']) ? $this->site_mode_design_social['icon_bg_color'] : '#000000';
-        $this->icon_border_color      = isset($this->site_mode_design_social['icon_border_color']) ? $this->site_mode_design_social['icon_border_color'] : '#000000';
+        $this->icon_bg_color          = isset($this->site_mode_design_social['icon_bg_color']) ? $this->site_mode_design_social['icon_bg_color'] : '';
+        $this->icon_border_color      = isset($this->site_mode_design_social['icon_border_color']) ? $this->site_mode_design_social['icon_border_color'] : '#ffffff';
 
     }
     public function ajax_site_mode_design_lb() {

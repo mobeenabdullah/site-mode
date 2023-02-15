@@ -87,6 +87,15 @@ body {
 	padding: 1.25rem 1.25rem 1.875rem 1.875rem;
 }
 
+.site_mode__wrap--header {
+	width: 12.5rem;
+	margin-bottom: 1.25rem;
+}
+
+.site_mode__wrap--header img {
+	width: 100%;
+}
+
 .site_mode__wrap > h1 {
 	margin: 0;
 	margin-bottom: 0.9375rem;

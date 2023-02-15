@@ -74,6 +74,13 @@ body {
   }
 }
 .site_mode__wrap {
+  &--header {
+    width: calculateRem(200px);
+    margin-bottom: calculateRem(20px);
+    & img {
+      width: 100%;
+    }
+  }
   & > h1 {
     margin: 0;
     margin-bottom: calculateRem(15px);
