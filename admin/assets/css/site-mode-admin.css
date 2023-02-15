@@ -850,8 +850,8 @@ input[type=file] {
 	padding: 0.625rem 1.25rem 1.25rem 1.25rem;
 }
 
-.submit_button a.preview_btn {
-	font-size: 0.9rem !important;
+.external_link {
+	margin-left: 0.625rem;
 }
 
 .preview_active_template {
