@@ -117,6 +117,13 @@ class Site_Mode_Activator {
 
         );
 
+        $site_mode_design_social = array(
+            'social_icon_size'              => '32',
+            'social_icon_color'             => '#ffffff',
+            'social_icon_bg_color'          => '#000000',
+            'social_icon_border_color'      => '#000000',
+        );
+
     // Add default options to database for general settings.
         $settings = array(
             'site_mode_general'             => $general_settings,
@@ -128,7 +135,7 @@ class Site_Mode_Activator {
             'site_mode_design_icon_color'   => $design_icon_color,
             'site_mode_seo'                 => $seo_settings,
             'site_mode_advanced'            => $advance_settings,
-
+            'site_mode_design_social'      => $site_mode_design_social,
         );
 
         foreach ($settings as $key => $value) {
