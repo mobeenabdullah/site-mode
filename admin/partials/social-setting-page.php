@@ -6,6 +6,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="show-social-icons-setting"><?php esc_html_e('Show Social Icons','site-mode');?></label></span>
+                <span class="info_text"><?php esc_html_e('Activate to display social media icons on your webpage','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -17,9 +18,10 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php esc_html_e('Social Icons', 'site-mode');?></span>
+                <span><?php esc_html_e('Available Icons', 'site-mode');?></span>
+                <span class="info_text"><?php esc_html_e('Choose the icons you want to display on the maintenance page','site-mode');?></span>
             </div>
-            <div class="option__row--field">             
+            <div class="option__row--field">
                 <div class="social_icons_selectors">
                     <?php foreach ($this->di_social_icons as $icon) : ?>
                         <div class="sm-social_icon_selector <?php $this->check_selected_social_icon($icon['title']); ?>" data-icon-id="sm-social_icon_<?php esc_attr_e(strtolower($icon['title'])); ?>" data-icon-title="<?php esc_attr_e($icon['title']); ?>" data-icon-class="<?php esc_attr_e(strtolower($icon['icon'])); ?>">
@@ -32,14 +34,14 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span aria-labelledby="social_profiles"><?php esc_html_e('Social Profiles', 'site-mode');?></span>
+                <span aria-labelledby="social_profiles"><?php esc_html_e('Selected Icons', 'site-mode');?></span>
             </div>
-            <div class="option__row--field" id='social_profiles'>             
+            <div class="option__row--field" id='social_profiles'>
                 <div class="socialmedia__wrapper">
                     <ul class="sm-social_icons sm_sortable" id="sm_sortable">
                         <?php foreach ($this->social_icons as $icon) : ?>
                             <li class="sm-social_icon ui-state-default" id="sm-social_icon_<?php echo esc_attr(strtolower($icon['title'])); ?>">
-                                <div class="option__row">                            
+                                <div class="option__row">
                                     <div class="option__row--field">
                                         <div class="social_media_field">
                                             <div class="sortable_icon">
@@ -66,7 +68,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <input type="hidden" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][title]" value="<?php esc_attr_e($icon['title']); ?>" />
                                 <input type="hidden" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][icon]" value="<?php esc_attr_e($icon['icon']); ?>" />

@@ -3,6 +3,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="status"><?php esc_html_e('Status','site-mode');?></label></span>
+                <span class="info_text"><?php esc_html_e('Enable to display the maintenance page on your website','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -15,8 +16,8 @@
         <!-- Mode Setting -->
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="site_mode"><?php esc_html_e('Mode','site-mode');?></label></span>
-                <span class="info_text"><?php esc_html_e('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ultricies risus at eros tincidunt elementum.','site-mode');?></span>
+                <span><label for="site_mode"><?php esc_html_e('Mode Type','site-mode');?></label></span>
+                <span class="info_text"><?php esc_html_e('Select the appropriate Mode type to specify the desired server response and behavior for your website','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_select">
@@ -34,6 +35,7 @@
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="redirect_url"><?php esc_html_e('Redirect URL','site-mode');?></label></span>
+                    <span class="info_text"><?php esc_html_e('Specify the URL to which the site should be redirected by entering it in the field','site-mode');?></span>
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
@@ -44,10 +46,11 @@
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="delay_seconds"><?php esc_html_e('Delay (seconds)','site-mode');?></label></span>
+                    <span class="info_text"><?php esc_html_e('Enter the number of seconds to delay the redirection in the range of 0-10 seconds','site-mode');?></span>
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
-                        <input type="number" min="0" max="9" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo esc_attr($this->redirect_delay); ?>" <?php checked(1, $this->redirect_delay, true); ?> />
+                        <input type="number" min="0" max="10" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo esc_attr($this->redirect_delay); ?>" <?php checked(1, $this->redirect_delay, true); ?> />
                     </div>
                 </div>
             </div>
@@ -57,6 +60,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="login_icon"><?php esc_html_e('Show Login Icon','site-mode');?></label></span>
+                <span class="info_text"><?php esc_html_e('Enable this option to easily access the login page URL directly from the icon on the front page of your website','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -69,6 +73,7 @@
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="redirect_url_field"><?php esc_html_e('Custom Login URL','site-mode');?></label></span>
+                    <span class="info_text"><?php esc_html_e('Enter a custom URL for the login page that the login icon should link to','site-mode');?></span>
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover">
@@ -80,6 +85,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="whitelist_include"><?php esc_html_e('Whitelist Pages', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Exclude these pages from displaying the maintenance page','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <?php $all_pages = get_pages(); ?>
@@ -101,7 +107,8 @@
 
         <div class="option__row">
             <div class="option__row--label">
-                <span><?php esc_html_e('Show site to these roles', 'site-mode')?></span>
+                <span><?php esc_html_e('Whitelist User Roles', 'site-mode')?></span>
+                <span class="info_text"><?php esc_html_e('Exclude these user roles from viewing the maintenance page','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <?php global $wp_roles; ?>
@@ -120,7 +127,7 @@
         <!-- Submit setting -->
         <div class="option__row">
             <div class="option__row--label submit_button">
-                <?php // submit_button(); ?>                
+                <?php // submit_button(); ?>
                 <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
                     <span class="save-btn-loader" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>

@@ -41,6 +41,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><?php esc_html_e('Logo Type','site-mode');?></span>
+                <span class="info_text"><?php esc_html_e('Choose a logo type (text or image) or disable it entirely','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="logo_type_wrapper">
@@ -68,7 +69,7 @@
             <div class="option__row">
                 <div class="option__row--label">
                     <span>
-                        <label for="logo-image"><?php esc_html_e('Select Logo','site-mode');?></label>
+                        <label for="logo-image"><?php esc_html_e('Logo Image','site-mode');?></label>
                     </span>
                 </div>
                 <div class="option__row--field">
@@ -108,7 +109,7 @@
         <div class="logo_wrapper text_logo_wrapper <?php echo $this->logo_type === 'text' ? 'show_logo_wrapper' : ''; ?>">
             <div class="option__row">
                 <div class="option__row--label">
-                    <span><label for="text_logo"><?php esc_html_e('Logo text','site-mode');?></label></span>
+                    <span><label for="text_logo"><?php esc_html_e('Logo Text','site-mode');?></label></span>
                 </div>
                 <div class="option__row--field">
                     <div class="sm_input_cover label_top">
@@ -164,7 +165,7 @@
 
         <!-- Submit setting -->
         <div class="option__row">
-            <div class="option__row--label submit_button">                
+            <div class="option__row--label submit_button">
                 <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
                     <span class="save-btn-loader" style="display: none;">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
