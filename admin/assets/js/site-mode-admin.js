@@ -426,33 +426,6 @@ jQuery(function ($) {
             sendAjaxRequest("site-mode-social", "ajax_site_mode_social");
         })
 
-        $("body").on("click", ".activate-template-btn", function (e) {
-            const templateName = e.target.value
-            // save template name to wp_options
-            $.ajax({
-                url: ajaxObj.ajax_url,
-                dataType: "json",
-                method: "post",
-                data: {
-                    action: "ajax_site_mode_design",
-                    template_name: templateName,
-                },
-                success: function (res) {
-                    const activatedTemplate = res.data
-                    $(".template_card").removeClass("active_template")
-                    $(".template_card .activate-template-btn").text("Active")
-                    $(`.template-${activatedTemplate}`).addClass(
-                        "active_template"
-                    )
-                    $(".active_template .activate-template-btn").text(
-                        "Activated"
-                    )
-                    $(".save-btn-loader").hide()
-                    launch_toast(res.success)
-                },
-            })
-        })
-
         const formDesignLogoBG = $("#site-mode-design-logo-background");
         formDesignLogoBG.submit(function (e) {
             e.preventDefault()

@@ -58,10 +58,17 @@ class Site_Mode_Social extends Settings {
 
 	    $this->verify_nonce('social-custom-message', 'social-settings-save');
 
-	    $data = [
-		    'show_social_icons'   => sanitize_text_field($_POST['show-social-icons']),
-		    'social_icons'        => $_POST['social_icons']
-	    ];
+		if(isset($_POST['social_icons']) && isset($_POST['social-custom-message']) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' )) {
+			$data['social_icons'] = sanitize_text_field($_POST['social_icons']);
+		} else {
+			$data['social_icons'] = [];
+		}
+
+		if(isset($_POST['show-social-icons']) && isset($_POST['social-custom-message']) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' )) {
+			$data['show_social_icons'] = sanitize_text_field($_POST['show-social-icons']);
+		} else {
+			$data['show_social_icons'] = 'off';
+		}
 
         return $this->save_data($this->option_name, $data);
 

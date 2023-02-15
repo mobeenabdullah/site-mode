@@ -54,19 +54,19 @@
                 ];
                 $active_tab = isset($_GET['tab']) ? strtolower($_GET['tab']) : 'general';
 
-                foreach ($site_mode_tabs as $tab) :
-                    $tab_class = strtolower($tab['title']) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
-                    $tab_data = 'tab-' . strtolower($tab['title']);
-                    echo '<li class="' . esc_attr($tab_class) . '" data-tab="' . esc_attr($tab_data) . '"><span class="menu_icon">' . $this->wp_kses_svg($tab['icon']) . '</span><span class="menu_label">' . esc_html($tab['title'], 'site-mode') . '</span></li>';
+                foreach ($site_mode_tabs as $site_mode_tab) :
+                    $tab_class = strtolower($site_mode_tab['title']) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
+                    $tab_data = 'tab-' . strtolower($site_mode_tab['title']);
+                    echo '<li class="' . esc_attr($tab_class) . '" data-tab="' . esc_attr($tab_data) . '"><span class="menu_icon">' . $this->wp_kses_svg($site_mode_tab['icon']) . '</span><span class="menu_label">' . esc_html($site_mode_tab['title'], 'site-mode') . '</span></li>';
                 endforeach; ?>
         </ul>
 
         <?php
-            foreach ($site_mode_tabs as $tab) :
-                $tab_class = strtolower($tab['title']) === $active_tab ? 'tab-content current' : 'tab-content';
-                $tab_id = 'tab-' . strtolower($tab['title']);
-                $tab_data = 'tab-' . strtolower($tab['title']);
-                $tab_name = strtolower($tab['title']); ?>
+            foreach ($site_mode_tabs as $tab_content) :
+                $tab_class = strtolower($tab_content['title']) === $active_tab ? 'tab-content current' : 'tab-content';
+                $tab_id = 'tab-' . strtolower($tab_content['title']);
+                $tab_data = 'tab-' . strtolower($tab_content['title']);
+                $tab_name = strtolower($tab_content['title']); ?>
                 <div id="<?php esc_attr_e($tab_id); ?>" class="<?php esc_attr_e($tab_class); ?>">
                     <?php
                         require_once plugin_dir_path( dirname( __FILE__ ) ) . "classes/class-site-mode-{$tab_name}.php";

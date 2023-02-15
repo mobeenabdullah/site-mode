@@ -80,8 +80,9 @@
                             </div>
                         </div>
                     </div>
+
                    <!-- background_overlay sm_hide_field -->
-                    <div class="background_overlay <?php echo $this->background_overlay !== 1 ? 'sm_hide_field' : ''; ?>">
+                    <div class="background_overlay <?php echo strval($this->background_overlay) !== '1' ? 'sm_hide_field' : ''; ?>">
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="overlay_color"><?php esc_html_e('Overlay Color','site-mode');?></label></span>

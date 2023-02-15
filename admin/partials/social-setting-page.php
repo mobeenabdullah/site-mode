@@ -58,7 +58,7 @@
                                                 <span class="fa-brands <?php echo esc_attr($icon['icon']); ?>"></span>
                                             </label>
                                             <div class="social_field">
-                                                <label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php esc_htm_e($icon['title']);?></label>
+                                                <label for="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>"><?php echo esc_html($icon['title']);?></label>
                                                 <input type="text" id="icon_<?php echo esc_attr(strtolower($icon['title'])); ?>" name="social_icons[<?php esc_attr_e(strtolower($icon['title'])); ?>][link]" value="<?php esc_attr_e($icon['link']); ?>" required />
                                             </div>
                                             <div class="option__row--remove">
