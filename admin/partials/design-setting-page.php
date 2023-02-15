@@ -100,10 +100,11 @@
                         <div class="option__row">
                             <div class="option__row--label">
                                 <span><label for="overlay_opacity"><?php esc_html_e('Overlay Opacity','site-mode');?></label></span>
-                            </div>
+                        </div>
+
                             <div class="option__row--field">
                                     <div class="range__slider slider_bg-transparent">
-                                        <input type="range" steps="0.5" min="0" max="10" name="overlay-opacity" value="<?php echo esc_attr($this->overlay_opacity); ?>" data-rangeSlider>
+                                        <input type="range" steps="1" min="0" max="10" name="overlay-opacity" value="<?php echo $this->overlay_opacity ? esc_attr($this->overlay_opacity) : ''; ?>" data-rangeSlider>
                                         <div class="display__value-wrapper">
                                             <span class="output-value"></span>
                                         </div>
@@ -185,7 +186,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="heading_letter_spacing" data-inc="1" name="heading-letter-spacing" value="<?php echo esc_attr($this->heading_letter_spacing); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="heading_letter_spacing" data-inc="1" name="heading-letter-spacing" value="<?php echo esc_attr($this->heading_letter_spacing); ?>" />
                             </div>
                         </div>
                     </div>
@@ -198,7 +199,7 @@
                         </div>
                         <div class="option__row--field">
                             <div class="sm_input_cover">
-                                <input type="number" class="number" id="heading_line_height" data-inc="1" name="heading-line-height" value="<?php echo esc_attr($this->heading_font_size); ?>" <?php checked(1, $this->heading_font_size, true); ?> />
+                                <input type="number" class="number" id="heading_line_height" data-inc="1" name="heading-line-height" value="<?php echo esc_attr($this->heading_line_height); ?>" />
                             </div>
                         </div>
                     </div>

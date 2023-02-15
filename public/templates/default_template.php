@@ -21,7 +21,6 @@ $image_url                  = isset($content['bg_image']) ? wp_get_attachment_im
 
 require_once 'footer.php';
 ?>
-
 <style>
     .default_template-heading .main_title {
         font-family: <?php echo $design_typo['heading_font_family'] ? esc_html($design_typo['heading_font_family']) : 'var(--base-open-sans)' ?>;
@@ -45,22 +44,20 @@ require_once 'footer.php';
     }
     .default_template-icons .social_media_icon a {
         font-size: <?php echo esc_attr($design_social['icon_size']) / 10 . 'rem' ?>;
-
         background-color: <?php echo esc_attr($design_social['icon_bg_color']) ?>;
-        border: 1px solid <?php echo esc_attr($design_social['icon_border_color']) ?>;
-        
+        border: 1px solid <?php echo esc_attr($design_social['icon_border_color']) ?>;        
 
-        <?php if($design_social['icon_size'] === 16) : ?>
+        <?php if(strval($design_social['icon_size']) === '16') : ?>
             width: 3.8rem !important;
             height: 3.8rem !important;
         <?php endif; ?>
 
-        <?php if($design_social['icon_size'] === 24) : ?>
+        <?php if(strval($design_social['icon_size']) === '24') : ?>
             width: 5rem !important;
             height: 5rem !important;
         <?php endif; ?>
 
-        <?php if($design_social['icon_size'] === 32) : ?>
+        <?php if(strval($design_social['icon_size']) === '32') : ?>
             width: 6rem !important;
             height: 6rem !important;
         <?php endif; ?>

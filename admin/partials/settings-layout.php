@@ -1,5 +1,7 @@
 <div class="wrap site_mode__wrap">
-	<h1><?php echo esc_html(get_admin_page_title()); ?></h1>
+	<div class="site_mode__wrap--header">		
+		<img src="<?php echo esc_url(plugins_url('/assets/img/site-mode-logo.svg', dirname(__FILE__))); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+	</div>
 	<div class="site_mode__wrap--cover">
 		<div class="site_mode__wrap--cover-content">
 			<?php require_once plugin_dir_path(dirname(__FILE__)) . 'partials/main-content.php'; ?>

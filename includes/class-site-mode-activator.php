@@ -46,10 +46,10 @@ class Site_Mode_Activator {
         // Add default options to database for content settings.
         $content_settings= array(
             "logo_type"                  => 'text-type',
-            "image_logo"                 => '',
+            "image_logo"                 => 'https://sitemode.local/wp-content/uploads/2023/02/admin-sidebar-icon.svg',
             "logo_text"                  => get_bloginfo('name'),
-            "content_heading"            => "Website Under Maintenance",
-            'content_description'        => "Site will be available soon. Thank you for your patience!",
+            "content_heading"            => "Something great is in the works!",
+            'content_description'        => "We're currently rebuilding our website to create a more seamless and immersive online experience for our valued customers. Follow us on social media for the latest updates and exclusive sneak peeks of what's to come. Be the first to know when our new site goes live and don't miss out on what we have in store!",
             'bg_image'                   => '',
         );
         // Add default options to database for social settings.
@@ -63,37 +63,28 @@ class Site_Mode_Activator {
 
         // Add default options to database for Design logo and background settings.
         $design_lb_settings = array(
-            'logo-width'                 => '120',
-            'logo-height'                => '120',
+            'logo-width'                 => '100',
+            'logo-height'                => '100',
             'background-overlay'         => '1',
             'overlay-color'              => '#000000',
-            'overlay-opacity'            => '0.5',
+            'overlay-opacity'            => '8',
         );
 
         // Add default options to database for Design fonts  settings.
         $design_fonts_settings = array(
-            'heading_font_family'        => 'Open Sans',
-            'heading_font_size'          => '48',
+            'heading_font_family'        => 'Raleway',
+            'heading_font_size'          => '90',
 			'heading_font_color'         => '#ffffff',
-			'heading_font_weight'        => '700',
+			'heading_font_weight'        => '600',
 			'heading_letter_spacing'     => '0',
-			'heading_line_height'        => '1.2',
-            'description_font_family'    => 'Open Sans',
-            'description_font_size'      => '18',
+			'heading_line_height'        => '110',
+            'description_font_family'    => 'Raleway',
+            'description_font_size'      => '24',
 	        'description_font_color'     => '#ffffff',
-	        'description_font_weight'    => '400',
+	        'description_font_weight'    => '300',
 	        'description_letter_spacing' => '0',
-	        'description_line_height'    => '1.8',
+	        'description_line_height'    => '42',
 
-        );
-
-        // Add default options to database for Design icons color settings.
-        $design_icon_color = array(
-            'icon_size'                  => '32',
-            'icon_color'                 => '#ffffff',
-            'icon_bg_color'              => '#000000',
-            'icon_border_color'          => '#000000',
-            'design_icon_color'          => '#ffffff',
         );
 
         //add default options to database for SEO settings fields with placeholder text.
@@ -118,10 +109,10 @@ class Site_Mode_Activator {
         );
 
         $site_mode_design_social = array(
-            'icon_size'              => '32',
+            'icon_size'              => '24',
             'icon_color'             => '#ffffff',
-            'icon_bg_color'          => '#000000',
-            'icon_border_color'      => '#000000',
+            'icon_bg_color'          => '',
+            'icon_border_color'      => '#ffffff',
         );
 
     // Add default options to database for general settings.
@@ -131,8 +122,7 @@ class Site_Mode_Activator {
             'site_mode_social'              => $social_settings,
             'site_mode_design'              => $template_name,
             'site_mode_design_lb'           => $design_lb_settings,
-            'site_mode_design_fonts'        => $design_fonts_settings,
-            'site_mode_design_icon_color'   => $design_icon_color,
+            'site_mode_design_fonts'        => $design_fonts_settings,            
             'site_mode_seo'                 => $seo_settings,
             'site_mode_advanced'            => $advance_settings,
             'site_mode_design_social'      => $site_mode_design_social,
