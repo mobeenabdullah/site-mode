@@ -698,8 +698,8 @@ body {
     }
   }
 }
-.submit_button a.preview_btn {  
-  font-size: 0.9rem !important;
+.external_link {  
+  margin-left: calculateRem(10px);
 }
 .preview_active_template {
   padding-bottom: 66%;

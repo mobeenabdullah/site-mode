@@ -153,6 +153,8 @@ body {
 	flex-direction: column;
 	position: relative;
 	z-index: 2;
+	max-width: 92rem;
+	margin: 0 auto;
 }
 
 .default_template-logo {
@@ -167,11 +169,10 @@ body {
 }
 
 .default_template-heading {
-	text-align: center;
+	margin-bottom: 3rem;
 }
 
 .default_template-heading .main_title {
-	margin-bottom: 2rem;
 	font-size: 6.5rem;
 	font-weight: 700;
 	line-height: 1.2;
@@ -181,7 +182,6 @@ body {
 }
 
 .default_template-text {
-	max-width: 55rem;
 	margin-bottom: 8rem;
 }
 
@@ -217,6 +217,7 @@ body {
 	color: var(--base-white-color);
 	font-size: 18px;
 	transition: all .2s;
+	border-radius: 50%;
 }
 
 .default_template-icons .social_media_icon a:hover {

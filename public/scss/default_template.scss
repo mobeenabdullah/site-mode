@@ -56,9 +56,9 @@
     @include flex_mixin(flex, center, center, column, null);
     @extend %width-100-height-100vh;
     @include position_mixin(relative, null, null, null, null);
-
     z-index: 2;
-
+    max-width: 92rem;
+    margin: 0 auto;
     &-logo {
         margin-bottom: 6rem;
 
@@ -70,20 +70,17 @@
         }
     }
 
-    &-heading {
-        text-align: center;
-
+    &-heading {        
+        margin-bottom: 3rem;
         & .main_title {
-            @include width_height_mixin(null, auto);
-            margin-bottom: 2rem;
+            @include width_height_mixin(null, auto);            
             @include font_mixin(6.5rem, 700, 1.2, center);
             color: var(--template-one-primary-color);
             overflow: visible;
         }
     }
 
-    &-text {
-        max-width: 55rem;
+    &-text {        
         margin-bottom: 8rem;
         & p {
             @include font_mixin(2.2rem, 300, 1.5, center);
@@ -105,16 +102,13 @@
                     text-align: center;                    
                     padding: 1.2rem;                    
                     border: 1px solid transparent;
-                    border-radius: 0.4rem;
-                    // transform: rotate(45deg);
+                    border-radius: 0.4rem;                    
                     text-align: center;
                     text-decoration: none;     
                     color: var(--base-white-color); 
                     font-size: 18px;
                     transition: all .2s;
-                    // & i {
-                    //     transform: rotate(-45deg);
-                    // }
+                    border-radius: 50%;                    
                     &:hover {
                         transform: scale(1.1);
                     }
