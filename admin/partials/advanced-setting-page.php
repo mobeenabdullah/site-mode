@@ -4,7 +4,8 @@
     <form id="site-mode-advanced" method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="google_analytic_id"><?php esc_html_e('Google Analytic ID', 'site-mode')?></label></span>
+                <span><label for="google_analytic_id"><?php esc_html_e('Google Analytics ID', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Enter your Google Analytics tracking ID to integrate website analytics and monitor traffic','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">
@@ -17,6 +18,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="facebook_pixel_id"><?php esc_html_e('Facebook Pixel ID', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Enter your Facebook Pixel ID to enable tracking and measurement of your website\'s performance on Facebook','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_input_cover">
@@ -29,6 +31,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="rest_api"><?php esc_html_e('Disable REST API', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Activate to disable the REST API, which can enhance security and prevent unauthorized access','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -41,6 +44,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="feed_enable"><?php esc_html_e('Disable RSS Feed', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Activate to disable the RSS feed, which can improve website security and prevent unauthorized access to content','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_checkbox_wrapper">
@@ -53,6 +57,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="header_code"><?php esc_html_e('Header Code', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Enter custom code to be inserted into the header of your website','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover header_code">
@@ -67,6 +72,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="footer-code"><?php esc_html_e('Footer Code', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Enter custom code to be inserted into the footer of your website','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover footer_code">
@@ -77,6 +83,7 @@
         <div class="option__row">
             <div class="option__row--label">
                 <span><label for="custom-css"><?php esc_html_e('Custom CSS', 'site-mode')?></label></span>
+                <span class="info_text"><?php esc_html_e('Enter custom CSS code to override or modify the default styles of the maintenance page','site-mode');?></span>
             </div>
             <div class="option__row--field">
                 <div class="sm_textarea_cover custom_css">
