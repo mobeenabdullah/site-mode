@@ -223,11 +223,6 @@ class Site_Mode {
 		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_custom_css_include');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'header_code_include');
-        $this->loader->add_action('wp_head', $this->classes_loader->get_advanced(), 'site_mode_google_analytics_id');
-        $this->loader->add_action('wp_footer', $this->classes_loader->get_advanced(), 'footer_code_include');
         $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'site_mode_rest_api');
 
 

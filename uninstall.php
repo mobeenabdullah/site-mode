@@ -32,23 +32,6 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 
 //Options cleanup during uninstall plugin
 
-$site_mode_default_images = unserialize(get_option('site_mode_default_images'));
-
-if (!empty($site_mode_default_images)) {
-    foreach ($site_mode_default_images as $image_id) {
-
-        $media_post = get_post( $image_id );
-
-        if ( $media_post && $media_post->post_type == 'attachment' ) {
-
-            wp_delete_attachment($image_id, true);
-            wp_delete_post($media_post->ID, true);
-
-        }
-
-    }
-}
-
 $options = [
     "site_mode_advanced",
     "site_mode_content",

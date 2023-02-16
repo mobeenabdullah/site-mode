@@ -19,7 +19,6 @@ $custom_login_url           = isset($general['custom_login_url']) ? $general['cu
 $logo_url                   = isset($content['logo_image']) ? wp_get_attachment_image_url($content['logo_image'], 'full') : '';
 $image_url                  = isset($content['bg_image']) ? wp_get_attachment_image_url($content['bg_image'], 'full') : '';
 
-require_once 'footer.php';
 ?>
 <style>
     .default_template-heading .main_title {
@@ -97,9 +96,13 @@ require_once 'footer.php';
         <!--Section Content-->
         <div class="container">
             <div class="default_template">
+                <?php if($content['logo_type'] === 'image') { ?>
                     <div class="default_template-logo">
                         <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
                     </div>
+                <?php } elseif($content['logo_type'] === 'text')  { ?>
+                    <p><?php echo esc_html($content['logo_text']); ?></p>
+                <?php }?>
                     <div class="default_template-heading">
                         <h1 class="main_title">
                             <?php echo wp_kses_post($content['content_heading']); ?>
@@ -128,8 +131,8 @@ require_once 'footer.php';
     </section>
 </main>
 
+<?php
 
-
-
+require_once 'footer.php';
 
 
