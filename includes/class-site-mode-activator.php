@@ -21,17 +21,12 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Activator {
-
-
     public static function upload_default_media($image_url) {
         $upload_dir = wp_upload_dir(); // Set upload folder
-
         $image_data = file_get_contents($image_url); // Get image data
-
         $filename = basename($image_url); // Create image file name
 
         // Check folder permission and define file location
-
         if( wp_mkdir_p( $upload_dir['path'] ) ) {
             $file = $upload_dir['path'] . '/' . $filename;
         } else {
@@ -39,17 +34,12 @@ class Site_Mode_Activator {
         }
 
         // Create the image  file on the server
-
         file_put_contents( $file, $image_data );
 
-
         // Check image file type
-
         $wp_filetype = wp_check_filetype( $filename, null );
 
-
         // Set attachment data
-
         $attachment = array(
             'post_mime_type' => $wp_filetype['type'],
             'post_title'     => sanitize_file_name( $filename ),
@@ -57,11 +47,8 @@ class Site_Mode_Activator {
             'post_status'    => 'inherit'
         );
 
-
         // Create the attachment
-
         $attach_id = wp_insert_attachment( $attachment, $file );
-
         return $attach_id;
     }
 
@@ -73,23 +60,17 @@ class Site_Mode_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
-
-
         // upload default logo image to media library and get the attachment id.
         $bg_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-bg.webp';
+        $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';
+        $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);
+        $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
+        $default_img = [
+            'logo_image' => $logo_img_id,
+            'bg_image' => $bd_img_id
+        ];
 
-        $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';        
-
-//        $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);
-
-//        $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
-
-//        $default_img = Array(
-//            'logo_image' => $logo_img_id,
-//            'bg_image' => $bd_img_id
-//        );
-
-//        update_option('site_mode_default_images', serialize($default_img));
+        update_option('site_mode_default_images', serialize($default_img));
 
         $social_icons = Array ( 
             'facebook' => Array ( 
