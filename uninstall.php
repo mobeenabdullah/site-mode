@@ -41,13 +41,9 @@ if (!empty($site_mode_default_images)) {
 
         if ( $media_post && $media_post->post_type == 'attachment' ) {
 
-            wp_delete_post($media_post['id'], true);
-
             wp_delete_attachment($image_id, true);
+            wp_delete_post($media_post->ID, true);
 
-        } else {
-            // The attachment ID is not associated with a media type post
-            // Handle the error or display a message to the user
         }
 
     }
