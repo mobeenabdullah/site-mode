@@ -33,15 +33,15 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 //Options cleanup during uninstall plugin
 
 
-$site_mode_default_images = unserialize(get_option('site_mode_default_images'));
-
-if (!empty($site_mode_default_images)) {
-
-    foreach ($site_mode_default_images as $image) {
-
-        wp_delete_attachment($image, true);
-    }
-}
+//$site_mode_default_images = unserialize(get_option('site_mode_default_images'));
+//
+//if (!empty($site_mode_default_images)) {
+//
+//    foreach ($site_mode_default_images as $image) {
+//
+//        wp_delete_attachment($image, true);
+//    }
+//}
 
 $options = [
     "site_mode_advanced",
@@ -55,7 +55,7 @@ $options = [
     "site_mode_general",
 	"site_mode_design_fonts",
     "site_mode_design_social",
-    "site_mode_default_images",
+//    "site_mode_default_images",
 ];
 
 
