@@ -22,6 +22,49 @@
  */
 class Site_Mode_Activator {
 
+
+    public static function upload_default_media($image_url) {
+        $upload_dir = wp_upload_dir(); // Set upload folder
+
+        $image_data = file_get_contents($image_url); // Get image data
+
+        $filename = basename($image_url); // Create image file name
+
+        // Check folder permission and define file location
+
+        if( wp_mkdir_p( $upload_dir['path'] ) ) {
+            $file = $upload_dir['path'] . '/' . $filename;
+        } else {
+            $file = $upload_dir['basedir'] . '/' . $filename;
+        }
+
+        // Create the image  file on the server
+
+        file_put_contents( $file, $image_data );
+
+
+        // Check image file type
+
+        $wp_filetype = wp_check_filetype( $filename, null );
+
+
+        // Set attachment data
+
+        $attachment = array(
+            'post_mime_type' => $wp_filetype['type'],
+            'post_title'     => sanitize_file_name( $filename ),
+            'post_content'   => '',
+            'post_status'    => 'inherit'
+        );
+
+
+        // Create the attachment
+
+        $attach_id = wp_insert_attachment( $attachment, $file );
+
+        return $attach_id;
+    }
+
 	/**
 	 * Short Description. (use period)
 	 *
@@ -30,6 +73,42 @@ class Site_Mode_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+
+
+        // upload default logo image to media library and get the attachment id.
+        $bg_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-bg.jpg';
+
+        $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';
+
+        $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);    
+
+        $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
+
+        $social_icons = Array ( 
+            'facebook' => Array ( 
+                "link" => 'https://www.facebook.com/',
+                "title" => "Facebook",
+                "icon" => "fa-facebook-f"
+            ),
+            'twitter' => Array ( 
+                "link" => 'https://twitter.com/',
+                "title" => "Twitter",
+                "icon" => "fa-twitter"
+            ),
+            'linkedin' => Array ( 
+                "link" => 'https://www.linkedin.com/',
+                "title" => "Linkedin",
+                "icon" => "fa-linkedin-in"
+            ),
+            'instagram' => Array ( 
+                "link" => 'https://www.instagram.com/',
+                "title" => "Instagram",
+                "icon" => "fa-instagram"
+            )
+        
+        
+        );
+            
 
         // Add default options to database for general settings
         $general_settings = array(
@@ -45,17 +124,17 @@ class Site_Mode_Activator {
 
         // Add default options to database for content settings.
         $content_settings= array(
-            "logo_type"                  => 'text-type',
-            "image_logo"                 => 'https://sitemode.local/wp-content/uploads/2023/02/admin-sidebar-icon.svg',
+            "logo_type"                  => 'image',
+            "logo_image"                 => $logo_img_id,
             "logo_text"                  => get_bloginfo('name'),
             "content_heading"            => "Something great is in the works!",
             'content_description'        => "We're currently rebuilding our website to create a more seamless and immersive online experience for our valued customers. Follow us on social media for the latest updates and exclusive sneak peeks of what's to come. Be the first to know when our new site goes live and don't miss out on what we have in store!",
-            'bg_image'                   => '',
+            'bg_image'                   => $bd_img_id,
         );
         // Add default options to database for social settings.
         $social_settings = array(
-            'show_social_icons'          => '1',
-            'social_icons'               => [],
+            'show_social_icons'          => 'on',
+            'social_icons'               => $social_icons,
         );
 
         // Add default options to database for Design settings.
@@ -133,4 +212,6 @@ class Site_Mode_Activator {
         }
 
 	}
+
+
 }
