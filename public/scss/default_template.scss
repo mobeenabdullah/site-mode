@@ -63,11 +63,9 @@
     margin: 0 auto;
     &-logo {
         margin-bottom: 6rem;
-
         & img {
             display: block;
             @include width_height_mixin(100%, auto);
-
             object-fit: cover;
         }
     }
@@ -118,6 +116,15 @@
             }
         }
     }
+}
+
+.text_logo {
+    width: auto !important;
+}
+.site_logo_text {
+    font-size: 3rem;
+    line-height: 1.5;
+    color: #ffffff;    
 }
 
 @media screen and (max-width: 1600px) {

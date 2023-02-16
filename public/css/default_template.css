@@ -217,6 +217,16 @@ body {
 	transform: scale(1.1);
 }
 
+.text_logo {
+	width: auto !important;
+}
+
+.site_logo_text {
+	font-size: 3rem;
+	line-height: 1.5;
+	color: #ffffff;
+}
+
 @media screen and (max-width: 1600px) {
 	html {
 		font-size: 8px;
