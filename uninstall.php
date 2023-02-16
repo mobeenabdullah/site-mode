@@ -19,8 +19,8 @@
  * For more information, see the following discussion:
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  */
@@ -64,11 +64,8 @@ $options = [
     "site_mode_default_images",
 ];
 
-
 if (!empty($options)) {
-
-	foreach ($options as $option) {
-
+	foreach ($options as $option) :
 		delete_option($option);
-	}
+	endforeach;
 }

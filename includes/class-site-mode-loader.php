@@ -3,8 +3,8 @@
 /**
  * Register all actions and filters for the plugin
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -21,13 +21,12 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Loader
-{
+class Site_Mode_Loader {
 
 	/**
 	 * The array of actions registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      array    $actions    The actions registered with WordPress to fire when the plugin loads.
 	 */
@@ -36,7 +35,7 @@ class Site_Mode_Loader
 	/**
 	 * The array of filters registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   protected
 	 * @var      array    $filters    The filters registered with WordPress to fire when the plugin loads.
 	 */
@@ -45,10 +44,9 @@ class Site_Mode_Loader
 	/**
 	 * Initialize the collections used to maintain the actions and filters.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 
 		$this->actions = array();
 		$this->filters = array();
@@ -58,30 +56,28 @@ class Site_Mode_Loader
 	/**
 	 * Add a new action to the collection to be registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param    string               $hook             The name of the WordPress action that is being registered.
 	 * @param    object               $component        A reference to the instance of the object on which the action is defined.
 	 * @param    string               $callback         The name of the function definition on the $component.
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1.
 	 */
-	public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1)
-	{
+	public function add_action($hook, $component, $callback, $priority = 10, $accepted_args = 1) {
 		$this->actions = $this->add($this->actions, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
 	/**
 	 * Add a new filter to the collection to be registered with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param    string               $hook             The name of the WordPress filter that is being registered.
 	 * @param    object               $component        A reference to the instance of the object on which the filter is defined.
 	 * @param    string               $callback         The name of the function definition on the $component.
 	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
 	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
 	 */
-	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1)
-	{
+	public function add_filter($hook, $component, $callback, $priority = 10, $accepted_args = 1) {
 		$this->filters = $this->add($this->filters, $hook, $component, $callback, $priority, $accepted_args);
 	}
 
@@ -89,7 +85,7 @@ class Site_Mode_Loader
 	 * A utility function that is used to register the actions and hooks into a single
 	 * collection.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @param    array                $hooks            The collection of hooks that is being registered (that is, actions or filters).
 	 * @param    string               $hook             The name of the WordPress filter that is being registered.
@@ -99,8 +95,7 @@ class Site_Mode_Loader
 	 * @param    int                  $accepted_args    The number of arguments that should be passed to the $callback.
 	 * @return   array                                  The collection of actions and filters registered with WordPress.
 	 */
-	private function add($hooks, $hook, $component, $callback, $priority, $accepted_args)
-	{
+	private function add($hooks, $hook, $component, $callback, $priority, $accepted_args) {
 
 		$hooks[] = array(
 			'hook'          => $hook,
@@ -116,10 +111,9 @@ class Site_Mode_Loader
 	/**
 	 * Register the filters and actions with WordPress.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
-	public function run()
-	{
+	public function run() {
 
 		foreach ($this->filters as $hook) {
 			add_filter($hook['hook'], array($hook['component'], $hook['callback']), $hook['priority'], $hook['accepted_args']);
