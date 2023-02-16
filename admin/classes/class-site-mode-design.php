@@ -3,8 +3,8 @@
 /**
  * Responsible for plugin menu
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,13 +15,12 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Design extends  Settings
-{
+class Site_Mode_Design extends  Settings {
         protected $option_name_1 = 'site_mode_design';
         protected $option_name_2 = 'site_mode_design_lb';
         protected $option_name_3 = 'site_mode_design_fonts';
