@@ -84,6 +84,13 @@ class Site_Mode_Activator {
 
         $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
 
+        $default_img = Array(
+            'logo_image' => $logo_img_id,
+            'bg_image' => $bd_img_id
+        );
+
+        update_option('site_mode_default_images', serialize($default_img));
+
         $social_icons = Array ( 
             'facebook' => Array ( 
                 "link" => 'https://www.facebook.com/',
