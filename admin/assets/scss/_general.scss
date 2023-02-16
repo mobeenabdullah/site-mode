@@ -921,3 +921,19 @@ body {
   }
 }
 
+
+.toplevel_page_site-mode #adminmenu #toplevel_page_site-mode .toplevel_page_site-mode .icon-admin-menu-icon-svg:before {
+  content: "\e900";
+  color: #fff;
+  font-size: 21px;
+  position: relative;
+  top: 7px;
+}
+
+.toplevel_page_site-mode #adminmenu #toplevel_page_site-mode .toplevel_page_site-mode .wp-menu-image {
+  position: relative;
+}
+
+#adminmenu a:hover span.icon-admin-menu-icon-svg::before {
+  color: #72aee6 !important;
+}

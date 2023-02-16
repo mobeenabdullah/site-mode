@@ -29,7 +29,7 @@ class Site_Mode_Menu {
             'manage_options',
             'site-mode',
             [$this, 'site_mode_settings_page_cb'],
-            'dashicons-welcome-add-page',
+            plugin_dir_url( __DIR__ ).'assets/img/admin-menu-icon.png',
         );
     }
 

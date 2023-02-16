@@ -116,7 +116,7 @@ class Site_Mode_Activator {
             "logo_image"                 => $logo_img_id,
             "logo_text"                  => get_bloginfo('name'),
             "content_heading"            => "Something great is in the works!",
-            'content_description'        => "We're currently rebuilding our website to create a more seamless and immersive online experience for our valued customers. Follow us on social media for the latest updates and exclusive sneak peeks of what's to come. Be the first to know when our new site goes live and don't miss out on what we have in store!",
+            'content_description'        => "We're giving our website a makeover to make it even better for you! Check out our socials for behind-the-scenes looks at the new site. Be the first to know when it's ready so you don't miss a thing!",
             'bg_image'                   => $bd_img_id,
         );
         // Add default options to database for social settings.
