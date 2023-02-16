@@ -5,8 +5,8 @@
  *
  * This file is used to markup the public-facing aspects of the plugin.
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/public/partials

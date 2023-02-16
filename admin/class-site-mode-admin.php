@@ -3,8 +3,8 @@
 /**
  * The admin-specific functionality of the plugin.
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -20,13 +20,12 @@
  * @subpackage Site_Mode/admin
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_Admin
-{
+class Site_Mode_Admin {
 
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -35,7 +34,7 @@ class Site_Mode_Admin
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -51,13 +50,12 @@ class Site_Mode_Admin
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 * @param      string    $plugin_name       The name of this plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
 
-	public function __construct($plugin_name, $version)
-	{
+	public function __construct($plugin_name, $version) {
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
@@ -87,7 +85,7 @@ class Site_Mode_Admin
 		wp_enqueue_style('select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
 		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'nano-min', plugin_dir_url( __FILE__ ) . 'assets/css/nano.min.css', array(), $this->version, 'all' );
-		
+
 		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/css/site-mode-admin.css', array(), $this->version, 'all');
 	}
 
@@ -102,10 +100,10 @@ class Site_Mode_Admin
             wp_enqueue_media();
         }
 
-		wp_enqueue_script ( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), '1.0.0', true );
-		wp_enqueue_script ( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js', array('jquery'), '1.0.0', true );
-		wp_enqueue_script('range-slider', plugin_dir_url(__FILE__) . 'assets/js/rangeslider.js', array( 'jquery' ), '1.0.0', true);
-		wp_enqueue_script('pickr-min', plugin_dir_url(__FILE__) . 'assets/js/pickr.min.js', array( 'jquery' ), '1.0.0', true);		
+		wp_enqueue_script ( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array('jquery'), null, true );
+		wp_enqueue_script ( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js', array('jquery'), null, true );
+		wp_enqueue_script('range-slider', plugin_dir_url(__FILE__) . 'assets/js/rangeslider.js', array( 'jquery' ), null, true);
+		wp_enqueue_script('pickr-min', plugin_dir_url(__FILE__) . 'assets/js/pickr.min.js', array( 'jquery' ), null, true);
 
 		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'assets/js/site-mode-admin.js', array('jquery'), $this->version, true);
 		wp_localize_script( $this->plugin_name,'ajaxObj',array(

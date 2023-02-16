@@ -1,6 +1,6 @@
 === Plugin Name ===
-Contributors: (this should be a list of wordpress.org userid's)
-Donate link: https://https://mobeenabdullah.com
+Contributors: mobeen-abdullah
+Donate link: https://mobeenabdullah.com
 Tags: comments, spam
 Requires at least: 3.0.1
 Tested up to: 3.4
