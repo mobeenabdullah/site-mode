@@ -80,16 +80,16 @@ class Site_Mode_Activator {
 
         $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';        
 
-        $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);    
+//        $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);
 
-        $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
+//        $logo_img_id = Site_Mode_Activator::upload_default_media($logo_img_url);
 
-        $default_img = Array(
-            'logo_image' => $logo_img_id,
-            'bg_image' => $bd_img_id
-        );
+//        $default_img = Array(
+//            'logo_image' => $logo_img_id,
+//            'bg_image' => $bd_img_id
+//        );
 
-        update_option('site_mode_default_images', serialize($default_img));
+//        update_option('site_mode_default_images', serialize($default_img));
 
         $social_icons = Array ( 
             'facebook' => Array ( 
@@ -132,11 +132,11 @@ class Site_Mode_Activator {
         // Add default options to database for content settings.
         $content_settings= array(
             "logo_type"                  => 'image',
-            "logo_image"                 => $logo_img_id,
+            "logo_image"                 => '',
             "logo_text"                  => get_bloginfo('name'),
             "content_heading"            => "Something great is in the works!",
             'content_description'        => "We're currently rebuilding our website to create a more seamless and immersive online experience for our valued customers. Follow us on social media for the latest updates and exclusive sneak peeks of what's to come. Be the first to know when our new site goes live and don't miss out on what we have in store!",
-            'bg_image'                   => $bd_img_id,
+            'bg_image'                   => '',
         );
         // Add default options to database for social settings.
         $social_settings = array(
