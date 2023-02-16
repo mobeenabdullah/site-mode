@@ -95,13 +95,19 @@ $image_url                  = isset($content['bg_image']) ? wp_get_attachment_im
                 <?php else : ?>
                 <?php endif; ?>
                 <div class="default_template">
-                        <div class="default_template-logo">
-                            <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
-                        </div>
+                        <?php if($content['logo_type'] === 'image') { ?>
+                            <div class="default_template-logo">
+                                <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
+                            </div>
+                        <?php } elseif($content['logo_type'] === 'text')  { ?>
+                            <div class="default_template-logo text_logo">
+                                <h1 class="site_logo_text"><?php echo esc_html($content['logo_text']); ?></h1>
+                            </div>
+                        <?php }?>
                         <div class="default_template-heading">
-                            <h1 class="main_title">
+                            <h2 class="main_title">
                                 <?php echo wp_kses_post($content['content_heading']); ?>
-                            </h1>
+                            </h2>
                         </div>
                         <div class="default_template-text">
                             <p><?php echo wp_kses_post($content['content_description']); ?></p>
