@@ -35,8 +35,21 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 $site_mode_default_images = unserialize(get_option('site_mode_default_images'));
 
 if (!empty($site_mode_default_images)) {
-    foreach ($site_mode_default_images as $image) {
-        wp_delete_attachment($image, true);
+    foreach ($site_mode_default_images as $image_id) {
+
+        $media_post = get_post( $image_id );
+
+        if ( $media_post && $media_post->post_type == 'attachment' ) {
+
+            wp_delete_post($media_post['id'], true);
+
+            wp_delete_attachment($image_id, true);
+
+        } else {
+            // The attachment ID is not associated with a media type post
+            // Handle the error or display a message to the user
+        }
+
     }
 }
 
@@ -52,7 +65,7 @@ $options = [
     "site_mode_general",
 	"site_mode_design_fonts",
     "site_mode_design_social",
-//    "site_mode_default_images",
+    "site_mode_default_images",
 ];
 
 

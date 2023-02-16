@@ -113,11 +113,11 @@ class Site_Mode_Activator {
         // Add default options to database for content settings.
         $content_settings= array(
             "logo_type"                  => 'image',
-            "logo_image"                 => '',
+            "logo_image"                 => $logo_img_id,
             "logo_text"                  => get_bloginfo('name'),
             "content_heading"            => "Something great is in the works!",
             'content_description'        => "We're currently rebuilding our website to create a more seamless and immersive online experience for our valued customers. Follow us on social media for the latest updates and exclusive sneak peeks of what's to come. Be the first to know when our new site goes live and don't miss out on what we have in store!",
-            'bg_image'                   => '',
+            'bg_image'                   => $bd_img_id,
         );
         // Add default options to database for social settings.
         $social_settings = array(
