@@ -76,9 +76,9 @@ class Site_Mode_Activator {
 
 
         // upload default logo image to media library and get the attachment id.
-        $bg_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-bg.jpg';
+        $bg_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-bg.webp';
 
-        $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';
+        $logo_img_url = plugin_dir_path( dirname( __FILE__ )) . 'admin/assets/img/default-logo.png';        
 
         $bd_img_id = Site_Mode_Activator::upload_default_media($bg_img_url);    
 

@@ -15,7 +15,7 @@
                                     'id' => 1,
                                     'name' => 'default_template',
                                     'title' => 'Default Template',
-                                    'image' => plugin_dir_url( __DIR__ ).'assets/img/default_template.jpg'
+                                    'image' => plugin_dir_url( __DIR__ ).'assets/img/screenshot.png'
                                 ]
                             ];
                         ?>
