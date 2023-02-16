@@ -3,8 +3,8 @@
 /**
  * Fired during plugin activation
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -57,7 +57,7 @@ class Site_Mode_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
 	public static function activate() {
         // upload default logo image to media library and get the attachment id.
@@ -72,31 +72,28 @@ class Site_Mode_Activator {
 
         update_option('site_mode_default_images', serialize($default_img));
 
-        $social_icons = Array ( 
-            'facebook' => Array ( 
+        $social_icons = Array (
+            'facebook' => Array (
                 "link" => 'https://www.facebook.com/',
                 "title" => "Facebook",
                 "icon" => "fa-facebook-f"
             ),
-            'twitter' => Array ( 
+            'twitter' => Array (
                 "link" => 'https://twitter.com/',
                 "title" => "Twitter",
                 "icon" => "fa-twitter"
             ),
-            'linkedin' => Array ( 
+            'linkedin' => Array (
                 "link" => 'https://www.linkedin.com/',
                 "title" => "Linkedin",
                 "icon" => "fa-linkedin-in"
             ),
-            'instagram' => Array ( 
+            'instagram' => Array (
                 "link" => 'https://www.instagram.com/',
                 "title" => "Instagram",
                 "icon" => "fa-instagram"
             )
-        
-        
         );
-            
 
         // Add default options to database for general settings
         $general_settings = array(
@@ -107,7 +104,7 @@ class Site_Mode_Activator {
             'show_login_icon'            => 1,
             'custom_login_url'           => '',
             'whitelist_pages'            => [],
-            'user_roles'                 => ['administrator']
+            'user_roles'                 => []
         );
 
         // Add default options to database for content settings.
@@ -119,10 +116,11 @@ class Site_Mode_Activator {
             'content_description'        => "We're giving our website a makeover to make it even better for you! Check out our socials for behind-the-scenes looks at the new site. Be the first to know when it's ready so you don't miss a thing!",
             'bg_image'                   => $bd_img_id,
         );
+
         // Add default options to database for social settings.
         $social_settings = array(
             'show_social_icons'          => 'on',
-            'social_icons'               => $social_icons,
+            'social_icons'               => $social_icons
         );
 
         // Add default options to database for Design settings.
@@ -134,7 +132,7 @@ class Site_Mode_Activator {
             'logo-height'                => '100',
             'background-overlay'         => '1',
             'overlay-color'              => '#000000',
-            'overlay-opacity'            => '8',
+            'overlay-opacity'            => '8'
         );
 
         // Add default options to database for Design fonts  settings.
@@ -150,8 +148,7 @@ class Site_Mode_Activator {
 	        'description_font_color'     => '#ffffff',
 	        'description_font_weight'    => '300',
 	        'description_letter_spacing' => '0',
-	        'description_line_height'    => '42',
-
+	        'description_line_height'    => '42'
         );
 
         //add default options to database for SEO settings fields with placeholder text.
@@ -159,7 +156,7 @@ class Site_Mode_Activator {
             'meta_title'                    => '',
             'meta_description'              => '',
             'meta_favicon'                  => '',
-            'meta_image'                    => '',
+            'meta_image'                    => ''
         );
 
         // adding default options to database for advanced settings.
@@ -171,7 +168,7 @@ class Site_Mode_Activator {
 			'disable_rss_feed'              => '0',
             'enable_feed'                   => '1',
             'header_code'                   => '',
-            'footer_code'                   => '',
+            'footer_code'                   => ''
 
         );
 
@@ -179,7 +176,7 @@ class Site_Mode_Activator {
             'icon_size'              => '24',
             'icon_color'             => '#ffffff',
             'icon_bg_color'          => '',
-            'icon_border_color'      => '#ffffff',
+            'icon_border_color'      => '#ffffff'
         );
 
     // Add default options to database for general settings.
@@ -189,17 +186,15 @@ class Site_Mode_Activator {
             'site_mode_social'              => $social_settings,
             'site_mode_design'              => $template_name,
             'site_mode_design_lb'           => $design_lb_settings,
-            'site_mode_design_fonts'        => $design_fonts_settings,            
+            'site_mode_design_fonts'        => $design_fonts_settings,
             'site_mode_seo'                 => $seo_settings,
             'site_mode_advanced'            => $advance_settings,
-            'site_mode_design_social'      => $site_mode_design_social,
+            'site_mode_design_social'      => $site_mode_design_social
         );
 
-        foreach ($settings as $key => $value) {
+        foreach ($settings as $key => $value) :
             add_option($key, serialize($value));
-        }
+        endforeach;
 
 	}
-
-
 }

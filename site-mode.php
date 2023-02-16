@@ -8,17 +8,17 @@
  * registers the activation and deactivation functions, and defines a function
  * that starts the plugin.
  *
- * @link              https://https://mobeenabdullah.com
- * @since             1.0.0
+ * @link              https://mobeenabdullah.com
+ * @since             0.0.1
  * @package           Site_Mode
  *
  * @wordpress-plugin
  * Plugin Name:       Site Mode - Under Construction & Maintenance Mode
- * Plugin URI:        https://https://mobeenabdullah.com/plugins
+ * Plugin URI:        https://github.com/mobeenabdullah/site-mode
  * Description:       Easily put your WordPress site into maintenance mode while you work on updates or make changes
- * Version:           1.0.0
+ * Version:           0.0.1
  * Author:            Mobeen Abdullah
- * Author URI:        https://https://mobeenabdullah.com
+ * Author URI:        https://github.com/mobeenabdullah
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       site-mode
@@ -32,17 +32,14 @@ if (!defined('WPINC')) {
 
 /**
  * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
  */
-define('SITE_MODE_VERSION', '1.0.0');
+define('SITE_MODE_VERSION', '0.0.1');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-site-mode-activator.php
  */
-function activate_site_mode()
-{
+function activate_site_mode() {
 	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
 }
@@ -51,8 +48,7 @@ function activate_site_mode()
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-site-mode-deactivator.php
  */
-function deactivate_site_mode()
-{
+function deactivate_site_mode() {
 	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-deactivator.php';
 	Site_Mode_Deactivator::deactivate();
 }
@@ -73,16 +69,12 @@ require plugin_dir_path(__FILE__) . 'includes/class-site-mode.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    0.0.1
  */
 
 
-function run_site_mode()
-{
-
+function run_site_mode() {
 	$plugin = new Site_Mode();
 	$plugin->run();
 }
 run_site_mode();
-
-

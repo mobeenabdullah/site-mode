@@ -19,8 +19,8 @@
  * For more information, see the following discussion:
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  */
@@ -31,23 +31,6 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
 }
 
 //Options cleanup during uninstall plugin
-
-$site_mode_default_images = unserialize(get_option('site_mode_default_images'));
-
-if (!empty($site_mode_default_images)) {
-    foreach ($site_mode_default_images as $image_id) {
-
-        $media_post = get_post( $image_id );
-
-        if ( $media_post && $media_post->post_type == 'attachment' ) {
-
-            wp_delete_attachment($image_id, true);
-            wp_delete_post($media_post->ID, true);
-
-        }
-
-    }
-}
 
 $options = [
     "site_mode_advanced",
@@ -64,11 +47,8 @@ $options = [
     "site_mode_default_images",
 ];
 
-
 if (!empty($options)) {
-
-	foreach ($options as $option) {
-
+	foreach ($options as $option) :
 		delete_option($option);
-	}
+	endforeach;
 }

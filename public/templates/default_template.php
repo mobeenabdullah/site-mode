@@ -19,7 +19,6 @@ $custom_login_url           = isset($general['custom_login_url']) ? $general['cu
 $logo_url                   = isset($content['logo_image']) ? wp_get_attachment_image_url($content['logo_image'], 'full') : '';
 $image_url                  = isset($content['bg_image']) ? wp_get_attachment_image_url($content['bg_image'], 'full') : '';
 
-require_once 'footer.php';
 ?>
 <style>
     .default_template-heading .main_title {
@@ -127,8 +126,8 @@ require_once 'footer.php';
     </section>
 </main>
 
+<?php
 
-
-
+require_once 'footer.php';
 
 

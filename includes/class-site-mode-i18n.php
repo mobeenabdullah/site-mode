@@ -6,8 +6,8 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @link       https://https://mobeenabdullah.com
- * @since      1.0.0
+ * @link       https://mobeenabdullah.com
+ * @since      0.0.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -19,22 +19,19 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @since      1.0.0
+ * @since      0.0.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-class Site_Mode_i18n
-{
-
+class Site_Mode_i18n {
 
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    1.0.0
+	 * @since    0.0.1
 	 */
-	public function load_plugin_textdomain()
-	{
+	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
 			'site-mode',
