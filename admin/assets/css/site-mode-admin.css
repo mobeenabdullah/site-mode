@@ -1600,7 +1600,7 @@ input[type=file] {
 }
 
 .toast-error-msg, .toast-success-msg {
-	padding: 0.6rem;
+	padding: 0.5rem;
 	margin: auto;
 	background-color: transparent;
 	color: var(--sm-base-white-color);
@@ -1629,13 +1629,13 @@ input[type=file] {
 .toast-error-msg {
 	background-color: #dc3545;
 	border: 1px solid #dc3545;
-	max-width: 12.5rem;
+	max-width: 9.375rem;
 }
 
 .toast-success-msg {
-	background-color: #28a745;
-	border: 1px solid #28a745;
-	max-width: 12.5rem;
+	background-color: #5f3cfd;
+	border: 1px solid #5f3cfd;
+	max-width: 9.375rem;
 }
 
 #toast-success.show {
