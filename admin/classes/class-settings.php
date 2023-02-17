@@ -42,7 +42,9 @@ class Settings {
 				return intval($_POST[$key]);
 			} else if($sanitize === 'color') {
 				return sanitize_hex_color($_POST[$key]);
-			} else {
+			} else if($sanitize === 'code') {
+                return $_POST[$key];
+            } else{
 				return sanitize_text_field($_POST[$key]);
 			}
 		}

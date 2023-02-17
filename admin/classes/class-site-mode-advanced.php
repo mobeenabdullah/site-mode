@@ -61,9 +61,12 @@ class Site_Mode_Advanced extends Settings {
         $data['custom_css'] = $this->get_post_data('custom-css', 'advance-settings-save', 'advance-custom-message', 'text');
         $data['disable_rest_api'] = $this->get_post_data('disable-rest-api', 'advance-settings-save', 'advance-custom-message', 'text');
         $data['disable_rss_feed'] = $this->get_post_data('disable-rss-feed', 'advance-settings-save', 'advance-custom-message', 'text');
-        $data['header_code'] = $this->get_post_data('header-code', 'advance-settings-save', 'advance-custom-message', 'text');
-        $data['footer_code'] = $this->get_post_data('footer-code', 'advance-settings-save', 'advance-custom-message', 'text');
-        
+        $data['header_code'] = $this->get_post_data('header-code', 'advance-settings-save', 'advance-custom-message', 'code');
+        $data['footer_code'] = $this->get_post_data('footer-code', 'advance-settings-save', 'advance-custom-message', 'code');
+
+        $data['header_code'] = str_replace("\'", "'", $data['header_code']);
+        $data['footer_code'] = str_replace("\'", "'", $data['footer_code']);
+
         return $this->save_data($this->option_name, $data);
 
         wp_die();

@@ -53,6 +53,9 @@ class Site_Mode_Content extends Settings {
 		$data['logo_text'] = $this->get_post_data('logo-text', 'design-settings-save', 'design-custom-message', 'text');
 		$data['logo_image'] = $this->get_post_data('logo-image', 'design-settings-save', 'design-custom-message', 'number');
 		$data['bg_image'] = $this->get_post_data('bg-image', 'design-settings-save', 'design-custom-message', 'number');
+
+        $data['content_description'] = str_replace("\'", "'", $data['content_description']);
+
 		
         return $this->save_data($this->option_name, $data);
 
