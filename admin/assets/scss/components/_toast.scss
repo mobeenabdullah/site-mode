@@ -8,7 +8,7 @@
 	bottom: calculateRem(30px);
 }
 .toast-error-msg, .toast-success-msg{
-	padding: 0.6rem;
+	padding: 0.5rem;
 	margin: auto;
 	background-color: transparent;
 	color: var(--sm-base-white-color);	
@@ -36,13 +36,13 @@
 .toast-error-msg {	
 	background-color: $error-color;
 	border: 1px solid $error-color;
-	max-width: calculateRem(200px);	
+	max-width: calculateRem(150px);	
 }
 
 .toast-success-msg {	
 	background-color: $success-color;
 	border: 1px solid $success-color;
-	max-width: calculateRem(200px);	
+	max-width: calculateRem(150px);	
 }
 
 #toast-success.show {
