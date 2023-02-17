@@ -36,7 +36,7 @@ class Site_Mode_i18n {
 		load_plugin_textdomain(
 			'site-mode',
 			false,
-			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
+			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);
 	}
 }

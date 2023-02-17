@@ -57,13 +57,13 @@ class Site_Mode {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
-    protected $classes_loader = '';
+	protected $classes_loader = '';
 
-    protected $utilities = '';
+	protected $utilities = '';
 
-    protected $site_mode_general = '';
+	protected $site_mode_general = '';
 
-    protected $status = '';
+	protected $status = '';
 
 
 
@@ -78,7 +78,7 @@ class Site_Mode {
 	 */
 	public function __construct() {
 
-		if (defined('SITE_MODE_VERSION')) {
+		if ( defined( 'SITE_MODE_VERSION' ) ) {
 			$this->version = SITE_MODE_VERSION;
 		} else {
 			$this->version = '0.0.1';
@@ -116,39 +116,38 @@ class Site_Mode {
 		 * core plugin.
 		 */
 
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-site-mode-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-site-mode-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-site-mode-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-site-mode-admin.php';
 
-        /**
-         * The class responsible for defining all actions that occur in the admin area.
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . 'admin/classes/class-plugin-menu.php';
+		/**
+		 * The class responsible for defining all actions that occur in the admin area.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/classes/class-plugin-menu.php';
 
-        /**
-         * The class responsible for defining advanced settings page of the plugin
-         */
-        require_once plugin_dir_path(dirname(__FILE__)) . '/admin/classes/class-site-mode-advanced.php';
+		/**
+		 * The class responsible for defining advanced settings page of the plugin
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/admin/classes/class-site-mode-advanced.php';
 
-		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/template-load.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/template-load.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-site-mode-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-site-mode-public.php';
 
 		$this->loader = new Site_Mode_Loader();
-
 
 	}
 
@@ -165,7 +164,7 @@ class Site_Mode {
 
 		$plugin_i18n = new Site_Mode_i18n();
 
-		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
+		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 
@@ -178,36 +177,35 @@ class Site_Mode {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Site_Mode_Admin($this->get_plugin_name(), $this->get_version());
-        $this->classes_loader = new init();
+		$plugin_admin         = new Site_Mode_Admin( $this->get_plugin_name(), $this->get_version() );
+		$this->classes_loader = new init();
 
-		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
-		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
-        $this->loader->add_action('admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu');
-        $this->loader->add_action('admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page');
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
+		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 
-        // ajax calling
+		// ajax calling
 
-        // general
-        $this->loader->add_action('wp_ajax_ajax_site_mode_general',$this->classes_loader->get_general(),'ajax_site_mode_general');
+		// general
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
 
-        // content
-        $this->loader->add_action('wp_ajax_ajax_site_mode_content',$this->classes_loader->get_content(), 'ajax_site_mode_content');
+		// content
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_content', $this->classes_loader->get_content(), 'ajax_site_mode_content' );
 
-        // social
-        $this->loader->add_action('wp_ajax_ajax_site_mode_social',$this->classes_loader->get_social(),'ajax_site_mode_social');
+		// social
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_social', $this->classes_loader->get_social(), 'ajax_site_mode_social' );
 
-        //design
-        $this->loader->add_action('wp_ajax_ajax_site_mode_design',$this->classes_loader->get_design(), 'ajax_site_mode_design');
-        $this->loader->add_action('wp_ajax_ajax_site_mode_design_lb',$this->classes_loader->get_design(),'ajax_site_mode_design_lb');
-        $this->loader->add_action('wp_ajax_ajax_site_mode_design_font',$this->classes_loader->get_design(),'ajax_site_mode_design_font');
-        $this->loader->add_action('wp_ajax_ajax_site_mode_design_social',$this->classes_loader->get_design(),'ajax_site_mode_design_social');
+		// design
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design', $this->classes_loader->get_design(), 'ajax_site_mode_design' );
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_lb', $this->classes_loader->get_design(), 'ajax_site_mode_design_lb' );
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_font', $this->classes_loader->get_design(), 'ajax_site_mode_design_font' );
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_social', $this->classes_loader->get_design(), 'ajax_site_mode_design_social' );
 
-
-        // SEO settings
-        $this->loader->add_action('wp_ajax_ajax_site_mode_seo',$this->classes_loader->get_seo(),'ajax_site_mode_seo');
-        // advanced settings
-        $this->loader->add_action('wp_ajax_ajax_site_mode_advanced',$this->classes_loader->get_advanced(),'ajax_site_mode_advanced');
+		// SEO settings
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );
+		// advanced settings
+		$this->loader->add_action( 'wp_ajax_ajax_site_mode_advanced', $this->classes_loader->get_advanced(), 'ajax_site_mode_advanced' );
 
 	}
 
@@ -220,27 +218,25 @@ class Site_Mode {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Site_Mode_Public($this->get_plugin_name(), $this->get_version());
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
-		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-        $this->loader->add_filter('rest_authentication_errors',$this->classes_loader->get_advanced(), 'site_mode_rest_api');
+		$plugin_public = new Site_Mode_Public( $this->get_plugin_name(), $this->get_version() );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_filter( 'rest_authentication_errors', $this->classes_loader->get_advanced(), 'site_mode_rest_api' );
 
-
-        //feeds
-        $this->loader->add_action('do_feed', $this->classes_loader->get_advanced(),'site_mode_remove_rss_feed');
-        $this->loader->add_action('do_feed_rdf',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_rss2_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
-        $this->loader->add_action('do_feed_atom_comments',$this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1);
+		// feeds
+		$this->loader->add_action( 'do_feed', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed' );
+		$this->loader->add_action( 'do_feed_rdf', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+		$this->loader->add_action( 'do_feed_rss', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+		$this->loader->add_action( 'do_feed_rss2', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+		$this->loader->add_action( 'do_feed_atom', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+		$this->loader->add_action( 'do_feed_rss2_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+		$this->loader->add_action( 'do_feed_atom_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 
 		// redirect template
-		$template_load =  new Template_Load();
+		$template_load = new Template_Load();
 
-        //check if the values are set or not and then assign them to the variables
-		$this->loader->add_action('template_redirect', $template_load, 'template_initialize');
-
+		// check if the values are set or not and then assign them to the variables
+		$this->loader->add_action( 'template_redirect', $template_load, 'template_initialize' );
 
 	}
 

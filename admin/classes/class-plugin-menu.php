@@ -22,44 +22,44 @@
  */
 class Site_Mode_Menu {
 
-    public function site_mode_menu() {
-        add_menu_page(
-            __('Site Mode Settings', 'site-mode'),
-            'Site Mode',
-            'manage_options',
-            'site-mode',
-            [$this, 'site_mode_settings_page_cb'],
-            plugin_dir_url( __DIR__ ).'assets/img/admin-menu-icon.png',
-        );
-    }
+	public function site_mode_menu() {
+		add_menu_page(
+			__( 'Site Mode Settings', 'site-mode' ),
+			'Site Mode',
+			'manage_options',
+			'site-mode',
+			[ $this, 'site_mode_settings_page_cb' ],
+			plugin_dir_url( __DIR__ ) . 'assets/img/admin-menu-icon.png',
+		);
+	}
 
-    public function site_mode_submenu_settings_page() {
-        add_submenu_page(
-            'site-mode',
-            'Site Mode',
-            'Settings',
-            'manage_options',
-            'site-mode',
-            [$this, 'site_mode_settings_page_cb']
-        );
-    }
+	public function site_mode_submenu_settings_page() {
+		add_submenu_page(
+			'site-mode',
+			'Site Mode',
+			'Settings',
+			'manage_options',
+			'site-mode',
+			[ $this, 'site_mode_settings_page_cb' ]
+		);
+	}
 
-    public function site_mode_settings_page_cb() {
-        if (!current_user_can('manage_options')) {
-            return;
-        }
-	    require_once plugin_dir_path(dirname(__FILE__)) . 'partials/settings-layout.php';
-    }
+	public function site_mode_settings_page_cb() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'partials/settings-layout.php';
+	}
 
-    public function site_mode_content_page_html() {
-        echo 'About page';
-    }
+	public function site_mode_content_page_html() {
+		echo 'About page';
+	}
 
-	public function wp_kses_svg($svg_content) {
+	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 
-		$svg_args = array(
-			'svg'   => array(
+		$svg_args = [
+			'svg'   => [
 				'class'           => true,
 				'aria-hidden'     => true,
 				'aria-labelledby' => true,
@@ -67,15 +67,15 @@ class Site_Mode_Menu {
 				'xmlns'           => true,
 				'width'           => true,
 				'height'          => true,
-				'viewbox'         => true // <= Must be lower case!
-			),
-			'g'     => array( 'fill' => true ),
-			'title' => array( 'title' => true ),
-			'path'  => array(
-				'd'               => true,
-				'fill'            => true
-			)
-		);
+				'viewbox'         => true, // <= Must be lower case!
+			],
+			'g'     => ['fill' => true ],
+			'title' => [ 'title' => true ],
+			'path'  => [
+				'd'    => true,
+				'fill' => true,
+			],
+		];
 
 		$allowed_tags = array_merge( $kses_defaults, $svg_args );
 		return wp_kses( $svg_content, $allowed_tags );

@@ -41,30 +41,30 @@ class Site_Mode_Public {
 	private $version;
 
 
-    protected  $site_mode_design;
+	protected $site_mode_design;
 
-    protected  $enable_template;
+	protected $enable_template;
 
 	/**
 	 * Initialize the class and set its properties.
 	 *
 	 * @since    0.0.1
-	 * @param      string    $plugin_name       The name of the plugin.
-	 * @param      string    $version    The version of this plugin.
+	 * @param      string $plugin_name       The name of the plugin.
+	 * @param      string $version    The version of this plugin.
 	 */
-	public function __construct($plugin_name, $version) {
+	public function __construct( $plugin_name, $version ) {
 
 		$this->plugin_name = $plugin_name;
-		$this->version = $version;
+		$this->version     = $version;
 
-        $this->site_mode_design = get_option('site_mode_design');
+		$this->site_mode_design = get_option( 'site_mode_design' );
 
-        // convert serialized string to array
-        $this->site_mode_design = unserialize($this->site_mode_design);
-        //check if value is set or not if not set then set default value.
-        $this->enable_template = isset($this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template']  : '1';
+		// convert serialized string to array
+		$this->site_mode_design = unserialize( $this->site_mode_design );
+		// check if value is set or not if not set then set default value.
+		$this->enable_template = isset( $this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template'] : '1';
 
-        add_filter('style_loader_tag', [$this,'my_style_loader_tag_filter'], 10, 2);
+		add_filter( 'style_loader_tag', [ $this, 'my_style_loader_tag_filter' ], 10, 2 );
 
 	}
 
@@ -87,8 +87,8 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style('fontawsome', plugin_dir_url(__FILE__) . 'css/all.min.css', array(), $this->version, 'all');
-		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/site-mode-public.css', array(), $this->version, 'all');
+		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'css/all.min.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/site-mode-public.css', [], $this->version, 'all' );
 
 	}
 
@@ -111,18 +111,24 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/site-mode-public.js', array('jquery'), $this->version, false);
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
 	}
 
-   public function my_style_loader_tag_filter($html, $handle) {
-        if ($handle === 'preconnect-font') {
-            return str_replace("rel='stylesheet'",
-                "rel='preconnect'", $html);
-        }
-        if ($handle === 'preconnect-static') {
-            return str_replace("rel='stylesheet'",
-                "rel='preconnect' crossorigin", $html);
-        }
-        return $html;
-    }
+	public function my_style_loader_tag_filter( $html, $handle ) {
+		if ( $handle === 'preconnect-font' ) {
+			return str_replace(
+				"rel='stylesheet'",
+				"rel='preconnect'",
+				$html
+			);
+		}
+		if ( $handle === 'preconnect-static' ) {
+			return str_replace(
+				"rel='stylesheet'",
+				"rel='preconnect' crossorigin",
+				$html
+			);
+		}
+		return $html;
+	}
 }
