@@ -26,21 +26,21 @@
  */
 
 // If this file is called directly, abort.
-if (!defined('WPINC')) {
+if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
 /**
  * Currently plugin version.
  */
-define('SITE_MODE_VERSION', '0.0.1');
+define( 'SITE_MODE_VERSION', '0.0.1' );
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-site-mode-activator.php
  */
 function activate_site_mode() {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-activator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
 }
 
@@ -49,18 +49,18 @@ function activate_site_mode() {
  * This action is documented in includes/class-site-mode-deactivator.php
  */
 function deactivate_site_mode() {
-	require_once plugin_dir_path(__FILE__) . 'includes/class-site-mode-deactivator.php';
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-deactivator.php';
 	Site_Mode_Deactivator::deactivate();
 }
 
-register_activation_hook(__FILE__, 'activate_site_mode');
-register_deactivation_hook(__FILE__, 'deactivate_site_mode');
+register_activation_hook( __FILE__, 'activate_site_mode' );
+register_deactivation_hook( __FILE__, 'deactivate_site_mode' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path(__FILE__) . 'includes/class-site-mode.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-site-mode.php';
 
 /**
  * Begins execution of the plugin.
