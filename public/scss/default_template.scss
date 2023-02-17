@@ -1,9 +1,8 @@
 @import './base';
 
 .wrapper {
-    @extend %width-100-height-100vh;
+    padding: 15rem 0;
     @extend %position-relative;
-    overflow: hidden;
     z-index: 1;
     background-repeat: no-repeat;
     background-position: center;
@@ -11,16 +10,14 @@
 
     &_overlay {
         @extend %position-absolute-top-left;
-        @extend %width-100-height-100vh;
+        width: 100%;
+        height: 100%;
         background-color: rgba($base-black, .8);
     }
 
     & .uc_image {
         @extend %position-absolute-top-left;
-        @extend %width-100-height-100vh;
-
-        & img {
-            @extend %width-100-height-100;
+        & img {            
             display: block;
             object-fit: cover;
         }
@@ -51,21 +48,24 @@
 
     }
 }
+.template_wrapper {
+    display: flex;
+    align-items: flex-start;    
+    height: 100vh;
+}
 
 .default_template {
     @include flex_mixin(flex, center, center, column, null);
-    @extend %width-100-height-100vh;
     @include position_mixin(relative, null, null, null, null);
     z-index: 2;
     max-width: 92rem;
+    height: 100vh;
     margin: 0 auto;
     &-logo {
         margin-bottom: 6rem;
-
         & img {
             display: block;
             @include width_height_mixin(100%, auto);
-
             object-fit: cover;
         }
     }
@@ -118,15 +118,34 @@
     }
 }
 
+.text_logo {
+    width: auto !important;
+}
+.site_logo_text {
+    font-size: 3rem;
+    line-height: 1.5;
+    color: #ffffff;    
+}
 
-@media screen and (max-width: 800px) {
-    .construction_cover {
-        &-heading {
-            & h1 {
-                line-height: 6rem;
-                @include font_mixin(5rem, null, null, null);
-                font-size: 5rem;
-            }
+@media screen and (max-width: 1600px) {
+    html {
+        font-size: 8px;
+    }
+    .wrapper {
+        padding: 11rem 3rem;
+    }
+    &-heading {        
+        margin-bottom: 3rem;
+        & .main_title {
+            font-size: 5rem;
         }
+    }
+}
+@media screen and (max-width: 1024px) {
+    html {
+        font-size: 5px;
+    }
+    .wrapper {
+        padding: 1rem 3rem;
     }
 }

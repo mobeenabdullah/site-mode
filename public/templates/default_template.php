@@ -77,57 +77,58 @@ $image_url                  = isset($content['bg_image']) ? wp_get_attachment_im
 
 <main>    
     <section id="under_constructon" class="wrapper" style="background-image: url('<?php echo  esc_url($image_url) ?>')">
-        <!--Section Overlay-->
-        <div class="wrapper_overlay"></div>
-            <?php if($show_login_icon) : ?>
-                <div class="login_icon">
-                    <?php if(empty($custom_login_url)) : ?>
-                    <a href="<?php  echo esc_url(get_home_url()) . '/wp-login.php' ?>" style="display: block">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
-                    </a>
-                    <?php else :  ?>
-                        <a href="<?php echo  esc_url(get_home_url()) .'/'.$custom_login_url  ?>" style="display: block">
+        <!--Section Overlay-->                
+            <div class="template_wrapper">
+                <div class="wrapper_overlay"></div>
+                <?php if($show_login_icon) : ?>
+                    <div class="login_icon">
+                        <?php if(empty($custom_login_url)) : ?>
+                        <a href="<?php  echo esc_url(get_home_url()) . '/wp-login.php' ?>" style="display: block">
                             <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
                         </a>
-                    <?php endif; ?>
+                        <?php else :  ?>
+                            <a href="<?php echo  esc_url(get_home_url()) .'/'.$custom_login_url  ?>" style="display: block">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
+                            </a>
+                        <?php endif; ?>
+                    </div>
+                <?php else : ?>
+                <?php endif; ?>
+                <div class="default_template">
+                        <?php if($content['logo_type'] === 'image') { ?>
+                            <div class="default_template-logo">
+                                <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
+                            </div>
+                        <?php } elseif($content['logo_type'] === 'text')  { ?>
+                            <div class="default_template-logo text_logo">
+                                <h1 class="site_logo_text"><?php echo esc_html($content['logo_text']); ?></h1>
+                            </div>
+                        <?php }?>
+                        <div class="default_template-heading">
+                            <h2 class="main_title">
+                                <?php echo wp_kses_post($content['content_heading']); ?>
+                            </h2>
+                        </div>
+                        <div class="default_template-text">
+                            <p><?php echo wp_kses_post($content['content_description']); ?></p>
+                        </div>                    
+                        <div class="default_template-icons">
+                            <ul class="social_media">
+                                <?php foreach ($social as $key => $value) : ?>                                    
+                                    <?php if( is_array($value) || is_object($value)) : ?>
+                                        <?php foreach ($value as $item) : ?>
+                                            <li class="social_media_icon">
+                                                <a href="<?php echo esc_url($item['link']);?>" aria-label="<?php echo esc_attr($item['title']);?> profile" target="_blank">
+                                                    <i class="fa-brands <?php echo esc_attr($item['icon']);?>"></i>
+                                                </a>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>                                        
+                                <?php endforeach; ?>                                   
+                            </ul>
+                        </div>
                 </div>
-            <?php else : ?>
-            <?php endif; ?>
-        <!--Section Content-->
-        <div class="container">
-            <div class="default_template">
-                <?php if($content['logo_type'] === 'image') { ?>
-                    <div class="default_template-logo">
-                        <img src="<?php echo esc_url($logo_url)?>" width="<?php echo esc_attr($design_logo_background['logo-width']); ?>" height="<?php echo esc_attr($design_logo_background['logo-height']); ?>" alt="alt text">
-                    </div>
-                <?php } elseif($content['logo_type'] === 'text')  { ?>
-                    <p><?php echo esc_html($content['logo_text']); ?></p>
-                <?php }?>
-                    <div class="default_template-heading">
-                        <h1 class="main_title">
-                            <?php echo wp_kses_post($content['content_heading']); ?>
-                        </h1>
-                    </div>
-                    <div class="default_template-text">
-                        <p><?php echo wp_kses_post($content['content_description']); ?></p>
-                    </div>                    
-                    <div class="default_template-icons">
-                        <ul class="social_media">
-                            <?php foreach ($social as $key => $value) : ?>                                    
-                                <?php if( is_array($value) || is_object($value)) : ?>
-                                    <?php foreach ($value as $item) : ?>
-                                        <li class="social_media_icon">
-                                            <a href="<?php echo esc_url($item['link']);?>" aria-label="<?php echo esc_attr($item['title']);?> profile" target="_blank">
-                                                <i class="fa-brands <?php echo esc_attr($item['icon']);?>"></i>
-                                            </a>
-                                        </li>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>                                        
-                            <?php endforeach; ?>                                   
-                        </ul>
-                    </div>
             </div>
-        </div>
     </section>
 </main>
 
