@@ -64,7 +64,7 @@ class Site_Mode_Public {
 		// check if value is set or not if not set then set default value.
 		$this->enable_template = isset( $this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template'] : '1';
 
-		add_filter( 'style_loader_tag', array( $this, 'my_style_loader_tag_filter' ), 10, 2 );
+		add_filter( 'style_loader_tag', [ $this, 'my_style_loader_tag_filter' ], 10, 2 );
 
 	}
 
@@ -87,8 +87,8 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'css/all.min.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/site-mode-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'css/all.min.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/site-mode-public.css', [], $this->version, 'all' );
 
 	}
 
@@ -111,7 +111,7 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/site-mode-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
 	}
 
 	public function my_style_loader_tag_filter( $html, $handle ) {

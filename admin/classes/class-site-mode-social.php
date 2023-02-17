@@ -24,87 +24,87 @@ class Site_Mode_Social extends Settings {
 
 		protected $show_social;
 		protected $social_icons;
-		protected $di_social_icons = array(
-			array(
+		protected $di_social_icons = [
+			[
 				'title' => 'Facebook',
 				'icon'  => 'fa-facebook-f',
-			),
-			array(
+			],
+			[
 				'title' => 'Twitter',
 				'icon'  => 'fa-twitter',
-			),
-			array(
+			],
+			[
 				'title' => 'Linkedin',
 				'icon'  => 'fa-linkedin-in',
-			),
-			array(
+			],
+			[
 				'title' => 'Instagram',
 				'icon'  => 'fa-instagram',
-			),
-			array(
+			],
+			[
 				'title' => 'Pinterest',
 				'icon'  => 'fa-pinterest',
-			),
-			array(
+			],
+			[
 				'title' => 'Whatsapp',
 				'icon'  => 'fa-whatsapp',
-			),
-			array(
+			],
+			[
 				'title' => 'Google',
 				'icon'  => 'fa-google',
-			),
-			array(
+			],
+			[
 				'title' => 'Tiktok',
 				'icon'  => 'fa-tiktok',
-			),
-			array(
+			],
+			[
 				'title' => 'Discord',
 				'icon'  => 'fa-discord',
-			),
-			array(
+			],
+			[
 				'title' => 'Youtube',
 				'icon'  => 'fa-youtube',
-			),
-			array(
+			],
+			[
 				'title' => 'Slack',
 				'icon'  => 'fa-slack',
-			),
-			array(
+			],
+			[
 				'title' => 'Dribbble',
 				'icon'  => 'fa-dribbble',
-			),
-			array(
+			],
+			[
 				'title' => 'Vimeo',
 				'icon'  => 'fa-vimeo',
-			),
-			array(
+			],
+			[
 				'title' => 'Behance',
 				'icon'  => 'fa-behance',
-			),
-			array(
+			],
+			[
 				'title' => 'Skype',
 				'icon'  => 'fa-skype',
-			),
-			array(
+			],
+			[
 				'title' => 'Twitch',
 				'icon'  => 'fa-twitch',
-			),
-			array(
+			],
+			[
 				'title' => 'Tumblr',
 				'icon'  => 'fa-tumblr',
-			),
-			array(
+			],
+			[
 				'title' => 'Reddit',
 				'icon'  => 'fa-reddit-alien',
-			),
-		);
+			],
+		];
 
 		public function __construct() {
 			$this->option_name = 'site_mode_social';
 
 			$social_content     = $this->get_data( 'site_mode_social' );
 			$this->show_social  = isset( $social_content['show_social_icons'] ) ? $social_content['show_social_icons'] : 'off';
-			$this->social_icons = isset( $social_content['social_icons'] ) ? $social_content['social_icons'] : array();
+			$this->social_icons = isset( $social_content['social_icons'] ) ? $social_content['social_icons'] : [];
 
 		}
 
@@ -115,7 +115,7 @@ class Site_Mode_Social extends Settings {
 			if ( isset( $_POST['social_icons'] ) && isset( $_POST['social-custom-message'] ) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' ) ) {
 				$data['social_icons'] = $_POST['social_icons'];
 			} else {
-				$data['social_icons'] = array();
+				$data['social_icons'] = [];
 			}
 
 			if ( isset( $_POST['show-social-icons'] ) && isset( $_POST['social-custom-message'] ) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' ) ) {

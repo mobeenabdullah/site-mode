@@ -32,7 +32,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 // Options cleanup during uninstall plugin
 
-$options = array(
+$options = [
 	'site_mode_advanced',
 	'site_mode_content',
 	'site_mode_design',
@@ -45,7 +45,7 @@ $options = array(
 	'site_mode_design_fonts',
 	'site_mode_design_social',
 	'site_mode_default_images',
-);
+];
 
 if ( ! empty( $options ) ) {
 	foreach ( $options as $option ) :

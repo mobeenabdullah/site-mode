@@ -10,14 +10,14 @@
 					<div class="template_options">
 
 						<?php
-							$templates = array(
-								array(
+							$templates = [
+								[
 									'id'    => 1,
 									'name'  => 'default_template',
 									'title' => 'Default Template',
 									'image' => plugin_dir_url( __DIR__ ) . 'assets/img/screenshot.png',
-								),
-							);
+								],
+							];
 							?>
 
 						<?php foreach ( $templates as $template ) : ?>

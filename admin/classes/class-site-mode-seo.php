@@ -23,7 +23,7 @@
 class Site_Mode_Seo extends Settings {
 
 	protected $option_name  = 'site_mode_seo';
-	protected $seo_settings = array();
+	protected $seo_settings = [];
 	protected $meta_title;
 	protected $meta_description;
 	protected $meta_favicon;
@@ -42,7 +42,7 @@ class Site_Mode_Seo extends Settings {
 	public function ajax_site_mode_seo() {
 
 		$this->verify_nonce( 'seo-custom-message', 'seo-settings-save' );
-		$data                     = array();
+		$data                     = [];
 		$data['meta_title']       = $this->get_post_data( 'seo-meta-title', 'seo-settings-save', 'seo-custom-message', 'text' );
 		$data['meta_description'] = $this->get_post_data( 'seo-meta-description', 'seo-settings-save', 'seo-custom-message', 'text' );
 		$data['meta_favicon']     = $this->get_post_data( 'seo-meta-favicon', 'seo-settings-save', 'seo-custom-message', 'text' );

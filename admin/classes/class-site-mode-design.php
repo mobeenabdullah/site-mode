@@ -55,7 +55,7 @@ class Site_Mode_Design extends  Settings {
 		protected $icon_border_color;
 		protected $status;
 		protected $mode;
-		protected $site_mode_design = array();
+		protected $site_mode_design = [];
 
 
 
@@ -102,7 +102,7 @@ class Site_Mode_Design extends  Settings {
 
 		$this->verify_nonce( 'design-logo-background', 'design-logo-background-settings-save' );
 		// validate data and sanitize
-		$data                       = array();
+		$data                       = [];
 		$data['logo-width']         = $this->get_post_data( 'logo-width', 'design-logo-background-settings-save', 'design-logo-background', 'text' );
 		$data['logo-height']        = $this->get_post_data( 'logo-height', 'design-logo-background-settings-save', 'design-logo-background', 'text' );
 		$data['background-overlay'] = $this->get_post_data( 'background-overlay', 'design-logo-background-settings-save', 'design-logo-background', 'text' );
@@ -116,7 +116,9 @@ class Site_Mode_Design extends  Settings {
 	public function ajax_site_mode_design_font() {
 
 		$this->verify_nonce( 'design-fonts', 'design-fonts-settings-save' );
-		$data                               = array();
+
+
+		$data                               = [];
 		$data['heading_font_family']        = $this->get_post_data( 'heading-font-family', 'design-fonts-settings-save', 'design-fonts', 'text' );
 		$data['heading_font_size']          = $this->get_post_data( 'heading-font-size', 'design-fonts-settings-save', 'design-fonts', 'number' );
 		$data['heading_font_color']         = $this->get_post_data( 'heading-font-color', 'design-fonts-settings-save', 'design-fonts', 'color' );
@@ -137,14 +139,14 @@ class Site_Mode_Design extends  Settings {
 	public function ajax_site_mode_design_social() {
 
 		$this->verify_nonce( 'design-icon-color', 'design-icon-color-settings-save' );
-		$color_section_data        = array();
+		$data        = [];
 		$data['icon_size']         = $this->get_post_data( 'icon-size', 'design-icon-color-settings-save', 'design-icon-color', 'number' );
 		$data['icon_color']        = $this->get_post_data( 'icon-color', 'design-icon-color-settings-save', 'design-icon-color', 'color' );
 		$data['icon_bg_color']     = $this->get_post_data( 'icon-bg', 'design-icon-color-settings-save', 'design-icon-color', 'color' );
 		$data['icon_border_color'] = $this->get_post_data( 'icon-border-color', 'design-icon-color-settings-save', 'design-icon-color', 'color' );
 		$data['design_icon_color'] = $this->get_post_data( 'design-icon-color', 'design-icon-color-settings-save', 'design-icon-color', 'color' );
 
-		return $this->save_data( $this->option_name_4, $color_section_data );
+		return $this->save_data( $this->option_name_4, $data );
 		die();
 
 	}

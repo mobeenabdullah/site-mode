@@ -46,7 +46,7 @@ class Site_Mode_Content extends Settings {
 		$this->verify_nonce( 'design-custom-message', 'design-settings-save' );
 
 		// validate using isset and sanitize inputs before storing in database.
-		$data                        = array();
+		$data                        = [];
 		$data['content_heading']     = $this->get_post_data( 'content-heading', 'design-settings-save', 'design-custom-message', 'text' );
 		$data['content_description'] = $this->get_post_data( 'content-description', 'design-settings-save', 'design-custom-message', 'text' );
 		$data['logo_type']           = $this->get_post_data( 'logo-type', 'design-settings-save', 'design-custom-message', 'text' );
@@ -74,11 +74,11 @@ class Site_Mode_Content extends Settings {
 				return false;
 			}
 
-			return array(
+			return [
 				'id'  => $id,
 				'url' => $image_url,
 				'alt' => $image_alt_text,
-			);
+			];
 		} else {
 			return false;
 		}

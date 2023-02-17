@@ -26,32 +26,32 @@
 	<div class="tabs_wrapper">
 		<ul class="sm_tabs">
 			<?php
-				$site_mode_tabs = array(
-					array(
+				$site_mode_tabs = [
+					[
 						'title' => 'General',
 						'icon'  => '<i class="fa-solid fa-gear"></i>',
-					),
-					array(
+					],
+					[
 						'title' => 'Content',
 						'icon'  => '<i class="fa-solid fa-align-left"></i>',
-					),
-					array(
+					],
+					[
 						'title' => 'Social',
 						'icon'  => '<i class="fa-solid fa-share-nodes"></i>',
-					),
-					array(
+					],
+					[
 						'title' => 'Design',
 						'icon'  => '<i class="fa-solid fa-palette"></i>',
-					),
-					array(
+					],
+					[
 						'title' => 'SEO',
 						'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
-					),
-					array(
+					],
+					[
 						'title' => 'Advanced',
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
-					),
-				);
+					],
+				];
 				$active_tab     = isset( $_GET['tab'] ) ? strtolower( $_GET['tab'] ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :

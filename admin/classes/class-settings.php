@@ -64,8 +64,8 @@ class Settings {
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 
-		$svg_args = array(
-			'svg'   => array(
+		$svg_args = [
+			'svg'   => [
 				'class'           => true,
 				'aria-hidden'     => true,
 				'aria-labelledby' => true,
@@ -74,14 +74,14 @@ class Settings {
 				'width'           => true,
 				'height'          => true,
 				'viewbox'         => true, // <= Must be lower case!
-			),
-			'g'     => array( 'fill' => true ),
-			'title' => array( 'title' => true ),
-			'path'  => array(
+			],
+			'g'     => [ 'fill' => true ],
+			'title' => [ 'title' => true ],
+			'path'  => [
 				'd'    => true,
 				'fill' => true,
-			),
-		);
+			],
+		];
 
 		$allowed_tags = array_merge( $kses_defaults, $svg_args );
 		return wp_kses( $svg_content, $allowed_tags );

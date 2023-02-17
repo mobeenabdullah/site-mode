@@ -39,14 +39,14 @@ class Site_Mode_General extends Settings {
 		$this->redirect_delay    = isset( $this->site_mode_general['redirect_delay'] ) ? $this->site_mode_general['redirect_delay'] : 2;
 		$this->show_login_icon   = isset( $this->site_mode_general['show_login_icon'] ) ? $this->site_mode_general['show_login_icon'] : false;
 		$this->custom_login_url  = isset( $this->site_mode_general['custom_login_url'] ) ? $this->site_mode_general['custom_login_url'] : '';
-		$this->whitelist_pages   = isset( $this->site_mode_general['whitelist_pages'] ) ? $this->site_mode_general['whitelist_pages'] : array();
-		$this->user_roles        = isset( $this->site_mode_general['user_roles'] ) ? $this->site_mode_general['user_roles'] : array();
+		$this->whitelist_pages   = isset( $this->site_mode_general['whitelist_pages'] ) ? $this->site_mode_general['whitelist_pages'] :[];
+		$this->user_roles        = isset( $this->site_mode_general['user_roles'] ) ? $this->site_mode_general['user_roles'] : [];
 	}
 
 	public function ajax_site_mode_general() {
 		$this->verify_nonce( 'general_section_field', 'general_settings_action' );
 
-		$data                     = array();
+		$data                     = [];
 		$data['mode_status']      = $this->get_post_data( 'site-mode-mode-status', 'general_settings_action', 'general_section_field', 'text' );
 		$data['mode_type']        = $this->get_post_data( 'site-mode-mode-type', 'general_settings_action', 'general_section_field', 'text' );
 		$data['redirect_url']     = $this->get_post_data( 'site-mode-redirect-url', 'general_settings_action', 'general_section_field', 'text' );

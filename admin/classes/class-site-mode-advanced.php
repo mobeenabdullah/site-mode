@@ -30,7 +30,7 @@ class Site_Mode_Advanced extends Settings {
 		protected $header_code;
 		protected $footer_code;
 		protected $custom_css;
-		protected $site_mode_advanced = array();
+		protected $site_mode_advanced = [];
 
 	public function __construct() {
 		$this->site_mode_advanced = unserialize( get_option( 'site_mode_advanced' ) );
@@ -55,7 +55,7 @@ class Site_Mode_Advanced extends Settings {
 		$this->verify_nonce( 'advance-custom-message', 'advance-settings-save' );
 
 		// validate using isset and sanitize inputs before storing in database.
-		$data                     = array();
+		$data                     = [];
 		$data['ga_id']            = $this->get_post_data( 'ga-id', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['fb_id']            = $this->get_post_data( 'facebook-id', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['custom_css']       = $this->get_post_data( 'custom-css', 'advance-settings-save', 'advance-custom-message', 'text' );
@@ -77,7 +77,7 @@ class Site_Mode_Advanced extends Settings {
 		if ( empty( $this->disable_rest_api ) ) {
 			return $access;
 		} else {
-			return new WP_Error( 'rest_cannot_access', __( 'The REST API on this site has been disabled.', 'site-mode' ), array( 'status' => rest_authorization_required_code() ) );
+			return new WP_Error( 'rest_cannot_access', __( 'The REST API on this site has been disabled.', 'site-mode' ), [ 'status' => rest_authorization_required_code() ] );
 		}
 	}
 

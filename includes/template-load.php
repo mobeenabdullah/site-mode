@@ -30,7 +30,7 @@ class Template_Load {
 
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
-		$wp_user_roles      = isset( $this->general_settings['user_roles'] ) ? $this->general_settings['user_roles'] : array();
+		$wp_user_roles      = isset( $this->general_settings['user_roles'] ) ? $this->general_settings['user_roles'] : [];
 
 		$role_exist = array_intersect( $current_user_roles, $wp_user_roles );
 
@@ -41,7 +41,7 @@ class Template_Load {
 	}
 
 	public function check_whitelist_pages() {
-		$whitelist_pages     = isset( $this->general_settings['whitelist_pages'] ) ? $this->general_settings['whitelist_pages'] : array();
+		$whitelist_pages     = isset( $this->general_settings['whitelist_pages'] ) ? $this->general_settings['whitelist_pages'] : [];
 		$get_current_page_ID = get_the_ID();
 
 		if ( in_array( $get_current_page_ID, $whitelist_pages ) ) {
@@ -85,7 +85,7 @@ class Template_Load {
 			}
 		}
 
-		wp_enqueue_style( $this->template, plugin_dir_url( __FILE__ ) . '../public/css/' . $this->template . '.css', array(), '0.0.1', 'all' );
+		wp_enqueue_style( $this->template, plugin_dir_url( __FILE__ ) . '../public/css/' . $this->template . '.css', [], '0.0.1', 'all' );
 		require_once plugin_dir_path( __DIR__ ) . 'public/templates/' . $this->template . '.php';
 		exit;
 	}

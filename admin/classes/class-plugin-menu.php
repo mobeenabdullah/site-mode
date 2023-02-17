@@ -28,7 +28,7 @@ class Site_Mode_Menu {
 			'Site Mode',
 			'manage_options',
 			'site-mode',
-			array( $this, 'site_mode_settings_page_cb' ),
+			[ $this, 'site_mode_settings_page_cb' ],
 			plugin_dir_url( __DIR__ ) . 'assets/img/admin-menu-icon.png',
 		);
 	}
@@ -40,7 +40,7 @@ class Site_Mode_Menu {
 			'Settings',
 			'manage_options',
 			'site-mode',
-			array( $this, 'site_mode_settings_page_cb' )
+			[ $this, 'site_mode_settings_page_cb' ]
 		);
 	}
 
@@ -58,8 +58,8 @@ class Site_Mode_Menu {
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 
-		$svg_args = array(
-			'svg'   => array(
+		$svg_args = [
+			'svg'   => [
 				'class'           => true,
 				'aria-hidden'     => true,
 				'aria-labelledby' => true,
@@ -68,14 +68,14 @@ class Site_Mode_Menu {
 				'width'           => true,
 				'height'          => true,
 				'viewbox'         => true, // <= Must be lower case!
-			),
-			'g'     => array( 'fill' => true ),
-			'title' => array( 'title' => true ),
-			'path'  => array(
+			],
+			'g'     => ['fill' => true ],
+			'title' => [ 'title' => true ],
+			'path'  => [
 				'd'    => true,
 				'fill' => true,
-			),
-		);
+			],
+		];
 
 		$allowed_tags = array_merge( $kses_defaults, $svg_args );
 		return wp_kses( $svg_content, $allowed_tags );
