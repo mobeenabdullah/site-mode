@@ -23,28 +23,28 @@ $image_url              = isset( $content['bg_image'] ) ? wp_get_attachment_imag
 <style>
 	.default_template-heading .main_title {
 		font-family: <?php echo $design_typo['heading_font_family'] ? esc_html( $design_typo['heading_font_family'] ) : 'var(--base-open-sans)'; ?>;
-		font-size: <?php echo esc_attr( $design_typo['heading_font_size'] ) / 10 . 'rem'; ?>;
-		color: <?php echo esc_attr( $design_typo['heading_font_color'] ); ?>;
-		font-weight: <?php echo esc_attr( $design_typo['heading_font_weight'] ); ?>;
-		letter-spacing: <?php echo esc_attr( $design_typo['heading_letter_spacing'] ) / 10 . 'rem'; ?>;
-		line-height: <?php echo esc_attr( $design_typo['heading_line_height'] ) / 10 . 'rem'; ?>;
+		font-size: <?php echo esc_html( $design_typo['heading_font_size'] ) / 10 . 'rem'; ?>;
+		color: <?php echo esc_html( $design_typo['heading_font_color'] ); ?>;
+		font-weight: <?php echo esc_html( $design_typo['heading_font_weight'] ); ?>;
+		letter-spacing: <?php echo esc_html( $design_typo['heading_letter_spacing'] ) / 10 . 'rem'; ?>;
+		line-height: <?php echo esc_html( $design_typo['heading_line_height'] ) / 10 . 'rem'; ?>;
 	}
 	.default_template-text p {
-		font-family: <?php echo esc_attr( $design_typo['description_font_family'] ); ?>;
-		font-size: <?php echo esc_attr( $design_typo['description_font_size'] ) / 10 . 'rem'; ?>;
-		color: <?php echo esc_attr( $design_typo['description_font_color'] ); ?>;
-		font-weight: <?php echo esc_attr( $design_typo['description_font_weight'] ); ?>;
-		letter-spacing: <?php echo esc_attr( $design_typo['description_letter_spacing'] ) / 10 . 'rem'; ?>;
-		line-height: <?php echo esc_attr( $design_typo['description_line_height'] ) / 10 . 'rem'; ?>;
+		font-family: <?php echo esc_html( $design_typo['description_font_family'] ); ?>;
+		font-size: <?php echo esc_html( $design_typo['description_font_size'] ) / 10 . 'rem'; ?>;
+		color: <?php echo esc_html( $design_typo['description_font_color'] ); ?>;
+		font-weight: <?php echo esc_html( $design_typo['description_font_weight'] ); ?>;
+		letter-spacing: <?php echo esc_html( $design_typo['description_letter_spacing'] ) / 10 . 'rem'; ?>;
+		line-height: <?php echo esc_html( $design_typo['description_line_height'] ) / 10 . 'rem'; ?>;
 	}
 	.default_template-logo {
-		width: <?php echo esc_attr( $design_logo_background['logo-width'] ) / 10 . 'rem'; ?>;
+		width: <?php echo esc_html( $design_logo_background['logo-width'] ) / 10 . 'rem'; ?>;
 		height: auto;
 	}
 	.default_template-icons .social_media_icon a {
-		font-size: <?php echo esc_attr( $design_social['icon_size'] ) / 10 . 'rem'; ?>;
-		background-color: <?php echo esc_attr( $design_social['icon_bg_color'] ); ?>;
-		border: 1px solid <?php echo esc_attr( $design_social['icon_border_color'] ); ?>;        
+		font-size: <?php echo esc_html( $design_social['icon_size'] ) / 10 . 'rem'; ?>;
+		background-color: <?php echo esc_html( $design_social['icon_bg_color'] ); ?>;
+		border: 1px solid <?php echo esc_html( $design_social['icon_border_color'] ); ?>;
 
 		<?php if ( strval( $design_social['icon_size'] ) === '16' ) : ?>
 			width: 3.8rem !important;
@@ -65,12 +65,12 @@ $image_url              = isset( $content['bg_image'] ) ? wp_get_attachment_imag
 	}
 	
 	.default_template-icons .social_media_icon a i {
-		color: <?php echo esc_attr( $design_social['icon_color'] ); ?>;
+		color: <?php echo esc_html( $design_social['icon_color'] ); ?>;
 	}
 	
 	.wrapper_overlay {
-		background-color: <?php echo esc_attr( $design_logo_background['overlay-color'] ); ?>;
-		opacity: <?php echo esc_attr( $design_logo_background['overlay-opacity'] ) / 10; ?>;
+		background-color: <?php echo esc_html( $design_logo_background['overlay-color'] ); ?>;
+		opacity: <?php echo esc_html( $design_logo_background['overlay-opacity'] ) / 10; ?>;
 	}  
 
 </style>
@@ -114,7 +114,7 @@ $image_url              = isset( $content['bg_image'] ) ? wp_get_attachment_imag
 						</div>                    
 						<div class="default_template-icons">
 							<ul class="social_media">
-								<?php foreach ( $social as $key => $value ) : ?>                                    
+								<?php foreach ( $social as $key => $value ) : ?>
 									<?php if ( is_array( $value ) || is_object( $value ) ) : ?>
 										<?php foreach ( $value as $item ) : ?>
 											<li class="social_media_icon">
