@@ -22,6 +22,8 @@
  */
 class Site_Mode_Menu {
 
+    public function __construct() {}
+
 	public function site_mode_menu() {
 		add_menu_page(
 			__( 'Site Mode Settings', 'site-mode' ),

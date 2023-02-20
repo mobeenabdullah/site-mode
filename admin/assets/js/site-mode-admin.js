@@ -25,13 +25,7 @@ jQuery(function ($) {
                 uploadButton
                     .parent()
                     .siblings(".sm_image_wrapper")
-                    .html(
-                        '<img src="' +
-                            attachment.url +
-                            '" alt="' +
-                            altText +
-                            '">'
-                    )
+                    .html(`<img src="${attachment.url}" alt="${altText}">`)
                 uploadButton.next().show()
                 uploadButton.next().next().val(attachment.id)
             })
