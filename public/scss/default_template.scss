@@ -1,12 +1,14 @@
 @import './base';
 
 .wrapper {
-    padding: 13rem 0;
+    padding: 10rem 0;
     @extend %position-relative;
     z-index: 1;
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover;    
+    min-height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
