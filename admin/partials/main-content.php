@@ -57,7 +57,12 @@
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
 					$tab_data  = 'tab-' . strtolower( $site_mode_tab['title'] );
-					echo '<li class="' . esc_attr( $tab_class ) . '" data-tab="' . esc_attr( $tab_data ) . '"><span class="menu_icon">' . $this->wp_kses_svg( $site_mode_tab['icon'] ) . '</span><span class="menu_label">' . esc_html( $site_mode_tab['title'], 'site-mode' ) . '</span></li>';
+					?>
+					<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
+						<span class="menu_icon"><?php echo $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
+						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title'], 'site-mode' ); ?></span>
+					</li>
+					<?php
 				endforeach;
 				?>
 		</ul>
