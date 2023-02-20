@@ -98,7 +98,7 @@ class Site_Mode_Activator {
 			'show_login_icon'  => 1,
 			'custom_login_url' => '',
 			'whitelist_pages'  => [],
-			'user_roles'       => [],
+			'user_roles'       => ['administrator'],
 		];
 
 		// Add default options to database for content settings.
