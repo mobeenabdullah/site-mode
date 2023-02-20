@@ -76,7 +76,7 @@ $image_url              = isset( $content['bg_image'] ) ? wp_get_attachment_imag
 </style>
 
 <main>    
-	<section id="under_constructon" class="wrapper" style="background-image: url('<?php echo esc_url( $image_url ); ?>')">
+	<section id="default_template" class="wrapper" style="background-image: url('<?php echo esc_url( $image_url ); ?>')">
 		<!--Section Overlay-->                
 			<div class="template_wrapper">
 				<div class="wrapper_overlay"></div>

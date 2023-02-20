@@ -1,12 +1,15 @@
 @import './base';
 
 .wrapper {
-    padding: 15rem 0;
+    padding: 13rem 0;
     @extend %position-relative;
     z-index: 1;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     &_overlay {
         @extend %position-absolute-top-left;
@@ -51,7 +54,7 @@
 .template_wrapper {
     display: flex;
     align-items: flex-start;    
-    height: 100vh;
+    // height: 100vh;
 }
 
 .default_template {
@@ -59,7 +62,7 @@
     @include position_mixin(relative, null, null, null, null);
     z-index: 2;
     max-width: 92rem;
-    height: 100vh;
+    // height: 100vh;
     margin: 0 auto;
     &-logo {
         margin-bottom: 6rem;
@@ -84,8 +87,7 @@
         margin-bottom: 8rem;
         & p {
             @include font_mixin(2.2rem, 300, 1.5, center);
-            color: var(--base-white-color);
-            text-shadow: 0 0 5px rgba(0, 0, 0, 90%);
+            color: var(--base-white-color);            
         }
     }
 
@@ -130,10 +132,7 @@
 @media screen and (max-width: 1600px) {
     html {
         font-size: 8px;
-    }
-    .wrapper {
-        padding: 11rem 3rem;
-    }
+    }    
     &-heading {        
         margin-bottom: 3rem;
         & .main_title {
@@ -146,6 +145,8 @@
         font-size: 5px;
     }
     .wrapper {
-        padding: 1rem 3rem;
+        padding: 0 5rem;
+        height: calc(100vh - 3rem);
+        overflow: hidden;
     }
 }
