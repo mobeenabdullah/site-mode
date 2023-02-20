@@ -1633,7 +1633,7 @@ input[type=file] {
 }
 
 .toast-success-msg {
-	background-color: #5f3cfd;
+	background-color: red;
 	border: 1px solid #5f3cfd;
 	max-width: 9.375rem;
 }

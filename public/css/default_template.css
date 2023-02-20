@@ -86,11 +86,14 @@ body {
 }
 
 .wrapper {
-	padding: 15rem 0;
+	padding: 13rem 0;
 	z-index: 1;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .wrapper_overlay {
@@ -135,7 +138,6 @@ body {
 .template_wrapper {
 	display: flex;
 	align-items: flex-start;
-	height: 100vh;
 }
 
 .default_template {
@@ -146,7 +148,6 @@ body {
 	position: relative;
 	z-index: 2;
 	max-width: 92rem;
-	height: 100vh;
 	margin: 0 auto;
 }
 
@@ -184,7 +185,6 @@ body {
 	line-height: 1.5;
 	text-align: center;
 	color: var(--base-white-color);
-	text-shadow: 0 0 5px black;
 }
 
 .default_template-icons .social_media {
@@ -231,9 +231,6 @@ body {
 	html {
 		font-size: 8px;
 	}
-	.wrapper {
-		padding: 11rem 3rem;
-	}
 	-heading {
 		margin-bottom: 3rem;
 	}
@@ -247,6 +244,8 @@ body {
 		font-size: 5px;
 	}
 	.wrapper {
-		padding: 1rem 3rem;
+		padding: 0 5rem;
+		height: calc(100vh - 3rem);
+		overflow: hidden;
 	}
 }
