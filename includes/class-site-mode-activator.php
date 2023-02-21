@@ -91,7 +91,7 @@ class Site_Mode_Activator {
 
 		// Add default options to database for general settings
 		$general_settings = [
-			'mode_status'      => 1,
+			'mode_status'      => 0,
 			'mode_type'        => 'maintenance',
 			'redirect_url'     => '',
 			'redirect_delay'   => 0,
