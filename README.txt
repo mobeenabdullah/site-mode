@@ -1,114 +1,64 @@
 === Plugin Name ===
 Contributors: mobeen-abdullah
-Donate link: https://mobeenabdullah.com
-Tags: comments, spam
-Requires at least: 3.0.1
-Tested up to: 3.4
-Stable tag: 4.3
+Donate link: https://github.com/mobeenabdullah/site-mode
+Tags: maintenance mode, coming soon, under construction, maintenance page, launch, coming soong page, coming soon mode
+Requires at least: 4.7
+Tested up to: 6.1.1
+Requires PHP: 7.0
+Stable tag: 0.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Here is a short description of the plugin.  This should be no more than 150 characters.  No markup here.
+Easily put your WordPress site into maintenance mode while you work on updates or make changes.
 
 == Description ==
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
+Welcome to Site Mode, the most convenient and user-friendly way to put your WordPress site into maintenance mode. If you are working on updates, making changes, or simply taking your site offline for maintenance, Site Mode is the plugin you need.
 
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
+**Features** :
 
-A few notes about the sections above:
+* Easy to Use
+* Fully Customizable
+* Flexible Options
+* SEO-Friendly
+* No Coding Required
 
-*   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
-*   "Tags" is a comma separated list of tags that apply to the plugin
-*   "Requires at least" is the lowest version that the plugin will work on
-*   "Tested up to" is the highest version that you've *successfully used to test the plugin*. Note that it might work on
-higher versions... this is just the highest one you've verified.
-*   Stable tag should indicate the Subversion "tag" of the latest stable version, or "trunk," if you use `/trunk/` for
-stable.
+**Credits** :
 
-    Note that the `readme.txt` of the stable tag is the one that is considered the defining one for the plugin, so
-if the `/trunk/readme.txt` file says that the stable tag is `4.3`, then it is `/tags/4.3/readme.txt` that'll be used
-for displaying information about the plugin.  In this situation, the only thing considered from the trunk `readme.txt`
-is the stable tag pointer.  Thus, if you develop in trunk, you can update the trunk `readme.txt` to reflect changes in
-your in-development version, without having that information incorrectly disclosed about the current stable version
-that lacks those changes -- as long as the trunk's `readme.txt` points to the correct stable tag.
-
-    If no stable tag is provided, it is assumed that trunk is stable, but you should specify "trunk" if that's where
-you put the stable version, in order to eliminate any doubt.
+* [Font Awesome](https://fontawesome.com/) - Library for font icons used on the front-end and in the settings page
+* [Range Slider](https://rangeslider.js.org/) - Library for customized range slider
+* [Pickr](https://simonwep.github.io/pickr/) - Library for a simple color picker
 
 == Installation ==
 
-This section describes how to install the plugin and get it working.
-
-e.g.
-
-1. Upload `site-mode.php` to the `/wp-content/plugins/` directory
-1. Activate the plugin through the 'Plugins' menu in WordPress
-1. Place `<?php do_action('plugin_name_hook'); ?>` in your templates
+1. Install the plugin by downloading it from the WordPress repository or uploading the zip file to your WordPress site and activate it from the plugins page in the Dashboard.
+2. Navigate to the "Site Mode" settings page from the WordPress menu.
+3. On the settings page, you can enable the plugin by selecting the status and customizing the look and feel of your maintenance page. You can add your own content, add social icons, configure SEO title and description settings, and adjust advanced settings to meet your specific needs.
 
 == Frequently Asked Questions ==
 
-= A question that someone might have =
+= Where can I find the settings of this plugin? =
 
-An answer to that question.
+After installing and activating the plugin, you can access the Site Mode settings by navigating to the "Site Mode" option in the WordPress dashboard menu.
 
-= What about foo bar? =
+= Why the maintenance mode is not showing on my site? =
 
-Answer to foo bar dilemma.
+If the maintenance mode is not showing up on your site, there could be a few reasons. First, make sure you have enabled the plugin in the settings. Also, check that you are not signed in with a user role that is whitelisted, and that you have not whitelisted the page you are viewing.
+
+= Is this plugin free? =
+Yes, this plugin is completely free
 
 == Screenshots ==
 
-1. This screen shot description corresponds to screenshot-1.(png|jpg|jpeg|gif). Note that the screenshot is taken from
-the /assets directory or the directory that contains the stable readme.txt (tags or trunk). Screenshots in the /assets
-directory take precedence. For example, `/assets/screenshot-1.png` would win over `/tags/4.3/screenshot-1.png`
-(or jpg, jpeg, gif).
-2. This is the second screen shot
+1. Default Template Preview
+2. General Settings
+3. Content Settings
+4. Social Settings
+5. Design Settings
+6. SEO Settings
+7. Advanced Settings
 
 == Changelog ==
 
-= 1.0 =
-* A change since the previous version.
-* Another change.
-
-= 0.5 =
-* List versions from most recent at top to oldest at bottom.
-
-== Upgrade Notice ==
-
-= 1.0 =
-Upgrade notices describe the reason a user should upgrade.  No more than 300 characters.
-
-= 0.5 =
-This version fixes a security related bug.  Upgrade immediately.
-
-== Arbitrary section ==
-
-You may provide arbitrary sections, in the same format as the ones above.  This may be of use for extremely complicated
-plugins where more information needs to be conveyed that doesn't fit into the categories of "description" or
-"installation."  Arbitrary sections will be shown below the built-in sections outlined above.
-
-== A brief Markdown Example ==
-
-Ordered list:
-
-1. Some feature
-1. Another feature
-1. Something else about the plugin
-
-Unordered list:
-
-* something
-* something else
-* third thing
-
-Here's a link to [WordPress](http://wordpress.org/ "Your favorite software") and one to [Markdown's Syntax Documentation][markdown syntax].
-Titles are optional, naturally.
-
-[markdown syntax]: http://daringfireball.net/projects/markdown/syntax
-            "Markdown is what the parser uses to process much of the readme file"
-
-Markdown uses email style notation for blockquotes and I've been told:
-> Asterisks for *emphasis*. Double it up  for **strong**.
-
-`<?php code(); // goes in backticks ?>`
+= 0.1.0 =
+* Initial release of Site Mode
