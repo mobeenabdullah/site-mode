@@ -14,7 +14,6 @@
 			</div>
 		</div>
 
-
 		<div class="option__row">
 			<div class="option__row--label">
 				<span><label for="facebook_pixel_id"><?php esc_html_e( 'Facebook Pixel ID', 'site-mode' ); ?></label></span>
@@ -26,7 +25,6 @@
 				</div>
 			</div>
 		</div>
-
 
 		<div class="option__row">
 			<div class="option__row--label">
@@ -50,44 +48,6 @@
 				<div class="sm_checkbox_wrapper">
 				<input type="checkbox" id="feed_enable" name="disable-rss-feed" value="1" <?php checked( 1, $this->disable_rss_feed, true ); ?>/>
 					<label for="feed_enable"></label>
-				</div>
-			</div>
-		</div>
-
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="header_code"><?php esc_html_e( 'Header Code', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enter custom code to be inserted into the header of your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_textarea_cover header_code">
-					<textarea id="header_code" name="header-code" rows="6" cols="80"><?php echo $this->header_code; ?></textarea>
-				</div>
-			</div>
-		</div>
-		<style>
-
-		</style>
-
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="footer-code"><?php esc_html_e( 'Footer Code', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enter custom code to be inserted into the footer of your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_textarea_cover footer_code">
-					<textarea id="footer_code" name="footer-code" rows="6" cols="80"><?php echo $this->footer_code; ?></textarea>
-				</div>
-			</div>
-		</div>
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="custom-css"><?php esc_html_e( 'Custom CSS', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enter custom CSS code to override or modify the default styles of the maintenance page', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_textarea_cover custom_css">
-					<textarea id="custom_css" name="custom-css" rows="6" cols="80"><?php echo wp_kses_post( $this->custom_css ); ?></textarea>
 				</div>
 			</div>
 		</div>

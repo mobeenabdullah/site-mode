@@ -82,7 +82,7 @@ class Site_Mode_Admin {
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', [], $this->version, 'all' );
-		wp_enqueue_style( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css' );
+		wp_enqueue_style( 'select-2', plugin_dir_url( __FILE__ ) . 'assets/css/select-2.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'nano-min', plugin_dir_url( __FILE__ ) . 'assets/css/nano.min.css', [], $this->version, 'all' );
 
@@ -100,8 +100,7 @@ class Site_Mode_Admin {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( 'select-2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', [ 'jquery' ], null, true );
-		wp_enqueue_script( 'ace-editor', 'https://cdnjs.cloudflare.com/ajax/libs/ace/1.14.0/ace.js',[ 'jquery' ], null, true );
+		wp_enqueue_script( 'select-2', plugin_dir_url( __FILE__ ) . 'assets/js/select-2.js', [ 'jquery' ], null, true );
 		wp_enqueue_script( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/js/rangeslider.js', [ 'jquery' ], null, true );
 		wp_enqueue_script( 'pickr-min', plugin_dir_url( __FILE__ ) . 'assets/js/pickr.min.js', [ 'jquery' ], null, true );
 

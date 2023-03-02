@@ -52,14 +52,14 @@
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					],
 				];
-				$active_tab     = isset( $_GET['tab'] ) ? strtolower( $_GET['tab'] ) : 'general';
+				$active_tab     = isset( $_GET['tab'] ) ?  sanitize_text_field( strtolower($_GET['tab']) ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
 					$tab_data  = 'tab-' . strtolower( $site_mode_tab['title'] );
 					?>
 					<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
-						<span class="menu_icon"><?php echo $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
+						<span class="menu_icon"><?php $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
 						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title'], 'site-mode' ); ?></span>
 					</li>
 					<?php
