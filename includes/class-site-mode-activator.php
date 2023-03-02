@@ -157,13 +157,9 @@ class Site_Mode_Activator {
 		$advance_settings = [
 			'ga_id'            => '',
 			'fb_id'            => '',
-			'custom_css'       => '',
 			'enable_rest_api'  => '0',
 			'disable_rss_feed' => '0',
 			'enable_feed'      => '1',
-			'header_code'      => '',
-			'footer_code'      => '',
-
 		];
 
 		$site_mode_design_social = [

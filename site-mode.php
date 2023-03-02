@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'SITE_MODE_VERSION', '0.0.1' );
+define( 'SITE_MODE_VERSION', '0.1.0' );
 
 /**
  * The code that runs during plugin activation.

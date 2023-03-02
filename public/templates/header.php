@@ -79,16 +79,6 @@
 	}
 	?>
 
-	<?php if ( isset( $advance_content['header_code'] ) ) : ?>
-			<?php echo $advance_content['header_code']; ?>
-	<?php endif; ?>
-
-	<?php if ( isset( $advance_content['custom_css'] ) ) : ?>
-		<style>
-			<?php echo wp_kses_post( $advance_content['custom_css'] ); ?>
-		</style>
-	<?php endif; ?>
-
 	<?php wp_head(); ?>
 
 </head>

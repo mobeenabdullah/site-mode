@@ -112,11 +112,19 @@ class Site_Mode_Social extends Settings {
 
 			$this->verify_nonce( 'social-custom-message', 'social-settings-save' );
 
-			if ( isset( $_POST['social_icons'] ) && isset( $_POST['social-custom-message'] ) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' ) ) {
-				$data['social_icons'] = $_POST['social_icons'];
-			} else {
-				$data['social_icons'] = [];
-			}
+            $data['social_icons'] = [];
+			if ( isset( $_POST['social_icons'] ) && is_array($_POST['social_icons']) && isset( $_POST['social-custom-message'] ) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' ) ) {
+
+                foreach ( $_POST['social_icons'] as $key => $value ) {
+                    if(is_array($value)) {
+                        $data['social_icons'][$key] = [
+                            'title' => sanitize_text_field($value['title']),
+                            'icon' => sanitize_text_field($value['icon']),
+                            'link' => esc_url_raw($value['link']),
+                        ];
+                    }
+                }
+            }
 
 			if ( isset( $_POST['show-social-icons'] ) && isset( $_POST['social-custom-message'] ) && wp_verify_nonce( $_POST['social-custom-message'], 'social-settings-save' ) ) {
 				$data['show_social_icons'] = sanitize_text_field( $_POST['show-social-icons'] );
@@ -124,6 +132,7 @@ class Site_Mode_Social extends Settings {
 				$data['show_social_icons'] = 'off';
 			}
 
+            print_r($data);
 			return $this->save_data( $this->option_name, $data );
 
 			wp_die();

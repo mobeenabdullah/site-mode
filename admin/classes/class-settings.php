@@ -84,7 +84,7 @@ class Settings {
 		];
 
 		$allowed_tags = array_merge( $kses_defaults, $svg_args );
-		return wp_kses( $svg_content, $allowed_tags );
+		echo wp_kses( $svg_content, $allowed_tags );
 	}
 
 }
