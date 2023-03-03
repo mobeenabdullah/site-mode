@@ -132,7 +132,6 @@ class Site_Mode_Social extends Settings {
 				$data['show_social_icons'] = 'off';
 			}
 
-            print_r($data);
 			return $this->save_data( $this->option_name, $data );
 
 			wp_die();
