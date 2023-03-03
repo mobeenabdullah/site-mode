@@ -52,9 +52,7 @@
 			</div>
 		</div>
 
-		<?php
-		wp_nonce_field( 'advance-settings-save', 'advance-custom-message' );
-		?>
+		<?php wp_nonce_field( 'advance-settings-save', 'advance-custom-message' ); ?>
 		 <div class="option__row">
 			<div class="option__row--label submit_button">
 				<button type="submit" name="submit" class="button button-primary site-mode-save-btn">
