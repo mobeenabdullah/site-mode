@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.1
+ * @since      0.0.2
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -16,7 +16,7 @@ require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.ph
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      0.0.1
+ * @since      0.0.2
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -72,4 +72,6 @@ class Site_Mode_Advanced extends Settings {
 	public function render() {
 		$this->display_settings_page( 'advanced' );
 	}
+
+
 }

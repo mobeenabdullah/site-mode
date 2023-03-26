@@ -7,7 +7,7 @@
  * so that it is ready for translation.
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.1
+ * @since      0.0.2
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -19,7 +19,7 @@
  * Loads and defines the internationalization files for this plugin
  * so that it is ready for translation.
  *
- * @since      0.0.1
+ * @since      0.0.2
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -29,7 +29,7 @@ class Site_Mode_i18n {
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    0.0.1
+	 * @since    0.0.2
 	 */
 	public function load_plugin_textdomain() {
 

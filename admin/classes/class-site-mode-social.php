@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.1
+ * @since      0.0.2
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      0.0.1
+ * @since      0.0.2
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -135,16 +135,6 @@ class Site_Mode_Social extends Settings {
 			return $this->save_data( $this->option_name, $data );
 
 			wp_die();
-		}
-
-		public function check_selected_social_icon( $icon_title ) {
-
-			$searchIcon = array_search( $icon_title, array_column( $this->social_icons, 'title' ) );
-
-			if ( $searchIcon !== false ) {
-				echo 'sm-social_icon--checked';
-			}
-
 		}
 
 		public function render() {
