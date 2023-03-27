@@ -137,6 +137,16 @@ class Site_Mode_Social extends Settings {
 			wp_die();
 		}
 
+		public function check_selected_social_icon( $icon_title ) {
+
+			$searchIcon = array_search( $icon_title, array_column( $this->social_icons, 'title' ) );
+
+			if ( $searchIcon !== false ) {
+				echo 'sm-social_icon--checked';
+			}
+
+		}
+
 		public function render() {
 			$this->display_settings_page( 'social' );
 		}
