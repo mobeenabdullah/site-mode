@@ -13,7 +13,7 @@
  * @package           Site_Mode
  *
  * @wordpress-plugin
- * Plugin Name:       Site Mode - Maintenance Mode & Coming Soon Page
+ * Plugin Name:       Site Mode - Coming Soon Page, Maintenance Mode & Under Construction Page
  * Plugin URI:        https://github.com/mobeenabdullah/site-mode
  * Description:       Create a beautiful Coming Soon page or switch to Maintenance Mode with ease for your WordPress site
  * Version:           0.0.2
