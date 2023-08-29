@@ -41,8 +41,7 @@ class Site_Mode_Admin {
 	private $version;
 
 	protected $general_settings;
-	protected $content_settings;
-	protected $social_settings;
+
 	protected $design_settings;
 	protected $seo_settings;
 	protected $advanced_settings;
@@ -81,11 +80,8 @@ class Site_Mode_Admin {
 	 * Register the stylesheets for the admin area.
 	 */
 	public function enqueue_styles() {
-		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', [], $this->version, 'all' );
+        wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'select-2', plugin_dir_url( __FILE__ ) . 'assets/css/select-2.css', [], $this->version, 'all' );
-		wp_enqueue_style( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/css/rangeslider.css', [], $this->version, 'all' );
-		wp_enqueue_style( 'nano-min', plugin_dir_url( __FILE__ ) . 'assets/css/nano.min.css', [], $this->version, 'all' );
-
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 	}
 
@@ -94,16 +90,11 @@ class Site_Mode_Admin {
 	 */
 	public function enqueue_scripts() {
 
-		wp_enqueue_script( 'jquery-ui-sortable' );
-
 		if ( ! did_action( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
 
 		wp_enqueue_script( 'select-2', plugin_dir_url( __FILE__ ) . 'assets/js/select-2.js', [ 'jquery' ], null, true );
-		wp_enqueue_script( 'range-slider', plugin_dir_url( __FILE__ ) . 'assets/js/rangeslider.js', [ 'jquery' ], null, true );
-		wp_enqueue_script( 'pickr-min', plugin_dir_url( __FILE__ ) . 'assets/js/pickr.min.js', [ 'jquery' ], null, true );
-
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/js/site-mode-admin.js', [ 'jquery' ], $this->version, true );
 		wp_localize_script(
 			$this->plugin_name,
