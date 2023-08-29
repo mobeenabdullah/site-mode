@@ -190,18 +190,6 @@ class Site_Mode {
 		// general
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
 
-		// content
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_content', $this->classes_loader->get_content(), 'ajax_site_mode_content' );
-
-		// social
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_social', $this->classes_loader->get_social(), 'ajax_site_mode_social' );
-
-		// design
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design', $this->classes_loader->get_design(), 'ajax_site_mode_design' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_lb', $this->classes_loader->get_design(), 'ajax_site_mode_design_lb' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_font', $this->classes_loader->get_design(), 'ajax_site_mode_design_font' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_social', $this->classes_loader->get_design(), 'ajax_site_mode_design_social' );
-
 		// SEO settings
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );
 		// advanced settings

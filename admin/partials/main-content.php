@@ -32,14 +32,6 @@
 						'icon'  => '<i class="fa-solid fa-gear"></i>',
 					],
 					[
-						'title' => 'Content',
-						'icon'  => '<i class="fa-solid fa-align-left"></i>',
-					],
-					[
-						'title' => 'Social',
-						'icon'  => '<i class="fa-solid fa-share-nodes"></i>',
-					],
-					[
 						'title' => 'Design',
 						'icon'  => '<i class="fa-solid fa-palette"></i>',
 					],
@@ -60,7 +52,7 @@
 					?>
 					<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
 						<span class="menu_icon"><?php $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
-						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title'], 'site-mode' ); ?></span>
+						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title']); ?></span>
 					</li>
 					<?php
 				endforeach;
