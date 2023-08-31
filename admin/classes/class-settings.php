@@ -24,14 +24,13 @@
 class Settings {
 
 	public function save_data( $option_name, $data ) {
-		$data = serialize( $data );
-		update_option( $option_name, $data );
-		wp_send_json_success( unserialize( get_option( $option_name ) ) );
+
+        update_option( $option_name, $data );
+		wp_send_json_success( get_option( $option_name ) );
 	}
 
 	public function get_data( $option_name ) {
 		$data = get_option( $option_name );
-		$data = unserialize( $data );
 		return $data;
 	}
 

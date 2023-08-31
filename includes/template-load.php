@@ -5,8 +5,8 @@ class Template_Load {
 
 	protected $template;
 	public function __construct() {
-		$this->general_settings = unserialize( get_option( 'site_mode_general' ) );
-		$this->template         = unserialize( get_option( 'site_mode_design' ) );
+		$this->general_settings = get_option( 'site_mode_general' );
+		$this->template         = get_option( 'site_mode_design' );
 	}
 	public function template_initialize() {
 
@@ -73,7 +73,7 @@ class Template_Load {
 		wp_enqueue_style( 'open-sans-font', 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap' );
 
 		if ( ! empty( get_option( 'site_mode_design_fonts' ) ) ) {
-			$font_family             = unserialize( get_option( 'site_mode_design_fonts' ) );
+			$font_family             = get_option( 'site_mode_design_fonts' );
 			$heading_font_family     = $font_family['heading_font_family'];
 			$description_font_family = $font_family['description_font_family'];
 

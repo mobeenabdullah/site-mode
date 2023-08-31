@@ -268,4 +268,32 @@ jQuery(function ($) {
 
     })
 
+    $('#sm_page_select').on('change', function(){
+        const pageId = $(this).val();
+        const nonce = $('#template_init_field').val();
+
+        $.ajax({
+            url: ajaxObj.ajax_url,
+            dataType: "json",
+            method: "post",
+            data: {
+                action: 'ajax_site_mode_design_page_init',
+                page_id: pageId,
+                template_init_field: nonce
+            },
+            success: function (res) {
+                setTimeout(function () {
+                    launch_toast(res.success)
+                }, 1000)
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $(".save-btn-loader").hide()
+                    // launch_toast(true)
+                }, 1000)
+            }
+        })
+
+    });
+
 })

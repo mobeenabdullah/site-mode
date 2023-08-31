@@ -13,6 +13,17 @@ $templates = [
     ],
 ];
 
+$args = array(
+    'post_type' => 'page', // Only retrieve pages
+    'post_status' => 'publish', // Only retrieve published pages
+    'posts_per_page' => -1, // Retrieve all pages
+);
+
+$page_ids = get_posts($args);
+
+
+
+
 ?>
 
 <div class="site_mode__wrap-form">
@@ -22,10 +33,21 @@ $templates = [
 				<h3 class="section_title-title"><?php esc_html_e( 'Templates', 'site-mode' ); ?></h3>
 			</div>
 		</div>
+
+        <div class="page-select-wrapper">
+            <label for="sm_page_select">Select Page:</label>
+            <select name="page-select" id="sm_page_select">
+                <option value="">Select Page</option>
+                <?php foreach ($page_ids as $page_id) : ?>
+                    <option value="<?php echo $page_id->ID; ?>" <?php echo $page_id->ID == $this->page_id ? 'selected' : ''; ?>><?php echo $page_id->post_title; ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
+
 		<div class="section__wrapper-content section_theme">
 				<div class="template__wrapper">
 					<div class="template_options">
-
 						<?php foreach ( $templates as $key => $template ) : ?>
 						<div class="template_card template-<?php echo esc_attr( $template['name'] ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>" data-value="<?php echo $key; ?>">
 							<div class="template_card-image" style="background-image: url(<?php echo esc_url( $template['image'] ); ?>);">

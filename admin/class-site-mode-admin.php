@@ -105,4 +105,15 @@ class Site_Mode_Admin {
 			]
 		);
 	}
+
+    public function add_display_post_states( $post_states, $post ) {
+
+        $design_data = get_option( 'site_mode_design' );
+
+        if(!empty($design_data) && isset($design_data['page_id']) && $design_data['page_id'] == $post->ID){
+            $post_states['sm_maintenance_status'] = 'Maintenance';
+        }
+
+        return $post_states;
+    }
 }

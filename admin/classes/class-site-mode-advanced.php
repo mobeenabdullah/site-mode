@@ -30,7 +30,7 @@ class Site_Mode_Advanced extends Settings {
 		protected $site_mode_advanced = [];
 
 	public function __construct() {
-		$this->site_mode_advanced = unserialize( get_option( 'site_mode_advanced' ) );
+		$this->site_mode_advanced = get_option( 'site_mode_advanced' );
 		if ( $this->site_mode_advanced ) {
 			$this->ga_id            = isset( $this->site_mode_advanced['ga_id'] ) ? $this->site_mode_advanced['ga_id'] : '';
 			$this->fb_id            = isset( $this->site_mode_advanced['fb_id'] ) ? $this->site_mode_advanced['fb_id'] : '';

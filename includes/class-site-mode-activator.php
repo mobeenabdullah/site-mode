@@ -35,9 +35,6 @@ class Site_Mode_Activator {
 			'user_roles'       => ['administrator'],
 		];
 
-		// Add default options to database for Design settings.
-		$template_name = '';
-
 		// add default options to database for SEO settings fields with placeholder text.
 		$seo_settings = [
 			'meta_title'       => '',
@@ -58,13 +55,12 @@ class Site_Mode_Activator {
 		// Add default options to database for general settings.
 		$settings = [
 			'site_mode_general'       => $general_settings,
-			'site_mode_design'        => $template_name,
 			'site_mode_seo'           => $seo_settings,
 			'site_mode_advanced'      => $advance_settings,
 		];
 
 		foreach ( $settings as $key => $value ) :
-			add_option( $key, serialize( $value ) );
+			add_option( $key, $value );
 		endforeach;
 
 	}
