@@ -59,8 +59,6 @@ class Site_Mode_Public {
 
 		$this->site_mode_design = get_option( 'site_mode_design' );
 
-		// convert serialized string to array
-		$this->site_mode_design = unserialize( $this->site_mode_design );
 		// check if value is set or not if not set then set default value.
 		$this->enable_template = isset( $this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template'] : '1';
 

@@ -1,7 +1,7 @@
 <?php
-	$seo_info        = unserialize( get_option( 'site_mode_seo' ) );
-	$social          = unserialize( get_option( 'site_mode_social' ) );
-	$advance_content = unserialize( get_option( 'site_mode_advanced' ) );
+	$seo_info        = get_option( 'site_mode_seo' );
+	$social          = get_option( 'site_mode_social' );
+	$advance_content = get_option( 'site_mode_advanced' );
 	$seo_image_url   = isset( $seo['meta_image'] ) ? wp_get_attachment_image_url( $seo['meta_image'], 'full' ) : '';
 	$favicon         = isset( $seo['meta_favicon'] ) ? wp_get_attachment_image_url( $seo['meta_favicon'], 'full' ) : '';
 

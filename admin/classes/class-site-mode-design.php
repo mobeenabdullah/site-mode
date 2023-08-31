@@ -24,51 +24,86 @@ class Site_Mode_Design extends  Settings {
 
     protected $option_name = 'site_mode_design';
     protected  $active_template = 'template-1';
+    protected $page_id = '';
+
 
     public function __construct() {
-        $this->active_template = unserialize(get_option( $this->option_name )) ? unserialize(get_option( $this->option_name )) : 'template-1';
+
+        $design_settings = $this->get_data( $this->option_name );
+
+        if(!empty($design_settings)){
+            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : 'template-1';
+            $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
+        }
     }
 
+    public function ajax_site_mode_design_page_init() {
+        $this->verify_nonce( 'template_init_field', 'template_init_action' );
+        $page_id = $this->get_post_data( 'page_id', 'template_init_action', 'template_init_field', 'number' );
+        $this->page_id = $page_id;
+        $design_data = [
+            'template' => $this->active_template,
+            'page_id' => $page_id
+        ];
+
+        if($page_id){
+
+            $this->save_data( $this->option_name, $design_data );
+            $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$this->active_template.'/blocks-export.json' ) );
+            $blocks = str_replace( '\n', '', $template->content );
+            $post = get_post( $page_id );
+            $post->post_content = $blocks;
+            $result = wp_update_post($post);
+
+            if(is_wp_error($result)) {
+                wp_send_json_error('Something went wrong.');
+            } else {
+                wp_send_json_success('Template has been initialized successfully.');
+            }
+        }
+
+    }
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
 
         // check has maintaince page
-        $page_id = $this->check_maintaince_page($template);
+        $page_id = $this->check_maintaince_page($this->page_id, $template);
+        $design_data = [
+            'template' => $template,
+            'page_id' => $page_id
+        ];
 
-        if($page_id){
-            update_option( $this->option_name, serialize($template) );
-            update_option( 'sm-fresh-installation', serialize(true) );
+        $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template.'/blocks-export.json' ) );
+        $blocks = str_replace( '\n', '', $template->content );
+        $post = get_post( $page_id );
+        $post->post_content = $blocks;
+        $result = wp_update_post($post);
 
-            $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template.'/blocks-export.json' ) );
-            $blocks = str_replace( '\n', '', $template->content );
-
-            $post = get_post( $page_id );
-            $post->post_content = $blocks;
-            $result = wp_update_post($post);
-
-            if(is_wp_error($result)){
-                wp_send_json_error( 'Something went wrong.' );
-            }
-
-            wp_send_json_success( 'Template has been initialized successfully.' );
+        if(is_wp_error($result)){
+            wp_send_json_error( 'Something went wrong.' );
         }
+        update_option( 'sm-fresh-installation', true);
+        $this->save_data( $this->option_name, $design_data );
+        wp_send_json_success( 'Template has been initialized successfully.' );
 
-        wp_send_json_error( 'Something went wrong.' );
         die();
     }
 	public function render() {
 		$this->display_settings_page( 'design' );
 	}
 
-    public function check_maintaince_page($template_name = 'template-1'){
-        $page = get_page_by_title( 'Maintenance Page' );
-
-        if($page){
-            return $page->ID;
+    public function check_maintaince_page($id = '', $template_name = 'template-1'){
+        if($id){
+            $page = get_post($id);
+            if($page){
+                return $page->ID;
+            } else {
+                return $this->create_maintaince_page($template_name);
+            }
+        } else {
+            return $this->create_maintaince_page($template_name);
         }
-
-        return $this->create_maintaince_page($template_name);
     }
 
     public function create_maintaince_page ($template_name = 'template-1') {
@@ -86,9 +121,16 @@ class Site_Mode_Design extends  Settings {
         ) );
 
         if(!is_wp_error($page_id)){
-            return wp_send_json_success( 'Template has been initialized successfully.' );
+            $design_data = [
+                'template' => $template_name,
+                'page_id' => $page_id
+            ];
+            update_option( 'sm-fresh-installation', true);
+            $this->save_data( $this->option_name, $design_data );
+            return $page_id;
+        } else {
+            wp_send_json_error( 'Something went wrong.');
         }
-        return false;
     }
 
 }
