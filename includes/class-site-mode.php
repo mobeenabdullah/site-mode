@@ -187,6 +187,9 @@ class Site_Mode {
 
 		// ajax calling
 
+        // template init
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_init', $this->classes_loader->get_design(), 'ajax_site_mode_template_init' );
+
 		// general
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
 

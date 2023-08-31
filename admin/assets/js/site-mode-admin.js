@@ -175,6 +175,13 @@ jQuery(function ($) {
             })
         }
 
+        const templateInit = $("#sm-template__initialization");
+        templateInit.submit(function (e) {
+            e.preventDefault()
+            $('#sm-template__initialization .save-btn-loader').show();
+            sendAjaxRequest("sm-template__initialization", "ajax_site_mode_template_init");
+        })
+
         const formGeneral = $("#site-mode-general");
         formGeneral.submit(function (e) {
             e.preventDefault()
@@ -226,5 +233,39 @@ jQuery(function ($) {
             })
         })
     }
+
+    $('.template_card').on('click', function(){
+        $(this).children('.template_loading').show();
+        const templateId = $(this).attr('data-value');
+        const nonce = $('#template_init_field').val();
+        const currentTemplate = $(this);
+
+        $.ajax({
+            url: ajaxObj.ajax_url,
+            dataType: "json",
+            method: "post",
+            data: {
+                action: 'ajax_site_mode_template_init',
+                template: templateId,
+                template_init_field: nonce
+            },
+            success: function (res) {
+                setTimeout(function () {
+                    $('.template_card').removeClass('active_template');
+                    $(currentTemplate).addClass('active_template');
+                    $('.template_loading').hide();
+                    launch_toast(res.success)
+                }, 1000)
+            },
+            error: function (error) {
+                setTimeout(function () {
+                    $('.template_loading').hide();
+                    $(".save-btn-loader").hide()
+                    // launch_toast(true)
+                }, 1000)
+            }
+        });
+
+    })
 
 })
