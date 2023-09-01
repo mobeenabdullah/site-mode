@@ -66,14 +66,22 @@ class Site_Mode_Design extends  Settings {
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
+        $design_data = [
+            'template' => $template,
+            'page_id' => $this->page_id
+        ];
+
+        if(empty($template)) {
+            update_option( 'sm-fresh-installation', true);
+            $this->save_data( $this->option_name, $design_data );
+            wp_send_json_success( 'Classic Template has been initialized successfully.' );
+            die();
+        }
 
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template);
-        $design_data = [
-            'template' => $template,
-            'page_id' => $page_id
-        ];
-
+        $design_data['page_id'] = $page_id;
+        $this->page_id = $page_id;
         $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template.'/blocks-export.json' ) );
         $blocks = str_replace( '\n', '', $template->content );
         $post = get_post( $page_id );

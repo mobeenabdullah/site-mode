@@ -180,6 +180,7 @@ jQuery(function ($) {
             e.preventDefault()
             $('#sm-template__initialization .save-btn-loader').show();
             sendAjaxRequest("sm-template__initialization", "ajax_site_mode_template_init");
+            // location.reload();
         })
 
         const formGeneral = $("#site-mode-general");

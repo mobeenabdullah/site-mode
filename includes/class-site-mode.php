@@ -61,8 +61,6 @@ class Site_Mode {
 
 	protected $utilities = '';
 
-	protected $site_mode_general = '';
-
 	protected $status = '';
 
 
@@ -225,11 +223,14 @@ class Site_Mode {
 		$this->loader->add_action( 'do_feed_rss2_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_atom_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 
-		// redirect template
+		// Template load
 		$template_load = new Template_Load();
 
-		// check if the values are set or not and then assign them to the variables
-		$this->loader->add_action( 'template_redirect', $template_load, 'template_initialize' );
+        if($template_load->sm_is_gutenberg_editor()) {
+            $this->loader->add_filter( 'pre_option_page_on_front', $template_load, 'pre_option_redirect_page');
+        } else {
+            $this->loader->add_action( 'template_redirect', $template_load, 'load_classic_template' );
+        }
 
 	}
 

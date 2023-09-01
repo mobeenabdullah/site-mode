@@ -26,7 +26,7 @@ $templates = [
     <div class="template__initialization--content">
         <div class="template__initialization--content__templates">
             <?php foreach($templates as $key => $template ): ?>
-                <input type="radio" name="template" value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> required>
+                <input type="radio" name="template" value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
                 <label for="<?php echo $key; ?>"><?php echo $template['name']; ?></label>
             <?php endforeach; ?>
         </div>
@@ -40,6 +40,13 @@ $templates = [
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
             </span>
             <?php esc_html_e( 'Save Changes', 'site-mode' ); ?>
+        </button>
+
+        <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+            <span class="save-btn-loader" style="display: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+            </span>
+            <?php esc_html_e( 'skip', 'site-mode' ); ?>
         </button>
     </div>
 
