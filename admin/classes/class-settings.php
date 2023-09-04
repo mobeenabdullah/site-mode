@@ -24,9 +24,18 @@
 class Settings {
 
 	public function save_data( $option_name, $data ) {
-
         update_option( $option_name, $data );
-		wp_send_json_success( get_option( $option_name ) );
+
+        if(empty(get_option('sm-fresh-installation')) && $option_name == 'site_mode_design') {
+            update_option('sm-fresh-installation', true);
+            wp_send_json_success([
+                'redirect' => admin_url( 'admin.php?page=site-mode&tab=design' ),
+                'message' => 'Template has been initialized successfully.',
+                'fresh_installation' => true
+            ]);
+        } else {
+            wp_send_json_success( get_option( $option_name ) );
+        }
 	}
 
 	public function get_data( $option_name ) {
