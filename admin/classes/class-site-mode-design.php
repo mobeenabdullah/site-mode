@@ -28,7 +28,6 @@ class Site_Mode_Design extends  Settings {
 
 
     public function __construct() {
-
         $this->get_template_props_init();
     }
 
@@ -62,8 +61,12 @@ class Site_Mode_Design extends  Settings {
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
         $this->get_template_props_init();
+        if(!isset($template)) {
+            $template = $this->active_template;
+        }
+
         $design_data = [
-            'template' => isset($template) ? $template : $this->active_template,
+            'template' => $template,
             'page_id' => $this->page_id
         ];
 
