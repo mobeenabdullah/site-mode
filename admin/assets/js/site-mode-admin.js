@@ -59,15 +59,14 @@ jQuery(function ($) {
 
     // toaster
     function launch_toast(response) {
-        if (response == true) {
-            var x = document.getElementById("toast-success")
+        var x = document.getElementById("toast-success");
+        var y = document.getElementById("toast-error");
+        if (response == true && x.length !== 0) {
             x.className = "show"
             setTimeout(function () {
                 x.className = x.className.replace("show", "")
             }, 5000)
-        }
-        if (response == false) {
-            var y = document.getElementById("toast-error")
+        } else if (y.length !== 0) {
             y.className = "show"
             setTimeout(function () {
                 y.className = y.className.replace("show", "")
@@ -164,7 +163,7 @@ jQuery(function ($) {
                 success: function (res) {
 
                     if(res?.data?.fresh_installation) {
-                        location.reload();
+                        window.location.replace(res.data.redirect)
                     } else {
                         setTimeout(function () {
                             $(".save-btn-loader").hide()
@@ -246,8 +245,8 @@ jQuery(function ($) {
         })
     }
 
-    $('.template_card').on('click', function(){
-        $(this).children('.template_loading').show();
+    $('.template_init_button').on('click', function(){
+        $(this).siblings('.template_loading').show();
         const templateId = $(this).attr('data-value');
         const nonce = $('#template_init_field').val();
         const currentTemplate = $(this);
@@ -264,7 +263,7 @@ jQuery(function ($) {
             success: function (res) {
                 setTimeout(function () {
                     $('.template_card').removeClass('active_template');
-                    $(currentTemplate).addClass('active_template');
+                    $(currentTemplate).parent('.template_card').addClass('active_template');
                     $('.template_loading').hide();
                     launch_toast(res.success)
                 }, 1000)

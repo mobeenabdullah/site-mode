@@ -50,24 +50,24 @@ $page_ids = get_posts($args);
 
 
 		<div class="section__wrapper-content section_theme">
-				<div class="template__wrapper">
-					<div class="template_options">
-						<?php foreach ( $templates as $key => $template ) : ?>
-						<div class="template_card template-<?php echo esc_attr( $template['name'] ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>" data-value="<?php echo $key; ?>">
-							<div class="template_card-image" style="background-image: url(<?php echo esc_url( $template['image'] ); ?>);">
-							</div>
-                            <div class="template_loading" style="display: none">Loading...</div>
-							<div class="template_card-content">
-								<h2 class="template_card-content--title"><?php echo esc_html_e( $template['name'] ); ?></h2>
-							</div>
-						</div>
-						<?php endforeach; ?>
-                        <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
-						<div class="template_card coming_soon">
-							<h3 class="coming_soon_text">More Templates <br>Coming Soon</h3>
-						</div>
-					</div>
-				</div>
+            <div class="template__wrapper">
+                <div class="template_options">
+                    <?php foreach ( $templates as $key => $template ) : ?>
+                    <div class="template_card template-<?php echo esc_attr( $key ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>">
+                        <button class="template_init_button" data-value="<?php echo $key; ?>">Import</button>
+                        <div class="template_card-image" style="background-image: url(<?php echo esc_url( $template['image'] ); ?>);">
+                        </div>
+                        <div class="template_loading" style="display: none">Loading...</div>
+                        <div class="template_card-content">
+                            <h2 class="template_card-content--title"><?php echo esc_html_e( $template['name'] ); ?></h2>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <div class="template_card coming_soon">
+                        <h3 class="coming_soon_text">More Templates <br>Coming Soon</h3>
+                    </div>
+                </div>
+            </div>
 		</div>
 	</div>
 </div>
