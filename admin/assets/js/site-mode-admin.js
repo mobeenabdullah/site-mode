@@ -181,12 +181,18 @@ jQuery(function ($) {
             })
         }
 
+        const designPageInit = $("#site-mode-page-init");
+        designPageInit.submit(function (e) {
+            e.preventDefault()
+            sendAjaxRequest("site-mode-page-init", "ajax_site_mode_design_page_init");
+        });
+
         const templateInit = $("#sm-template__initialization");
         templateInit.submit(function (e) {
             e.preventDefault()
             $('#sm-template__initialization .save-btn-loader').show();
             sendAjaxRequest("sm-template__initialization", "ajax_site_mode_template_init");
-        })
+        });
 
         const formGeneral = $("#site-mode-general");
         formGeneral.submit(function (e) {
@@ -273,33 +279,5 @@ jQuery(function ($) {
         });
 
     })
-
-    $('#sm_page_select').on('change', function(){
-        const pageId = $(this).val();
-        const nonce = $('#template_init_field').val();
-
-        $.ajax({
-            url: ajaxObj.ajax_url,
-            dataType: "json",
-            method: "post",
-            data: {
-                action: 'ajax_site_mode_design_page_init',
-                page_id: pageId,
-                template_init_field: nonce
-            },
-            success: function (res) {
-                setTimeout(function () {
-                    launch_toast(res.success)
-                }, 1000)
-            },
-            error: function (error) {
-                setTimeout(function () {
-                    $(".save-btn-loader").hide()
-                    // launch_toast(true)
-                }, 1000)
-            }
-        })
-
-    });
 
 })

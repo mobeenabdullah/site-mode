@@ -29,17 +29,13 @@ class Site_Mode_Design extends  Settings {
 
     public function __construct() {
 
-        $design_settings = $this->get_data( $this->option_name );
-
-        if(!empty($design_settings)){
-            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : 'template-1';
-            $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
-        }
+        $this->get_template_props_init();
     }
 
     public function ajax_site_mode_design_page_init() {
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $page_id = $this->get_post_data( 'page_id', 'template_init_action', 'template_init_field', 'number' );
+        $this->get_template_props_init();
         $this->page_id = $page_id;
         $design_data = [
             'template' => $this->active_template,
@@ -47,13 +43,12 @@ class Site_Mode_Design extends  Settings {
         ];
 
         if($page_id){
-
-            $this->save_data( $this->option_name, $design_data );
             $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$this->active_template.'/blocks-export.json' ) );
             $blocks = str_replace( '\n', '', $template->content );
             $post = get_post( $page_id );
             $post->post_content = $blocks;
             $result = wp_update_post($post);
+            $this->save_data( $this->option_name, $design_data );
 
             if(is_wp_error($result)) {
                 wp_send_json_error('Something went wrong.');
@@ -66,8 +61,9 @@ class Site_Mode_Design extends  Settings {
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
+        $this->get_template_props_init();
         $design_data = [
-            'template' => $template,
+            'template' => isset($template) ? $template : $this->active_template,
             'page_id' => $this->page_id
         ];
 
@@ -85,9 +81,6 @@ class Site_Mode_Design extends  Settings {
             wp_send_json_error( 'Something went wrong.' );
         }
         $this->save_data( $this->option_name, $design_data );
-        wp_send_json_success( 'Template has been initialized successfully.' );
-
-        die();
     }
 	public function render() {
 		$this->display_settings_page( 'design' );
@@ -129,6 +122,15 @@ class Site_Mode_Design extends  Settings {
             return $page_id;
         } else {
             wp_send_json_error( 'Something went wrong.');
+        }
+    }
+
+    public function get_template_props_init() {
+        $design_settings = $this->get_data( $this->option_name );
+
+        if(!empty($design_settings)){
+            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : 'template-1';
+            $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
         }
     }
 
