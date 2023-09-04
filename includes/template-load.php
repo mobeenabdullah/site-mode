@@ -30,7 +30,7 @@ class Template_Load {
 
     public function sm_is_gutenberg_editor() {
 
-        if(empty($template['page_id'])) {
+        if(empty($this->template['page_id'])) {
             return false;
         }
 
@@ -45,13 +45,11 @@ class Template_Load {
         }
 
         if ( $this->is_sm_classic_editor_plugin_active() ) {
-            $editor_option       = get_option( 'classic-editor-replace' );
-            $block_editor_active = array( 'no-replace', 'block' );
-
-            return in_array( $editor_option, $block_editor_active, true );
+            return false;
+        } else {
+            update_option( 'show_on_front', 'page' );
+            return true;
         }
-
-        return true;
     }
 
     public function is_sm_classic_editor_plugin_active() {
