@@ -16,15 +16,15 @@ class Template_Load {
 		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) == 'true' ) {
 			return true;
 		} elseif ( $mode_status && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status() ) {
-//			if ( $mode_type === 'maintenance' && ! empty( $this->template ) ) {
+			if ( $mode_type === 'maintenance') {
 				status_header( 200 );
 				nocache_headers();
 				return true;
-//			} elseif ( ! empty( $this->template ) ) {
-//				status_header( 503 );
-//				nocache_headers();
-//				return true;
-//			}
+			} else {
+				status_header( 503 );
+				nocache_headers();
+				return true;
+			}
 		}
 	}
 
