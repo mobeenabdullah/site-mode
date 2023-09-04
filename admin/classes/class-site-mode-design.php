@@ -71,13 +71,6 @@ class Site_Mode_Design extends  Settings {
             'page_id' => $this->page_id
         ];
 
-        if(empty($template)) {
-            update_option( 'sm-fresh-installation', true);
-            $this->save_data( $this->option_name, $design_data );
-            wp_send_json_success( 'Classic Template has been initialized successfully.' );
-            die();
-        }
-
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template);
         $design_data['page_id'] = $page_id;
@@ -91,7 +84,6 @@ class Site_Mode_Design extends  Settings {
         if(is_wp_error($result)){
             wp_send_json_error( 'Something went wrong.' );
         }
-        update_option( 'sm-fresh-installation', true);
         $this->save_data( $this->option_name, $design_data );
         wp_send_json_success( 'Template has been initialized successfully.' );
 
@@ -133,7 +125,6 @@ class Site_Mode_Design extends  Settings {
                 'template' => $template_name,
                 'page_id' => $page_id
             ];
-            update_option( 'sm-fresh-installation', true);
             $this->save_data( $this->option_name, $design_data );
             return $page_id;
         } else {

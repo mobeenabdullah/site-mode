@@ -151,6 +151,7 @@ jQuery(function ($) {
                     formData.append(item.name, item.value)
                 })
             }
+
             $.ajax({
                 url: ajaxObj.ajax_url,
                 dataType: "json",
@@ -161,10 +162,15 @@ jQuery(function ($) {
                 cache: false,
                 enctype: enctype ? "multipart/form-data" : '',
                 success: function (res) {
-                    setTimeout(function () {
-                        $(".save-btn-loader").hide()
-                        launch_toast(res.success)
-                    }, 1000)
+
+                    if(res?.data?.fresh_installation) {
+                        location.reload();
+                    } else {
+                        setTimeout(function () {
+                            $(".save-btn-loader").hide()
+                            launch_toast(res.success)
+                        }, 1000)
+                    }
                 },
                 error: function (error) {
                     setTimeout(function () {
@@ -180,7 +186,6 @@ jQuery(function ($) {
             e.preventDefault()
             $('#sm-template__initialization .save-btn-loader').show();
             sendAjaxRequest("sm-template__initialization", "ajax_site_mode_template_init");
-            // location.reload();
         })
 
         const formGeneral = $("#site-mode-general");
