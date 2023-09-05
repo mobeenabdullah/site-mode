@@ -1,11 +1,11 @@
 === Plugin Name ===
 Contributors: mobeen-abdullah
 Donate link: https://github.com/mobeenabdullah/site-mode
-Tags: maintenance mode, coming soon, under construction, maintenance page, launch, coming soong page, coming soon mode
+Tags: coming soon, maintenance mode, under construction, maintenance page, launch, coming soon page, coming soon mode
 Requires at least: 4.7
-Tested up to: 6.1.1
+Tested up to: 6.3.1
 Requires PHP: 7.0
-Stable tag: 0.0.1
+Stable tag: 0.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
