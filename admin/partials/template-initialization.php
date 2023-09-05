@@ -44,3 +44,6 @@ $templates = [
     </div>
 
 </form>
+
+<?php wp_nonce_field( 'skip_template_action', 'skip_template_field' ); ?>
+<button class="skip-template" >Skip</button>
