@@ -57,6 +57,7 @@ class Site_Mode_Activator {
 			'site_mode_general'       => $general_settings,
 			'site_mode_seo'           => $seo_settings,
 			'site_mode_advanced'      => $advance_settings,
+            'sm_activation_redirect'  => true
 		];
 
 		foreach ( $settings as $key => $value ) :
