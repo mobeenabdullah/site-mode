@@ -27,16 +27,22 @@ class Settings {
         update_option( $option_name, $data );
 
         if(empty(get_option('sm-fresh-installation')) && $option_name == 'site_mode_design') {
-            $general_settings = $this->get_data( 'site_mode_general' );
+            $general_settings                = $this->get_data( 'site_mode_general' );
             $general_settings['mode_status'] = true;
             $general_settings['mode_type']   = 'maintenance';
             update_option( 'site_mode_general', $general_settings );
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'redirect' => admin_url( 'admin.php?page=site-mode&tab=design' ),
-                'message' => 'Template has been initialized successfully.',
+                'redirect'  => admin_url( 'admin.php?page=site-mode&tab=design' ),
+                'message'   => 'Template has been initialized successfully.',
                 'fresh_installation' => true
+            ]);
+        } elseif($option_name == 'site_mode_general') {
+            wp_send_json_success([
+                'tab'       => 'general',
+                'status'    => $data['mode_status'],
+                'message'   => 'Settings has been saved successfully.'
             ]);
         } else {
             wp_send_json_success( get_option( $option_name ) );

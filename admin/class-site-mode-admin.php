@@ -123,5 +123,29 @@ class Site_Mode_Admin {
             wp_redirect(admin_url('admin.php?page=site-mode'));
         }
     }
+    
+    public function sm_admin_bar () {
+        global $wp_admin_bar;
+
+        $general_settings = get_option( 'site_mode_general' );
+        $mode_status      = isset( $general_settings['mode_status'] ) ? $general_settings['mode_status'] : false;
+
+        if($mode_status) {
+            $text = '<span style="color: red;" class="sm-admin-bar-status">Site Mode is Enabled</span>';
+        } else {
+            $text = '<span style="color: lightgrey;" class="sm-admin-bar-status">Site Mode is Disabled</span>';
+        }
+
+        $wp_admin_bar->add_node([
+            'id'    => 'site-mode',
+            'title' => $text,
+            'meta'  => [
+                'class' => 'site-mode-admin-bar',
+            ],
+        ]);
+
+
+
+    }
 
 }

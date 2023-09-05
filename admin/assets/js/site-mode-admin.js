@@ -164,6 +164,15 @@ jQuery(function ($) {
             window.location.replace(res.data.redirect);
           } else {
             setTimeout(function () {
+              if (res?.data?.tab === 'general') {
+                  if(res?.data?.status) {
+                      $(".sm-admin-bar-status").text("Site Mode is Enabled");
+                      $(".sm-admin-bar-status").css("color", "red");
+                  } else {
+                      $(".sm-admin-bar-status").text("Site Mode is Disabled");
+                      $(".sm-admin-bar-status").css("color", "lightgrey");
+                  }
+              }
               $(".save-btn-loader").hide();
               launch_toast(res.success);
             }, 1000);
