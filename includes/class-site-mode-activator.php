@@ -4,7 +4,7 @@
  * Fired during plugin activation
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.2
+ * @since      0.0.3
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's activation.
  *
- * @since      0.0.2
+ * @since      0.0.3
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -57,7 +57,7 @@ class Site_Mode_Activator {
 	 *
 	 * Long Description.
 	 *
-	 * @since    0.0.2
+	 * @since    0.0.3
 	 */
 	public static function activate() {
 		// upload default logo image to media library and get the attachment id.
