@@ -2,19 +2,35 @@
 
 $templates = [
     'template-1' => [
-        'name' => 'Template 1',
-        'description' => 'This is template 1',
-        'image' => 'template-1.png',
+        'name'          => 'Template 1',
+        'description'   => 'This is template 1',
+        'image'         => 'template-1.png',
+        'category'      => 'maintenance',
     ],
     'template-2' => [
-        'name' => 'Template 2',
-        'description' => 'This is template 2',
-        'image' => 'template-2.png',
+        'name'          => 'Template 2',
+        'description'   => 'This is template 2',
+        'image'         => 'template-2.png',
+        'category'      => 'comming-soon',
     ],
 
 ];
 
 ?>
+
+
+<div class="template-category-wrapper">
+    <span class="template-category-filter" data-template-category="all">
+        All
+    </span>
+    <?php foreach($templates as $key => $template ): ?>
+        <span class="template-category-filter" data-template-category="<?php echo $template['category']; ?>" >
+            <?php echo $template['category']; ?>
+        </span>
+    <?php endforeach; ?>
+</div>
+
+
 
 <form method="post" id="sm-template__initialization" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 
@@ -26,8 +42,10 @@ $templates = [
     <div class="template__initialization--content">
         <div class="template__initialization--content__templates">
             <?php foreach($templates as $key => $template ): ?>
-                <input type="radio" name="template" required value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
-                <label for="<?php echo $key; ?>"><?php echo $template['name']; ?></label>
+                <div class="template-content-wrapper" data-category-name="<?php echo $template['category']; ?>" >
+                    <input type="radio" name="template" required value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
+                    <label for="<?php echo $key; ?>"><?php echo $template['name']; ?></label>
+                </div>
             <?php endforeach; ?>
         </div>
     </div>

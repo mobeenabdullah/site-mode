@@ -2,15 +2,18 @@
 
 $templates = [
     'template-1' => [
-        'name' => 'Template 1',
-        'description' => 'This is template 1',
-        'image' => 'template-1.png',
+        'name'          => 'Template 1',
+        'description'   => 'This is template 1',
+        'image'         => 'template-1.png',
+        'category'      => 'maintenance',
     ],
     'template-2' => [
-        'name' => 'Template 2',
-        'description' => 'This is template 2',
-        'image' => 'template-2.png',
+        'name'          => 'Template 2',
+        'description'   => 'This is template 2',
+        'image'         => 'template-2.png',
+        'category'      => 'comming-soon',
     ],
+
 ];
 
 $args = array(
@@ -21,9 +24,6 @@ $args = array(
 
 $page_ids = get_posts($args);
 
-
-
-
 ?>
 
 <div class="site_mode__wrap-form">
@@ -33,6 +33,17 @@ $page_ids = get_posts($args);
 				<h3 class="section_title-title"><?php esc_html_e( 'Templates', 'site-mode' ); ?></h3>
 			</div>
 		</div>
+
+        <div class="template-category-wrapper">
+            <span class="template-category-filter" data-template-category="all">
+                All
+            </span>
+            <?php foreach($templates as $key => $template ): ?>
+                <span class="template-category-filter" data-template-category="<?php echo $template['category']; ?>" >
+                    <?php echo $template['category']; ?>
+                </span>
+            <?php endforeach; ?>
+        </div>
 
         <div class="page-select-wrapper">
             <form method="post" id="site-mode-page-init" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
@@ -53,7 +64,7 @@ $page_ids = get_posts($args);
             <div class="template__wrapper">
                 <div class="template_options">
                     <?php foreach ( $templates as $key => $template ) : ?>
-                    <div class="template_card template-<?php echo esc_attr( $key ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>">
+                    <div class="template_card template-content-wrapper template-<?php echo esc_attr( $key ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>" data-category-name="<?php echo $template['category']; ?>">
                         <button class="template_init_button" data-value="<?php echo $key; ?>">Import</button>
                         <div class="template_card-image" style="background-image: url(<?php echo esc_url( $template['image'] ); ?>);">
                         </div>
