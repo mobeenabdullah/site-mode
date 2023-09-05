@@ -23,7 +23,7 @@
 class Site_Mode_Design extends  Settings {
 
     protected $option_name = 'site_mode_design';
-    protected  $active_template = 'template-1';
+    protected  $active_template = '';
     protected $page_id = '';
 
 
@@ -57,6 +57,15 @@ class Site_Mode_Design extends  Settings {
         }
 
     }
+    public function ajax_site_mode_template_skip() {
+        $this->verify_nonce( 'skip_template_field', 'skip_template_action' );
+        update_option('sm-fresh-installation', true);
+        wp_send_json_success([
+            'redirect' => admin_url( 'admin.php?page=site-mode&tab=design' ),
+            'fresh_installation' => true,
+            'success' => true
+        ]);
+    }
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
@@ -89,7 +98,7 @@ class Site_Mode_Design extends  Settings {
 		$this->display_settings_page( 'design' );
 	}
 
-    public function check_maintaince_page($id = '', $template_name = 'template-1'){
+    public function check_maintaince_page($id = '', $template_name = ''){
         if($id){
             $page = get_post($id);
             if($page){
@@ -102,7 +111,7 @@ class Site_Mode_Design extends  Settings {
         }
     }
 
-    public function create_maintaince_page ($template_name = 'template-1') {
+    public function create_maintaince_page ($template_name = '') {
         // Create a new page and insert blocks code
         $page_title = 'Maintenance Page';
         $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template_name.'/blocks-export.json' ) );
@@ -132,7 +141,7 @@ class Site_Mode_Design extends  Settings {
         $design_settings = $this->get_data( $this->option_name );
 
         if(!empty($design_settings)){
-            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : 'template-1';
+            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : '';
             $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
         }
     }

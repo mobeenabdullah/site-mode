@@ -187,6 +187,7 @@ class Site_Mode {
 		// ajax calling
 
         // template init
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_skip', $this->classes_loader->get_design(), 'ajax_site_mode_template_skip' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_init', $this->classes_loader->get_design(), 'ajax_site_mode_template_init' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_design_page_init', $this->classes_loader->get_design(), 'ajax_site_mode_design_page_init' );
 
