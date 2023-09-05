@@ -178,6 +178,7 @@ class Site_Mode {
 		$plugin_admin         = new Site_Mode_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->classes_loader = new init();
 
+        $this->loader->add_action( 'init', $plugin_admin, 'sm_plugin_redirect' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );

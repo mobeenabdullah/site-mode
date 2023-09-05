@@ -116,4 +116,12 @@ class Site_Mode_Admin {
 
         return $post_states;
     }
+
+    public function sm_plugin_redirect() {
+        if (get_option('sm_activation_redirect', false)) {
+            delete_option('sm_activation_redirect');
+            wp_redirect(admin_url('admin.php?page=site-mode'));
+        }
+    }
+
 }
