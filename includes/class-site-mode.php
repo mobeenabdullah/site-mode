@@ -179,6 +179,7 @@ class Site_Mode {
 		$this->classes_loader = new init();
 
         $this->loader->add_action( 'init', $plugin_admin, 'sm_plugin_redirect' );
+        $this->loader->add_action( 'wp_before_admin_bar_render', $plugin_admin, 'sm_admin_bar' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
