@@ -304,4 +304,17 @@ jQuery(function ($) {
       },
     });
   });
+
+  $('.template-category-filter').on('click', function() {
+    const templateCategory = $(this).attr('data-template-category');
+
+    if(templateCategory === 'all') {
+      $(".template-content-wrapper").show();
+    } else {
+      $(".template-content-wrapper").hide();
+      $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
+    }
+  });
+
+
 });
