@@ -5,7 +5,7 @@ Tags: coming soon, maintenance mode, under construction, maintenance page, launc
 Requires at least: 4.7
 Tested up to: 6.3.1
 Requires PHP: 7.0
-Stable tag: 0.0.2
+Stable tag: 0.0.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -14,6 +14,9 @@ Easily put your WordPress site into maintenance mode while you work on updates o
 == Description ==
 
 Welcome to Site Mode, the most convenient and user-friendly way to put your WordPress site into maintenance mode. If you are working on updates, making changes, or simply taking your site offline for maintenance, Site Mode is the plugin you need.
+
+**Demo** :
+Explore Site Mode's features and see it in action on our demo site: [DEMO](https://site-mode.com)
 
 **Features** :
 
