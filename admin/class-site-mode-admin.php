@@ -139,6 +139,7 @@ class Site_Mode_Admin {
         $wp_admin_bar->add_node([
             'id'    => 'site-mode',
             'title' => $text,
+            'href'  => admin_url( 'admin.php?page=site-mode' ),
             'meta'  => [
                 'class' => 'site-mode-admin-bar',
             ],
