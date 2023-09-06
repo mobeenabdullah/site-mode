@@ -167,10 +167,10 @@ jQuery(function ($) {
               if (res?.data?.tab === 'general') {
                   if(res?.data?.status) {
                       $(".sm-admin-bar-status").text("Site Mode is Enabled");
-                      $(".sm-admin-bar-status").css("color", "red");
+                      $(".sm-admin-bar-status").css("background", "red");
                   } else {
                       $(".sm-admin-bar-status").text("Site Mode is Disabled");
-                      $(".sm-admin-bar-status").css("color", "lightgrey");
+                      $(".sm-admin-bar-status").css("background", "lightgrey");
                   }
               }
               $(".save-btn-loader").hide();
