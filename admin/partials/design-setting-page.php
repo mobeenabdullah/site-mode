@@ -5,13 +5,37 @@ $templates = [
         'name'          => 'Template 1',
         'description'   => 'This is template 1',
         'image'         => 'template-1.png',
-        'category'      => 'maintenance',
+        'category'      => 'coming-soon',
     ],
     'template-2' => [
         'name'          => 'Template 2',
         'description'   => 'This is template 2',
         'image'         => 'template-2.png',
-        'category'      => 'comming-soon',
+        'category'      => 'coming-soon',
+    ],
+    'template-3' => [
+        'name'          => 'Template 3',
+        'description'   => 'This is template 3',
+        'image'         => 'template-3.png',
+        'category'      => 'coming-soon',
+    ],
+    'template-4' => [
+        'name'          => 'Template 4',
+        'description'   => 'This is template 4',
+        'image'         => 'template-4.png',
+        'category'      => 'coming-soon',
+    ],
+    'template-5' => [
+        'name'          => 'Template 5',
+        'description'   => 'This is template 5',
+        'image'         => 'template-5.png',
+        'category'      => 'coming-soon',
+    ],
+    'template-6' => [
+        'name'          => 'Template 6',
+        'description'   => 'This is template 6',
+        'image'         => 'template-6.png',
+        'category'      => 'coming-soon',
     ],
 
 ];
