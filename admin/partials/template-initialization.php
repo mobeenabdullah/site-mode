@@ -11,7 +11,7 @@ $templates = [
         'name'          => 'Template 2',
         'description'   => 'This is template 2',
         'image'         => 'template-2.png',
-        'category'      => 'comming-soon',
+        'category'      => 'coming-soon',
     ],
 
 ];
