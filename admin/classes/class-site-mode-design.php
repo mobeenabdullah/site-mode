@@ -46,7 +46,6 @@ class Site_Mode_Design extends  Settings {
             $blocks = str_replace( '\n', '', $template->content );
             $post = get_post( $page_id );
             $post->post_content = $blocks;
-            $post->page_template = 'blank';
             $result = wp_update_post($post);
             $this->save_data( $this->option_name, $design_data );
 
@@ -88,7 +87,6 @@ class Site_Mode_Design extends  Settings {
         $blocks = str_replace( '\n', '', $template->content );
         $post = get_post( $page_id );
         $post->post_content = $blocks;
-        $post->page_template = 'blank';
         $result = wp_update_post($post);
 
         if(is_wp_error($result)){
