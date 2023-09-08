@@ -3,7 +3,7 @@
   "name": "site-mode/countdown",
   "title": "Site Mode Countdown",
   "category": "widgets",
-  "icon": "icon-clock",
+  "icon": "clock",
   "description": "A countdown timer for site mode.",
   "keywords": [
 	"timer",

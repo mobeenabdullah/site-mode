@@ -2,21 +2,51 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {PanelBody,PanelRow, DateTimePicker, ToggleControl, SelectControl, TextControl } from '@wordpress/components';
 import {useState, useEffect} from "@wordpress/element";
-import Countdown from 'react-countdown';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
 	const { dueDate, showLabel, showDays, showHours, showMinutes, showSeconds, showSeperator, preset, labels} = attributes;
 	const [ isInvalidDate, setIsInvalidDate ] = useState( false );
-	const [date, setDate] = useState();
+	const [days, setDays] = useState();
+	const [hours, setHours] = useState();
+	const [minutes, setMinutes] = useState();
+	const [seconds, setSeconds] = useState();
+	const [intervalCount, setIntervalCount] = useState();
+
 
 	useEffect(() => {
+
 		if(dueDate) {
-			setDate(new Date(dueDate));
+			countdownHandler();
+			const interval = setInterval(countdownHandler, 1000);
+			setIntervalCount(interval);
 		} else {
-			setDate('');
+			clearInterval(intervalCount);
+			setIntervalCount(null);
 		}
+
 	}, [dueDate]);
+
+	function countdownHandler() {
+		const now = new Date();
+		const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
+		const end = new Date(dueDate);
+		const timeleft = end - nowUTC;
+		const smDays = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+		const smHours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+		const smMinutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+		const smSeconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+		if(smSeconds > 0 || smDays > 0 || smHours > 0 || smMinutes > 0 ){
+			setDays(smDays);
+			setHours(smHours);
+			setMinutes(smMinutes);
+			setSeconds(smSeconds);
+		} else {
+			clearInterval(intervalCount);
+			setIntervalCount(null);
+		}
+	}
+
 
 	const onChangeDate = ( newDate ) => {
 		const now = new Date();
@@ -145,28 +175,48 @@ export default function Edit({ attributes, setAttributes }) {
 
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				{date && (
-					<Countdown
-						date={new Date(date)}
-						daysInHours={!showDays}
-						intervalDelay={1000}
-						renderer={props => {
-							const {days, hours, minutes, seconds, completed} = props.formatted;
-							if(completed) return '';
 
-							return (
-								<div className="countdown">
-									{showDays && <span className="countdown-days">{days} {showLabel && __(labels.days, 'site-mode')}</span>}
-									{showSeperator && showDays && <span className="countdown-seperator">:</span>}
-									{showHours && <span className="countdown-hours">{hours} {showLabel && __(labels.hours, 'site-mode')}</span>}
-									{showSeperator && showHours && <span className="countdown-seperator">:</span>}
-									{showMinutes && <span className="countdown-minutes">{minutes} {showLabel && __(labels.minutes, 'site-mode')}</span>}
-									{showSeperator && showMinutes && showSeconds && <span className="countdown-seperator">:</span>}
-									{showSeconds && <span className="countdown-seconds">{seconds} {showLabel && __(labels.seconds, 'site-mode')}</span>}
-								</div>
-							)
-						}}
-					/>
+				{dueDate && (
+					<div className="countdown_main-wrapper">
+						<div className="coundown-wrapper">
+								{showDays && (
+									<div className="pci-countdown-days-wrapper">
+										<div className="pci-countdown-days-label countdown_label">{showLabel && __(labels.days, 'site-mode')}</div>
+										<div className="pci-countdown-days countdown_box">
+											<span>{days}</span>
+										</div>
+									</div>
+								)}
+								{showSeperator && showDays && <span className="countdown-seperator">:</span>}
+								{showHours && (
+									<div className="pci-countdown-days-wrapper">
+										<div className="pci-countdown-days-label countdown_label">{showLabel && __(labels.hours, 'site-mode')}</div>
+										<div className="pci-countdown-days countdown_box">
+											<span>{hours}</span>
+										</div>
+									</div>
+								)}
+								{showSeperator && showHours && <span className="countdown-seperator">:</span>}
+								{showMinutes && (
+									<div className="pci-countdown-hours-wrapper">
+										<div className="pci-countdown-hours-label countdown_label">{showLabel && __(labels.minutes, 'site-mode')}</div>
+										<div className="pci-countdown-hours countdown_box">
+											<span>{minutes}</span>
+										</div>
+									</div>
+								)}
+								{showSeperator && showMinutes && showSeconds && <span className="countdown-seperator">:</span>}
+								{showSeconds && (
+									<div className="pci-countdown-minutes-wrapper">
+										<div className="pci-countdown-minutes-label countdown_label">{showLabel && __(labels.seconds, 'site-mode')}</div>
+										<div className="pci-countdown-minutes countdown_box">
+											<span>{seconds}</span>
+										</div>
+									</div>
+								)}
+						</div>
+					</div>
+
 				)}
 
 			</div>
