@@ -2,5 +2,5 @@
   "label": "Coming Soon 2",
   "__file": "wp_export",
   "version": 2,
-  "content": "<!-- wp:paragraph -->\n<p>Maintenance Page 6</p>\n<!-- /wp:paragraph -->"
+  "content": "<!-- wp:group {\"align\":\"full\",\"style\":{\"spacing\":{\"padding\":{\"top\":\"var:preset|spacing|70\",\"bottom\":\"var:preset|spacing|70\",\"left\":\"var:preset|spacing|70\",\"right\":\"var:preset|spacing|70\"},\"margin\":{\"top\":\"0px\",\"bottom\":\"0px\"},\"blockGap\":\"0px\"},\"dimensions\":{\"minHeight\":\"1000px\"},\"border\":{\"width\":\"63px\"}},\"backgroundColor\":\"luminous-vivid-amber\",\"textColor\":\"contrast\",\"layout\":{\"type\":\"default\"}} -->\n<div class=\"wp-block-group alignfull has-contrast-color has-luminous-vivid-amber-background-color has-text-color has-background\" style=\"border-width:63px;min-height:1000px;margin-top:0px;margin-bottom:0px;padding-top:var(--wp--preset--spacing--70);padding-right:var(--wp--preset--spacing--70);padding-bottom:var(--wp--preset--spacing--70);padding-left:var(--wp--preset--spacing--70)\"></div>\n<!-- /wp:group -->"
 }
