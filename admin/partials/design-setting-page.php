@@ -37,7 +37,24 @@ $templates = [
         'image'         => 'template-6.png',
         'category'      => 'coming-soon',
     ],
-
+    'template-7' => [
+        'name'          => 'Template 7',
+        'description'   => 'This is template 7',
+        'image'         => 'template-7.png',
+        'category'      => 'coming-soon',
+    ],
+    'template-8' => [
+        'name'          => 'Template 8',
+        'description'   => 'This is template 8',
+        'image'         => 'template-8.png',
+        'category'      => 'coming-soon',
+    ],
+    'template-9' => [
+        'name'          => 'Template 9',
+        'description'   => 'This is template 9',
+        'image'         => 'template-9.png',
+        'category'      => 'coming-soon',
+    ],
 ];
 
 $args = array(
