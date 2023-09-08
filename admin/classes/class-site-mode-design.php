@@ -57,15 +57,7 @@ class Site_Mode_Design extends  Settings {
         }
 
     }
-    public function ajax_site_mode_template_skip() {
-        $this->verify_nonce( 'skip_template_field', 'skip_template_action' );
-        update_option('sm-fresh-installation', true);
-        wp_send_json_success([
-            'redirect' => admin_url( 'admin.php?page=site-mode&tab=design' ),
-            'fresh_installation' => true,
-            'success' => true
-        ]);
-    }
+
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );

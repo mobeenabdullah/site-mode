@@ -166,7 +166,7 @@ jQuery(function ($) {
             $('.sm-category-card-wrapper').hide();
             $('.sm-template-card-wrapper').hide();
             $('.sm-step-3').show();
-            $('.sm-edit-page-link').attr('href', pageLink);
+            $('.sm-edit-page-link').attr('href', pageLink.replace('amp;', ''));
           } else {
             setTimeout(function () {
               if (res?.data?.tab === 'general') {
@@ -299,25 +299,6 @@ jQuery(function ($) {
     });
   });
 
-  $(".skip-template").on("click", function () {
-    const nonce = $("#skip_template_field").val();
-
-    $.ajax({
-      url: ajaxObj.ajax_url,
-      dataType: "json",
-      method: "post",
-      data: {
-        action: "ajax_site_mode_template_skip",
-        skip_template_field: nonce,
-      },
-      success: function (res) {
-        location.reload();
-      },
-      error: function (error) {
-        location.reload();
-      },
-    });
-  });
 
   $('.template-category-filter').on('click', function() {
     $('.template-category-filter').removeClass('active');

@@ -34,7 +34,7 @@ class Settings {
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'page_link'   => get_edit_post_link(intval($data['page_id'])),
+                'page_link'   => urldecode(get_edit_post_link(intval($data['page_id']))),
                 'message'   => 'Template has been initialized successfully.',
                 'fresh_installation' => true
             ]);
