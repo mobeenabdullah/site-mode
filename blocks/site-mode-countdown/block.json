@@ -18,6 +18,14 @@
   "editorStyle": "file:./build/index.css",
   "style": "file:./build/style-index.css",
   "attributes": {
+	"bgColor": {
+	  "type": "string",
+	  "default": ""
+	},
+	"textColor": {
+	  "type": "string",
+	  "default": ""
+	},
 	"dueDate": {
 	  "type": "string",
 	  "default": ""

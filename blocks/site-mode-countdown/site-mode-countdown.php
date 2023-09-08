@@ -39,10 +39,10 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 					const hoursArr = hours.toString().split('');
 					const minutesArr = minutes.toString().split('');
 					const secondsArr = seconds.toString().split('');
-					const daysWrapper = document.querySelector('.pci-countdown-days');
-					const hoursWrapper = document.querySelector('.pci-countdown-hours');
-					const minutesWrapper = document.querySelector('.pci-countdown-minutes');
-					const secondsWrapper = document.querySelector('.pci-countdown-seconds');
+					const daysWrapper = document.querySelector('.sm-countdown-days');
+					const hoursWrapper = document.querySelector('.sm-countdown-hours');
+					const minutesWrapper = document.querySelector('.sm-countdown-minutes');
+					const secondsWrapper = document.querySelector('.sm-countdown-seconds');
 					if(daysWrapper !== null) {
 						daysWrapper.innerHTML = setCountContent(daysArr);
 					}
@@ -79,37 +79,37 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 				});
 			</script>
 
-		<div class="countdown_main-wrapper" >
-			<div class="coundown-wrapper">
+		<div class="countdown_main-wrapper">
+			<div class="countdown-wrapper default-countdown">
 				<input type="hidden" value="<?php echo esc_attr($attributes['dueDate']); ?>" class="due-date">
 				<?php if($attributes['showDays']): ?>
-					<div class="pci-countdown-days-wrapper">
-						<div class="pci-countdown-days-label countdown_label">Days</div>
-						<div class="pci-countdown-days countdown_box">
+					<div class="sm-countdown-box sm-countdown-days-wrapper">
+						<div class="sm-countdown-days-label countdown_label">Days</div>
+						<div class="sm-countdown-days countdown_number">
 							<span>0</span>
 						</div>
 					</div>
 				<?php endif; ?>
 				<?php if($attributes['showHours']): ?>
-					<div class="pci-countdown-hours-wrapper">
-						<div class="pci-countdown-hours-label countdown_label">Hours</div>
-						<div class="pci-countdown-hours countdown_box">
+					<div class="sm-countdown-box sm-countdown-hours-wrapper">
+						<div class="sm-countdown-hours-label countdown_label">Hours</div>
+						<div class="sm-countdown-hours countdown_number">
 							<span>0</span>
 						</div>
 					</div>
 				<?php endif; ?>
 				<?php if($attributes['showMinutes']): ?>
-					<div class="pci-countdown-minutes-wrapper">
-						<div class="pci-countdown-minutes-label countdown_label">Minutes</div>
-						<div class="pci-countdown-minutes countdown_box">
+					<div class="sm-countdown-box sm-countdown-minutes-wrapper">
+						<div class="sm-countdown-minutes-label countdown_label">Minutes</div>
+						<div class="sm-countdown-minutes countdown_number">
 							<span>0</span>
 						</div>
 					</div>
 				<?php endif; ?>
 				<?php if($attributes['showSeconds']): ?>
-					<div class="pci-countdown-seconds-wrapper">
-						<div class="pci-countdown-seconds-label countdown_label">Seconds</div>
-						<div class="pci-countdown-seconds countdown_box">
+					<div class="sm-countdown-box sm-countdown-seconds-wrapper">
+						<div class="sm-countdown-seconds-label countdown_label">Seconds</div>
+						<div class="sm-countdown-seconds countdown_number">
 							<span>0</span>
 						</div>
 					</div>
