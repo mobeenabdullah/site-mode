@@ -66,7 +66,7 @@ $categories = [
 ?>
 
 <div class="sm-step-wrapper">
-    <div class="sm-step-1 sm-step">1</div>
+    <div class="sm-step-1 sm-step active">1</div>
     <div class="sm-step-2 sm-step">2</div>
     <div class="sm-step-3 sm-step">3</div>
 </div>
@@ -89,59 +89,46 @@ $categories = [
 
 
 
-<div class="sm-template-card-wrapper">
+<div class="sm-template-card-wrapper" style="display: none">
+    <div class="template-category-wrapper">
+        <?php foreach($categories as $key => $category ): ?>
+            <span class="template-category-filter" data-template-category="<?php echo $key; ?>" >
+                <?php echo $category; ?>
+            </span>
+        <?php endforeach; ?>
+    </div>
 
-
-
-
-<div class="template-category-wrapper">
-    <?php foreach($categories as $key => $category ): ?>
-        <span class="template-category-filter" data-template-category="<?php echo $key; ?>" >
-            <?php echo $category; ?>
-        </span>
-    <?php endforeach; ?>
+    <form method="post" id="sm-template__initialization" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+        <div class="template__initialization--header">
+            <h1>Choose a template</h1>
+            <p>Choose a template for your site mode page.</p>
+        </div>
+        <div class="template__initialization--content">
+            <div class="template__initialization--content__templates">
+                <?php foreach($templates as $key => $template ): ?>
+                    <div class="template-content-wrapper" data-category-name="<?php echo $template['category']; ?>" >
+                        <input type="radio" name="template" required value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
+                        <label for="<?php echo $key; ?>"><?php echo $template['name']; ?></label>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
+        <div class="template__initialization--button">
+            <button type="button" class="template-init-back">Back</button>
+            <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
+                <span class="save-btn-loader" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
+                </span>
+                <?php esc_html_e( 'Continue', 'site-mode' ); ?>
+            </button>
+        </div>
+    </form>
 </div>
 
 
-
-<form method="post" id="sm-template__initialization" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-
-    <div class="template__initialization--header">
-        <h1>Choose a template</h1>
-        <p>Choose a template for your site mode page.</p>
-    </div>
-
-    <div class="template__initialization--content">
-        <div class="template__initialization--content__templates">
-            <?php foreach($templates as $key => $template ): ?>
-                <div class="template-content-wrapper" data-category-name="<?php echo $template['category']; ?>" >
-                    <input type="radio" name="template" required value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
-                    <label for="<?php echo $key; ?>"><?php echo $template['name']; ?></label>
-                </div>
-            <?php endforeach; ?>
-        </div>
-    </div>
-
-    <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
-
-    <div class="template__initialization--content__templates--template__button">
-
-        <button class="" type="button">Back</button>
-
-        <button type="submit" name="submit" class="button button-primary site-mode-save-btn">
-            <span class="save-btn-loader" style="display: none;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><circle cx="12" cy="20" r="2"></circle><circle cx="12" cy="4" r="2"></circle><circle cx="6.343" cy="17.657" r="2"></circle><circle cx="17.657" cy="6.343" r="2"></circle><circle cx="4" cy="12" r="2.001"></circle><circle cx="20" cy="12" r="2"></circle><circle cx="6.343" cy="6.344" r="2"></circle><circle cx="17.657" cy="17.658" r="2"></circle></svg>
-            </span>
-            <?php esc_html_e( 'Continue', 'site-mode' ); ?>
-        </button>
-    </div>
-
-</form>
-
-
-<div class="sm-template-init-success">
+<div class="sm-template-init-success" style="display: none">
     <h3>Thank You</h3>
-    <a href="#">Customize Page</a>
-    <a href="#">Preview Page</a>
-
+    <a href="#" class="sm-edit-page-link">Customize Page</a>
+    <a href="<?php echo home_url('?preview=true'); ?>" target="_blank">Preview Page</a>
 </div>

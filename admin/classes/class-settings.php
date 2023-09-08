@@ -34,7 +34,7 @@ class Settings {
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'redirect'  => admin_url( 'admin.php?page=site-mode&tab=design' ),
+                'page_link'   => get_edit_post_link(intval($data['page_id'])),
                 'message'   => 'Template has been initialized successfully.',
                 'fresh_installation' => true
             ]);
