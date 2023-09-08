@@ -1,0 +1,36 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+ul.wp-block-blocks-course-dynamic-posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+ul.wp-block-blocks-course-dynamic-posts li img {
+  margin-bottom: 10px;
+}
+ul.wp-block-blocks-course-dynamic-posts li h5 {
+  font-size: 20px;
+  margin: 0 0 5px;
+  line-height: 1.4;
+}
+ul.wp-block-blocks-course-dynamic-posts li h5 a {
+  color: #000;
+}
+ul.wp-block-blocks-course-dynamic-posts li time {
+  font-size: 12px;
+  color: #969696;
+}
+ul.wp-block-blocks-course-dynamic-posts li p {
+  font-size: 14px;
+  color: #303030;
+  line-height: 1.6;
+  margin: 15px 0 0;
+}
+
+/*# sourceMappingURL=style-index.css.map*/
