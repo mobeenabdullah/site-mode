@@ -1,12 +1,36 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import {PanelBody,PanelRow, DateTimePicker, ToggleControl, SelectControl, TextControl, ColorPalette } from '@wordpress/components';
 import {useState, useEffect} from "@wordpress/element";
 import { layouts } from '../constants';
 import './editor.scss';
+import {
+	PanelBody,
+	PanelRow,
+	DateTimePicker,
+	ToggleControl,
+	SelectControl,
+	TextControl,
+	ColorPalette,
+	MenuGroup, MenuItem,
+	__experimentalUnitControl as UnitControl
+} from '@wordpress/components';
+
 
 export default function Edit({ attributes, setAttributes }) {
-	const { dueDate, showLabel, showDays, showHours, showMinutes, showSeconds, showSeperator, preset, labels} = attributes;
+	const {
+		dueDate,
+		showLabel,
+		showDays,
+		showHours,
+		showMinutes,
+		showSeconds,
+		showSeperator,
+		preset,
+		labels,
+		colors,
+		height,
+		width
+	} = attributes;
 	const [ isInvalidDate, setIsInvalidDate ] = useState( false );
 	const [days, setDays] = useState();
 	const [hours, setHours] = useState();
@@ -16,17 +40,14 @@ export default function Edit({ attributes, setAttributes }) {
 
 
 	useEffect(() => {
-
 		if(dueDate) {
 			clearInterval(intervalCount);
-			// countdownHandler();
 			const interval = setInterval(countdownHandler, 1000);
 			setIntervalCount(interval);
 		} else {
 			clearInterval(intervalCount);
 			setIntervalCount(null);
 		}
-
 	}, [dueDate]);
 
 	function countdownHandler() {
@@ -66,6 +87,16 @@ export default function Edit({ attributes, setAttributes }) {
 			setIsInvalidDate(false)
 			setAttributes( { dueDate: newDate } )
 		}
+	}
+
+	const resetColors = () => {
+		setAttributes({colors: {
+			bgColor: '#000000',
+			labelColor: '#ffffff',
+			borderColor: '#ffffff',
+			seperatorColor: '#ffffff',
+			timerColor: '#ffffff',
+		}})
 	}
 
 	return (
@@ -174,6 +205,59 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</PanelRow>
 					)}
+				</PanelBody>
+				<PanelBody title={__('Styles', 'site-mode')} initialOpen={ false }>
+					<PanelRow>
+						<ColorPalette
+							label="Background Color"
+							value={ colors.bgColor }
+							onChange={ ( value ) => setAttributes({colors: {...colors, bgColor: value}} ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ColorPalette
+							label="Label Color"
+							value={ colors.labelColor }
+							onChange={ ( value ) => setAttributes({colors: {...colors, labelColor: value}} ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ColorPalette
+							label="Border Color"
+
+							value={ colors.borderColor }
+							onChange={ ( value ) => setAttributes({colors: {...colors, borderColor: value}} ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ColorPalette
+							label="Seperator Color"
+							value={ colors.seperatorColor }
+							onChange={ ( value ) => setAttributes({colors: {...colors, seperatorColor: value}} ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ColorPalette
+							label="Time Color"
+							value={ colors.timerColor }
+							onChange={ ( value ) => setAttributes({colors: {...colors, timerColor: value}} ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<UnitControl
+							label="Height"
+							value={ height }
+							onChange={ ( value ) => setAttributes( { height: value } ) }
+						/>
+					</PanelRow>
+					<PanelRow>
+						<UnitControl
+							label="Width"
+							value={ width }
+							onChange={ ( value ) => setAttributes( { width: value } ) }
+						/>
+					</PanelRow>
+
 				</PanelBody>
 
 			</InspectorControls>

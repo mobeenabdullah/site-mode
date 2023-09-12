@@ -58,6 +58,14 @@
 	  "type": "string",
 	  "default": "default-countdown"
 	},
+	"height": {
+	  "type": "string",
+	  "default": "auto"
+	},
+	"width": {
+	  "type": "string",
+	  "default": "auto"
+	},
 	"labels": {
 	  "type": "object",
 	  "default": {
@@ -65,6 +73,16 @@
 		"hours": "Hours",
 		"minutes": "Minutes",
 		"seconds": "Seconds"
+	  }
+	},
+	"colors": {
+	  "type": "object",
+	  "default": {
+		"bgColor": "#000000",
+		"labelColor": "#ffffff",
+		"borderColor": "#ffffff",
+		"seperatorColor": "#ffffff",
+		"timerColor": "#ffffff"
 	  }
 	}
   }
