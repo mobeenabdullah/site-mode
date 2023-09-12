@@ -1,7 +1,8 @@
 function countdownHandler(countInterval) {
 	const now = new Date();
 	const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
-	const timeleft = end - nowUTC;
+	const endUTC = new Date(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate(), end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds());
+	const timeleft = endUTC - nowUTC;
 	const days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
 	const hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 	const minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));

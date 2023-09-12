@@ -16,8 +16,10 @@ export default function Edit({ attributes, setAttributes }) {
 
 
 	useEffect(() => {
+
 		if(dueDate) {
-			countdownHandler();
+			clearInterval(intervalCount);
+			// countdownHandler();
 			const interval = setInterval(countdownHandler, 1000);
 			setIntervalCount(interval);
 		} else {
@@ -31,7 +33,8 @@ export default function Edit({ attributes, setAttributes }) {
 		const now = new Date();
 		const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
 		const end = new Date(dueDate);
-		const timeleft = end - nowUTC;
+		const endUTC = new Date(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate(), end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds());
+		const timeleft = endUTC - nowUTC;
 		const smDays = Math.floor(timeleft / (1000 * 60 * 60 * 24));
 		const smHours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 		const smMinutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
@@ -42,6 +45,10 @@ export default function Edit({ attributes, setAttributes }) {
 			setMinutes(smMinutes);
 			setSeconds(smSeconds);
 		} else {
+			setDays(0);
+			setHours(0);
+			setMinutes(0);
+			setSeconds(0);
 			clearInterval(intervalCount);
 			setIntervalCount(null);
 		}
@@ -64,7 +71,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'site-mode')} initialOpen={ false }>
+				<PanelBody title={__('Settings', 'site-mode')} initialOpen={ true }>
 					<PanelRow>
 						{isInvalidDate && (
 							<p className="error-message">

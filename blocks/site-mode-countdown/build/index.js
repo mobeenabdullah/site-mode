@@ -97,7 +97,8 @@ function Edit(_ref) {
   const [intervalCount, setIntervalCount] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useEffect)(() => {
     if (dueDate) {
-      countdownHandler();
+      clearInterval(intervalCount);
+      // countdownHandler();
       const interval = setInterval(countdownHandler, 1000);
       setIntervalCount(interval);
     } else {
@@ -109,7 +110,8 @@ function Edit(_ref) {
     const now = new Date();
     const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
     const end = new Date(dueDate);
-    const timeleft = end - nowUTC;
+    const endUTC = new Date(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate(), end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds());
+    const timeleft = endUTC - nowUTC;
     const smDays = Math.floor(timeleft / (1000 * 60 * 60 * 24));
     const smHours = Math.floor(timeleft % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
     const smMinutes = Math.floor(timeleft % (1000 * 60 * 60) / (1000 * 60));
@@ -120,6 +122,10 @@ function Edit(_ref) {
       setMinutes(smMinutes);
       setSeconds(smSeconds);
     } else {
+      setDays(0);
+      setHours(0);
+      setMinutes(0);
+      setSeconds(0);
       clearInterval(intervalCount);
       setIntervalCount(null);
     }
@@ -141,7 +147,7 @@ function Edit(_ref) {
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'site-mode'),
-    initialOpen: false
+    initialOpen: true
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, isInvalidDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "error-message"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please select a date in the future.', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.DateTimePicker, {
