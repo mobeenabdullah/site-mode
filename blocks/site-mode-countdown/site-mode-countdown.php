@@ -26,6 +26,9 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '</div>';
 			$markup .= '</div>';
 		endif;
+		if($attributes['showSeperator'] && $attributes['showDays']) :
+			$markup .= '<span class="countdown-seperator">:</span>';
+		endif;
 		if($attributes['showHours']) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-hours-wrapper">';
 			$markup .= '<div class="sm-countdown-hours-label countdown_label">Hours</div>';
@@ -34,6 +37,9 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '</div>';
 			$markup .= '</div>';
 		endif;
+		if($attributes['showSeperator'] && $attributes['showHours']) :
+			$markup .= '<span class="countdown-seperator">:</span>';
+		endif;
 		if($attributes['showMinutes']):
 			$markup .= '<div class="sm-countdown-box sm-countdown-minutes-wrapper">';
 			$markup .= '<div class="sm-countdown-minutes-label countdown_label">Minutes</div>';
@@ -41,6 +47,9 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '<span>0</span>';
 			$markup .= '</div>';
 			$markup .= '</div>';
+		endif;
+		if($attributes['showSeperator'] && $attributes['showMinutes'] && $attributes['showSeconds']) :
+			$markup .= '<span class="countdown-seperator">:</span>';
 		endif;
 		if($attributes['showSeconds']):
 			$markup .= '<div class="sm-countdown-box sm-countdown-seconds-wrapper">';

@@ -81,9 +81,6 @@ class Site_Mode_Design extends  Settings {
             'page_id' => $this->page_id
         ];
 
-        // get page template
-        $page_template = get_post_meta($this->page_id, '_wp_page_template', true);
-
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template);
         $design_data['page_id'] = $page_id;

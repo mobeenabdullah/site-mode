@@ -114,10 +114,25 @@ function Edit(_ref) {
     const end = new Date(dueDate);
     const endUTC = new Date(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate(), end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds());
     const timeleft = endUTC - nowUTC;
-    const smDays = Math.floor(timeleft / (1000 * 60 * 60 * 24));
-    const smHours = Math.floor(timeleft % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
-    const smMinutes = Math.floor(timeleft % (1000 * 60 * 60) / (1000 * 60));
-    const smSeconds = Math.floor(timeleft % (1000 * 60) / 1000);
+    let smDays = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+    let smHours = Math.floor(timeleft % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+    let smMinutes = Math.floor(timeleft % (1000 * 60 * 60) / (1000 * 60));
+    let smSeconds = Math.floor(timeleft % (1000 * 60) / 1000);
+    if (!showDays) {
+      smHours = smHours + smDays * 24;
+      smDays = 0;
+    }
+    if (!showHours) {
+      smMinutes = smMinutes + smHours * 60;
+      smHours = 0;
+    }
+    if (!showMinutes) {
+      smSeconds = smSeconds + smMinutes * 60;
+      smMinutes = 0;
+    }
+    if (!showSeconds) {
+      smSeconds = 0;
+    }
     if (smSeconds > 0 || smDays > 0 || smHours > 0 || smMinutes > 0) {
       setDays(smDays);
       setHours(smHours);
