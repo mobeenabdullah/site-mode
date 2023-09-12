@@ -71,7 +71,7 @@ add_action( 'init', 'site_mode_countdown_block_init' );
 
 function enqueue_my_block_script() {
 
-	if(!is_admin()) {
+	if(is_admin()) {
 		return;
 	}
 
