@@ -109,6 +109,11 @@ class Site_Mode {
 	 */
 	private function load_dependencies() {
 
+        /**
+         * This is responsible for loading all blocks
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/site-mode-countdown/site-mode-countdown.php';
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
