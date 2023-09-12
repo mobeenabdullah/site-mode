@@ -56,7 +56,7 @@
 	},
 	"preset": {
 	  "type": "string",
-	  "default": "preset-1"
+	  "default": "default-countdown"
 	},
 	"labels": {
 	  "type": "object",

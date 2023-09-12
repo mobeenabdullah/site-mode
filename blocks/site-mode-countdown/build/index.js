@@ -2,6 +2,50 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./constants.js":
+/*!**********************!*\
+  !*** ./constants.js ***!
+  \**********************/
+/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   layouts: function() { return /* binding */ layouts; }
+/* harmony export */ });
+const layouts = [{
+  'label': 'Preset 1',
+  'value': 'default-countdown'
+}, {
+  'label': 'Preset 2',
+  'value': 'countdown-without-box'
+}, {
+  'label': 'Preset 3',
+  'value': 'countdown-individual-shadow'
+}, {
+  'label': 'Preset 4',
+  'value': 'countdown-box-shadow'
+}, {
+  'label': 'Preset 5',
+  'value': 'countdown-column'
+}, {
+  'label': 'Preset 6',
+  'value': 'countdown-with-simple-seperator'
+}, {
+  'label': 'Preset 7',
+  'value': 'countdown-in-row'
+}, {
+  'label': 'Preset 8',
+  'value': 'countdown-in-row-individual'
+}, {
+  'label': 'Preset 9',
+  'value': 'countdown-flat'
+}, {
+  'label': 'Preset 10',
+  'value': 'countdown-circle'
+}];
+
+/***/ }),
+
 /***/ "./src/edit.js":
 /*!*********************!*\
   !*** ./src/edit.js ***!
@@ -20,7 +64,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../constants */ "./constants.js");
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+
 
 
 
@@ -111,16 +157,7 @@ function Edit(_ref) {
     onChange: value => setAttributes({
       preset: value
     }),
-    options: [{
-      label: 'Preset 1',
-      value: 'preset-1'
-    }, {
-      label: 'Preset 2',
-      value: 'preset-2'
-    }, {
-      label: 'Preset 3',
-      value: 'preset-3'
-    }]
+    options: _constants__WEBPACK_IMPORTED_MODULE_4__.layouts
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: "Show Label",
     checked: showLabel,
@@ -196,7 +233,7 @@ function Edit(_ref) {
   })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "countdown_main-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "countdown-wrapper default-countdown"
+    className: `countdown-wrapper ${preset}`
   }, showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-days-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {

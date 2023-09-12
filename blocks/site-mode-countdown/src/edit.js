@@ -2,6 +2,7 @@ import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
 import {PanelBody,PanelRow, DateTimePicker, ToggleControl, SelectControl, TextControl, ColorPalette } from '@wordpress/components';
 import {useState, useEffect} from "@wordpress/element";
+import { layouts } from '../constants';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -15,7 +16,6 @@ export default function Edit({ attributes, setAttributes }) {
 
 
 	useEffect(() => {
-
 		if(dueDate) {
 			countdownHandler();
 			const interval = setInterval(countdownHandler, 1000);
@@ -85,11 +85,7 @@ export default function Edit({ attributes, setAttributes }) {
 							label="Presets"
 							value={ preset }
 							onChange={ ( value ) => setAttributes( { preset: value } ) }
-							options={ [
-								{ label: 'Preset 1', value: 'preset-1' },
-								{ label: 'Preset 2', value: 'preset-2' },
-								{ label: 'Preset 3', value: 'preset-3' },
-							]}
+							options={ layouts }
 						/>
 					</PanelRow>
 					<PanelRow>
@@ -178,7 +174,7 @@ export default function Edit({ attributes, setAttributes }) {
 
 				{dueDate && (
 					<div className="countdown_main-wrapper">
-						<div className="countdown-wrapper default-countdown">
+						<div className={`countdown-wrapper ${preset}`}>
 								{showDays && (
 									<div className="sm-countdown-box sm-countdown-days-wrapper">
 										<div className="sm-countdown-days-label countdown_label">{showLabel && __(labels.days, 'site-mode')}</div>
