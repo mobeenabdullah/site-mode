@@ -35,47 +35,6 @@ class Site_Mode_Menu {
 		);
 	}
 
-	public function site_mode_submenu_settings_page() {
-
-        $submenus = [
-            [
-                'page_title' => 'General',
-                'menu_title' => 'General',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&tab=general',
-            ],
-            [
-                'page_title' => 'Design',
-                'menu_title' => 'Design',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&tab=design',
-            ],
-            [
-                'page_title' => 'SEO',
-                'menu_title' => 'SEO',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&tab=seo',
-            ],
-            [
-                'page_title' => 'Advanced',
-                'menu_title' => 'Advanced',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&tab=advanced',
-            ]
-        ];
-
-        foreach ($submenus as $submenu ) {
-            add_submenu_page(
-                'site-mode',
-                $submenu['page_title'],
-                $submenu['menu_title'],
-                $submenu['capability'],
-                $submenu['menu_slug'],
-            );
-        }
-
-	}
-
 	public function site_mode_settings_page_cb() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;

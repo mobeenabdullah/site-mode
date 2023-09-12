@@ -25,7 +25,16 @@ class Site_Mode_Design extends  Settings {
     protected $option_name = 'site_mode_design';
     protected  $active_template = '';
     protected $page_id = '';
-
+    protected $default_images = [
+        'template-1' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-2' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-3' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-4' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-5' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-6' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-7' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-8' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+    ];
 
     public function __construct() {
         $this->get_template_props_init();
@@ -42,11 +51,12 @@ class Site_Mode_Design extends  Settings {
         ];
 
         if($page_id){
-            $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$this->active_template.'/blocks-export.json' ) );
+            $template      = json_decode( $this->replace_template_default_image($this->active_template) );
             $blocks = str_replace( '\n', '', $template->content );
             $post = get_post( $page_id );
             $post->post_content = $blocks;
             $result = wp_update_post($post);
+            $post->page_template = 'templates/sm-page-template.php';
             $this->save_data( $this->option_name, $design_data );
 
             if(is_wp_error($result)) {
@@ -57,15 +67,7 @@ class Site_Mode_Design extends  Settings {
         }
 
     }
-    public function ajax_site_mode_template_skip() {
-        $this->verify_nonce( 'skip_template_field', 'skip_template_action' );
-        update_option('sm-fresh-installation', true);
-        wp_send_json_success([
-            'redirect' => admin_url( 'admin.php?page=site-mode&tab=design' ),
-            'fresh_installation' => true,
-            'success' => true
-        ]);
-    }
+
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
@@ -79,14 +81,19 @@ class Site_Mode_Design extends  Settings {
             'page_id' => $this->page_id
         ];
 
+        // get page template
+        $page_template = get_post_meta($this->page_id, '_wp_page_template', true);
+
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template);
         $design_data['page_id'] = $page_id;
         $this->page_id = $page_id;
-        $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template.'/blocks-export.json' ) );
+
+        $template      = json_decode( $this->replace_template_default_image($template) );
         $blocks = str_replace( '\n', '', $template->content );
         $post = get_post( $page_id );
         $post->post_content = $blocks;
+        $post->page_template = 'templates/sm-page-template.php';
         $result = wp_update_post($post);
 
         if(is_wp_error($result)){
@@ -114,7 +121,7 @@ class Site_Mode_Design extends  Settings {
     public function create_maintaince_page ($template_name = '') {
         // Create a new page and insert blocks code
         $page_title = 'Maintenance Page';
-        $template      = json_decode( file_get_contents( plugin_dir_path( dirname( __FILE__ ) ) . 'assets/templates/'.$template_name.'/blocks-export.json' ) );
+        $template      = json_decode( $this->replace_template_default_image($template_name) );
         $blocks = str_replace( '\n', '', $template->content );
 
         // Create the page
@@ -123,6 +130,7 @@ class Site_Mode_Design extends  Settings {
             'post_content' => $blocks,
             'post_status'  => 'publish',
             'post_type'    => 'page',
+            'page_template' => 'templates/sm-page-template.php'
         ) );
 
         if(!is_wp_error($page_id)){
@@ -145,5 +153,60 @@ class Site_Mode_Design extends  Settings {
             $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
         }
     }
+
+    public function replace_template_default_image($template_name = '') {
+        $template_url = plugin_dir_path(__FILE__) . '../assets/templates/'. $template_name .'/blocks-export.json';
+        $template_content = file_get_contents($template_url);
+        $image_url = $this->default_images[$template_name];
+
+        if(!str_contains($template_content, $template_content)){
+            return $template_content;
+        } else {
+
+            // Fetch the image and save it to the uploads directory
+            $upload_dir = wp_upload_dir();
+            $image_data = file_get_contents($image_url);
+            $filename = basename($image_url);
+            $file_path = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
+            $media_id  = '';
+
+            // Check if the file already exists
+            if (!file_exists($file_path)) {
+                file_put_contents($file_path, $image_data);
+
+                // Add the image to the media library
+                $attachment = array(
+                    'post_title' => sanitize_file_name($template_name),
+                    'post_content' => '',
+                    'post_status' => 'inherit'
+                );
+
+                $attach_id = wp_insert_attachment($attachment, $file_path);
+                $media_id = $attach_id;
+
+                // Update image metadata
+                require_once ABSPATH . 'wp-admin/includes/image.php';
+                $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
+                wp_update_attachment_metadata($attach_id, $attach_data);
+            } else {
+                return $template_content;
+            }
+
+            // Check if the image was successfully uploaded
+            if ($media_id) {
+                $media_url = wp_get_attachment_url($media_id);
+                if ($media_url) {
+                    // Replace "image1.png" with the WordPress media URL
+                    $new_content = str_replace($template_name, $media_url, $template_content);
+                    // Save the updated content back to template-content.php
+                    return $new_content;
+                }
+
+            } else {
+                return $template_content;
+            }
+        }
+    }
+
 
 }
