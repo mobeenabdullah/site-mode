@@ -58,7 +58,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                 <div class="template_options wizard__templates-cards">
                     <?php foreach($templates as $key => $template ): ?>
                         <div class="template_card template-content-wrapper wizard__templates-cards--single" data-category-name="<?php echo $template['category']; ?>">
-                            <div class="template_card-image" style="background-image: url(<?php echo esc_url($admin_url . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);"></div>
+                            <div class="template_card-image" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);"></div>
                             <div class="template_card-content">
                                 <h2 class="template_card-content--title"><?php echo $template['name']; ?></h2>
                             </div>
