@@ -164,7 +164,8 @@ jQuery(function ($) {
             const pageLink = res?.data?.page_link;
             $('.sm-template-init-success').show();
             $('.sm-template-next').hide();
-            $('.sm-category-card-wrapper').hide();
+            $('.sm-template-next').hide();
+            // $('.sm-category-card-wrapper').hide();
             $('.sm-template-card-wrapper').hide();
             $('.sm-step-4').show();
             $('.sm-step-4').addClass('active');
@@ -302,62 +303,54 @@ jQuery(function ($) {
   });
 
 
-  $('.template-category-filter').on('click', function() {
-    $('.template-category-filter').removeClass('active');
-    $(this).addClass('active');
-    const templateCategory = $(this).attr('data-template-category');
-    if(templateCategory === 'all') {
-      $(".template-content-wrapper").show();
-    } else {
-      $(".template-content-wrapper").hide();
-      $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
-    }
-  });
 
 
-  $('.select_template_category').on('change', function() {
-    const templateCategory = $(this).val();
-    if(templateCategory === 'all') {
-      $(".template-content-wrapper").show();
-    } else {
-      $(".template-content-wrapper").hide();
-      $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
-    }
-  });
+  /*
+    $('.select_template_category').on('change', function() {
+      const templateCategory = $(this).val();
+      if(templateCategory === 'all') {
+        $(".template-content-wrapper").show();
+      } else {
+        $(".template-content-wrapper").hide();
+        $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
+      }
+    });
 
 
-  $('.sm-category-card').on('click',function() {
-    $('.sm-category-card').removeClass('active');
-    $('.sm-category-card-error').hide();
-    $(this).addClass('active');
-  });
-
-  $('.sm-category-card-button__next').on('click', function() {
-    if($('.sm-category-card.active').length > 0) {
-      const category = $('.sm-category-card.active').attr('data-value');
-      $('.sm-category-card-wrapper').hide();
+    $('.sm-category-card').on('click',function() {
+      $('.sm-category-card').removeClass('active');
       $('.sm-category-card-error').hide();
-      $('.sm-template-card-wrapper').show();
-      $(`.template-category-filter[data-template-category="${category}"]`).trigger('click');
-      $('.sm-step-2').addClass('active');
-    } else {
-      $('.sm-category-card-error').show();
-    }
-  });
+      $(this).addClass('active');
+    });
 
-  $('.template-init-back').on('click', function() {
-    $('.sm-category-card-wrapper').show();
-    $('.sm-template-card-wrapper').hide();
-    $('.sm-step-2').removeClass('active');
-  });
+    $('.sm-category-card-button__next').on('click', function() {
+      if($('.sm-category-card.active').length > 0) {
+        const category = $('.sm-category-card.active').attr('data-value');
+        // $('.sm-category-card-wrapper').hide();
+        $('.sm-category-card-error').hide();
+        $('.sm-template-card-wrapper').show();
+        $(`.template-category-filter[data-template-category="${category}"]`).trigger('click');
+        $('.sm-step-2').addClass('active');
+      } else {
+        $('.sm-category-card-error').show();
+      }
+    });
 
-  $('.template-init-next').on('click', function() {
-    const templateCategory = $('.template_input:checked').val();
-    if(!templateCategory) return;
-    $('.sm-category-card-wrapper').hide();
-    $('.sm-template-card-wrapper').hide();
-    $('.sm-template-next').show();
-    $('.sm-step-3').addClass('active');
-  });
 
+    $('.template-init-back').on('click', function() {
+      // $('.sm-category-card-wrapper').show();
+      $('.sm-template-card-wrapper').hide();
+      $('.sm-step-2').removeClass('active');
+    });
+
+
+    $('.template-init-next').on('click', function() {
+      const templateCategory = $('.template_input:checked').val();
+      if(!templateCategory) return;
+      // $('.sm-category-card-wrapper').hide();
+      $('.sm-template-card-wrapper').hide();
+      $('.sm-template-next').show();
+      $('.sm-step-3').addClass('active');
+    });
+  */
 });

@@ -1,0 +1,18 @@
+.wizard__templates {
+  &-form {
+    & input {
+      &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        cursor: pointer;
+      }
+    }
+  }
+  &-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: calc(clamp(1rem, 0.286rem + 1.905vw, 1.7rem));
+    &--single {
+      background-color: yellow;
+    }
+  }
+}

@@ -1,215 +1,251 @@
-/*-----------------------------------------------
-9.  Wizard
------------------------------------------------*/
-.sm__wizard {
-	background-color: var(--sm-wizard-bg);
-	padding: calc(clamp(1rem, 0.959rem + 4.11vw, 2.5rem));
-	/*box-shadow: 0px 0px 43px -16px rgba(0,0,0,0.1);*/
-	min-height: calc(100vh - 14.125rem);
-	display: grid;
-	grid-template-rows: auto auto 1fr;
+/* --------------------------------------
+  1.  General Styling
+  2.  Wizard Header
+---------------------------------------*/
+/*-----------------------------------------------------
+1.  General Styling
+    a.  CSS Root Variables
+    b.  Hide admin controls
+    c.  Remove extra margin and padding from content
+    d.  Wizard General Styling
+    e.  Main container
+    f.  General CSS
+-----------------------------------------------------*/
+/*  a.   CSS Root Variables */
+:root {
+	--wt-primary-color: #6B4BFD;
+	--wt-secondary-color: #202020;
+	--wt-base-white-color: #ffffff;
+	--wt-base-black-color: #333333;
+	--wt-error-color: #dc3545;
+	--wt-success-color: #5f3cfd;
+	--wd-primary-color: #6B4BFD;
+	--wd-primary-light-color: #6B4BFD;
+	--wd-border-color: #eeeeee;
+	--wd-bg-color: #F9F9F9;
+	--wd-gray-1-color: #999999;
+	--wd-gray-2-color: #CCCCCC;
+	--wd-base-white-color: #ffffff;
+	--wd-base-black-color: #333333;
 }
 
-.sm__wizard-box {
-	display: flex;
-	align-items: flex-start;
-	justify-content: center;
+/*  b. Hide admin controls */
+.sm__wizard-mode #wpfooter,
+.sm__wizard-mode #wpadminbar,
+.sm__wizard-mode .notice,
+.sm__wizard-mode .wrap .error,
+.sm__wizard-mode .wrap .notice,
+.sm__wizard-mode .wrap .updated,
+.sm__wizard-mode #adminmenumain {
+	display: none !important;
 }
 
-.sm__wizard-box, .sm__wizard-thanks {
-	width: 100%;
+/*  c.  Remove extra margin and padding from content */
+.sm__wizard-mode #wpcontent {
+	padding: 0 !important;
+	margin: 0 !important;
 }
 
-.sm__wizard-header {
-	box-sizing: border-box;
-	background-color: var(--sm-base-white-color);
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-}
-
-.sm__wizard--logo {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	padding: calc(clamp(0.9rem, 0.471rem + 1.143vw, 1.5rem));
-	border-right: 1px solid var(--sm-input-border-color);
-}
-
-.sm__wizard--logo img {
-	width: calc(clamp(10rem, 15rem + 1vw, 3rem));
-}
-
-.sm_close_wizard .close_wizard_btn {
-	cursor: pointer;
-	padding: calc(clamp(0.9rem, 0.471rem + 1.143vw, 1.5rem));
-	display: block;
-	border-left: 1px solid var(--sm-input-border-color);
-}
-
-.sm_close_wizard .close_wizard_btn svg path {
-	fill: var(--sm-input-focus-border-color);
-}
-
-.sm_close_wizard .close_wizard_btn:hover svg path {
-	fill: var(--sm-primary-color);
-}
-
-.sm__wizard-steps {
-	margin-bottom: calc(clamp(1rem, 0.973rem + 2.74vw, 2rem));
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.sm__wizard-steps--cover {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 2rem;
-	width: auto;
-	position: relative;
-}
-
-.sm__wizard-steps--cover::before {
-	content: '';
+/*  d.  Wizard General Styling */
+.sm__wizard-wrapper {
 	position: absolute;
-	top: 50%;
+	top: 0;
 	left: 0;
 	width: 100%;
-	height: 2px;
-	background-color: var(--sm-primary-light-color);
-	z-index: 1;
+	min-height: 100vh;
+	height: 100%;
+	z-index: 99999;
 }
 
-.sm__wizard-steps .sm-step {
-	width: calc(clamp(1rem, 0.945rem + 5.479vw, 3rem));
-	height: calc(clamp(1rem, 0.945rem + 5.479vw, 3rem));
-	background-color: var(--sm-primary-light-color);
-	color: var(--sm-primary-color);
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: calc(clamp(1rem, 0.997rem + 0.274vw, 1.1rem));
-	line-height: 1;
-	font-weight: 600;
-	position: relative;
-	z-index: 1;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-}
-
-.sm__wizard-steps .sm-step-label {
-	font-size: calc(clamp(0.8rem, 0.7rem + 0.274vw, 1.1rem));
-	font-weight: 600;
-}
-
-.sm__wizard-steps .sm-step.active {
-	background-color: var(--sm-primary-color);
-	color: var(--sm-base-white-color);
-	box-shadow: rgba(107, 75, 253, 0.4) 0px 0.375rem 1.25rem 0px !important;
-}
-
-.sm__wizard-category {
-	text-align: center;
-}
-
-.sm__wizard-category h1, .sm__wizard-category h2 {
-	margin: 0;
-	padding: 0;
-}
-
-.sm__wizard-templates {
+/* e. Main container */
+.wizard_container {
+	max-width: calc(clamp(20rem, -19.732rem + 105.952vw, 75.625rem));
 	width: 100%;
+	margin: 0 auto;
 }
 
-.sm__wizard-templates--header {
+/*  f.  General CSS */
+.wizard__content {
+	width: 100%;
+	padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
+}
+
+html {
+	padding-top: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+	.sm__wizard-mode.toplevel_page_site-mode #wpcontent {
+		padding: 0 !important;
+	}
+}
+
+/*-----------------------------------------------------
+1.  Wizard Header
+    a.  Wizard Logo
+    b.  Wizard Steps
+    c.  Wizard Close
+-----------------------------------------------------*/
+/* 1.  Wizard Header */
+.sm__wizard-header {
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	background-color: var(--wd-base-white-color);
+	/* a.   Wizard Logo */
+	/* b.   Wizard Steps */
+	/* c.   Wizard Close */
+}
+
+@media screen and (max-width: 767px) {
+	.sm__wizard-header {
+		grid-template-columns: 1fr auto;
+		background-color: transparent;
+	}
+}
+
+.sm__wizard-header--logo {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	flex-wrap: wrap;
-	margin-bottom: calc(clamp(1rem, 0.973rem + 2.74vw, 1.6rem));
+	justify-content: flex-start;
+	padding: calc(clamp(1rem, 1rem + 0.391vw, 1.25rem));
+	border-right: 1px solid var(--wd-border-color);
 }
 
-.sm__wizard-templates--header .template-category-wrapper {
-	display: flex;
-	align-items: center;
-	gap: 1.5rem;
-	flex-wrap: wrap;
+@media screen and (max-width: 767px) {
+	.sm__wizard-header--logo {
+		order: 1;
+		background-color: var(--wd-base-white-color);
+	}
 }
 
-.sm__wizard-templates--header .template-category-wrapper span {
+.sm__wizard-header--logo img {
 	display: block;
-	background-color: var(--sm-input-border-color);
-	padding: calc(clamp(0.4rem, 0.4rem + 0vw, 0.4rem)) calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
-	font-weight: 600;
-	font-size: calc(clamp(0.8rem, 0.795rem + 0.548vw, 1rem));
-	border-radius: calc(clamp(0.2rem, 0.057rem + 0.381vw, 0.4rem));
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-	-moz-user-select: none;
+	width: calc(clamp(3.75rem, 3.741rem + 13.685vw, 12.5rem));
 }
 
-.sm__wizard-templates--header .template-category-wrapper .template-category-filter.active {
-	background-color: var(--sm-primary-color);
-	color: var(--sm-base-white-color);
-}
-
-.sm__wizard-templates--header .sm__wizard-templates--heading {
-	margin-bottom: calc(clamp(1rem, 0.973rem + 2.74vw, 1.6rem));
-}
-
-.sm__wizard-templates--header .sm__wizard-templates--heading h2 {
-	margin: 0;
-	padding: 0;
-	font-size: calc(clamp(1rem, 0.978rem + 2.192vw, 1.8rem));
-}
-
-.sm__wizard-cards .template_card-content {
-	display: flex;
-	align-items: center;
-}
-
-.sm__wizard-cards .template_card-content input {
-	margin-top: 2px;
-}
-
-.sm__wizard-cards .template_card-image {
-	background-color: red;
-	padding-bottom: 55%;
-	background-size: cover;
-}
-
-.sm_actions {
+.sm__wizard-header--steps {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media screen and (max-width: 767px) {
+	.sm__wizard-header--steps {
+		order: 3;
+		grid-column: 1 / -1;
+		padding: 2rem 1rem;
+	}
+}
+
+.sm__wizard-header--steps-cover {
+	display: flex;
+	align-items: center;
 	gap: 1rem;
 }
 
 @media screen and (max-width: 767px) {
-	.show_desktop {
-		display: none !important;
+	.sm__wizard-header--steps-cover {
+		gap: 0.5rem;
 	}
-	.show_mobile {
-		display: block !important;
+}
+
+.sm__wizard-header--steps-cover .sm-step {
+	display: flex;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+@media screen and (max-width: 767px) {
+	.sm__wizard-header--steps-cover .sm-step {
+		gap: 0.5rem;
 	}
-	.sm_mobile_filters {
-		width: 100%;
+}
+
+.sm__wizard-header--steps-cover .sm-step .step_circle {
+	width: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+	height: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+	border: 1px solid var(--wd-gray-2-color);
+	border-radius: 50%;
+	position: relative;
+	flex: 1;
+}
+
+.sm__wizard-header--steps-cover .sm-step .step_label {
+	font-weight: 600;
+	color: var(--wd-gray-2-color);
+	font-size: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
+}
+
+.sm__wizard-header--steps-cover .sm-step .step_line {
+	width: calc(clamp(1.125rem, -0.304rem + 3.81vw, 3.125rem));
+	height: calc(clamp(0.063rem, 0.063rem + 0vw, 0.063rem));
+	background-color: var(--wd-gray-2-color);
+}
+
+.sm__wizard-header--steps-cover .sm-step.active .step_circle::before {
+	content: '';
+	width: calc(clamp(0.7rem, 0.7rem + 0vw, 0.7rem));
+	height: calc(clamp(0.7rem, 0.7rem + 0vw, 0.7rem));
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: var(--wd-base-black-color);
+	border-radius: 50%;
+}
+
+.sm__wizard-header--steps-cover .sm-step.active .step_label {
+	color: var(--wd-base-black-color);
+}
+
+.sm__wizard-header--steps-cover .sm-step.active .step_line {
+	background-color: var(--wd-base-black-color);
+}
+
+.sm__wizard-header--close {
+	padding: calc(clamp(1rem, 1rem + 0.391vw, 1.25rem));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-width: calc(clamp(3.75rem, 3.748rem + 3.91vw, 6.25rem));
+	border-left: 1px solid var(--wd-border-color);
+	cursor: pointer;
+}
+
+.sm__wizard-header--close:hover .sm_close_wizard .close_wizard_btn svg path {
+	fill: var(--wd-primary-color);
+}
+
+@media screen and (max-width: 767px) {
+	.sm__wizard-header--close {
+		order: 2;
+		background-color: var(--wd-base-white-color);
 	}
-	.sm__wizard-templates--header {
-		flex-direction: column;
-	}
-	.sm__wizard-templates--heading {
-		text-align: center;
-	}
-	.select_template_category {
-		max-width: 100% !important;
-		width: 100%;
-	}
+}
+
+.sm__wizard-header--close .sm_close_wizard .close_wizard_btn {
+	display: block;
+}
+
+.sm__wizard-header--close .sm_close_wizard .close_wizard_btn svg {
+	display: block;
+	width: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
+	height: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
+}
+
+.wizard__templates-form input::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	cursor: pointer;
+}
+
+.wizard__templates-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	grid-gap: calc(clamp(1rem, 0.286rem + 1.905vw, 1.7rem));
+}
+
+.wizard__templates-cards--single {
+	background-color: yellow;
 }
 
 /*# sourceMappingURL=wizard.css.map */
