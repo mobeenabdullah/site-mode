@@ -47,6 +47,7 @@ class Site_Mode_Design extends  Settings {
             $post = get_post( $page_id );
             $post->post_content = $blocks;
             $result = wp_update_post($post);
+            $post->page_template = 'templates/sm-page-template.php';
             $this->save_data( $this->option_name, $design_data );
 
             if(is_wp_error($result)) {
@@ -71,6 +72,12 @@ class Site_Mode_Design extends  Settings {
             'page_id' => $this->page_id
         ];
 
+        // get page template
+        $page_template = get_post_meta($this->page_id, '_wp_page_template', true);
+
+        update_option('site_mode_page_template', $page_template);
+
+
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template);
         $design_data['page_id'] = $page_id;
@@ -79,6 +86,7 @@ class Site_Mode_Design extends  Settings {
         $blocks = str_replace( '\n', '', $template->content );
         $post = get_post( $page_id );
         $post->post_content = $blocks;
+        $post->page_template = 'templates/sm-page-template.php';
         $result = wp_update_post($post);
 
         if(is_wp_error($result)){
@@ -115,6 +123,7 @@ class Site_Mode_Design extends  Settings {
             'post_content' => $blocks,
             'post_status'  => 'publish',
             'post_type'    => 'page',
+            'page_template' => 'templates/sm-page-template.php'
         ) );
 
         if(!is_wp_error($page_id)){

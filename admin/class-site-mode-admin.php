@@ -145,6 +145,56 @@ class Site_Mode_Admin {
                 'class' => 'site-mode-admin-bar',
             ],
         ]);
+
+    }
+
+    public function add_maintenance_template( $templates ) {
+        return array_merge(
+            $templates,
+            array(
+                'templates/sm-page-template.php' => __( 'Site Mode template', 'site-mode' ),
+            )
+        );
+    }
+
+    public function use_maintenance_template( $template ) {
+        global $post;
+        if ( empty( $post ) ) {
+            return $template;
+        }
+
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
+
+        $file = plugin_dir_url( __DIR__ ) . 'admin/assets/templates/sm-page-template.php';
+        global $post;
+        if ( empty( $post ) ) {
+            return $template;
+        }
+
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
+
+
+        $file = plugin_dir_path( __FILE__ ) . 'assets/templates/sm-page-template.php';
+
+        if ( is_file( $file ) ) {
+            return $file;
+        }
+
+        return $template;
     }
 
 }
