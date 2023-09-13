@@ -15,6 +15,7 @@ Plugin general styling
       (g) Import/Export Tab
   7.  Sidebar
   8.  Responsiveness
+  9.  Wizard
 ------------------------------------------------*/
 /*-----------------------------------------------
 1.  CSS root variables
@@ -38,7 +39,10 @@ Plugin general styling
 	--sm-setting-page-bg-color: #F7F8FE;
 	--sm-social-media-color: #F6F7FE;
 	--sm-social-media-border: #cbd6e5;
+	--sm-wizard-border: #CCCCCC;
+	--sm-wizard-bg: #EEEEEE;
 	--sm-open-sans: Open Sans, sans-serif;
+
 }
 
 /*-----------------------------------------------
@@ -69,6 +73,12 @@ Plugin general styling
 
 .hide_socialmedia, .hide_field, .sm_hide_field {
 	display: none;
+}
+.show_desktop {
+	display: block !important;
+}
+.show_mobile {
+	display: none !important;
 }
 
 /*-----------------------------------------------
@@ -275,6 +285,7 @@ body {
 	text-decoration: none !important;
 	display: block !important;
 	text-align: center !important;
+	cursor: pointer;
 }
 
 .submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus, .submit_button a:hover, .submit_button a:focus {
@@ -1908,3 +1919,5 @@ input[type=file] {
 	top: calc(50% + 20px) !important;
 	left: 0 !important;
 }
+
+

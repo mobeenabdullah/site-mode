@@ -82,6 +82,7 @@ class Site_Mode_Admin {
 	public function enqueue_styles() {
         wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'select-2', plugin_dir_url( __FILE__ ) . 'assets/css/select-2.css', [], $this->version, 'all' );
+        wp_enqueue_style( 'site-mode-wizard', plugin_dir_url( __FILE__ )  . 'assets/css/wizard.css', [], $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 	}
 
