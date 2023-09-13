@@ -190,6 +190,11 @@ class Site_Mode {
         $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
 
+        /*
+         * Add body class
+         */
+        $this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
+
         /**
          * Ajax calling
          */

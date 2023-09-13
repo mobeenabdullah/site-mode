@@ -1,0 +1,66 @@
+/*-----------------------------------------------------
+1.  General Styling
+    a.  CSS Root Variables
+    b.  Hide admin controls
+    c.  Remove extra margin and padding from content
+    d.  Wizard General Styling
+    e.  Main container
+    f.  General CSS
+-----------------------------------------------------*/
+
+/*  a.   CSS Root Variables */
+:root {
+  @each $color, $value in $wizardColor {
+    --#{$color}: #{$value};
+  }
+}
+
+/*  b. Hide admin controls */
+.sm__wizard-mode #wpfooter,
+.sm__wizard-mode #wpadminbar,
+.sm__wizard-mode .notice,
+.sm__wizard-mode .wrap .error,
+.sm__wizard-mode .wrap .notice,
+.sm__wizard-mode .wrap .updated,
+.sm__wizard-mode #adminmenumain,{
+  display: none !important;
+}
+
+/*  c.  Remove extra margin and padding from content */
+.sm__wizard-mode #wpcontent {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/*  d.  Wizard General Styling */
+.sm__wizard-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 99999;
+}
+
+/* e. Main container */
+.wizard_container {
+  max-width: calc(clamp(20rem, -19.732rem + 105.952vw, 75.625rem));
+  width: 100%;
+  margin: 0 auto;
+}
+
+/*  f.  General CSS */
+.wizard__content {
+  width: 100%;
+  padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
+}
+html {
+  padding-top: 0 !important;
+}
+
+@media screen and (max-width: 767px) {
+  .sm__wizard-mode.toplevel_page_site-mode #wpcontent {
+    padding: 0 !important;
+  }
+}
