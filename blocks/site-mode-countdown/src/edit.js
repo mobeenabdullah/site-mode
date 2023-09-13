@@ -48,7 +48,7 @@ export default function Edit({ attributes, setAttributes }) {
 			clearInterval(intervalCount);
 			setIntervalCount(null);
 		}
-	}, [dueDate]);
+	}, [dueDate, showSeconds, showMinutes, showHours, showDays]);
 
 	function countdownHandler() {
 		const now = new Date();

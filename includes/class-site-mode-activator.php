@@ -52,12 +52,61 @@ class Site_Mode_Activator {
 			'enable_feed'      => '1',
 		];
 
+        // Add default templates to database for design settings.
+
+        $sm_design_templates = [
+            'categories' => [
+                'all' => 'All',
+                'coming-soon' => 'Coming Soon',
+                'maintenance' => 'Maintenance',
+            ],
+            'templates'  => [
+                'template-1' => [
+                    'name'          => 'Template 1',
+                    'category'      => 'coming-soon',
+                ],
+                'template-2' => [
+                    'name'          => 'Template 2',
+                    'category'      => 'maintenance',
+                ],
+                'template-3' => [
+                    'name'          => 'Template 3',
+                    'category'      => 'coming-soon',
+                ],
+                'template-4' => [
+                    'name'          => 'Template 4',
+                    'category'      => 'coming-soon',
+                ],
+                'template-5' => [
+                    'name'          => 'Template 5',
+                    'category'      => 'coming-soon',
+                ],
+                'template-6' => [
+                    'name'          => 'Template 6',
+                    'category'      => 'maintenance',
+                ],
+                'template-7' => [
+                    'name'          => 'Template 7',
+                    'category'      => 'coming-soon',
+                ],
+                'template-8' => [
+                    'name'          => 'Template 8',
+                    'category'      => 'coming-soon',
+                ],
+                'template-9' => [
+                    'name'          => 'Template 9',
+                    'category'      => 'maintenance',
+                ],
+            ]
+        ];
+
 		// Add default options to database for general settings.
 		$settings = [
-			'site_mode_general'       => $general_settings,
-			'site_mode_seo'           => $seo_settings,
-			'site_mode_advanced'      => $advance_settings,
-            'sm_activation_redirect'  => true
+			'site_mode_general'             => $general_settings,
+			'site_mode_seo'                 => $seo_settings,
+			'site_mode_advanced'            => $advance_settings,
+            'site_mode_design_templates'    => $sm_design_templates,
+            'sm_activation_redirect'        => true
 		];
 
 		foreach ( $settings as $key => $value ) :

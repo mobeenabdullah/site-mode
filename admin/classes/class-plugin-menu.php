@@ -31,7 +31,7 @@ class Site_Mode_Menu {
 			'manage_options',
 			'site-mode',
 			[ $this, 'site_mode_settings_page_cb' ],
-			plugin_dir_url( __DIR__ ) . 'assets/img/admin-menu-icon.png',
+            SITE_MODE_ADMIN_URL . 'assets/img/admin-menu-icon.png',
 		);
 	}
 
@@ -39,7 +39,7 @@ class Site_Mode_Menu {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
 		}
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'partials/settings-layout.php';
+		require_once SITE_MODE_ADMIN . 'partials/settings-layout.php';
 	}
 
 	public function site_mode_content_page_html() {

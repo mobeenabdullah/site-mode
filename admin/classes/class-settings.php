@@ -77,7 +77,7 @@ class Settings {
 	}
 
 	public function display_settings_page( $page_name ) {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . "partials/{$page_name}-setting-page.php";
+		require_once SITE_MODE_ADMIN . "partials/{$page_name}-setting-page.php";
 	}
 
 	public function wp_kses_svg( $svg_content ) {
