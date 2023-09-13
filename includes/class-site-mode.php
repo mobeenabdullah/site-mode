@@ -109,6 +109,11 @@ class Site_Mode {
 	 */
 	private function load_dependencies() {
 
+        /**
+         * This is responsible for loading all blocks
+         */
+        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/site-mode-countdown/site-mode-countdown.php';
+
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
@@ -184,7 +189,6 @@ class Site_Mode {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
         $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
-		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 
         /**
          * Ajax calling

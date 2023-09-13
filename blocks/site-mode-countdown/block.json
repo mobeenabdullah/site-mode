@@ -1,0 +1,90 @@
+{
+  "apiVersion": 2,
+  "name": "site-mode/countdown",
+  "title": "Site Mode Countdown",
+  "category": "widgets",
+  "icon": "clock",
+  "description": "A countdown timer for site mode.",
+  "keywords": [
+	"timer",
+	"site mode",
+	"countdown"
+  ],
+  "supports": {
+	"html": false
+  },
+  "textdomain": "site-mode",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css",
+  "attributes": {
+	"bgColor": {
+	  "type": "string",
+	  "default": ""
+	},
+	"textColor": {
+	  "type": "string",
+	  "default": ""
+	},
+	"dueDate": {
+	  "type": "string",
+	  "default": ""
+	},
+	"showLabel": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"showDays": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"showHours": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"showMinutes": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"showSeconds": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"showSeperator" : {
+	  "type": "boolean",
+	  "default": true
+	},
+	"preset": {
+	  "type": "string",
+	  "default": "default-countdown"
+	},
+	"height": {
+	  "type": "string",
+	  "default": "auto"
+	},
+	"width": {
+	  "type": "string",
+	  "default": "auto"
+	},
+	"labels": {
+	  "type": "object",
+	  "default": {
+		"days": "Days",
+		"hours": "Hours",
+		"minutes": "Minutes",
+		"seconds": "Seconds"
+	  }
+	},
+	"colors": {
+	  "type": "object",
+	  "default": {
+		"bgColor": "#000000",
+		"labelColor": "#ffffff",
+		"borderColor": "#ffffff",
+		"seperatorColor": "#ffffff",
+		"timerColor": "#ffffff"
+	  }
+	}
+  }
+}
+
