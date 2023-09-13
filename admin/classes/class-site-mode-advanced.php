@@ -10,7 +10,7 @@
  * @subpackage Site_Mode/includes
  */
 
-require_once plugin_dir_path( dirname( __FILE__ ) ) . 'classes/class-settings.php';
+require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
 /**
  * Responsible for plugin menu
  *

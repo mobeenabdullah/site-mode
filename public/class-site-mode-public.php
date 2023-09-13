@@ -85,8 +85,8 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( 'fontawsome', plugin_dir_url( __FILE__ ) . 'css/all.min.css', [], $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/site-mode-public.css', [], $this->version, 'all' );
+		wp_enqueue_style( 'fontawsome', SITE_MODE_PUBLIC_URL . 'css/all.min.css', [], $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', [], $this->version, 'all' );
 
 	}
 
@@ -109,7 +109,7 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
 	}
 
 	public function my_style_loader_tag_filter( $html, $handle ) {

@@ -1,68 +1,12 @@
 <?php
-
-$templates = [
-    'template-1' => [
-        'name'          => 'Template 1',
-        'description'   => 'This is template 1',
-        'image'         => 'template-1.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-2' => [
-        'name'          => 'Template 2',
-        'description'   => 'This is template 2',
-        'image'         => 'template-2.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-3' => [
-        'name'          => 'Template 3',
-        'description'   => 'This is template 3',
-        'image'         => 'template-3.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-4' => [
-        'name'          => 'Template 4',
-        'description'   => 'This is template 4',
-        'image'         => 'template-4.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-5' => [
-        'name'          => 'Template 5',
-        'description'   => 'This is template 5',
-        'image'         => 'template-5.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-6' => [
-        'name'          => 'Template 6',
-        'description'   => 'This is template 6',
-        'image'         => 'template-6.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-7' => [
-        'name'          => 'Template 7',
-        'description'   => 'This is template 7',
-        'image'         => 'template-7.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-8' => [
-        'name'          => 'Template 8',
-        'description'   => 'This is template 8',
-        'image'         => 'template-8.png',
-        'category'      => 'coming-soon',
-    ],
-    'template-9' => [
-        'name'          => 'Template 9',
-        'description'   => 'This is template 9',
-        'image'         => 'template-9.png',
-        'category'      => 'coming-soon',
-    ],
-];
+$templates = get_option('site_mode_design_templates')['templates'];
+$categories = get_option('site_mode_design_templates')['categories'];
 
 $args = array(
     'post_type' => 'page', // Only retrieve pages
     'post_status' => 'publish', // Only retrieve published pages
     'posts_per_page' => -1, // Retrieve all pages
 );
-
 $page_ids = get_posts($args);
 
 ?>
@@ -76,12 +20,9 @@ $page_ids = get_posts($args);
 		</div>
 
         <div class="template-category-wrapper">
-            <span class="template-category-filter" data-template-category="all">
-                All
-            </span>
-            <?php foreach($templates as $key => $template ): ?>
-                <span class="template-category-filter" data-template-category="<?php echo $template['category']; ?>" >
-                    <?php echo $template['category']; ?>
+            <?php foreach($categories as $key => $cat ): ?>
+                <span class="template-category-filter" data-template-category="<?php echo $key; ?>" >
+                    <?php echo $cat; ?>
                 </span>
             <?php endforeach; ?>
         </div>
@@ -107,7 +48,7 @@ $page_ids = get_posts($args);
                     <?php foreach ( $templates as $key => $template ) : ?>
                     <div class="template_card template-content-wrapper template-<?php echo esc_attr( $key ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>" data-category-name="<?php echo $template['category']; ?>">
                         <button class="template_init_button" data-value="<?php echo $key; ?>">Import</button>
-                        <div class="template_card-image" style="background-image: url(<?php echo esc_url( $template['image'] ); ?>);">
+                        <div class="template_card-image" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key .'/screenshot.jpg' ); ?>);">
                         </div>
                         <div class="template_loading" style="display: none">Loading...</div>
                         <div class="template_card-content">

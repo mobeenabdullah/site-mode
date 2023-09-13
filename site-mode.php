@@ -34,13 +34,20 @@ if ( ! defined( 'WPINC' ) ) {
  * Currently plugin version.
  */
 define( 'SITE_MODE_VERSION', '0.0.2' );
+define('SITE_MODE_INC', plugin_dir_path( __FILE__ ) . 'includes/');
+define('SITE_MODE_ADMIN', plugin_dir_path(__FILE__ ) . 'admin/');
+define('SITE_MODE_BLOCKS', plugin_dir_path(__FILE__  ) . 'blocks/');
+define('SITE_MODE_PUBLIC', plugin_dir_path( __FILE__ ) . 'public/');
+define('SITE_MODE_ADMIN_URL', plugin_dir_url(__FILE__ ) . 'admin/');
+define('SITE_MODE_PUBLIC_URL', plugin_dir_url( __FILE__ ) . 'public/');
+
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-site-mode-activator.php
  */
 function activate_site_mode() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-activator.php';
+	require_once SITE_MODE_INC . 'class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
 }
 
@@ -49,7 +56,7 @@ function activate_site_mode() {
  * This action is documented in includes/class-site-mode-deactivator.php
  */
 function deactivate_site_mode() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-deactivator.php';
+	require_once SITE_MODE_INC . 'class-site-mode-deactivator.php';
 	Site_Mode_Deactivator::deactivate();
 }
 
@@ -60,7 +67,7 @@ register_deactivation_hook( __FILE__, 'deactivate_site_mode' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-site-mode.php';
+require SITE_MODE_INC . 'class-site-mode.php';
 
 /**
  * Begins execution of the plugin.

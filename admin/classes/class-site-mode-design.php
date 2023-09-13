@@ -152,11 +152,11 @@ class Site_Mode_Design extends  Settings {
     }
 
     public function replace_template_default_image($template_name = '') {
-        $template_url = plugin_dir_path(__FILE__) . '../assets/templates/'. $template_name .'/blocks-export.json';
+        $template_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/blocks-export.json';
         $template_content = file_get_contents($template_url);
         $image_url = $this->default_images[$template_name];
 
-        if(!str_contains($template_content, $template_content)){
+        if(!str_contains($template_content, $template_name)){
             return $template_content;
         } else {
 
@@ -186,7 +186,26 @@ class Site_Mode_Design extends  Settings {
                 $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
                 wp_update_attachment_metadata($attach_id, $attach_data);
             } else {
-                return $template_content;
+                $attachment_posts = get_posts(array(
+                    'post_type' => 'attachment',
+                    'post_status' => 'inherit',
+                    'meta_query' => array(
+                        array(
+                            'key' => '_wp_attached_file',
+                            'value' => $template_name . '-' . $filename,
+                            'compare' => 'LIKE'
+                        )
+                    )
+                ));
+
+                if(!empty($attachment_posts)){
+                    $media_id = $attachment_posts[0]->ID;
+                } else {
+                    $media_id = '';
+                    return $template_content;
+                }
+
+
             }
 
             // Check if the image was successfully uploaded
