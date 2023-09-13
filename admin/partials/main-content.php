@@ -68,7 +68,7 @@
 			?>
 				<div id="<?php esc_attr_e( $tab_id ); ?>" class="<?php esc_attr_e( $tab_class ); ?>">
 					<?php
-					require_once plugin_dir_path( dirname( __FILE__ ) ) . "classes/class-site-mode-{$tab_name}.php";
+					require_once SITE_MODE_ADMIN . "classes/class-site-mode-{$tab_name}.php";
 					$class_name = 'Site_Mode_' . ucfirst( $tab_name );
 					$class      = new $class_name();
 					$class->render();

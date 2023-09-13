@@ -1,76 +1,10 @@
 <?php
-
-
-
-
-$templates = [
-    'template-1' => [
-        'name'          => 'Template 1',
-        'description'   => 'This is template 1',
-        'image'         => 'screenshot.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-2' => [
-        'name'          => 'Template 2',
-        'description'   => 'This is template 2',
-        'image'         => 'template-2.jpg',
-        'category'      => 'maintenance',
-    ],
-    'template-3' => [
-        'name'          => 'Template 3',
-        'description'   => 'This is template 3',
-        'image'         => 'template-3.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-4' => [
-        'name'          => 'Template 4',
-        'description'   => 'This is template 4',
-        'image'         => 'template-4.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-5' => [
-        'name'          => 'Template 5',
-        'description'   => 'This is template 5',
-        'image'         => 'template-5.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-6' => [
-        'name'          => 'Template 6',
-        'description'   => 'This is template 6',
-        'image'         => 'template-6.jpg',
-        'category'      => 'maintenance',
-    ],
-    'template-7' => [
-        'name'          => 'Template 7',
-        'description'   => 'This is template 7',
-        'image'         => 'template-7.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-8' => [
-        'name'          => 'Template 8',
-        'description'   => 'This is template 8',
-        'image'         => 'template-8.jpg',
-        'category'      => 'coming-soon',
-    ],
-    'template-9' => [
-        'name'          => 'Template 9',
-        'description'   => 'This is template 9',
-        'image'         => 'template-9.jpg',
-        'category'      => 'maintenance',
-    ],
-];
-
-$categories = [
-    'all' => 'All',
-    'coming-soon' => 'Coming Soon',
-    'maintenance' => 'Maintenance'
-];
-
-$admin_url = plugin_dir_url(dirname(__FILE__));
+$templates = get_option('site_mode_design_templates')['templates'];
+$categories = get_option('site_mode_design_templates')['categories'];
 ?>
 <div class="sm__wizard-header">
     <div class="sm__wizard--logo">
-        <img src="<?php echo esc_url( plugins_url( '/assets/img/site-mode-logo.svg', dirname( __FILE__ ) ) ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+        <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL . '/assets/img/site-mode-logo.svg' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
     </div>
     <div class="sm_close_wizard">
         <span class="close_wizard_btn">
@@ -137,7 +71,7 @@ $admin_url = plugin_dir_url(dirname(__FILE__));
                                  <?php foreach($templates as $key => $template ): ?>
                                      <div class="template_card template-content-wrapper" data-category-name="<?php echo $template['category']; ?>">
                                          <label for="<?php echo $key; ?>">
-                                             <div class="template_card-image" style="background-image: url(<?php echo esc_url($admin_url . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);"></div>
+                                             <div class="template_card-image" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);"></div>
                                          </label>
                                          <div class="template_card-content">
                                              <input type="radio" name="template" class="template_input" required value="<?php echo $key; ?>" id="<?php echo $key; ?>" <?php echo $key == 'default_template' ? 'checked' : ''; ?> >
@@ -177,6 +111,4 @@ $admin_url = plugin_dir_url(dirname(__FILE__));
             </div>
         </div>
     </div>
-
-
 </div>

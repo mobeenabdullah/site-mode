@@ -44,24 +44,9 @@ class Template_Load {
             return false;
         }
 
-        if ( $this->is_sm_classic_editor_plugin_active() ) {
-            return false;
-        } else {
-            update_option( 'show_on_front', 'page' );
-            return true;
-        }
-    }
+        update_option( 'show_on_front', 'page' );
+        return true;
 
-    public function is_sm_classic_editor_plugin_active() {
-        if ( ! function_exists( 'is_plugin_active' ) ) {
-            include_once ABSPATH . 'wp-admin/includes/plugin.php';
-        }
-
-        if ( is_plugin_active( 'classic-editor/classic-editor.php' ) ) {
-            return true;
-        }
-
-        return false;
     }
 
 	public function check_user_role() {
@@ -110,8 +95,8 @@ class Template_Load {
     }
 
 	public function load_template() {
-		wp_enqueue_style( 'default_template', plugin_dir_url( __FILE__ ) . '../public/css/default_template.css', [], '0.0.2', 'all' );
-		require_once plugin_dir_path( __DIR__ ) . 'public/templates/default_template.php';
+		wp_enqueue_style( 'default_template', SITE_MODE_PUBLIC_URL . 'css/default_template.css', [], '0.0.2', 'all' );
+		require_once SITE_MODE_PUBLIC . 'templates/default_template.php';
 		exit;
 	}
 

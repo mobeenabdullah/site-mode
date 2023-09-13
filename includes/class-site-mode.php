@@ -112,43 +112,43 @@ class Site_Mode {
         /**
          * This is responsible for loading all blocks
          */
-        require_once plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/site-mode-countdown/site-mode-countdown.php';
+        require_once SITE_MODE_BLOCKS . 'init.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-loader.php';
+		require_once SITE_MODE_INC . 'class-site-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-i18n.php';
+		require_once SITE_MODE_INC . 'class-site-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-site-mode-admin.php';
+		require_once SITE_MODE_ADMIN . 'class-site-mode-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/classes/class-plugin-menu.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-plugin-menu.php';
 
 		/**
 		 * The class responsible for defining advanced settings page of the plugin
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/admin/classes/class-site-mode-advanced.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/template-load.php';
+		require_once SITE_MODE_INC . 'template-load.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-site-mode-public.php';
+		require_once SITE_MODE_PUBLIC . 'class-site-mode-public.php';
 
 		$this->loader = new Site_Mode_Loader();
 

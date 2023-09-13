@@ -107,7 +107,7 @@ function Edit(_ref) {
       clearInterval(intervalCount);
       setIntervalCount(null);
     }
-  }, [dueDate]);
+  }, [dueDate, showSeconds, showMinutes, showHours, showDays]);
   function countdownHandler() {
     const now = new Date();
     const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());

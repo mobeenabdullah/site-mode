@@ -33,18 +33,13 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 // Options cleanup during uninstall plugin
 
 $options = [
-	'site_mode_advanced',
-	'site_mode_content',
-	'site_mode_design',
-	'site_mode_design_lb',
-	'site_mode_design_colors',
-	'site_mode_seo',
-	'site_mode_social',
-	'site_mode_settings',
 	'site_mode_general',
-	'site_mode_design_fonts',
-	'site_mode_design_social',
-	'site_mode_default_images',
+	'site_mode_seo',
+	'site_mode_design',
+	'site_mode_advanced',
+	'site_mode_design_templates',
+    'sm_activation_redirect',
+    'sm-fresh-installation'
 ];
 
 if ( ! empty( $options ) ) {
