@@ -45,15 +45,21 @@
 
 /* e. Main container */
 .wizard_container {
-  max-width: calc(clamp(20rem, -19.732rem + 105.952vw, 75.625rem));
+  max-width: calc(clamp(35rem, -2.607rem + 86.952vw, 75.65rem));
   width: 100%;
   margin: 0 auto;
+  @media screen and (max-width: 540px) {
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
 }
 
 /*  f.  General CSS */
 .wizard__content {
   width: 100%;
   padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
+  height: 100vh;
+  background-color: var(--wd-bg-color);
 }
 html {
   padding-top: 0 !important;
