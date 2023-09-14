@@ -101,6 +101,7 @@ html {
 	display: grid;
 	grid-template-columns: auto 1fr auto;
 	background-color: var(--wd-base-white-color);
+	border-bottom: 1px solid var(--wd-border-color);
 	/* a.   Wizard Logo */
 	/* b.   Wizard Steps */
 	/* c.   Wizard Close */
@@ -438,8 +439,6 @@ html {
 }
 
 .template__import {
-	background: #1e1e1e;
-	color: #ccc;
 	display: flex;
 	flex-direction: column;
 	bottom: 0;
@@ -455,7 +454,6 @@ html {
 }
 
 .template__import-cover {
-	background: #1e1e1e;
 	color: #ccc;
 	display: flex;
 	flex-direction: column;
@@ -467,10 +465,9 @@ html {
 	flex-grow: 1;
 	height: 100%;
 	flex-direction: column;
-	background-color: red;
 }
 
-@media screen and (min-width: 782px) {
+@media screen and (min-width: 960px) {
 	.template__import-layout {
 		flex-direction: row;
 	}
@@ -480,20 +477,32 @@ html {
 	flex-shrink: 0;
 	width: 100vw;
 	z-index: 1;
-	background-color: yellow;
+	background-color: var(--wd-base-white-color);
+	border-right: 1px solid var(--wd-border-color);
 }
 
-@media (min-width: 782px) {
+@media (min-width: 960px) {
 	.template__import-sidebar {
 		width: 360px;
 	}
+}
+
+.template__import-sidebar .sidebar_content {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.template__import-sidebar .sidebar_content-settings {
+	flex: 0 0 calc(100% - 130px);
 }
 
 .template__import-content {
 	flex-grow: 1;
 	position: relative;
 	z-index: 2;
-	background-color: blue;
+	background-color: var(--wd-base-white-color);
 }
 
 .template__import-content--canvas {
@@ -505,13 +514,13 @@ html {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	background-color: saddlebrown;
 	padding: 24px;
 	box-sizing: border-box;
-	overflow-y: scroll;
+	overflow-y: auto;
+	border: 1px solid var(--wd-border-color);
 }
 
-@media (min-width: 782px) {
+@media (min-width: 960px) {
 	.template__import-content--canvas {
 		bottom: 24px;
 		top: 24px;

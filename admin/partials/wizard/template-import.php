@@ -5,7 +5,15 @@
             <div class="template__import-layout">
                 <div class="template__import-sidebar" aria-label="Navigation" role="region" tabindex="-1">
                     <div class="sidebar_content">
-                        <h1>sidebar</h1>
+                        <div class="sidebar_content-header">
+                            <h1>header</h1>
+                        </div>
+                        <div class="sidebar_content-settings">
+                            <h1>settings</h1>
+                        </div>
+                        <div class="sidebar_content-actions">
+                            <h1>actions</h1>
+                        </div>
                     </div>
                 </div>
                 <div class="template__import-content">
