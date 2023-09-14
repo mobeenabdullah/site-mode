@@ -1,16 +1,8 @@
 /*---------------------------------------------------------
-   -    Close wizard and redirect to admin
-   -    Filter by categories
-   -    a.  Filter by categories
+   a.  Filter by categories
 ---------------------------------------------------------*/
 
 jQuery(function ($) {
-
-    //  Close wizard and redirect to admin
-    $('.sm_close_wizard').on('click', function() {
-        window.location.href = "/wp-admin/";
-    })
-
 
     //  a.  Filter by categories
     $('.template-category-filter').on('click', function() {
@@ -24,6 +16,27 @@ jQuery(function ($) {
             $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
         }
     });
+
+
+     // b.   Show import screen
+    $('.select_tempalte').on('click', function() {
+        const templateName = $(this).attr('data-template-name');
+        $('.wizard__content').hide();
+        $('.template__import').show();
+        $('.template-init-next').attr('data-template-name', templateName);
+        $('.sm-import').addClass('active');
+    });
+
+
+
+    $('.template-init-back').on('click', function() {
+        $('.wizard__content').show();
+        $('.template__import').hide();
+        $('.template-init-next').attr('data-template-name', '');
+        $('.sm-import').removeClass('active');
+        // $('.sm-step-2').removeClass('active');
+    });
+
 
 
 });

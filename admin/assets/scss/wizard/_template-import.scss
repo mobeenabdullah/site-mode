@@ -1,0 +1,22 @@
+.template__import {
+  &-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically by default */
+  }
+  &-cover {
+    display: flex;
+    flex-wrap: wrap; /* Allow sidebar and content to wrap */
+  }
+
+  &-sidebar {
+    flex: 0 0 360px; /* Fixed width for sidebar */
+    background-color: #333; /* Sidebar background color */
+    color: #fff; /* Text color for sidebar */
+    padding: 20px;
+  }
+
+  &-content {
+    flex: 1; /* Take up remaining space */
+    padding: 20px;
+  }
+}
