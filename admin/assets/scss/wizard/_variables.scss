@@ -13,6 +13,7 @@ $wd-border-color: #eeeeee !default;
 $wd-bg-color: #F9F9F9 !default;
 $wd-gray-1-color: #999999 !default;
 $wd-gray-2-color: #CCCCCC !default;
+$wd-input-border-color: #DDDDDD !default;
 
 
 
@@ -32,5 +33,6 @@ $wizardColor: (
         'wd-gray-1-color': $wd-gray-1-color,
         'wd-gray-2-color': $wd-gray-2-color,
         'wd-base-white-color': $wt-base-white-color,
-        'wd-base-black-color': $wt-base-black-color
+        'wd-base-black-color': $wt-base-black-color,
+        'wd-input-border-color': $wd-input-border-color
 ) !default;

@@ -38,7 +38,7 @@
     @media screen and (max-width: 767px) {
       order: 3;
       grid-column: 1 / -1;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 0rem 1rem;
     }
     &-cover {
       display: flex;
@@ -60,12 +60,14 @@
           border: 1px solid var(--wd-gray-2-color);
           border-radius: 50%;
           position: relative;
-          flex: 1;
+          flex-basis: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+          flex-shrink: 0;
+          flex-grow: 1;
         }
         & .step_label {
           font-weight: 600;
           color: var(--wd-gray-2-color);
-          font-size: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
+          font-size: calc(clamp(0.7rem, 0.657rem + 0.381vw, 1rem));
         }
         & .step_line {
           width: calc(clamp(1.125rem, -0.304rem + 3.81vw, 3.125rem));
@@ -74,6 +76,7 @@
         }
         &.active {
           & .step_circle {
+            border-color: var(--wd-base-black-color);
             &::before {
               content: '';
               width: calc(clamp(0.7rem, 0.7rem + 0vw, 0.7rem));
