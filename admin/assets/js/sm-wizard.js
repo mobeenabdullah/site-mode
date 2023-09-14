@@ -37,6 +37,10 @@ jQuery(function ($) {
         // $('.sm-step-2').removeClass('active');
     });
 
+    // if($('.template__import')) {
+    //     $('body').addClass('body_template_importer')
+    // }
+
 
 
 });

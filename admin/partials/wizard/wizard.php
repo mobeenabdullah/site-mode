@@ -4,9 +4,9 @@ $categories = get_option('site_mode_design_templates')['categories'];
 ?>
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
-    <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
     <!-- Select Template -->
     <div class="wizard__content" style="display: none">
+        <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
         <div class="wizard_container">
             <div class="wizard__templates">
                 <div class="wizard__templates-filters">

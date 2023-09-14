@@ -433,32 +433,91 @@ html {
 	opacity: 1;
 }
 
-.template__import-wrapper {
+.body_template_importer {
+	overflow: hidden;
+}
+
+.template__import {
+	background: #1e1e1e;
+	color: #ccc;
 	display: flex;
 	flex-direction: column;
-	/* Stack elements vertically by default */
+	bottom: 0;
+	left: 0;
+	min-height: calc(100vh - 93.25px);
+	position: fixed;
+	right: 0;
+	top: 0;
+}
+
+.template__import-wrapper {
+	height: calc(100% - 93.25px);
 }
 
 .template__import-cover {
+	background: #1e1e1e;
+	color: #ccc;
 	display: flex;
-	flex-wrap: wrap;
-	/* Allow sidebar and content to wrap */
+	flex-direction: column;
+	height: 100%;
+}
+
+.template__import-layout {
+	display: flex;
+	flex-grow: 1;
+	height: 100%;
+	flex-direction: column;
+	background-color: red;
+}
+
+@media screen and (min-width: 782px) {
+	.template__import-layout {
+		flex-direction: row;
+	}
 }
 
 .template__import-sidebar {
-	flex: 0 0 360px;
-	/* Fixed width for sidebar */
-	background-color: #333;
-	/* Sidebar background color */
-	color: #fff;
-	/* Text color for sidebar */
-	padding: 20px;
+	flex-shrink: 0;
+	width: 100vw;
+	z-index: 1;
+	background-color: yellow;
+}
+
+@media (min-width: 782px) {
+	.template__import-sidebar {
+		width: 360px;
+	}
 }
 
 .template__import-content {
-	flex: 1;
-	/* Take up remaining space */
-	padding: 20px;
+	flex-grow: 1;
+	position: relative;
+	z-index: 2;
+	background-color: blue;
+}
+
+.template__import-content--canvas {
+	align-items: flex-start;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+	background-color: saddlebrown;
+	padding: 24px;
+	box-sizing: border-box;
+	overflow-y: scroll;
+}
+
+@media (min-width: 782px) {
+	.template__import-content--canvas {
+		bottom: 24px;
+		top: 24px;
+		left: 24px;
+		width: calc(100% - 48px);
+	}
 }
 
 /*# sourceMappingURL=wizard.css.map */
