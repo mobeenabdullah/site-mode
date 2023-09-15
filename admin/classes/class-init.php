@@ -8,9 +8,7 @@ class init {
 	protected $advanced_settings;
 
 	public function __construct() {
-
 		$this->files_loader();
-
 		$this->admin_menu        = new Site_Mode_Menu();
 		$this->general_settings  = new Site_Mode_General();
 		$this->design_settings   = new Site_Mode_Design();

@@ -83,8 +83,21 @@ html {
   }
 }
 
+.wizard_show_mobile {
+  display: none !important;
+}
+.wizard_show_desktop {
+  display: block !important;
+}
+
 @media screen and (max-width: 767px) {
   .sm__wizard-mode.toplevel_page_site-mode #wpcontent {
     padding: 0 !important;
+  }
+  .wizard_show_mobile {
+    display: block !important;
+  }
+  .wizard_show_desktop {
+    display: none !important;
   }
 }

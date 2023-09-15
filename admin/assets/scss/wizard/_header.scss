@@ -14,6 +14,8 @@
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr auto;
     background-color: transparent;
+    border-bottom: none;
+    padding-bottom: 2rem;
   }
   /* a.   Wizard Logo */
   &--logo {
