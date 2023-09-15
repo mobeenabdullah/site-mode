@@ -5,7 +5,6 @@
   border-radius: 4px;
   background-color: #fff;
   overflow: hidden;
-
   & select {
     appearance: none;
     -webkit-appearance: none;
@@ -14,6 +13,7 @@
     padding: 5px 10px;
     border: none;
     background: transparent;
+    font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 1rem));
   }
   & .wizard-select-arrow {
     position: absolute;

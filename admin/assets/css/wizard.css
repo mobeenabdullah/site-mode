@@ -306,6 +306,8 @@ html {
 	.sm__wizard-header {
 		grid-template-columns: 1fr auto;
 		background-color: transparent;
+		border-bottom: none;
+		padding-bottom: 2rem;
 	}
 }
 
@@ -793,7 +795,7 @@ html {
 
 .template__import-sidebar .sidebar_content-settings .settings__card-title h2 {
 	margin: 0;
-	font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 1rem));
+	font-size: calc(clamp(1.1rem, 0.886rem + 0.571vw, 1.4rem));
 	padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
 	flex: 1;
 	cursor: pointer;
@@ -834,7 +836,7 @@ html {
 .template__import-sidebar .sidebar_content-settings .settings__card-options--label h3 {
 	margin: 0;
 	padding: 0;
-	font-size: calc(clamp(0.775rem, 0.757rem + 0.048vw, 0.8rem));
+	font-size: calc(clamp(1rem, 0.929rem + 0.19vw, 1.1rem));
 	user-select: none;
 }
 
@@ -888,7 +890,7 @@ html {
 }
 
 .template__import-sidebar .sidebar_content-settings .settings__card .fonts__warpper .fonts-preset-box span {
-	font-size: calc(clamp(1.25rem, 0.536rem + 1.905vw, 2.25rem));
+	font-size: calc(clamp(2.5rem, 2.5rem + 0vw, 2.5rem));
 	color: var(--wd-base-black-color);
 }
 
@@ -971,6 +973,12 @@ html {
 	z-index: 99;
 }
 
+@media screen and (max-width: 767px) {
+	.template__import-content .fullscreen_actions {
+		display: none;
+	}
+}
+
 .template__import-content .fullscreen_actions button {
 	border: none;
 	border-radius: 0 calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem)) calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem)) 0;
@@ -978,11 +986,25 @@ html {
 	display: flex;
 	background-color: var(--wd-base-white-color);
 	margin: 0;
-	padding: 0;
+	padding: 0 0.2rem 0 0;
+}
+
+.template__import-content .fullscreen_actions button svg {
+	width: calc(clamp(1rem, 0.821rem + 0.476vw, 1.25rem));
 }
 
 .template__import-content .fullscreen_actions button svg path {
 	fill: var(--wd-base-black-color);
+}
+
+.setting_dropdown-cover {
+	background: var(--wd-base-white-color);
+	padding: 0.5rem 1rem;
+	display: flex;
+	justify-content: center;
+	gap: 1rem;
+	color: var(--wd-base-black-color);
+	font-weight: 600;
 }
 
 @keyframes slide-right-animation {
@@ -1230,6 +1252,7 @@ html {
 	padding: 5px 10px;
 	border: none;
 	background: transparent;
+	font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 1rem));
 }
 
 .wizard-select .wizard-select-arrow {
