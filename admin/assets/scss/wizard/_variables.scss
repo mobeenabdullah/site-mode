@@ -14,7 +14,9 @@ $wd-bg-color: #F9F9F9 !default;
 $wd-gray-1-color: #999999 !default;
 $wd-gray-2-color: #CCCCCC !default;
 $wd-input-border-color: #DDDDDD !default;
-
+$wd-primary-light-color: #e1dbff !default;
+$wd-light-gray-1-color: #dddddd !default;
+$wd-light-gray-2-color: #fafafa !default;
 
 
 // 3. Colors Array for root css variables
@@ -34,5 +36,19 @@ $wizardColor: (
         'wd-gray-2-color': $wd-gray-2-color,
         'wd-base-white-color': $wt-base-white-color,
         'wd-base-black-color': $wt-base-black-color,
-        'wd-input-border-color': $wd-input-border-color
+        'wd-input-border-color': $wd-input-border-color,
+        'wd-primar-light-color': $wd-primary-light-color,
+        'wd-light-gray-1-color': $wd-light-gray-1-color,
+        'wd-light-gray-2-color': $wd-light-gray-2-color
+) !default;
+
+
+//  Color Scheme 1
+// 'wt' is prefix for "wizard template"
+$wt-primary-color: #e63946 !default;
+
+
+// 3. Colors Array for root css variables
+$wizardColor: (
+        '--wp--preset--color--primary': $wt-primary-color,
 ) !default;

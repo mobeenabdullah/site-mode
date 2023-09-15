@@ -10,6 +10,7 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   background-color: var(--wd-base-white-color);
+  border-bottom: 1px solid var(--wd-border-color);
   @media screen and (max-width: 767px) {
     grid-template-columns: 1fr auto;
     background-color: transparent;

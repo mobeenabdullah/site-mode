@@ -15,6 +15,12 @@
   }
 }
 
+.color-scheme-1 {
+  @each $color, $value in $wizardColor {
+    --#{$color}: #{$value} !important;
+  }
+}
+
 /*  b. Hide admin controls */
 .sm__wizard-mode #wpfooter,
 .sm__wizard-mode #wpadminbar,
@@ -57,7 +63,6 @@
 /*  f.  General CSS */
 .wizard__content {
   width: 100%;
-  padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
   height: 100vh;
   background-color: var(--wd-bg-color);
 }

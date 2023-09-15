@@ -1,0 +1,22 @@
+.sm-scroll::-webkit-scrollbar {
+  width: 12px; /* Width of the entire scrollbar */
+}
+
+.sm-scroll::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar handle */
+  border-radius: 6px; /* Roundness of the scrollbar handle */
+}
+
+.sm-scroll::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Color of the scrollbar handle on hover */
+}
+
+.sm-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Color of the scrollbar track */
+  border-radius: 6px; /* Roundness of the scrollbar track */
+}
+
+.sm-scroll::-webkit-scrollbar-track:hover {
+  background: #ddd; /* Color of the scrollbar track on hover */
+}
+
