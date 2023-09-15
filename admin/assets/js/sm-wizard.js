@@ -5,8 +5,9 @@
    d.   Post message to iframe
    f.   Import template
    g.   show and hide options
-   h.    Reset Functionality
-   i.   Toggle checkbox click on labels
+   h.   Reset Functionality
+   i.   change colors
+   j.   Show/hide sidebar
 ---------------------------------------------------------*/
 
 jQuery(function ($) {
@@ -97,48 +98,78 @@ jQuery(function ($) {
     });
 
     // g.   show and hide options
-    $(".settings__card-options").hide();
-    $(".sm_open_panel").next(".settings__card-options").show();
+    const $sidebarContent = $(".template__import-sidebar");
+    const isMobile = window.innerWidth <= 768;
+
+    if (isMobile) {
+        $sidebarContent.hide();
+        $('.settings__card-options').hide();
+        $('.sidebar_content-header').hide();
+    }
+
+    $(".setting_dropdown").on("click", function() {
+        if (isMobile) {
+            $sidebarContent.toggle();
+        }
+    });
 
     $(".settings_card_heading").on("click", function() {
-        const $options = $(this).parent().next(".settings__card-options");
-        $(".settings__card-options").not($options).hide();
-        $options.toggle();
+        if (isMobile) {
+            const $options = $(this).parent().next(".settings__card-options");
+            $options.toggle();
+        }
     });
+
+
+
+
 
    // h.    Reset Functionality
-    $('.sm-setting-reset').on('click', function() {
-        const $parentOfReset = $(this).closest('.settings__card');
-        const $checkboxes = $parentOfReset.find(".settings__card-options--field input[type='checkbox']");
-        $checkboxes.prop('checked', function() {
-            const checkboxValue = $(this).val();
-            return checkboxValue === '1' || checkboxValue === 'true';
-        });
+    function handleSettingsClick() {
+        const $parentOfAction = $(this).closest('.settings__card');
+
+        if ($(this).hasClass('sm-setting-reset-components')) {
+            const $checkboxes = $parentOfAction.find(".settings__card-options--field input[type='checkbox']");
+            $checkboxes.prop('checked', function() {
+                const checkboxValue = $(this).val();
+                return checkboxValue === '1' || checkboxValue === 'true';
+            });
+        } else if ($(this).hasClass('settings__card-options--label')) {
+            // Toggle checkbox click on labels
+            const $checkbox = $(this).siblings('.settings__card-options--field').find("input[type='checkbox']");
+            $checkbox.prop('checked', function(_, checked) {
+                return !checked;
+            });
+        }
 
         sendPostMessage();
-    });
+    }
 
-    // i.   Toggle checkbox click on labels
-    $('.settings__card-options--label').on('click', function() {
-        const $checkbox = $(this).siblings('.settings__card-options--field').find("input[type='checkbox']");
-        $checkbox.prop('checked', function(_, checked) {
-            return !checked;
+    $('.settings__card-options--label, .sm-setting-reset-components').on('click', handleSettingsClick);
+
+    // i    change colors and fonts
+    function setupSelectAndPresets(selectId, presetBoxesClass) {
+        $(presetBoxesClass).hide();
+        var selectedOption = $(selectId).val();
+        $(presetBoxesClass + '[data-preset="' + selectedOption + '"]').show();
+
+        $(selectId).change(function() {
+            $(presetBoxesClass).hide();
+            var selectedOption = $(this).val();
+            $(presetBoxesClass + '[data-preset="' + selectedOption + '"]').show();
         });
-        sendPostMessage();
-    });
+    }
 
-    $('.sm_full_screen').on('click', function() {
-        $('.template__import-sidebar').hide();
-        $('.sm_exit_full_screen').css('display', 'flex');
-        $(this).hide();
-        $('.template__import-sidebar').addClass('slide_right_to_left');
-    })
+    setupSelectAndPresets('#color_scheme', '.color__scheme-preset-box');
+    setupSelectAndPresets('#fonts', '.fonts-preset-box');
 
-    $('.sm_exit_full_screen').on('click', function() {
-        $('.template__import-sidebar').show();
-        $('.sm_full_screen').css('display', 'flex');
-        $(this).hide();
-        $('.template__import-sidebar').removeClass('slide_right_to_left');
-    })
+
+    //  j.  Show/hide sidebar
+    function toggleSidebar() {
+        $('.template__import-sidebar').toggleClass('slide_right_to_left');
+        $('.sm_full_screen, .sm_exit_full_screen').toggle();
+    }
+    $('.sm_full_screen, .sm_exit_full_screen').on('click', toggleSidebar);
+
 });
 

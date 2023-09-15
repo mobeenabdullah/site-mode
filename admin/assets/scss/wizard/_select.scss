@@ -1,0 +1,31 @@
+.wizard-select {
+  position: relative;
+  width: 100%; /* Adjust the width as needed */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  overflow: hidden;
+
+  & select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 5px 10px;
+    border: none;
+    background: transparent;
+  }
+  & .wizard-select-arrow {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    user-select: none;
+    pointer-events: none;
+  }
+}
