@@ -131,12 +131,14 @@ jQuery(function ($) {
         $('.template__import-sidebar').hide();
         $('.sm_exit_full_screen').css('display', 'flex');
         $(this).hide();
+        $('.template__import-sidebar').addClass('slide_right_to_left');
     })
 
     $('.sm_exit_full_screen').on('click', function() {
         $('.template__import-sidebar').show();
         $('.sm_full_screen').css('display', 'flex');
         $(this).hide();
+        $('.template__import-sidebar').removeClass('slide_right_to_left');
     })
 });
 

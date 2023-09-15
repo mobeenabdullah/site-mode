@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" &amp;&amp; exit 1",
     "wizard": "node-sass admin/assets/scss/wizard.scss admin/assets/css/wizard.css --watch --update --output-style=expanded --indent-type=tab --indent-width=1 --source-map=true --source-map-contents",
-    "admin": "node-sass admin/assets/scss/admin.scss admin/assets/css/site-mode-admin.css --watch --update --output-style=expanded --indent-type=tab --indent-width=1 --source-map=true --source-map-contents"
+    "admin": "node-sass admin/assets/scss/admin.scss admin/assets/css/site-mode-admin.css --watch --update --output-style=expanded --indent-type=tab --indent-width=1 --source-map=true --source-map-contents",
+    "public": "node-sass public/scss/site-mode-public.scss public/css/site-mode-public.css --watch --update --output-style=expanded --indent-type=tab --indent-width=1 --source-map=true --source-map-contents"
   },
   "author": "Adam",
   "license": "ISC",
