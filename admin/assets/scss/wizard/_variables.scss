@@ -42,13 +42,6 @@ $wizardColor: (
         'wd-light-gray-2-color': $wd-light-gray-2-color
 ) !default;
 
-
-//  Color Scheme 1
-// 'wt' is prefix for "wizard template"
-$wt-primary-color: #e63946 !default;
+$color-scheme-classes: 'default', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6';
 
 
-// 3. Colors Array for root css variables
-$wizardColor: (
-        '--wp--preset--color--primary': $wt-primary-color,
-) !default;

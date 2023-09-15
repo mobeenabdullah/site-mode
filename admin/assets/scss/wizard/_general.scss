@@ -15,12 +15,6 @@
   }
 }
 
-.color-scheme-1 {
-  @each $color, $value in $wizardColor {
-    --#{$color}: #{$value} !important;
-  }
-}
-
 /*  b. Hide admin controls */
 .sm__wizard-mode #wpfooter,
 .sm__wizard-mode #wpadminbar,
@@ -68,6 +62,25 @@
 }
 html {
   padding-top: 0 !important;
+}
+
+/* g. Utilities */
+@each $color-class in $color-scheme-classes {
+  .#{$color-class}-primary {
+    background-color: var(--#{$color-class}--preset--color--primary);
+  }
+  .#{$color-class}-secondary {
+    background-color: var(--#{$color-class}--preset--color--secondary);
+  }
+  .#{$color-class}-base {
+    background-color: var(--#{$color-class}--preset--color--base);
+  }
+  .#{$color-class}-contrast {
+    background-color: var(--#{$color-class}--preset--color--contrast);
+  }
+  .#{$color-class}-tertiary {
+    background-color: var(--#{$color-class}--preset--color--tertiary);
+  }
 }
 
 @media screen and (max-width: 767px) {

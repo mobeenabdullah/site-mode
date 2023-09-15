@@ -113,9 +113,12 @@
     &:hover {
       & .sm_close_wizard {
         & .close_wizard_btn {
-          & svg {
-            & path {
-              fill: var(--wd-primary-color);
+          & span {
+            display: flex;
+            & svg {
+              & path {
+                fill: var(--wd-primary-color);
+              }
             }
           }
         }
