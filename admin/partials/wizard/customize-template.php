@@ -1,15 +1,15 @@
-<div class="template__import" style="display: none">
+<div class="customize__template sm_customize_settings" style="display: none">
     <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
-    <div class="template__import-wrapper">
-        <div class="template__import-cover">
-            <div class="template__import-layout">
+    <div class="customize__template-wrapper">
+        <div class="customize__template-cover">
+            <div class="customize__template-layout">
                 <div class="setting_dropdown wizard_show_mobile">
                     <div class="setting_dropdown-cover">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
                         <span>Show Customize Settings</span>
                     </div>
                 </div>
-                <div class="template__import-sidebar" aria-label="Navigation" role="region" tabindex="-1">
+                <div class="customize__template-sidebar" aria-label="Navigation" role="region" tabindex="-1">
                     <div class="sidebar_content">
                         <div class="sidebar_content-header">
                             <span>Template: <span class="template__name">Flavor Food</span></span>
@@ -36,7 +36,7 @@
                                 </div>
                                 <div class="settings__card-options">
                                     <div class="settings__card-options-box">
-                                        <div class="settings__card-options--label">
+                                        <div class="settings__card-options--label setting__label">
                                             <h3>Countdown</h3>
                                             <span class="sm__helper-text">Set timer to show on the website</span>
                                         </div>
@@ -48,7 +48,7 @@
                                         </div>
                                     </div>
                                     <div class="settings__card-options-box">
-                                        <div class="settings__card-options--label">
+                                        <div class="settings__card-options--label setting__label">
                                             <h3>Subscribe</h3>
                                             <span class="sm__helper-text">Set timer to show on the website</span>
                                         </div>
@@ -60,7 +60,7 @@
                                         </div>
                                     </div>
                                     <div class="settings__card-options-box">
-                                        <div class="settings__card-options--label">
+                                        <div class="settings__card-options--label setting__label">
                                             <h3>Social</h3>
                                             <span class="sm__helper-text">Set timer to show on the website</span>
                                         </div>
@@ -86,22 +86,22 @@
                                     </div>
                                 </div>
                                 <div class="settings__card-options">
-                                   <div class="color__scheme">
-                                       <div class="wizard-select">
-                                           <select name="color_scheme" id="color_scheme">
-                                               <option value="default">Default</option>
-                                               <option value="preset1">Preset 1</option>
-                                               <option value="preset2">Preset 2</option>
-                                               <option value="preset3">Preset 3</option>
-                                               <option value="preset4">Preset 4</option>
-                                               <option value="preset5">Preset 5</option>
-                                               <option value="preset6">Preset 6</option>
-                                           </select>
-                                           <div class="wizard-select-arrow">
-                                               <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg></span>
-                                           </div>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="default">
+                                    <div class="color__scheme">
+                                        <div class="wizard-select">
+                                            <select name="color_scheme" id="color_scheme">
+                                                <option value="default">Default</option>
+                                                <option value="preset1">Preset 1</option>
+                                                <option value="preset2">Preset 2</option>
+                                                <option value="preset3">Preset 3</option>
+                                                <option value="preset4">Preset 4</option>
+                                                <option value="preset5">Preset 5</option>
+                                                <option value="preset6">Preset 6</option>
+                                            </select>
+                                            <div class="wizard-select-arrow">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg></span>
+                                            </div>
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="default">
                                             <span class="color_circles">
                                                 <span class="color-circle default-primary"></span>
                                                 <span class="color-circle default-secondary"></span>
@@ -109,8 +109,8 @@
                                                 <span class="color-circle default-base"></span>
                                                 <span class="color-circle default-contrast"></span>
                                             </span>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="preset1">
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="preset1">
                                            <span class="color_circles">
                                                 <span class="color-circle p1-primary"></span>
                                                 <span class="color-circle p1-secondary"></span>
@@ -118,9 +118,9 @@
                                                 <span class="color-circle p1-base"></span>
                                                 <span class="color-circle p1-contrast"></span>
                                             </span>
-                                       </div>
+                                        </div>
 
-                                       <div class="color__scheme-preset-box" data-preset="preset2">
+                                        <div class="color__scheme-preset-box" data-preset="preset2">
                                            <span class="color_circles">
                                                 <span class="color-circle p2-primary"></span>
                                                 <span class="color-circle p2-secondary"></span>
@@ -128,8 +128,8 @@
                                                 <span class="color-circle p2-base"></span>
                                                 <span class="color-circle p2-contrast"></span>
                                             </span>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="preset3">
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="preset3">
                                            <span class="color_circles">
                                                 <span class="color-circle p3-primary"></span>
                                                 <span class="color-circle p3-secondary"></span>
@@ -137,8 +137,8 @@
                                                 <span class="color-circle p3-base"></span>
                                                 <span class="color-circle p3-contrast"></span>
                                             </span>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="preset4">
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="preset4">
                                             <span class="color_circles">
                                                 <span class="color-circle p4-primary"></span>
                                                 <span class="color-circle p4-secondary"></span>
@@ -146,8 +146,8 @@
                                                 <span class="color-circle p4-base"></span>
                                                 <span class="color-circle p4-contrast"></span>
                                             </span>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="preset5">
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="preset5">
                                             <span class="color_circles">
                                                 <span class="color-circle p5-primary"></span>
                                                 <span class="color-circle p5-secondary"></span>
@@ -155,8 +155,8 @@
                                                 <span class="color-circle p5-base"></span>
                                                 <span class="color-circle p5-contrast"></span>
                                             </span>
-                                       </div>
-                                       <div class="color__scheme-preset-box" data-preset="preset6">
+                                        </div>
+                                        <div class="color__scheme-preset-box" data-preset="preset6">
                                            <span class="color_circles">
                                                 <span class="color-circle p6-primary"></span>
                                                 <span class="color-circle p6-secondary"></span>
@@ -164,8 +164,8 @@
                                                 <span class="color-circle p6-base"></span>
                                                 <span class="color-circle p6-contrast"></span>
                                             </span>
-                                       </div>
-                                   </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="settings__card">
@@ -194,7 +194,7 @@
                                             </div>
                                         </div>
                                         <div class="fonts-preset-box" data-preset="default">
-                                           <span>Default</span>
+                                            <span>Default</span>
                                         </div>
                                         <div class="fonts-preset-box" data-preset="roboto">
                                             <span>Roboto</span>
@@ -217,7 +217,7 @@
                                 </svg>
                                 <span>Back</span>
                             </button>
-                            <button class="import-template template-init-next" type="button">
+                            <button class="start_importing next_button" type="button">
                                 <span>Next</span>
                                 <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
@@ -226,7 +226,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="template__import-content">
+                <div class="customize__template-content">
                     <div class="fullscreen_actions">
                         <button class="sm_full_screen" type="button" style="display: flex">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"></path></svg>
@@ -235,7 +235,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M12 16c2.206 0 4-1.794 4-4s-1.794-4-4-4-4 1.794-4 4 1.794 4 4 4zm0-6c1.084 0 2 .916 2 2s-.916 2-2 2-2-.916-2-2 .916-2 2-2z"></path><path d="m2.845 16.136 1 1.73c.531.917 1.809 1.261 2.73.73l.529-.306A8.1 8.1 0 0 0 9 19.402V20c0 1.103.897 2 2 2h2c1.103 0 2-.897 2-2v-.598a8.132 8.132 0 0 0 1.896-1.111l.529.306c.923.53 2.198.188 2.731-.731l.999-1.729a2.001 2.001 0 0 0-.731-2.732l-.505-.292a7.718 7.718 0 0 0 0-2.224l.505-.292a2.002 2.002 0 0 0 .731-2.732l-.999-1.729c-.531-.92-1.808-1.265-2.731-.732l-.529.306A8.1 8.1 0 0 0 15 4.598V4c0-1.103-.897-2-2-2h-2c-1.103 0-2 .897-2 2v.598a8.132 8.132 0 0 0-1.896 1.111l-.529-.306c-.924-.531-2.2-.187-2.731.732l-.999 1.729a2.001 2.001 0 0 0 .731 2.732l.505.292a7.683 7.683 0 0 0 0 2.223l-.505.292a2.003 2.003 0 0 0-.731 2.733zm3.326-2.758A5.703 5.703 0 0 1 6 12c0-.462.058-.926.17-1.378a.999.999 0 0 0-.47-1.108l-1.123-.65.998-1.729 1.145.662a.997.997 0 0 0 1.188-.142 6.071 6.071 0 0 1 2.384-1.399A1 1 0 0 0 11 5.3V4h2v1.3a1 1 0 0 0 .708.956 6.083 6.083 0 0 1 2.384 1.399.999.999 0 0 0 1.188.142l1.144-.661 1 1.729-1.124.649a1 1 0 0 0-.47 1.108c.112.452.17.916.17 1.378 0 .461-.058.925-.171 1.378a1 1 0 0 0 .471 1.108l1.123.649-.998 1.729-1.145-.661a.996.996 0 0 0-1.188.142 6.071 6.071 0 0 1-2.384 1.399A1 1 0 0 0 13 18.7l.002 1.3H11v-1.3a1 1 0 0 0-.708-.956 6.083 6.083 0 0 1-2.384-1.399.992.992 0 0 0-1.188-.141l-1.144.662-1-1.729 1.124-.651a1 1 0 0 0 .471-1.108z"></path></svg>
                         </button>
                     </div>
-                    <div class="template__import-content--canvas sm-scroll">
+                    <div class="customize__template-content--canvas sm-scroll">
                         <iframe src="<?php echo home_url(); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
                     </div>
                 </div>

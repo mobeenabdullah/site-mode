@@ -9,17 +9,15 @@
                 <div class="step_label">Select Template</div>
                 <div class="step_line"></div>
             </div>
-            <div class="sm-import sm-step">
+            <div class="sm-customize sm-step">
                 <div class="step_circle"></div>
-                <div class="step_label">import</div>
-                <!--<div class="step_line"></div>-->
+                <div class="step_label">Customize</div>
+                <div class="step_line"></div>
             </div>
-            <!--
-            <div class="sm-step-4 sm-step">
+            <div class="sm-import sm-step">
                 <div class="step_circle"></div>
                 <div class="step_label">Import</div>
             </div>
-            -->
         </div>
     </div>
     <div class="sm__wizard-header--close">
