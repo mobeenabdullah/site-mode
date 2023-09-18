@@ -26,7 +26,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         <div class="wizard__templates-filter">
                             <div class="wizard__templates-filter-cover">
                                 <?php foreach($categories as $key => $category ): ?>
-                                    <button type="button" class="template-category-filter filter_btn" data-template-category="<?php echo $key; ?>">
+                                    <button type="button" class="template-category-filter filter_btn <?php echo $key === 'all' ? 'active' : ''; ?> " data-template-category="<?php echo $key; ?>">
                                         <?php echo $category; ?>
                                     </button>
                                 <?php endforeach; ?>

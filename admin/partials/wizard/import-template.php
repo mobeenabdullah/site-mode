@@ -3,7 +3,7 @@
     $current_user = $get_current_user->user_email
 
 ?>
-<div class="customize__template template__import" style="display: block">
+<div class="customize__template template__import" style="display: none">
     <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
     <!--
     <button class="template-init-next import-template" type="button">
