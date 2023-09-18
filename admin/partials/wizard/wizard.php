@@ -34,6 +34,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         </div>
                     </div>
                     <div class="template_options wizard__templates-cards">
+                        <input type="hidden" name="template-name" id="selected-template-name">
                         <?php foreach($templates as $key => $template ): ?>
                             <div class="template_card template-content-wrapper wizard__templates-cards--single" data-category-name="<?php echo $template['category']; ?>">
                                 <div class="template_card-img" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);">

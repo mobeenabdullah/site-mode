@@ -27,12 +27,18 @@ jQuery(function ($) {
 
     // b.   Show selected template
     $('.select_tempalte').on('click', function() {
-        const templateName = $(this).attr('data-template-label');
+        const templateLabel = $(this).attr('data-template-label');
+        $('.template__name').html(templateLabel);
+        
+        // get template name and set value to hidden field
+        const templateName = $(this).attr('data-template-name');
+        $('#selected-template-name').val(templateName);
+
+        // show step 2
         $('.wizard__content').hide();
         $('.sm_customize_settings').show();
-        $('.template-init-next').attr('data-template-name', templateName);
         $('.sm-customize').addClass('active');
-        $('.template__name').html(templateName);
+        
         $('.template__import').hide();
     });
 
@@ -40,7 +46,6 @@ jQuery(function ($) {
     $('.template-init-back').on('click', function() {
         $('.wizard__content').show();
         $('.sm_customize_settings').hide();
-        $('.import-template').attr('data-template-name', '');
         $('.sm-customize').removeClass('active');
         $('.template__import').hide();
     });
@@ -70,7 +75,9 @@ jQuery(function ($) {
         const showSubscribe = document.getElementById("show-subscribe").checked;
         const showCountdown = document.getElementById("show-countdown").checked;
         const nonce = $("#template_init_field").val();
-        const templateName = $(this).attr('data-template-name');
+        const templateName = $('#selected-template-name').val();
+
+        if(!templateName) return;
 
         const data = {
             action: "ajax_site_mode_template_init",
@@ -81,8 +88,6 @@ jQuery(function ($) {
             showCountdown: showCountdown,
             wizard: true,
         }
-
-        console.log(data);
 
         $.ajax({
             url: ajaxObj.ajax_url,

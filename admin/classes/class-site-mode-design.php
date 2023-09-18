@@ -164,7 +164,7 @@ class Site_Mode_Design extends  Settings {
 
     protected function replace_template_countdown($template_name, $template_content = '') {
 
-        if($this->show_countdown == 'false' || $this->wizard != 'true'){
+        if($this->show_countdown == 'false' && $this->wizard == 'true'){
             $countdown_content = '';
         } else {
             $countdown_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/countdown.json';
@@ -175,8 +175,8 @@ class Site_Mode_Design extends  Settings {
         if(!str_contains($template_content, '---sm-countdown---')){
             return $template_content;
         } else {
-            $new_content = str_replace('---sm-countdown---', $countdown_content, $template_content);
-            return $new_content;
+            return str_replace('---sm-countdown---', $countdown_content, $template_content);
+
         }
 
     }
