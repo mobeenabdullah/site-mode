@@ -571,10 +571,13 @@ html {
 .wizard__templates-cards--single {
 	background-color: var(--wd-base-white-color);
 	position: relative;
-	transition: all .2s;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 	overflow: hidden;
 	border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
+	transition: box-shadow 0.3s ease-in-out;
+}
+
+.wizard__templates-cards--single:hover {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
 }
 
 .wizard__templates-cards--single .template_card-img {
@@ -829,13 +832,17 @@ html {
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options-box {
 	display: flex;
-	align-items: center;
+	align-items: flex-start;
 	justify-content: space-between;
 	gap: 2rem;
 }
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options-box:not(:last-child) {
 	margin-bottom: calc(clamp(0.725rem, 0.439rem + 0.762vw, 1.125rem));
+}
+
+.customize__template-sidebar .sidebar_content-settings .settings__card-options--label {
+	width: 50%;
 }
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options--label h3 {
@@ -864,12 +871,9 @@ html {
 }
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options .color__scheme-preset-box {
-	padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	height: calc(clamp(3.75rem, 2.857rem + 2.381vw, 5rem));
-	box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.05);
 	margin-top: 1rem;
 }
 
@@ -891,9 +895,19 @@ html {
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options .color__scheme .color_circles .color-circle {
 	display: block;
-	width: calc(clamp(1.5rem, 0.964rem + 1.429vw, 2.25rem));
-	height: calc(clamp(1.5rem, 0.964rem + 1.429vw, 2.25rem));
+	width: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
+	height: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
 	border-radius: 50%;
+}
+
+.customize__template-sidebar .sidebar_content-settings .settings__card-options--field {
+	width: 50%;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.customize__template-sidebar .sidebar_content-settings .settings__card-options--field input {
+	width: 10rem;
 }
 
 .customize__template-sidebar .sidebar_content-settings .settings__card .fonts__warpper .fonts-preset-box {
@@ -909,10 +923,6 @@ html {
 .customize__template-sidebar .sidebar_content-settings .settings__card .fonts__warpper .fonts-preset-box span {
 	font-size: calc(clamp(2.5rem, 2.5rem + 0vw, 2.5rem));
 	color: var(--wd-base-black-color);
-}
-
-.customize__template-sidebar .sidebar_content .subscribe_box .settings__card-options--field input {
-	width: 10rem;
 }
 
 .customize__template-sidebar .sidebar_content-actions {

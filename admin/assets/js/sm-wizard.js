@@ -27,7 +27,7 @@ jQuery(function ($) {
 
     // b.   Show selected template
     $('.select_tempalte').on('click', function() {
-        const templateName = $(this).attr('data-template-name');
+        const templateName = $(this).attr('data-template-label');
         $('.wizard__content').hide();
         $('.sm_customize_settings').show();
         $('.template-init-next').attr('data-template-name', templateName);
@@ -162,7 +162,6 @@ jQuery(function ($) {
     }
 
     setupSelectAndPresets('#color_scheme', '.color__scheme-preset-box');
-    setupSelectAndPresets('#fonts', '.fonts-preset-box');
 
 
     //  i.  Show/hide sidebar
