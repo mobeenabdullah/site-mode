@@ -95,7 +95,7 @@ class Template_Load {
     }
 
 	public function load_template() {
-		wp_enqueue_style( 'default_template', SITE_MODE_PUBLIC_URL . 'css/default_template.css', [], '0.0.2', 'all' );
+		wp_enqueue_style( 'default_template', SITE_MODE_PUBLIC_URL . 'css/default_template.css', [], '1.0.0', 'all' );
 		require_once SITE_MODE_PUBLIC . 'templates/default_template.php';
 		exit;
 	}

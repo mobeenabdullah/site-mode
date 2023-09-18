@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.2
+ * @since      1.0.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      0.0.2
+ * @since      1.0.0
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -25,6 +25,10 @@ class Site_Mode_Design extends  Settings {
     protected $option_name = 'site_mode_design';
     protected  $active_template = '';
     protected $page_id = '';
+    protected  $show_social = true;
+    protected  $show_subscribe = true;
+    protected  $show_countdown = true;
+    protected $wizard = false;
     protected $default_images = [
         'template-1' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
         'template-2' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
@@ -70,24 +74,30 @@ class Site_Mode_Design extends  Settings {
 
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
-        $template = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
+        $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
+        $this->show_countdown = $this->get_post_data( 'showCountdown', 'template_init_action', 'template_init_field', 'text' );
+        $this->show_social = $this->get_post_data( 'showSocial', 'template_init_action', 'template_init_field', 'text' );
+        $this->show_subscribe = $this->get_post_data( 'showSubscribe', 'template_init_action', 'template_init_field', 'text' );
+        $this->wizard = $this->get_post_data( 'wizard', 'template_init_action', 'template_init_field', 'text' );
+
         $this->get_template_props_init();
-        if(!isset($template)) {
-            $template = $this->active_template;
+        if(!isset($template_name)) {
+            $template_name = $this->active_template;
         }
 
         $design_data = [
-            'template' => $template,
+            'template' => $template_name,
             'page_id' => $this->page_id
         ];
 
         // check has maintaince page
-        $page_id = $this->check_maintaince_page($this->page_id, $template);
+        $page_id = $this->check_maintaince_page($this->page_id, $template_name);
         $design_data['page_id'] = $page_id;
         $this->page_id = $page_id;
+        $template_content      = json_decode($this->replace_template_default_image($template_name));
+        $template_content = $this->replace_template_countdown($template_name, $template_content->content);
+        $blocks = str_replace( '\n', '', $template_content );
 
-        $template      = json_decode( $this->replace_template_default_image($template) );
-        $blocks = str_replace( '\n', '', $template->content );
         $post = get_post( $page_id );
         $post->post_content = $blocks;
         $post->page_template = 'templates/sm-page-template.php';
@@ -118,8 +128,9 @@ class Site_Mode_Design extends  Settings {
     public function create_maintaince_page ($template_name = '') {
         // Create a new page and insert blocks code
         $page_title = 'Maintenance Page';
-        $template      = json_decode( $this->replace_template_default_image($template_name) );
-        $blocks = str_replace( '\n', '', $template->content );
+        $template_content      = json_decode( $this->replace_template_default_image($template_name) );
+        $template_content = $this->replace_template_countdown($template_name, $template_content->content);
+        $blocks = str_replace( '\n', '', $template_content );
 
         // Create the page
         $page_id = wp_insert_post( array(
@@ -151,76 +162,114 @@ class Site_Mode_Design extends  Settings {
         }
     }
 
+    protected function replace_template_countdown($template_name, $template_content = '') {
+
+        if($this->show_countdown == 'false' || $this->wizard != 'true'){
+            $countdown_content = '';
+        } else {
+            $countdown_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/countdown.json';
+            $countdown_content = json_decode(file_get_contents($countdown_url))->content;
+        }
+
+
+        if(!str_contains($template_content, '---sm-countdown---')){
+            return $template_content;
+        } else {
+            $new_content = str_replace('---sm-countdown---', $countdown_content, $template_content);
+            return $new_content;
+        }
+
+    }
+
     public function replace_template_default_image($template_name = '') {
         $template_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/blocks-export.json';
         $template_content = file_get_contents($template_url);
         $image_url = $this->default_images[$template_name];
 
-        if(!str_contains($template_content, $template_name)){
-            return $template_content;
-        } else {
+        try {
 
-            // Fetch the image and save it to the uploads directory
-            $upload_dir = wp_upload_dir();
-            $image_data = file_get_contents($image_url);
-            $filename = basename($image_url);
-            $file_path = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
-            $media_id  = '';
-
-            // Check if the file already exists
-            if (!file_exists($file_path)) {
-                file_put_contents($file_path, $image_data);
-
-                // Add the image to the media library
-                $attachment = array(
-                    'post_title' => sanitize_file_name($template_name),
-                    'post_content' => '',
-                    'post_status' => 'inherit'
-                );
-
-                $attach_id = wp_insert_attachment($attachment, $file_path);
-                $media_id = $attach_id;
-
-                // Update image metadata
-                require_once ABSPATH . 'wp-admin/includes/image.php';
-                $attach_data = wp_generate_attachment_metadata($attach_id, $file_path);
-                wp_update_attachment_metadata($attach_id, $attach_data);
+            if(!str_contains($template_content, $template_name)){
+                return $template_content;
             } else {
-                $attachment_posts = get_posts(array(
-                    'post_type' => 'attachment',
-                    'post_status' => 'inherit',
-                    'meta_query' => array(
-                        array(
-                            'key' => '_wp_attached_file',
-                            'value' => $template_name . '-' . $filename,
-                            'compare' => 'LIKE'
-                        )
-                    )
-                ));
 
-                if(!empty($attachment_posts)){
-                    $media_id = $attachment_posts[0]->ID;
+                // Fetch the image and save it to the uploads directory
+                $upload_dir = wp_upload_dir();
+                $image_data = file_get_contents($image_url);
+                $filename = basename($image_url);
+                $file_path = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
+                $media_id  = '';
+
+                // Check if the file already exists
+                if (!file_exists($file_path)) {
+                    file_put_contents($file_path, $image_data);
+
+                    // Add the image to the media library
+                    $attachment = array(
+                        'post_title' => sanitize_file_name($template_name),
+                        'post_content' => '',
+                        'post_status' => 'inherit'
+                    );
+
+                    $media_id = wp_insert_attachment($attachment, $file_path);
+
+                    // Update image metadata
+                    require_once ABSPATH . 'wp-admin/includes/image.php';
+                    $attach_data = wp_generate_attachment_metadata($media_id, $file_path);
+                    wp_update_attachment_metadata($media_id, $attach_data);
                 } else {
-                    $media_id = '';
+
+                    $attachment_posts = get_posts(array(
+                        'post_type' => 'attachment',
+                        'post_status' => 'inherit',
+                        'meta_query' => array(
+                            array(
+                                'key' => '_wp_attached_file',
+                                'value' => $template_name . '-' . $filename,
+                                'compare' => 'LIKE'
+                            )
+                        )
+                    ));
+
+                    if(!empty($attachment_posts)){
+                        $media_id = $attachment_posts[0]->ID;
+                    } else {
+
+                        $attachment = array(
+                            'post_title' => sanitize_file_name($template_name),
+                            'post_content' => '',
+                            'post_status' => 'inherit'
+                        );
+
+                        $media_id = wp_insert_attachment($attachment, $file_path);
+
+                        // Update image metadata
+                        require_once ABSPATH . 'wp-admin/includes/image.php';
+                        $attach_data = wp_generate_attachment_metadata($media_id, $file_path);
+                        wp_update_attachment_metadata($media_id, $attach_data);
+
+                    }
+
+
+                }
+
+                // Check if the image was successfully uploaded
+                if ($media_id) {
+                    $media_url = wp_get_attachment_url($media_id);
+                    if ($media_url) {
+                        // Replace "image1.png" with the WordPress media URL
+                        $new_content = str_replace($template_name, $media_url, $template_content);
+                        // Save the updated content back to template-content.php
+                        return $new_content;
+                    } else {
+                        return $template_content;
+                    }
+
+                } else {
                     return $template_content;
                 }
-
-
             }
-
-            // Check if the image was successfully uploaded
-            if ($media_id) {
-                $media_url = wp_get_attachment_url($media_id);
-                if ($media_url) {
-                    // Replace "image1.png" with the WordPress media URL
-                    $new_content = str_replace($template_name, $media_url, $template_content);
-                    // Save the updated content back to template-content.php
-                    return $new_content;
-                }
-
-            } else {
-                return $template_content;
-            }
+        } catch (Exception $e) {
+            return $template_content;
         }
     }
 

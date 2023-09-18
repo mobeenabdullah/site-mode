@@ -4,7 +4,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.2
+ * @since      1.0.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -25,7 +25,7 @@ class Site_Mode_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    0.0.2
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Site_Mode_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    0.0.2
+	 * @since    1.0.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -49,7 +49,7 @@ class Site_Mode_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    0.0.2
+	 * @since    1.0.0
 	 * @param      string $plugin_name       The name of this plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
@@ -108,8 +108,16 @@ class Site_Mode_Admin {
 				'ajax_nonce' => wp_create_nonce( 'site_mode_nonce_field' ),
 			]
 		);
+
         if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && empty(get_option('sm-fresh-installation'))) {
             wp_enqueue_script( 'sm-wizard', plugin_dir_url( __FILE__ ) . 'assets/js/sm-wizard.js', [ 'jquery' ], $this->version, true );
+            wp_localize_script(
+                'sm-wizard',
+                'ajaxObj',
+                [
+                    'ajax_url'   => admin_url( 'admin-ajax.php' ),
+                ]
+            );
         }
 	}
 

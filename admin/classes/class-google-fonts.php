@@ -3,7 +3,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.2
+ * @since      1.0.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes

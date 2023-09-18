@@ -1,4 +1,4 @@
-<div class="template__import" style="display: block">
+<div class="template__import" style="display: none">
     <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
     <div class="template__import-wrapper">
         <div class="template__import-cover">
@@ -236,7 +236,7 @@
                         </button>
                     </div>
                     <div class="template__import-content--canvas sm-scroll">
-                        <iframe src="https://site-mode-blocks.local/?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
+                        <iframe src="<?php echo home_url(); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
                     </div>
                 </div>
             </div>
