@@ -70,9 +70,10 @@ function setCountContent(intervalArr) {
 
 var end = '';
 window.addEventListener('DOMContentLoaded', (event) => {
-	const dueDate = document.querySelector('.due-date').value;
+	const dueDateSelector = document.querySelector('.due-date')
 
-	if(dueDate !== ''){
+	if(dueDateSelector && dueDateSelector.value !== ''){
+		const dueDate = dueDateSelector.value;
 		end = new Date(dueDate);
 		var countInterval = setInterval(countdownHandler, 1000);
 		countdownHandler(countInterval);

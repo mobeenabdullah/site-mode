@@ -87,7 +87,7 @@ function enqueue_my_block_script() {
 	// Enqueue the JavaScript file for your block
 	wp_enqueue_script(
 			'sm-countdown-block', // Handle
-			plugin_dir_url(__FILE__) . 'src/frontend.js', // Adjust the path as needed
+			plugin_dir_url(__FILE__) . 'src/sm-countdown-frontend.js', // Adjust the path as needed
 			array('wp-blocks', 'wp-editor'), // Dependencies
 			'1.0.0', // Version number
 			true // Load in the footer
