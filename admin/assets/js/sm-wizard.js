@@ -27,6 +27,9 @@ jQuery(function ($) {
 
     // b.   Show selected template
     $('.select_tempalte').on('click', function() {
+        const templateLabel = $(this).attr('data-template-label');
+        $('.template__name').html(templateLabel);
+        
         // get template name and set value to hidden field
         const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
@@ -35,7 +38,7 @@ jQuery(function ($) {
         $('.wizard__content').hide();
         $('.sm_customize_settings').show();
         $('.sm-customize').addClass('active');
-        $('.template__name').html(templateName);
+        
         $('.template__import').hide();
     });
 
@@ -164,7 +167,6 @@ jQuery(function ($) {
     }
 
     setupSelectAndPresets('#color_scheme', '.color__scheme-preset-box');
-    setupSelectAndPresets('#fonts', '.fonts-preset-box');
 
 
     //  i.  Show/hide sidebar
