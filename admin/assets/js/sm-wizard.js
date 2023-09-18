@@ -56,9 +56,9 @@ jQuery(function ($) {
         const showCountdown = document.getElementById("show-countdown").checked;
         iframe.contentWindow.postMessage(
             {
-                hideCountdown: showCountdown,
-                hideSubscribeBox: showSubscribe,
-                hideSocialIcons: showSocial,
+                hideCountdown: !showCountdown,
+                hideSubscribeBox: !showSubscribe,
+                hideSocialIcons: !showSocial,
             },
             "*"
         )
@@ -79,7 +79,10 @@ jQuery(function ($) {
             showSocial: showSocial,
             showSubscribe: showSubscribe,
             showCountdown: showCountdown,
+            wizard: true,
         }
+
+        console.log(data);
 
         $.ajax({
             url: ajaxObj.ajax_url,

@@ -5,7 +5,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
     <!-- Select Template -->
-    <div class="wizard__content" style="display: none">
+    <div class="wizard__content" style="display: block">
         <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
         <div class="wizard__content-wrapper">
             <div class="wizard_container">
@@ -26,7 +26,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         <div class="wizard__templates-filter">
                             <div class="wizard__templates-filter-cover">
                                 <?php foreach($categories as $key => $category ): ?>
-                                    <button type="button" class="template-category-filter filter_btn" data-template-category="<?php echo $key; ?>">
+                                    <button type="button" class="template-category-filter filter_btn <?php echo $key === 'all' ? 'active' : ''; ?> " data-template-category="<?php echo $key; ?>">
                                         <?php echo $category; ?>
                                     </button>
                                 <?php endforeach; ?>
@@ -42,7 +42,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                                 </div>
                                 <div class="template_card-actions">
                                     <a href="#">Live Demo</a>
-                                    <button type="button" class="select_tempalte" data-template-name="<?php echo $template['name']; ?>">Select</button>
+                                    <button type="button" class="select_tempalte" data-template-name="<?php echo $key; ?>">Select</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>
