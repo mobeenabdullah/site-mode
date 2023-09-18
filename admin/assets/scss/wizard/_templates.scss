@@ -36,7 +36,8 @@
         border-right: 1px solid var(--wd-input-border-color);
       }
       &.active {
-        background-color: var(--wd-base-white-color);
+        background-color: var(--wd-base-black-color);
+        color: var(--sm-base-white-color);
       }
     }
   }

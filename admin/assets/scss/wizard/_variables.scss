@@ -17,6 +17,7 @@ $wd-input-border-color: #DDDDDD !default;
 $wd-primary-light-color: #e1dbff !default;
 $wd-light-gray-1-color: #dddddd !default;
 $wd-light-gray-2-color: #fafafa !default;
+$wd-helper-text-color: #666666 !default;
 
 
 // 3. Colors Array for root css variables
@@ -39,7 +40,8 @@ $wizardColor: (
         'wd-input-border-color': $wd-input-border-color,
         'wd-primar-light-color': $wd-primary-light-color,
         'wd-light-gray-1-color': $wd-light-gray-1-color,
-        'wd-light-gray-2-color': $wd-light-gray-2-color
+        'wd-light-gray-2-color': $wd-light-gray-2-color,
+        'wd-helper-text-color': $wd-helper-text-color
 ) !default;
 
 $color-scheme-classes: 'default', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6';

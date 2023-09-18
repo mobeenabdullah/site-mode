@@ -53,6 +53,8 @@ $categories = get_option('site_mode_design_templates')['categories'];
         </div>
     </div>
 
-    <?php include(SITE_MODE_ADMIN . 'partials/wizard/template-import.php'); ?>
+    <?php include(SITE_MODE_ADMIN . 'partials/wizard/customize-template.php'); ?>
+
+    <?php include(SITE_MODE_ADMIN . 'partials/wizard/import-template.php'); ?>
 
 </div>
