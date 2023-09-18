@@ -1,7 +1,7 @@
 .body_template_importer {
   overflow: hidden;
 }
-.template__import {
+.customize__template {
   display: flex;
   flex-direction: column;
   bottom: 0;
@@ -115,17 +115,18 @@
         }
         & .settings__card {
           border-bottom: 1px solid var(--wd-border-color);
+          &:last-child {
+            border: none;
+          }
           &-title {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: var(--wd-light-gray-2-color);
             & h2 {
               margin: 0;
               font-size: calc(clamp(1.1rem, 0.886rem + 0.571vw, 1.4rem));
               padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
               flex: 1;
-              cursor: pointer;
               user-select: none;
             }
             & .sm-setting-reset {
@@ -147,10 +148,11 @@
           }
           &-options {
             padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
-            & .settings__card-options-box {
+            &-box {
               display: flex;
               align-items: center;
               justify-content: space-between;
+              gap: 2rem;
               &:not(:last-child) {
                 margin-bottom: calc(clamp(0.725rem, 0.439rem + 0.762vw, 1.125rem));
               }
@@ -162,10 +164,21 @@
                 font-size: calc(clamp(1rem, 0.929rem + 0.19vw, 1.1rem));
                 user-select: none;
               }
-              & .sm__helper-text {
-                font-size: calc(clamp(0.655rem, 0.623rem + 0.086vw, 0.7rem));
-                color: var(--wd-base-black-color);
+              & h4 {
+                margin: 0;
+                padding: 0;
+                font-size: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
                 user-select: none;
+                color: var(--wd-base-black-color);
+                margin-bottom: 0.5rem;
+              }
+              & .sm__helper-text {
+                font-size: calc(clamp(0.655rem, 0.623rem + 0.086vw, 0.6rem));
+                color: var(--wd-helper-text-color);
+                user-select: none;
+                line-height: 1.2;
+                margin: 0;
+                padding: 0;
               }
             }
             & .color__scheme {
@@ -216,6 +229,13 @@
           }
         }
       }
+      & .subscribe_box {
+        & .settings__card-options--field {
+          & input {
+            width: 10rem;
+          }
+        }
+      }
       &-actions {
         background-color: var(--wd-base-white-color);
         position: absolute;
@@ -237,7 +257,8 @@
           border: none;
           border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
           cursor: pointer;
-          &.import-template {
+          line-height: 1;
+          &.next_button {
             background-color: var(--wd-primary-color);
             color: var(--wd-base-white-color);
           }

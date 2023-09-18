@@ -1,18 +1,18 @@
 /*---------------------------------------------------------
-   a.   Filter by categories
-   b.   Show Import Screen
+   a.   Templates filter by categories
+   b.   Show selected template
    c.   Back to template page
    d.   Post message to iframe
-   f.   Import template
-   g.   show and hide options
-   h.   Reset Functionality
-   i.   change colors
-   j.   Show/hide sidebar
+   e.   AJAX Functionality for import template
+   f.   show and hide sidebar options on mobile
+   g.   Reset to default options functionality
+   h    On select change fonts/colors
+   i.   Show/hide sidebar
 ---------------------------------------------------------*/
 
 jQuery(function ($) {
 
-    //  a.  Filter by categories
+    //  a.  Templates filter by categories
     $('.template-category-filter').on('click', function() {
         $('.template-category-filter').removeClass('active');
         $(this).addClass('active');
@@ -25,22 +25,24 @@ jQuery(function ($) {
         }
     });
 
-     // b.   Show import screen
+    // b.   Show selected template
     $('.select_tempalte').on('click', function() {
         const templateName = $(this).attr('data-template-name');
         $('.wizard__content').hide();
-        $('.template__import').show();
+        $('.sm_customize_settings').show();
         $('.template-init-next').attr('data-template-name', templateName);
-        $('.sm-import').addClass('active');
+        $('.sm-customize').addClass('active');
         $('.template__name').html(templateName);
+        $('.template__import').hide();
     });
 
     // c.   Back to Template Page
     $('.template-init-back').on('click', function() {
         $('.wizard__content').show();
-        $('.template__import').hide();
+        $('.sm_customize_settings').hide();
         $('.import-template').attr('data-template-name', '');
-        $('.sm-import').removeClass('active');
+        $('.sm-customize').removeClass('active');
+        $('.template__import').hide();
     });
 
     // d.   Post message to iframe
@@ -62,7 +64,7 @@ jQuery(function ($) {
         )
     }
 
-    // f.   Import template
+    // e.   AJAX Functionality for import template
     $('.import-template').on('click', function() {
         const showSocial = document.getElementById("show-social").checked;
         const showSubscribe = document.getElementById("show-subscribe").checked;
@@ -97,8 +99,8 @@ jQuery(function ($) {
         });
     });
 
-    // g.   show and hide options
-    const $sidebarContent = $(".template__import-sidebar");
+    // f.   show and hide sidebar options on mobile
+    const $sidebarContent = $(".sm_customize_settings-sidebar");
     const isMobile = window.innerWidth <= 768;
 
     if (isMobile) {
@@ -121,10 +123,7 @@ jQuery(function ($) {
     });
 
 
-
-
-
-   // h.    Reset Functionality
+   // g.    Reset to default options functionality
     function handleSettingsClick() {
         const $parentOfAction = $(this).closest('.settings__card');
 
@@ -134,20 +133,19 @@ jQuery(function ($) {
                 const checkboxValue = $(this).val();
                 return checkboxValue === '1' || checkboxValue === 'true';
             });
-        } else if ($(this).hasClass('settings__card-options--label')) {
+        } else if ($(this).hasClass('setting__label')) {
             // Toggle checkbox click on labels
             const $checkbox = $(this).siblings('.settings__card-options--field').find("input[type='checkbox']");
             $checkbox.prop('checked', function(_, checked) {
                 return !checked;
             });
         }
-
         sendPostMessage();
     }
 
-    $('.settings__card-options--label, .sm-setting-reset-components').on('click', handleSettingsClick);
+    $('.setting__label, .sm-setting-reset-components').on('click', handleSettingsClick);
 
-    // i    change colors and fonts
+    // h.    On select change fonts/colors
     function setupSelectAndPresets(selectId, presetBoxesClass) {
         $(presetBoxesClass).hide();
         var selectedOption = $(selectId).val();
@@ -164,12 +162,69 @@ jQuery(function ($) {
     setupSelectAndPresets('#fonts', '.fonts-preset-box');
 
 
-    //  j.  Show/hide sidebar
+    //  i.  Show/hide sidebar
     function toggleSidebar() {
-        $('.template__import-sidebar').toggleClass('slide_right_to_left');
-        $('.sm_full_screen, .sm_exit_full_screen').toggle();
+        const sidebar = $(this).parent().parent().prev();
+
+        sidebar.toggleClass('slide_right_to_left');
+        sidebar.prev().toggle();
+
+        if (sidebar.hasClass('slide_right_to_left')) {
+            // sidebar.slideRight(300);
+            $('.sm_full_screen').css('display', 'none');
+            $('.sm_exit_full_screen').css('display', 'flex');
+            console.log('if condition');
+        } else {
+            // sidebar.slideLeft(300);
+            $('.sm_full_screen').css('display', 'flex');
+            $('.sm_exit_full_screen').css('display', 'none');
+            console.log('else condition');
+        }
+
     }
     $('.sm_full_screen, .sm_exit_full_screen').on('click', toggleSidebar);
+
+
+    // b.   Show selected template
+    $('.start_importing').on('click', function() {
+        $('.wizard__content').hide();
+        $('.sm_customize_settings').hide();
+        $('.template__import').show();
+        $('.sm-import').addClass('active');
+    });
+
+    $('.template-back-customize').on('click', function() {
+        $('.wizard__content').hide();
+        $('.sm_customize_settings').show();
+        $('.import-template').attr('data-template-name', '');
+        $('.sm-import').removeClass('active');
+        $('.template__import').hide();
+    });
+
+    updateSubscribeBoxDisplay();
+
+    $('#show-subscribe-field').change(function() {
+        updateSubscribeBoxDisplay();
+    });
+
+    $('.subscribe_label').click(function() {
+        $('.subscribe_box').toggle();
+        // Change the checkbox value
+        $('#show-subscribe-field').prop('checked', function(_, checked) {
+            return !checked; // Toggle the checkbox value
+        });
+
+    });
+
+
+    function updateSubscribeBoxDisplay() {
+        if ($('#show-subscribe-field').is(':checked')) {
+            $('.subscribe_box').show();
+        } else {
+            $('.subscribe_box').hide();
+        }
+    }
+
 
 });
 
