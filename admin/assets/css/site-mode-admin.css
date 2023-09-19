@@ -15,23 +15,22 @@ Plugin general styling
       (g) Import/Export Tab
   7.  Sidebar
   8.  Responsiveness
-  9.  Wizard
 ------------------------------------------------*/
 /*-----------------------------------------------
 1.  CSS root variables
 -----------------------------------------------*/
 :root {
-	--sm-primary-color: #6B4BFD;
+	--sm-primary-color: #fe4773;
 	--sm-primary-light-color: #ECECFC;
 	--sm-secondary-color: #202020;
 	--sm-base-white-color: #ffffff;
 	--sm-base-black-color: #141414;
-	--sm-toast-base-color: #6B4BFD;
+	--sm-toast-base-color: #fe4773;
 	--sm-toast-icon-bg: #202020;
 	--sm-toast-text-color: #ffffff;
 	--sm-toast-error-color: #dc3545;
-	--sm-button-bg-color: #6B4BFD;
-	--sm-button-border-color: #6B4BFD;
+	--sm-button-bg-color: #fe4773;
+	--sm-button-border-color: #fe4773;
 	--sm-sidebar-title-color: #2b3e73;
 	--sm-sidebar-border-color: #EDEFF7;
 	--sm-input-border-color: #cfd7e2;
@@ -39,10 +38,7 @@ Plugin general styling
 	--sm-setting-page-bg-color: #F7F8FE;
 	--sm-social-media-color: #F6F7FE;
 	--sm-social-media-border: #cbd6e5;
-	--sm-wizard-border: #CCCCCC;
-	--sm-wizard-bg: #EEEEEE;
 	--sm-open-sans: Open Sans, sans-serif;
-
 }
 
 /*-----------------------------------------------
@@ -73,12 +69,6 @@ Plugin general styling
 
 .hide_socialmedia, .hide_field, .sm_hide_field {
 	display: none;
-}
-.show_desktop {
-	display: block !important;
-}
-.show_mobile {
-	display: none !important;
 }
 
 /*-----------------------------------------------
@@ -285,12 +275,11 @@ body {
 	text-decoration: none !important;
 	display: block !important;
 	text-align: center !important;
-	cursor: pointer;
 }
 
 .submit_button input:hover, .submit_button input:focus, .submit_button button:hover, .submit_button button:focus, .submit_button a:hover, .submit_button a:focus {
-	background-color: #5f3cfd !important;
-	border-color: #5f3cfd !important;
+	background-color: #fe3867 !important;
+	border-color: #fe3867 !important;
 	outline: none !important;
 	box-shadow: 0 0 0 1px var(--sm-base-white-color), 0 0 0 3px var(--sm-primary-color) !important;
 }
@@ -1553,7 +1542,7 @@ input[type=file] {
 	margin: 0;
 	background-color: var(--sm-primary-color);
 	color: var(--sm-base-white-color);
-	box-shadow: rgba(107, 75, 253, 0.4) 0px 0.375rem 1.25rem 0px;
+	box-shadow: rgba(254, 71, 115, 0.4) 0px 0.375rem 1.25rem 0px;
 }
 
 .sm_tabs-link.current svg path, .sm_tabs-link.current svg circle {
@@ -1920,4 +1909,4 @@ input[type=file] {
 	left: 0 !important;
 }
 
-
+/*# sourceMappingURL=site-mode-admin.css.map */

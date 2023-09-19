@@ -51,13 +51,13 @@
 -----------------------------------------------------*/
 /*  a.   CSS Root Variables */
 :root {
-	--wt-primary-color: #6B4BFD;
+	--wt-primary-color: #fe4773;
 	--wt-secondary-color: #202020;
 	--wt-base-white-color: #ffffff;
 	--wt-base-black-color: #333333;
 	--wt-error-color: #dc3545;
 	--wt-success-color: #5f3cfd;
-	--wd-primary-color: #6B4BFD;
+	--wd-primary-color: #fe4773;
 	--wd-primary-light-color: #6B4BFD;
 	--wd-border-color: #eeeeee;
 	--wd-bg-color: #F9F9F9;
@@ -931,9 +931,6 @@ html {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	display: flex;
-	gap: 1rem;
-	justify-content: space-between;
 	padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
 	border-top: 1px solid var(--wd-border-color);
 	box-sizing: border-box;
@@ -943,6 +940,12 @@ html {
 	.customize__template-sidebar .sidebar_content-actions {
 		position: relative;
 	}
+}
+
+.customize__template-sidebar .sidebar_content-actions .customize__actions, .customize__template-sidebar .sidebar_content-actions .import__actions {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
 }
 
 .customize__template-sidebar .sidebar_content-actions button {

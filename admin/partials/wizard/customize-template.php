@@ -216,31 +216,33 @@
                         </div>
                         <div class="sidebar_content-actions">
                             <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
-                            <button class="template-init-back" type="button">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.8433 0.94495L4 0.0390625L0 4.33594L4 8.63281L4.8433 7.72693L2.28299 4.97659L8 4.97659V3.69528L2.28299 3.69528L4.8433 0.94495Z" fill="black"/>
-                                </svg>
-                                <span>Back</span>
-                            </button>
-                            <button class="start_importing next_button" type="button">
-                                <span>Next</span>
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
-                                </svg>
-                            </button>
+                            <div class="customize__actions" style="display: flex;">
+                                <button class="template-init-back" type="button">
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.8433 0.94495L4 0.0390625L0 4.33594L4 8.63281L4.8433 7.72693L2.28299 4.97659L8 4.97659V3.69528L2.28299 3.69528L4.8433 0.94495Z" fill="black"/>
+                                    </svg>
+                                    <span>Back</span>
+                                </button>
+                                <button class="start_importing next_button" type="button">
+                                    <span>Next</span>
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="import__actions" style="display: none;">
+                                <button class="template-back-customize" type="button">
+                                    <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M4.8433 0.94495L4 0.0390625L0 4.33594L4 8.63281L4.8433 7.72693L2.28299 4.97659L8 4.97659V3.69528L2.28299 3.69528L4.8433 0.94495Z" fill="black"/>
+                                    </svg>
+                                    <span>Back</span>
+                                </button>
+                                <button class="next_button import-template" type="button">
+                                    <span>Start Importing</span>
+                                </button>
+                            </div>
                         </div>
-                        <div class="sidebar_content-actions">
-                            <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
-                            <button class="template-back-customize" type="button">
-                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4.8433 0.94495L4 0.0390625L0 4.33594L4 8.63281L4.8433 7.72693L2.28299 4.97659L8 4.97659V3.69528L2.28299 3.69528L4.8433 0.94495Z" fill="black"/>
-                                </svg>
-                                <span>Back</span>
-                            </button>
-                            <button class="next_button import-template" type="button">
-                                <span>Start Importing</span>
-                            </button>
-                        </div>
+
                     </div>
                 </div>
                 <div class="customize__template-content">

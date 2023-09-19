@@ -1,5 +1,5 @@
 // 'wt' is prefix for "wizard template"
-$wt-primary-color: #6B4BFD !default;
+$wt-primary-color: #fe4773 !default;
 $wt-secondary-color:  #202020 !default;
 $wt-base-white-color: #ffffff !default;
 $wt-base-black-color: #333333 !default;
@@ -7,7 +7,7 @@ $wt-error-color: #dc3545 !default;
 $wt-success-color: #5f3cfd !default;
 
 // 'wd' is prefix for "wizard dashboard"
-$wd-primary-color: #6B4BFD !default;
+$wd-primary-color: #fe4773 !default;
 $wd-primary-light: #6B4BFD !default;
 $wd-border-color: #eeeeee !default;
 $wd-bg-color: #F9F9F9 !default;
@@ -18,7 +18,6 @@ $wd-primary-light-color: #e1dbff !default;
 $wd-light-gray-1-color: #dddddd !default;
 $wd-light-gray-2-color: #fafafa !default;
 $wd-helper-text-color: #666666 !default;
-
 
 // 3. Colors Array for root css variables
 $wizardColor: (
@@ -43,6 +42,7 @@ $wizardColor: (
         'wd-light-gray-2-color': $wd-light-gray-2-color,
         'wd-helper-text-color': $wd-helper-text-color
 ) !default;
+
 
 $color-scheme-classes: 'default', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6';
 

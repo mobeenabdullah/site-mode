@@ -244,14 +244,16 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
         padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
         border-top: 1px solid var(--wd-border-color);
         box-sizing: border-box;
         @media screen and (max-width: 960px) {
           position: relative;
+        }
+        & .customize__actions, & .import__actions {
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
         }
         & button {
           padding: calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem)) calc(clamp(0.875rem, 0.563rem + 0.833vw, 1.313rem));
