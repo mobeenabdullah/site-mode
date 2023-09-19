@@ -56,7 +56,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
 
     <?php include(SITE_MODE_ADMIN . 'partials/wizard/customize-template.php'); ?>
 
-    <?php include(SITE_MODE_ADMIN . 'partials/wizard/import-template.php'); ?>
+    <?php //include(SITE_MODE_ADMIN . 'partials/wizard/import-template.php'); ?>
 
     <div id="importing__popup" class="sm-modal">
         <div class="sm-modal-content">

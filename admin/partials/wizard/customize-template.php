@@ -1,3 +1,8 @@
+<?php
+    $get_current_user = wp_get_current_user();
+    $current_user = $get_current_user->user_email
+?>
+
 <div class="customize__template sm_customize_settings" style="display: none">
     <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
     <div class="customize__template-wrapper">
@@ -10,7 +15,7 @@
                     </div>
                 </div>
                 <div class="customize__template-sidebar" aria-label="Navigation" role="region" tabindex="-1">
-                    <div class="sidebar_content">
+                    <div class="sidebar_content customize__sidebar-content"  style="display: block;">
                         <div class="sidebar_content-header">
                             <span>Template: <span class="template__name">Flavor Food</span></span>
                             <button class="sm__edit-template template-init-back" type="button">
@@ -175,6 +180,39 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="settings__card">
+                                <div class="settings__card-title sm_open_panel">
+                                    <h2 class="settings_card_heading">Import Settings</h2>
+                                </div>
+                                <div class="settings__card-options">
+                                    <div class="settings__card-options-box">
+                                        <div class="settings__card-options--label subscribe_label">
+                                            <h3>Subscribe</h3>
+                                            <p class="sm__helper-text">Subscribe to learn about new templates & features for Site Mode.</p>
+                                        </div>
+                                        <div class="settings__card-options--field">
+                                            <span class="btn-toggle">
+                                                <input type="checkbox" name="show-subscribe-field" id="show-subscribe-field" class="show-subscribe-field" value="1" checked>
+                                                <label class="toggle" for="show-subscribe-field"></label>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="subscribe_box" style="display: none;">
+                                        <div class="settings__card-options-box">
+                                            <div class="settings__card-options--label subscribe__label">
+                                                <h4>Email</h4>
+                                                <p class="sm__helper-text">We do not spam, unsubscribe antime.</p>
+                                            </div>
+                                            <div class="settings__card-options--field">
+                                                <input type="text" name="sm-subscribe-field" id="sm-subscribe-field" class="show-subscribe-field" value="<?php echo $current_user; ?>">
+                                                <label for="sm-subscribe-field"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button class="open-popup open-import-popup" data-popup="importing__popup" type="button">Open Importing Popup</button>
+                                </div>
+                            </div>
                         </div>
                         <div class="sidebar_content-actions">
                             <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
@@ -189,6 +227,18 @@
                                 <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
                                 </svg>
+                            </button>
+                        </div>
+                        <div class="sidebar_content-actions">
+                            <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
+                            <button class="template-back-customize" type="button">
+                                <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4.8433 0.94495L4 0.0390625L0 4.33594L4 8.63281L4.8433 7.72693L2.28299 4.97659L8 4.97659V3.69528L2.28299 3.69528L4.8433 0.94495Z" fill="black"/>
+                                </svg>
+                                <span>Back</span>
+                            </button>
+                            <button class="next_button import-template" type="button">
+                                <span>Start Importing</span>
                             </button>
                         </div>
                     </div>
