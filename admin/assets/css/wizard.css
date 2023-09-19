@@ -1358,22 +1358,23 @@ html {
 	margin-top: 2.5rem;
 }
 
-.sm-modal .sm-modal-content-text .buttons__wrapper button {
+.sm-modal .sm-modal-content-text .buttons__wrapper button, .sm-modal .sm-modal-content-text .buttons__wrapper a {
 	padding: calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem)) calc(clamp(0.875rem, 0.563rem + 0.833vw, 1.313rem));
 	background-color: var(--wd-light-gray-1-color);
 	border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
 	cursor: pointer;
 	line-height: 1;
 	border: 1px solid var(--sm-primary-color);
+	text-decoration: none;
 }
 
-.sm-modal .sm-modal-content-text .buttons__wrapper button.primary_btn {
+.sm-modal .sm-modal-content-text .buttons__wrapper button.primary_btn, .sm-modal .sm-modal-content-text .buttons__wrapper a.primary_btn {
 	background-color: var(--wd-primary-color);
 	color: var(--wd-base-white-color);
 	border-color: var(--wd-primary-color);
 }
 
-.sm-modal .sm-modal-content-text .buttons__wrapper button.outline_btn {
+.sm-modal .sm-modal-content-text .buttons__wrapper button.outline_btn, .sm-modal .sm-modal-content-text .buttons__wrapper a.outline_btn {
 	background-color: transparent;
 	border-color: var(--wd-base-black-color);
 	color: var(--wd-base-black-color);
