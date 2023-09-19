@@ -85,8 +85,8 @@ $categories = get_option('site_mode_design_templates')['categories'];
                 <h3>Congratulations</h3>
                 <p>Your <b>{comingsoon}</b> page is ready. Now you can viewthe page or start customizing it.</p>
                 <div class="buttons__wrapper">
-                    <button type="button" class="outline_btn">Customize</button>
-                    <button type="button" class="primary_btn">View Page</button>
+                    <a href="#" class="outline_btn">Customize</a>
+                    <a href="#" class="primary_btn">View Page</a>
                 </div>
             </div>
         </div>
