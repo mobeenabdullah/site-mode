@@ -94,14 +94,29 @@ jQuery(function ($) {
             dataType: "json",
             method: "post",
             data: data,
+            beforeSend: function () {
+                $('#importing__popup').css('display', 'flex');
+                $('.error__content').hide();
+                $('.thank__you-content').hide();
+            },
             success: function (res) {
                 setTimeout(function () {
                     console.log(res);
+                    $('#importing__popup').css('display', 'flex');
+                    $('.import__content').hide();
+                    $('.error__content').hide();
+                    $('.thank__you-content').show();
+                    $('.sm-modal-success-message').html(`Your ${res.data.template_name} page is ready. Now you can view the page or start customizing it.`)
+                    $('.sm-modal-content-text .outline_btn').attr('href', res.data.page_link);
                 }, 1000);
             },
             error: function (error) {
                 setTimeout(function () {
                     console.log(error);
+                    $('#importing__popup').css('display', 'flex');
+                    $('.import__content').hide();
+                    $('.thank__you-content').hide();
+                    $('.error__content').show();
                 }, 1000);
             },
         });
