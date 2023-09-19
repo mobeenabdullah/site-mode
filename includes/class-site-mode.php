@@ -190,9 +190,10 @@ class Site_Mode {
         $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
 
-        /*
-         * Add body class
-         */
+        // Add Site Mode Color palette
+        $this->loader->add_filter( 'wp_theme_json_data_theme', $plugin_admin, 'site_mode_filter_theme_json_theme' );
+
+        //Add body class
         $this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
 
         /**
