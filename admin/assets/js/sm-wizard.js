@@ -246,12 +246,18 @@ jQuery(function ($) {
     $(".open-popup").click(function () {
         var popupId = $(this).data("popup");
         openPopup(popupId);
+        $('.icon-success').addClass('icon success animate ');
+        $('.icon-success .tip').addClass('successLine animateSuccessTip');
+        $('.icon-success .long').addClass('successLine animateSuccessLong');
     });
 
     // Attach click event to close icon
-    $(".close").click(function () {
+    $(".close-popup").click(function () {
         var popupId = $(this).data("popup");
         closePopup(popupId);
+        $('.icon-success').removeClass('icon success animate ');
+        $('.icon-success .tip').removeClass('successLine animateSuccessTip');
+        $('.icon-success .long').removeClass('successLine animateSuccessLong');
     });
 
     $(".modal").each(function () {
@@ -262,6 +268,13 @@ jQuery(function ($) {
         }
     });
 
+    $(document).on("click", function (e) {
+        if (!$(".modal-content").is(e.target) && $(".modal-content").has(e.target).length === 0) {
+            $(".modal").css("display", "none");
+            // Remove animation classes here if needed
+        }
+    });
+    
 
 });
 
