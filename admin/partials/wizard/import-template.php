@@ -61,6 +61,9 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <button class="open-popup open-import-popup" data-popup="importing__popup" type="button">Open Importing Popup</button>
+                                    <button class="open-popup open-thank-you-popup" data-popup="thank_yo_popup" type="button">Open Thank You Popup</button>
                                 </div>
                             </div>
                         </div>
