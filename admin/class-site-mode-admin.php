@@ -218,4 +218,48 @@ class Site_Mode_Admin {
         }
     }
 
+    public function site_mode_filter_theme_json_theme( $theme_json ){
+
+        $default_theme_data = $theme_json->get_data();
+        $default_colors = $default_theme_data['settings']['color']['palette']['theme'];
+
+        $new_data = array(
+            'version'  => 2,
+            'settings' => array(
+                'color' => array(
+                    'palette'    => array(
+                        ...$default_colors,
+                        array(
+                            'slug'  => 'sm-base',
+                            'color' => 'white',
+                            'name'  => __( 'Site Mode Base', 'site-mode' ),
+                        ),
+                        array(
+                            'slug'  => 'sm-contrast',
+                            'color' => 'black',
+                            'name'  => __( 'Site Mode Contrast', 'site-mode' ),
+                        ),
+                        array(
+                            'slug'  => 'sm-primary',
+                            'color' => '#9DFF20',
+                            'name'  => __( 'Site Mode Primary', 'site-mode' ),
+                        ),
+                        array(
+                            'slug'  => 'sm-secondary',
+                            'color' => '#345C00',
+                            'name'  => __( 'Site Mode Secondary', 'site-mode' ),
+                        ),
+                        array(
+                            'slug'  => 'sm-tertiary',
+                            'color' => '#F6F6F6',
+                            'name'  => __( 'Site Mode Tertiary', 'site-mode' ),
+                        ),
+                    ),
+                ),
+            ),
+        );
+
+        return $theme_json->update_with( $new_data );
+    }
+
 }
