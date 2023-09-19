@@ -1,0 +1,6 @@
+{
+  "label": "Countdown",
+  "__file": "wp_export",
+  "version": 2,
+  "content": "<!-- wp:social-links {\"iconColor\":\"base\",\"iconColorValue\":\"#ffffff\",\"size\":\"has-normal-icon-size\",\"className\":\"is-style-logos-only\",\"layout\":{\"type\":\"flex\",\"justifyContent\":\"center\",\"flexWrap\":\"nowrap\"}} -->\n<ul class=\"wp-block-social-links has-normal-icon-size has-icon-color is-style-logos-only\"><!-- wp:social-link {\"url\":\"#\",\"service\":\"facebook\",\"label\":\"Facebook\",\"rel\":\"Facebook\"} /-->\n\n<!-- wp:social-link {\"url\":\"#\",\"service\":\"linkedin\",\"label\":\"Linkedin\",\"rel\":\"#\"} /-->\n\n<!-- wp:social-link {\"url\":\"#\",\"service\":\"youtube\",\"label\":\"Youtube\",\"rel\":\"#\"} /-->\n\n<!-- wp:social-link {\"url\":\"#\",\"service\":\"instagram\",\"label\":\"Instagram\",\"rel\":\"#\"} /--></ul>\n<!-- /wp:social-links -->"
+}
