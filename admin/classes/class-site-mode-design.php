@@ -44,10 +44,10 @@ class Site_Mode_Design extends  Settings {
         $this->get_template_props_init();
     }
 
-    public function ajax_site_mode_design_page_init() {
+    public function ajax_site_mode_design_page_init() : void {
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $page_id = $this->get_post_data( 'page_id', 'template_init_action', 'template_init_field', 'number' );
-        $this->get_template_props_init();
+        $this->sm_design_properties_init();
         $this->page_id = $page_id;
         $design_data = [
             'template' => $this->active_template,
@@ -56,7 +56,10 @@ class Site_Mode_Design extends  Settings {
 
         if($page_id){
             $template      = json_decode( $this->replace_template_default_image($this->active_template) );
-            $blocks = str_replace( '\n', '', $template->content );
+            $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
+            $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
+
+            $blocks = str_replace( '\n', '', $template_content );
             $post = get_post( $page_id );
             $post->post_content = $blocks;
             $result = wp_update_post($post);
@@ -75,12 +78,7 @@ class Site_Mode_Design extends  Settings {
     public function ajax_site_mode_template_init(){
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
-        $this->show_countdown = $this->get_post_data( 'showCountdown', 'template_init_action', 'template_init_field', 'text' );
-        $this->show_social = $this->get_post_data( 'showSocial', 'template_init_action', 'template_init_field', 'text' );
-        $this->show_subscribe = $this->get_post_data( 'showSubscribe', 'template_init_action', 'template_init_field', 'text' );
-        $this->wizard = $this->get_post_data( 'wizard', 'template_init_action', 'template_init_field', 'text' );
-
-        $this->get_template_props_init();
+        $this->sm_design_properties_init();
         if(!isset($template_name)) {
             $template_name = $this->active_template;
         }
@@ -93,9 +91,12 @@ class Site_Mode_Design extends  Settings {
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_id, $template_name);
         $design_data['page_id'] = $page_id;
-        $this->page_id = $page_id;
-        $template_content      = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_countdown($template_name, $template_content->content);
+        $this->page_id    = $page_id;
+
+        // replace placeholder strings
+        $template         = json_decode($this->replace_template_default_image($template_name));
+        $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
         $blocks = str_replace( '\n', '', $template_content );
 
         $post = get_post( $page_id );
@@ -126,65 +127,65 @@ class Site_Mode_Design extends  Settings {
     }
 
     public function create_maintaince_page ($template_name = '') {
-        // Create a new page and insert blocks code
-        $page_title = 'Maintenance Page';
-        $template_content      = json_decode( $this->replace_template_default_image($template_name) );
-        $template_content = $this->replace_template_countdown($template_name, $template_content->content);
-        $blocks = str_replace( '\n', '', $template_content );
+
+        // Replace placeholder strings for content
+        $template         = json_decode($this->replace_template_default_image($template_name));
+        $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
+        $blocks           = str_replace( '\n', '', $template_content );
 
         // Create the page
         $page_id = wp_insert_post( array(
-            'post_title'   => $page_title,
-            'post_content' => $blocks,
-            'post_status'  => 'publish',
-            'post_type'    => 'page',
+            'post_title'    => 'Maintenance Page',
+            'post_content'  => $blocks,
+            'post_status'   => 'publish',
+            'post_type'     => 'page',
             'page_template' => 'templates/sm-page-template.php'
         ) );
 
         if(!is_wp_error($page_id)){
             $design_data = [
                 'template' => $template_name,
-                'page_id' => $page_id
+                'page_id'  => $page_id
             ];
             $this->save_data( $this->option_name, $design_data );
             return $page_id;
         } else {
             wp_send_json_error( 'Something went wrong.');
+
         }
     }
 
-    public function get_template_props_init() {
+    public function get_template_props_init() : void {
         $design_settings = $this->get_data( $this->option_name );
 
         if(!empty($design_settings)){
             $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : '';
-            $this->page_id = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
+            $this->page_id         = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
         }
     }
 
-    protected function replace_template_countdown($template_name, $template_content = '') {
+    protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder ) {
+        $placeholder_str = '---sm-' . $placeholder . '---';
 
-        if($this->show_countdown == 'false' && $this->wizard == 'true'){
-            $countdown_content = '';
+        if($emptyPlaceholder == 'false' && $this->wizard == 'true'){
+            $placeholder_content = '';
         } else {
-            $countdown_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/countdown.json';
-            $countdown_content = json_decode(file_get_contents($countdown_url))->content;
+            $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $placeholder .'.json';
+        $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
         }
 
-
-        if(!str_contains($template_content, '---sm-countdown---')){
+        if(!str_contains($template_content, $placeholder_str)){
             return $template_content;
         } else {
-            return str_replace('---sm-countdown---', $countdown_content, $template_content);
-
+            return str_replace($placeholder_str, $placeholder_content, $template_content);
         }
-
     }
 
     public function replace_template_default_image($template_name = '') {
-        $template_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/blocks-export.json';
+        $template_url     = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/blocks-export.json';
         $template_content = file_get_contents($template_url);
-        $image_url = $this->default_images[$template_name];
+        $image_url        = $this->default_images[$template_name];
 
         try {
 
@@ -195,9 +196,9 @@ class Site_Mode_Design extends  Settings {
                 // Fetch the image and save it to the uploads directory
                 $upload_dir = wp_upload_dir();
                 $image_data = file_get_contents($image_url);
-                $filename = basename($image_url);
-                $file_path = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
-                $media_id  = '';
+                $filename   = basename($image_url);
+                $file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
+                $media_id   = '';
 
                 // Check if the file already exists
                 if (!file_exists($file_path)) {
@@ -205,9 +206,9 @@ class Site_Mode_Design extends  Settings {
 
                     // Add the image to the media library
                     $attachment = array(
-                        'post_title' => sanitize_file_name($template_name),
+                        'post_title'   => sanitize_file_name($template_name),
                         'post_content' => '',
-                        'post_status' => 'inherit'
+                        'post_status'  => 'inherit'
                     );
 
                     $media_id = wp_insert_attachment($attachment, $file_path);
@@ -219,12 +220,12 @@ class Site_Mode_Design extends  Settings {
                 } else {
 
                     $attachment_posts = get_posts(array(
-                        'post_type' => 'attachment',
+                        'post_type'   => 'attachment',
                         'post_status' => 'inherit',
-                        'meta_query' => array(
+                        'meta_query'  => array(
                             array(
-                                'key' => '_wp_attached_file',
-                                'value' => $template_name . '-' . $filename,
+                                'key'     => '_wp_attached_file',
+                                'value'   => $template_name . '-' . $filename,
                                 'compare' => 'LIKE'
                             )
                         )
@@ -235,9 +236,9 @@ class Site_Mode_Design extends  Settings {
                     } else {
 
                         $attachment = array(
-                            'post_title' => sanitize_file_name($template_name),
+                            'post_title'   => sanitize_file_name($template_name),
                             'post_content' => '',
-                            'post_status' => 'inherit'
+                            'post_status'  => 'inherit'
                         );
 
                         $media_id = wp_insert_attachment($attachment, $file_path);
@@ -248,15 +249,13 @@ class Site_Mode_Design extends  Settings {
                         wp_update_attachment_metadata($media_id, $attach_data);
 
                     }
-
-
                 }
 
                 // Check if the image was successfully uploaded
                 if ($media_id) {
                     $media_url = wp_get_attachment_url($media_id);
                     if ($media_url) {
-                        // Replace "image1.png" with the WordPress media URL
+                        // Replace "template1.png" with the site-mode media URL
                         $new_content = str_replace($template_name, $media_url, $template_content);
                         // Save the updated content back to template-content.php
                         return $new_content;
@@ -271,6 +270,17 @@ class Site_Mode_Design extends  Settings {
         } catch (Exception $e) {
             return $template_content;
         }
+    }
+
+    /**
+     * @return void
+     */
+    protected function sm_design_properties_init(): void {
+        $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
+        $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
+        $this->show_subscribe = $this->get_post_data('showSubscribe', 'template_init_action', 'template_init_field', 'text');
+        $this->wizard = $this->get_post_data('wizard', 'template_init_action', 'template_init_field', 'text');
+        $this->get_template_props_init();
     }
 
 
