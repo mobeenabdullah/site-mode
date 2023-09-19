@@ -20,9 +20,8 @@
     width: var(--btn-w);
     height: var(--btn-h);
     padding: var(--gap);
-    //border: var(--border-w) solid var(--border);
     border-radius: var(--btn-w);
-    background: var(--btn-bg-inactive);
+    background: var(--wd-primary-light-color);
     cursor: pointer;
     position: relative;
     transition: background 0.3s;
@@ -36,7 +35,7 @@
     height: var(--btn-h);
     //border: var(--border-w) solid var(--border);
     border-radius: 50%;
-    background: var(--btn-thumb);
+    background: var(--wd-base-white-color);
     transition: transform 0.3s;
   }
   input[type="checkbox"]:checked + .toggle::before {

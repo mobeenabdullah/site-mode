@@ -7,6 +7,7 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   align-items: center;
+  z-index: 300;
   & .sm-modal-content {
     background-color: #fff;
     margin: 15% auto;
@@ -67,9 +68,112 @@
         }
       }
     }
-  }
-  & .error__content{
-    text-align: center;
+    & .error__content{
+      text-align: center;
+    }
+    & .icon {
+      width: 80px;
+      height: 80px;
+      border: 4px solid gray;
+      border-radius: 50%;
+      margin: 20px auto;
+      padding: 0;
+      position: relative;
+      box-sizing: content-box;
+      transform: scale(1);
+      &.success {
+        border-color: #A5DC86;
+        &::after, &::before {
+          content: '';
+          position: absolute;
+          width: 60px;
+          height: 120px;
+          background: #fff;
+          transform: rotate(45deg)
+        }
+        &::before {
+          border-radius: 120px 0 0 120px;
+          top: -7px;
+          left: -33px;
+          transform: rotate(-45deg);
+          transform-origin: 60px 60px
+        }
+        &::after {
+          border-radius: 0 120px 120px 0;
+          top: -11px;
+          left: 30px;
+          transform: rotate(-45deg);
+          transform-origin: 0 60px
+        }
+      }
+      &.success {
+        & .placeholder {
+          width: 80px;
+          height: 80px;
+          border: 4px solid #A5DC86;
+          border-radius: 50%;
+          box-sizing: content-box;
+          position: absolute;
+          left: -4px;
+          top: -4px;
+          z-index: 2
+        }
+        & .fix {
+          width: 5px;
+          height: 90px;
+          background-color: #fff;
+          position: absolute;
+          left: 28px;
+          top: 8px;
+          z-index: 1;
+          transform: rotate(-45deg)
+        }
+        & .successLine {
+          height: 5px;
+          background-color: #A5DC86;
+          display: block;
+          border-radius: 2px;
+          position: absolute;
+          z-index: 2
+        }
+        & .successLine.tip {
+          width: 25px;
+          left: 14px;
+          top: 46px;
+          transform: rotate(45deg)
+        }
+        & .successLine.long {
+          width: 47px;
+          right: 8px;
+          top: 38px;
+          transform: rotate(-45deg)
+        }
+      }
+      &.error_box {
+        border-color: #F27474;
+        & .x-mark {
+          position: relative;
+          display: block
+        }
+        & .errorLine {
+          position: absolute;
+          height: 5px;
+          width: 47px;
+          background-color: #F27474;
+          display: block;
+          top: 37px;
+          border-radius: 2px
+        }
+        & .errorLine.left {
+          transform: rotate(45deg);
+          left: 17px
+        }
+        & .errorLine.right {
+          transform: rotate(-45deg);
+          right: 16px
+        }
+      }
+    }
   }
   & .close-popup {
     position: absolute;
@@ -90,109 +194,7 @@
   }
 }
 
-.icon {
-  width: 80px;
-  height: 80px;
-  border: 4px solid gray;
-  border-radius: 50%;
-  margin: 20px auto;
-  padding: 0;
-  position: relative;
-  box-sizing: content-box;
-  transform: scale(1);
-}
-.icon.success {
-  border-color: #A5DC86
-}
-.icon.success::after,
-.icon.success::before {
-  content: '';
-  position: absolute;
-  width: 60px;
-  height: 120px;
-  background: #fff;
-  transform: rotate(45deg)
-}
-.icon.success::before {
-  border-radius: 120px 0 0 120px;
-  top: -7px;
-  left: -33px;
-  transform: rotate(-45deg);
-  transform-origin: 60px 60px
-}
-.icon.success::after {
-  border-radius: 0 120px 120px 0;
-  top: -11px;
-  left: 30px;
-  transform: rotate(-45deg);
-  transform-origin: 0 60px
-}
-.icon.success .placeholder {
-  width: 80px;
-  height: 80px;
-  border: 4px solid rgba(165, 220, 134, .2);
-  border-radius: 50%;
-  box-sizing: content-box;
-  position: absolute;
-  left: -4px;
-  top: -4px;
-  z-index: 2
-}
-.icon.success .fix {
-  width: 5px;
-  height: 90px;
-  background-color: #fff;
-  position: absolute;
-  left: 28px;
-  top: 8px;
-  z-index: 1;
-  transform: rotate(-45deg)
-}
-.icon.success .successLine {
-  height: 5px;
-  background-color: #A5DC86;
-  display: block;
-  border-radius: 2px;
-  position: absolute;
-  z-index: 2
-}
-.icon.success .successLine.tip {
-  width: 25px;
-  left: 14px;
-  top: 46px;
-  transform: rotate(45deg)
-}
-.icon.success .successLine.long {
-  width: 47px;
-  right: 8px;
-  top: 38px;
-  transform: rotate(-45deg)
-}
 
-.icon.error_box {
-  border-color: #F27474
-}
-.icon.error_box .x-mark {
-  position: relative;
-  display: block
-}
-.icon.error_box .errorLine {
-  position: absolute;
-  height: 5px;
-  width: 47px;
-  background-color: #F27474;
-  display: block;
-  top: 37px;
-  border-radius: 2px
-}
-.icon.error_box .errorLine.left {
-  transform: rotate(45deg);
-  left: 17px
-}
-.icon.error_box .errorLine.right {
-  transform: rotate(-45deg);
-  right: 16px
-}
 
 @keyframes animateSuccessTip {
   0%, 54% {

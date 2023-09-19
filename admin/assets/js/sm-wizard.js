@@ -34,20 +34,49 @@ jQuery(function ($) {
         const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
 
-        // show step 2
-        $('.wizard__content').hide();
+        $('.wizard__content-wrapper').hide();
         $('.sm_customize_settings').show();
+        $('.component__settings').show();
+        $('.customize__actions').show();
         $('.sm-customize').addClass('active');
-        
-        $('.template__import').hide();
+        $('.import__settings').hide();
+        $('.import__actions').hide();
+        $('body').addClass('remove_scroll');
+    });
+
+    // b.   Show selected template
+    $('.start_importing').on('click', function() {
+        $('.wizard__content-wrapper').hide();
+        $('.component__settings').hide();
+        $('.customize__actions').hide();
+        $('.customize__sidebar-content').show();
+        $('.import__settings').show();
+        $('.import__actions').show();
+        $('.sm-import').addClass('active');
+        $('body').addClass('remove_scroll');
     });
 
     // c.   Back to Template Page
     $('.template-init-back').on('click', function() {
-        $('.wizard__content').show();
+        $('.wizard__content-wrapper').show();
         $('.sm_customize_settings').hide();
+        $('.component__settings').hide();
+        $('.customize__actions').hide();
         $('.sm-customize').removeClass('active');
-        $('.template__import').hide();
+        $('.import__settings').hide();
+        $('.import__actions').hide();
+        $('body').removeClass('remove_scroll');
+    });
+
+    $('.template-back-customize').on('click', function() {
+        $('.wizard__content-wrapper').hide();
+        $('.sm_customize_settings').show();
+        $('.component__settings').show();
+        $('.customize__actions').show();
+        $('.import__settings').hide();
+        $('.import__actions').hide();
+        $('.sm-import').removeClass('active');
+        $('body').addClass('remove_scroll');
     });
 
     // d.   Post message to iframe
@@ -207,21 +236,7 @@ jQuery(function ($) {
     $('.sm_full_screen, .sm_exit_full_screen').on('click', toggleSidebar);
 
 
-    // b.   Show selected template
-    $('.start_importing').on('click', function() {
-        $('.wizard__content').hide();
-        $('.sm_customize_settings').hide();
-        $('.template__import').show();
-        $('.sm-import').addClass('active');
-    });
 
-    $('.template-back-customize').on('click', function() {
-        $('.wizard__content').hide();
-        $('.sm_customize_settings').show();
-        $('.import-template').attr('data-template-name', '');
-        $('.sm-import').removeClass('active');
-        $('.template__import').hide();
-    });
 
     updateSubscribeBoxDisplay();
 
@@ -246,50 +261,5 @@ jQuery(function ($) {
             $('.subscribe_box').hide();
         }
     }
-
-    // Function to open the popup
-    function openPopup(popupId) {
-        $("#" + popupId).css("display", "flex");
-    }
-
-    // Function to close the popup
-    function closePopup(popupId) {
-        $("#" + popupId).css("display", "none");
-    }
-
-    // Attach click events to open buttons
-    $(".open-popup").click(function () {
-        var popupId = $(this).data("popup");
-        openPopup(popupId);
-        $('.icon-success').addClass('icon success animate ');
-        $('.icon-success .tip').addClass('successLine animateSuccessTip');
-        $('.icon-success .long').addClass('successLine animateSuccessLong');
-    });
-
-    // Attach click event to close icon
-    $(".close-popup").click(function () {
-        var popupId = $(this).data("popup");
-        closePopup(popupId);
-        $('.icon-success').removeClass('icon success animate ');
-        $('.icon-success .tip').removeClass('successLine animateSuccessTip');
-        $('.icon-success .long').removeClass('successLine animateSuccessLong');
-    });
-
-    $(".modal").each(function () {
-        var popupId = $(this).attr("id");
-        var modal = $("#" + popupId + " .modal-content");
-        if (!modal.is(e.target) && modal.has(e.target).length === 0) {
-            closePopup(popupId);
-        }
-    });
-
-    $(document).on("click", function (e) {
-        if (!$(".modal-content").is(e.target) && $(".modal-content").has(e.target).length === 0) {
-            $(".modal").css("display", "none");
-            // Remove animation classes here if needed
-        }
-    });
-    
-
 });
 

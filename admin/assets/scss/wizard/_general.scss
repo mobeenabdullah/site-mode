@@ -40,7 +40,7 @@
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  z-index: 99999;
+  z-index: 200;
 }
 
 /* e. Main container */
@@ -88,6 +88,10 @@ html {
 }
 .wizard_show_desktop {
   display: block !important;
+}
+
+.remove_scroll {
+  overflow: hidden;
 }
 
 @media screen and (max-width: 767px) {
