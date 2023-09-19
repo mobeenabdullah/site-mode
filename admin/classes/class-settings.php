@@ -34,9 +34,10 @@ class Settings {
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'page_link'   => urldecode(get_edit_post_link(intval($data['page_id']))),
-                'message'   => 'Template has been initialized successfully.',
-                'fresh_installation' => true
+                'page_link'             => urldecode(get_edit_post_link(intval($data['page_id']))),
+                'message'               => 'Template has been initialized successfully.',
+                'fresh_installation'    => true,
+                'template_name'         => str_replace("-"," ",$data['template'])
             ]);
         } elseif($option_name == 'site_mode_general') {
             wp_send_json_success([

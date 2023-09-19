@@ -60,7 +60,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
 
     <div id="importing__popup" class="sm-modal">
         <div class="sm-modal-content">
-            <div class="import__content" style="display: none;">
+            <div class="import__content" style="display: block;">
                 <div class="sm-modal-content-text">
                     <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/loading.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
                     <h3>Importing ...</h3>
@@ -80,7 +80,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                 </div>
             </div>
 
-            <div class="thank__you-content" style="display: block;">
+            <div class="thank__you-content" style="display: none;">
                 <span class="close-popup" data-popup="importing__popup">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24.288 9.51599L17.9235 15.879L11.5605 9.51599L9.43945 11.637L15.8025 18L9.43945 24.363L11.5605 26.484L17.9235 20.121L24.288 26.484L26.409 24.363L20.046 18L26.409 11.637L24.288 9.51599Z" fill="#CCCCCC"/>
@@ -94,10 +94,10 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         <div class="fix"></div>
                     </div>
                     <h3>Congratulations</h3>
-                    <p>Your <b>{comingsoon}</b> page is ready. Now you can viewthe page or start customizing it.</p>
+                    <p class="sm-modal-success-message">Your {comingsoon} page is ready. Now you can view the page or start customizing it.</p>
                     <div class="buttons__wrapper">
                         <a href="#" class="outline_btn">Customize</a>
-                        <a href="#" class="primary_btn">View Page</a>
+                        <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">View Page</a>
                     </div>
                 </div>
             </div>
