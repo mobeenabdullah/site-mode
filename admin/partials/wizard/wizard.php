@@ -5,9 +5,9 @@ $categories = get_option('site_mode_design_templates')['categories'];
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
     <!-- Select Template -->
-    <div class="wizard__content" style="display: block">
+    <div class="wizard__content">
         <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
-        <div class="wizard__content-wrapper">
+        <div class="wizard__content-wrapper" style="display: block">
             <div class="wizard_container">
                 <div class="wizard__templates">
                     <div class="wizard__templates-filters">
@@ -52,56 +52,52 @@ $categories = get_option('site_mode_design_templates')['categories'];
                 </div>
             </div>
         </div>
+        <?php include(SITE_MODE_ADMIN . 'partials/wizard/customize-template.php'); ?>
     </div>
+</div>
 
-    <?php include(SITE_MODE_ADMIN . 'partials/wizard/customize-template.php'); ?>
-
-    <?php include(SITE_MODE_ADMIN . 'partials/wizard/import-template.php'); ?>
-
-    <div id="importing__popup" class="sm-modal">
-        <div class="sm-modal-content">
-            <div class="import__content" style="display: block;">
-                <div class="sm-modal-content-text">
-                    <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/loading.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
-                    <h3>Importing ...</h3>
-                    <p>Please be patient and don't refresh this page. The import can take some time.</p>
-                </div>
+<div id="importing__popup" class="sm-modal">
+    <div class="sm-modal-content">
+        <div class="import__content" style="display: block;">
+            <div class="sm-modal-content-text">
+                <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/loading.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+                <h3>Importing ...</h3>
+                <p>Please be patient and don't refresh this page. The import can take some time.</p>
             </div>
+        </div>
 
-            <div class="error__content" style="display: none;">
-                <div class="error_icon">
-                    <div class="icon error_box">
+        <div class="error__content" style="display: none;">
+            <div class="error_icon">
+                <div class="icon error_box">
                       <span class="x-mark">
                         <span class="errorLine left"></span>
                         <span class="errorLine right"></span>
                       </span>
-                    </div>
-                    <h3>Unfortunately, an unexpected hiccup disrupted the smooth import process.</h3>
                 </div>
+                <h3>Unfortunately, an unexpected hiccup disrupted the smooth import process.</h3>
             </div>
+        </div>
 
-            <div class="thank__you-content" style="display: none;">
-                <span class="close-popup" data-popup="importing__popup">
+        <div class="thank__you-content" style="display: none;">
+                <a href="/wp-admin/" class="close-popup">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24.288 9.51599L17.9235 15.879L11.5605 9.51599L9.43945 11.637L15.8025 18L9.43945 24.363L11.5605 26.484L17.9235 20.121L24.288 26.484L26.409 24.363L20.046 18L26.409 11.637L24.288 9.51599Z" fill="#CCCCCC"/>
                     </svg>
-                </span>
-                <div class="sm-modal-content-text remove_animation">
-                    <div class="icon-success">
-                        <span class="tip"></span>
-                        <span class="long"></span>
-                        <div class="placeholder"></div>
-                        <div class="fix"></div>
-                    </div>
-                    <h3>Congratulations</h3>
-                    <p class="sm-modal-success-message">Your {comingsoon} page is ready. Now you can view the page or start customizing it.</p>
-                    <div class="buttons__wrapper">
-                        <a href="#" class="outline_btn">Customize</a>
-                        <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">View Page</a>
-                    </div>
+                </a>
+            <div class="sm-modal-content-text remove_animation">
+                <div class="icon-success icon success animate">
+                    <span class="tip successLine animateSuccessTip"></span>
+                    <span class="long successLine animateSuccessLong"></span>
+                    <div class="placeholder"></div>
+                    <div class="fix"></div>
+                </div>
+                <h3>Congratulations</h3>
+                <p class="sm-modal-success-message">Your {comingsoon} page is ready. Now you can view the page or start customizing it.</p>
+                <div class="buttons__wrapper">
+                    <a href="#" class="outline_btn">Customize</a>
+                    <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">View Page</a>
                 </div>
             </div>
         </div>
     </div>
-
 </div>

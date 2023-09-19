@@ -6,12 +6,12 @@
   flex-direction: column;
   bottom: 0;
   left: 0;
-  min-height: calc(100vh - 93.25px);
-  position: fixed;
+  min-height: 100vh;
+  position: absolute;
   right: 0;
-  top: 0;
+  top: calc(clamp(3.75rem, 2.221rem + 4.077vw, 4.6rem));
   &-wrapper {
-    height: calc(100% - 93.25px);
+    height: calc(100% - calc(clamp(3.125rem, 2.054rem + 2.857vw, 4.625rem)));
   }
   &-cover {
     color: #ccc;
@@ -75,10 +75,11 @@
           display: flex;
           border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
           padding: calc(clamp(0.313rem, 0.223rem + 0.238vw, 0.438rem));
-          background-color: var(--wd-primar-light-color);
+          background-color: var(--wd-primary-light-color);
           border: none;
           color: var(--wd-base-black-color);
           cursor: pointer;
+
           & span {
             display: flex;
           }
@@ -244,14 +245,16 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        display: flex;
-        gap: 1rem;
-        justify-content: space-between;
         padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
         border-top: 1px solid var(--wd-border-color);
         box-sizing: border-box;
         @media screen and (max-width: 960px) {
           position: relative;
+        }
+        & .customize__actions, & .import__actions {
+          display: flex;
+          gap: 1rem;
+          justify-content: space-between;
         }
         & button {
           padding: calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem)) calc(clamp(0.875rem, 0.563rem + 0.833vw, 1.313rem));

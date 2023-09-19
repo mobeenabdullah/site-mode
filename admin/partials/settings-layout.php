@@ -7,7 +7,7 @@
     ?>
     <div class="wrap site_mode__wrap">
         <div class="site_mode__wrap--header">
-            <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/site-mode-logo.svg' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+            <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
         </div>
         <div class="site_mode__wrap--cover">
             <div class="site_mode__wrap--cover-content">
