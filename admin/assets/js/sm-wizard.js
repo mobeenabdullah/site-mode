@@ -232,6 +232,36 @@ jQuery(function ($) {
         }
     }
 
+    // Function to open the popup
+    function openPopup(popupId) {
+        $("#" + popupId).css("display", "flex");
+    }
+
+    // Function to close the popup
+    function closePopup(popupId) {
+        $("#" + popupId).css("display", "none");
+    }
+
+    // Attach click events to open buttons
+    $(".open-popup").click(function () {
+        var popupId = $(this).data("popup");
+        openPopup(popupId);
+    });
+
+    // Attach click event to close icon
+    $(".close").click(function () {
+        var popupId = $(this).data("popup");
+        closePopup(popupId);
+    });
+
+    $(".modal").each(function () {
+        var popupId = $(this).attr("id");
+        var modal = $("#" + popupId + " .modal-content");
+        if (!modal.is(e.target) && modal.has(e.target).length === 0) {
+            closePopup(popupId);
+        }
+    });
+
 
 });
 
