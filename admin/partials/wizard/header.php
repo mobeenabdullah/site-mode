@@ -1,6 +1,6 @@
 <div class="sm__wizard-header">
     <div class="sm__wizard-header--logo">
-        <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL . '/assets/img/site-mode-logo.svg' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+        <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL . '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
     </div>
     <div class="sm__wizard-header--steps">
         <div class="sm__wizard-header--steps-cover">
