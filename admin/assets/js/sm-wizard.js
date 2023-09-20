@@ -100,11 +100,13 @@ jQuery(function ($) {
 
     // e.   AJAX Functionality for import template
     $('.import-template').on('click', function() {
-        const showSocial = document.getElementById("show-social").checked;
-        const showSubscribe = document.getElementById("show-subscribe").checked;
-        const showCountdown = document.getElementById("show-countdown").checked;
-        const nonce = $("#template_init_field").val();
-        const templateName = $('#selected-template-name').val();
+        const showSocial        = document.getElementById("show-social").checked;
+        const showSubscribe     = document.getElementById("show-subscribe").checked;
+        const showCountdown     = document.getElementById("show-countdown").checked;
+        const add_subscriber    = document.getElementById("show-subscribe-field").checked
+        const nonce             = $("#template_init_field").val();
+        const templateName      = $('#selected-template-name').val();
+        const subscriber_email  = $('#sm-subscribe-email').val();
 
         if(!templateName) return;
 
@@ -116,6 +118,10 @@ jQuery(function ($) {
             showSubscribe: showSubscribe,
             showCountdown: showCountdown,
             wizard: true,
+        }
+
+        if(add_subscriber && subscriber_email) {
+            data.subscriber_email = subscriber_email;
         }
 
         $.ajax({
