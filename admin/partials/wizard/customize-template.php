@@ -206,8 +206,8 @@
                                                 <p class="sm__helper-text">We do not spam, unsubscribe antime.</p>
                                             </div>
                                             <div class="settings__card-options--field">
-                                                <input type="text" name="sm-subscribe-field" id="sm-subscribe-field" class="show-subscribe-field" value="<?php echo $current_user; ?>">
-                                                <label for="sm-subscribe-field"></label>
+                                                <input type="text" name="sm-subscribe-email" id="sm-subscribe-email" class="show-subscribe-field"   value="<?php echo $current_user; ?>">
+                                                <label for="sm-subscribe-email"></label>
                                             </div>
                                         </div>
                                     </div>
