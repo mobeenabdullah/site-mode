@@ -33,13 +33,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'SITE_MODE_VERSION', '1.0.0' );
-define('SITE_MODE_INC', plugin_dir_path( __FILE__ ) . 'includes/');
-define('SITE_MODE_ADMIN', plugin_dir_path(__FILE__ ) . 'admin/');
-define('SITE_MODE_BLOCKS', plugin_dir_path(__FILE__  ) . 'blocks/');
-define('SITE_MODE_PUBLIC', plugin_dir_path( __FILE__ ) . 'public/');
-define('SITE_MODE_ADMIN_URL', plugin_dir_url(__FILE__ ) . 'admin/');
-define('SITE_MODE_PUBLIC_URL', plugin_dir_url( __FILE__ ) . 'public/');
+define( 'SITE_MODE_VERSION',    '1.0.0' );
+define('SITE_MODE_PATH',        plugin_dir_path( __FILE__ ));
+define('SITE_MODE_INC',         SITE_MODE_PATH . 'includes/');
+define('SITE_MODE_ADMIN',       SITE_MODE_PATH . 'admin/');
+define('SITE_MODE_BLOCKS',      SITE_MODE_PATH . 'blocks/');
+define('SITE_MODE_PUBLIC',      SITE_MODE_PATH . 'public/');
+define('SITE_MODE_ADMIN_URL',   plugin_dir_url(__FILE__ ) . 'admin/');
+define('SITE_MODE_PUBLIC_URL',  plugin_dir_url( __FILE__ ) . 'public/');
 
 
 /**

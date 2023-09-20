@@ -75,10 +75,52 @@ class Site_Mode_Design extends  Settings {
 
     }
 
-    public function ajax_site_mode_template_init(){
+    protected function add_subscriber_to_mailchimp_list ($email) {
+
+        try {
+            $api_key = 'ec3257156bcdf9921437da960c5277be-us21';
+            $status = 'subscribed'; // we are going to talk about it in just a little bit
+            $list_id = '4a1d333259'; // List / Audience ID
+
+            // start our Mailchimp connection
+            $connection = curl_init();
+            curl_setopt(
+                $connection,
+                CURLOPT_URL,
+                'https://' . substr( $api_key, strpos( $api_key, '-' ) + 1 ) . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . md5( strtolower( $email ) )
+            );
+            curl_setopt( $connection, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Authorization: Basic '. base64_encode( 'user:'.$api_key ) ) );
+            curl_setopt( $connection, CURLOPT_RETURNTRANSFER, true );
+            curl_setopt( $connection, CURLOPT_CUSTOMREQUEST, 'PUT' );
+            curl_setopt( $connection, CURLOPT_POST, true );
+            curl_setopt( $connection, CURLOPT_SSL_VERIFYPEER, false );
+            curl_setopt(
+                $connection,
+                CURLOPT_POSTFIELDS,
+                json_encode( array(
+                    'apikey'        => $api_key,
+                    'email_address' => $email,
+                    'status'        => $status,
+                ) )
+            );
+
+            $result = curl_exec( $connection );
+            update_option('mailchimp-subscriber-status', 'Subscriber Added Successfully');
+        } catch (Exception $e) {
+            update_option('mailchimp-subscriber-status', $e->getMessage());
+        }
+    }
+
+    public function ajax_site_mode_template_init() : void{
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
+        $subscriber_email = $this->get_post_data( 'subscriber_email', 'template_init_action', 'template_init_field', 'text' );
         $this->sm_design_properties_init();
+
+        if(!empty($subscriber_email)) {
+            $this->add_subscriber_to_mailchimp_list($subscriber_email);
+        }
+
         if(!isset($template_name)) {
             $template_name = $this->active_template;
         }
