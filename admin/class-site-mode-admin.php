@@ -146,9 +146,9 @@ class Site_Mode_Admin {
         $mode_status      = isset( $general_settings['mode_status'] ) ? $general_settings['mode_status'] : false;
 
         if($mode_status) {
-            $text = '<span style="background: red;" class="sm-admin-bar-status">Site Mode is Enabled</span>';
+            $text = '<span style="background: red; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Site Mode is Enabled</span>';
         } else {
-            $text = '<span style="background: lightgrey;" class="sm-admin-bar-status">Site Mode is Disabled</span>';
+            $text = '<span style="background: lightgrey; color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Site Mode is Disabled</span>';
         }
 
         $wp_admin_bar->add_node([

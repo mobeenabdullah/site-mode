@@ -174,11 +174,13 @@ jQuery(function ($) {
             setTimeout(function () {
               if (res?.data?.tab === 'general') {
                   if(res?.data?.status) {
-                      $(".sm-admin-bar-status").text("Site Mode is Enabled");
-                      $(".sm-admin-bar-status").css("background", "red");
+                    $(".sm-admin-bar-status").text("Site Mode is Enabled");
+                    $(".sm-admin-bar-status").css("background", "red");
+                    $(".sm-admin-bar-status").css("color", "#ffffff");
                   } else {
-                      $(".sm-admin-bar-status").text("Site Mode is Disabled");
-                      $(".sm-admin-bar-status").css("background", "lightgrey");
+                    $(".sm-admin-bar-status").text("Site Mode is Disabled");
+                    $(".sm-admin-bar-status").css("background", "lightgrey");
+                    $(".sm-admin-bar-status").css("color", "black");
                   }
               }
               $(".save-btn-loader").hide();
