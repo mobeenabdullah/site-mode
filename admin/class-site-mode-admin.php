@@ -82,7 +82,8 @@ class Site_Mode_Admin {
 	public function enqueue_styles() {
         wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', [], $this->version, 'all' );        
-		wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
+		//wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
+        wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', [], $this->version, 'all' );
         
         if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && empty(get_option('sm-fresh-installation'))) {
             wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL  . 'assets/css/wizard.css', [], $this->version, 'all' );
@@ -100,6 +101,7 @@ class Site_Mode_Admin {
 
 		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', [ 'jquery' ], null, true );
 		wp_enqueue_script( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/js/site-mode-admin.js', [ 'jquery' ], $this->version, true );
+        wp_enqueue_script( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/js/site-mode-dashboard.js', [ 'jquery' ], $this->version, true );
 		wp_localize_script(
 			$this->plugin_name,
 			'ajaxObj',
@@ -213,6 +215,8 @@ class Site_Mode_Admin {
     public function sm_add_body_class ($classes ) {
         if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && empty(get_option('sm-fresh-installation'))) {
             return  $classes . 'sm__wizard-mode';
+        } elseif(isset($_GET['page']) && $_GET['page'] === 'site-mode') {
+            return  $classes . 'sm__dashboard';
         } else {
             return $classes;
         }
