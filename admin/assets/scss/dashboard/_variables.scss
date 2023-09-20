@@ -1,0 +1,23 @@
+// Colors
+$dashboard-primary-color: #fe4773 !default;
+$dashboard-primary-light:#ECECFC !default;
+$dashboard-bas-color:#ffffff !default;
+$dashboard-contrast-color:#000000 !default;
+
+
+// Background Colors
+$header-bg: #F9F9F9 !default;
+
+// Border Colors
+$seperator-color: #EEEEEE !default;
+
+
+
+$dashboard-colors: (
+        'primary-color': $dashboard-primary-color,
+        'primary-light-color': $dashboard-primary-light,
+        'header-bg': $header-bg,
+        'base-color': $dashboard-bas-color,
+        'contrast-color': $dashboard-contrast-color,
+        'seperator-color': $seperator-color
+) !default;
