@@ -10,7 +10,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
-    padding: 5px 10px;
+    padding: 0 calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem));
     border: none;
     background: transparent;
     font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 0.9rem));

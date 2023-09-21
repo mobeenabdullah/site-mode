@@ -21,7 +21,7 @@
     height: var(--btn-h);
     padding: var(--gap);
     border-radius: var(--btn-w);
-    background: var(--wd-primary-light-color);
+    background: rgba(0,0,0,0.10);
     cursor: pointer;
     position: relative;
     transition: background 0.3s;
@@ -33,13 +33,13 @@
     left: var(--gap);
     width: var(--btn-h);
     height: var(--btn-h);
-    //border: var(--border-w) solid var(--border);
     border-radius: 50%;
-    background: var(--wd-base-white-color);
+    background: var(--wd-gray-1-color);
     transition: transform 0.3s;
   }
   input[type="checkbox"]:checked + .toggle::before {
     transform: translateX(calc(var(--btn-w) - var(--btn-h)));
+    background: var(--wd-base-white-color);
   }
 
   input[type="checkbox"]:checked + .toggle {
