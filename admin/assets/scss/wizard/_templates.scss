@@ -1,8 +1,5 @@
-.wizard__content-wrapper {
-
-}
 .wizard__templates {
-  padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
+  padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0 calc(clamp(4rem, 1.143rem + 7.619vw, 8rem)) 0;
   &-filters {
     display: flex;
     justify-content: space-between;
