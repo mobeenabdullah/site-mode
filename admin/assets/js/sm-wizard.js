@@ -1,7 +1,3 @@
-/*---------------------------------------------------------
-   a.   Templates filter by categories
----------------------------------------------------------*/
-
 jQuery(function ($) {
 
     // Hide Elements
@@ -55,6 +51,7 @@ jQuery(function ($) {
     }
     $('.choose_page_type').on('click', choosePageType);
 
+    // Back to wizard start page
     function backToWizardStart () {
         hideElements('.wizard__content-wrapper, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
         showElements('.wizard__start');
@@ -63,19 +60,19 @@ jQuery(function ($) {
     }
     $('.back_wizard_start').on('click', backToWizardStart);
 
+    // Go to select template page
     function selectTemplate () {
         removeElementClass('.wizard__templates-cards--single', 'active');
-
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
         $(this).children('span').html('selected');
-
         removeElementClass('.select_template_btn', 'sm_disabled_btn');
         removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
         addElementClass('.select_template_btn', 'primary_btn_outline');
     }
     $('.select_tempalte').on('click', selectTemplate);
 
+    // Go to customize template page
     function customizeTemplate () {
         const templateLabel = $(this).attr('data-template-label');
         $('.template__name').html(templateLabel);
@@ -88,6 +85,7 @@ jQuery(function ($) {
     }
     $('.select_template_btn').on('click', customizeTemplate);
 
+    // Back to select template page
     function backToSelectTemplate () {
         console.log('working');
         hideElements('.wizard__start, .import__settings, .import__actions, .sm_customize_settings, .component__settings, .customize__actions');
@@ -97,7 +95,7 @@ jQuery(function ($) {
     }
     $('.template-init-back').on('click', backToSelectTemplate);
 
-
+    // Go to import template page
     function startImportingTemplate () {
         hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
         showElements('.customize__sidebar-content, .import__settings, .import__actions');
@@ -106,6 +104,7 @@ jQuery(function ($) {
     }
     $('.start_importing').on('click', startImportingTemplate);
 
+    // Back to custom template page
     function backTemplateCustomize () {
         hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
         showElements('.sm_customize_settings, .component__settings, .customize__actions');
@@ -114,9 +113,7 @@ jQuery(function ($) {
     }
     $('.template-back-customize').on('click', backTemplateCustomize);
 
-
-
-    // d.   Post message to iframe
+    // Post message to iframe
     $('#show-countdown').on('change', sendPostMessage);
     $('#show-subscribe').on('change', sendPostMessage);
     $('#show-social').on('change', sendPostMessage);
@@ -135,7 +132,7 @@ jQuery(function ($) {
         )
     }
 
-    // e.   AJAX Functionality for import template
+    //  AJAX Functionality for import template
     $('.import-template').on('click', function() {
         const showSocial        = document.getElementById("show-social").checked;
 
@@ -217,7 +214,7 @@ jQuery(function ($) {
     });
 
 
-   // g.    Reset to default options functionality
+   // Reset to default options functionality
     function handleSettingsClick() {
         const $parentOfAction = $(this).closest('.settings__card');
 
@@ -239,7 +236,7 @@ jQuery(function ($) {
 
     $('.setting__label, .sm-setting-reset-components').on('click', handleSettingsClick);
 
-    // h.    On select change fonts/colors
+    // On select change fonts/colors
     function setupSelectAndPresets(selectId, presetBoxesClass) {
         $(presetBoxesClass).hide();
         var selectedOption = $(selectId).val();
@@ -251,11 +248,9 @@ jQuery(function ($) {
             $(presetBoxesClass + '[data-preset="' + selectedOption + '"]').show();
         });
     }
-
     setupSelectAndPresets('#color_scheme', '.color__scheme-preset-box');
 
-
-    //  i.  Show/hide sidebar
+    // Show/hide sidebar
     function toggleSidebar() {
         const sidebar = $(this).parent().parent().prev();
 
@@ -292,7 +287,6 @@ jQuery(function ($) {
 
     });
 
-
     function updateSubscribeBoxDisplay() {
         if ($('#show-subscribe-field').is(':checked')) {
             $('.subscribe_box').show();
@@ -308,6 +302,5 @@ jQuery(function ($) {
         var clickedText = $(this).html();
         $('.display_template_name').html(clickedText);
     })
-
 });
 
