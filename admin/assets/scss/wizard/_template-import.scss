@@ -125,7 +125,7 @@
             justify-content: space-between;
             & h2 {
               margin: 0;
-              font-size: calc(clamp(1.1rem, 0.886rem + 0.571vw, 1.4rem));
+              font-size: calc(clamp(0.875rem, 0.696rem + 0.476vw, 1.125rem));
               padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem));
               flex: 1;
               user-select: none;
@@ -163,7 +163,7 @@
               & h3 {
                 margin: 0;
                 padding: 0;
-                font-size: calc(clamp(1rem, 0.929rem + 0.19vw, 1.1rem));
+                font-size: calc(clamp(0.813rem, 0.679rem + 0.357vw, 1rem));
                 user-select: none;
               }
               & h4 {

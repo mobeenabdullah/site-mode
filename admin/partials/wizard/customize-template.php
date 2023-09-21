@@ -54,18 +54,6 @@
                                         </div>
                                         <div class="settings__card-options-box">
                                             <div class="settings__card-options--label setting__label">
-                                                <h3>Subscribe</h3>
-                                                <p class="sm__helper-text">Set timer to show on the website</p>
-                                            </div>
-                                            <div class="settings__card-options--field">
-                                            <span class="btn-toggle">
-                                                <input type="checkbox" name="show-subscribe" id="show-subscribe" value="1" checked>
-                                                <label class="toggle" for="show-subscribe"></label>
-                                            </span>
-                                            </div>
-                                        </div>
-                                        <div class="settings__card-options-box">
-                                            <div class="settings__card-options--label setting__label">
                                                 <h3>Social</h3>
                                                 <p class="sm__helper-text">Set timer to show on the website</p>
                                             </div>

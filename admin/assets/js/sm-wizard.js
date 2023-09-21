@@ -42,6 +42,10 @@ jQuery(function ($) {
         $('.import__settings').hide();
         $('.import__actions').hide();
         $('body').addClass('remove_scroll');
+        $('.wizard__templates-cards--single').removeClass('active');
+        $('.wizard__templates-cards--single button span').html('select');
+        $(this).parents('.wizard__templates-cards--single').addClass('active');
+        $(this).children('span').html('selected');
     });
 
     // b.   Show selected template
@@ -101,7 +105,7 @@ jQuery(function ($) {
     // e.   AJAX Functionality for import template
     $('.import-template').on('click', function() {
         const showSocial        = document.getElementById("show-social").checked;
-        const showSubscribe     = document.getElementById("show-subscribe").checked;
+
         const showCountdown     = document.getElementById("show-countdown").checked;
         const add_subscriber    = document.getElementById("show-subscribe-field").checked
         const nonce             = $("#template_init_field").val();
@@ -115,7 +119,6 @@ jQuery(function ($) {
             template: templateName,
             template_init_field: nonce,
             showSocial: showSocial,
-            showSubscribe: showSubscribe,
             showCountdown: showCountdown,
             wizard: true,
         }
@@ -267,5 +270,18 @@ jQuery(function ($) {
             $('.subscribe_box').hide();
         }
     }
+
+    var initialText = $('.template-category-filter:first').html();
+    $('.display_template_name').html(initialText);
+
+    $('.template-category-filter').on('click', function() {
+        var clickedText = $(this).html();
+        $('.display_template_name').html(clickedText);
+    })
+
+    $('.sm_clearfilter').on('click', function() {
+        $('.template-category-filter[data-template-category=all]').trigger('click');
+    })
+
 });
 
