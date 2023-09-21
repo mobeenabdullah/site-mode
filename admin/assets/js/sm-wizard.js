@@ -1,87 +1,120 @@
 /*---------------------------------------------------------
    a.   Templates filter by categories
-   b.   Show selected template
-   c.   Back to template page
-   d.   Post message to iframe
-   e.   AJAX Functionality for import template
-   f.   show and hide sidebar options on mobile
-   g.   Reset to default options functionality
-   h    On select change fonts/colors
-   i.   Show/hide sidebar
 ---------------------------------------------------------*/
 
 jQuery(function ($) {
 
-    //  a.  Templates filter by categories
-    $('.template-category-filter').on('click', function() {
-        $('.template-category-filter').removeClass('active');
-        $(this).addClass('active');
+    // Hide Elements
+    function hideElements(elements) {
+        $(elements).hide();
+    }
+
+    // Show Elements
+    function showElements(elements) {
+        $(elements).show();
+    }
+
+    // Add Class from Element
+    function addElementClass(element, className) {
+        $(element).addClass(className);
+    }
+
+    // Remove Class from Element
+    function removeElementClass(element, className) {
+        $(element).removeClass(className);
+    }
+    // Remove Attribute
+    function removeElementAttribute(element, attr, attr_val) {
+        $(element).removeAttr(attr, attr_val);
+    }
+
+    function categoryFilters () {
+        removeElementClass('.template-category-filter', 'active');
+        addElementClass($(this), 'active');
         const templateCategory = $(this).attr('data-template-category');
         if(templateCategory === 'all') {
-            $(".template-content-wrapper").show();
+            showElements('.template-content-wrapper');
         } else {
-            $(".template-content-wrapper").hide();
-            $(`.template-content-wrapper[data-category-name="${templateCategory}"]`).show();
+            hideElements(`.template-content-wrapper`);
+            showElements(`.template-content-wrapper[data-category-name="${templateCategory}"]`);
         }
-    });
+    }
+    $('.template-category-filter').on('click', categoryFilters);
 
-    // b.   Show selected template
-    $('.select_tempalte').on('click', function() {
-        const templateLabel = $(this).attr('data-template-label');
-        $('.template__name').html(templateLabel);
-        
-        // get template name and set value to hidden field
-        const templateName = $(this).attr('data-template-name');
-        $('#selected-template-name').val(templateName);
+    function smClearFilters () {
+        $('.template-category-filter[data-template-category=all]').trigger('click');
+    }
 
-        $('.wizard__content-wrapper').hide();
-        $('.sm_customize_settings').show();
-        $('.component__settings').show();
-        $('.customize__actions').show();
-        $('.sm-customize').addClass('active');
-        $('.import__settings').hide();
-        $('.import__actions').hide();
-        $('body').addClass('remove_scroll');
-        $('.wizard__templates-cards--single').removeClass('active');
+    $('.sm_clearfilter').on('click', smClearFilters);
+
+    // Choose page type
+    function choosePageType () {
+        hideElements('.wizard__start, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
+        showElements('.wizard__content-wrapper');
+        addElementClass('.sm-select-template', 'active');
+    }
+    $('.choose_page_type').on('click', choosePageType);
+
+    function backToWizardStart () {
+        hideElements('.wizard__content-wrapper, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
+        showElements('.wizard__start');
+        removeElementClass('.sm-select-template', 'active');
+        removeElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+    }
+    $('.back_wizard_start').on('click', backToWizardStart);
+
+    function selectTemplate () {
+        removeElementClass('.wizard__templates-cards--single', 'active');
+
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
         $(this).children('span').html('selected');
-    });
 
-    // b.   Show selected template
-    $('.start_importing').on('click', function() {
-        $('.wizard__content-wrapper').hide();
-        $('.component__settings').hide();
-        $('.customize__actions').hide();
-        $('.customize__sidebar-content').show();
-        $('.import__settings').show();
-        $('.import__actions').show();
-        $('.sm-import').addClass('active');
-        $('body').addClass('remove_scroll');
-    });
+        removeElementClass('.select_template_btn', 'sm_disabled_btn');
+        removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
+        addElementClass('.select_template_btn', 'primary_btn_outline');
+    }
+    $('.select_tempalte').on('click', selectTemplate);
 
-    // c.   Back to Template Page
-    $('.template-init-back').on('click', function() {
-        $('.wizard__content-wrapper').show();
-        $('.sm_customize_settings').hide();
-        $('.component__settings').hide();
-        $('.customize__actions').hide();
-        $('.sm-customize').removeClass('active');
-        $('.import__settings').hide();
-        $('.import__actions').hide();
-        $('body').removeClass('remove_scroll');
-    });
+    function customizeTemplate () {
+        const templateLabel = $(this).attr('data-template-label');
+        $('.template__name').html(templateLabel);
+        const templateName = $(this).attr('data-template-name');
+        $('#selected-template-name').val(templateName);
+        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        showElements('.sm_customize_settings, .component__settings, .customize__actions');
+        addElementClass('.sm-customize', 'active');
+        addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+    }
+    $('.select_template_btn').on('click', customizeTemplate);
 
-    $('.template-back-customize').on('click', function() {
-        $('.wizard__content-wrapper').hide();
-        $('.sm_customize_settings').show();
-        $('.component__settings').show();
-        $('.customize__actions').show();
-        $('.import__settings').hide();
-        $('.import__actions').hide();
-        $('.sm-import').removeClass('active');
-        $('body').addClass('remove_scroll');
-    });
+    function backToSelectTemplate () {
+        console.log('working');
+        hideElements('.wizard__start, .import__settings, .import__actions, .sm_customize_settings, .component__settings, .customize__actions');
+        showElements('.wizard__content-wrapper');
+        removeElementClass('.sm-customize', 'active');
+        removeElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+    }
+    $('.template-init-back').on('click', backToSelectTemplate);
+
+
+    function startImportingTemplate () {
+        hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
+        showElements('.customize__sidebar-content, .import__settings, .import__actions');
+        addElementClass('.sm-import', 'active');
+        addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+    }
+    $('.start_importing').on('click', startImportingTemplate);
+
+    function backTemplateCustomize () {
+        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        showElements('.sm_customize_settings, .component__settings, .customize__actions');
+        removeElementClass('.sm-import', 'active');
+        addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+    }
+    $('.template-back-customize').on('click', backTemplateCustomize);
+
+
 
     // d.   Post message to iframe
     $('#show-countdown').on('change', sendPostMessage);
@@ -244,9 +277,6 @@ jQuery(function ($) {
     }
     $('.sm_full_screen, .sm_exit_full_screen').on('click', toggleSidebar);
 
-
-
-
     updateSubscribeBoxDisplay();
 
     $('#show-subscribe-field').change(function() {
@@ -277,10 +307,6 @@ jQuery(function ($) {
     $('.template-category-filter').on('click', function() {
         var clickedText = $(this).html();
         $('.display_template_name').html(clickedText);
-    })
-
-    $('.sm_clearfilter').on('click', function() {
-        $('.template-category-filter[data-template-category=all]').trigger('click');
     })
 
 });

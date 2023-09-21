@@ -1,0 +1,34 @@
+.wizard__start {
+  padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0;
+  &-content {
+    &--title {
+      & h1 {
+        text-align: center;
+      }
+    }
+  }
+  & .wizard__content-wrapper--actions  {
+    justify-content: flex-end;
+  }
+}
+
+.wizard__content-wrapper--actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  padding: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem)) calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
+  background-color: var(--wd-base-white-color);
+  z-index: 999;
+  border-top: 1px solid var(--wd-border-color);
+  & .customize__actions, .import__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
