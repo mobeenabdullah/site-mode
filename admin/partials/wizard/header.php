@@ -4,7 +4,12 @@
     </div>
     <div class="sm__wizard-header--steps">
         <div class="sm__wizard-header--steps-cover">
-            <div class="sm-select-template sm-step active">
+            <div class="sm-wizard-start sm-step active">
+                <div class="step_circle"></div>
+                <div class="step_label">Select Type</div>
+                <div class="step_line"></div>
+            </div>
+            <div class="sm-select-template sm-step">
                 <div class="step_circle"></div>
                 <div class="step_label">Select Template</div>
                 <div class="step_line"></div>
