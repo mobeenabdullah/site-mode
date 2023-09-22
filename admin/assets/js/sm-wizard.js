@@ -302,5 +302,29 @@ jQuery(function ($) {
         var clickedText = $(this).html();
         $('.display_template_name').html(clickedText);
     })
+
+
+    // Skip wizard
+
+    $(".close_wizard_btn").on("click", function () {
+        const nonce = $("#template_init_field").val();
+
+        $.ajax({
+            url: ajaxObj.ajax_url,
+            dataType: "json",
+            method: "post",
+            data: {
+                action: "ajax_site_mode_skip_wizard",
+                template_init_field : nonce,
+            },
+            success: function (res) {
+                location.reload();
+            },
+            error: function (error) {
+                location.reload();
+            },
+        });
+    });
+
 });
 
