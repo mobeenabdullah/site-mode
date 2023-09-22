@@ -2,29 +2,31 @@
 	<?php settings_errors(); ?>
 
 	<form id="site-mode-advanced" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+        <!--
 		<div class="option__row">
 			<div class="option__row--label">
-				<span><label for="google_analytic_id"><?php esc_html_e( 'Google Analytics ID', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enter your Google Analytics tracking ID to integrate website analytics and monitor traffic', 'site-mode' ); ?></span>
+				<span><label for="google_analytic_id"><?php //esc_html_e( 'Google Analytics ID', 'site-mode' ); ?></label></span>
+				<span class="info_text"><?php //esc_html_e( 'Enter your Google Analytics tracking ID to integrate website analytics and monitor traffic', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
 				<div class="sm_input_cover">
-					<input type="text" id="google_analytic_id" name="ga-id" value="<?php echo esc_attr( $this->ga_id ); ?>" placeholder="e.g. G-XXXXXXXXXX" />
+					<input type="text" id="google_analytic_id" name="ga-id" value="<?php //echo esc_attr( $this->ga_id ); ?>" placeholder="e.g. G-XXXXXXXXXX" />
 				</div>
 			</div>
 		</div>
 
 		<div class="option__row">
 			<div class="option__row--label">
-				<span><label for="facebook_pixel_id"><?php esc_html_e( 'Facebook Pixel ID', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enter your Facebook Pixel ID to enable tracking and measurement of your website\'s performance on Facebook', 'site-mode' ); ?></span>
+				<span><label for="facebook_pixel_id"><?php //esc_html_e( 'Facebook Pixel ID', 'site-mode' ); ?></label></span>
+				<span class="info_text"><?php //esc_html_e( 'Enter your Facebook Pixel ID to enable tracking and measurement of your website\'s performance on Facebook', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
 				<div class="sm_input_cover">
-					<input type="text" id="facebook_pixel_id" name="facebook-id" value="<?php echo esc_attr( $this->fb_id ); ?>" placeholder="e.g. xxxxxxxxxxxxxxx" />
+					<input type="text" id="facebook_pixel_id" name="facebook-id" value="<?php //echo esc_attr( $this->fb_id ); ?>" placeholder="e.g. xxxxxxxxxxxxxxx" />
 				</div>
 			</div>
 		</div>
+		-->
 
 		<div class="option__row">
 			<div class="option__row--label">

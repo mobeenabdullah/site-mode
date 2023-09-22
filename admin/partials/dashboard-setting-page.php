@@ -19,7 +19,59 @@
             </div>
             <div class="sitemode__dashboard-intro--video">
                 <div class="sitemode__media-box">
-
+                    <div class="site-mode-cards">
+                        <div class="site-mode-cards--item">
+                            <div class="sm__card">
+                                <span class="btn-toggle">
+                                    <input type="radio" name="plan" id="plan" value="1" checked>
+                                    <label class="toggle" for="plan"></label>
+                                </span>
+                                <div class="sm_select_page-icon">
+                                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M58.7563 24.1208L63.315 19.562L59.1909 15.4379L54.2092 20.4166C51.1467 18.5791 47.5767 17.4999 43.75 17.4999C32.4946 17.4999 23.3334 26.6583 23.3334 37.9166C23.3334 49.1749 32.4946 58.3333 43.75 58.3333C55.0055 58.3333 64.1667 49.1749 64.1667 37.9166C64.1644 32.8009 62.2323 27.8743 58.7563 24.1208ZM43.75 52.5C35.7088 52.5 29.1667 45.9579 29.1667 37.9166C29.1667 29.8754 35.7088 23.3333 43.75 23.3333C51.7913 23.3333 58.3334 29.8754 58.3334 37.9166C58.3334 45.9579 51.7913 52.5 43.75 52.5Z" fill="#FE4773"/>
+                                        <path d="M40.8334 29.1667H46.6667V40.8333H40.8334V29.1667ZM37.9167 8.75H49.5834V14.5833H37.9167V8.75ZM8.75004 23.3333H20.4167V29.1667H8.75004V23.3333ZM8.75004 46.6667H20.4167V52.5H8.75004V46.6667ZM5.83337 35H17.4709V40.8333H5.83337V35Z" fill="#FE4773"/>
+                                    </svg>
+                                </div>
+                                <div class="sm_select_page-title">
+                                    Maintenance Page
+                                </div>
+                                <div class="sm_select_page-desc">
+                                    Temporarily offline for necessary
+                                    improvements. We'll be back soon!
+                                </div>
+                                <div class="sm_select_page-btn">
+                                    <button class="sm__btn block_btn primary_button setup-coming-soon-page" data-template-category="coming-soon">Setup</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="site-mode-cards--item">
+                            <div class="sm__card">
+                                <span class="btn-toggle">
+                                    <input type="radio" name="plan" id="plan1">
+                                    <label class="toggle" for="plan1"></label>
+                                </span>
+                                <div class="sm__card-cover">
+                                    <div class="sm_select_page-icon">
+                                        <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M58.7563 24.1208L63.315 19.562L59.1909 15.4379L54.2092 20.4166C51.1467 18.5791 47.5767 17.4999 43.75 17.4999C32.4946 17.4999 23.3334 26.6583 23.3334 37.9166C23.3334 49.1749 32.4946 58.3333 43.75 58.3333C55.0055 58.3333 64.1667 49.1749 64.1667 37.9166C64.1644 32.8009 62.2323 27.8743 58.7563 24.1208ZM43.75 52.5C35.7088 52.5 29.1667 45.9579 29.1667 37.9166C29.1667 29.8754 35.7088 23.3333 43.75 23.3333C51.7913 23.3333 58.3334 29.8754 58.3334 37.9166C58.3334 45.9579 51.7913 52.5 43.75 52.5Z" fill="#FE4773"/>
+                                            <path d="M40.8334 29.1667H46.6667V40.8333H40.8334V29.1667ZM37.9167 8.75H49.5834V14.5833H37.9167V8.75ZM8.75004 23.3333H20.4167V29.1667H8.75004V23.3333ZM8.75004 46.6667H20.4167V52.5H8.75004V46.6667ZM5.83337 35H17.4709V40.8333H5.83337V35Z" fill="#FE4773"/>
+                                        </svg>
+                                    </div>
+                                    <div class="sm_select_page-title">
+                                        Coming Soon Page
+                                    </div>
+                                    <div class="sm_select_page-desc">
+                                        Tease your website's future with an enticing
+                                        placeholder page.
+                                    </div>
+                                    <div class="sm_select_page-btn">
+                                        <button class="sm__btn block_btn secondary_btn" data-template-category="coming-soon">Customize</button>
+                                        <button class="sm__btn block_btn primary_button" data-template-category="coming-soon">Perview</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

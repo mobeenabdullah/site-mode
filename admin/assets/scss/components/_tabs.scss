@@ -1,34 +1,44 @@
 .sm_tabs{
 	margin: 0;
-	padding: 0;
 	@include flex_mixin(flex, null, end, null, null);	
 	margin-bottom: calculateRem(15px);
     gap: 15px;
+	flex-wrap: wrap;
+	max-width: 15rem;
+	padding: 3rem 0;
 	&-link {
-		@include flex_mixin(flex, center, center, null, calculateRem(10px));
-		background-color: var(--sm-primary-light-color);
-		padding: calculateRem(14px) calculateRem(24px);
-		@include fontSize(14px);
-		font-weight: 600;
-		text-transform: uppercase;		
-		border-bottom: none !important;
-		min-width: calculateRem(80px);
-		color: var(--sm-primary-color);
-		transition: $transition-all;
-		margin-bottom: 0;
-		border-radius: calculateRem(8px);
-		cursor: pointer;
-		& svg {			
-			& path, & circle {
-			  fill: var(--sm-primary-color);
+		width: 100%;
+		& a {
+			@include flex_mixin(flex, flex-start, center, null, calculateRem(10px));
+			background-color: transparent;
+			border: 1px solid var(--sm-sidebar-border-color);
+			@include fontSize(14px);
+			font-weight: 600;
+			text-transform: uppercase;
+			min-width: calculateRem(80px);
+			color: var(--smd-primary-color);
+			transition: $transition-all;
+			margin-bottom: 0;
+			border-radius: calculateRem(8px);
+			cursor: pointer;
+			padding: calculateRem(14px) calculateRem(24px);
+			text-decoration: none;
+			& svg {
+				& path, & circle {
+					fill: var(--sm-primary-color);
+				}
 			}
-		}		
+		}
+
 		&.current{
-			margin: 0;			
-			background-color: var(--sm-primary-color);
-			color: var(--sm-base-white-color);			
-			box-shadow: rgba($primary-color, 0.40) 0px calculateRem(6px) calculateRem(20px) 0px;
-			& svg {				
+			margin: 0;
+			& a {
+				background-color: var(--sm-primary-color);
+				color: var(--sm-base-white-color);
+				//box-shadow: rgba($primary-color, 0.40) 0px calculateRem(6px) calculateRem(20px) 0px;
+				border-color: var(--smd-primary-color);
+			}
+			& svg {
 				& path, & circle {
 					fill: var(--sm-base-white-color);
 				}
@@ -36,12 +46,13 @@
 			&:hover {
 				color: var(--sm-base-white-color);
 				& svg {
-				& path, & circle {
-					fill: var(--sm-base-white-color);
-				}
+					& path, & circle {
+						fill: var(--sm-base-white-color);
+					}
 				}
 			}
 		}
+
 		&:hover {
 			color: var(--sm-primary-color);
 			& svg {
@@ -67,7 +78,9 @@
 }
 
 .tab-content{
-	display: none;	
+	display: none;
+	flex: 1;
+	padding: 3rem 0;
 	&.current{
 		display: inherit;
 		border-radius: calculateRem(8px);    	
