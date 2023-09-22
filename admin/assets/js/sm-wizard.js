@@ -51,6 +51,16 @@ jQuery(function ($) {
     }
     $('.choose_page_type').on('click', choosePageType);
 
+    $(".setup-coming-soon-page").on("click", function() {
+        choosePageType();
+        $('.template-category-filter[data-template-category=coming-soon]').trigger('click');
+    });
+
+    $(".setup-maintenance-page").on("click", function() {
+        choosePageType();
+        $('.template-category-filter[data-template-category=maintenance]').trigger('click');
+    });
+
     // Back to wizard start page
     function backToWizardStart () {
         hideElements('.wizard__content-wrapper, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
@@ -65,12 +75,14 @@ jQuery(function ($) {
         removeElementClass('.wizard__templates-cards--single', 'active');
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
-        $(this).children('span').html('selected');
-        removeElementClass('.select_template_btn', 'sm_disabled_btn');
-        removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
-        addElementClass('.select_template_btn', 'primary_btn_outline');
+        $(this).children('span').html('Selected');
+        hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
+        showElements('.customize__sidebar-content, .import__settings, .import__actions, .sm_customize_settings');
+        addElementClass('.sm-import', 'active');
+        addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
     }
     $('.select_tempalte').on('click', selectTemplate);
+
 
     // Go to customize template page
     function customizeTemplate () {
