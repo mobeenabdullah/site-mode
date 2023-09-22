@@ -91,12 +91,10 @@ class Site_Mode_Admin {
 
         // Enqueue Site Mode Color Paltte theme
         $sm_design_data = get_option('site_mode_design');
-        if($sm_design_data['preset']) {
+        if(isset($sm_design_data) && isset($sm_design_data['preset']) && $sm_design_data['preset']) {
             $preset = $sm_design_data['preset'];
             wp_enqueue_style( 'site-mode-'. $preset , SITE_MODE_ADMIN_URL  . 'assets/css/' . $preset . '.css', [], $this->version, 'all' );
         }
-
-
 	}
 
 	/**
