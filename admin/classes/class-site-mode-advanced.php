@@ -22,20 +22,25 @@ require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Advanced extends Settings {
-		protected $option_name = 'site_mode_advanced';
-		protected $ga_id;
-		protected $fb_id;
-		protected $disable_rest_api;
-		protected $disable_rss_feed;
-		protected $site_mode_advanced = [];
+    protected $option_name = 'site_mode_advanced';
+    protected $ga_id;
+    protected $fb_id;
+    protected $disable_rest_api;
+    protected $disable_rss_feed;
+    protected $site_mode_advanced = [];
+
+    protected $whitelist_pages;
+    protected $user_roles;
+    protected $mode_type;
 
 	public function __construct() {
 		$this->site_mode_advanced = get_option( 'site_mode_advanced' );
 		if ( $this->site_mode_advanced ) {
-			$this->ga_id            = isset( $this->site_mode_advanced['ga_id'] ) ? $this->site_mode_advanced['ga_id'] : '';
-			$this->fb_id            = isset( $this->site_mode_advanced['fb_id'] ) ? $this->site_mode_advanced['fb_id'] : '';
 			$this->disable_rest_api = isset( $this->site_mode_advanced['disable_rest_api'] ) ? $this->site_mode_advanced['disable_rest_api'] : 0;
 			$this->disable_rss_feed = isset( $this->site_mode_advanced['disable_rss_feed'] ) ? $this->site_mode_advanced['disable_rss_feed'] : '0';
+            $this->mode_type         = isset( $this->site_mode_advanced['mode_type'] ) ? $this->site_mode_advanced['mode_type'] : 'maintenance';
+            $this->whitelist_pages   = isset( $this->site_mode_advanced['whitelist_pages'] ) ? $this->site_mode_advanced['whitelist_pages'] :[];
+            $this->user_roles        = isset( $this->site_mode_advanced['user_roles'] ) ? $this->site_mode_advanced['user_roles'] : [];
 		}
 	}
 
@@ -50,10 +55,16 @@ class Site_Mode_Advanced extends Settings {
 
 		// validate using isset and sanitize inputs before storing in database.
 		$data                     = [];
-		$data['ga_id']            = $this->get_post_data( 'ga-id', 'advance-settings-save', 'advance-custom-message', 'text' );
-		$data['fb_id']            = $this->get_post_data( 'facebook-id', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['disable_rest_api'] = $this->get_post_data( 'disable-rest-api', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['disable_rss_feed'] = $this->get_post_data( 'disable-rss-feed', 'advance-settings-save', 'advance-custom-message', 'text' );
+        $data['mode_type']        = $this->get_post_data( 'site-mode-mode-type', 'advance-settings-save', 'advance-custom-message', 'text' );
+
+        if ( isset( $_POST['site-mode-whitelist-pages'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( $_POST['advance-custom-message'] ), 'advance-settings-save' ) ) {
+            $data['whitelist_pages'] = array_map( 'sanitize_text_field', $_POST['site-mode-whitelist-pages'] );
+        }
+        if ( isset( $_POST['site-mode-user-roles'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( $_POST['advance-custom-message'] ), 'advance-settings-save' ) ) {
+            $data['user_roles'] = array_map( 'sanitize_text_field', $_POST['site-mode-user-roles'] );
+        }
 
 		return $this->save_data( $this->option_name, $data );
 

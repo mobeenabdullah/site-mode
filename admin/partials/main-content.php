@@ -32,19 +32,19 @@
 						'icon'  => '<i class="fa-solid fa-gear"></i>',
 					],
 					[
-						'title' => 'Design',
-						'icon'  => '<i class="fa-solid fa-palette"></i>',
-					],
-					[
 						'title' => 'SEO',
 						'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
 					],
+                    [
+                        'title' => 'Integrations',
+                        'icon'  => '<i class="fa-solid fa-palette"></i>',
+                    ],
 					[
 						'title' => 'Advanced',
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					],
 				];
-				$active_tab     = isset( $_GET['tab'] ) ?  sanitize_text_field( strtolower($_GET['tab']) ) : 'general';
+				$active_tab     = isset( $_GET['setting'] ) ?  sanitize_text_field( strtolower($_GET['setting']) ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';

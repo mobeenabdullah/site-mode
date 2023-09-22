@@ -26,13 +26,10 @@ class Site_Mode_Activator {
 		// Add default options to database for general settings
 		$general_settings = [
 			'mode_status'      => 0,
-			'mode_type'        => 'maintenance',
 			'redirect_url'     => '',
 			'redirect_delay'   => 0,
 			'show_login_icon'  => 1,
 			'custom_login_url' => '',
-			'whitelist_pages'  => [],
-			'user_roles'       => ['administrator'],
 		];
 
 		// add default options to database for SEO settings fields with placeholder text.
@@ -45,12 +42,18 @@ class Site_Mode_Activator {
 
 		// adding default options to database for advanced settings.
 		$advance_settings = [
-			'ga_id'            => '',
-			'fb_id'            => '',
 			'enable_rest_api'  => '0',
 			'disable_rss_feed' => '0',
 			'enable_feed'      => '1',
+            'mode_type'        => 'maintenance',
+            'whitelist_pages'  => [],
+            'user_roles'       => ['administrator'],
 		];
+
+        $integrations_settings = [
+            'ga_id'            => '',
+            'fb_id'            => '',
+        ];
 
         // Add default templates to database for design settings.
 
@@ -106,6 +109,7 @@ class Site_Mode_Activator {
 			'site_mode_seo'                 => $seo_settings,
 			'site_mode_advanced'            => $advance_settings,
             'site_mode_design_templates'    => $sm_design_templates,
+            'site_mode_integrations'        => $integrations_settings,
             'sm_activation_redirect'        => true
 		];
 

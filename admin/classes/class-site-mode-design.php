@@ -44,6 +44,15 @@ class Site_Mode_Design extends  Settings {
         $this->get_template_props_init();
     }
 
+    public function ajax_site_mode_skip_wizard() {
+        $this->verify_nonce( 'template_init_field', 'template_init_action' );
+        update_option('sm-fresh-installation', true);
+        wp_send_json_success([
+            'success' => true
+        ]);
+        die();
+    }
+
     public function ajax_site_mode_design_page_init() : void {
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $page_id = $this->get_post_data( 'page_id', 'template_init_action', 'template_init_field', 'number' );

@@ -37,12 +37,12 @@
                             ],
                         ];
 
-                        $current_tab = isset($_GET['tab']) ? $_GET['tab'] : 'dashboard';
+                        $current_tab = isset($_GET['setting']) ? $_GET['setting'] : 'dashboard';
 
                         foreach ( $site_mode_tabs as $site_mode_tab ) :
                             $tab_class = ($current_tab === $site_mode_tab['link']) ? 'active' : '';
                             ?>
-                                <a href="<?php echo admin_url('?page=site-mode&tab='. $site_mode_tab['link']);  ?>" class="<?php echo $tab_class; ?>"><?php echo $site_mode_tab['title']; ?></a>
+                                <a href="<?php echo admin_url('?page=site-mode&setting='. $site_mode_tab['link']);  ?>" class="<?php echo $tab_class; ?>"><?php echo $site_mode_tab['title']; ?></a>
                             <?php
                         endforeach;
                     ?>
@@ -63,21 +63,62 @@
                                 $class      = new $class_name();
                                 $class->render();
                             } else {
-                                require_once SITE_MODE_ADMIN . "classes/class-site-mode-general.php";
-                                require_once SITE_MODE_ADMIN . "classes/class-site-mode-seo.php";
-                                require_once SITE_MODE_ADMIN . "classes/class-site-mode-advanced.php";
 
-                                $general_class = new Site_Mode_General();
-                                $seo_class = new Site_Mode_Seo();
-                                $advanced_class = new Site_Mode_Advanced();
 
-                                $general_class->render();
-                                $seo_class->render();
-                                $advanced_class->render();
+                                ?>
+                                <div class="tabs_wrapper">
+                                    <ul class="sm_tabs">
+                                        <?php
+                                        $site_mode_tabs = [
+                                            [
+                                                'title' => 'General',
+                                                'icon'  => '<i class="fa-solid fa-gear"></i>',
+                                            ],
+                                            [
+                                                'title' => 'SEO',
+                                                'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
+                                            ],
+                                            [
+                                                'title' => 'Integrations',
+                                                'icon'  => '<i class="fa-solid fa-palette"></i>',
+                                            ],
+                                            [
+                                                'title' => 'Advanced',
+                                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
+                                            ],
+                                        ];
+                                        $active_tab     = isset( $_GET['tab'] ) ?  sanitize_text_field( strtolower($_GET['tab']) ) : 'general';
 
+                                        foreach ( $site_mode_tabs as $site_mode_tab ) :
+                                            $tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
+                                            $tab_data  = 'tab-' . strtolower( $site_mode_tab['title'] );
+                                            $tab_link = '?page=site-mode&setting=settings&tab=' . strtolower($site_mode_tab['title']);
+                                            ?>
+                                            <li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
+                                                <a href="<?php echo esc_url(admin_url($tab_link));  ?>" >
+                                                    <span class="menu_icon"><?php $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
+                                                    <span class="menu_label"><?php echo esc_html( $site_mode_tab['title']); ?></span>
+                                                </a>
+                                            </li>
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                    </ul>
+
+                                    <div class="tab-content current">
+                                        <?php
+                                        require_once SITE_MODE_ADMIN . "classes/class-site-mode-{$active_tab}.php";
+                                        $class_name = 'Site_Mode_' . ucfirst( $active_tab );
+                                        $class      = new $class_name();
+                                        $class->render();
+                                        ?>
+                                    </div>
+
+                                </div>
+                                <?php
                             }
 
-                        } elseif($current_tab === 'about-us') {
+                        } elseif($current_tab === 'about-us' || $current_tab === 'support') {
                             echo $current_tab;
                         } else {
                             require_once SITE_MODE_ADMIN . "partials/dashboard-setting-page.php";
