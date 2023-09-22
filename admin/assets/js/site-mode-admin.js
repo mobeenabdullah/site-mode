@@ -99,6 +99,7 @@ jQuery(function ($) {
     siteMode.on("change", showHideURLOptions);
 
     // 2.  Tabs setting page
+    /*
     const allTabs = $(".sm_tabs li");
     const allTabsContent = $(".tab-content");
 
@@ -122,6 +123,7 @@ jQuery(function ($) {
       );
     }
     allTabs.on("click", changeTab);
+    */
 
     // 4.   Show Login URL field
     const loginUrlField = $(".login_url_field");

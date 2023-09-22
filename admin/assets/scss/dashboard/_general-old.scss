@@ -62,17 +62,6 @@ Plugin general styling
 /*-----------------------------------------------
 3.  Base structure classes
 -----------------------------------------------*/
-body {
-  font-size: calculateRem(16px) !important;
-}
-
-.wp-admin.toplevel_page_site-mode {
-  background-color: var(--sm-setting-page-bg-color) !important;
-  #wpcontent {
-    background-color: var(--sm-setting-page-bg-color) !important;
-    padding: calculateRem(20px) calculateRem(20px) calculateRem(30px) calculateRem(30px);
-  }
-}
 .site_mode__wrap {
   &--header {
     width: calculateRem(200px);
@@ -97,8 +86,10 @@ body {
     padding: 0;
   }
   &-form {
-    background-color: var(--sm-base-white-color);
-    padding: calculateRem(40px) calculateRem(20px) calculateRem(20px) calculateRem(20px);
+    background-color: var(--smd-header-bg);
+    width: 100%;
+    padding: 2rem;
+    border-radius: 0.8rem;
   }
 }
 
@@ -167,7 +158,7 @@ body {
 /*-----------------------------------------------
 5.  Buttons
 -----------------------------------------------*/
-@import './components/button';
+@import '../components/button';
 
 /*-----------------------------------------------
 6.  Tabs

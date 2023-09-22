@@ -82,7 +82,7 @@ class Site_Mode_Admin {
 	public function enqueue_styles() {
         wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', [], $this->version, 'all' );        
-		wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
+//		wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
         wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', [], $this->version, 'all' );
 
         if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && empty(get_option('sm-fresh-installation'))) {

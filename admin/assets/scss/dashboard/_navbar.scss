@@ -24,4 +24,10 @@
   }
 }
 .smd-tab-content {
+  & .tabs_wrapper {
+    height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    gap: 3rem;
+  }
 }
