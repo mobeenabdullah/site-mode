@@ -13,24 +13,6 @@
 			</div>
 		</div>
 
-		<!-- Mode Setting -->
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="site_mode"><?php esc_html_e( 'Mode Type', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Select the appropriate Mode type to specify the desired server response and behavior for your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_select">
-					<select name="site-mode-mode-type" id="site_mode">
-						<option value="maintenance" <?php selected( $this->mode_type === 'maintenance', 1 ); ?>><?php esc_html_e( 'Maintenance - Returns HTTP 200 OK response', 'site-mode' ); ?></option>
-						<option value="coming-soon" <?php selected( $this->mode_type === 'coming-soon', 1 ); ?>><?php esc_html_e( 'Coming Soon - Returns 503 HTTP Service response', 'site-mode' ); ?></option>
-						<option value="redirect" <?php selected( $this->mode_type === 'redirect', 1 ); ?> id="direct-item"><?php esc_html_e( 'Redirect - Returns HTTP 301 response and redirect to a URL', 'site-mode' ); ?></option>
-					</select>
-					<span class="arrow-down"></span>
-				</div>
-			</div>
-		</div>
-
 		<div class="redirect_options <?php echo ( $this->mode_type === 'redirect' ) ? '' : 'sm_hide_field'; ?>">
 			<div class="option__row">
 				<div class="option__row--label">
@@ -82,47 +64,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="whitelist_include"><?php esc_html_e( 'Whitelist Pages', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Exclude these pages from displaying the maintenance page', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<?php $all_pages = get_pages(); ?>
-				<div class="sm_select">
-					<select class="whitelist-pages-multiselect" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include">
-						<?php
-						foreach ( $all_pages as $value ) :
-							if ( in_array( $value->ID, $this->whitelist_pages ) ) {
-								$selected = 'selected';
-							} else {
-								$selected = '';
-							}
-							?>
-							<option value="<?php echo esc_attr( $value->ID ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html_e( $value->post_name ); ?></option>
-						<?php endforeach; ?>
-					</select>
-					<span class="arrow-down"></span>
-				</div>
-			</div>
-		</div>
 
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><?php esc_html_e( 'Whitelist User Roles', 'site-mode' ); ?></span>
-				<span class="info_text"><?php esc_html_e( 'Exclude these user roles from viewing the maintenance page', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<?php global $wp_roles; ?>
-				<?php foreach ( $wp_roles->roles as $key => $value ) : ?>
-				<div class="sm_checkbox_wrapper role_checkbox">
-					<?php $checked = ( in_array( $key, $this->user_roles ) ) ? 'checked' : ''; ?>
-					<input type="checkbox" id="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $checked ); ?> />
-					<label for="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>"><?php echo esc_html( $value['name'] ); ?></label>
-				</div>
-				<?php endforeach; ?>
-			</div>
-		</div>
 
 		<?php wp_nonce_field( 'general_settings_action', 'general_section_field' ); ?>
 
