@@ -35,6 +35,54 @@ class Site_Mode_Menu {
 		);
 	}
 
+    public function site_mode_submenu_settings_page() {
+
+        $submenus = [
+            [
+                'page_title' => 'Dashboard',
+                'menu_title' => 'Dashboard',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
+            ],
+            [
+                'page_title' => 'Templates',
+                'menu_title' => 'Templates',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=templates',
+            ],
+            [
+                'page_title' => 'Settings',
+                'menu_title' => 'Settings',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
+            ],
+            [
+                'page_title' => 'About Us',
+                'menu_title' => 'About Us',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
+            ],
+            [
+                'page_title' => 'Support',
+                'menu_title' => 'Support',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=support',
+            ]
+
+        ];
+
+        foreach ($submenus as $submenu ) {
+            add_submenu_page(
+                'site-mode',
+                $submenu['page_title'],
+                $submenu['menu_title'],
+                $submenu['capability'],
+                $submenu['menu_slug'],
+            );
+        }
+
+    }
+
 	public function site_mode_settings_page_cb() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;

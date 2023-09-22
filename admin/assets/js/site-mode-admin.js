@@ -213,6 +213,14 @@ jQuery(function ($) {
       );
     });
 
+
+    const integrationsGeneral = $("#site-mode-integrations");
+    integrationsGeneral.submit(function (e) {
+      e.preventDefault();
+      $("#site-mode-integrations .save-btn-loader").show();
+      sendAjaxRequest("site-mode-integrations", "ajax_site_mode_intergrations");
+    });
+
     const formGeneral = $("#site-mode-general");
     formGeneral.submit(function (e) {
       e.preventDefault();
