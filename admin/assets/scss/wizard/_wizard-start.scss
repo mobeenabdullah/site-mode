@@ -92,12 +92,12 @@
       border-left: 0;
       content: '';
       display: block;
-      height: 0.75rem;
+      height: 0.65rem;
       left: 25%;
       position: absolute;
       top: 50%;
       transform: rotate(45deg) translate(-50%, -50%);
-      width: 0.375rem;
+      width: 0.275rem;
     }
     &:checked {
       background: var(--wd-primary-color);
@@ -134,6 +134,7 @@
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.05);
   }
   & .sm__card-cover .sm_select_page-icon {
+    margin-bottom: 1.5rem;
     & svg {
       & path {
         fill: var(--wd-primary-color);
@@ -159,6 +160,12 @@
       border-color: var(--wd-base-black-color);
       color: var(--wd-base-black-color);
       font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 1rem));
+      transition: all .2s;
+      &:hover {
+        background-color: var(--wd-primary-color);
+        border-color: var(--wd-primary-color);
+        color: var(--wd-base-white-color);
+      }
     }
   }
 }
@@ -227,30 +234,3 @@
 .sm__card:hover .sm__card-radio:disabled {
   border-color: var(--wd-gray-2-color) !important;
 }
-
-
-
-
-/*
-.radio:focus ~ .plan-details {
-  box-shadow: 0 0 0 2px var(--color-dark-gray);
-}
-
-.radio:disabled ~ .plan-details {
-  color: var(--color-dark-gray);
-  cursor: default;
-}
-
-.radio:disabled ~ .plan-details .plan-type {
-  color: var(--color-dark-gray);
-}
-
-.sm__card:hover .radio:disabled ~ .plan-details {
-  border-color: var(--color-gray);
-  box-shadow: none;
-}
-*/
-
-
-
-

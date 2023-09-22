@@ -33,7 +33,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                                             placeholder page.
                                         </div>
                                         <div class="sm_select_page-btn">
-                                            <button class="sm__btn block_btn primary_button">Setup Coming Soon Page</button>
+                                            <button class="sm__btn block_btn primary_button setup-coming-soon-page" data-template-category="coming-soon">Setup Coming Soon Page</button>
                                         </div>
                                     </div>
                                 </label>
@@ -55,7 +55,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                                             Temporarily offline for necessary improvements. We'll be back soon!
                                         </div>
                                         <div class="sm_select_page-btn">
-                                            <button class="sm__btn block_btn primary_button">Setup Maintenance Page</button>
+                                            <button class="sm__btn block_btn primary_button setup-maintenance-page" data-template-category="coming-soon">Setup Maintenance Page</button>
                                         </div>
                                     </div>
                                 </label>
@@ -187,7 +187,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                     </svg>
                     <span>Back</span>
                 </button>
-                <button class="select_template_btn sm__btn sm_disabled_btn" disabled="disabled" type="button" data-template-name="<?php echo $key; ?>" data-template-label="<?php echo $template['name']; ?>">
+                <button class="select_template_btn sm__btn primary_btn_outline" type="button" data-template-name="<?php echo $key; ?>" data-template-label="<?php echo $template['name']; ?>">
                     <span>Customize</span>
                     <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
