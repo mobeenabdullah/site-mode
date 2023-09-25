@@ -78,10 +78,19 @@
         & .site-mode-cards {
           display: flex;
           gap: 1rem;
+          @media screen and (max-width: 767px) {
+            flex-wrap: wrap !important;
+          }
           &--item {
             padding: 1rem;
             border: 1px solid var(--smd-seperator-color);
             border-radius: 0.7rem;
+            & .sm_select_page-icon, & .sm_select_page-title, & .sm_select_page-desc, & .sm_select_page-btn button  {
+              filter: grayscale(1);
+              cursor: not-allowed;
+              user-select: none;
+              opacity: 0.5;
+            }
             & .sm__card {
               position: relative;
               display: block;
@@ -168,7 +177,8 @@
                 display: flex;
                 align-items: center;
                 gap: 1rem;
-                & button {
+                & button, & a {
+                  text-decoration: none;
                   padding: calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem)) calc(clamp(0.875rem, 0.563rem + 0.833vw, 1.313rem));
                   background-color: transparent;
                   color: var(--smd-contrast-color);
@@ -187,6 +197,14 @@
                     border-color: var(--smd-contrast-color);
                   }
                 }
+              }
+            }
+            &.enabled__card {
+              & .sm_select_page-icon, & .sm_select_page-title, & .sm_select_page-desc, & .sm_select_page-btn button  {
+                filter: inherit;
+                cursor: inherit;
+                user-select: inherit;
+                opacity: 1;
               }
             }
           }

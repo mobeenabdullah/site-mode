@@ -11,6 +11,9 @@
 .sm__dashboard {
   & #wpcontent {
     padding-left: 0 !important;
+    @media screen and (max-width: 767px) {
+      padding: 0 !important;
+    }
   }
 }
 
