@@ -28,6 +28,12 @@
 					fill: var(--sm-primary-color);
 				}
 			}
+
+			&:focus {
+				box-shadow: none !important;
+				outline: none !important;
+			}
+
 		}
 
 		&.current{

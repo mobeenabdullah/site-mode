@@ -2280,6 +2280,11 @@ input[type=file] {
 	fill: var(--sm-primary-color);
 }
 
+.sm_tabs-link a:focus {
+	box-shadow: none !important;
+	outline: none !important;
+}
+
 .sm_tabs-link.current {
 	margin: 0;
 }

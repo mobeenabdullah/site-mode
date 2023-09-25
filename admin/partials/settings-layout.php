@@ -118,7 +118,7 @@
                                 <?php
                             }
 
-                        } elseif($current_tab === 'about-us' || $current_tab === 'support') {
+                        } elseif($current_tab === 'about-us') {
                             require_once SITE_MODE_ADMIN . "partials/dashboard-about-page.php";
                         } else {
                             require_once SITE_MODE_ADMIN . "partials/dashboard-setting-page.php";
