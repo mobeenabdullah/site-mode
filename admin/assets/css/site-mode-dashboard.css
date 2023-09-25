@@ -1,6 +1,6 @@
 :root {
 	--smd-primary-color: #fe4773;
-	--smd-primary-light-color: #ECECFC;
+	--smd-primary-light-color: #ffedf1;
 	--smd-header-bg: #F9F9F9;
 	--smd-base-color: #ffffff;
 	--smd-contrast-color: #000000;
@@ -81,7 +81,7 @@ Plugin general styling
 -----------------------------------------------*/
 :root {
 	--sm-primary-color: #fe4773;
-	--sm-primary-light-color: #ECECFC;
+	--sm-primary-light-color: #ffedf1;
 	--sm-secondary-color: #202020;
 	--sm-base-white-color: #ffffff;
 	--sm-base-black-color: #141414;
@@ -275,7 +275,6 @@ Plugin general styling
 	cursor: pointer;
 	transition: all .2s;
 	min-width: min-content;
-	text-align: center;
 }
 
 .btn:hover, .btn:focus {
@@ -305,6 +304,11 @@ Plugin general styling
 	--btn-font-size: 0.75rem;
 	--btn-line-height: 1;
 	border-radius: 0.4rem;
+	color: var(--sm-primary-color);
+}
+
+.btn_sm:hover {
+	color: var(--sm-base-white-color);
 }
 
 .btn_white {
@@ -1257,61 +1261,6 @@ input[type=file] {
 	opacity: 0;
 }
 
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle {
-	position: absolute;
-	top: 0.5rem;
-	right: 0.5rem;
-	width: fit-content;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	--bg: var(--wd-primary-color);
-	--btn-bg-inactive: #ffedf1;
-	--btn-bg-active: var(--smd-primary-color);
-	--border-w: 0;
-	--btn-thumb: red;
-	--btn-w: 1.8rem;
-	--btn-h: calc(var(--btn-w) / 2);
-	--gap: calc(var(--btn-h) / 10);
-}
-
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle input[type="checkbox"] {
-	display: none !important;
-}
-
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle .toggle {
-	box-sizing: content-box;
-	width: var(--btn-w);
-	height: var(--btn-h);
-	padding: var(--gap);
-	border-radius: var(--btn-w);
-	background: rgba(0, 0, 0, 0.1);
-	cursor: pointer;
-	position: relative;
-	transition: background 0.3s;
-}
-
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle .toggle::before {
-	content: '';
-	box-sizing: border-box;
-	position: absolute;
-	left: var(--gap);
-	width: var(--btn-h);
-	height: var(--btn-h);
-	border-radius: 50%;
-	background: #999999;
-	transition: transform 0.3s;
-}
-
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle input[type="radio"]:checked + .toggle::before {
-	transform: translateX(calc(var(--btn-w) - var(--btn-h)));
-	background: var(--smd-primary-color);
-}
-
-.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .btn-toggle input[type="radio"]:checked + .toggle {
-	background: #ffedf1;
-}
-
 .sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_page-icon {
 	margin-bottom: 1rem;
 	display: inline-flex;
@@ -1700,6 +1649,125 @@ input[type=file] {
 
 .about__wrapper-cover--left p {
 	font-size: calc(clamp(0.9rem, 0.686rem + 0.571vw, 1.2rem));
+}
+
+.btn-toggle {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	width: fit-content;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	--bg: var(--wd-primary-color);
+	--btn-bg-inactive: #ffedf1;
+	--btn-bg-active: var(--smd-primary-color);
+	--border-w: 0;
+	--btn-thumb: red;
+	--btn-w: 1.8rem;
+	--btn-h: calc(var(--btn-w) / 2);
+	--gap: calc(var(--btn-h) / 10);
+}
+
+.btn-toggle.smd_normal_toggle {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.btn-toggle input[type="radio"] {
+	display: none !important;
+}
+
+.btn-toggle .toggle {
+	box-sizing: content-box;
+	width: var(--btn-w);
+	height: var(--btn-h);
+	padding: var(--gap);
+	border-radius: var(--btn-w);
+	background: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	position: relative;
+	transition: background 0.3s;
+}
+
+.btn-toggle .toggle::before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	left: var(--gap);
+	width: var(--btn-h);
+	height: var(--btn-h);
+	border-radius: 50%;
+	background: #999999;
+	transition: transform 0.3s;
+}
+
+.btn-toggle input[type="radio"]:checked + .toggle::before {
+	transform: translateX(calc(var(--btn-w) - var(--btn-h)));
+	background: var(--smd-primary-color);
+}
+
+.btn-toggle input[type="radio"]:checked + .toggle {
+	background: #ffedf1;
+}
+
+.btn-check-toggle {
+	width: fit-content;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	--bg: var(--wd-primary-color);
+	--btn-bg-inactive: #ffedf1;
+	--btn-bg-active: var(--smd-primary-color);
+	--border-w: 0;
+	--btn-thumb: red;
+	--btn-w: 1.8rem;
+	--btn-h: calc(var(--btn-w) / 2);
+	--gap: calc(var(--btn-h) / 10);
+}
+
+.btn-check-toggle.smd_normal_toggle {
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+.btn-check-toggle .toggle {
+	box-sizing: content-box;
+	width: var(--btn-w);
+	height: var(--btn-h);
+	padding: var(--gap);
+	border-radius: var(--btn-w);
+	background: rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	position: relative;
+	transition: background 0.3s;
+}
+
+.btn-check-toggle .toggle::before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	left: var(--gap);
+	width: var(--btn-h);
+	height: var(--btn-h);
+	border-radius: 50%;
+	background: #999999;
+	transition: transform 0.3s;
+}
+
+.btn-check-toggle input[type="checkbox"]:checked + .toggle::before {
+	transform: translateX(calc(var(--btn-w) - var(--btn-h)));
+	background: var(--smd-primary-color);
+}
+
+.btn-check-toggle input[type="checkbox"]:checked + .toggle {
+	background: #ffedf1;
+}
+
+.btn-check-toggle input[type="checkbox"] {
+	display: none !important;
 }
 
 .smd-navbar {

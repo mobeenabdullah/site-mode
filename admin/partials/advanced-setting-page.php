@@ -2,44 +2,30 @@
 	<?php settings_errors(); ?>
 
 	<form id="site-mode-advanced" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-        <!--
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="google_analytic_id"><?php //esc_html_e( 'Google Analytics ID', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php //esc_html_e( 'Enter your Google Analytics tracking ID to integrate website analytics and monitor traffic', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_input_cover">
-					<input type="text" id="google_analytic_id" name="ga-id" value="<?php //echo esc_attr( $this->ga_id ); ?>" placeholder="e.g. G-XXXXXXXXXX" />
-				</div>
-			</div>
-		</div>
-
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="facebook_pixel_id"><?php //esc_html_e( 'Facebook Pixel ID', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php //esc_html_e( 'Enter your Facebook Pixel ID to enable tracking and measurement of your website\'s performance on Facebook', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_input_cover">
-					<input type="text" id="facebook_pixel_id" name="facebook-id" value="<?php //echo esc_attr( $this->fb_id ); ?>" placeholder="e.g. xxxxxxxxxxxxxxx" />
-				</div>
-			</div>
-		</div>
-		-->
-
 		<div class="option__row">
 			<div class="option__row--label">
 				<span><label for="rest_api"><?php esc_html_e( 'Disable REST API', 'site-mode' ); ?></label></span>
 				<span class="info_text"><?php esc_html_e( 'Activate to disable the REST API, which can enhance security and prevent unauthorized access', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
-				<div class="sm_checkbox_wrapper">
-					<input type="checkbox" id="rest_api" name="disable-rest-api" value="1" <?php checked( 1, $this->disable_rest_api, true ); ?> />
-					<label for="rest_api"></label>
-				</div>
+                <span class="btn-toggle btn-check-toggle setup_pages smd_normal_toggle">
+                    <input type="checkbox" id="rest_api" name="disable-rest-api" value="1" <?php checked( 1, $this->disable_rest_api, true ); ?> />
+                    <label class="toggle" for="rest_api"></label>
+                </span>
 			</div>
 		</div>
+        <div class="option__row">
+            <div class="option__row--label">
+                <span><label for="feed_enable"><?php esc_html_e( 'Disable RSS Feed', 'site-mode' ); ?></label></span>
+                <span class="info_text"><?php esc_html_e( 'Activate to disable the RSS feed, which can improve website security and prevent unauthorized access to content', 'site-mode' ); ?></span>
+            </div>
+            <div class="option__row--field">
+                <span class="btn-toggle btn-check-toggle setup_pages smd_normal_toggle">
+                    <input type="checkbox" id="feed_enable" name="disable-rss-feed" value="1" <?php checked( 1, $this->disable_rss_feed, true ); ?>/>
+                    <label class="toggle" for="feed_enable"></label>
+                </span>
+            </div>
+        </div>
 
         <!-- Mode Setting -->
         <div class="option__row">
@@ -55,6 +41,31 @@
                         <option value="redirect" <?php selected( $this->mode_type === 'redirect', 1 ); ?> id="direct-item"><?php esc_html_e( 'Redirect - Returns HTTP 301 response and redirect to a URL', 'site-mode' ); ?></option>
                     </select>
                     <span class="arrow-down"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="redirect_options <?php echo ( $this->mode_type === 'redirect' ) ? '' : 'sm_hide_field'; ?>">
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="redirect_url"><?php esc_html_e( 'Redirect URL', 'site-mode' ); ?></label></span>
+                    <span class="info_text"><?php esc_html_e( 'Specify the URL to which the site should be redirected by entering it in the field', 'site-mode' ); ?></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">
+                        <input type="text" id="redirect_url" name="site-mode-redirect-url" value="<?php echo esc_attr( $this->redirect_url ); ?>" <?php checked( 1, $this->redirect_url, true ); ?> />
+                    </div>
+                </div>
+            </div>
+            <div class="option__row">
+                <div class="option__row--label">
+                    <span><label for="delay_seconds"><?php esc_html_e( 'Delay (seconds)', 'site-mode' ); ?></label></span>
+                    <span class="info_text"><?php esc_html_e( 'Enter the number of seconds to delay the redirection in the range of 0-10 seconds', 'site-mode' ); ?></span>
+                </div>
+                <div class="option__row--field">
+                    <div class="sm_input_cover">
+                        <input type="number" min="0" max="10" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo esc_attr( $this->redirect_delay ); ?>" <?php checked( 1, $this->redirect_delay, true ); ?> />
+                    </div>
                 </div>
             </div>
         </div>
@@ -100,19 +111,6 @@
                 </div>
             </div>
         </div>
-
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="feed_enable"><?php esc_html_e( 'Disable RSS Feed', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Activate to disable the RSS feed, which can improve website security and prevent unauthorized access to content', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_checkbox_wrapper">
-				<input type="checkbox" id="feed_enable" name="disable-rss-feed" value="1" <?php checked( 1, $this->disable_rss_feed, true ); ?>/>
-					<label for="feed_enable"></label>
-				</div>
-			</div>
-		</div>
 
 		<?php wp_nonce_field( 'advance-settings-save', 'advance-custom-message' ); ?>
 		 <div class="option__row">

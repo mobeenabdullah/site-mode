@@ -23,8 +23,8 @@ require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
  */
 class Site_Mode_Advanced extends Settings {
     protected $option_name = 'site_mode_advanced';
-    protected $ga_id;
-    protected $fb_id;
+    protected $redirect_url;
+    protected $redirect_delay;
     protected $disable_rest_api;
     protected $disable_rss_feed;
     protected $site_mode_advanced = [];
@@ -39,6 +39,8 @@ class Site_Mode_Advanced extends Settings {
 			$this->disable_rest_api = isset( $this->site_mode_advanced['disable_rest_api'] ) ? $this->site_mode_advanced['disable_rest_api'] : 0;
 			$this->disable_rss_feed = isset( $this->site_mode_advanced['disable_rss_feed'] ) ? $this->site_mode_advanced['disable_rss_feed'] : '0';
             $this->mode_type         = isset( $this->site_mode_advanced['mode_type'] ) ? $this->site_mode_advanced['mode_type'] : 'maintenance';
+            $this->redirect_url      = isset( $this->site_mode_general['redirect_url'] ) ? $this->site_mode_general['redirect_url'] : '';
+            $this->redirect_delay    = isset( $this->site_mode_general['redirect_delay'] ) ? $this->site_mode_general['redirect_delay'] : 2;
             $this->whitelist_pages   = isset( $this->site_mode_advanced['whitelist_pages'] ) ? $this->site_mode_advanced['whitelist_pages'] :[];
             $this->user_roles        = isset( $this->site_mode_advanced['user_roles'] ) ? $this->site_mode_advanced['user_roles'] : [];
 		}
@@ -58,6 +60,8 @@ class Site_Mode_Advanced extends Settings {
 		$data['disable_rest_api'] = $this->get_post_data( 'disable-rest-api', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['disable_rss_feed'] = $this->get_post_data( 'disable-rss-feed', 'advance-settings-save', 'advance-custom-message', 'text' );
         $data['mode_type']        = $this->get_post_data( 'site-mode-mode-type', 'advance-settings-save', 'advance-custom-message', 'text' );
+        $data['redirect_url']     = $this->get_post_data( 'site-mode-redirect-url', 'advance-settings-save', 'advance-custom-message', 'text' );
+        $data['redirect_delay']   = $this->get_post_data( 'site-mode-redirect-delay', 'advance-settings-save', 'advance-custom-message', 'number' );
 
         if ( isset( $_POST['site-mode-whitelist-pages'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( $_POST['advance-custom-message'] ), 'advance-settings-save' ) ) {
             $data['whitelist_pages'] = array_map( 'sanitize_text_field', $_POST['site-mode-whitelist-pages'] );
