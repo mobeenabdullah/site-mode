@@ -27,27 +27,15 @@ $page_ids = get_posts($args);
             <?php endforeach; ?>
         </div>
 
-        <div class="page-select-wrapper">
-            <form method="post" id="site-mode-page-init" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-                <label for="sm_page_select">Select Page:</label>
-                <select name="page_id" id="sm_page_select">
-                    <option value="">Select Page</option>
-                    <?php foreach ($page_ids as $page_id) : ?>
-                        <option value="<?php echo $page_id->ID; ?>" <?php echo $page_id->ID == $this->page_id ? 'selected' : ''; ?>><?php echo $page_id->post_title; ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <?php wp_nonce_field( 'template_init_action', 'template_init_field' ); ?>
-                <input type="submit" id="sm_page_init" class="button button-primary" value="Save">
-            </form>
-        </div>
-
-
 		<div class="section__wrapper-content section_theme">
             <div class="template__wrapper">
                 <div class="template_options">
                     <?php foreach ( $templates as $key => $template ) : ?>
                     <div class="template_card template-content-wrapper template-<?php echo esc_attr( $key ); ?> <?php echo $key === $this->active_template ? 'active_template' : ''; ?>" data-category-name="<?php echo $template['category']; ?>">
                         <button class="template_init_button" data-value="<?php echo $key; ?>">Import</button>
+
+                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&template=') . $key . '&cat=' . $template['category']; ?>">Import</a>
+
                         <div class="template_card-image" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key .'/screenshot.jpg' ); ?>);">
                         </div>
                         <div class="template_loading" style="display: none">Loading...</div>

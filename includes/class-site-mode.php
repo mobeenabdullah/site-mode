@@ -200,20 +200,13 @@ class Site_Mode {
         /**
          * Ajax calling
          */
-        // template init
         $this->loader->add_filter( 'theme_page_templates', $plugin_admin, 'add_maintenance_template' );
         $this->loader->add_filter( 'template_include', $plugin_admin, 'use_maintenance_template' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_skip_wizard', $this->classes_loader->get_design(), 'ajax_site_mode_skip_wizard' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_init', $this->classes_loader->get_design(), 'ajax_site_mode_template_init' );
-        $this->loader->add_action( 'wp_ajax_ajax_site_mode_design_page_init', $this->classes_loader->get_design(), 'ajax_site_mode_design_page_init' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_intergrations', $this->classes_loader->get_integrations(), 'ajax_site_mode_intergrations' );
-
-		// general
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
-
-		// SEO settings
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );
-		// advanced settings
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_advanced', $this->classes_loader->get_advanced(), 'ajax_site_mode_advanced' );
 
 	}

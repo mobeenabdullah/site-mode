@@ -199,12 +199,6 @@ jQuery(function ($) {
       });
     }
 
-    const designPageInit = $("#site-mode-page-init");
-    designPageInit.submit(function (e) {
-      e.preventDefault();
-      sendAjaxRequest("site-mode-page-init", "ajax_site_mode_design_page_init");
-    });
-
     const templateInit = $("#sm-template__initialization");
     templateInit.submit(function (e) {
       e.preventDefault();

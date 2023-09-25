@@ -132,12 +132,10 @@ jQuery(function ($) {
     function sendPostMessage() {
         const iframe = document.querySelector("#sm-preview-iframe");
         const showSocial = document.getElementById("show-social").checked;
-        const showSubscribe = document.getElementById("show-subscribe").checked;
         const showCountdown = document.getElementById("show-countdown").checked;
         iframe.contentWindow.postMessage(
             {
                 hideCountdown: !showCountdown,
-                hideSubscribeBox: !showSubscribe,
                 hideSocialIcons: !showSocial,
             },
             "*"
@@ -150,11 +148,15 @@ jQuery(function ($) {
 
         const showCountdown     = document.getElementById("show-countdown").checked;
         const add_subscriber    = document.getElementById("show-subscribe-field").checked
+        const category          = $(".sm__card-radio").val()
         const nonce             = $("#template_init_field").val();
         const templateName      = $('#selected-template-name').val();
         const subscriber_email  = $('#sm-subscribe-email').val();
 
-        if(!templateName) return;
+        if(!templateName) {
+            console.log('Select Template!');
+            return
+        }
 
         const data = {
             action: "ajax_site_mode_template_init",
@@ -162,7 +164,7 @@ jQuery(function ($) {
             template_init_field: nonce,
             showSocial: showSocial,
             showCountdown: showCountdown,
-            wizard: true,
+            category: category,
         }
 
         if(add_subscriber && subscriber_email) {

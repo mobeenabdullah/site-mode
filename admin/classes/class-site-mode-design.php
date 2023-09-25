@@ -23,13 +23,17 @@
 class Site_Mode_Design extends  Settings {
 
     protected $option_name = 'site_mode_design';
-    protected  $active_template = '';
+    protected $active_template = '';
     protected $page_id = '';
     protected  $show_social = true;
-    protected  $show_subscribe = true;
     protected  $show_countdown = true;
-    protected $wizard = false;
-    protected $default_images = [
+
+    protected $page_setup = [
+        'active_page'   => '',
+        'coming_soon_page_id'  => '',
+        'maintenance_page_id'   => '',
+    ];
+    protected array $default_images = [
         'template-1' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
         'template-2' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
         'template-3' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
@@ -51,37 +55,6 @@ class Site_Mode_Design extends  Settings {
             'success' => true
         ]);
         die();
-    }
-
-    public function ajax_site_mode_design_page_init() : void {
-        $this->verify_nonce( 'template_init_field', 'template_init_action' );
-        $page_id = $this->get_post_data( 'page_id', 'template_init_action', 'template_init_field', 'number' );
-        $this->sm_design_properties_init();
-        $this->page_id = $page_id;
-        $design_data = [
-            'template' => $this->active_template,
-            'page_id' => $page_id
-        ];
-
-        if($page_id){
-            $template      = json_decode( $this->replace_template_default_image($this->active_template) );
-            $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
-            $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
-
-            $blocks = str_replace( '\n', '', $template_content );
-            $post = get_post( $page_id );
-            $post->post_content = $blocks;
-            $result = wp_update_post($post);
-            $post->page_template = 'templates/sm-page-template.php';
-            $this->save_data( $this->option_name, $design_data );
-
-            if(is_wp_error($result)) {
-                wp_send_json_error('Something went wrong.');
-            } else {
-                wp_send_json_success('Template has been initialized successfully.');
-            }
-        }
-
     }
 
     protected function add_subscriber_to_mailchimp_list ($email) {
@@ -124,6 +97,7 @@ class Site_Mode_Design extends  Settings {
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
         $subscriber_email = $this->get_post_data( 'subscriber_email', 'template_init_action', 'template_init_field', 'text' );
+        $category  = $this->get_post_data( 'category', 'template_init_action', 'template_init_field', 'text' );
         $this->sm_design_properties_init();
 
         if(!empty($subscriber_email)) {
@@ -135,13 +109,13 @@ class Site_Mode_Design extends  Settings {
         }
 
         $design_data = [
-            'template' => $template_name,
-            'page_id' => $this->page_id
+            'template'      => $template_name,
+            'page_setup'    => $this->page_setup,
         ];
 
         // check has maintaince page
-        $page_id = $this->check_maintaince_page($this->page_id, $template_name);
-        $design_data['page_id'] = $page_id;
+        $page_id = $this->check_maintaince_page($this->page_setup, $template_name, $category );
+        $design_data['active_page'] = $page_id;
         $this->page_id    = $page_id;
 
         // replace placeholder strings
@@ -164,20 +138,27 @@ class Site_Mode_Design extends  Settings {
 		$this->display_settings_page( 'design' );
 	}
 
-    public function check_maintaince_page($id = '', $template_name = ''){
+    public function check_maintaince_page($page_setup = '', $template_name = '', $category = ''){
+
+        if( $category === 'maintenance' && !empty($page_setup['maintenance_page_id']) ) {
+            $id = $page_setup['maintenance_page_id'];
+        } else {
+            $id = $page_setup['coming_soon_page_id'];
+        }
+
         if($id){
             $page = get_post($id);
             if($page){
                 return $page->ID;
             } else {
-                return $this->create_maintaince_page($template_name);
+                return $this->create_maintaince_page($template_name, $category);
             }
         } else {
-            return $this->create_maintaince_page($template_name);
+            return $this->create_maintaince_page($template_name, $category);
         }
     }
 
-    public function create_maintaince_page ($template_name = '') {
+    public function create_maintaince_page ($template_name = '', $category = '') {
 
         // Replace placeholder strings for content
         $template         = json_decode($this->replace_template_default_image($template_name));
@@ -187,7 +168,7 @@ class Site_Mode_Design extends  Settings {
 
         // Create the page
         $page_id = wp_insert_post( array(
-            'post_title'    => 'Maintenance Page',
+            'post_title'    => $category === 'maintenance' ? 'Maintenance Page' : 'Coming Soon Page',
             'post_content'  => $blocks,
             'post_status'   => 'publish',
             'post_type'     => 'page',
@@ -195,15 +176,22 @@ class Site_Mode_Design extends  Settings {
         ) );
 
         if(!is_wp_error($page_id)){
+
+            $this->page_setup['active_page'] = $page_id;
+            if($category === 'maintenance') {
+                $this->page_setup['maintenance_page_id'] = $page_id;
+            } else {
+                $this->page_setup['coming_soon_page_id'] = $page_id;
+            }
+
             $design_data = [
                 'template' => $template_name,
-                'page_id'  => $page_id
+                'page_setup' => $this->page_setup
             ];
             $this->save_data( $this->option_name, $design_data );
             return $page_id;
         } else {
             wp_send_json_error( 'Something went wrong.');
-
         }
     }
 
@@ -211,19 +199,24 @@ class Site_Mode_Design extends  Settings {
         $design_settings = $this->get_data( $this->option_name );
 
         if(!empty($design_settings)){
-            $this->active_template = isset($design_settings['template']) ? $design_settings['template'] : '';
-            $this->page_id         = isset($design_settings['page_id']) ? $design_settings['page_id'] : '';
+            $this->active_template = $design_settings['template'] ?? '';
+            $this->page_setup = [
+                'active_page'   => $design_settings['active_page'] ?? '',
+                'coming_soon_page_id'  => $design_settings['coming_soon_page_id'] ?? '',
+                'maintenance_page_id'   => $design_settings['maintenance_page_id'] ?? '',
+            ];
+
         }
     }
 
     protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder ) {
         $placeholder_str = '---sm-' . $placeholder . '---';
 
-        if($emptyPlaceholder == 'false' && $this->wizard == 'true'){
+        if($emptyPlaceholder == 'false'){
             $placeholder_content = '';
         } else {
             $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $placeholder .'.json';
-        $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
+            $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
         }
 
         if(!str_contains($template_content, $placeholder_str)){
@@ -329,8 +322,6 @@ class Site_Mode_Design extends  Settings {
     protected function sm_design_properties_init(): void {
         $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
         $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
-        $this->show_subscribe = $this->get_post_data('showSubscribe', 'template_init_action', 'template_init_field', 'text');
-        $this->wizard = $this->get_post_data('wizard', 'template_init_action', 'template_init_field', 'text');
         $this->get_template_props_init();
     }
 
