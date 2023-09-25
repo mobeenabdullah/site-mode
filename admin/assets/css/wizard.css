@@ -737,6 +737,7 @@ html {
 	font-weight: 600;
 	color: var(--wd-base-black-color);
 	cursor: pointer;
+	text-decoration: underline;
 }
 
 .wizard__templates-filter {

@@ -86,14 +86,23 @@ Plugin general styling
     padding: 0;
   }
   &-form {
-    background-color: var(--smd-header-bg);
     width: 100%;
-    padding: 2rem;
-    border-radius: 0.8rem;
+    & form {
+      width: 100%;
+      background-color: var(--smd-header-bg);
+      padding: 2rem;
+      border-radius: 0.8rem;
+    }
   }
 }
 
 .section__wrapper {
+
+  & form {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+  }
   .section__wrapper-header {
     .section_title {
       margin-bottom: calculateRem(30px);
@@ -786,11 +795,11 @@ Plugin general styling
   }
 }
 @media screen and (max-width: 767px) {
-  .toplevel_page_site-mode {
-    #wpcontent {
-      padding: 1.25rem 1.25rem 1.875rem 1.25rem !important;
-    }  
-  }  
+  //.toplevel_page_site-mode {
+  //  #wpcontent {
+  //    padding: 1.25rem 1.25rem 1.875rem 1.25rem !important;
+  //  }
+  //}
   html {
     font-size: 87.5%;
   }

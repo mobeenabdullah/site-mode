@@ -307,4 +307,79 @@ jQuery(function ($) {
       },
     });
   });
+
+  // Hide Elements
+  function hideElements(elements) {
+    $(elements).hide();
+  }
+
+  // Show Elements
+  function showElements(elements) {
+    $(elements).show();
+  }
+
+  // Add Class from Element
+  function addElementClass(element, className) {
+    $(element).addClass(className);
+  }
+
+  // Remove Class from Element
+  function removeElementClass(element, className) {
+    $(element).removeClass(className);
+  }
+  // Remove Attribute
+  function removeElementAttribute(element, attr, attr_val) {
+    $(element).removeAttr(attr, attr_val);
+  }
+
+  const templateCategory = $('.template-category-filter').attr('data-template-category');
+
+  if (templateCategory === 'all') {
+    hideElements('.sm_clearfilter')
+  } else {
+    showElements('.sm_clearfilter')
+  }
+
+  function categoryFilters () {
+    removeElementClass('.template-category-filter', 'active');
+    addElementClass($(this), 'active');
+    const templateCategory = $(this).attr('data-template-category');
+    if(templateCategory === 'all') {
+      showElements('.template-content-wrapper');
+    } else {
+      hideElements(`.template-content-wrapper`);
+      showElements(`.template-content-wrapper[data-category-name="${templateCategory}"]`);
+    }
+
+    if (templateCategory === 'all') {
+      hideElements('.sm_clearfilter')
+    } else {
+      showElements('.sm_clearfilter')
+    }
+  }
+  $('.template-category-filter').on('click', categoryFilters);
+
+  var initialText = $('.template-category-filter:first').html();
+  $('.display_template_name').html(initialText);
+
+  $('.template-category-filter').on('click', function() {
+    var clickedText = $(this).html();
+    $('.display_template_name').html(clickedText);
+  })
+
+  function smClearFilters () {
+    $('.template-category-filter[data-template-category=all]').trigger('click');
+  }
+  $('.sm_clearfilter').on('click', smClearFilters);
+
+
+  $("input[name='page__template']").change(function() {
+    $('.site-mode-cards--item').removeClass('enabled__card');
+    if ($(this).is(":checked")) {
+      $(this).closest('.site-mode-cards--item').addClass('enabled__card');
+    }
+  });
+
+
+
 });

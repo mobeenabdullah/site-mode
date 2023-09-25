@@ -117,7 +117,7 @@
                             }
 
                         } elseif($current_tab === 'about-us' || $current_tab === 'support') {
-                            echo $current_tab;
+                            require_once SITE_MODE_ADMIN . "partials/dashboard-about-page.php";
                         } else {
                             require_once SITE_MODE_ADMIN . "partials/dashboard-setting-page.php";
                         }
@@ -128,18 +128,5 @@
         </div>
     </div>
 
-    <div class="wrap site_mode__wrap" style="display: none;">
-        <div class="site_mode__wrap--header">
-            <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
-        </div>
-        <div class="site_mode__wrap--cover">
-            <div class="site_mode__wrap--cover-content">
-                <?php require_once SITE_MODE_ADMIN . 'partials/main-content.php'; ?>
-            </div>
-            <div class="site_mode__wrap--cover-sidebar">
-                <?php require_once SITE_MODE_ADMIN . 'partials/sidebar.php'; ?>
-            </div>
-        </div>
-    </div>
     <?php endif; ?>
 

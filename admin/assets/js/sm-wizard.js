@@ -24,6 +24,14 @@ jQuery(function ($) {
         $(element).removeAttr(attr, attr_val);
     }
 
+    const templateCategory = $('.template-category-filter').attr('data-template-category');
+
+    if (templateCategory === 'all') {
+        hideElements('.sm_clearfilter')
+    } else {
+        showElements('.sm_clearfilter')
+    }
+
     function categoryFilters () {
         removeElementClass('.template-category-filter', 'active');
         addElementClass($(this), 'active');
@@ -33,6 +41,11 @@ jQuery(function ($) {
         } else {
             hideElements(`.template-content-wrapper`);
             showElements(`.template-content-wrapper[data-category-name="${templateCategory}"]`);
+        }
+        if (templateCategory === 'all') {
+            hideElements('.sm_clearfilter')
+        } else {
+            showElements('.sm_clearfilter')
         }
     }
     $('.template-category-filter').on('click', categoryFilters);
@@ -79,9 +92,14 @@ jQuery(function ($) {
         hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
         showElements('.customize__sidebar-content, .import__settings, .import__actions, .sm_customize_settings');
         addElementClass('.sm-import', 'active');
+        addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+
+        $template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
+        $('#selected-template-name').val($template_slug);
+
     }
-    $('.select_tempalte').on('click', selectTemplate);
+    $('.select_template').on('click', selectTemplate);
 
 
     // Go to customize template page
@@ -145,7 +163,6 @@ jQuery(function ($) {
     //  AJAX Functionality for import template
     $('.import-template').on('click', function() {
         const showSocial        = document.getElementById("show-social").checked;
-
         const showCountdown     = document.getElementById("show-countdown").checked;
         const add_subscriber    = document.getElementById("show-subscribe-field").checked
         const category          = $(".sm__card-radio").val()
