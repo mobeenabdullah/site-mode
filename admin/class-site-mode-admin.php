@@ -108,7 +108,6 @@ class Site_Mode_Admin {
 
 		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', [ 'jquery' ], null, true );
 		wp_enqueue_script( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/js/site-mode-admin.js', [ 'jquery' ], $this->version, true );
-        wp_enqueue_script( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/js/site-mode-dashboard.js', [ 'jquery' ], $this->version, true );
 		wp_localize_script(
 			$this->plugin_name,
 			'ajaxObj',

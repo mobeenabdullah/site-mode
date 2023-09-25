@@ -5,6 +5,9 @@
   flex-wrap: wrap;
   @media screen and (max-width: 767px) {
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0 0;
   }
   padding: 0 calc(clamp(0.5rem, 0.143rem + 0.952vw, 1rem));
   background-color: var(--smd-header-bg);
