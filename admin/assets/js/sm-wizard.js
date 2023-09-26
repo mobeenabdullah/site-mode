@@ -61,8 +61,12 @@ jQuery(function ($) {
         hideElements('.wizard__start, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
         showElements('.wizard__content-wrapper');
         addElementClass('.sm-select-template', 'active');
+        const categoryName = $('.sm__card-radio:checked').val();
+        $(`.template-category-filter[data-template-category=${categoryName}]`).trigger('click');
+
     }
     $('.choose_page_type').on('click', choosePageType);
+
 
     $(".setup-coming-soon-page").on("click", function() {
         choosePageType();
@@ -89,15 +93,16 @@ jQuery(function ($) {
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
         $(this).children('span').html('Selected');
-        hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
-        showElements('.customize__sidebar-content, .import__settings, .import__actions, .sm_customize_settings');
+        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        showElements('.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions');
         addElementClass('.sm-import', 'active');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
         $template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
         $('#selected-template-name').val($template_slug);
-
+        removeElementClass('.select_template_btn', 'disabled__customize');
+        removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
     }
     $('.select_template').on('click', selectTemplate);
 

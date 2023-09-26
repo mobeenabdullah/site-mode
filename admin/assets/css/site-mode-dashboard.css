@@ -224,7 +224,9 @@ Plugin general styling
 }
 
 .option__row--label span label {
-	font-weight: 400;
+	font-weight: 600;
+	margin-bottom: 0.3rem;
+	display: block;
 }
 
 .option__row--label span.info_text {
@@ -1575,7 +1577,7 @@ input[type=file] {
 	transition: all .2s;
 }
 
-.wizard__templates-cards--single .template_card-actions a, .wizard__templates-cards--single .template_card-actions button {
+.wizard__templates-cards--single .template_card-actions a, .wizard__templates-cards--single .template_card-actions button, .wizard__templates-cards--single .template_card-actions > span {
 	border: 1px solid var(--smd-base-color);
 	color: var(--smd-base-color);
 	background-color: transparent;
@@ -1589,18 +1591,24 @@ input[type=file] {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
+	cursor: pointer;
 }
 
-.wizard__templates-cards--single .template_card-actions a svg, .wizard__templates-cards--single .template_card-actions button svg {
+.wizard__templates-cards--single .template_card-actions a svg, .wizard__templates-cards--single .template_card-actions button svg, .wizard__templates-cards--single .template_card-actions > span svg {
 	width: 1.2rem;
 	height: 1.2rem;
 }
 
-.wizard__templates-cards--single .template_card-actions a:hover, .wizard__templates-cards--single .template_card-actions button:hover {
+.wizard__templates-cards--single .template_card-actions a:hover, .wizard__templates-cards--single .template_card-actions button:hover, .wizard__templates-cards--single .template_card-actions > span:hover {
 	color: var(--smd-base-color);
 	background-color: var(--smd-primary-color);
 	border-color: var(--smd-primary-color);
-	cursor: pointer;
+}
+
+.wizard__templates-cards--single .template_card-actions > span {
+	color: var(--smd-base-color);
+	background-color: var(--smd-primary-color);
+	border-color: var(--smd-primary-color);
 }
 
 .wizard__templates-cards--single.active .template_card-actions {
@@ -1631,6 +1639,20 @@ input[type=file] {
 	opacity: 1;
 }
 
+.disabled__customize {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.disabled__customize:hover {
+	background-color: transparent !important;
+	color: var(--smd-primary-color) !important;
+}
+
+.disabled__customize:hover svg path {
+	fill: var(--smd-primary-color) !important;
+}
+
 .about__wrapper {
 	padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) 0;
 }
@@ -1652,7 +1674,7 @@ input[type=file] {
 }
 
 .about__wrapper-cover--left p {
-	font-size: calc(clamp(0.9rem, 0.686rem + 0.571vw, 1.2rem));
+	font-size: calc(clamp(0.875rem, 0.696rem + 0.476vw, 1.125rem));
 }
 
 .btn-toggle {
@@ -1772,6 +1794,17 @@ input[type=file] {
 
 .btn-check-toggle input[type="checkbox"] {
 	display: none !important;
+}
+
+.whitelist_user_role label {
+	margin-bottom: 1.5rem;
+	display: flex;
+	align-items: center;
+}
+
+.whitelist_user_role label span {
+	padding-left: 3rem;
+	display: block;
 }
 
 .smd-navbar {

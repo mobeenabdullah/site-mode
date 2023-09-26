@@ -116,7 +116,7 @@
         opacity: 0;
         cursor: pointer;
         transition: all .2s;
-        & a, & button {
+        & a, & button, & > span {
           border: 1px solid var(--smd-base-color);
           color: var(--smd-base-color);
           background-color: transparent;
@@ -130,6 +130,7 @@
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          cursor: pointer;
           & svg {
             width: 1.2rem;
             height: 1.2rem;
@@ -138,8 +139,12 @@
             color: var(--smd-base-color);
             background-color: var(--smd-primary-color);
             border-color: var(--smd-primary-color);
-            cursor: pointer;
           }
+        }
+        & > span {
+          color: var(--smd-base-color);
+          background-color: var(--smd-primary-color);
+          border-color: var(--smd-primary-color);
         }
       }
       &.active {
@@ -167,6 +172,20 @@
         & .template_card-actions {
           opacity: 1;
         }
+      }
+    }
+  }
+}
+
+.disabled__customize {
+  opacity: 0.5;
+  cursor: not-allowed;
+  &:hover {
+    background-color: transparent !important;
+    color: var(--smd-primary-color) !important;
+    & svg {
+      & path {
+        fill: var(--smd-primary-color) !important;
       }
     }
   }
