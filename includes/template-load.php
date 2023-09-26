@@ -3,15 +3,18 @@
 class Template_Load {
 	protected $general_settings;
 
+    protected $advanced_settings;
+
 	protected $template;
 	public function __construct() {
-		$this->general_settings = get_option( 'site_mode_general' );
-		$this->template         = get_option( 'site_mode_design' );
+		$this->general_settings     = get_option( 'site_mode_general' );
+        $this->advanced_settings    = get_option('site_mode_advanced');
+		$this->template             = get_option( 'site_mode_design' );
 	}
 	public function template_initialize() {
 
 		$mode_status = isset( $this->general_settings['mode_status'] ) ? $this->general_settings['mode_status'] : false;
-		$mode_type   = isset( $this->general_settings['mode_type'] ) ? $this->general_settings['mode_type'] : 'maintenance';
+		$mode_type   = isset( $this->advanced_settings['mode_type'] ) ? $this->advanced_settings['mode_type'] : 'maintenance';
 
 		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) == 'true' ) {
 			return true;
@@ -30,7 +33,7 @@ class Template_Load {
 
     public function sm_is_gutenberg_editor() {
 
-        if(empty($this->template['page_id'])) {
+        if(empty($this->template['page_setup']) && empty($this->template['page_setup']['active_page'])) {
             return false;
         }
 
@@ -51,7 +54,7 @@ class Template_Load {
 
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
-		$wp_user_roles      = isset( $this->general_settings['user_roles'] ) ? $this->general_settings['user_roles'] : [];
+		$wp_user_roles      = isset( $this->advanced_settings['user_roles'] ) ? $this->advanced_settings['user_roles'] : [];
 
 		$role_exist = array_intersect( $current_user_roles, $wp_user_roles );
 
@@ -62,7 +65,7 @@ class Template_Load {
 	}
 
 	public function check_whitelist_pages() {
-		$whitelist_pages     = isset( $this->general_settings['whitelist_pages'] ) ? $this->general_settings['whitelist_pages'] : [];
+		$whitelist_pages     = isset( $this->advanced_settings['whitelist_pages'] ) ? $this->advanced_settings['whitelist_pages'] : [];
 		$get_current_page_ID = get_the_ID();
 
 		if ( in_array( $get_current_page_ID, $whitelist_pages ) ) {
@@ -71,9 +74,9 @@ class Template_Load {
 		return true;
 	}
 	public function check_redirect_status() {
-		$mode_type      = $this->general_settings['mode_type'];
-		$redirect_url   = $this->general_settings['redirect_url'];
-		$redirect_delay = $this->general_settings['redirect_delay'];
+		$mode_type      = $this->advanced_settings['mode_type'];
+		$redirect_url   = $this->advanced_settings['redirect_url'];
+		$redirect_delay = $this->advanced_settings['redirect_delay'];
 
 		if ( $mode_type === 'redirect' ) {
 			if ( $redirect_url ) {
@@ -101,9 +104,8 @@ class Template_Load {
 	}
 
     public function pre_option_redirect_page($value) {
-        $page_id = isset( $this->template['page_id'] ) ? $this->template['page_id'] : '';
-        if(!empty($page_id) && $this->template_initialize()){
-            return $page_id;
+        if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && $this->template_initialize()){
+            return $this->template['page_setup']['active_page'];
         } else {
             return $value;
         }

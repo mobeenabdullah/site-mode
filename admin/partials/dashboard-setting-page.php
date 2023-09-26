@@ -67,7 +67,7 @@
                                     improvements. We'll be back soon!
                                 </div>
                                 <div class="sm_select_page-btn">
-                                    <a href="#" class="sm__btn block_btn primary_button setup-coming-soon-page" data-template-category="coming-soon">Setup</a>
+                                    <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&setup=true'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page" data-template-category="coming-soon">Setup</a>
                                 </div>
                             </div>
                         </div>

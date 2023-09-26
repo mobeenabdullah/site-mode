@@ -93,7 +93,7 @@
                                                 <div class="settings__card-options--field">
                                                     <div class="color__scheme">
                                                         <div class="wizard-select">
-                                                            <select name="color_scheme" id="color_scheme">
+                                                            <select name="color_scheme" id="color_scheme" >
                                                                 <option value="default">Default</option>
                                                                 <option value="preset1">Pink</option>
                                                                 <option value="preset2">Blue</option>

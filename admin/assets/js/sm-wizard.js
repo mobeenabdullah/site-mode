@@ -147,14 +147,17 @@ jQuery(function ($) {
     $('#show-countdown').on('change', sendPostMessage);
     $('#show-subscribe').on('change', sendPostMessage);
     $('#show-social').on('change', sendPostMessage);
+    $('#color_scheme').on('change', sendPostMessage)
     function sendPostMessage() {
         const iframe = document.querySelector("#sm-preview-iframe");
         const showSocial = document.getElementById("show-social").checked;
         const showCountdown = document.getElementById("show-countdown").checked;
+        const colorScheme =  document.getElementById("color_scheme").value;
         iframe.contentWindow.postMessage(
             {
                 hideCountdown: !showCountdown,
                 hideSocialIcons: !showSocial,
+                colorScheme : colorScheme
             },
             "*"
         )
@@ -169,6 +172,7 @@ jQuery(function ($) {
         const nonce             = $("#template_init_field").val();
         const templateName      = $('#selected-template-name').val();
         const subscriber_email  = $('#sm-subscribe-email').val();
+        const colorScheme       = $('#color_scheme').val();
 
         if(!templateName) {
             console.log('Select Template!');
@@ -182,6 +186,7 @@ jQuery(function ($) {
             showSocial: showSocial,
             showCountdown: showCountdown,
             category: category,
+            colorScheme: colorScheme
         }
 
         if(add_subscriber && subscriber_email) {

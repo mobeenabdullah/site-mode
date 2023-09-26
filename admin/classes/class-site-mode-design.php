@@ -24,9 +24,9 @@ class Site_Mode_Design extends  Settings {
 
     protected $option_name = 'site_mode_design';
     protected $active_template = '';
-    protected $page_id = '';
     protected  $show_social = true;
     protected  $show_countdown = true;
+    protected $color_scheme = '';
 
     protected $page_setup = [
         'active_page'   => '',
@@ -111,6 +111,7 @@ class Site_Mode_Design extends  Settings {
         $design_data = [
             'template'      => $template_name,
             'page_setup'    => $this->page_setup,
+            'preset'        => $this->color_scheme
         ];
 
         // check has maintaince page
@@ -186,7 +187,8 @@ class Site_Mode_Design extends  Settings {
 
             $design_data = [
                 'template' => $template_name,
-                'page_setup' => $this->page_setup
+                'page_setup' => $this->page_setup,
+                'preset'        => $this->color_scheme
             ];
             $this->save_data( $this->option_name, $design_data );
             return $page_id;
@@ -199,13 +201,13 @@ class Site_Mode_Design extends  Settings {
         $design_settings = $this->get_data( $this->option_name );
 
         if(!empty($design_settings)){
+            $this->color_scheme    = $design_settings['preset'] ?? '';
             $this->active_template = $design_settings['template'] ?? '';
             $this->page_setup = [
-                'active_page'   => $design_settings['active_page'] ?? '',
-                'coming_soon_page_id'  => $design_settings['coming_soon_page_id'] ?? '',
-                'maintenance_page_id'   => $design_settings['maintenance_page_id'] ?? '',
+                'active_page'   => $design_settings['page_setup']['active_page'] ?? '',
+                'coming_soon_page_id'  => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
+                'maintenance_page_id'   => $design_settings['page_setup']['maintenance_page_id'] ?? '',
             ];
-
         }
     }
 
@@ -320,9 +322,11 @@ class Site_Mode_Design extends  Settings {
      * @return void
      */
     protected function sm_design_properties_init(): void {
+        $this->get_template_props_init();
         $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
         $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
-        $this->get_template_props_init();
+        $this->color_scheme = $this->get_post_data('colorScheme', 'template_init_action', 'template_init_field', 'text');
+
     }
 
 
