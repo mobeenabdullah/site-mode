@@ -22,8 +22,8 @@
                     <div class="site-mode-cards">
                         <div class="site-mode-cards--item enabled__card">
                             <div class="sm__card">
-                                <span class="btn-toggle setup_pages">
-                                    <input type="radio" name="page__template" id="coming_soon_temp" value="Coming Soon" checked>
+                                <span class="btn-toggle setup_pages btn-check-toggle">
+                                    <input type="checkbox" name="page__template" id="coming_soon_temp" value="Coming Soon" checked>
                                     <label class="toggle" for="coming_soon_temp"></label>
                                 </span>
                                 <div class="sm__card-cover">
@@ -49,8 +49,8 @@
                         </div>
                         <div class="site-mode-cards--item">
                             <div class="sm__card">
-                                <span class="btn-toggle setup_pages">
-                                    <input type="radio" name="page__template" id="maintenance_temp" value="Maintenance">
+                                <span class="btn-toggle setup_pages btn-check-toggle">
+                                    <input type="checkbox" name="page__template" id="maintenance_temp" value="Maintenance">
                                     <label class="toggle" for="maintenance_temp"></label>
                                 </span>
                                 <div class="sm_select_page-icon">

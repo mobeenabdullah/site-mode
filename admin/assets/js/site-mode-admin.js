@@ -74,16 +74,6 @@ jQuery(function ($) {
     }
   }
 
-  /*------------------------------------------------
-    1.  Mode change on general tab
-    2.  Tabs setting page
-    3.  Logo Type
-    4.   Show Login URL field
-    6.  Ajax call for general tab
-    10.  Ajax call for SEO tab
-    11.  Ajax call for advance Tab
-    ------------------------------------------------*/
-
   $(document).ready(function () {
     // 1.   Mode change on general tab
     const siteMode = $("#site_mode");
@@ -97,33 +87,6 @@ jQuery(function ($) {
       }
     }
     siteMode.on("change", showHideURLOptions);
-
-    // 2.  Tabs setting page
-    /*
-    const allTabs = $(".sm_tabs li");
-    const allTabsContent = $(".tab-content");
-
-    function changeTab() {
-      let selectedTabID = $(this).attr("data-tab");
-      let selectedTabSlug = selectedTabID.replace("tab-", "");
-
-      // remove current class from all tabs and tab content
-      allTabs.removeClass("current");
-      allTabsContent.removeClass("current");
-
-      // add current class to selected tab and tab content
-      $(this).addClass("current");
-      $("#" + selectedTabID).addClass("current");
-
-      // update the url
-      window.history.pushState(
-        "",
-        "",
-        "?page=site-mode&tab=" + selectedTabSlug
-      );
-    }
-    allTabs.on("click", changeTab);
-    */
 
     // 4.   Show Login URL field
     const loginUrlField = $(".login_url_field");
@@ -314,77 +277,166 @@ jQuery(function ($) {
     });
   });
 
-  // Hide Elements
-  function hideElements(elements) {
-    $(elements).hide();
+  /**
+   * Manipulates DOM elements based on the specified action.
+   *
+   * @param {string|jQuery} element - The element(s) to be manipulated.
+   * @param {string} action - The action to perform on the element(s) ('hide', 'show', 'addClass', 'removeClass', 'removeAttribute').
+   * @param {string} parameter1 - The first parameter specific to the action (e.g., class name or attribute name).
+   * @param {string} [parameter2] - The second parameter specific to the action (e.g., attribute value). Optional, used for 'removeAttribute'.
+   */
+
+  function manipulateElement(element, action, parameter1, parameter2) {
+    switch (action) {
+      case 'hide':
+        $(element).hide();
+        break;
+      case 'show':
+        $(element).show();
+        break;
+      case 'addClass':
+        $(element).addClass(parameter1);
+        break;
+      case 'removeClass':
+        $(element).removeClass(parameter1);
+        break;
+      case 'removeAttribute':
+        $(element).removeAttr(parameter1, parameter2);
+        break;
+      default:
+        // Handle unsupported actions or errors here
+        break;
+    }
   }
 
-  // Show Elements
-  function showElements(elements) {
-    $(elements).show();
-  }
-
-  // Add Class from Element
-  function addElementClass(element, className) {
-    $(element).addClass(className);
-  }
-
-  // Remove Class from Element
-  function removeElementClass(element, className) {
-    $(element).removeClass(className);
-  }
-  // Remove Attribute
-  function removeElementAttribute(element, attr, attr_val) {
-    $(element).removeAttr(attr, attr_val);
-  }
-
-  const templateCategory = $('.template-category-filter').attr('data-template-category');
-
-  if (templateCategory === 'all') {
-    hideElements('.sm_clearfilter')
-  } else {
-    showElements('.sm_clearfilter')
-  }
-
+  /**
+   * Handles category filters.
+   * This function can be used to filter and display content based on selected categories.
+   */
   function categoryFilters () {
-    removeElementClass('.template-category-filter', 'active');
-    addElementClass($(this), 'active');
+    manipulateElement('.template-category-filter', 'removeClass', 'active');
+    manipulateElement($(this), 'addClass', 'active');
     const templateCategory = $(this).attr('data-template-category');
+
     if(templateCategory === 'all') {
-      showElements('.template-content-wrapper');
+      manipulateElement('.template-content-wrapper', 'show');
     } else {
-      hideElements(`.template-content-wrapper`);
-      showElements(`.template-content-wrapper[data-category-name="${templateCategory}"]`);
+      manipulateElement('.template-content-wrapper', 'hide');
+      manipulateElement(`.template-content-wrapper[data-category-name="${templateCategory}"]`, 'show');
     }
 
     if (templateCategory === 'all') {
-      hideElements('.sm_clearfilter')
+      manipulateElement('.sm_clearfilter', 'hide');
     } else {
-      showElements('.sm_clearfilter')
+      manipulateElement('.sm_clearfilter', 'show');
     }
   }
   $('.template-category-filter').on('click', categoryFilters);
 
-  var initialText = $('.template-category-filter:first').html();
-  $('.display_template_name').html(initialText);
-
-  $('.template-category-filter').on('click', function() {
+  /**
+   * Handles display selected category text.
+  */
+  function changeTextOnClickFilters () {
     var clickedText = $(this).html();
     $('.display_template_name').html(clickedText);
-  })
+  }
+  $('.template-category-filter').on('click', changeTextOnClickFilters);
 
+  /**
+   * Handles clear filter functionality.
+   */
   function smClearFilters () {
     $('.template-category-filter[data-template-category=all]').trigger('click');
   }
   $('.sm_clearfilter').on('click', smClearFilters);
 
+  /**
+   * Handles checkbox functionality.
+   */
+  function handleCheckboxBehavior() {
+    $('.setup_pages input[type="checkbox"]').not(this).prop('checked', false);
+    manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
 
-  $("input[name='page__template']").change(function() {
-    $('.site-mode-cards--item').removeClass('enabled__card');
-    if ($(this).is(":checked")) {
-      $(this).closest('.site-mode-cards--item').addClass('enabled__card');
+    if ($(this).prop('checked')) {
+      manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+    }
+
+    $('.setup_pages input[type="checkbox"]').each(function() {
+      if ($(this).prop('checked')) {
+        manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+      }
+    });
+  }
+  $('.setup_pages input[type="checkbox"]').click(handleCheckboxBehavior);
+
+
+  // Get the current page URL
+
+/*
+  var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = window.location.search.substring(1),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+
+      if (sParameterName[0] === sParam) {
+        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+      }
+    }
+    return false;
+  };
+
+  var currentPage = getUrlParameter('page');
+  var settingPage = getUrlParameter('setting');
+  console.log(currentPage, settingPage);
+
+  // Find the navigation menu item links in the sub-menu
+  const menuLinks = $('.wp-submenu-wrap a');
+  menuLinks.removeClass('current');
+
+  menuLinks.each(function() {
+    if (getUrlParameter().indexOf($(this).attr('href')) > 1) {
+      $(this).parent().addClass('current');
     }
   });
+ */
+
+
+
+  function getActiveSubMenu () {
+    function getUrlParameter(sParam) {
+      var sPageURL = window.location.search.substring(1),
+          sURLVariables = sPageURL.split('&'),
+          sParameterName,
+          i;
+
+      for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+          return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
+        }
+      }
+      return false;
+    };
+
+    const currentPage = getUrlParameter('page');
+    const settingPage = getUrlParameter('setting');
+    const menuLinks = $('.wp-submenu-wrap a');
+
+    menuLinks.each(function() {
+      const href = $(this).attr('href');
+      if ((currentPage && href.includes('page=' + currentPage)) && (settingPage && href.includes('setting=' + settingPage))) {
+        $(this).parent().siblings('.wp-first-item').removeClass('current');
+        $(this).parent().addClass('current');
+      }
+    });
+  }
+  getActiveSubMenu();
+
 
 
 

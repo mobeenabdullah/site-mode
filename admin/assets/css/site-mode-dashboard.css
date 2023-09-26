@@ -1416,7 +1416,11 @@ input[type=file] {
 	padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem)) 0;
 }
 
-.smd__header-logo img {
+.smd__header-logo a {
+	display: block;
+}
+
+.smd__header-logo a img {
 	width: 100%;
 }
 
