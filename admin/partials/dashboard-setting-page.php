@@ -29,7 +29,7 @@ $editLink = esc_url(get_edit_post_link(intval($design_settings['page_setup']['ac
                         <div class="site-mode-cards--item <?php echo $design_settings['page_setup']['coming_soon_page_id'] === $design_settings['page_setup']['active_page'] ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <input type="checkbox" name="page__template" id="coming_soon_temp" value="Coming Soon" checked>
+                                    <input type="checkbox" name="page__template" id="coming_soon_temp" value="Coming Soon" <?php echo $design_settings['page_setup']['coming_soon_page_id'] === $design_settings['page_setup']['active_page'] ? 'checked' : '' ?>>
                                     <label class="toggle" for="coming_soon_temp"></label>
                                 </span>
                                 <div class="sm__card-cover">
@@ -50,7 +50,7 @@ $editLink = esc_url(get_edit_post_link(intval($design_settings['page_setup']['ac
                                         <?php
                                             if(isset($design_settings['page_setup']) && isset($design_settings['page_setup']['coming_soon_page_id']) && !empty($design_settings['page_setup']['coming_soon_page_id'])) {
                                                 ?>
-                                                    <a href="<?php echo esc_url(get_edit_post_link(intval($design_settings['page_setup']['coming_soon_page_id']))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Customize</a>
+                                                    <a href="<?php echo esc_url(get_edit_post_link(intval($design_settings['page_setup']['coming_soon_page_id']))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Edit Page</a>
                                                     <a href="<?php echo esc_url(get_permalink(intval($design_settings['page_setup']['coming_soon_page_id']))) . '?site-mode-preview=true'; ?>" target="_blank" class="sm__btn block_btn primary_button">Perview</a>
                                                 <?php
                                             } else {
@@ -66,7 +66,7 @@ $editLink = esc_url(get_edit_post_link(intval($design_settings['page_setup']['ac
                         <div class="site-mode-cards--item  <?php echo $design_settings['page_setup']['maintenance_page_id'] === $design_settings['page_setup']['active_page'] ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <input type="checkbox" name="page__template" id="maintenance_temp" value="Maintenance">
+                                    <input type="checkbox" name="page__template" id="maintenance_temp" value="Maintenance" <?php echo $design_settings['page_setup']['maintenance_page_id'] === $design_settings['page_setup']['active_page'] ? 'checked' : '' ?>>
                                     <label class="toggle" for="maintenance_temp"></label>
                                 </span>
                                 <div class="sm_select_page-icon">
@@ -87,7 +87,7 @@ $editLink = esc_url(get_edit_post_link(intval($design_settings['page_setup']['ac
                                     <?php
                                     if(isset($design_settings['page_setup']) && isset($design_settings['page_setup']['maintenance_page_id']) && !empty($design_settings['page_setup']['maintenance_page_id'])) {
                                         ?>
-                                        <a href="<?php echo esc_url(get_edit_post_link(intval($design_settings['page_setup']['maintenance_page_id']))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Customize</a>
+                                        <a href="<?php echo esc_url(get_edit_post_link(intval($design_settings['page_setup']['maintenance_page_id']))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Edit Page</a>
                                         <a href="<?php echo esc_url(get_permalink(intval($design_settings['page_setup']['maintenance_page_id']))) . '?site-mode-preview=true'; ?>" target="_blank" class="sm__btn block_btn primary_button">Perview</a>
                                         <?php
                                     } else {

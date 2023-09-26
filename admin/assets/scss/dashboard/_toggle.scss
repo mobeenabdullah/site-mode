@@ -108,3 +108,15 @@
     display: none !important;
   }
 }
+.whitelist_user_role {
+  & label {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    & span {
+      padding-left: 3rem;
+      display: block;
+    }
+  }
+
+}

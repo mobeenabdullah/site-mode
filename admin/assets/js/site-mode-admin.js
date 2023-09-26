@@ -311,7 +311,7 @@ jQuery(function ($) {
     manipulateElement('.template-category-filter', 'removeClass', 'active');
     manipulateElement($(this), 'addClass', 'active');
     const templateCategory = $(this).attr('data-template-category');
-
+    console.log(templateCategory);
     if(templateCategory === 'all') {
       manipulateElement('.template-content-wrapper', 'show');
     } else {
@@ -363,43 +363,9 @@ jQuery(function ($) {
   }
   $('.setup_pages input[type="checkbox"]').click(handleCheckboxBehavior);
 
-
-  // Get the current page URL
-
-/*
-  var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = window.location.search.substring(1),
-        sURLVariables = sPageURL.split('&'),
-        sParameterName,
-        i;
-
-    for (i = 0; i < sURLVariables.length; i++) {
-      sParameterName = sURLVariables[i].split('=');
-
-      if (sParameterName[0] === sParam) {
-        return sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-      }
-    }
-    return false;
-  };
-
-  var currentPage = getUrlParameter('page');
-  var settingPage = getUrlParameter('setting');
-  console.log(currentPage, settingPage);
-
-  // Find the navigation menu item links in the sub-menu
-  const menuLinks = $('.wp-submenu-wrap a');
-  menuLinks.removeClass('current');
-
-  menuLinks.each(function() {
-    if (getUrlParameter().indexOf($(this).attr('href')) > 1) {
-      $(this).parent().addClass('current');
-    }
-  });
- */
-
-
-
+  /**
+   * Active state for admin sidebar menu
+   */
   function getActiveSubMenu () {
     function getUrlParameter(sParam) {
       var sPageURL = window.location.search.substring(1),

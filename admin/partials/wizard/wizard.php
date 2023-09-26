@@ -82,7 +82,7 @@ if(isset($_GET['cat']) && isset($_GET['cat'])) {
                             </div>
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="plan" class="sm__card-radio" type="radio" disabled>
+                                    <input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="landing_page_mode">
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -105,7 +105,7 @@ if(isset($_GET['cat']) && isset($_GET['cat'])) {
                             </div>
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="plan" class="sm__card-radio" type="radio" disabled>
+                                    <input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="error_404_mode">
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@ if(isset($_GET['cat']) && isset($_GET['cat'])) {
                             </div>
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="plan" class="sm__card-radio" type="radio" disabled>
+                                    <input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="custom_login_page_mode">
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -208,7 +208,7 @@ if(isset($_GET['cat']) && isset($_GET['cat'])) {
                     </svg>
                     <span>Back</span>
                 </button>
-                <button class="select_template_btn sm__btn primary_btn_outline" type="button" data-template-name="<?php echo $key; ?>" data-template-label="<?php echo $template['name']; ?>">
+                <button class="select_template_btn sm__btn primary_btn_outline disabled__customize" disabled="disabled" type="button" data-template-name="<?php echo $key; ?>" data-template-label="<?php echo $template['name']; ?>">
                     <span>Customize</span>
                     <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>

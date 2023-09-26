@@ -78,11 +78,14 @@
             <div class="option__row--field">
                 <?php global $wp_roles; ?>
                 <?php foreach ( $wp_roles->roles as $key => $value ) : ?>
-                    <div class="sm_checkbox_wrapper role_checkbox">
                         <?php $checked = ( in_array( $key, $this->user_roles ) ) ? 'checked' : ''; ?>
+                    <span class="btn-check-toggle smd_normal_toggle whitelist_user_role">
                         <input type="checkbox" id="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $checked ); ?> />
-                        <label for="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>"><?php echo esc_html( $value['name'] ); ?></label>
-                    </div>
+                        <label class="toggle" for="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>">
+                            <span><?php echo esc_html( $value['name'] ); ?></span>
+                        </label>
+                    </span>
+
                 <?php endforeach; ?>
             </div>
         </div>
