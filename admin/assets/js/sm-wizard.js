@@ -168,11 +168,12 @@ jQuery(function ($) {
         const showSocial        = document.getElementById("show-social").checked;
         const showCountdown     = document.getElementById("show-countdown").checked;
         const add_subscriber    = document.getElementById("show-subscribe-field").checked
-        const category          = $(".sm__card-radio").val()
+        const category          = $(".sm__card-radio:checked").val()
         const nonce             = $("#template_init_field").val();
         const templateName      = $('#selected-template-name').val();
         const subscriber_email  = $('#sm-subscribe-email').val();
         const colorScheme       = $('#color_scheme').val();
+        const setup             = $('#template-page-setup').val();
 
         if(!templateName) {
             console.log('Select Template!');
@@ -186,7 +187,8 @@ jQuery(function ($) {
             showSocial: showSocial,
             showCountdown: showCountdown,
             category: category,
-            colorScheme: colorScheme
+            colorScheme: colorScheme,
+            setup: setup
         }
 
         if(add_subscriber && subscriber_email) {

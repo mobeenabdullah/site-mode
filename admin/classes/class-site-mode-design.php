@@ -98,6 +98,7 @@ class Site_Mode_Design extends  Settings {
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
         $subscriber_email = $this->get_post_data( 'subscriber_email', 'template_init_action', 'template_init_field', 'text' );
         $category  = $this->get_post_data( 'category', 'template_init_action', 'template_init_field', 'text' );
+        $is_setup = $this->get_post_data( 'setup', 'template_init_action', 'template_init_field', 'text' );
         $this->sm_design_properties_init();
 
         if(!empty($subscriber_email)) {
@@ -106,6 +107,13 @@ class Site_Mode_Design extends  Settings {
 
         if(!isset($template_name)) {
             $template_name = $this->active_template;
+        }
+
+        if($is_setup) {
+            $this->create_maintaince_page($template_name, $category, $is_setup);
+            wp_send_json_success([
+                'status' => 'true'
+            ]);
         }
 
         $design_data = [
@@ -159,7 +167,7 @@ class Site_Mode_Design extends  Settings {
         }
     }
 
-    public function create_maintaince_page ($template_name = '', $category = '') {
+    public function create_maintaince_page ($template_name = '', $category = '', $is_setup = false) {
 
         // Replace placeholder strings for content
         $template         = json_decode($this->replace_template_default_image($template_name));
@@ -178,7 +186,6 @@ class Site_Mode_Design extends  Settings {
 
         if(!is_wp_error($page_id)){
 
-            $this->page_setup['active_page'] = $page_id;
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
             } else {
@@ -186,12 +193,19 @@ class Site_Mode_Design extends  Settings {
             }
 
             $design_data = [
-                'template' => $template_name,
+                'template' => $this->active_template,
                 'page_setup' => $this->page_setup,
                 'preset'        => $this->color_scheme
             ];
+
+            if(!$is_setup) {
+                $this->page_setup['active_page'] = $page_id;
+                $design_data['template'] = $template_name;
+                $design_data['[page_setup']['active_page'] = $page_id;
+            }
+
             $this->save_data( $this->option_name, $design_data );
-            return $page_id;
+//            return $page_id;
         } else {
             wp_send_json_error( 'Something went wrong.');
         }

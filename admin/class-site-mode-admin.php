@@ -219,7 +219,7 @@ class Site_Mode_Admin {
     }
 
     public function sm_add_body_class ($classes ) {
-        if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && empty(get_option('sm-fresh-installation'))) {
+        if(isset($_GET['page']) && $_GET['page'] === 'site-mode' && (empty(get_option('sm-fresh-installation')) || (isset($_GET['design']) && $_GET['design'] === 'true') )) {
             return  $classes . 'sm__wizard-mode';
         } elseif(isset($_GET['page']) && $_GET['page'] === 'site-mode') {
             return  $classes . 'sm__dashboard';

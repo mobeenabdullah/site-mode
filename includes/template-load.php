@@ -54,7 +54,7 @@ class Template_Load {
 
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
-		$wp_user_roles      = isset( $this->advanced_settings['user_roles'] ) ? $this->advanced_settings['user_roles'] : [];
+		$wp_user_roles      = $this->advanced_settings['user_roles'] ?? [];
 
 		$role_exist = array_intersect( $current_user_roles, $wp_user_roles );
 
@@ -65,7 +65,7 @@ class Template_Load {
 	}
 
 	public function check_whitelist_pages() {
-		$whitelist_pages     = isset( $this->advanced_settings['whitelist_pages'] ) ? $this->advanced_settings['whitelist_pages'] : [];
+		$whitelist_pages     = $this->advanced_settings['whitelist_pages'] ?? [];
 		$get_current_page_ID = get_the_ID();
 
 		if ( in_array( $get_current_page_ID, $whitelist_pages ) ) {
@@ -74,9 +74,9 @@ class Template_Load {
 		return true;
 	}
 	public function check_redirect_status() {
-		$mode_type      = $this->advanced_settings['mode_type'];
-		$redirect_url   = $this->advanced_settings['redirect_url'];
-		$redirect_delay = $this->advanced_settings['redirect_delay'];
+		$mode_type      = $this->advanced_settings['mode_type'] ?? '';
+		$redirect_url   = $this->advanced_settings['redirect_url'] ?? '';
+		$redirect_delay = $this->advanced_settings['redirect_delay'] ?? '';
 
 		if ( $mode_type === 'redirect' ) {
 			if ( $redirect_url ) {
