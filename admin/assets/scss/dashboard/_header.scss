@@ -11,11 +11,15 @@
   }
   padding: 0 calc(clamp(0.5rem, 0.143rem + 0.952vw, 1rem));
   background-color: var(--smd-header-bg);
+
   &-logo {
     max-width: calc(clamp(6.25rem, 2.679rem + 9.524vw, 11.25rem));
     padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem)) 0;
-    & img {
-      width: 100%;
+    & a {
+      display: block;
+      & img {
+        width: 100%;
+      }
     }
   }
 }

@@ -45,4 +45,9 @@
   input[type="checkbox"]:checked + .toggle {
     background: var(--btn-bg-active);
   }
+  &.settings__toggle {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
 }
