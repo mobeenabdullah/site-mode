@@ -8,7 +8,7 @@
 				<span class="info_text"><?php esc_html_e( 'Activate to disable the REST API, which can enhance security and prevent unauthorized access', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
-                <span class="btn-toggle btn-check-toggle setup_pages smd_normal_toggle">
+                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
                     <input type="checkbox" id="rest_api" name="disable-rest-api" value="1" <?php checked( 1, $this->disable_rest_api, true ); ?> />
                     <label class="toggle" for="rest_api"></label>
                 </span>
@@ -20,7 +20,7 @@
                 <span class="info_text"><?php esc_html_e( 'Activate to disable the RSS feed, which can improve website security and prevent unauthorized access to content', 'site-mode' ); ?></span>
             </div>
             <div class="option__row--field">
-                <span class="btn-toggle btn-check-toggle setup_pages smd_normal_toggle">
+                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
                     <input type="checkbox" id="feed_enable" name="disable-rss-feed" value="1" <?php checked( 1, $this->disable_rss_feed, true ); ?>/>
                     <label class="toggle" for="feed_enable"></label>
                 </span>

@@ -7,7 +7,7 @@
     <div class="sm__dasboard-wrapper">
         <div class="smd__header">
             <div class="smd__header-logo">
-                <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+                <a href="<?php echo admin_url('?page=site-mode'); ?>"><img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo"></a>
             </div>
             <div class="smd__header-nav">
                 <div class="smd-navbar">

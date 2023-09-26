@@ -52,10 +52,10 @@
                                                     <p class="sm__helper-text">Set timer to show on the website</p>
                                                 </div>
                                                 <div class="settings__card-options--field">
-                                                    <span class="btn-toggle">
-                                                        <input type="checkbox" name="show-countdown" id="show-countdown" value="1" checked>
-                                                        <label class="toggle" for="show-countdown"></label>
-                                                    </span>
+                                            <span class="btn-toggle settings__toggle">
+                                                <input type="checkbox" name="show-countdown" id="show-countdown" value="1" checked>
+                                                <label class="toggle" for="show-countdown"></label>
+                                            </span>
                                                 </div>
                                             </div>
                                             <div class="settings__card-options-box">
@@ -64,10 +64,10 @@
                                                     <p class="sm__helper-text">Set timer to show on the website</p>
                                                 </div>
                                                 <div class="settings__card-options--field">
-                                                    <span class="btn-toggle">
-                                                        <input type="checkbox" name="show-social" id="show-social" value="1" checked>
-                                                        <label class="toggle" for="show-social"></label>
-                                                    </span>
+                                            <span class="btn-toggle settings__toggle">
+                                                <input type="checkbox" name="show-social" id="show-social" value="1" checked>
+                                                <label class="toggle" for="show-social"></label>
+                                            </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,7 +188,7 @@
                                                 <p class="sm__helper-text">Subscribe to learn about new templates & features for Site Mode.</p>
                                             </div>
                                             <div class="settings__card-options--field">
-                                                <span class="btn-toggle">
+                                                <span class="btn-toggle settings__toggle">
                                                     <input type="checkbox" name="show-subscribe-field" id="show-subscribe-field" class="show-subscribe-field" value="1" checked>
                                                     <label class="toggle" for="show-subscribe-field"></label>
                                                 </span>
