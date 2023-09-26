@@ -111,7 +111,11 @@
     justify-content: center;
     min-width: calc(clamp(3.75rem, 3.748rem + 3.91vw, 6.25rem));
     border-left: 1px solid var(--wd-border-color);
-    cursor: pointer;
+    & .close_wizard_btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
     &:hover {
       & .sm_close_wizard {
         & .close_wizard_btn {
@@ -125,7 +129,6 @@
           }
         }
       }
-
     }
     @media screen and (max-width: 767px) {
       order: 2;

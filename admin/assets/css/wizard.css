@@ -421,6 +421,11 @@ html {
 	justify-content: center;
 	min-width: calc(clamp(3.75rem, 3.748rem + 3.91vw, 6.25rem));
 	border-left: 1px solid var(--wd-border-color);
+}
+
+.sm__wizard-header--close .close_wizard_btn {
+	background-color: transparent;
+	border: none;
 	cursor: pointer;
 }
 
@@ -664,6 +669,14 @@ html {
 	border-color: var(--wd-gray-2-color);
 	color: var(--wd-gray-2-color);
 	cursor: not-allowed;
+}
+
+.sm__card-radio:disabled ~ .sm__card-cover .sm_select_page-btn button:hover {
+	background-color: transparent;
+	border-color: var(--wd-gray-2-color);
+	color: var(--wd-gray-2-color);
+	cursor: not-allowed;
+	user-select: none;
 }
 
 .sm__card:hover .sm__card-radio:disabled {

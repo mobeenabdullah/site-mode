@@ -109,7 +109,6 @@
       border-color: var(--wd-primary-color) !important;
       box-shadow: none !important;
     }
-
   }
 
   .sm__card:hover .sm__card-radio {
@@ -225,8 +224,16 @@
       border-color: var(--wd-gray-2-color);
       color: var(--wd-gray-2-color);
       cursor: not-allowed;
+      &:hover {
+        background-color: transparent;
+        border-color: var(--wd-gray-2-color);
+        color: var(--wd-gray-2-color);
+        cursor: not-allowed;
+        user-select: none;
+      }
     }
   }
+
 }
 .sm__card:hover .sm__card-radio:disabled {
   border-color: var(--wd-gray-2-color) !important;

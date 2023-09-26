@@ -23,8 +23,6 @@
 class Site_Mode_General extends Settings {
 	protected $option_name = 'site_mode_general';
 	protected $mode_status;
-	protected $redirect_url;
-	protected $redirect_delay;
 	protected $show_login_icon;
 	protected $custom_login_url;
 
@@ -32,8 +30,6 @@ class Site_Mode_General extends Settings {
 	public function __construct() {
 		$this->site_mode_general = $this->get_data( $this->option_name );
 		$this->mode_status       = isset( $this->site_mode_general['mode_status'] ) ? $this->site_mode_general['mode_status'] : false;
-		$this->redirect_url      = isset( $this->site_mode_general['redirect_url'] ) ? $this->site_mode_general['redirect_url'] : '';
-		$this->redirect_delay    = isset( $this->site_mode_general['redirect_delay'] ) ? $this->site_mode_general['redirect_delay'] : 2;
 		$this->show_login_icon   = isset( $this->site_mode_general['show_login_icon'] ) ? $this->site_mode_general['show_login_icon'] : false;
 		$this->custom_login_url  = isset( $this->site_mode_general['custom_login_url'] ) ? $this->site_mode_general['custom_login_url'] : '';
 
@@ -44,8 +40,6 @@ class Site_Mode_General extends Settings {
 
 		$data                     = [];
 		$data['mode_status']      = $this->get_post_data( 'site-mode-mode-status', 'general_settings_action', 'general_section_field', 'text' );
-		$data['redirect_url']     = $this->get_post_data( 'site-mode-redirect-url', 'general_settings_action', 'general_section_field', 'text' );
-		$data['redirect_delay']   = $this->get_post_data( 'site-mode-redirect-delay', 'general_settings_action', 'general_section_field', 'number' );
 		$data['show_login_icon']  = $this->get_post_data( 'site-mode-show-login-icon', 'general_settings_action', 'general_section_field', 'text' );
 		$data['custom_login_url'] = $this->get_post_data( 'site-mode-custom-login-url', 'general_settings_action', 'general_section_field', 'text' );
 
