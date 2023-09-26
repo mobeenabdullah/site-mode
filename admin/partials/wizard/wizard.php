@@ -1,13 +1,32 @@
 <?php
-$templates = get_option('site_mode_design_templates')['templates'];
-$categories = get_option('site_mode_design_templates')['categories'];
+$templates          = get_option('site_mode_design_templates')['templates'];
+$categories         = get_option('site_mode_design_templates')['categories'];
+$active_cat         = '';
+$active_template    = '';
+$setup               = $_GET['setup'] ?? false;
+
+if(isset($_GET['template']) && isset($_GET['template'])) {
+    $active_template = $_GET['template'];
+}
+
+if(isset($_GET['cat']) && isset($_GET['cat'])) {
+    $active_cat = $_GET['cat'];
+    if($active_cat === 'maintenance' || $active_cat === 'coming-soon') {
+        $cat = $active_cat;
+    } else {
+        $cat = 'coming-soon';
+    }
+} else {
+    $cat = 'coming-soon';
+}
+
 ?>
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
     <!-- Select Template -->
     <div class="wizard__content">
         <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
-        <div class="wizard__start" style="display: block">
+        <div class="wizard__start" style="display: <?php echo empty($active_template) ? 'block' : 'none';  ?>">
             <div class="wizard_container">
                 <div class="wizard__start-content">
                     <div class="wizard__start-content--title">
@@ -17,7 +36,8 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         <div class="wizard__start-cards">
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="plan" class="sm__card-radio" type="radio" checked>
+                                    <input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'coming-soon' ? 'checked' : '';  ?> value="coming-soon">
+
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +60,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                             </div>
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="plan" class="sm__card-radio" type="radio">
+                                    <input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'maintenance' ? 'checked' : '';  ?> value="maintenance">
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -139,7 +159,7 @@ $categories = get_option('site_mode_design_templates')['categories'];
                 </button>
             </div>
         </div>
-        <div class="wizard__content-wrapper" style="display: none">
+        <div class="wizard__content-wrapper" style="display: <?php echo empty($active_template) ? 'none' : 'block';  ?>">
             <div class="wizard_container">
                 <div class="wizard__templates">
                     <div class="wizard__templates-filters">
@@ -157,7 +177,8 @@ $categories = get_option('site_mode_design_templates')['categories'];
                         </div>
                     </div>
                     <div class="template_options wizard__templates-cards">
-                        <input type="hidden" name="template-name" id="selected-template-name">
+                        <input type="hidden" name="template-name" id="selected-template-name" value="<?php echo $active_template; ?>">
+                        <input type="hidden" name="template-setup" id="template-page-setup" value="<?php echo $setup; ?>">
                         <?php foreach($templates as $key => $template ): ?>
                             <div class="template_card template-content-wrapper wizard__templates-cards--single" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo $key; ?>">
                                 <div class="template_card-img" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);">

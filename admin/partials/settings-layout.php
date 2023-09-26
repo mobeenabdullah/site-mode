@@ -1,10 +1,8 @@
-
-
-    <?php
-    if(empty(get_option('sm-fresh-installation'))):
+<?php
+    if((isset($_GET['design']) && $_GET['design'] == true ) || empty(get_option('sm-fresh-installation'))) :
         require_once SITE_MODE_ADMIN . 'partials/wizard/wizard.php';
     else :
-    ?>
+        ?>
 
     <div class="sm__dasboard-wrapper">
         <div class="smd__header">

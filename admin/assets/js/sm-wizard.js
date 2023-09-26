@@ -147,16 +147,17 @@ jQuery(function ($) {
     $('#show-countdown').on('change', sendPostMessage);
     $('#show-subscribe').on('change', sendPostMessage);
     $('#show-social').on('change', sendPostMessage);
+    $('#color_scheme').on('change', sendPostMessage)
     function sendPostMessage() {
         const iframe = document.querySelector("#sm-preview-iframe");
         const showSocial = document.getElementById("show-social").checked;
-        const showSubscribe = document.getElementById("show-subscribe").checked;
         const showCountdown = document.getElementById("show-countdown").checked;
+        const colorScheme =  document.getElementById("color_scheme").value;
         iframe.contentWindow.postMessage(
             {
                 hideCountdown: !showCountdown,
-                hideSubscribeBox: !showSubscribe,
                 hideSocialIcons: !showSocial,
+                colorScheme : colorScheme
             },
             "*"
         )
@@ -167,13 +168,17 @@ jQuery(function ($) {
         const showSocial        = document.getElementById("show-social").checked;
         const showCountdown     = document.getElementById("show-countdown").checked;
         const add_subscriber    = document.getElementById("show-subscribe-field").checked
+        const category          = $(".sm__card-radio:checked").val()
         const nonce             = $("#template_init_field").val();
         const templateName      = $('#selected-template-name').val();
         const subscriber_email  = $('#sm-subscribe-email').val();
+        const colorScheme       = $('#color_scheme').val();
+        const setup             = $('#template-page-setup').val();
 
         if(!templateName) {
-            return;
-        };
+            console.log('Select Template!');
+            return
+        }
 
         const data = {
             action: "ajax_site_mode_template_init",
@@ -181,7 +186,9 @@ jQuery(function ($) {
             template_init_field: nonce,
             showSocial: showSocial,
             showCountdown: showCountdown,
-            wizard: true,
+            category: category,
+            colorScheme: colorScheme,
+            setup: setup
         }
 
         if(add_subscriber && subscriber_email) {

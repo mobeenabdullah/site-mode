@@ -29,12 +29,11 @@ class Settings {
         if(empty(get_option('sm-fresh-installation')) && $option_name == 'site_mode_design') {
             $general_settings                = $this->get_data( 'site_mode_general' );
             $general_settings['mode_status'] = true;
-            $general_settings['mode_type']   = 'maintenance';
             update_option( 'site_mode_general', $general_settings );
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'page_link'             => urldecode(get_edit_post_link(intval($data['page_id']))),
+                'page_link'             => urldecode(get_edit_post_link(intval($data['active_page']))),
                 'message'               => 'Template has been initialized successfully.',
                 'fresh_installation'    => true,
                 'template_name'         => str_replace("-"," ",$data['template'])
