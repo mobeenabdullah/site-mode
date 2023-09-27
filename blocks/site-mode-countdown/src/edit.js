@@ -1,5 +1,5 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
+import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {useState, useEffect} from "@wordpress/element";
 import { layouts } from '../constants';
 import './editor.scss';
@@ -10,11 +10,8 @@ import {
 	ToggleControl,
 	SelectControl,
 	TextControl,
-	ColorPalette,
-	MenuGroup, MenuItem,
 	__experimentalUnitControl as UnitControl
 } from '@wordpress/components';
-
 
 export default function Edit({ attributes, setAttributes }) {
 	const {
@@ -27,9 +24,13 @@ export default function Edit({ attributes, setAttributes }) {
 		showSeperator,
 		preset,
 		labels,
-		colors,
-		height,
-		width
+		bgColor,
+		timerColor,
+		labelColor,
+		borderColor,
+		separatorColor,
+		numberFontSize,
+		labelFontSize
 	} = attributes;
 	const [ isInvalidDate, setIsInvalidDate ] = useState( false );
 	const [days, setDays] = useState();
@@ -106,20 +107,29 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 	}
 
-	const resetColors = () => {
-		setAttributes({colors: {
-			bgColor: '#000000',
-			labelColor: '#ffffff',
-			borderColor: '#ffffff',
-			seperatorColor: '#ffffff',
-			timerColor: '#ffffff',
-		}})
+	const smCounterBox = {
+		backgroundColor: bgColor,
+		borderColor: borderColor,
+	}
+
+	const smCountdownDaysLabel = {
+	 	color: labelColor,
+		fontSize: labelFontSize
+	}
+
+	const countdownNumber = {
+		color: timerColor,
+		fontSize: numberFontSize
+	}
+
+	const countdownSeperator = {
+	 	color: separatorColor
 	}
 
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Settings', 'site-mode')} initialOpen={ true }>
+				<PanelBody title={__('Settings', 'site-mode')} initialOpen={ false }>
 					<PanelRow>
 						{isInvalidDate && (
 							<p className="error-message">
@@ -224,101 +234,97 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 				</PanelBody>
 				<PanelBody title={__('Styles', 'site-mode')} initialOpen={ false }>
-					<PanelRow>
-						<ColorPalette
-							label="Background Color"
-							value={ colors.bgColor }
-							onChange={ ( value ) => setAttributes({colors: {...colors, bgColor: value}} ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ColorPalette
-							label="Label Color"
-							value={ colors.labelColor }
-							onChange={ ( value ) => setAttributes({colors: {...colors, labelColor: value}} ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ColorPalette
-							label="Border Color"
 
-							value={ colors.borderColor }
-							onChange={ ( value ) => setAttributes({colors: {...colors, borderColor: value}} ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ColorPalette
-							label="Seperator Color"
-							value={ colors.seperatorColor }
-							onChange={ ( value ) => setAttributes({colors: {...colors, seperatorColor: value}} ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ColorPalette
-							label="Time Color"
-							value={ colors.timerColor }
-							onChange={ ( value ) => setAttributes({colors: {...colors, timerColor: value}} ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<UnitControl
-							label="Height"
-							value={ height }
-							onChange={ ( value ) => setAttributes( { height: value } ) }
-						/>
-					</PanelRow>
-					<PanelRow>
-						<UnitControl
-							label="Width"
-							value={ width }
-							onChange={ ( value ) => setAttributes( { width: value } ) }
-						/>
-					</PanelRow>
+					<PanelColorSettings
+						title="Color Settings"
+						initialOpen={true}
+						icon="admin-appearance"
+						colorSettings={[
+							{
+								value: bgColor,
+								onChange: (value) => setAttributes( { bgColor: value }),
+								label: __('Background Color')
+							},
+							{
+								value: labelColor,
+								onChange: (value) => setAttributes( { labelColor: value }),
+								label: __('Label Color')
+							},
+							{
+								value: borderColor,
+								onChange: (value) => setAttributes( { borderColor: value }),
+								label: __('Border Color')
+							},
+							{
+								value: timerColor,
+								onChange: (value) => setAttributes( { timerColor: value }),
+								label: __('Time Color')
+							},
+							{
+								value: separatorColor,
+								onChange: (value) => setAttributes( { separatorColor: value }),
+								label: __('Separator Color')
+							}
+						]}
+					/>
+					<UnitControl
+						label="Font Size Counter"
+						value={ numberFontSize }
+						onChange={ ( value ) => setAttributes( { numberFontSize: value } ) }
+					/>
+					<UnitControl
+						label="Font Sie Label"
+						value={ labelFontSize }
+						onChange={ ( value ) => setAttributes( { labelFontSize: value } ) }
+					/>
 
 				</PanelBody>
 			</InspectorControls>
+
 			<div {...useBlockProps()}>
 
 				{dueDate && (
-					<div className="countdown_main-wrapper">
-						<div className={`countdown-wrapper ${preset}`}>
-								{showDays && (
-									<div className="sm-countdown-box sm-countdown-days-wrapper">
-										<div className="sm-countdown-days-label countdown_label">{showLabel && __(labels.days, 'site-mode')}</div>
-										<div className="sm-countdown-days countdown_number">
-											<span>{days}</span>
+					<>
+						<div className="countdown_main-wrapper">
+							<div className={`countdown-wrapper ${preset}`}>
+									{showDays && (
+										<div className="sm-countdown-box sm-countdown-days-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-days-label countdown_label" style={smCountdownDaysLabel}>{showLabel && __(labels.days, 'site-mode')}</div>
+											<div className="sm-countdown-days countdown_number">
+												<span style={countdownNumber}>{days}</span>
+											</div>
 										</div>
-									</div>
-								)}
-								{showSeperator && showDays && <span className="countdown-seperator">:</span>}
-								{showHours && (
-									<div className="sm-countdown-box sm-countdown-days-wrapper">
-										<div className="sm-countdown-days-label countdown_label">{showLabel && __(labels.hours, 'site-mode')}</div>
-										<div className="sm-countdown-days countdown_number">
-											<span>{hours}</span>
+									)}
+									{showSeperator && showDays && <span className="countdown-seperator" style={countdownSeperator}>:</span>}
+									{showHours && (
+										<div className="sm-countdown-box sm-countdown-days-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-days-label countdown_label" style={smCountdownDaysLabel}>{showLabel && __(labels.hours, 'site-mode')}</div>
+											<div className="sm-countdown-days countdown_number">
+												<span style={countdownNumber}>{hours}</span>
+											</div>
 										</div>
-									</div>
-								)}
-								{showSeperator && showHours && <span className="countdown-seperator">:</span>}
-								{showMinutes && (
-									<div className="sm-countdown-box sm-countdown-hours-wrapper">
-										<div className="sm-countdown-hours-label countdown_label">{showLabel && __(labels.minutes, 'site-mode')}</div>
-										<div className="sm-countdown-hours countdown_number">
-											<span>{minutes}</span>
+									)}
+									{showSeperator && showHours && <span className="countdown-seperator" style={countdownSeperator}>:</span>}
+									{showMinutes && (
+										<div className="sm-countdown-box sm-countdown-hours-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-hours-label countdown_label" style={smCountdownDaysLabel}>{showLabel && __(labels.minutes, 'site-mode')}</div>
+											<div className="sm-countdown-hours countdown_number">
+												<span style={countdownNumber}>{minutes}</span>
+											</div>
 										</div>
-									</div>
-								)}
-								{showSeperator && showMinutes && showSeconds && <span className="countdown-seperator">:</span>}
-								{showSeconds && (
-									<div className="sm-countdown-box sm-countdown-minutes-wrapper">
-										<div className="sm-countdown-minutes-label countdown_label">{showLabel && __(labels.seconds, 'site-mode')}</div>
-										<div className="sm-countdown-minutes countdown_number">
-											<span>{seconds}</span>
+									)}
+									{showSeperator && showMinutes && showSeconds && <span className="countdown-seperator" style={countdownSeperator}>:</span>}
+									{showSeconds && (
+										<div className="sm-countdown-box sm-countdown-minutes-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-minutes-label countdown_label" style={smCountdownDaysLabel}>{showLabel && __(labels.seconds, 'site-mode')}</div>
+											<div className="sm-countdown-minutes countdown_number">
+												<span style={countdownNumber}>{seconds}</span>
+											</div>
 										</div>
-									</div>
-								)}
+									)}
+							</div>
 						</div>
-					</div>
+					</>
 				)}
 			</div>
 		</>

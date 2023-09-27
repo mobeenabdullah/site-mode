@@ -88,9 +88,13 @@ function Edit(_ref) {
     showSeperator,
     preset,
     labels,
-    colors,
-    height,
-    width
+    bgColor,
+    timerColor,
+    labelColor,
+    borderColor,
+    separatorColor,
+    numberFontSize,
+    labelFontSize
   } = attributes;
   const [isInvalidDate, setIsInvalidDate] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [days, setDays] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
@@ -162,20 +166,24 @@ function Edit(_ref) {
       });
     }
   };
-  const resetColors = () => {
-    setAttributes({
-      colors: {
-        bgColor: '#000000',
-        labelColor: '#ffffff',
-        borderColor: '#ffffff',
-        seperatorColor: '#ffffff',
-        timerColor: '#ffffff'
-      }
-    });
+  const smCounterBox = {
+    backgroundColor: bgColor,
+    borderColor: borderColor
+  };
+  const smCountdownDaysLabel = {
+    color: labelColor,
+    fontSize: labelFontSize
+  };
+  const countdownNumber = {
+    color: timerColor,
+    fontSize: numberFontSize
+  };
+  const countdownSeperator = {
+    color: separatorColor
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'site-mode'),
-    initialOpen: true
+    initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, isInvalidDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "error-message"
   }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Please select a date in the future.', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.DateTimePicker, {
@@ -267,98 +275,107 @@ function Edit(_ref) {
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Styles', 'site-mode'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
-    label: "Background Color",
-    value: colors.bgColor,
-    onChange: value => setAttributes({
-      colors: {
-        ...colors,
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: "Color Settings",
+    initialOpen: true,
+    icon: "admin-appearance",
+    colorSettings: [{
+      value: bgColor,
+      onChange: value => setAttributes({
         bgColor: value
-      }
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
-    label: "Label Color",
-    value: colors.labelColor,
-    onChange: value => setAttributes({
-      colors: {
-        ...colors,
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Background Color')
+    }, {
+      value: labelColor,
+      onChange: value => setAttributes({
         labelColor: value
-      }
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
-    label: "Border Color",
-    value: colors.borderColor,
-    onChange: value => setAttributes({
-      colors: {
-        ...colors,
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Label Color')
+    }, {
+      value: borderColor,
+      onChange: value => setAttributes({
         borderColor: value
-      }
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
-    label: "Seperator Color",
-    value: colors.seperatorColor,
-    onChange: value => setAttributes({
-      colors: {
-        ...colors,
-        seperatorColor: value
-      }
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ColorPalette, {
-    label: "Time Color",
-    value: colors.timerColor,
-    onChange: value => setAttributes({
-      colors: {
-        ...colors,
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border Color')
+    }, {
+      value: timerColor,
+      onChange: value => setAttributes({
         timerColor: value
-      }
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
-    label: "Height",
-    value: height,
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Time Color')
+    }, {
+      value: separatorColor,
+      onChange: value => setAttributes({
+        separatorColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Separator Color')
+    }]
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
+    label: "Font Size Counter",
+    value: numberFontSize,
     onChange: value => setAttributes({
-      height: value
+      numberFontSize: value
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
-    label: "Width",
-    value: width,
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
+    label: "Font Sie Label",
+    value: labelFontSize,
     onChange: value => setAttributes({
-      width: value
+      labelFontSize: value
     })
-  })))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "countdown_main-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `countdown-wrapper ${preset}`
   }, showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-box sm-countdown-days-wrapper"
+    className: "sm-countdown-box sm-countdown-days-wrapper",
+    style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-days-label countdown_label"
+    className: "sm-countdown-days-label countdown_label",
+    style: smCountdownDaysLabel
   }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.days, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days countdown_number"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, days))), showSeperator && showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "countdown-seperator"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: countdownNumber
+  }, days))), showSeperator && showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "countdown-seperator",
+    style: countdownSeperator
   }, ":"), showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-box sm-countdown-days-wrapper"
+    className: "sm-countdown-box sm-countdown-days-wrapper",
+    style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-days-label countdown_label"
+    className: "sm-countdown-days-label countdown_label",
+    style: smCountdownDaysLabel
   }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.hours, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days countdown_number"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, hours))), showSeperator && showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "countdown-seperator"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: countdownNumber
+  }, hours))), showSeperator && showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "countdown-seperator",
+    style: countdownSeperator
   }, ":"), showMinutes && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-box sm-countdown-hours-wrapper"
+    className: "sm-countdown-box sm-countdown-hours-wrapper",
+    style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-hours-label countdown_label"
+    className: "sm-countdown-hours-label countdown_label",
+    style: smCountdownDaysLabel
   }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.minutes, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-hours countdown_number"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, minutes))), showSeperator && showMinutes && showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
-    className: "countdown-seperator"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: countdownNumber
+  }, minutes))), showSeperator && showMinutes && showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    className: "countdown-seperator",
+    style: countdownSeperator
   }, ":"), showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-box sm-countdown-minutes-wrapper"
+    className: "sm-countdown-box sm-countdown-minutes-wrapper",
+    style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: "sm-countdown-minutes-label countdown_label"
+    className: "sm-countdown-minutes-label countdown_label",
+    style: smCountdownDaysLabel
   }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.seconds, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-minutes countdown_number"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", null, seconds)))))));
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+    style: countdownNumber
+  }, seconds))))))));
 }
 
 /***/ }),

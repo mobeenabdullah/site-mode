@@ -20,11 +20,23 @@
   "attributes": {
 	"bgColor": {
 	  "type": "string",
-	  "default": ""
+	  "default": "rgb(0,150,199)"
 	},
-	"textColor": {
+	"timerColor": {
 	  "type": "string",
-	  "default": ""
+	  "default": "red"
+	},
+  	"labelColor" :{
+	  "type": "string",
+	  "default": "red"
+	},
+  	"borderColor" :{
+	  "type": "string",
+	  "default": "red"
+  	},
+  	"separatorColor" :{
+	   "type": "string",
+	   "default": "red"
 	},
 	"dueDate": {
 	  "type": "string",
@@ -58,13 +70,11 @@
 	  "type": "string",
 	  "default": "default-countdown"
 	},
-	"height": {
-	  "type": "string",
-	  "default": "auto"
+	"numberFontSize": {
+	  "type": "string"
 	},
-	"width": {
-	  "type": "string",
-	  "default": "auto"
+	"labelFontSize": {
+	  "type": "string"
 	},
 	"labels": {
 	  "type": "object",
@@ -73,16 +83,6 @@
 		"hours": "Hours",
 		"minutes": "Minutes",
 		"seconds": "Seconds"
-	  }
-	},
-	"colors": {
-	  "type": "object",
-	  "default": {
-		"bgColor": "#000000",
-		"labelColor": "#ffffff",
-		"borderColor": "#ffffff",
-		"seperatorColor": "#ffffff",
-		"timerColor": "#ffffff"
 	  }
 	}
   }
