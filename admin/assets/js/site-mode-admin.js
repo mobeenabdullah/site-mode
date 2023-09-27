@@ -349,12 +349,10 @@ jQuery(function ($) {
    */
   function handleCheckboxBehavior() {
     let activePage = '';
+    const currentElement  = this;
     const nonce           = $("#setup_action_field").val();
-    $('.setup_pages input[type="checkbox"]').not(this).prop('checked', false);
-    manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
 
     if ($(this).prop('checked')) {
-      manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
       activePage = $(this).val();
     }
 
@@ -368,8 +366,15 @@ jQuery(function ($) {
         setup_action_field: nonce
       },
       success: function (res) {
-          console.log(res)
-          launch_toast(res.success);
+
+        $('.setup_pages input[type="checkbox"]').not(currentElement).prop('checked', false);
+        manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
+        if ($(currentElement).prop('checked')) {
+          manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+        }
+
+        console.log(res)
+        launch_toast(res.success);
       },
       error: function (error) {
           console.log(error)
