@@ -204,6 +204,7 @@ class Site_Mode {
         $this->loader->add_filter( 'template_include', $plugin_admin, 'use_maintenance_template' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_skip_wizard', $this->classes_loader->get_design(), 'ajax_site_mode_skip_wizard' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_init', $this->classes_loader->get_design(), 'ajax_site_mode_template_init' );
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_page_setup', $this->classes_loader->get_design(), 'ajax_site_mode_page_setup' );
         $this->loader->add_action( 'wp_ajax_ajax_site_mode_intergrations', $this->classes_loader->get_integrations(), 'ajax_site_mode_intergrations' );
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );

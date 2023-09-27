@@ -93,6 +93,22 @@ class Site_Mode_Design extends  Settings {
         }
     }
 
+    public function ajax_site_mode_page_setup() {
+        $this->verify_nonce( 'setup_action_field', 'setup_action' );
+        $active_page_id = $this->get_post_data( 'activePage', 'setup_action', 'setup_action_field', 'text' );
+
+        $design_data = [
+            'template'      => $this->active_template,
+            'page_setup'    => $this->page_setup,
+            'preset'        => $this->color_scheme
+        ];
+
+        $design_data['page_setup']['active_page'] = $active_page_id;
+        $this->save_data( $this->option_name, $design_data );
+        die();
+
+    }
+
     public function ajax_site_mode_template_init() : void{
         $this->verify_nonce( 'template_init_field', 'template_init_action' );
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );

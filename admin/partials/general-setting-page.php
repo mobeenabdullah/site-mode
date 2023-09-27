@@ -1,17 +1,5 @@
 <div class="site_mode__wrap-form">
 	<form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="status"><?php esc_html_e( 'Status', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enable to display the maintenance page on your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
-                    <input type="checkbox" id="status" name="site-mode-mode-status" value="1" <?php checked( 1, $this->mode_status, true ); ?> />
-                    <label class="toggle" for="status"></label>
-                </span>
-			</div>
-		</div>
 
 		<!-- Logo Setting -->
 		<div class="option__row">

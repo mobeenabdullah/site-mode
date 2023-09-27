@@ -311,7 +311,7 @@ jQuery(function ($) {
     manipulateElement('.template-category-filter', 'removeClass', 'active');
     manipulateElement($(this), 'addClass', 'active');
     const templateCategory = $(this).attr('data-template-category');
-    console.log(templateCategory);
+
     if(templateCategory === 'all') {
       manipulateElement('.template-content-wrapper', 'show');
     } else {
@@ -348,18 +348,38 @@ jQuery(function ($) {
    * Handles checkbox functionality.
    */
   function handleCheckboxBehavior() {
+    let activePage = '';
+    const nonce           = $("#setup_action_field").val();
     $('.setup_pages input[type="checkbox"]').not(this).prop('checked', false);
     manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
 
     if ($(this).prop('checked')) {
       manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+      activePage = $(this).val();
     }
 
-    $('.setup_pages input[type="checkbox"]').each(function() {
-      if ($(this).prop('checked')) {
-        manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
-      }
-    });
+    $.ajax({
+      url: ajaxObj.ajax_url,
+      dataType: "json",
+      method: "post",
+      data: {
+        action: "ajax_site_mode_page_setup",
+        activePage: activePage,
+        setup_action_field: nonce
+      },
+      success: function (res) {
+          console.log(res)
+          launch_toast(res.success);
+      },
+      error: function (error) {
+          console.log(error)
+      },
+    })
+
+
+
+
+
   }
   $('.setup_pages input[type="checkbox"]').click(handleCheckboxBehavior);
 

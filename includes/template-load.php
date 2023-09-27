@@ -13,12 +13,12 @@ class Template_Load {
 	}
 	public function template_initialize() {
 
-		$mode_status = isset( $this->general_settings['mode_status'] ) ? $this->general_settings['mode_status'] : false;
 		$mode_type   = isset( $this->advanced_settings['mode_type'] ) ? $this->advanced_settings['mode_type'] : 'maintenance';
+        $active_template = $this->template['page_setup']['active_page'] ?? '';
 
 		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) == 'true' ) {
 			return true;
-		} elseif ( $mode_status && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status() ) {
+		} elseif ( $active_template && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status() ) {
 			if ( $mode_type === 'maintenance') {
 				status_header( 200 );
 				nocache_headers();
