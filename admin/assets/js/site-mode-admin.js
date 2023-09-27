@@ -366,13 +366,11 @@ jQuery(function ($) {
         setup_action_field: nonce
       },
       success: function (res) {
-
         $('.setup_pages input[type="checkbox"]').not(currentElement).prop('checked', false);
         manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
         if ($(currentElement).prop('checked')) {
           manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
         }
-
         console.log(res)
         launch_toast(res.success);
       },
@@ -380,10 +378,6 @@ jQuery(function ($) {
           console.log(error)
       },
     })
-
-
-
-
 
   }
   $('.setup_pages input[type="checkbox"]').click(handleCheckboxBehavior);

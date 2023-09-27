@@ -14,6 +14,12 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 	$due_date  = strtotime($attributes['dueDate']);
 	$date = strtotime((new DateTime(date('D, d M y H:i:s O'), new DateTimeZone('UTC')))->format('D, d M y H:i:s O'));
 	if($due_date >= $date) {
+		?>
+		<style>
+
+
+		</style>
+		<?php
 
 		$markup = '<div class="countdown_main-wrapper">';
 		$markup .= '<div class="countdown-wrapper '. esc_attr($attributes['preset']) .' ">';
