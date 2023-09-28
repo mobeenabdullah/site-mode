@@ -89,12 +89,6 @@ class Site_Mode_Admin {
             wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL  . 'assets/css/wizard.css', [], $this->version, 'all' );
         }
 
-        // Enqueue Site Mode Color Paltte theme
-        $sm_design_data = get_option('site_mode_design');
-        if(isset($sm_design_data) && isset($sm_design_data['preset']) && $sm_design_data['preset']) {
-            $preset = $sm_design_data['preset'];
-            wp_enqueue_style( 'site-mode-'. $preset , SITE_MODE_ADMIN_URL  . 'assets/css/' . $preset . '.css', [], $this->version, 'all' );
-        }
 	}
 
 	/**
@@ -229,9 +223,23 @@ class Site_Mode_Admin {
     }
 
     public function site_mode_filter_theme_json_theme( $theme_json ){
-
+        $preset_scheme = 'default';
         $default_theme_data = $theme_json->get_data();
         $default_colors = $default_theme_data['settings']['color']['palette']['theme'];
+        $scheme_file = SITE_MODE_ADMIN . 'assets/color-scheme.json';
+        $scheme_content         = json_decode(file_get_contents($scheme_file))->content;
+        $design_settings = get_option('site_mode_design');
+
+        if($design_settings['preset']) {
+            $preset_scheme = $design_settings['preset'];
+        }
+
+        $base = $scheme_content->$preset_scheme->base;
+        $contrast = $scheme_content->$preset_scheme->contrast;
+        $primary = $scheme_content->$preset_scheme->primary;
+        $secondary = $scheme_content->$preset_scheme->secondary;
+        $tertiary = $scheme_content->$preset_scheme->tertiary;
+
 
         $new_data = array(
             'version'  => 2,
@@ -241,27 +249,27 @@ class Site_Mode_Admin {
                         ...$default_colors,
                         array(
                             'slug'  => 'sm-base',
-                            'color' => 'white',
+                            'color' => $base,
                             'name'  => __( 'Site Mode Base', 'site-mode' ),
                         ),
                         array(
                             'slug'  => 'sm-contrast',
-                            'color' => 'black',
+                            'color' => $contrast,
                             'name'  => __( 'Site Mode Contrast', 'site-mode' ),
                         ),
                         array(
                             'slug'  => 'sm-primary',
-                            'color' => '#9DFF20',
+                            'color' => $primary,
                             'name'  => __( 'Site Mode Primary', 'site-mode' ),
                         ),
                         array(
                             'slug'  => 'sm-secondary',
-                            'color' => '#345C00',
+                            'color' => $secondary,
                             'name'  => __( 'Site Mode Secondary', 'site-mode' ),
                         ),
                         array(
                             'slug'  => 'sm-tertiary',
-                            'color' => '#F6F6F6',
+                            'color' => $tertiary,
                             'name'  => __( 'Site Mode Tertiary', 'site-mode' ),
                         ),
                     ),

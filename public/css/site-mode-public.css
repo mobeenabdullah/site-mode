@@ -1,57 +1,57 @@
-.default-scheme {
-	--wp--preset--color--base: #ffffff !important;
-	--wp--preset--color--primary: #e63946 !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #fcb900 !important;
-	--wp--preset--color--tertiary: #F6F6F6 !important;
+body.default {
+	--wp--preset--color--sm-base: #ffffff !important;
+	--wp--preset--color--sm-primary: #e63946 !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #fcb900 !important;
+	--wp--preset--color--sm-tertiary: #F6F6F6 !important;
 }
 
-.preset-1 {
-	--wp--preset--color--base: #f4f3ee !important;
-	--wp--preset--color--primary: #ef476f !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #8a817c !important;
-	--wp--preset--color--tertiary: #bcb8b1 !important;
+body.preset1 {
+	--wp--preset--color--sm-base: #f4f3ee !important;
+	--wp--preset--color--sm-primary: #ef476f !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #8a817c !important;
+	--wp--preset--color--sm-tertiary: #bcb8b1 !important;
 }
 
-.preset-2 {
-	--wp--preset--color--base: #f0ebd8 !important;
-	--wp--preset--color--primary: #1e88e5 !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #1d2d44 !important;
-	--wp--preset--color--tertiary: #3e5c76 !important;
+body.preset2 {
+	--wp--preset--color-base: #f0ebd8 !important;
+	--wp--preset--color-primary: #1e88e5 !important;
+	--wp--preset--color-contrast: #000000 !important;
+	--wp--preset--color-secondary: #1d2d44 !important;
+	--wp--preset--color-tertiary: #3e5c76 !important;
 }
 
-.preset-3 {
-	--wp--preset--color--base: #0fa3b1 !important;
-	--wp--preset--color--primary: #0fa3b1 !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #a4c3b2 !important;
-	--wp--preset--color--tertiary: #cce3de !important;
+body.preset3 {
+	--wp--preset--color--sm-base: #0fa3b1 !important;
+	--wp--preset--color--sm-primary: #0fa3b1 !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #a4c3b2 !important;
+	--wp--preset--color--sm-tertiary: #cce3de !important;
 }
 
-.preset-4 {
-	--wp--preset--color--base: #e8c2ca !important;
-	--wp--preset--color--primary: #7400b8 !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #b392ac !important;
-	--wp--preset--color--tertiary: #d1b3c4 !important;
+body.preset4 {
+	--wp--preset--color--sm-base: #e8c2ca !important;
+	--wp--preset--color--sm-primary: #7400b8 !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #b392ac !important;
+	--wp--preset--color--sm-tertiary: #d1b3c4 !important;
 }
 
-.preset-5 {
-	--wp--preset--color--base: #31572c !important;
-	--wp--preset--color--primary: #31572c !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #586f7c !important;
-	--wp--preset--color--tertiary: #b8dbd9 !important;
+body.preset5 {
+	--wp--preset--color--sm-base: #31572c !important;
+	--wp--preset--color--sm-primary: #31572c !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #586f7c !important;
+	--wp--preset--color--sm-tertiary: #b8dbd9 !important;
 }
 
-.preset-6 {
-	--wp--preset--color--base: #532b88 !important;
-	--wp--preset--color--primary: #532b88 !important;
-	--wp--preset--color--contrast: #000000 !important;
-	--wp--preset--color--secondary: #e2711d !important;
-	--wp--preset--color--tertiary: #ff9505 !important;
+body.preset6 {
+	--wp--preset--color--sm-base: #532b88 !important;
+	--wp--preset--color--sm-primary: #532b88 !important;
+	--wp--preset--color--sm-contrast: #000000 !important;
+	--wp--preset--color--sm-secondary: #e2711d !important;
+	--wp--preset--color--sm-tertiary: #ff9505 !important;
 }
 
 /*# sourceMappingURL=site-mode-public.css.map */
