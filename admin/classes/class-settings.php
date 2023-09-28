@@ -27,16 +27,13 @@ class Settings {
         update_option( $option_name, $data );
 
         if(empty(get_option('sm-fresh-installation')) && $option_name == 'site_mode_design') {
-            $general_settings                = $this->get_data( 'site_mode_general' );
-            $general_settings['mode_status'] = true;
-            update_option( 'site_mode_general', $general_settings );
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
                 'page_link'             => urldecode(get_edit_post_link(intval($data['active_page']))),
                 'message'               => 'Template has been initialized successfully.',
                 'fresh_installation'    => true,
-                'template_name'         => str_replace("-"," ",$data['template'])
+                'template_name'         => str_replace("-"," ",$data['template']),
             ]);
         } elseif($option_name == 'site_mode_general') {
             wp_send_json_success([

@@ -5,7 +5,7 @@
 	window.addEventListener("message", function (event) {
 
 		if(document.querySelector("body")) {
-			document.querySelector("body").classList.remove('preset1', "preset2", "preset3", "preset4", "preset5", "preset6");
+			document.querySelector("body").classList.remove('preset1', "preset2", "preset3", "preset4", "preset5", "preset6", "default");
 			if(event.data.colorScheme) {
 				document.querySelector("body").classList.add(event.data.colorScheme);
 			}
@@ -19,19 +19,11 @@
 			}
 		}
 
-		if(document.querySelector(".social-Icon")) {
+		if(document.querySelector(".wp-block-social-links")) {
 			if (event.data.hideSocialIcons) {
-				document.querySelector(".social-Icon").style.display = "none";
+				document.querySelector(".wp-block-social-links").style.display = "none";
 			} else {
-				document.querySelector(".social-Icon").style.display = "flex";
-			}
-		}
-
-		if(document.querySelector(".subscribe-box")) {
-			if (event.data.hideSubscribeBox) {
-				document.querySelector(".subscribe-box").style.display = "none";
-			} else {
-				document.querySelector(".subscribe-box").style.display = "block";
+				document.querySelector(".wp-block-social-links").style.display = "flex";
 			}
 		}
 

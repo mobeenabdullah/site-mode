@@ -1,0 +1,56 @@
+{
+  "label": "Color Scheme",
+  "__file": "wp_export",
+  "version": 2,
+  "content": {
+    "default" : {
+      "base" : "#e8c2ca",
+      "primary": "#7400b8",
+      "contrast": "#000000",
+      "secondary": "#b392ac",
+      "tertiary": "#d1b3c4"
+    },
+    "preset1" : {
+      "base" : "#f4f3ee",
+      "primary": "#ef476f",
+      "contrast": "#000000",
+      "secondary": "#8a817c",
+      "tertiary": "#bcb8b1"
+    },
+    "preset2" : {
+      "base" : "#f0ebd8",
+      "primary": "#1e88e5",
+      "contrast": "#000000",
+      "secondary": "#1d2d44",
+      "tertiary": "#3e5c76"
+    },
+    "preset3" : {
+      "base" : "#0fa3b1",
+      "primary": "#0fa3b1",
+      "contrast": "#000000",
+      "secondary": "#a4c3b2",
+      "tertiary": "#cce3de"
+    },
+    "preset4" : {
+      "base" : "#e8c2ca",
+      "primary": "#7400b8",
+      "contrast": "#000000",
+      "secondary": "#b392ac",
+      "tertiary": "#d1b3c4"
+    },
+    "preset5" : {
+      "base" : "#31572c",
+      "primary": "#31572c",
+      "contrast": "#000000",
+      "secondary": "#586f7c",
+      "tertiary": "#b8dbd9"
+    },
+    "preset6" : {
+      "base" : "#532b88",
+      "primary": "#532b88",
+      "contrast": "#000000",
+      "secondary": "#e2711d",
+      "tertiary": "#ff9505"
+    }
+  }
+}

@@ -140,7 +140,7 @@ class Site_Mode_Design extends  Settings {
 
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_setup, $template_name, $category );
-        $design_data['active_page'] = $page_id;
+        $design_data['page_setup']['active_page'] = $page_id;
         $this->page_id    = $page_id;
 
         // replace placeholder strings
@@ -209,8 +209,8 @@ class Site_Mode_Design extends  Settings {
             }
 
             $design_data = [
-                'template' => $this->active_template,
-                'page_setup' => $this->page_setup,
+                'template'      => $this->active_template,
+                'page_setup'    => $this->page_setup,
                 'preset'        => $this->color_scheme
             ];
 
@@ -219,6 +219,8 @@ class Site_Mode_Design extends  Settings {
                 $design_data['template'] = $template_name;
                 $design_data['[page_setup']['active_page'] = $page_id;
             }
+
+            update_option('here_data', $design_data);
 
             $this->save_data( $this->option_name, $design_data );
 //            return $page_id;
