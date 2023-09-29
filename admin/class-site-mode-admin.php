@@ -230,7 +230,7 @@ class Site_Mode_Admin {
         $scheme_content         = json_decode(file_get_contents($scheme_file))->content;
         $design_settings = get_option('site_mode_design');
 
-        if($design_settings['preset']) {
+        if(!empty($design_settings['preset'])) {
             $preset_scheme = $design_settings['preset'];
         }
 

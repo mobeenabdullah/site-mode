@@ -39,12 +39,6 @@ class Site_Mode_Menu {
 
         $submenus = [
             [
-                'page_title' => 'Dashboard',
-                'menu_title' => 'Dashboard',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
-            ],
-            [
                 'page_title' => 'Templates',
                 'menu_title' => 'Templates',
                 'capability' => 'manage_options',
@@ -61,12 +55,6 @@ class Site_Mode_Menu {
                 'menu_title' => 'About Us',
                 'capability' => 'manage_options',
                 'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
-            ],
-            [
-                'page_title' => 'Support',
-                'menu_title' => 'Support',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=support',
             ]
 
         ];
@@ -88,10 +76,6 @@ class Site_Mode_Menu {
 			return;
 		}
 		require_once SITE_MODE_ADMIN . 'partials/settings-layout.php';
-	}
-
-	public function site_mode_content_page_html() {
-		echo 'About page';
 	}
 
 	public function wp_kses_svg( $svg_content ) {
