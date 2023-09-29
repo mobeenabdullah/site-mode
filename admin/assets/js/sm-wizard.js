@@ -89,6 +89,10 @@ jQuery(function ($) {
 
     // Go to select template page
     function selectTemplate () {
+        const templateLabel = $(this).attr('data-template-label');
+        $('.template__name').html(templateLabel);
+        const templateName = $(this).attr('data-template-name');
+
         removeElementClass('.wizard__templates-cards--single', 'active');
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
@@ -112,9 +116,6 @@ jQuery(function ($) {
 
     // Go to customize template page
     function customizeTemplate () {
-        const templateLabel = $(this).attr('data-template-label');
-        $('.template__name').html(templateLabel);
-        const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
         $('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
         hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
