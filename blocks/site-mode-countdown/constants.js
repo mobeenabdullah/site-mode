@@ -39,4 +39,80 @@ export const layouts = [
 		'label': 'Preset 10',
 		'value': 'countdown-circle'
 	},
-]
+];
+
+export const presetSettings = {
+	'default-countdown' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+
+	'countdown-without-box' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-individual-shadow' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-box-shadow' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-with-simple-seperator' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-in-row-individual' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-flat' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-column' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-in-row' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	},
+	'countdown-circle' : {
+		bgColor: '#ffffff',
+		borderColor: '#ffffff',
+		timerColor: '#000000',
+		labelColor: '#000000',
+		separatorColor: '#ffffff',
+	}
+}
+
+

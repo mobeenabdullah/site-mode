@@ -20,23 +20,23 @@
   "attributes": {
 	"bgColor": {
 	  "type": "string",
-	  "default": "rgb(0,150,199)"
+	  "default": "#ffffff"
 	},
 	"timerColor": {
 	  "type": "string",
-	  "default": "red"
+	  "default": "#000000"
 	},
   	"labelColor" :{
 	  "type": "string",
-	  "default": "red"
+	  "default": "#000000"
 	},
   	"borderColor" :{
 	  "type": "string",
-	  "default": "red"
+	  "default": "#ffffff"
   	},
   	"separatorColor" :{
 	   "type": "string",
-	   "default": "red"
+	   "default": "#ffffff"
 	},
 	"dueDate": {
 	  "type": "string",

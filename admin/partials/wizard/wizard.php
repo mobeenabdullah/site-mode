@@ -37,7 +37,6 @@ if(isset($_GET['cat'])) {
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
                                     <input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'coming-soon' ? 'checked' : '';  ?> value="coming-soon">
-
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,7 +224,7 @@ if(isset($_GET['cat'])) {
     <div class="sm-modal-content">
         <div class="import__content" style="display: block;">
             <div class="sm-modal-content-text">
-                <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/loading.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+                <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/icons8-loading.gif' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
                 <h3>Importing ...</h3>
                 <p>Please be patient and don't refresh this page. The import can take some time.</p>
             </div>
@@ -259,8 +258,8 @@ if(isset($_GET['cat'])) {
                 <h3>Congratulations</h3>
                 <p class="sm-modal-success-message">Your {comingsoon} page is ready. Now you can view the page or start customizing it.</p>
                 <div class="buttons__wrapper">
-                    <a href="#" class="outline_btn">Customize</a>
-                    <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">View Page</a>
+                    <a href="#" class="outline_btn">Edit Page</a>
+                    <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">Preview Page</a>
                 </div>
             </div>
         </div>
