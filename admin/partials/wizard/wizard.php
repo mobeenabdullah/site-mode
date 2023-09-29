@@ -5,11 +5,11 @@ $active_cat         = '';
 $active_template    = '';
 $setup               = $_GET['setup'] ?? false;
 
-if(isset($_GET['template']) && isset($_GET['template'])) {
+if(isset($_GET['template'])) {
     $active_template = $_GET['template'];
 }
 
-if(isset($_GET['cat']) && isset($_GET['cat'])) {
+if(isset($_GET['cat'])) {
     $active_cat = $_GET['cat'];
     if($active_cat === 'maintenance' || $active_cat === 'coming-soon') {
         $cat = $active_cat;

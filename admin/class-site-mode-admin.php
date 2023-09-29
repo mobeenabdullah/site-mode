@@ -144,10 +144,10 @@ class Site_Mode_Admin {
     public function sm_admin_bar () {
         global $wp_admin_bar;
 
-        $general_settings = get_option( 'site_mode_general' );
-        $mode_status      = isset( $general_settings['mode_status'] ) ? $general_settings['mode_status'] : false;
+        $design_settings = get_option( 'site_mode_design' );
+        $is_status_active     = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['active_page']) && !empty($design_settings['page_setup']['active_page']);
 
-        if($mode_status) {
+        if($is_status_active) {
             $text = '<span style="background: red; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Site Mode is Enabled</span>';
         } else {
             $text = '<span style="background: lightgrey; color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Site Mode is Disabled</span>';
