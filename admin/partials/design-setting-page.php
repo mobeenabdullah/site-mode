@@ -16,7 +16,7 @@ $page_ids = get_posts($args);
         <div class="wizard__templates">
             <div class="wizard__templates-filters">
                 <div class="result__showing">
-                    Showing <span class="display_template_name">All</span> templates. <span class="sm_clearfilter">Clear Filters</span>
+                    Showing <span class="display_template_name">All</span> templates. <span class="sm_clearfilter" style="display: none">Clear Filters</span>
                 </div>
                 <div class="wizard__templates-filter">
                     <div class="wizard__templates-filter-cover">
