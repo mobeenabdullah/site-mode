@@ -99,7 +99,6 @@ jQuery(function ($) {
         $(this).children('span').html('Selected');
         hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
         showElements('.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions');
-        addElementClass('.sm-import', 'active');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
@@ -116,6 +115,9 @@ jQuery(function ($) {
 
     // Go to customize template page
     function customizeTemplate () {
+        const templateLabel = $(this).attr('data-template-label');
+        $('.template__name').html(templateLabel);
+        const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
         $('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
         hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
@@ -172,6 +174,29 @@ jQuery(function ($) {
             "*"
         )
     }
+
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    const templateParam = getParameterByName('template');
+    const isSetup = getParameterByName('setup');
+    const cat = getParameterByName('cat');
+    if(templateParam) {
+        $('.choose_page_type').trigger('click');
+        $(`.template_card[data-category-template="${templateParam}"] .select_template`).trigger('click');
+    }
+
+    // if(isSetup && cat) {
+    //     $(`.setup-button[data-template-category="${cat}"]`).trigger('click');
+    // }
 
     //  AJAX Functionality for import template
     $('.import-template').on('click', function() {

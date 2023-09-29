@@ -126,8 +126,14 @@ class Site_Mode_Admin {
     public function add_display_post_states( $post_states, $post ) {
 
         $design_data = get_option( 'site_mode_design' );
+        $maintenance_page = isset($design_data['page_setup']['maintenance_page_id']) ? $design_data['page_setup']['maintenance_page_id'] : '';
+        $coming_soon_page = isset($design_data['page_setup']['coming_soon_page_id']) ? $design_data['page_setup']['coming_soon_page_id'] : '';
 
-        if(!empty($design_data) && isset($design_data['page_id']) && $design_data['page_id'] == $post->ID){
+        if($coming_soon_page == $post->ID) {
+            $post_states['sm_coming_soon_status'] = 'Coming Soon';
+        }
+
+        if($maintenance_page == $post->ID) {
             $post_states['sm_maintenance_status'] = 'Maintenance';
         }
 
