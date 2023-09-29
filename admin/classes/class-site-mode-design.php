@@ -201,7 +201,7 @@ class Site_Mode_Design extends  Settings {
         ) );
 
         if(!is_wp_error($page_id)){
-
+            $this->page_setup['active_page'] = $page_id;
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
             } else {
@@ -209,16 +209,10 @@ class Site_Mode_Design extends  Settings {
             }
 
             $design_data = [
-                'template'      => $this->active_template,
+                'template'      => $template_name,
                 'page_setup'    => $this->page_setup,
                 'preset'        => $this->color_scheme
             ];
-
-            if(!$is_setup) {
-                $this->page_setup['active_page'] = $page_id;
-                $design_data['template'] = $template_name;
-                $design_data['[page_setup']['active_page'] = $page_id;
-            }
 
             update_option('here_data', $design_data);
 

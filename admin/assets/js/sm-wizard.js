@@ -102,6 +102,8 @@ jQuery(function ($) {
         $template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
         $('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_slug}`);
         $('#selected-template-name').val($template_slug);
+        $('.sm-setting-reset-components').trigger('click');
+        $('#color_scheme').val('default').trigger('change');
         removeElementClass('.select_template_btn', 'disabled__customize');
         removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
     }
@@ -215,12 +217,14 @@ jQuery(function ($) {
             success: function (res) {
                 setTimeout(function () {
                     console.log(res);
+                    const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=site-mode&setting=dashboard';
+                    window.history.pushState({path:newurl},'',newurl);
                     $('#importing__popup').css('display', 'flex');
                     $('.import__content').hide();
                     $('.error__content').hide();
                     $('.thank__you-content').show();
                     $('.sm-modal-success-message').html(`Your ${res.data.template_name} page is ready. Now you can view the page or start customizing it.`)
-                    $('.sm-modal-content-text .outline_btn').attr('href', res.data.page_link.replace('amp;', ''))
+                    $('.sm-modal-content-text .outline_btn').attr('href', res.data?.page_link?.replace('amp;', ''))
                 }, 1000);
             },
             error: function (error) {
@@ -363,9 +367,13 @@ jQuery(function ($) {
                 template_init_field : nonce,
             },
             success: function (res) {
+                const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=site-mode';
+                window.history.pushState({path:newurl},'',newurl);
                 location.reload();
             },
             error: function (error) {
+                const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=site-mode';
+                window.history.pushState({path:newurl},'',newurl);
                 location.reload();
             },
         });

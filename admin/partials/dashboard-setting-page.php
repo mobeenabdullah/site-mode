@@ -1,8 +1,8 @@
 <?php
 $design_settings = get_option('site_mode_design');
-$maintenance_page = intval($design_settings['page_setup']['maintenance_page_id']) ?? '';
-$coming_soon_page = intval($design_settings['page_setup']['coming_soon_page_id']) ?? '';
-$active_page      = intval($design_settings['page_setup']['active_page']) ?? '';
+$maintenance_page = !empty($design_settings['page_setup']['maintenance_page_id']) ? intval($design_settings['page_setup']['maintenance_page_id']) : '';
+$coming_soon_page = !empty($design_settings['page_setup']['coming_soon_page_id']) ? intval($design_settings['page_setup']['coming_soon_page_id']) : '';
+$active_page      = !empty($design_settings['page_setup']['active_page']) ? intval($design_settings['page_setup']['active_page']) : '';
 
 ?>
 
@@ -32,8 +32,14 @@ $active_page      = intval($design_settings['page_setup']['active_page']) ?? '';
                         <div class="site-mode-cards--item <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <input type="checkbox" name="page__template" id="coming_soon_temp" <?php echo empty($coming_soon_page) ? 'disabled' : '';?> value="<?php echo esc_attr($coming_soon_page); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : '' ?>>
-                                    <label class="toggle" for="coming_soon_temp"></label>
+                                    <?php if(empty($coming_soon_page)) : ?>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&setup=true'); ?>">
+                                    <?php endif; ?>
+                                        <input type="checkbox" name="page__template" id="coming_soon_temp" <?php echo empty($coming_soon_page) ? 'disabled' : '';?> value="<?php echo esc_attr($coming_soon_page); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : '' ?>>
+                                        <label class="toggle" for="coming_soon_temp"></label>
+                                    <?php if(empty($coming_soon_page)) : ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </span>
                                 <div class="sm__card-cover">
                                     <div class="sm_select_page-icon">
@@ -69,8 +75,14 @@ $active_page      = intval($design_settings['page_setup']['active_page']) ?? '';
                         <div class="site-mode-cards--item  <?php echo $maintenance_page && $maintenance_page === $active_page ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
-                                    <label class="toggle" for="maintenance_temp"></label>
+                                    <?php if(empty($maintenance_page)) : ?>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&setup=true'); ?>">
+                                    <?php endif; ?>
+                                        <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
+                                        <label class="toggle" for="maintenance_temp"></label>
+                                    <?php if(empty($maintenance_page)) : ?>
+                                        </a>
+                                    <?php endif; ?>
                                 </span>
                                 <div class="sm_select_page-icon">
                                     <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">

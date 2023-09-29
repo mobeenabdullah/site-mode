@@ -180,7 +180,7 @@ if(isset($_GET['cat'])) {
                         <input type="hidden" name="template-name" id="selected-template-name" value="<?php echo $active_template; ?>">
                         <input type="hidden" name="template-setup" id="template-page-setup" value="<?php echo $setup; ?>">
                         <?php foreach($templates as $key => $template ): ?>
-                            <div class="template_card template-content-wrapper wizard__templates-cards--single" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo $key; ?>">
+                            <div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : '' ?>" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo $key; ?>">
                                 <div class="template_card-img" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);">
                                     <div class="template_card-actions">
                                         <button type="button" class="select_template">
@@ -244,7 +244,7 @@ if(isset($_GET['cat'])) {
         </div>
 
         <div class="thank__you-content" style="display: none;">
-                <a href="/wp-admin/" class="close-popup">
+                <a href="/wp-admin/admin.php?page=site-mode&setting=dashboard" class="close-popup">
                     <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M24.288 9.51599L17.9235 15.879L11.5605 9.51599L9.43945 11.637L15.8025 18L9.43945 24.363L11.5605 26.484L17.9235 20.121L24.288 26.484L26.409 24.363L20.046 18L26.409 11.637L24.288 9.51599Z" fill="#CCCCCC"/>
                     </svg>
