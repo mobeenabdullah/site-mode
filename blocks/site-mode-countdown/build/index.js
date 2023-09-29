@@ -10,7 +10,8 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   layouts: function() { return /* binding */ layouts; }
+/* harmony export */   layouts: function() { return /* binding */ layouts; },
+/* harmony export */   presetSettings: function() { return /* binding */ presetSettings; }
 /* harmony export */ });
 const layouts = [{
   'label': 'Preset 1',
@@ -43,6 +44,78 @@ const layouts = [{
   'label': 'Preset 10',
   'value': 'countdown-circle'
 }];
+const presetSettings = {
+  'default-countdown': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-without-box': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-individual-shadow': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-box-shadow': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-with-simple-seperator': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-in-row-individual': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-flat': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-column': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-in-row': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  },
+  'countdown-circle': {
+    bgColor: '#ffffff',
+    borderColor: '#ffffff',
+    timerColor: '#000000',
+    labelColor: '#000000',
+    separatorColor: '#ffffff'
+  }
+};
 
 /***/ }),
 
@@ -166,6 +239,19 @@ function Edit(_ref) {
       });
     }
   };
+  const handlePresetChange = value => {
+    const presetNewSettings = {
+      'bgColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].bgColor,
+      'timerColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].timerColor,
+      'labelColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].labelColor,
+      'borderColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].borderColor,
+      'separatorColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].separatorColor,
+      'preset': value
+    };
+    setAttributes({
+      ...presetNewSettings
+    });
+  };
   const smCounterBox = {
     backgroundColor: bgColor,
     borderColor: borderColor
@@ -196,9 +282,7 @@ function Edit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
     label: "Presets",
     value: preset,
-    onChange: value => setAttributes({
-      preset: value
-    }),
+    onChange: handlePresetChange,
     options: _constants__WEBPACK_IMPORTED_MODULE_3__.layouts
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: "Show Label",

@@ -1,7 +1,7 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {useState, useEffect} from "@wordpress/element";
-import { layouts } from '../constants';
+import { layouts, presetSettings } from '../constants';
 import './editor.scss';
 import {
 	PanelBody,
@@ -107,6 +107,19 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 	}
 
+	const handlePresetChange = ( value ) => {
+
+		const presetNewSettings = {
+			'bgColor': presetSettings[value].bgColor,
+			'timerColor': presetSettings[value].timerColor,
+			'labelColor': presetSettings[value].labelColor,
+			'borderColor': presetSettings[value].borderColor,
+			'separatorColor': presetSettings[value].separatorColor,
+			'preset': value
+		}
+		setAttributes( { ...presetNewSettings } )
+	}
+
 	const smCounterBox = {
 		backgroundColor: bgColor,
 		borderColor: borderColor,
@@ -149,7 +162,7 @@ export default function Edit({ attributes, setAttributes }) {
 						<SelectControl
 							label="Presets"
 							value={ preset }
-							onChange={ ( value ) => setAttributes( { preset: value } ) }
+							onChange={ handlePresetChange }
 							options={ layouts }
 						/>
 					</PanelRow>
