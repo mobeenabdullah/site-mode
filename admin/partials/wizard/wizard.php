@@ -26,7 +26,7 @@ if(isset($_GET['cat'])) {
     <!-- Select Template -->
     <div class="wizard__content">
         <?php include(SITE_MODE_ADMIN . 'partials/wizard/header.php'); ?>
-        <div class="wizard__start" style="display: <?php echo empty($active_template) ? 'block' : 'none';  ?>">
+        <div class="wizard__start" style="display: block">
             <div class="wizard_container">
                 <div class="wizard__start-content">
                     <div class="wizard__start-content--title">
@@ -52,7 +52,7 @@ if(isset($_GET['cat'])) {
                                             placeholder page.
                                         </div>
                                         <div class="sm_select_page-btn">
-                                            <button class="sm__btn block_btn primary_button setup-coming-soon-page" data-template-category="coming-soon">Setup Coming Soon Page</button>
+                                            <button class="sm__btn block_btn primary_button setup-button setup-coming-soon-page" data-template-category="coming-soon">Setup Coming Soon Page</button>
                                         </div>
                                     </div>
                                 </label>
@@ -74,7 +74,7 @@ if(isset($_GET['cat'])) {
                                             Temporarily offline for necessary improvements. We'll be back soon!
                                         </div>
                                         <div class="sm_select_page-btn">
-                                            <button class="sm__btn block_btn primary_button setup-maintenance-page" data-template-category="coming-soon">Setup Maintenance Page</button>
+                                            <button class="sm__btn block_btn primary_button setup-button setup-maintenance-page" data-template-category="maintenance">Setup Maintenance Page</button>
                                         </div>
                                     </div>
                                 </label>
@@ -158,7 +158,7 @@ if(isset($_GET['cat'])) {
                 </button>
             </div>
         </div>
-        <div class="wizard__content-wrapper" style="display: <?php echo empty($active_template) ? 'none' : 'block';  ?>">
+        <div class="wizard__content-wrapper" style="display: none">
             <div class="wizard_container">
                 <div class="wizard__templates">
                     <div class="wizard__templates-filters">

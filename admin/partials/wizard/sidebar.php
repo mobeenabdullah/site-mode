@@ -1,7 +1,7 @@
 <div class="customize__template-sidebar" aria-label="Navigation" role="region" tabindex="-1">
     <div class="sidebar_content">
         <div class="sidebar_content-header">
-            <span>Template: <span class="template__name">Flavor Food</span></span>
+            <span>Template: <span class="template__name"></span></span>
             <button class="sm__edit-template template-init-back" type="button">
                                 <span tooltip="Edit Template" flow="left">
                                     <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
