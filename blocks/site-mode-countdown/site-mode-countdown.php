@@ -16,7 +16,19 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 	if($due_date >= $date) {
 		?>
 		<style>
-
+			.sm-countdown-box {
+				background-color: <?php echo esc_attr($attributes['bgColor']); ?> !important;
+				border-color: <?php echo esc_attr($attributes['borderColor']); ?> !important;
+			}
+			.countdown_main-wrapper .countdown-wrapper .sm-countdown-box .countdown_label {
+				color: <?php echo esc_attr($attributes['labelColor']); ?> !important;
+			}
+			.countdown_main-wrapper .countdown-wrapper .sm-countdown-box .countdown_number {
+				color: <?php echo esc_attr($attributes['timerColor']); ?> !important;
+			}
+			.countdown_main-wrapper .countdown-wrapper .countdown-seperator {
+				color: <?php echo esc_attr($attributes['separatorColor']); ?> !important;
+			}
 
 		</style>
 		<?php
