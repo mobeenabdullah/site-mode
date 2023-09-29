@@ -75,18 +75,17 @@ jQuery(function ($) {
   }
 
   $(document).ready(function () {
-    // 1.   Mode change on general tab
-    const siteMode = $("#site_mode");
+
     const redirectOption = $(".redirect_options");
 
     function showHideURLOptions() {
-      if ($(this).val() === "redirect") {
+      if ($(this).is(":checked")) {
         redirectOption.removeClass("sm_hide_field");
       } else {
         redirectOption.addClass("sm_hide_field");
       }
     }
-    siteMode.on("change", showHideURLOptions);
+    $("#sm-redirect").on("click", showHideURLOptions);
 
     // 4.   Show Login URL field
     const loginUrlField = $(".login_url_field");
@@ -208,6 +207,7 @@ jQuery(function ($) {
 
     // Multi Select
     $(".whitelist-pages-multiselect").select2();
+    $(".whitelist_user_role-multiselect").select2();
   });
 
   const mobileMenu = document.querySelector(".mobile_menu");

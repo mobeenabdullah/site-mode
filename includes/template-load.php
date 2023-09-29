@@ -13,13 +13,13 @@ class Template_Load {
 	}
 	public function template_initialize() {
 
-		$mode_type   = isset( $this->advanced_settings['mode_type'] ) ? $this->advanced_settings['mode_type'] : 'maintenance';
-        $active_template = $this->template['page_setup']['active_page'] ?? '';
+		$maintenance_page   = isset( $this->template['page_setup']['maintenance_page_id'] ) ? intval($this->template['page_setup']['maintenance_page_id']) : '';
+        $active_template = isset($this->template['page_setup']['active_page']) ? intval($this->template['page_setup']['active_page']) : '';
 
 		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) == 'true' ) {
 			return true;
 		} elseif ( $active_template && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status() ) {
-			if ( $mode_type === 'maintenance') {
+			if ( $maintenance_page === $active_template) {
 				status_header( 200 );
 				nocache_headers();
 				return true;
@@ -74,11 +74,11 @@ class Template_Load {
 		return true;
 	}
 	public function check_redirect_status() {
-		$mode_type      = $this->advanced_settings['mode_type'] ?? '';
+		$redirect      = $this->advanced_settings['redirect'] ?? '';
 		$redirect_url   = $this->advanced_settings['redirect_url'] ?? '';
 		$redirect_delay = $this->advanced_settings['redirect_delay'] ?? '';
 
-		if ( $mode_type === 'redirect' ) {
+		if ( $redirect) {
 			if ( $redirect_url ) {
 				sleep( $redirect_delay );
 				wp_redirect( $redirect_url, 301 );

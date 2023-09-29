@@ -27,18 +27,18 @@ class Site_Mode_Advanced extends Settings {
     protected $redirect_delay;
     protected $disable_rest_api;
     protected $disable_rss_feed;
+    protected $redirect;
     protected $site_mode_advanced = [];
 
     protected $whitelist_pages;
     protected $user_roles;
-    protected $mode_type;
 
 	public function __construct() {
 		$this->site_mode_advanced = get_option( 'site_mode_advanced' );
 		if ( $this->site_mode_advanced ) {
 			$this->disable_rest_api = isset( $this->site_mode_advanced['disable_rest_api'] ) ? $this->site_mode_advanced['disable_rest_api'] : 0;
 			$this->disable_rss_feed = isset( $this->site_mode_advanced['disable_rss_feed'] ) ? $this->site_mode_advanced['disable_rss_feed'] : '0';
-            $this->mode_type         = isset( $this->site_mode_advanced['mode_type'] ) ? $this->site_mode_advanced['mode_type'] : 'maintenance';
+            $this->redirect         = isset( $this->site_mode_advanced['redirect'] ) ? $this->site_mode_advanced['redirect'] : false;
             $this->redirect_url      = isset( $this->site_mode_general['redirect_url'] ) ? $this->site_mode_general['redirect_url'] : '';
             $this->redirect_delay    = isset( $this->site_mode_general['redirect_delay'] ) ? $this->site_mode_general['redirect_delay'] : 2;
             $this->whitelist_pages   = isset( $this->site_mode_advanced['whitelist_pages'] ) ? $this->site_mode_advanced['whitelist_pages'] :[];
@@ -59,7 +59,7 @@ class Site_Mode_Advanced extends Settings {
 		$data                     = [];
 		$data['disable_rest_api'] = $this->get_post_data( 'disable-rest-api', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['disable_rss_feed'] = $this->get_post_data( 'disable-rss-feed', 'advance-settings-save', 'advance-custom-message', 'text' );
-        $data['mode_type']        = $this->get_post_data( 'site-mode-mode-type', 'advance-settings-save', 'advance-custom-message', 'text' );
+        $data['redirect']        = $this->get_post_data( 'redirect', 'advance-settings-save', 'advance-custom-message', 'text' );
         $data['redirect_url']     = $this->get_post_data( 'site-mode-redirect-url', 'advance-settings-save', 'advance-custom-message', 'text' );
         $data['redirect_delay']   = $this->get_post_data( 'site-mode-redirect-delay', 'advance-settings-save', 'advance-custom-message', 'number' );
 

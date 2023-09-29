@@ -27,25 +27,20 @@
             </div>
         </div>
 
-        <!-- Mode Setting -->
         <div class="option__row">
             <div class="option__row--label">
-                <span><label for="site_mode"><?php esc_html_e( 'Mode Type', 'site-mode' ); ?></label></span>
-                <span class="info_text"><?php esc_html_e( 'Select the appropriate Mode type to specify the desired server response and behavior for your website', 'site-mode' ); ?></span>
+                <span><label for="feed_enable"><?php esc_html_e( 'Redirect', 'site-mode' ); ?></label></span>
+                <span class="info_text"><?php esc_html_e( 'Enabe/Disable Redirect', 'site-mode' ); ?></span>
             </div>
             <div class="option__row--field">
-                <div class="sm_select">
-                    <select name="site-mode-mode-type" id="site_mode">
-                        <option value="maintenance" <?php selected( $this->mode_type === 'maintenance', 1 ); ?>><?php esc_html_e( 'Maintenance - Returns HTTP 200 OK response', 'site-mode' ); ?></option>
-                        <option value="coming-soon" <?php selected( $this->mode_type === 'coming-soon', 1 ); ?>><?php esc_html_e( 'Coming Soon - Returns 503 HTTP Service response', 'site-mode' ); ?></option>
-                        <option value="redirect" <?php selected( $this->mode_type === 'redirect', 1 ); ?> id="direct-item"><?php esc_html_e( 'Redirect - Returns HTTP 301 response and redirect to a URL', 'site-mode' ); ?></option>
-                    </select>
-                    <span class="arrow-down"></span>
-                </div>
+                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
+                    <input type="checkbox" id="sm-redirect" name="redirect" value="1" <?php checked( 1, $this->redirect, true ); ?>/>
+                    <label class="toggle" for="sm-redirect"></label>
+                </span>
             </div>
         </div>
 
-        <div class="redirect_options <?php echo ( $this->mode_type === 'redirect' ) ? '' : 'sm_hide_field'; ?>">
+        <div class="redirect_options <?php echo ( $this->redirect ) ? '' : 'sm_hide_field'; ?>">
             <div class="option__row">
                 <div class="option__row--label">
                     <span><label for="redirect_url"><?php esc_html_e( 'Redirect URL', 'site-mode' ); ?></label></span>
@@ -77,16 +72,20 @@
             </div>
             <div class="option__row--field">
                 <?php global $wp_roles; ?>
-                <?php foreach ( $wp_roles->roles as $key => $value ) : ?>
-                        <?php $checked = ( in_array( $key, $this->user_roles ) ) ? 'checked' : ''; ?>
-                    <span class="btn-check-toggle smd_normal_toggle whitelist_user_role">
-                        <input type="checkbox" id="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $checked ); ?> />
-                        <label class="toggle" for="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>">
-                            <span><?php echo esc_html( $value['name'] ); ?></span>
-                        </label>
-                    </span>
-
-                <?php endforeach; ?>
+                <div class="sm_select">
+                    <select class="whitelist_user_role-multiselect" name="site-mode-user-roles[]" multiple="multiple" id="whitelist_user_role">
+                        <?php
+                        foreach ( $wp_roles->roles as $key => $value ) :
+                            if ( in_array( strtolower( $value['name'] ), $this->user_roles ) ) {
+                                $selected = 'selected';
+                            } else {
+                                $selected = 'not-selected';
+                            }
+                            ?>
+                            <option value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html_e( $value['name'] ); ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
             </div>
         </div>
 
