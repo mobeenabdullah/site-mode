@@ -39,7 +39,8 @@ class Settings {
             wp_send_json_success([
                 'tab'       => 'design',
                 'status'    => !empty($data['page_setup']['active_page']),
-                'message'   => 'Settings has been saved successfully.'
+                'message'   => 'Settings has been saved successfully.',
+                'page_link' => urldecode(get_edit_post_link(intval($data['page_setup']['active_page']))),
             ]);
         } else {
             wp_send_json_success( get_option( $option_name ) );
