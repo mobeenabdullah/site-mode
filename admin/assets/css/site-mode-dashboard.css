@@ -1269,11 +1269,18 @@ input[type=file] {
 	background-color: #ffdfe7;
 	padding: 0.5rem;
 	border-radius: 0.6rem;
+	width: 3.6rem;
+	height: 3.6rem;
 }
 
 .sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_page-icon svg {
-	width: 4rem;
-	height: 4rem;
+	width: 100%;
+	height: 100%;
+}
+
+.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_page-icon.maintenance__icon svg {
+	width: 100%;
+	height: 100%;
 }
 
 .sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_page-title {
@@ -1289,6 +1296,18 @@ input[type=file] {
 	font-size: 1rem;
 	line-height: 1.3;
 	margin-bottom: 2rem;
+}
+
+.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_re_setup {
+	margin-top: 1rem;
+}
+
+.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_re_setup .reset_setup_again {
+	color: #ccc;
+}
+
+.sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_re_setup .reset_setup_again:hover {
+	color: #999;
 }
 
 .sitemode__dashboard-intro--video .sitemode__media-box .site-mode-cards--item .sm__card .sm_select_page-btn {

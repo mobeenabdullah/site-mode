@@ -37,7 +37,6 @@ if(isset($_GET['cat'])) {
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
                                     <input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'coming-soon' ? 'checked' : '';  ?> value="coming-soon">
-
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
