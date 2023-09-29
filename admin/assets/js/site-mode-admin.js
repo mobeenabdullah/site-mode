@@ -369,9 +369,8 @@ jQuery(function ($) {
         $('.setup_pages input[type="checkbox"]').not(currentElement).prop('checked', false);
         manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
         if ($(currentElement).prop('checked')) {
-          manipulateElement($(this).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+          manipulateElement($(currentElement).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
         }
-        console.log(res)
         launch_toast(res.success);
       },
       error: function (error) {
