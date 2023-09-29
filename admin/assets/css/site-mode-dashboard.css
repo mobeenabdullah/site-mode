@@ -1340,9 +1340,12 @@ input[type=file] {
 }
 
 .smd-card-icon {
-	width: calc(clamp(1.25rem, 0.625rem + 1.667vw, 1.875rem));
-	height: calc(clamp(1.25rem, 0.625rem + 1.667vw, 1.875rem));
 	margin-bottom: 2rem;
+}
+
+.smd-card-icon svg {
+	width: 40px;
+	height: 40px;
 }
 
 .smd-card-title {
@@ -1356,7 +1359,7 @@ input[type=file] {
 }
 
 .smd-card-description {
-	min-height: calc(clamp(5rem, 3.214rem + 4.762vw, 7.5rem));
+	min-height: calc(clamp(3.125rem, 3.124rem + 2.085vw, 5rem));
 	margin-bottom: 1rem;
 }
 

@@ -176,9 +176,14 @@
   border: 1px solid var(--smd-seperator-color);
   box-shadow: 0 0 4px 0 rgba(0,0,0,0.05);
   &-icon {
-    width: calc(clamp(1.25rem, 0.625rem + 1.667vw, 1.875rem));
-    height: calc(clamp(1.25rem, 0.625rem + 1.667vw, 1.875rem));
+    //width: calc(clamp(1.875rem, 1.874rem + 2.085vw, 3.75rem));
+    //height: calc(clamp(1.875rem, 1.874rem + 2.085vw, 3.75rem));
     margin-bottom: 2rem;
+    & svg {
+      width: 40px;
+      height: 40px;
+    }
+
   }
   &-title {
     margin-bottom: 1rem;
@@ -189,7 +194,7 @@
     }
   }
   &-description {
-    min-height: calc(clamp(5rem, 3.214rem + 4.762vw, 7.5rem));
+    min-height: calc(clamp(3.125rem, 3.124rem + 2.085vw, 5rem));
     margin-bottom: 1rem;
     & p {
       font-size: calc(clamp(0.813rem, 0.723rem + 0.238vw, 0.938rem));
