@@ -137,7 +137,7 @@ jQuery(function ($) {
             $('.sm-edit-page-link').attr('href', pageLink.replace('amp;', ''));
           } else {
             setTimeout(function () {
-              if (res?.data?.tab === 'general') {
+              if (res?.data?.tab === 'design') {
                   if(res?.data?.status) {
                     $(".sm-admin-bar-status").text("Site Mode is Enabled");
                     $(".sm-admin-bar-status").css("background", "red");

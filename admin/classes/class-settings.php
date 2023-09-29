@@ -30,15 +30,15 @@ class Settings {
             update_option('sm-fresh-installation', true);
 
             wp_send_json_success([
-                'page_link'             => urldecode(get_edit_post_link(intval($data['active_page']))),
+                'page_link'             => urldecode(get_edit_post_link(intval($data['page_setup']['active_page']))),
                 'message'               => 'Template has been initialized successfully.',
                 'fresh_installation'    => true,
                 'template_name'         => str_replace("-"," ",$data['template']),
             ]);
-        } elseif($option_name == 'site_mode_general') {
+        } elseif($option_name == 'site_mode_design') {
             wp_send_json_success([
-                'tab'       => 'general',
-                'status'    => $data['mode_status'],
+                'tab'       => 'design',
+                'status'    => !empty($data['page_setup']['active_page']),
                 'message'   => 'Settings has been saved successfully.'
             ]);
         } else {

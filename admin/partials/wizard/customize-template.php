@@ -214,7 +214,7 @@
                         </button>
                     </div>
                     <div class="customize__template-content--canvas sm-scroll">
-                        <iframe src="<?php echo home_url(); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
+                        <iframe src="<?php echo 'https://site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
                     </div>
                 </div>
             </div>
