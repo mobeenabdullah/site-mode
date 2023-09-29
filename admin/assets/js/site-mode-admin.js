@@ -349,11 +349,11 @@ jQuery(function ($) {
    */
   function handleCheckboxBehavior() {
     let activePage = '';
-    const currentElement  = this;
-    const nonce           = $("#setup_action_field").val();
+    const currentElement = $(this);
+    const nonce = $("#setup_action_field").val();
 
-    if ($(this).prop('checked')) {
-      activePage = $(this).val();
+    if (currentElement.prop('checked')) {
+      activePage = currentElement.val();
     }
 
     $.ajax({
@@ -368,17 +368,17 @@ jQuery(function ($) {
       success: function (res) {
         $('.setup_pages input[type="checkbox"]').not(currentElement).prop('checked', false);
         manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
-        if ($(currentElement).prop('checked')) {
-          manipulateElement($(currentElement).closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+        if (currentElement.prop('checked')) {
+          manipulateElement(currentElement.closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
         }
         launch_toast(res.success);
       },
       error: function (error) {
-          console.log(error)
+        console.log(error);
       },
-    })
-
+    });
   }
+
   $('.setup_pages input[type="checkbox"]').click(handleCheckboxBehavior);
 
   /**
