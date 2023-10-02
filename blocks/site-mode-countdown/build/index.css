@@ -135,4 +135,8 @@
   font-weight: 300;
 }
 
+.components-datetime__time-wrapper {
+  align-items: flex-start !important;
+}
+
 /*# sourceMappingURL=index.css.map*/

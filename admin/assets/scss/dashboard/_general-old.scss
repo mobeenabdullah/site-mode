@@ -92,6 +92,9 @@ Plugin general styling
       background-color: var(--smd-header-bg);
       padding: 2rem;
       border-radius: 0.8rem;
+      @media screen and (max-width: 767px) {
+        border-radius: 0;
+      }
     }
   }
 }
@@ -791,10 +794,10 @@ Plugin general styling
       grid-gap: calculateRem(20px) !important;
     }
   }
-  .sm_tabs-link {
-    padding: calculateRem(10px) calculateRem(15px) !important;
-    font-size: calculateRem(12px) !important;
-  }
+  //.sm_tabs-link {
+  //  padding: calculateRem(10px) calculateRem(15px) !important;
+  //  font-size: calculateRem(12px) !important;
+  //}
 }
 @media screen and (max-width: 767px) {
   //.toplevel_page_site-mode {
@@ -866,11 +869,8 @@ Plugin general styling
   }
 
   .tabs_wrapper, .tabs_wrapper ul, .tab-content {
-    border-radius: calculateRem(6px);
+    //border-radius: calculateRem(6px);
     overflow: hidden;
-  }
-  .sm_tabs {
-    display: none !important;
   }
   .active_tabs {
     display: block !important;

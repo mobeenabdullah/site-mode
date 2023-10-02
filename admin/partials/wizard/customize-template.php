@@ -214,7 +214,16 @@
                         </button>
                     </div>
                     <div class="customize__template-content--canvas sm-scroll">
-                        <iframe src="<?php echo 'https://site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%"></iframe>
+                        <iframe src="<?php echo 'https://site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+                        <div class="loading__template"  style="display: flex;">
+                            <div class="template-loader">
+                                <div class="loader">
+                                    <svg class="circular-loader"viewBox="25 25 50 50" >
+                                        <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
