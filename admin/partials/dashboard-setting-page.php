@@ -33,7 +33,7 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
                                     <?php if(empty($coming_soon_page)) : ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&setup=true'); ?>">
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon'); ?>">
                                     <?php endif; ?>
                                         <input type="checkbox" name="page__template" id="coming_soon_temp" <?php echo empty($coming_soon_page) ? 'disabled' : '';?> value="<?php echo esc_attr($coming_soon_page); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : '' ?>>
                                         <label class="toggle" for="coming_soon_temp"></label>
@@ -64,14 +64,14 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                                                 <?php
                                             } else {
                                                 ?>
-                                                    <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&setup=true'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page" >Setup</a>
+                                                    <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page" >Setup</a>
                                                 <?php
                                             }
                                         ?>
                                     </div>
                                     <?php if(!empty($coming_soon_page)) : ?>
                                         <div class="sm_select_re_setup">
-                                                <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&setup=true'); ?>" class="reset_setup_again">Reset and setup again</a>
+                                                <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon'); ?>" class="reset_setup_again">Reset and setup again</a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -81,7 +81,7 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
                                     <?php if(empty($maintenance_page)) : ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&setup=true'); ?>">
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>">
                                     <?php endif; ?>
                                         <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
                                         <label class="toggle" for="maintenance_temp"></label>
@@ -112,14 +112,14 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                                         <?php
                                     } else {
                                         ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&setup=true'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
                                         <?php
                                     }
                                     ?>
                                 </div>
                                 <?php if(!empty($maintenance_page))  : ?>
                                     <div class="sm_select_re_setup">
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&setup=true'); ?>" class="reset_setup_again">Reset and setup again</a>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>" class="reset_setup_again">Reset and setup again</a>
                                     </div>
                                 <?php endif; ?>
                             </div>
