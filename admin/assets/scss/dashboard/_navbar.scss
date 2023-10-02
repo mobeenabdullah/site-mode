@@ -29,5 +29,12 @@
     display: flex;
     align-items: flex-start;
     gap: 3rem;
+    @media screen and (max-width: 767px) {
+      flex-wrap: wrap;
+      display: block;
+    }
+  }
+  & .sm_tabs {
+    max-width: 100%;
   }
 }

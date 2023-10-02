@@ -35,6 +35,9 @@
     &-text {
       max-width: calc(clamp(15.625rem, 6.696rem + 23.81vw, 28.125rem));
       text-align: center;
+      & .template-loader {
+        margin-bottom: 1rem;
+      }
       & h3 {
         margin: 0 0 1rem 0;
         padding: 0;

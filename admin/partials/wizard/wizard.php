@@ -224,7 +224,13 @@ if(isset($_GET['cat'])) {
     <div class="sm-modal-content">
         <div class="import__content" style="display: block;">
             <div class="sm-modal-content-text">
-                <img src="<?php echo esc_url( SITE_MODE_ADMIN_URL. '/assets/img/icons8-loading.gif' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">
+                <div class="template-loader">
+                    <div class="loader">
+                        <svg class="circular-loader"viewBox="25 25 50 50" >
+                            <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" />
+                        </svg>
+                    </div>
+                </div>
                 <h3>Importing ...</h3>
                 <p>Please be patient and don't refresh this page. The import can take some time.</p>
             </div>
