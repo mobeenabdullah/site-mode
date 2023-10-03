@@ -32,6 +32,8 @@ class Site_Mode_Design extends  Settings {
         'active_page'   => '',
         'coming_soon_page_id'  => '',
         'maintenance_page_id'   => '',
+        'maintenance_template' => '',
+        'coming_soon_template' => '',
     ];
     protected array $default_images = [
         'template-1' => 'https://site-mode.com/wp-content/uploads/2023/09/light-skyline-night-city-skyscraper-cityscape-47045-pxhere.com_-scaled.jpg',
@@ -127,6 +129,15 @@ class Site_Mode_Design extends  Settings {
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_setup, $template_name, $category );
         $design_data['page_setup']['active_page'] = $page_id;
+
+        if($category === 'maintenance') {
+            $design_data['page_setup']['maintenance_page_id'] = $page_id;
+            $design_data['page_setup']['maintenance_template'] = $template_name;
+        } else {
+            $design_data['page_setup']['coming_soon_page_id'] = $page_id;
+            $design_data['page_setup']['coming_soon_template'] = $template_name;
+        }
+
         $this->page_id    = $page_id;
 
         // replace placeholder strings
@@ -162,14 +173,14 @@ class Site_Mode_Design extends  Settings {
             if($page){
                 return $page->ID;
             } else {
-                return $this->create_maintaince_page($template_name, $category);
+                return $this->create_maintenance_page($template_name, $category);
             }
         } else {
-            return $this->create_maintaince_page($template_name, $category);
+            return $this->create_maintenance_page($template_name, $category);
         }
     }
 
-    public function create_maintaince_page ($template_name = '', $category = '') {
+    public function create_maintenance_page ($template_name = '', $category = '') {
 
         // Replace placeholder strings for content
         $template         = json_decode($this->replace_template_default_image($template_name));
@@ -190,8 +201,10 @@ class Site_Mode_Design extends  Settings {
             $this->page_setup['active_page'] = $page_id;
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
+                $this->page_setup['maintenance_template'] = $template_name;
             } else {
                 $this->page_setup['coming_soon_page_id'] = $page_id;
+                $this->page_setup['coming_soon_template'] = $template_name;
             }
 
             $design_data = [
@@ -217,6 +230,8 @@ class Site_Mode_Design extends  Settings {
                 'active_page'   => $design_settings['page_setup']['active_page'] ?? '',
                 'coming_soon_page_id'  => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
                 'maintenance_page_id'   => $design_settings['page_setup']['maintenance_page_id'] ?? '',
+                'maintenance_template' => $design_settings['page_setup']['maintenance_template'] ?? '',
+                'coming_soon_template' => $design_settings['page_setup']['coming_soon_template'] ?? '',
             ];
         }
     }

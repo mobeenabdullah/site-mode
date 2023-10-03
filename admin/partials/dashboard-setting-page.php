@@ -1,8 +1,10 @@
 <?php
-$design_settings = get_option('site_mode_design');
-$maintenance_page = !empty($design_settings['page_setup']['maintenance_page_id']) ? intval($design_settings['page_setup']['maintenance_page_id']) : '';
-$coming_soon_page = !empty($design_settings['page_setup']['coming_soon_page_id']) ? intval($design_settings['page_setup']['coming_soon_page_id']) : '';
-$active_page      = !empty($design_settings['page_setup']['active_page']) ? intval($design_settings['page_setup']['active_page']) : '';
+$design_settings         = get_option('site_mode_design');
+$maintenance_page        = !empty($design_settings['page_setup']['maintenance_page_id']) ? intval($design_settings['page_setup']['maintenance_page_id']) : '';
+$coming_soon_page        = !empty($design_settings['page_setup']['coming_soon_page_id']) ? intval($design_settings['page_setup']['coming_soon_page_id']) : '';
+$active_page             = !empty($design_settings['page_setup']['active_page']) ? intval($design_settings['page_setup']['active_page']) : '';
+$coming_soon_template    = !empty($design_settings['page_setup']['coming_soon_template']) ? $design_settings['page_setup']['coming_soon_template'] : '';
+$maintenance_template    = !empty($design_settings['page_setup']['maintenance_template']) ? $design_settings['page_setup']['maintenance_template'] : '';
 
 ?>
 
@@ -71,7 +73,7 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                                     </div>
                                     <?php if(!empty($coming_soon_page)) : ?>
                                         <div class="sm_select_re_setup">
-                                                <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon'); ?>" class="reset_setup_again">Reset and setup again</a>
+                                                <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon&template='. $coming_soon_template); ?>" class="reset_setup_again">Reset and setup again</a>
                                         </div>
                                     <?php endif; ?>
                                 </div>
@@ -119,7 +121,7 @@ $active_page      = !empty($design_settings['page_setup']['active_page']) ? intv
                                 </div>
                                 <?php if(!empty($maintenance_page))  : ?>
                                     <div class="sm_select_re_setup">
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>" class="reset_setup_again">Reset and setup again</a>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&template=' . $maintenance_template); ?>" class="reset_setup_again">Reset and setup again</a>
                                     </div>
                                 <?php endif; ?>
                             </div>
