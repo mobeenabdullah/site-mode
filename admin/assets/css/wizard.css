@@ -283,6 +283,10 @@ html {
 	}
 }
 
+.site-mode-admin-bar {
+	color: var(--wd-base-white-color);
+}
+
 /*-----------------------------------------------------
 1.  Wizard Header
     a.  Wizard Logo
@@ -1708,7 +1712,7 @@ html {
 }
 
 .sm-modal .sm-modal-content .icon.success {
-	border-color: #A5DC86;
+	border-color: var(--wd-primary-color);
 }
 
 .sm-modal .sm-modal-content .icon.success::after, .sm-modal .sm-modal-content .icon.success::before {
@@ -1739,7 +1743,7 @@ html {
 .sm-modal .sm-modal-content .icon.success .placeholder {
 	width: 80px;
 	height: 80px;
-	border: 4px solid #A5DC86;
+	border: 4px solid var(--wd-primary-color);
 	border-radius: 50%;
 	box-sizing: content-box;
 	position: absolute;
@@ -1761,7 +1765,7 @@ html {
 
 .sm-modal .sm-modal-content .icon.success .successLine {
 	height: 5px;
-	background-color: #A5DC86;
+	background-color: var(--wd-primary-color);
 	display: block;
 	border-radius: 2px;
 	position: absolute;
@@ -1817,6 +1821,10 @@ html {
 	right: 10px;
 	font-size: 20px;
 	cursor: pointer;
+}
+
+.sm-modal .close-popup:hover svg path {
+	fill: var(--wd-primary-color);
 }
 
 @keyframes spin-clockwise {

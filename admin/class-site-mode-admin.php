@@ -152,11 +152,15 @@ class Site_Mode_Admin {
 
         $design_settings = get_option( 'site_mode_design' );
         $is_status_active     = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['active_page']) && !empty($design_settings['page_setup']['active_page']);
+        $maintenance_page =  isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['maintenance_page_id']) && !empty($design_settings['page_setup']['maintenance_page_id']);
+        $coming_soon_page = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['coming_soon_page_id']) && !empty($design_settings['page_setup']['coming_soon_page_id']);
 
-        if($is_status_active) {
-            $text = '<span style="background: red; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Site Mode is Enabled</span>';
+        if($is_status_active == $maintenance_page) {
+            $text = '<span style="background: var(--smd-primary-color); display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
+        } elseif ($is_status_active == $coming_soon_page) {
+            $text = '<span style="background: var(--smd-primary-color); color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
         } else {
-            $text = '<span style="background: lightgrey; color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Site Mode is Disabled</span>';
+            return;
         }
 
         $wp_admin_bar->add_node([
