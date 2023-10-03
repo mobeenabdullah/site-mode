@@ -1735,6 +1735,7 @@ input[type=file] {
 	cursor: pointer;
 	position: relative;
 	transition: background 0.3s;
+	display: block;
 }
 
 .btn-toggle .toggle::before {
@@ -1825,6 +1826,10 @@ input[type=file] {
 .whitelist_user_role label span {
 	padding-left: 3rem;
 	display: block;
+}
+
+input[type=checkbox]:disabled + .toggle {
+	z-index: -1;
 }
 
 .smd-navbar {
