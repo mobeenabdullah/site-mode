@@ -1,153 +1,20 @@
-//  default-scheme
-$default-primary-color: #e63946 !default;
-$default-base-color: #ffffff !default;
-$default-black-color: #000000 !default;
-$default-secondary-color: #fcb900 !default;
-$default-tertiary-color: #F6F6F6 !default;
-
-$defaultColors: (
-        '--wp--preset--color--base': $default-base-color,
-        '--wp--preset--color--primary': $default-primary-color,
-        '--wp--preset--color--contrast': $default-black-color,
-        '--wp--preset--color--secondary': $default-secondary-color,
-        '--wp--preset--color--tertiary': $default-tertiary-color,
-
-) !default;
-
-.default-scheme {
-  @each $color, $value in $defaultColors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 1
-$p1-primary-color: #ef476f !default;
-$p1-base-color: #f4f3ee !default;
-$p1-black-color: #000000 !default;
-$p1-secondary-color: #8a817c !default;
-$p1-tertiary-color: #bcb8b1 !default;
-
-$preset1Colors: (
-        '--wp--preset--color--base': $p1-base-color,
-        '--wp--preset--color--primary': $p1-primary-color,
-        '--wp--preset--color--contrast': $p1-black-color,
-        '--wp--preset--color--secondary': $p1-secondary-color,
-        '--wp--preset--color--tertiary': $p1-tertiary-color,
-
-) !default;
-
-.preset-1 {
-  @each $color, $value in $preset1Colors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 2
-$p2-primary-color: #1e88e5 !default;
-$p2-base-color: #f0ebd8 !default;
-$p2-black-color: #000000 !default;
-$p2-secondary-color: #1d2d44 !default;
-$p2-tertiary-color: #3e5c76 !default;
-
-$preset2Colors: (
-        '--wp--preset--color--base': $p2-base-color,
-        '--wp--preset--color--primary': $p2-primary-color,
-        '--wp--preset--color--contrast': $p2-black-color,
-        '--wp--preset--color--secondary': $p2-secondary-color,
-        '--wp--preset--color--tertiary': $p2-tertiary-color,
-
-) !default;
-
-.preset-2 {
-  @each $color, $value in $preset2Colors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 3
-$p3-primary-color: #0fa3b1 !default;
-$p3-base-color: #f6fff8 !default;
-$p3-black-color: #000000 !default;
-$p3-secondary-color: #a4c3b2 !default;
-$p3-tertiary-color: #cce3de !default;
-
-$preset3Colors: (
-        '--wp--preset--color--base': $p3-primary-color,
-        '--wp--preset--color--primary': $p3-primary-color,
-        '--wp--preset--color--contrast': $p3-black-color,
-        '--wp--preset--color--secondary': $p3-secondary-color,
-        '--wp--preset--color--tertiary': $p3-tertiary-color,
-
-) !default;
-
-.preset-3 {
-  @each $color, $value in $preset3Colors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 4
-$p4-primary-color: #7400b8 !default;
-$p4-base-color: #e8c2ca !default;
-$p4-black-color: #000000 !default;
-$p4-secondary-color: #b392ac !default;
-$p4-tertiary-color: #d1b3c4 !default;
-
-$preset4Colors: (
-        '--wp--preset--color--base': $p4-base-color,
-        '--wp--preset--color--primary': $p4-primary-color,
-        '--wp--preset--color--contrast': $p4-black-color,
-        '--wp--preset--color--secondary': $p4-secondary-color,
-        '--wp--preset--color--tertiary': $p4-tertiary-color,
-
-) !default;
-
-.preset-4 {
-  @each $color, $value in $preset4Colors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 5
-$p5-primary-color: #31572c !default;
-$p5-base-color: #f4f4f9 !default;
-$p5-black-color: #000000 !default;
-$p5-secondary-color: #586f7c !default;
-$p5-tertiary-color: #b8dbd9 !default;
-
-$preset5Colors: (
-        '--wp--preset--color--base': $p5-primary-color,
-        '--wp--preset--color--primary': $p5-primary-color,
-        '--wp--preset--color--contrast': $p5-black-color,
-        '--wp--preset--color--secondary': $p5-secondary-color,
-        '--wp--preset--color--tertiary': $p5-tertiary-color,
-
-) !default;
-
-.preset-5 {
-  @each $color, $value in $preset5Colors {
-    #{$color}: #{$value} !important;
-  }
-}
-
-// Preset 6
-$p6-primary-color: #532b88 !default;
-$p6-base-color: #ffc971 !default;
-$p6-black-color: #000000 !default;
-$p6-secondary-color: #e2711d !default;
-$p6-tertiary-color: #ff9505 !default;
-
-$preset6Colors: (
-        '--wp--preset--color--base': $p6-primary-color,
-        '--wp--preset--color--primary': $p6-primary-color,
-        '--wp--preset--color--contrast': $p6-black-color,
-        '--wp--preset--color--secondary': $p6-secondary-color,
-        '--wp--preset--color--tertiary': $p6-tertiary-color,
-
-) !default;
-
-.preset-6 {
-  @each $color, $value in $preset6Colors {
-    #{$color}: #{$value} !important;
+.login_icon_footer {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  z-index: 999;
+  width: calc(clamp(3.125rem, 3.125rem + 0vw, 3.125rem));
+  height: calc(clamp(3.125rem, 3.125rem + 0vw, 3.125rem));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.15);
+  color: var(--smd-primary-color);
+  border-radius: 50%;
+  & svg {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.5rem;
   }
 }

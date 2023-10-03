@@ -85,7 +85,6 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( 'fontawsome', SITE_MODE_PUBLIC_URL . 'css/all.min.css', [], $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', [], $this->version, 'all' );
 
 	}
