@@ -29,7 +29,7 @@ class Site_Mode_Activator {
 			'redirect_url'     => '',
 			'redirect_delay'   => 0,
 			'show_login_icon'  => 1,
-			'custom_login_url' => '',
+			'custom_login_url' => get_home_url( '', 'wp-login.php' ),
 		];
 
 		// add default options to database for SEO settings fields with placeholder text.

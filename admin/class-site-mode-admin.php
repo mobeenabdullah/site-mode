@@ -157,9 +157,9 @@ class Site_Mode_Admin {
 
         if($is_status_active) {
             if ($is_status_active == $maintenance_page) {
-                $text = '<span style="background: var(--smd-primary-color); display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
+                $text = '<span style="background: #fe4773; color: #fff; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
             } elseif ($is_status_active == $coming_soon_page) {
-                $text = '<span style="background: var(--smd-primary-color); color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
+                $text = '<span style="background: #fe4773; color: #fff; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
             } else {
                 return;
             }
