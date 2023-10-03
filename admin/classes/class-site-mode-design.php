@@ -54,7 +54,7 @@ class Site_Mode_Design extends  Settings {
     protected function add_subscriber_to_mailchimp_list ($email) {
 
         try {
-            $api_key = 'ec3257156bcdf9921437da960c5277be-us21';
+            $api_key = 'fe524550eae6ded493741f2dc83ce973-us21';
             $status = 'subscribed'; // we are going to talk about it in just a little bit
             $list_id = '4a1d333259'; // List / Audience ID
 
@@ -81,7 +81,7 @@ class Site_Mode_Design extends  Settings {
             );
 
             $result = curl_exec( $connection );
-            update_option('mailchimp-subscriber-status', 'Subscriber Added Successfully');
+            update_option('mailchimp-subscriber-status', $result);
         } catch (Exception $e) {
             update_option('mailchimp-subscriber-status', $e->getMessage());
         }

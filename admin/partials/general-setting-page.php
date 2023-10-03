@@ -22,7 +22,7 @@
 				</div>
 				<div class="option__row--field">
 					<div class="sm_input_cover">
-						<input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr( $this->custom_login_url ); ?>" placeholder="<?php echo esc_attr( site_url() ); ?>/login/" />
+						<input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr( $this->custom_login_url ); ?>" placeholder="<?php echo esc_attr( site_url() ); ?>/wp-login.php" />
 					</div>
 				</div>
 			</div>
