@@ -177,7 +177,6 @@ if(isset($_GET['cat'])) {
                     </div>
                     <div class="template_options wizard__templates-cards">
                         <input type="hidden" name="template-name" id="selected-template-name" value="<?php echo $active_template; ?>">
-                        <input type="hidden" name="template-setup" id="template-page-setup" value="<?php echo $setup; ?>">
                         <?php foreach($templates as $key => $template ): ?>
                             <div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : '' ?>" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo $key; ?>">
                                 <div class="template_card-img" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);">

@@ -75,31 +75,7 @@ class Site_Mode_Activator {
                 'template-3' => [
                     'name'          => 'Template 3',
                     'category'      => 'coming-soon',
-                ],
-                'template-4' => [
-                    'name'          => 'Template 4',
-                    'category'      => 'coming-soon',
-                ],
-                'template-5' => [
-                    'name'          => 'Template 5',
-                    'category'      => 'coming-soon',
-                ],
-                'template-6' => [
-                    'name'          => 'Template 6',
-                    'category'      => 'maintenance',
-                ],
-                'template-7' => [
-                    'name'          => 'Template 7',
-                    'category'      => 'coming-soon',
-                ],
-                'template-8' => [
-                    'name'          => 'Template 8',
-                    'category'      => 'coming-soon',
-                ],
-                'template-9' => [
-                    'name'          => 'Template 9',
-                    'category'      => 'maintenance',
-                ],
+                ]
             ]
         ];
 

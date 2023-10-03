@@ -220,7 +220,6 @@ jQuery(function ($) {
         const templateName      = $('#selected-template-name').val();
         const subscriber_email  = $('#sm-subscribe-email').val();
         const colorScheme       = $('#color_scheme').val();
-        const setup             = $('#template-page-setup').val();
 
         if(!templateName) {
             console.log('Select Template!');
@@ -235,7 +234,6 @@ jQuery(function ($) {
             showCountdown: showCountdown,
             category: category,
             colorScheme: colorScheme,
-            setup: setup
         }
 
         if(add_subscriber && subscriber_email) {
