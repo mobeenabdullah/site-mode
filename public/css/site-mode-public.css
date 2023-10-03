@@ -1,0 +1,23 @@
+.login_icon_footer {
+	position: absolute;
+	top: 2rem;
+	right: 2rem;
+	z-index: 999;
+	width: calc(clamp(3.125rem, 3.125rem + 0vw, 3.125rem));
+	height: calc(clamp(3.125rem, 3.125rem + 0vw, 3.125rem));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: rgba(255, 255, 255, 0.15);
+	color: var(--smd-primary-color);
+	border-radius: 50%;
+}
+
+.login_icon_footer svg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 1.5rem;
+}
+
+/*# sourceMappingURL=site-mode-public.css.map */
