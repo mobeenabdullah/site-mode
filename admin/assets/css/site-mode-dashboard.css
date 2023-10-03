@@ -171,6 +171,12 @@ Plugin general styling
 	border-radius: 0.8rem;
 }
 
+@media screen and (max-width: 767px) {
+	.site_mode__wrap-form form {
+		border-radius: 0;
+	}
+}
+
 .section__wrapper form {
 	background-color: transparent;
 	padding: 0;
@@ -1004,10 +1010,6 @@ input[type=file] {
 		grid-template-columns: repeat(2, 1fr) !important;
 		grid-gap: 1.25rem !important;
 	}
-	.sm_tabs-link {
-		padding: 0.625rem 0.9375rem !important;
-		font-size: 0.75rem !important;
-	}
 }
 
 @media screen and (max-width: 767px) {
@@ -1065,11 +1067,7 @@ input[type=file] {
 		order: 1;
 	}
 	.tabs_wrapper, .tabs_wrapper ul, .tab-content {
-		border-radius: 0.375rem;
 		overflow: hidden;
-	}
-	.sm_tabs {
-		display: none !important;
 	}
 	.active_tabs {
 		display: block !important;
@@ -1436,7 +1434,7 @@ input[type=file] {
 }
 
 .smd__header-logo {
-	max-width: calc(clamp(6.25rem, 2.679rem + 9.524vw, 11.25rem));
+	max-width: calc(clamp(12rem, 10.571rem + 3.81vw, 14rem));
 	padding: calc(clamp(0.625rem, 0.179rem + 1.19vw, 1.25rem)) 0;
 }
 
@@ -1737,6 +1735,7 @@ input[type=file] {
 	cursor: pointer;
 	position: relative;
 	transition: background 0.3s;
+	display: block;
 }
 
 .btn-toggle .toggle::before {
@@ -1829,6 +1828,10 @@ input[type=file] {
 	display: block;
 }
 
+input[type=checkbox]:disabled + .toggle {
+	z-index: -1;
+}
+
 .smd-navbar {
 	list-style: none;
 	padding: 0;
@@ -1863,6 +1866,17 @@ input[type=file] {
 	display: flex;
 	align-items: flex-start;
 	gap: 3rem;
+}
+
+@media screen and (max-width: 767px) {
+	.smd-tab-content .tabs_wrapper {
+		flex-wrap: wrap;
+		display: block;
+	}
+}
+
+.smd-tab-content .sm_tabs {
+	max-width: 100%;
 }
 
 .sm_checkbox_wrapper {
@@ -2344,10 +2358,6 @@ input[type=file] {
 	outline: none !important;
 }
 
-.sm_tabs-link.current {
-	margin: 0;
-}
-
 .sm_tabs-link.current a {
 	background-color: var(--sm-primary-color);
 	color: var(--sm-base-white-color);
@@ -2400,6 +2410,50 @@ input[type=file] {
 	border-radius: 0.5rem;
 }
 
+.smd-tab-content .sm_tabs {
+	max-width: 15rem;
+}
+
+@media screen and (max-width: 767px) {
+	.sm_tabs {
+		margin: 0;
+		padding: 0;
+		gap: 0;
+		max-width: 100% !important;
+	}
+	.sm_tabs-link {
+		padding: 0;
+		margin: 0;
+		width: calc(100% / 5) !important;
+	}
+	.sm_tabs-link a {
+		padding: 0.5rem !important;
+		justify-content: center;
+		min-width: fit-content;
+		border-radius: 0 !important;
+	}
+	.sm_tabs-link.current a {
+		min-width: fit-content;
+		border-radius: 0 !important;
+	}
+	.menu_label {
+		display: none;
+	}
+	.sm_tabs span.menu_icon {
+		font-size: 1.2rem;
+	}
+	.tab-content.current {
+		padding: 0;
+		border-radius: 0;
+	}
+	.smd-tab-content {
+		padding: 2rem 0;
+	}
+	.smd-tab-content .submit_button {
+		margin-bottom: 0 !important;
+	}
+}
+
 #toast-success, #toast-error {
 	visibility: hidden;
 	height: auto;
@@ -2444,8 +2498,8 @@ input[type=file] {
 }
 
 .toast-success-msg {
-	background-color: #5f3cfd;
-	border: 1px solid #5f3cfd;
+	background-color: #fe4773;
+	border: 1px solid #fe4773;
 	max-width: 9.375rem;
 }
 

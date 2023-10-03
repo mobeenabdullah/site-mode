@@ -284,11 +284,16 @@
       & iframe {
         height: 100%;
       }
-      @media (min-width: 960px) {
-        bottom: 0;
+      .loading__template {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--wd-base-white-color);
+        position: absolute;
         top: 0;
         left: 0;
-        width: 100%;
       }
     }
     & .fullscreen_actions {

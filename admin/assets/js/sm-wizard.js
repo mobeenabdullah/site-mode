@@ -109,8 +109,18 @@ jQuery(function ($) {
         $('#color_scheme').val('default').trigger('change');
         removeElementClass('.select_template_btn', 'disabled__customize');
         removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
+        $('.loading__template').css('display', 'flex');
+        setTimeoutForTemplate();
     }
     $('.select_template').on('click', selectTemplate);
+
+    function setTimeoutForTemplate () {
+        console.log('working');
+        setTimeout(function () {
+            $('#sm-preview-iframe').css('display', 'block');
+            $('.loading__template').css('display', 'none');
+        }, 2000);
+    }
 
 
     // Go to customize template page
@@ -124,6 +134,8 @@ jQuery(function ($) {
         showElements('.sm_customize_settings, .component__settings, .customize__actions');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
+        $('.loading__template').css('display', 'flex');
+        setTimeoutForTemplate();
     }
     $('.select_template_btn').on('click', customizeTemplate);
 
