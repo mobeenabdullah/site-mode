@@ -17,6 +17,10 @@
   }
 }
 
+#wp-admin-bar-site-mode li.site-mode-admin-bar .ab-item:hover, li.site-mode-admin-bar .ab-item:hover span {
+  color: var(--smd-base-color) !important;
+}
+
 .smd-container {
   max-width: calc(clamp(22.5rem, -15rem + 100vw, 75rem));
   margin: 0 auto;
