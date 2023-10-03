@@ -21,6 +21,10 @@
 	}
 }
 
+.sm__dashboard #wpadminbar:not(.mobile) .ab-top-menu > li:hover > .ab-item {
+	color: white !important;
+}
+
 #wp-admin-bar-site-mode li.site-mode-admin-bar .ab-item:hover, li.site-mode-admin-bar .ab-item:hover span {
 	color: var(--smd-base-color) !important;
 }
