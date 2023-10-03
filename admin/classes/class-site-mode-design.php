@@ -34,14 +34,8 @@ class Site_Mode_Design extends  Settings {
         'maintenance_page_id'   => '',
     ];
     protected array $default_images = [
-        'template-1' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-2' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-3' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-4' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-5' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-6' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-7' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
-        'template-8' => 'https://s.w.org/wp-content/blogs.dir/1/files/2022/12/showcase_thumbs_a-75.webp',
+        'template-1' => 'https://site-mode.com/wp-content/uploads/2023/09/light-skyline-night-city-skyscraper-cityscape-47045-pxhere.com_-scaled.jpg',
+        'template-2' => 'https://site-mode.com/wp-content/uploads/2023/09/default-bg.webp',
     ];
 
     public function __construct() {

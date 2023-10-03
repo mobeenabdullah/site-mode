@@ -371,9 +371,10 @@ jQuery(function ($) {
         if (currentElement.prop('checked')) {
           manipulateElement(currentElement.closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
         }
-        launch_toast(res.success);
+        window.location.reload();
       },
       error: function (error) {
+        launch_toast(false);
         console.log(error);
       },
     });

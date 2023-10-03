@@ -155,22 +155,24 @@ class Site_Mode_Admin {
         $maintenance_page =  isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['maintenance_page_id']) && !empty($design_settings['page_setup']['maintenance_page_id']);
         $coming_soon_page = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['coming_soon_page_id']) && !empty($design_settings['page_setup']['coming_soon_page_id']);
 
-        if($is_status_active == $maintenance_page) {
-            $text = '<span style="background: var(--smd-primary-color); display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
-        } elseif ($is_status_active == $coming_soon_page) {
-            $text = '<span style="background: var(--smd-primary-color); color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
-        } else {
-            return;
-        }
+        if($is_status_active) {
+            if ($is_status_active == $maintenance_page) {
+                $text = '<span style="background: var(--smd-primary-color); display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
+            } elseif ($is_status_active == $coming_soon_page) {
+                $text = '<span style="background: var(--smd-primary-color); color: black; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
+            } else {
+                return;
+            }
 
-        $wp_admin_bar->add_node([
-            'id'    => 'site-mode',
-            'title' => $text,
-            'href'  => admin_url( 'admin.php?page=site-mode' ),
-            'meta'  => [
-                'class' => 'site-mode-admin-bar',
-            ],
-        ]);
+            $wp_admin_bar->add_node([
+                'id' => 'site-mode',
+                'title' => $text,
+                'href' => admin_url('admin.php?page=site-mode'),
+                'meta' => [
+                    'class' => 'site-mode-admin-bar',
+                ],
+            ]);
+        }
 
     }
 
