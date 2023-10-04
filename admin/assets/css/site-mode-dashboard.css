@@ -1681,6 +1681,23 @@ input[type=file] {
 	fill: var(--smd-primary-color) !important;
 }
 
+.template_empty_card {
+	background-color: rgba(32, 32, 32, 0.05);
+	min-height: 20.6rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	color: var(--smd-text-color);
+	user-select: none;
+	text-align: center;
+	line-height: 1.5;
+}
+
+.template_empty_card:hover {
+	box-shadow: none;
+}
+
 .about__wrapper {
 	padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) 0;
 }
