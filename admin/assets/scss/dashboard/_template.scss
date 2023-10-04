@@ -66,7 +66,7 @@
     display: grid;
     grid-template-columns: repeat(4, minmax(280px, 1fr));
     grid-gap: calc(clamp(1rem, 0.286rem + 1.905vw, 1.7rem));
-    @media screen and (max-width: 1536px) {
+    @media screen and (max-width: 1200px) {
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
     &--single {
@@ -188,6 +188,22 @@
         fill: var(--smd-primary-color) !important;
       }
     }
+  }
+}
+
+.template_empty_card {
+  background-color: rgba(32, 32, 32, 0.05);
+  min-height: 20.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--smd-text-color);
+  user-select: none;
+  text-align: center;
+  line-height: 1.5;
+  &:hover {
+    box-shadow: none;
   }
 }
 

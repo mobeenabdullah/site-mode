@@ -173,3 +173,7 @@
 .components-datetime__time-wrapper {
   align-items: flex-start !important;
 }
+
+.components-base-control__field, .components-base-control.components-input-control {
+	margin-bottom: 0 !important;
+}
