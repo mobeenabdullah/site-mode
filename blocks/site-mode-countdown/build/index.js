@@ -1,121 +1,13 @@
 /******/ (function() { // webpackBootstrap
-/******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
 /***/ "./constants.js":
 /*!**********************!*\
   !*** ./constants.js ***!
   \**********************/
-/***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ (function() {
 
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   layouts: function() { return /* binding */ layouts; },
-/* harmony export */   presetSettings: function() { return /* binding */ presetSettings; }
-/* harmony export */ });
-const layouts = [{
-  'label': 'Preset 1',
-  'value': 'default-countdown'
-}, {
-  'label': 'Preset 2',
-  'value': 'countdown-without-box'
-}, {
-  'label': 'Preset 3',
-  'value': 'countdown-individual-shadow'
-}, {
-  'label': 'Preset 4',
-  'value': 'countdown-box-shadow'
-}, {
-  'label': 'Preset 5',
-  'value': 'countdown-column'
-}, {
-  'label': 'Preset 6',
-  'value': 'countdown-with-simple-seperator'
-}, {
-  'label': 'Preset 7',
-  'value': 'countdown-in-row'
-}, {
-  'label': 'Preset 8',
-  'value': 'countdown-in-row-individual'
-}, {
-  'label': 'Preset 9',
-  'value': 'countdown-flat'
-}, {
-  'label': 'Preset 10',
-  'value': 'countdown-circle'
-}];
-const presetSettings = {
-  'default-countdown': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-without-box': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-individual-shadow': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-box-shadow': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-with-simple-seperator': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-in-row-individual': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-flat': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-column': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-in-row': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  },
-  'countdown-circle': {
-    bgColor: '#ffffff',
-    borderColor: '#ffffff',
-    timerColor: '#000000',
-    labelColor: '#000000',
-    separatorColor: '#ffffff'
-  }
-};
+
 
 /***/ }),
 
@@ -125,6 +17,7 @@ const presetSettings = {
   \*********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ Edit; }
@@ -136,6 +29,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../constants */ "./constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_constants__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
 /* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__);
@@ -153,21 +47,16 @@ function Edit(_ref) {
   } = _ref;
   const {
     dueDate,
-    showLabel,
-    showDays,
-    showHours,
-    showMinutes,
-    showSeconds,
     showSeperator,
     preset,
-    labels,
     bgColor,
-    timerColor,
+    numberColor,
     labelColor,
     borderColor,
     separatorColor,
-    numberFontSize,
-    labelFontSize
+    timeUnits,
+    background,
+    border
   } = attributes;
   const [isInvalidDate, setIsInvalidDate] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)(false);
   const [days, setDays] = (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.useState)();
@@ -184,7 +73,7 @@ function Edit(_ref) {
       clearInterval(intervalCount);
       setIntervalCount(null);
     }
-  }, [dueDate, showSeconds, showMinutes, showHours, showDays]);
+  }, [dueDate, timeUnits]);
   function countdownHandler() {
     const now = new Date();
     const nowUTC = new Date(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate(), now.getUTCHours(), now.getUTCMinutes(), now.getUTCSeconds());
@@ -195,19 +84,19 @@ function Edit(_ref) {
     let smHours = Math.floor(timeleft % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
     let smMinutes = Math.floor(timeleft % (1000 * 60 * 60) / (1000 * 60));
     let smSeconds = Math.floor(timeleft % (1000 * 60) / 1000);
-    if (!showDays) {
+    if (!timeUnits.includes('days')) {
       smHours = smHours + smDays * 24;
       smDays = 0;
     }
-    if (!showHours) {
+    if (!timeUnits.includes('hours')) {
       smMinutes = smMinutes + smHours * 60;
       smHours = 0;
     }
-    if (!showMinutes) {
+    if (!!timeUnits.includes('minutes')) {
       smSeconds = smSeconds + smMinutes * 60;
       smMinutes = 0;
     }
-    if (!showSeconds) {
+    if (!!timeUnits.includes('seconds')) {
       smSeconds = 0;
     }
     if (smSeconds > 0 || smDays > 0 || smHours > 0 || smMinutes > 0) {
@@ -239,36 +128,22 @@ function Edit(_ref) {
       });
     }
   };
-  const handlePresetChange = value => {
-    const presetNewSettings = {
-      'bgColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].bgColor,
-      'timerColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].timerColor,
-      'labelColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].labelColor,
-      'borderColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].borderColor,
-      'separatorColor': _constants__WEBPACK_IMPORTED_MODULE_3__.presetSettings[value].separatorColor,
-      'preset': value
-    };
-    setAttributes({
-      ...presetNewSettings
-    });
-  };
   const smCounterBox = {
-    backgroundColor: bgColor,
-    borderColor: borderColor
+    backgroundColor: background && bgColor,
+    borderColor: border && borderColor
   };
   const smCountdownDaysLabel = {
-    color: labelColor,
-    fontSize: labelFontSize
+    color: labelColor
   };
   const countdownNumber = {
-    color: timerColor,
-    fontSize: numberFontSize
+    color: numberColor
   };
   const countdownSeperator = {
     color: separatorColor
   };
+  console.log(smCountdownDaysLabel);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Settings', 'site-mode'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Time & Date', 'site-mode'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, isInvalidDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "error-message"
@@ -279,85 +154,66 @@ function Edit(_ref) {
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout', 'site-mode'),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
-    label: "Presets",
-    value: preset,
-    onChange: handlePresetChange,
-    options: _constants__WEBPACK_IMPORTED_MODULE_3__.layouts
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: "Show Label",
-    checked: showLabel,
-    onChange: () => setAttributes({
-      showLabel: !showLabel
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.RadioControl, {
+    label: "Shape",
+    options: [{
+      label: 'Radius',
+      value: 'default-countdown'
+    }, {
+      label: 'Circle',
+      value: 'countdown-circle'
+    }, {
+      label: 'Square',
+      value: 'countdown-without-box'
+    }],
+    onChange: value => setAttributes({
+      preset: value
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: "Show Days",
-    checked: showDays,
+    label: "Background",
+    checked: background,
     onChange: () => setAttributes({
-      showDays: !showDays
+      background: !background
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: "Show Hours",
-    checked: showHours,
+    label: "Border",
+    checked: border,
     onChange: () => setAttributes({
-      showHours: !showHours
+      border: !border
     })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: "Show Minutes",
-    checked: showMinutes,
-    onChange: () => setAttributes({
-      showMinutes: !showMinutes
-    })
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
-    label: "Show Seconds",
-    checked: showSeconds,
-    onChange: () => setAttributes({
-      showSeconds: !showSeconds
-    })
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.SelectControl, {
+    multiple: true,
+    label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Time Units'),
+    value: timeUnits,
+    onChange: value => setAttributes({
+      timeUnits: value
+    }),
+    options: [{
+      value: '',
+      label: 'Select Time Units',
+      disabled: true
+    }, {
+      value: 'days',
+      label: 'Days'
+    }, {
+      value: 'hours',
+      label: 'Hours'
+    }, {
+      value: 'minutes',
+      label: 'Minutes'
+    }, {
+      value: 'seconds',
+      label: 'Seconds'
+    }],
+    __nextHasNoMarginBottom: true
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.ToggleControl, {
     label: "Show Seperator",
     checked: showSeperator,
     onChange: () => setAttributes({
       showSeperator: !showSeperator
     })
-  })), showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
-    label: "Days Label",
-    value: labels.days,
-    onChange: value => setAttributes({
-      labels: {
-        ...labels,
-        days: value
-      }
-    })
-  })), showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
-    label: "Hours Label",
-    value: labels.hours,
-    onChange: value => setAttributes({
-      labels: {
-        ...labels,
-        hours: value
-      }
-    })
-  })), showMinutes && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
-    label: "Minutes Label",
-    value: labels.minutes,
-    onChange: value => setAttributes({
-      labels: {
-        ...labels,
-        minutes: value
-      }
-    })
-  })), showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.TextControl, {
-    label: "Seconds Label",
-    value: labels.seconds,
-    onChange: value => setAttributes({
-      labels: {
-        ...labels,
-        seconds: value
-      }
-    })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Styles', 'site-mode'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors & Background', 'site-mode'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     title: "Color Settings",
@@ -382,11 +238,11 @@ function Edit(_ref) {
       }),
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Border Color')
     }, {
-      value: timerColor,
+      value: numberColor,
       onChange: value => setAttributes({
-        timerColor: value
+        numberColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Time Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Number Color')
     }, {
       value: separatorColor,
       onChange: value => setAttributes({
@@ -394,72 +250,60 @@ function Edit(_ref) {
       }),
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Separator Color')
     }]
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
-    label: "Font Size Counter",
-    value: numberFontSize,
-    onChange: value => setAttributes({
-      numberFontSize: value
-    })
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_5__.__experimentalUnitControl, {
-    label: "Font Sie Label",
-    value: labelFontSize,
-    onChange: value => setAttributes({
-      labelFontSize: value
-    })
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "countdown_main-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: `countdown-wrapper ${preset}`
-  }, showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-days-wrapper",
     style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days-label countdown_label",
     style: smCountdownDaysLabel
-  }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.days, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Days', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, days))), showSeperator && showDays && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, days))), showSeperator && timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "countdown-seperator",
     style: countdownSeperator
-  }, ":"), showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, ":"), timeUnits.includes('hours') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-days-wrapper",
     style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days-label countdown_label",
     style: smCountdownDaysLabel
-  }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.hours, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Hours', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-days countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, hours))), showSeperator && showHours && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, hours))), showSeperator && timeUnits.includes('hours') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "countdown-seperator",
     style: countdownSeperator
-  }, ":"), showMinutes && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, ":"), timeUnits.includes('minutes') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-hours-wrapper",
     style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-hours-label countdown_label",
     style: smCountdownDaysLabel
-  }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.minutes, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Minutes', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-hours countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, minutes))), showSeperator && showMinutes && showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, minutes))), showSeperator && timeUnits.includes('minutes') && timeUnits.includes('seconds') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "countdown-seperator",
     style: countdownSeperator
-  }, ":"), showSeconds && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, ":"), timeUnits.includes('seconds') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-minutes-wrapper",
     style: smCounterBox
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-minutes-label countdown_label",
     style: smCountdownDaysLabel
-  }, showLabel && (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)(labels.seconds, 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+  }, (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Seconds', 'site-mode')), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-minutes countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, seconds))))))));
+  }, seconds)))))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, "Timer not set!")));
 }
 
 /***/ }),
@@ -470,6 +314,7 @@ function Edit(_ref) {
   \**********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
@@ -493,6 +338,7 @@ __webpack_require__.r(__webpack_exports__);
   \*********************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": function() { return /* binding */ save; }
@@ -509,6 +355,7 @@ function save() {
   \*************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -521,6 +368,7 @@ __webpack_require__.r(__webpack_exports__);
   \************************/
 /***/ (function(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
@@ -533,6 +381,7 @@ __webpack_require__.r(__webpack_exports__);
   \*************************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["blockEditor"];
 
 /***/ }),
@@ -543,6 +392,7 @@ module.exports = window["wp"]["blockEditor"];
   \********************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["blocks"];
 
 /***/ }),
@@ -553,6 +403,7 @@ module.exports = window["wp"]["blocks"];
   \************************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["components"];
 
 /***/ }),
@@ -563,6 +414,7 @@ module.exports = window["wp"]["components"];
   \*********************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["element"];
 
 /***/ }),
@@ -573,6 +425,7 @@ module.exports = window["wp"]["element"];
   \******************************/
 /***/ (function(module) {
 
+"use strict";
 module.exports = window["wp"]["i18n"];
 
 /***/ })
