@@ -22,7 +22,15 @@
 	  "type": "string",
 	  "default": "#ffffff"
 	},
-	"timerColor": {
+  	"background": {
+		"type": "boolean",
+		"default": true
+	},
+  	"border": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"numberColor": {
 	  "type": "string",
 	  "default": "#000000"
 	},
@@ -42,26 +50,6 @@
 	  "type": "string",
 	  "default": ""
 	},
-	"showLabel": {
-	  "type": "boolean",
-	  "default": true
-	},
-	"showDays": {
-	  "type": "boolean",
-	  "default": true
-	},
-	"showHours": {
-	  "type": "boolean",
-	  "default": true
-	},
-	"showMinutes": {
-	  "type": "boolean",
-	  "default": true
-	},
-	"showSeconds": {
-	  "type": "boolean",
-	  "default": true
-	},
 	"showSeperator" : {
 	  "type": "boolean",
 	  "default": true
@@ -70,20 +58,14 @@
 	  "type": "string",
 	  "default": "default-countdown"
 	},
-	"numberFontSize": {
-	  "type": "string"
-	},
-	"labelFontSize": {
-	  "type": "string"
-	},
-	"labels": {
-	  "type": "object",
-	  "default": {
-		"days": "Days",
-		"hours": "Hours",
-		"minutes": "Minutes",
-		"seconds": "Seconds"
-	  }
+  	"timeUnits" : {
+		"type": "array",
+		"default": [
+			"days",
+			"hours",
+			"minutes",
+			"seconds"
+		]
 	}
   }
 }
