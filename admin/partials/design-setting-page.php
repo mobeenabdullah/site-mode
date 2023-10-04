@@ -1,6 +1,23 @@
 <?php
-$templates = get_option('site_mode_design_templates')['templates'];
-$categories = get_option('site_mode_design_templates')['categories'];
+$templates =  [
+    'template-1' => [
+        'name'          => 'Template 1',
+        'category'      => 'coming-soon',
+    ],
+    'template-2' => [
+        'name'          => 'Template 2',
+        'category'      => 'maintenance',
+    ],
+    'template-3' => [
+        'name'          => 'Template 3',
+        'category'      => 'coming-soon',
+    ]
+];
+$categories = [
+    'all' => 'All',
+    'coming-soon' => 'Coming Soon',
+    'maintenance' => 'Maintenance',
+];
 
 $args = array(
     'post_type' => 'page', // Only retrieve pages
@@ -56,7 +73,7 @@ $page_ids = get_posts($args);
                         </div>
                         <div class="template_card-heading">
                             <h2 class="template_card-content--title"><?php echo $template['name']; ?></h2>
-                            <a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="template_card-content--demo">Live Demo</a>
+                            <a href="<?php echo 'https://demo.site-mode.com/' . $key; ?>" class="template_card-content--demo">Live Demo</a>
                         </div>
                     </div>
                 <?php endforeach; ?>

@@ -119,8 +119,6 @@ export default function Edit({ attributes, setAttributes }) {
 	 	color: separatorColor
 	}
 
-	console.log(smCountdownDaysLabel)
-
 	return (
 		<>
 			<InspectorControls>
@@ -152,20 +150,6 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 					</PanelRow>
 					<PanelRow>
-						<ToggleControl
-							label="Background"
-							checked={ background }
-							onChange={() => setAttributes( { background: ! background })}
-						/>
-					</PanelRow>
-					<PanelRow>
-						<ToggleControl
-							label="Border"
-							checked={ border }
-							onChange={() => setAttributes( { border: ! border })}
-						/>
-					</PanelRow>
-					<PanelRow>
 						<SelectControl
 							multiple={true}
 							label={ __( 'Time Units' ) }
@@ -183,7 +167,21 @@ export default function Edit({ attributes, setAttributes }) {
 					</PanelRow>
 					<PanelRow>
 						<ToggleControl
-							label="Show Seperator"
+							label="Background"
+							checked={ background }
+							onChange={() => setAttributes( { background: ! background })}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label="Border"
+							checked={ border }
+							onChange={() => setAttributes( { border: ! border })}
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
+							label="Seperator"
 							checked={ showSeperator }
 							onChange={() => setAttributes( { showSeperator: ! showSeperator })}
 						/>
