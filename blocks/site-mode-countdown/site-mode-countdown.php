@@ -15,11 +15,12 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 	$time_Units = $attributes['timeUnits'] || [];
 	$date = strtotime((new DateTime(date('D, d M y H:i:s O'), new DateTimeZone('UTC')))->format('D, d M y H:i:s O'));
 	if($due_date >= $date) {
+		if(!is_admin()) :
 		?>
 		<style>
 			.sm-countdown-box {
 				background-color: <?php echo $attributes['background']  ? esc_attr($attributes['bgColor'])  : ''; ?> ;
-				border-color: <?php echo $attributes['border'] ? esc_attr($attributes['borderColor']) : ''; ?> ;
+				border-color: <?php echo $attributes['border'] ? esc_attr($attributes['borderColor']) : ''; ?> !important;
 			}
 			.countdown_main-wrapper .countdown-wrapper .sm-countdown-box .countdown_label {
 				color: <?php echo esc_attr($attributes['labelColor']); ?>;
@@ -30,9 +31,8 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			.countdown_main-wrapper .countdown-wrapper .countdown-seperator {
 				color: <?php echo esc_attr($attributes['separatorColor']); ?>;
 			}
-
 		</style>
-		<?php
+		<?php endif;
 
 		$markup = '<div class="countdown_main-wrapper">';
 		$markup .= '<div class="countdown-wrapper '. esc_attr($attributes['preset']) .' ">';

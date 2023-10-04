@@ -129,8 +129,8 @@ function Edit(_ref) {
     }
   };
   const smCounterBox = {
-    backgroundColor: background && bgColor,
-    borderColor: border && borderColor
+    backgroundColor: background ? bgColor : 'transparent',
+    borderColor: border ? borderColor : 'transparent'
   };
   const smCountdownDaysLabel = {
     color: labelColor
