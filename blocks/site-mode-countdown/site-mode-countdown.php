@@ -12,22 +12,23 @@
 function site_mode_countdown_block_render_callback( $attributes  ) {
 
 	$due_date  = strtotime($attributes['dueDate']);
+	$time_Units = $attributes['timeUnits'] || [];
 	$date = strtotime((new DateTime(date('D, d M y H:i:s O'), new DateTimeZone('UTC')))->format('D, d M y H:i:s O'));
 	if($due_date >= $date) {
 		?>
 		<style>
 			.sm-countdown-box {
-				background-color: <?php echo esc_attr($attributes['bgColor']); ?> !important;
-				border-color: <?php echo esc_attr($attributes['borderColor']); ?> !important;
+				background-color: <?php echo $attributes['background']  ? esc_attr($attributes['bgColor'])  : ''; ?> ;
+				border-color: <?php echo $attributes['border'] ? esc_attr($attributes['borderColor']) : ''; ?> ;
 			}
 			.countdown_main-wrapper .countdown-wrapper .sm-countdown-box .countdown_label {
-				color: <?php echo esc_attr($attributes['labelColor']); ?> !important;
+				color: <?php echo esc_attr($attributes['labelColor']); ?>;
 			}
 			.countdown_main-wrapper .countdown-wrapper .sm-countdown-box .countdown_number {
-				color: <?php echo esc_attr($attributes['timerColor']); ?> !important;
+				color: <?php echo esc_attr($attributes['numberColor']); ?>;
 			}
 			.countdown_main-wrapper .countdown-wrapper .countdown-seperator {
-				color: <?php echo esc_attr($attributes['separatorColor']); ?> !important;
+				color: <?php echo esc_attr($attributes['separatorColor']); ?>;
 			}
 
 		</style>
@@ -36,7 +37,7 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 		$markup = '<div class="countdown_main-wrapper">';
 		$markup .= '<div class="countdown-wrapper '. esc_attr($attributes['preset']) .' ">';
 		$markup .= '<input type="hidden" value="'.esc_attr($attributes['dueDate']).'" class="due-date">';
-		if($attributes['showDays']) :
+		if(in_array('days', (array)$time_Units)) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-days-wrapper">';
 			$markup .= '<div class="sm-countdown-days-label countdown_label">Days</div>';
 			$markup .= '<div class="sm-countdown-days countdown_number">';
@@ -44,10 +45,10 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '</div>';
 			$markup .= '</div>';
 		endif;
-		if($attributes['showSeperator'] && $attributes['showDays']) :
+		if($attributes['showSeperator'] && in_array('days', (array)$time_Units)) :
 			$markup .= '<span class="countdown-seperator">:</span>';
 		endif;
-		if($attributes['showHours']) :
+		if(in_array('hours', (array)$time_Units)) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-hours-wrapper">';
 			$markup .= '<div class="sm-countdown-hours-label countdown_label">Hours</div>';
 			$markup .= '<div class="sm-countdown-hours countdown_number">';
@@ -55,10 +56,10 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '</div>';
 			$markup .= '</div>';
 		endif;
-		if($attributes['showSeperator'] && $attributes['showHours']) :
+		if($attributes['showSeperator'] && in_array('hours', (array)$time_Units)) :
 			$markup .= '<span class="countdown-seperator">:</span>';
 		endif;
-		if($attributes['showMinutes']):
+		if(in_array('minutes', (array)$time_Units)):
 			$markup .= '<div class="sm-countdown-box sm-countdown-minutes-wrapper">';
 			$markup .= '<div class="sm-countdown-minutes-label countdown_label">Minutes</div>';
 			$markup .= '<div class="sm-countdown-minutes countdown_number">';
@@ -66,10 +67,10 @@ function site_mode_countdown_block_render_callback( $attributes  ) {
 			$markup .= '</div>';
 			$markup .= '</div>';
 		endif;
-		if($attributes['showSeperator'] && $attributes['showMinutes'] && $attributes['showSeconds']) :
+		if($attributes['showSeperator'] && in_array('minutes', (array)$time_Units) && in_array('seconds', (array)$time_Units)) :
 			$markup .= '<span class="countdown-seperator">:</span>';
 		endif;
-		if($attributes['showSeconds']):
+		if(in_array('seconds', (array)$time_Units)):
 			$markup .= '<div class="sm-countdown-box sm-countdown-seconds-wrapper">';
 			$markup .= '<div class="sm-countdown-seconds-label countdown_label">Seconds</div>';
 			$markup .= '<div class="sm-countdown-seconds countdown_number">';
