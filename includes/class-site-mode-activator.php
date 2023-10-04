@@ -55,36 +55,11 @@ class Site_Mode_Activator {
             'fb_id'            => '',
         ];
 
-        // Add default templates to database for design settings.
-
-        $sm_design_templates = [
-            'categories' => [
-                'all' => 'All',
-                'coming-soon' => 'Coming Soon',
-                'maintenance' => 'Maintenance',
-            ],
-            'templates'  => [
-                'template-1' => [
-                    'name'          => 'Template 1',
-                    'category'      => 'coming-soon',
-                ],
-                'template-2' => [
-                    'name'          => 'Template 2',
-                    'category'      => 'maintenance',
-                ],
-                'template-3' => [
-                    'name'          => 'Template 3',
-                    'category'      => 'coming-soon',
-                ]
-            ]
-        ];
-
 		// Add default options to database for general settings.
 		$settings = [
 			'site_mode_general'             => $general_settings,
 			'site_mode_seo'                 => $seo_settings,
 			'site_mode_advanced'            => $advance_settings,
-            'site_mode_design_templates'    => $sm_design_templates,
             'site_mode_integrations'        => $integrations_settings,
             'sm_activation_redirect'        => true
 		];
