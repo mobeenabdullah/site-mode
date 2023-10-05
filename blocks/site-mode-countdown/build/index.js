@@ -92,11 +92,11 @@ function Edit(_ref) {
       smMinutes = smMinutes + smHours * 60;
       smHours = 0;
     }
-    if (!!timeUnits.includes('minutes')) {
+    if (!timeUnits.includes('minutes')) {
       smSeconds = smSeconds + smMinutes * 60;
       smMinutes = 0;
     }
-    if (!!timeUnits.includes('seconds')) {
+    if (!timeUnits.includes('seconds')) {
       smSeconds = 0;
     }
     if (smSeconds > 0 || smDays > 0 || smHours > 0 || smMinutes > 0) {

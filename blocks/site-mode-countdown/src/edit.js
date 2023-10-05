@@ -65,11 +65,11 @@ export default function Edit({ attributes, setAttributes }) {
 			smMinutes = smMinutes + (smHours * 60);
 			smHours = 0;
 		}
-		if(!!timeUnits.includes('minutes')) {
+		if(!timeUnits.includes('minutes')) {
 			smSeconds = smSeconds + (smMinutes * 60);
 			smMinutes = 0;
 		}
-		if(!!timeUnits.includes('seconds')) {
+		if(!timeUnits.includes('seconds')) {
 			smSeconds = 0;
 		}
 
@@ -87,7 +87,6 @@ export default function Edit({ attributes, setAttributes }) {
 			setIntervalCount(null);
 		}
 	}
-
 
 	const onChangeDate = ( newDate ) => {
 		const now = new Date();
