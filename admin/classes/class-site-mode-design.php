@@ -149,6 +149,7 @@ class Site_Mode_Design extends  Settings {
         $post = get_post( $page_id );
         $post->post_content = $blocks;
         $post->page_template = 'templates/sm-page-template.php';
+        $post->post_status = 'publish';
         $result = wp_update_post($post);
 
         if(is_wp_error($result)){
