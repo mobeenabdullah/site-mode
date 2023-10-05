@@ -1,10 +1,17 @@
 .wizard__start {
   padding: calc(clamp(2rem, 0.571rem + 3.81vw, 4rem)) 0 calc(clamp(6rem, 4.571rem + 3.81vw, 8rem)) 0;
+  @media screen and (max-width: 767px) {
+    padding: 0;
+  }
   &-content {
     &--title {
       margin-bottom: 2rem;
       & h1 {
         text-align: center;
+        @media screen and (max-width: 767px) {
+          line-height: 1.5;
+          font-size: 1.5rem;
+        }
       }
     }
   }
@@ -215,15 +222,18 @@
   }
   & .sm__card-cover .sm_select_page-title {
     color: var(--wd-gray-2-color);
+    user-select: none;
   }
   & .sm__card-cover .sm_select_page-desc {
     color: var(--wd-gray-2-color);
+    user-select: none;
   }
   & .sm__card-cover .sm_select_page-btn {
     & button {
       border-color: var(--wd-gray-2-color);
       color: var(--wd-gray-2-color);
       cursor: not-allowed;
+      user-select: none;
       &:hover {
         background-color: transparent;
         border-color: var(--wd-gray-2-color);
