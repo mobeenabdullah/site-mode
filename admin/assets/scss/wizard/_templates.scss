@@ -7,9 +7,16 @@
     margin-bottom: calc(clamp(1.5rem, 1.143rem + 0.952vw, 2rem));
     flex-wrap:wrap;
     gap: 0;
+    @media screen and (max-width: 767px) {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
     & .result__showing {
       font-size: calc(clamp(0.875rem, 0.786rem + 0.238vw, 1rem));
       line-height: 1;
+      @media screen and (max-width: 767px) {
+       margin-bottom: 1.5rem;
+      }
     }
     & .sm_clearfilter {
       font-weight: 600;
@@ -209,4 +216,23 @@
       }
     }
   }
+}
+
+.template_empty_card {
+  background-color: rgba(32, 32, 32, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--smd-text-color);
+  user-select: none;
+  text-align: center;
+  line-height: 1.5;
+  @media screen and (max-width: 767px) {
+    min-height: 16rem;
+  }
+  &:hover {
+    box-shadow: none;
+  }
+
 }

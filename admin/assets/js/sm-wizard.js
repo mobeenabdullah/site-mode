@@ -276,14 +276,15 @@ jQuery(function ($) {
     });
 
     // f.   show and hide sidebar options on mobile
+    /*
     const $sidebarContent = $(".sm_customize_settings-sidebar");
     const isMobile = window.innerWidth <= 768;
 
-    if (isMobile) {
-        $sidebarContent.hide();
-        $('.settings__card-options').hide();
-        $('.sidebar_content-header').hide();
-    }
+    // if (isMobile) {
+    //     // $sidebarContent.hide();
+    //     // $('.settings__card-options').hide();
+    //     // $('.sidebar_content-header').hide();
+    // }
 
     $(".setting_dropdown").on("click", function() {
         if (isMobile) {
@@ -293,10 +294,12 @@ jQuery(function ($) {
 
     $(".settings_card_heading").on("click", function() {
         if (isMobile) {
+            $options.show();
             const $options = $(this).parent().next(".settings__card-options");
             $options.toggle();
         }
     });
+    */
 
 
    // Reset to default options functionality

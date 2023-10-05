@@ -37,7 +37,7 @@
 
 @media screen and (max-width: 390px) {
 	.smd-container {
-		padding: 0 1rem;
+		padding: 0;
 	}
 }
 
@@ -1683,7 +1683,6 @@ input[type=file] {
 
 .template_empty_card {
 	background-color: rgba(32, 32, 32, 0.05);
-	min-height: 20.6rem;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -1692,6 +1691,12 @@ input[type=file] {
 	user-select: none;
 	text-align: center;
 	line-height: 1.5;
+}
+
+@media screen and (max-width: 767px) {
+	.template_empty_card {
+		min-height: 16rem;
+	}
 }
 
 .template_empty_card:hover {

@@ -193,7 +193,6 @@
 
 .template_empty_card {
   background-color: rgba(32, 32, 32, 0.05);
-  min-height: 20.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,8 +201,13 @@
   user-select: none;
   text-align: center;
   line-height: 1.5;
+
+  @media screen and (max-width: 767px) {
+    min-height: 16rem;
+  }
   &:hover {
     box-shadow: none;
   }
+
 }
 

@@ -213,6 +213,10 @@ if(isset($_GET['cat'])) {
                                 </div>
                             </div>
                         <?php endforeach; ?>
+                        <div class="wizard__templates-cards--single template_empty_card">
+                            More Templates <br>
+                            Coming Soon
+                        </div>
                     </div>
                 </div>
             </div>

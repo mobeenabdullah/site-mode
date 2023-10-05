@@ -71,6 +71,9 @@
           font-weight: 600;
           color: var(--wd-gray-2-color);
           font-size: calc(clamp(0.7rem, 0.657rem + 0.381vw, 1rem));
+          @media screen and (max-width: 767px) {
+            font-size: 0.6rem;
+          }
         }
         & .step_line {
           width: calc(clamp(1.125rem, -0.304rem + 3.81vw, 3.125rem));
@@ -90,6 +93,10 @@
               transform: translate(-50%, -50%);
               background-color: var(--wd-base-black-color);
               border-radius: 50%;
+              @media screen and (max-width: 767px) {
+                margin-left: 0.02rem;
+                margin-top: 0.01rem;
+              }
             }
           }
           & .step_label {
