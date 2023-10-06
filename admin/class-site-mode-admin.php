@@ -250,9 +250,6 @@ class Site_Mode_Admin {
         $base = $scheme_content->$preset_scheme->base;
         $contrast = $scheme_content->$preset_scheme->contrast;
         $primary = $scheme_content->$preset_scheme->primary;
-        $secondary = $scheme_content->$preset_scheme->secondary;
-        $tertiary = $scheme_content->$preset_scheme->tertiary;
-
 
         $new_data = array(
             'version'  => 2,
@@ -274,17 +271,7 @@ class Site_Mode_Admin {
                             'slug'  => 'sm-primary',
                             'color' => $primary,
                             'name'  => __( 'Site Mode Primary', 'site-mode' ),
-                        ),
-                        array(
-                            'slug'  => 'sm-secondary',
-                            'color' => $secondary,
-                            'name'  => __( 'Site Mode Secondary', 'site-mode' ),
-                        ),
-                        array(
-                            'slug'  => 'sm-tertiary',
-                            'color' => $tertiary,
-                            'name'  => __( 'Site Mode Tertiary', 'site-mode' ),
-                        ),
+                        )
                     ),
                 ),
             ),

@@ -5,52 +5,38 @@
   "content": {
     "default" : {
       "base" : "white",
-      "primary": "#FFC009",
-      "contrast": "black",
-      "secondary": "#b392ac",
-      "tertiary": "#d1b3c4"
+      "primary": "#4D34FA",
+      "contrast": "black"
     },
     "preset1" : {
       "base" : "white",
-      "primary": "#ef476f",
-      "contrast": "black",
-      "secondary": "#8a817c",
-      "tertiary": "#bcb8b1"
+      "primary": "#FFBF42",
+      "contrast": "black"
     },
     "preset2" : {
       "base" : "white",
-      "primary": "#1e88e5",
-      "contrast": "#000000",
-      "secondary": "#1d2d44",
-      "tertiary": "#3e5c76"
+      "primary": "#00796A",
+      "contrast": "#000000"
     },
     "preset3" : {
       "base" : "white",
-      "primary": "#0fa3b1",
-      "contrast": "black",
-      "secondary": "#a4c3b2",
-      "tertiary": "#cce3de"
+      "primary": "#1E1926",
+      "contrast": "black"
     },
     "preset4" : {
       "base" : "white",
-      "primary": "#7400b8",
-      "contrast": "#000000",
-      "secondary": "#b392ac",
-      "tertiary": "#d1b3c4"
+      "primary": "#AD3A5B",
+      "contrast": "#000000"
     },
     "preset5" : {
       "base" : "white",
-      "primary": "#31572c",
-      "contrast": "black",
-      "secondary": "#586f7c",
-      "tertiary": "#b8dbd9"
+      "primary": "#BD5A42",
+      "contrast": "black"
     },
     "preset6" : {
       "base" : "white",
-      "primary": "#532b88",
-      "contrast": "black",
-      "secondary": "#e2711d",
-      "tertiary": "#ff9505"
+      "primary": "#7700B3",
+      "contrast": "black"
     }
   }
 }
