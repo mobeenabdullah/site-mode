@@ -191,6 +191,10 @@ class Site_Mode {
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
         $this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 
+        // Adding FSE Theme Styles in Site Mode Template
+        $this->loader->add_action( 'wpsm_head', $plugin_admin, 'sm_remember_fse_style' );
+        $this->loader->add_action( 'wpsm_footer', $plugin_admin, 'sm_fse_style' );
+
         // Add Site Mode Color palette
         $this->loader->add_filter( 'wp_theme_json_data_theme', $plugin_admin, 'site_mode_filter_theme_json_theme' );
 
