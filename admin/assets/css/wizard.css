@@ -4,40 +4,26 @@
 ---------------------------------------*/
 :root {
 	--default--preset--color--base: #ffffff !important;
-	--default--preset--color--primary: #e63946 !important;
+	--default--preset--color--primary: #4D34FA !important;
 	--default--preset--color--contrast: #000000 !important;
-	--default--preset--color--secondary: #fcb900 !important;
-	--default--preset--color--tertiary: #F6F6F6 !important;
-	--p1--preset--color--base: #f4f3ee !important;
-	--p1--preset--color--primary: #ef476f !important;
+	--p1--preset--color--base: #ffffff !important;
+	--p1--preset--color--primary: #FFBF42 !important;
 	--p1--preset--color--contrast: #000000 !important;
-	--p1--preset--color--secondary: #8a817c !important;
-	--p1--preset--color--tertiary: #bcb8b1 !important;
-	--p2--preset--color--base: #f0ebd8 !important;
-	--p2--preset--color--primary: #1e88e5 !important;
+	--p2--preset--color--base: #ffffff !important;
+	--p2--preset--color--primary: #00796A !important;
 	--p2--preset--color--contrast: #000000 !important;
-	--p2--preset--color--secondary: #1d2d44 !important;
-	--p2--preset--color--tertiary: #3e5c76 !important;
-	--p3--preset--color--base: #0fa3b1 !important;
-	--p3--preset--color--primary: #0fa3b1 !important;
+	--p3--preset--color--base: #ffffff !important;
+	--p3--preset--color--primary: #1E1926 !important;
 	--p3--preset--color--contrast: #000000 !important;
-	--p3--preset--color--secondary: #a4c3b2 !important;
-	--p3--preset--color--tertiary: #cce3de !important;
-	--p4--preset--color--base: #e8c2ca !important;
-	--p4--preset--color--primary: #7400b8 !important;
+	--p4--preset--color--base: #ffffff !important;
+	--p4--preset--color--primary: #AD3A5B !important;
 	--p4--preset--color--contrast: #000000 !important;
-	--p4--preset--color--secondary: #b392ac !important;
-	--p4--preset--color--tertiary: #d1b3c4 !important;
-	--p5--preset--color--base: #31572c !important;
-	--p5--preset--color--primary: #31572c !important;
+	--p5--preset--color--base: #ffffff !important;
+	--p5--preset--color--primary: #BD5A42 !important;
 	--p5--preset--color--contrast: #000000 !important;
-	--p5--preset--color--secondary: #586f7c !important;
-	--p5--preset--color--tertiary: #b8dbd9 !important;
-	--p6--preset--color--base: #532b88 !important;
-	--p6--preset--color--primary: #532b88 !important;
+	--p6--preset--color--base: #ffffff !important;
+	--p6--preset--color--primary: #7700B3 !important;
 	--p6--preset--color--contrast: #000000 !important;
-	--p6--preset--color--secondary: #e2711d !important;
-	--p6--preset--color--tertiary: #ff9505 !important;
 }
 
 /*-----------------------------------------------------
@@ -1251,6 +1237,7 @@ html {
 	width: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
 	height: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
 	border-radius: 50%;
+	border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .customize__template-sidebar .sidebar_content-settings .settings__card-options--field {

@@ -214,6 +214,7 @@
                   width: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
                   height: calc(clamp(0.938rem, 0.714rem + 0.595vw, 1.25rem));
                   border-radius: 50%;
+                  border: 1px solid rgba(0,0,0,0.10);
                 }
               }
             }

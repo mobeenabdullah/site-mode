@@ -87,12 +87,12 @@
                                                         <div class="wizard-select">
                                                             <select name="color_scheme" id="color_scheme" >
                                                                 <option value="default">Default</option>
-                                                                <option value="preset1">Pink</option>
-                                                                <option value="preset2">Blue</option>
-                                                                <option value="preset3">Green</option>
-                                                                <option value="preset4">Violet</option>
-                                                                <option value="preset5">Dark green</option>
-                                                                <option value="preset6">Dark Violet</option>
+                                                                <option value="preset1">Yellow</option>
+                                                                <option value="preset2">Green</option>
+                                                                <option value="preset3">Dark Gray</option>
+                                                                <option value="preset4">Pink</option>
+                                                                <option value="preset5">Orange</option>
+                                                                <option value="preset6">Violet</option>
                                                             </select>
                                                             <div class="wizard-select-arrow">
                                                                 <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M16.293 9.293 12 13.586 7.707 9.293l-1.414 1.414L12 16.414l5.707-5.707z"></path></svg></span>
@@ -101,8 +101,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="default">
                                                             <span class="color_circles">
                                                                 <span class="color-circle default-primary"></span>
-                                                                <span class="color-circle default-secondary"></span>
-                                                                <span class="color-circle default-tertiary"></span>
                                                                 <span class="color-circle default-base"></span>
                                                                 <span class="color-circle default-contrast"></span>
                                                             </span>
@@ -110,8 +108,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset1">
                                                            <span class="color_circles">
                                                                 <span class="color-circle p1-primary"></span>
-                                                                <span class="color-circle p1-secondary"></span>
-                                                                <span class="color-circle p1-tertiary"></span>
                                                                 <span class="color-circle p1-base"></span>
                                                                 <span class="color-circle p1-contrast"></span>
                                                             </span>
@@ -119,8 +115,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset2">
                                                            <span class="color_circles">
                                                                 <span class="color-circle p2-primary"></span>
-                                                                <span class="color-circle p2-secondary"></span>
-                                                                <span class="color-circle p2-tertiary"></span>
                                                                 <span class="color-circle p2-base"></span>
                                                                 <span class="color-circle p2-contrast"></span>
                                                             </span>
@@ -128,8 +122,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset3">
                                                            <span class="color_circles">
                                                                 <span class="color-circle p3-primary"></span>
-                                                                <span class="color-circle p3-secondary"></span>
-                                                                <span class="color-circle p3-tertiary"></span>
                                                                 <span class="color-circle p3-base"></span>
                                                                 <span class="color-circle p3-contrast"></span>
                                                             </span>
@@ -137,8 +129,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset4">
                                                             <span class="color_circles">
                                                                 <span class="color-circle p4-primary"></span>
-                                                                <span class="color-circle p4-secondary"></span>
-                                                                <span class="color-circle p4-tertiary"></span>
                                                                 <span class="color-circle p4-base"></span>
                                                                 <span class="color-circle p4-contrast"></span>
                                                             </span>
@@ -146,8 +136,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset5">
                                                             <span class="color_circles">
                                                                 <span class="color-circle p5-primary"></span>
-                                                                <span class="color-circle p5-secondary"></span>
-                                                                <span class="color-circle p5-tertiary"></span>
                                                                 <span class="color-circle p5-base"></span>
                                                                 <span class="color-circle p5-contrast"></span>
                                                             </span>
@@ -155,8 +143,6 @@
                                                         <div class="color__scheme-preset-box" data-preset="preset6">
                                                            <span class="color_circles">
                                                                 <span class="color-circle p6-primary"></span>
-                                                                <span class="color-circle p6-secondary"></span>
-                                                                <span class="color-circle p6-tertiary"></span>
                                                                 <span class="color-circle p6-base"></span>
                                                                 <span class="color-circle p6-contrast"></span>
                                                             </span>
@@ -214,7 +200,7 @@
                         </button>
                     </div>
                     <div class="customize__template-content--canvas sm-scroll">
-                        <iframe src="<?php echo 'https://site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+                        <iframe src="<?php echo 'https://demo.site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
                         <div class="loading__template"  style="display: flex;">
                             <div class="template-loader">
                                 <div class="loader">

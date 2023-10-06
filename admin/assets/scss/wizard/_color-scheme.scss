@@ -1,112 +1,84 @@
 //  default-scheme
-$default-primary-color: #e63946 !default;
+$default-primary-color: #4D34FA !default;
 $default-base-color: #ffffff !default;
 $default-black-color: #000000 !default;
-$default-secondary-color: #fcb900 !default;
-$default-tertiary-color: #F6F6F6 !default;
 
 $defaultColors: (
         '--default--preset--color--base': $default-base-color,
         '--default--preset--color--primary': $default-primary-color,
         '--default--preset--color--contrast': $default-black-color,
-        '--default--preset--color--secondary': $default-secondary-color,
-        '--default--preset--color--tertiary': $default-tertiary-color,
 
 ) !default;
 
 // Preset 1
-$p1-primary-color: #ef476f !default;
-$p1-base-color: #f4f3ee !default;
+$p1-primary-color: #FFBF42 !default;
+$p1-base-color: #ffffff !default;
 $p1-black-color: #000000 !default;
-$p1-secondary-color: #8a817c !default;
-$p1-tertiary-color: #bcb8b1 !default;
 
 $preset1Colors: (
         '--p1--preset--color--base': $p1-base-color,
         '--p1--preset--color--primary': $p1-primary-color,
         '--p1--preset--color--contrast': $p1-black-color,
-        '--p1--preset--color--secondary': $p1-secondary-color,
-        '--p1--preset--color--tertiary': $p1-tertiary-color,
 
 ) !default;
 
 // Preset 2
-$p2-primary-color: #1e88e5 !default;
-$p2-base-color: #f0ebd8 !default;
+$p2-primary-color: #00796A !default;
+$p2-base-color: #ffffff !default;
 $p2-black-color: #000000 !default;
-$p2-secondary-color: #1d2d44 !default;
-$p2-tertiary-color: #3e5c76 !default;
 
 $preset2Colors: (
         '--p2--preset--color--base': $p2-base-color,
         '--p2--preset--color--primary': $p2-primary-color,
         '--p2--preset--color--contrast': $p2-black-color,
-        '--p2--preset--color--secondary': $p2-secondary-color,
-        '--p2--preset--color--tertiary': $p2-tertiary-color,
 
 ) !default;
 
 // Preset 3
-$p3-primary-color: #0fa3b1 !default;
-$p3-base-color: #f6fff8 !default;
+$p3-primary-color: #1E1926 !default;
+$p3-base-color: #ffffff !default;
 $p3-black-color: #000000 !default;
-$p3-secondary-color: #a4c3b2 !default;
-$p3-tertiary-color: #cce3de !default;
 
 $preset3Colors: (
-        '--p3--preset--color--base': $p3-primary-color,
+        '--p3--preset--color--base': $p3-base-color,
         '--p3--preset--color--primary': $p3-primary-color,
         '--p3--preset--color--contrast': $p3-black-color,
-        '--p3--preset--color--secondary': $p3-secondary-color,
-        '--p3--preset--color--tertiary': $p3-tertiary-color,
 
 ) !default;
 
 // Preset 4
-$p4-primary-color: #7400b8 !default;
-$p4-base-color: #e8c2ca !default;
+$p4-primary-color: #AD3A5B !default;
+$p4-base-color: #ffffff !default;
 $p4-black-color: #000000 !default;
-$p4-secondary-color: #b392ac !default;
-$p4-tertiary-color: #d1b3c4 !default;
 
 $preset4Colors: (
         '--p4--preset--color--base': $p4-base-color,
         '--p4--preset--color--primary': $p4-primary-color,
         '--p4--preset--color--contrast': $p4-black-color,
-        '--p4--preset--color--secondary': $p4-secondary-color,
-        '--p4--preset--color--tertiary': $p4-tertiary-color,
 
 ) !default;
 
 // Preset 5
-$p5-primary-color: #31572c !default;
-$p5-base-color: #f4f4f9 !default;
+$p5-primary-color: #BD5A42 !default;
+$p5-base-color: #ffffff !default;
 $p5-black-color: #000000 !default;
-$p5-secondary-color: #586f7c !default;
-$p5-tertiary-color: #b8dbd9 !default;
 
 $preset5Colors: (
-        '--p5--preset--color--base': $p5-primary-color,
+        '--p5--preset--color--base': $p5-base-color,
         '--p5--preset--color--primary': $p5-primary-color,
         '--p5--preset--color--contrast': $p5-black-color,
-        '--p5--preset--color--secondary': $p5-secondary-color,
-        '--p5--preset--color--tertiary': $p5-tertiary-color,
 
 ) !default;
 
 // Preset 6
-$p6-primary-color: #532b88 !default;
-$p6-base-color: #ffc971 !default;
+$p6-primary-color: #7700B3 !default;
+$p6-base-color: #ffffff !default;
 $p6-black-color: #000000 !default;
-$p6-secondary-color: #e2711d !default;
-$p6-tertiary-color: #ff9505 !default;
 
 $preset6Colors: (
-        '--p6--preset--color--base': $p6-primary-color,
+        '--p6--preset--color--base': $p6-base-color,
         '--p6--preset--color--primary': $p6-primary-color,
         '--p6--preset--color--contrast': $p6-black-color,
-        '--p6--preset--color--secondary': $p6-secondary-color,
-        '--p6--preset--color--tertiary': $p6-tertiary-color,
 
 ) !default;
 
