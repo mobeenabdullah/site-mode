@@ -39,6 +39,7 @@ class Site_Mode_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+    protected $site_mode_buffer_style;
 
 	protected $general_settings;
 
@@ -290,6 +291,51 @@ class Site_Mode_Admin {
         );
 
         return $theme_json->update_with( $new_data );
+    }
+
+    public function sm_remember_fse_style() {
+        ob_start();
+        wp_head();
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        echo $output;
+
+        $doc = new DOMDocument();
+        $doc->loadHTML( '<html>' . $output . '</html>' );
+        $this->site_mode_buffer_style = $doc->getElementsByTagName( 'style' );
+    }
+
+    public function sm_fse_style() {
+        ob_start();
+        wp_head();
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        $doc = new DOMDocument();
+        $doc->loadHTML( '<html>' . $output . '</html>' );
+        $elems = $doc->getElementsByTagName( 'style' );
+        $css   = '';
+
+        $common_positions = array();
+
+        foreach ( $elems as $i => $elem ) {
+            foreach ( $this->site_mode_buffer_style as $style ) {
+                if ( $elems->item( $i )->C14N() == $style->C14N() ) {
+                    $common_positions[] = $i;
+                };
+            }
+        }
+
+        foreach ( $elems as $i => $elem ) {
+            if ( in_array( $i, $common_positions ) ) {
+                continue;
+            }
+
+            $css .= $elems->item( $i )->C14N();
+        }
+
+        echo $css;
     }
 
 }

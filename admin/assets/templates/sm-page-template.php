@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Full Width for Maintenance Page
+ * Template Name: Full Width for Site Mode
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -10,7 +10,7 @@ defined( 'ABSPATH' ) || exit;
         <head>
             <meta charset="<?php bloginfo( 'charset' ); ?>">
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-            <?php do_action( 'wpmm_head' ); ?>
+            <?php do_action( 'wpsm_head' ); ?>
             <?php wp_head(); ?>
         </head>
         <body  <?php body_class(); ?>>
@@ -20,7 +20,7 @@ defined( 'ABSPATH' ) || exit;
             the_post();
             the_content();
             wp_footer();
-            do_action( 'wpmm_footer' );
+            do_action( 'wpsm_footer' );
             ?>
         </body>
     </html>
