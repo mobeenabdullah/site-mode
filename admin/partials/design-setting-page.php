@@ -2,15 +2,27 @@
 $templates =  [
     'template-1' => [
         'name'          => 'Template 1',
-        'category'      => 'coming-soon',
+        'category'      => 'maintenance',
     ],
     'template-2' => [
         'name'          => 'Template 2',
-        'category'      => 'maintenance',
+        'category'      => 'coming-soon',
     ],
     'template-3' => [
         'name'          => 'Template 3',
+        'category'      => 'maintenance',
+    ],
+    'template-4' => [
+        'name'          => 'Template 4',
         'category'      => 'coming-soon',
+    ],
+    'template-5' => [
+        'name'          => 'Template 5',
+        'category'      => 'coming-soon',
+    ],
+    'template-6' => [
+        'name'          => 'Template 6',
+        'category'      => 'maintenance',
     ]
 ];
 $categories = [

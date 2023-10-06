@@ -36,8 +36,13 @@ class Site_Mode_Design extends  Settings {
         'coming_soon_template' => '',
     ];
     protected array $default_images = [
-        'template-1' => 'https://site-mode.com/wp-content/uploads/2023/09/light-skyline-night-city-skyscraper-cityscape-47045-pxhere.com_-scaled.jpg',
-        'template-2' => 'https://site-mode.com/wp-content/uploads/2023/09/default-bg.webp',
+        'template-1' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
+        'template-2' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
+        'template-3' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+        'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
+        'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/tree-nature-branch-snow-winter-black-and-white-1153705-pxhere.com_-scaled.jpg',
+        'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/tree-nature-branch-snow-winter-black-and-white-1153705-pxhere.com_-scaled.jpg',
+
     ];
 
     public function __construct() {
