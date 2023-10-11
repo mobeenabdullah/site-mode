@@ -152,9 +152,9 @@ class Site_Mode_Admin {
         global $wp_admin_bar;
 
         $design_settings = get_option( 'site_mode_design' );
-        $is_status_active     = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['active_page']) && !empty($design_settings['page_setup']['active_page']);
-        $maintenance_page =  isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['maintenance_page_id']) && !empty($design_settings['page_setup']['maintenance_page_id']);
-        $coming_soon_page = isset( $design_settings['page_setup'] ) && isset($design_settings['page_setup']['coming_soon_page_id']) && !empty($design_settings['page_setup']['coming_soon_page_id']);
+        $is_status_active     = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['active_page']) && get_post_status($design_settings['page_setup']['active_page']) === 'publish' ? $design_settings['page_setup']['active_page'] : '' ;
+        $maintenance_page =  isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['maintenance_page_id']) && get_post_status($design_settings['page_setup']['maintenance_page_id']) === 'publish' ? $design_settings['page_setup']['maintenance_page_id'] : '' ;
+        $coming_soon_page = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['coming_soon_page_id'])&& get_post_status($design_settings['page_setup']['coming_soon_page_id']) === 'publish' ? $design_settings['page_setup']['coming_soon_page_id'] : '';
 
         if($is_status_active) {
             if ($is_status_active == $maintenance_page) {
