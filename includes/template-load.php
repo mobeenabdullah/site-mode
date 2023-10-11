@@ -104,7 +104,7 @@ class Template_Load {
 	}
 
     public function pre_option_redirect_page($value) {
-        if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && $this->template_initialize()){
+        if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && get_post_status($this->template['page_setup']['active_page']) === 'publish' && $this->template_initialize()){
             return $this->template['page_setup']['active_page'];
         } else {
             return $value;
