@@ -37,7 +37,7 @@
 					],
                     [
                         'title' => 'Integrations',
-                        'icon'  => '<i class="fa-solid fa-palette"></i>',
+                        'icon'  => '<i class="fa-solid fa-code-compare"></i>',
                     ],
 					[
 						'title' => 'Advanced',

@@ -8,8 +8,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background-color: rgba(255, 255, 255, 0.15);
-	color: var(--wp--preset--color--sm-primary);
+	background-color: rgba(0, 0, 0, 0.15);
+	color: var(--wp--preset--color--sm-base);
 	border-radius: 50%;
 }
 

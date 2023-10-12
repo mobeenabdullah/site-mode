@@ -86,7 +86,7 @@
                                                     <div class="color__scheme">
                                                         <div class="wizard-select">
                                                             <select name="color_scheme" id="color_scheme" >
-                                                                <option value="default">Default</option>
+                                                                <option value="default">Blue</option>
                                                                 <option value="preset1">Yellow</option>
                                                                 <option value="preset2">Green</option>
                                                                 <option value="preset3">Dark Gray</option>
