@@ -139,7 +139,7 @@ $maintenance_template    = !empty($design_settings['page_setup']['maintenance_te
                     'description' => 'Change layout of your coming soon/maintenance page from our free templates library.',
                     'icon'  => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.4 2.096a10.08 10.08 0 0 0-8.937 3.331A10.054 10.054 0 0 0 2.096 13.4c.53 3.894 3.458 7.207 7.285 8.246A9.981 9.981 0 0 0 12 22l.142-.001a3.002 3.002 0 0 0 2.516-1.426 2.989 2.989 0 0 0 .153-2.879l-.199-.416a1.919 1.919 0 0 1 .094-1.912 2.004 2.004 0 0 1 2.576-.755l.412.197c.412.198.85.299 1.301.299A3.022 3.022 0 0 0 22 12.14a9.937 9.937 0 0 0-.353-2.76c-1.04-3.826-4.353-6.754-8.247-7.284Zm5.158 10.909-.412-.197c-1.828-.878-4.07-.198-5.135 1.494-.738 1.176-.813 2.576-.204 3.842l.2.416a.982.982 0 0 1-.052.961.992.992 0 0 1-.844.479H12a8.063 8.063 0 0 1-2.095-.283c-3.063-.831-5.403-3.479-5.826-6.586-.32-2.355.352-4.623 1.893-6.389a8.002 8.002 0 0 1 7.16-2.664c3.107.423 5.755 2.764 6.586 5.826.198.73.293 1.474.282 2.207-.012.807-.845 1.183-1.44.894Z" fill="#FE4773"/><path d="M7.5 16a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm3-3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm4 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="#FE4773"/></svg>',
                     'link'  => '?page=site-mode&setting=templates',
-                    'link-text' => 'View all templates',
+                    'link-text' => 'View All Templates',
                     'external_link' => ''
                 ],
                 [
@@ -147,7 +147,7 @@ $maintenance_template    = !empty($design_settings['page_setup']['maintenance_te
                     'description' => 'Optimize your coming soon/maintenance page for search engines with advanced SEO settings.',
                     'icon'  => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:#FE4773; transform: ;msFilter:;"><path d="M20 12a2 2 0 0 0-.703.133l-2.398-1.963c.059-.214.101-.436.101-.67C17 8.114 15.886 7 14.5 7S12 8.114 12 9.5c0 .396.1.765.262 1.097l-2.909 3.438A2.06 2.06 0 0 0 9 14c-.179 0-.348.03-.512.074l-2.563-2.563C5.97 11.348 6 11.179 6 11c0-1.108-.892-2-2-2s-2 .892-2 2 .892 2 2 2c.179 0 .348-.03.512-.074l2.563 2.563A1.906 1.906 0 0 0 7 16c0 1.108.892 2 2 2s2-.892 2-2c0-.237-.048-.46-.123-.671l2.913-3.442c.227.066.462.113.71.113a2.48 2.48 0 0 0 1.133-.281l2.399 1.963A2.077 2.077 0 0 0 18 14c0 1.108.892 2 2 2s2-.892 2-2-.892-2-2-2z"></path></svg>',
                     'link'  => '?page=site-mode&setting=settings&tab=seo',
-                    'link-text' => 'View all SEO Configuration',
+                    'link-text' => 'View Settings',
                     'external_link' => ''
                 ],
                 [
@@ -155,7 +155,7 @@ $maintenance_template    = !empty($design_settings['page_setup']['maintenance_te
                     'description' => 'Connect your plugin seamlessly with other tools and services for enhanced functionality.',
                     'icon'  => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8h2v5c0 2.206 1.794 4 4 4h2v5h2v-5h2c2.206 0 4-1.794 4-4V8h2V6H3v2Zm4 0h10v5c0 1.103-.897 2-2 2H9c-1.103 0-2-.897-2-2V8Zm0-6h2v3H7V2Zm8 0h2v3h-2V2Z" fill="#FE4773"/></svg>',
                     'link'  => '?page=site-mode&setting=settings&tab=integrations',
-                    'link-text' => 'View Plugins',
+                    'link-text' => 'View Settings',
                     'external_link' => ''
                 ],
                 [

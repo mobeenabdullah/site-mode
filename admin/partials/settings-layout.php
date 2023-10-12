@@ -74,11 +74,11 @@
                                             ],
                                             [
                                                 'title' => 'SEO',
-                                                'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
+                                                'icon'  => '<i class="fa-solid fa-chart-line"></i>',
                                             ],
                                             [
                                                 'title' => 'Integrations',
-                                                'icon'  => '<i class="fa-solid fa-palette"></i>',
+                                                'icon'  => '<i class="fa-solid fa-code-compare"></i>',
                                             ],
                                             [
                                                 'title' => 'Advanced',
