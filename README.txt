@@ -36,6 +36,8 @@ Explore Site Mode's library of live demos and templates, allowing you to choose 
 **Credits** :
 
 * [Font Awesome](https://fontawesome.com/) - Library for font icons used on the front-end and in the settings page
+* [Box Icon](https://boxicons.com/) - SVG icons used in this plugin are provided by Boxicons
+* [PxHere](https://pxhere.com/) - Images used in this plugin are sourced from PxHere
 
 == Installation ==
 
@@ -99,13 +101,16 @@ Yes, this plugin is Completely FREE
 
 == Screenshots ==
 
-1. Default Template Preview
-2. General Settings
-3. Content Settings
-4. Social Settings
-5. Design Settings
-6. SEO Settings
-7. Advanced Settings
+1. Template Preview
+2. Template Preview
+3. Template preview
+4. Template Preview
+5. Wizard Setup - Select Page Type
+6. Wizard Setup - Pick a Template
+7. Wizard Setup - Customize with Ease
+8. Wizard Setup - Import Template
+9. Dashboard
+10. Settings
 
 == Changelog ==
 
