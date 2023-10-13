@@ -28,10 +28,12 @@ class Template_Load {
 				nocache_headers();
 				return true;
 			}
-		}
+		} else {
+            return false;
+        }
 	}
 
-    public function sm_is_gutenberg_editor() {
+    public function is_site_mode_active(): bool {
 
         if(empty($this->template['page_setup']) && empty($this->template['page_setup']['active_page'])) {
             return false;
@@ -91,17 +93,6 @@ class Template_Load {
 
 	}
 
-    public function load_classic_template() {
-        if($this->template_initialize()) {
-            $this->load_template();
-        }
-    }
-
-	public function load_template() {
-		wp_enqueue_style( 'default_template', SITE_MODE_PUBLIC_URL . 'css/default_template.css', [], '1.0.0', 'all' );
-		require_once SITE_MODE_PUBLIC . 'templates/default_template.php';
-		exit;
-	}
 
     public function pre_option_redirect_page($value) {
         if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && get_post_status($this->template['page_setup']['active_page']) === 'publish' && $this->template_initialize()){

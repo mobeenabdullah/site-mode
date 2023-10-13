@@ -243,10 +243,8 @@ class Site_Mode {
 		// Template load
 		$template_load = new Template_Load();
 
-        if($template_load->sm_is_gutenberg_editor()) {
+        if($template_load->is_site_mode_active()) {
             $this->loader->add_filter( 'pre_option_page_on_front', $template_load, 'pre_option_redirect_page');
-        } else {
-            $this->loader->add_action( 'template_redirect', $template_load, 'load_classic_template' );
         }
 
 	}
