@@ -5,7 +5,7 @@ Tags: maintenance mode, coming soon, under construction, maintenance page, launc
 Requires at least: 4.7
 Tested up to: 6.3.2
 Requires PHP: 7.0
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,7 +114,7 @@ Yes, this plugin is Completely FREE
 
 == Changelog ==
 
-= 1.0.0 =
+= 1.0.2 =
 * Added exciting new features to enhance your experience.
 * Introduced new templates to elevate your maintenance and coming soon pages.
 * Implemented an import wizard for seamless setup.
