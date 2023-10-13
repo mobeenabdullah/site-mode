@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://mobeenabdullah.com
- * @since             1.0.0
+ * @since             1.0.2
  * @package           Site_Mode
  *
  * @wordpress-plugin
  * Plugin Name:       Site Mode - Coming Soon Page, Maintenance Mode & Under Construction Page
  * Plugin URI:        https://github.com/mobeenabdullah/site-mode
  * Description:       Create a beautiful Coming Soon page or switch to Maintenance Mode with ease for your WordPress site
- * Version:           1.0.0
+ * Version:           1.0.2
  * Author:            Mobeen Abdullah
  * Author URI:        https://github.com/mobeenabdullah
  * License:           GPL-2.0+
@@ -33,7 +33,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'SITE_MODE_VERSION',    '1.0.0' );
+define( 'SITE_MODE_VERSION',    '1.0.2' );
 define('SITE_MODE_PATH',        plugin_dir_path( __FILE__ ));
 define('SITE_MODE_INC',         SITE_MODE_PATH . 'includes/');
 define('SITE_MODE_ADMIN',       SITE_MODE_PATH . 'admin/');
@@ -77,7 +77,7 @@ require SITE_MODE_INC . 'class-site-mode.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.0.0
+ * @since    1.0.2
  */
 
 
