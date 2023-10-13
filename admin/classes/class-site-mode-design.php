@@ -40,8 +40,8 @@ class Site_Mode_Design extends  Settings {
         'template-2' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
         'template-3' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
-        'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/tree-nature-branch-snow-winter-black-and-white-1153705-pxhere.com_-scaled.jpg',
-        'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/tree-nature-branch-snow-winter-black-and-white-1153705-pxhere.com_-scaled.jpg',
+        'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+        'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
 
     ];
 

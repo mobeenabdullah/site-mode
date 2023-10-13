@@ -115,7 +115,6 @@ jQuery(function ($) {
     $('.select_template').on('click', selectTemplate);
 
     function setTimeoutForTemplate () {
-        console.log('working');
         setTimeout(function () {
             $('#sm-preview-iframe').css('display', 'block');
             $('.loading__template').css('display', 'none');
@@ -141,7 +140,6 @@ jQuery(function ($) {
 
     // Back to select template page
     function backToSelectTemplate () {
-        console.log('working');
         hideElements('.wizard__start, .import__settings, .import__actions, .sm_customize_settings, .component__settings, .customize__actions');
         showElements('.wizard__content-wrapper');
         removeElementClass('.sm-customize', 'active');
@@ -206,10 +204,6 @@ jQuery(function ($) {
         $(`.template_card[data-category-template="${templateParam}"] .select_template`).trigger('click');
     }
 
-    // if(isSetup && cat) {
-    //     $(`.setup-button[data-template-category="${cat}"]`).trigger('click');
-    // }
-
     //  AJAX Functionality for import template
     $('.import-template').on('click', function() {
         const showSocial        = document.getElementById("show-social").checked;
@@ -222,7 +216,7 @@ jQuery(function ($) {
         const colorScheme       = $('#color_scheme').val();
 
         if(!templateName) {
-            console.log('Select Template!');
+            alert('Please Select Template!');
             return
         }
 
@@ -252,7 +246,6 @@ jQuery(function ($) {
             },
             success: function (res) {
                 setTimeout(function () {
-                    console.log(res);
                     const newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?page=site-mode&setting=dashboard';
                     window.history.pushState({path:newurl},'',newurl);
                     $('#importing__popup').css('display', 'flex');
@@ -265,7 +258,6 @@ jQuery(function ($) {
             },
             error: function (error) {
                 setTimeout(function () {
-                    console.log(error);
                     $('#importing__popup').css('display', 'flex');
                     $('.import__content').hide();
                     $('.thank__you-content').hide();
@@ -274,33 +266,6 @@ jQuery(function ($) {
             },
         });
     });
-
-    // f.   show and hide sidebar options on mobile
-    /*
-    const $sidebarContent = $(".sm_customize_settings-sidebar");
-    const isMobile = window.innerWidth <= 768;
-
-    // if (isMobile) {
-    //     // $sidebarContent.hide();
-    //     // $('.settings__card-options').hide();
-    //     // $('.sidebar_content-header').hide();
-    // }
-
-    $(".setting_dropdown").on("click", function() {
-        if (isMobile) {
-            $sidebarContent.toggle();
-        }
-    });
-
-    $(".settings_card_heading").on("click", function() {
-        if (isMobile) {
-            $options.show();
-            const $options = $(this).parent().next(".settings__card-options");
-            $options.toggle();
-        }
-    });
-    */
-
 
    // Reset to default options functionality
     function handleSettingsClick() {
@@ -349,12 +314,10 @@ jQuery(function ($) {
             // sidebar.slideRight(300);
             $('.sm_full_screen').css('display', 'none');
             $('.sm_exit_full_screen').css('display', 'flex');
-            console.log('if condition');
         } else {
             // sidebar.slideLeft(300);
             $('.sm_full_screen').css('display', 'flex');
             $('.sm_exit_full_screen').css('display', 'none');
-            console.log('else condition');
         }
 
     }
