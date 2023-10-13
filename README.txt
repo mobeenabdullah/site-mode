@@ -27,11 +27,11 @@ Ensure optimal SEO with Site Mode's features, including customizable SEO meta ti
 **Integrations:**
 Seamlessly integrate with tools like Google Analytics and Facebook Pixel to monitor and analyze user interactions and traffic.
 
-**Advanced Configuration/Settings:**
+**Advanced Settings:**
 Fine-tune your website's behavior with advanced configuration options, including disabling the REST API, RSS feed, enabling redirects, whitelisting user roles, and pages.
 
-**Live Demos/Templates:**
-Explore Site Mode's library of live demos and templates, allowing you to choose the perfect design for your "Coming Soon" and "Maintenance Mode" pages.
+**Live Demos:**
+Check out Site Mode's collection of ready-made design templates. You can pick the one that best fits your style for both "Coming Soon" and "Maintenance Mode" pages. See the available templates at [https://site-mode.com](https://site-mode.com).
 
 **Credits** :
 
