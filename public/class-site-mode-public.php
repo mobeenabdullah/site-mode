@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.0
+ * @since      1.0.2
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/public
@@ -25,7 +25,7 @@ class Site_Mode_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -34,7 +34,7 @@ class Site_Mode_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -48,7 +48,7 @@ class Site_Mode_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 * @param      string $plugin_name       The name of the plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
@@ -69,7 +69,7 @@ class Site_Mode_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 */
 	public function enqueue_styles() {
 
@@ -92,7 +92,7 @@ class Site_Mode_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.0.0
+	 * @since    1.0.2
 	 */
 	public function enqueue_scripts() {
 
