@@ -132,16 +132,16 @@ class Site_Mode_Public {
 
         $general_settings = get_option('site_mode_general');
         $design_settings = get_option('site_mode_design');
-        $active_page = $design_settings['page_setup']['active_page'] ?? '';
-        $coming_soon_page = $design_settings['page_setup']['coming_soon_page_id'] ?? '';
-        $maintenance_page = $design_settings['page_setup']['maintenance_page_id'] ?? '';
+        $active_page = isset($design_settings['page_setup']['active_page']) ? $design_settings['page_setup']['active_page'] : '';
+        $coming_soon_page = isset($design_settings['page_setup']['coming_soon_page_id']) ? $design_settings['page_setup']['coming_soon_page_id'] : '';
+        $maintenance_page = isset($design_settings['page_setup']['maintenance_page_id']) ? $design_settings['page_setup']['maintenance_page_id'] : '';
         $is_valid_page = false;
 
         if(!is_admin() && (!is_user_logged_in() || isset($_GET['site-mode-preview']) ) && ($active_page == get_the_ID() || $coming_soon_page == get_the_ID() && $maintenance_page == get_the_ID() ) ) {
             $is_valid_page = true;
         }
 
-        if($general_settings['show_login_icon'] && !empty($general_settings['custom_login_url']) && $is_valid_page) :
+        if(!empty($general_settings['show_login_icon']) && !empty($general_settings['custom_login_url']) && $is_valid_page) :
             ?>
             <div class="login_icon_footer">
                 <a href="<?php echo esc_url($general_settings['custom_login_url']); ?>">
