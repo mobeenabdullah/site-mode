@@ -1,0 +1,72 @@
+{
+  "apiVersion": 2,
+  "name": "site-mode/countdown",
+  "title": "Site Mode Countdown",
+  "category": "widgets",
+  "icon": "clock",
+  "description": "A countdown timer for site mode.",
+  "keywords": [
+	"timer",
+	"site mode",
+	"countdown"
+  ],
+  "supports": {
+	"html": false
+  },
+  "textdomain": "site-mode",
+  "editorScript": "file:./build/index.js",
+  "editorStyle": "file:./build/index.css",
+  "style": "file:./build/style-index.css",
+  "attributes": {
+	"bgColor": {
+	  "type": "string",
+	  "default": "#ffffff"
+	},
+  	"background": {
+		"type": "boolean",
+		"default": true
+	},
+  	"border": {
+	  "type": "boolean",
+	  "default": true
+	},
+	"numberColor": {
+	  "type": "string",
+	  "default": "#000000"
+	},
+  	"labelColor" :{
+	  "type": "string",
+	  "default": "#000000"
+	},
+  	"borderColor" :{
+	  "type": "string",
+	  "default": "#ffffff"
+  	},
+  	"separatorColor" :{
+	   "type": "string",
+	   "default": "#ffffff"
+	},
+	"dueDate": {
+	  "type": "string",
+	  "default": ""
+	},
+	"showSeperator" : {
+	  "type": "boolean",
+	  "default": true
+	},
+	"preset": {
+	  "type": "string",
+	  "default": "default-countdown"
+	},
+  	"timeUnits" : {
+		"type": "array",
+		"default": [
+			"days",
+			"hours",
+			"minutes",
+			"seconds"
+		]
+	}
+  }
+}
+

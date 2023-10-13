@@ -32,27 +32,19 @@
 						'icon'  => '<i class="fa-solid fa-gear"></i>',
 					],
 					[
-						'title' => 'Content',
-						'icon'  => '<i class="fa-solid fa-align-left"></i>',
-					],
-					[
-						'title' => 'Social',
-						'icon'  => '<i class="fa-solid fa-share-nodes"></i>',
-					],
-					[
-						'title' => 'Design',
-						'icon'  => '<i class="fa-solid fa-palette"></i>',
-					],
-					[
 						'title' => 'SEO',
 						'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
 					],
+                    [
+                        'title' => 'Integrations',
+                        'icon'  => '<i class="fa-solid fa-code-compare"></i>',
+                    ],
 					[
 						'title' => 'Advanced',
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					],
 				];
-				$active_tab     = isset( $_GET['tab'] ) ?  sanitize_text_field( strtolower($_GET['tab']) ) : 'general';
+				$active_tab     = isset( $_GET['setting'] ) ?  sanitize_text_field( strtolower($_GET['setting']) ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
@@ -60,7 +52,7 @@
 					?>
 					<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
 						<span class="menu_icon"><?php $this->wp_kses_svg( $site_mode_tab['icon'] ); ?> </span>
-						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title'], 'site-mode' ); ?></span>
+						<span class="menu_label"><?php echo esc_html( $site_mode_tab['title']); ?></span>
 					</li>
 					<?php
 				endforeach;
@@ -76,7 +68,7 @@
 			?>
 				<div id="<?php esc_attr_e( $tab_id ); ?>" class="<?php esc_attr_e( $tab_class ); ?>">
 					<?php
-					require_once plugin_dir_path( dirname( __FILE__ ) ) . "classes/class-site-mode-{$tab_name}.php";
+					require_once SITE_MODE_ADMIN . "classes/class-site-mode-{$tab_name}.php";
 					$class_name = 'Site_Mode_' . ucfirst( $tab_name );
 					$class      = new $class_name();
 					$class->render();

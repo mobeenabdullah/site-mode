@@ -1,0 +1,111 @@
+/*-----------------------------------------------------
+1.  General Styling
+    a.  CSS Root Variables
+    b.  Hide admin controls
+    c.  Remove extra margin and padding from content
+    d.  Wizard General Styling
+    e.  Main container
+    f.  General CSS
+-----------------------------------------------------*/
+
+/*  a.   CSS Root Variables */
+:root {
+  @each $color, $value in $wizardColor {
+    --#{$color}: #{$value};
+  }
+}
+
+/*  b. Hide admin controls */
+.sm__wizard-mode #wpfooter,
+.sm__wizard-mode #wpadminbar,
+.sm__wizard-mode .notice,
+.sm__wizard-mode .wrap .error,
+.sm__wizard-mode .wrap .notice,
+.sm__wizard-mode .wrap .updated,
+.sm__wizard-mode #adminmenumain,{
+  display: none !important;
+}
+
+/*  c.  Remove extra margin and padding from content */
+.sm__wizard-mode #wpcontent {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/*  d.  Wizard General Styling */
+.sm__wizard-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  z-index: 200;
+}
+
+/* e. Main container */
+.wizard_container {
+  max-width: calc(clamp(35rem, -2.607rem + 86.952vw, 75.65rem));
+  width: 100%;
+  margin: 0 auto;
+  @media screen and (max-width: 540px) {
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+  }
+}
+
+/*  f.  General CSS */
+.wizard__content {
+  width: 100%;
+  min-height: 100vh;
+  background-color: var(--wd-bg-color);
+}
+html {
+  padding-top: 0 !important;
+}
+
+/* g. Utilities */
+@each $color-class in $color-scheme-classes {
+  .#{$color-class}-primary {
+    background-color: var(--#{$color-class}--preset--color--primary);
+  }
+  .#{$color-class}-secondary {
+    background-color: var(--#{$color-class}--preset--color--secondary);
+  }
+  .#{$color-class}-base {
+    background-color: var(--#{$color-class}--preset--color--base);
+  }
+  .#{$color-class}-contrast {
+    background-color: var(--#{$color-class}--preset--color--contrast);
+  }
+  .#{$color-class}-tertiary {
+    background-color: var(--#{$color-class}--preset--color--tertiary);
+  }
+}
+
+.wizard_show_mobile {
+  display: none !important;
+}
+.wizard_show_desktop {
+  display: block !important;
+}
+
+.sm_add_scroll {
+  overflow: hidden;
+}
+
+@media screen and (max-width: 767px) {
+  .sm__wizard-mode.toplevel_page_site-mode #wpcontent {
+    padding: 0 !important;
+  }
+  .wizard_show_mobile {
+    display: block !important;
+  }
+  .wizard_show_desktop {
+    display: none !important;
+  }
+}
+
+.site-mode-admin-bar {
+  color: var(--wd-base-white-color);
+}

@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.3
+ * @since      1.0.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      0.0.3
+ * @since      1.0.0
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -33,7 +33,7 @@ class Site_Mode {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      Site_Mode_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -43,7 +43,7 @@ class Site_Mode {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -52,7 +52,7 @@ class Site_Mode {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -60,8 +60,6 @@ class Site_Mode {
 	protected $classes_loader = '';
 
 	protected $utilities = '';
-
-	protected $site_mode_general = '';
 
 	protected $status = '';
 
@@ -74,14 +72,14 @@ class Site_Mode {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 */
 	public function __construct() {
 
 		if ( defined( 'SITE_MODE_VERSION' ) ) {
 			$this->version = SITE_MODE_VERSION;
 		} else {
-			$this->version = '0.0.3';
+			$this->version = '1.0.0';
 		}
 		$this->plugin_name = 'site-mode';
 
@@ -106,46 +104,51 @@ class Site_Mode {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
+
+        /**
+         * This is responsible for loading all blocks
+         */
+        require_once SITE_MODE_BLOCKS . 'init.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-loader.php';
+		require_once SITE_MODE_INC . 'class-site-mode-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-site-mode-i18n.php';
+		require_once SITE_MODE_INC . 'class-site-mode-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-site-mode-admin.php';
+		require_once SITE_MODE_ADMIN . 'class-site-mode-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/classes/class-plugin-menu.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-plugin-menu.php';
 
 		/**
 		 * The class responsible for defining advanced settings page of the plugin
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . '/admin/classes/class-site-mode-advanced.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/template-load.php';
+		require_once SITE_MODE_INC . 'template-load.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-site-mode-public.php';
+		require_once SITE_MODE_PUBLIC . 'class-site-mode-public.php';
 
 		$this->loader = new Site_Mode_Loader();
 
@@ -157,7 +160,7 @@ class Site_Mode {
 	 * Uses the Site_Mode_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -172,7 +175,7 @@ class Site_Mode {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -180,31 +183,35 @@ class Site_Mode {
 		$plugin_admin         = new Site_Mode_Admin( $this->get_plugin_name(), $this->get_version() );
 		$this->classes_loader = new init();
 
+        $this->loader->add_action( 'init', $plugin_admin, 'sm_plugin_redirect' );
+        $this->loader->add_action( 'wp_before_admin_bar_render', $plugin_admin, 'sm_admin_bar' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
+        $this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
-		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
+        $this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 
-		// ajax calling
+        // Adding FSE Theme Styles in Site Mode Template
+        $this->loader->add_action( 'wpsm_head', $plugin_admin, 'sm_remember_fse_style' );
+        $this->loader->add_action( 'wpsm_footer', $plugin_admin, 'sm_fse_style' );
 
-		// general
+        // Add Site Mode Color palette
+        $this->loader->add_filter( 'wp_theme_json_data_theme', $plugin_admin, 'site_mode_filter_theme_json_theme' );
+
+        //Add body class
+        $this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
+
+        /**
+         * Ajax calling
+         */
+        $this->loader->add_filter( 'theme_page_templates', $plugin_admin, 'add_maintenance_template' );
+        $this->loader->add_filter( 'template_include', $plugin_admin, 'use_maintenance_template' );
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_skip_wizard', $this->classes_loader->get_design(), 'ajax_site_mode_skip_wizard' );
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_template_init', $this->classes_loader->get_design(), 'ajax_site_mode_template_init' );
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_page_setup', $this->classes_loader->get_design(), 'ajax_site_mode_page_setup' );
+        $this->loader->add_action( 'wp_ajax_ajax_site_mode_intergrations', $this->classes_loader->get_integrations(), 'ajax_site_mode_intergrations' );
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
-
-		// content
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_content', $this->classes_loader->get_content(), 'ajax_site_mode_content' );
-
-		// social
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_social', $this->classes_loader->get_social(), 'ajax_site_mode_social' );
-
-		// design
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design', $this->classes_loader->get_design(), 'ajax_site_mode_design' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_lb', $this->classes_loader->get_design(), 'ajax_site_mode_design_lb' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_font', $this->classes_loader->get_design(), 'ajax_site_mode_design_font' );
-		$this->loader->add_action( 'wp_ajax_ajax_site_mode_design_social', $this->classes_loader->get_design(), 'ajax_site_mode_design_social' );
-
-		// SEO settings
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );
-		// advanced settings
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_advanced', $this->classes_loader->get_advanced(), 'ajax_site_mode_advanced' );
 
 	}
@@ -213,7 +220,7 @@ class Site_Mode {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -222,6 +229,7 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'rest_authentication_errors', $this->classes_loader->get_advanced(), 'site_mode_rest_api' );
+        $this->loader->add_action( 'wp_footer', $plugin_public, 'add_login_icon' );
 
 		// feeds
 		$this->loader->add_action( 'do_feed', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed' );
@@ -232,11 +240,12 @@ class Site_Mode {
 		$this->loader->add_action( 'do_feed_rss2_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_atom_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 
-		// redirect template
+		// Template load
 		$template_load = new Template_Load();
 
-		// check if the values are set or not and then assign them to the variables
-		$this->loader->add_action( 'template_redirect', $template_load, 'template_initialize' );
+        if($template_load->is_site_mode_active()) {
+            $this->loader->add_filter( 'pre_option_page_on_front', $template_load, 'pre_option_redirect_page');
+        }
 
 	}
 
@@ -249,7 +258,7 @@ class Site_Mode {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    0.0.3
+	 * @since    1.0.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -259,7 +268,7 @@ class Site_Mode {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     0.0.3
+	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -269,7 +278,7 @@ class Site_Mode {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     0.0.3
+	 * @since     1.0.0
 	 * @return    Site_Mode_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -279,7 +288,7 @@ class Site_Mode {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     0.0.3
+	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

@@ -1,0 +1,17 @@
+.about__wrapper {
+  padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) 0;
+  &-cover {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    &--left {
+      width: 100%;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
+      & p {
+        font-size: calc(clamp(0.875rem, 0.696rem + 0.476vw, 1.125rem));
+      }
+    }
+  }
+}

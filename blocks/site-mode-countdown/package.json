@@ -1,0 +1,45 @@
+{
+	"name": "site-mode-countdown",
+	"version": "0.0.3",
+	"description": "Site Mode Countdown Block",
+	"author": "Mobeen Abdullah",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format": "wp-scripts format && stylelint \"**/*.scss\" --fix",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start",
+		"packages-update": "wp-scripts packages-update"
+	},
+	"prettier": "@wordpress/prettier-config",
+	"stylelint": {
+		"extends": "@wordpress/stylelint-config/scss"
+	},
+	"lint-staged": {
+		"*.js": [
+			"wp-scripts lint-js",
+			"wp-scripts format"
+		],
+		"*.scss": "npx stylelint --fix"
+	},
+	"dependencies": {
+		"@wordpress/block-editor": "^8.0.11",
+		"@wordpress/blocks": "^11.1.4",
+		"@wordpress/components": "^25.3.0",
+		"@wordpress/data": "^9.7.0",
+		"@wordpress/date": "^4.37.0",
+		"@wordpress/element": "^5.14.0",
+		"@wordpress/i18n": "^4.2.4",
+		"react-countdown": "^2.3.5"
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^9.3.0",
+		"@wordpress/prettier-config": "^1.1.1",
+		"@wordpress/scripts": "^19.2.2",
+		"@wordpress/stylelint-config": "^19.1.0",
+		"eslint-config-prettier": "^8.3.0",
+		"lint-staged": "^12.1.3"
+	}
+}

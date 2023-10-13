@@ -5,7 +5,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      0.0.3
+ * @since      1.0.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -16,7 +16,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      0.0.3
+ * @since      1.0.0
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -24,14 +24,31 @@
 class Settings {
 
 	public function save_data( $option_name, $data ) {
-		$data = serialize( $data );
-		update_option( $option_name, $data );
-		wp_send_json_success( unserialize( get_option( $option_name ) ) );
+        update_option( $option_name, $data );
+
+        if(empty(get_option('sm-fresh-installation')) && $option_name == 'site_mode_design') {
+            update_option('sm-fresh-installation', true);
+
+            wp_send_json_success([
+                'page_link'             => urldecode(get_edit_post_link(intval($data['page_setup']['active_page']))),
+                'message'               => 'Template has been initialized successfully.',
+                'fresh_installation'    => true,
+                'template_name'         => str_replace("-"," ",$data['template']),
+            ]);
+        } elseif($option_name == 'site_mode_design') {
+            wp_send_json_success([
+                'tab'       => 'design',
+                'status'    => !empty($data['page_setup']['active_page']),
+                'message'   => 'Settings has been saved successfully.',
+                'page_link' => urldecode(get_edit_post_link(intval($data['page_setup']['active_page']))),
+            ]);
+        } else {
+            wp_send_json_success( get_option( $option_name ) );
+        }
 	}
 
 	public function get_data( $option_name ) {
 		$data = get_option( $option_name );
-		$data = unserialize( $data );
 		return $data;
 	}
 
@@ -58,7 +75,7 @@ class Settings {
 	}
 
 	public function display_settings_page( $page_name ) {
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . "partials/{$page_name}-setting-page.php";
+		require_once SITE_MODE_ADMIN . "partials/{$page_name}-setting-page.php";
 	}
 
 	public function wp_kses_svg( $svg_content ) {

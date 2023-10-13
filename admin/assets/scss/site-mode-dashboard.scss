@@ -1,0 +1,24 @@
+@import './dashboard/variables';
+@import './dashboard/functions';
+@import './dashboard/mixins';
+@import './dashboard/general';
+@import './dashboard/general-old';
+@import './dashboard/dashboard';
+@import './dashboard/header';
+@import './dashboard/template';
+@import './dashboard/about-us';
+@import './dashboard/toggle';
+
+@import 'dashboard/navbar';
+@import './components/simple-checkbox';
+@import './components/simple-radio';
+@import './components/select';
+@import './components/multiselect';
+@import './components/input';
+@import './components/toggle';
+@import './components/textarea';
+@import './components/drag-drop';
+@import './components/tabs';
+@import './components/toast';
+@import './components/rang-slider';
+@import './components/color-pickr';

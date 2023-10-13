@@ -1,0 +1,72 @@
+.sm__btn {
+  padding: calc(clamp(0.375rem, 0.196rem + 0.476vw, 0.625rem)) calc(clamp(0.875rem, 0.563rem + 0.833vw, 1.313rem));
+  background-color: var(--wd-light-gray-1-color);
+  border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
+  cursor: pointer;
+  line-height: 1;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color .2s ease-in-out;
+  &.primary_button {
+    background-color: var(--wd-primary-color);
+    color: var(--wd-base-white-color);
+  }
+  &.primary_btn_outline {
+    background-color: transparent;
+    border-color: var(--wd-primary-color);
+    color: var(--wd-primary-color);
+    & svg {
+      display: flex;
+      & path {
+        fill: var(--wd-primary-color);
+      }
+    }
+    &:hover {
+      background-color: var(--wd-primary-color);
+      color: var(--wd-base-white-color);
+      border-color: var(--wd-primary-color);
+      & svg {
+        & path {
+          fill: var(--wd-base-white-color);
+        }
+      }
+    }
+  }
+  &.secondary_btn_outline {
+    background-color: transparent;
+    border-color: var(--wd-base-black-color);
+    color: var(--wd-base-black-color);
+    & svg {
+      display: flex;
+      & path {
+        fill: var(--wd-base-black-color);
+      }
+    }
+    &:hover {
+      background-color: var(--wd-base-black-color);
+      color: var(--wd-base-white-color);
+      border-color: var(--wd-base-black-color);
+      & svg {
+        & path {
+          fill: var(--wd-base-white-color);
+        }
+      }
+    }
+  }
+  &.sm_disabled_btn {
+    background-color: var(--wd-gray-1-color);
+    color: var(--wd-border-color);
+    cursor: not-allowed;
+    & svg {
+      & path {
+        fill: var(--wd-border-color) !important;
+      }
+    }
+  }
+  &.block_btn {
+    width: 100%;
+  }
+}

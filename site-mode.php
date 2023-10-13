@@ -9,14 +9,14 @@
  * that starts the plugin.
  *
  * @link              https://mobeenabdullah.com
- * @since             0.0.3
+ * @since             1.0.0
  * @package           Site_Mode
  *
  * @wordpress-plugin
- * Plugin Name:       Site Mode - Coming Soon, Maintenance Mode & Under Construction Page
- * Plugin URI:        https://site-mode.com
- * Description:       Create a beautiful Coming Soon page, switch to Maintenance Mode or Under Construction page with ease for your WordPress site
- * Version:           0.0.3
+ * Plugin Name:       Site Mode - Coming Soon Page, Maintenance Mode & Under Construction Page
+ * Plugin URI:        https://github.com/mobeenabdullah/site-mode
+ * Description:       Create a beautiful Coming Soon page or switch to Maintenance Mode with ease for your WordPress site
+ * Version:           1.0.0
  * Author:            Mobeen Abdullah
  * Author URI:        https://github.com/mobeenabdullah
  * License:           GPL-2.0+
@@ -33,14 +33,22 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'SITE_MODE_VERSION', '0.0.3' );
+define( 'SITE_MODE_VERSION',    '1.0.0' );
+define('SITE_MODE_PATH',        plugin_dir_path( __FILE__ ));
+define('SITE_MODE_INC',         SITE_MODE_PATH . 'includes/');
+define('SITE_MODE_ADMIN',       SITE_MODE_PATH . 'admin/');
+define('SITE_MODE_BLOCKS',      SITE_MODE_PATH . 'blocks/');
+define('SITE_MODE_PUBLIC',      SITE_MODE_PATH . 'public/');
+define('SITE_MODE_ADMIN_URL',   plugin_dir_url(__FILE__ ) . 'admin/');
+define('SITE_MODE_PUBLIC_URL',  plugin_dir_url( __FILE__ ) . 'public/');
+
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-site-mode-activator.php
  */
 function activate_site_mode() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-activator.php';
+	require_once SITE_MODE_INC . 'class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
 }
 
@@ -49,7 +57,7 @@ function activate_site_mode() {
  * This action is documented in includes/class-site-mode-deactivator.php
  */
 function deactivate_site_mode() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-site-mode-deactivator.php';
+	require_once SITE_MODE_INC . 'class-site-mode-deactivator.php';
 	Site_Mode_Deactivator::deactivate();
 }
 
@@ -60,7 +68,7 @@ register_deactivation_hook( __FILE__, 'deactivate_site_mode' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-site-mode.php';
+require SITE_MODE_INC . 'class-site-mode.php';
 
 /**
  * Begins execution of the plugin.
@@ -69,7 +77,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-site-mode.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    0.0.3
+ * @since    1.0.0
  */
 
 

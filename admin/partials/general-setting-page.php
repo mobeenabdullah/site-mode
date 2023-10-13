@@ -1,60 +1,5 @@
 <div class="site_mode__wrap-form">
 	<form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="status"><?php esc_html_e( 'Status', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Enable to display the maintenance page on your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_checkbox_wrapper">
-					<input type="checkbox" id="status" name="site-mode-mode-status" value="1" <?php checked( 1, $this->mode_status, true ); ?> />
-					<label for="status"></label>
-				</div>
-			</div>
-		</div>
-
-		<!-- Mode Setting -->
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="site_mode"><?php esc_html_e( 'Mode Type', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Select the appropriate Mode type to specify the desired server response and behavior for your website', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<div class="sm_select">
-					<select name="site-mode-mode-type" id="site_mode">
-						<option value="maintenance" <?php selected( $this->mode_type === 'maintenance', 1 ); ?>><?php esc_html_e( 'Maintenance - Returns HTTP 200 OK response', 'site-mode' ); ?></option>
-						<option value="coming-soon" <?php selected( $this->mode_type === 'coming-soon', 1 ); ?>><?php esc_html_e( 'Coming Soon - Returns 503 HTTP Service response', 'site-mode' ); ?></option>
-						<option value="redirect" <?php selected( $this->mode_type === 'redirect', 1 ); ?> id="direct-item"><?php esc_html_e( 'Redirect - Returns HTTP 301 response and redirect to a URL', 'site-mode' ); ?></option>
-					</select>
-					<span class="arrow-down"></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="redirect_options <?php echo ( $this->mode_type === 'redirect' ) ? '' : 'sm_hide_field'; ?>">
-			<div class="option__row">
-				<div class="option__row--label">
-					<span><label for="redirect_url"><?php esc_html_e( 'Redirect URL', 'site-mode' ); ?></label></span>
-					<span class="info_text"><?php esc_html_e( 'Specify the URL to which the site should be redirected by entering it in the field', 'site-mode' ); ?></span>
-				</div>
-				<div class="option__row--field">
-					<div class="sm_input_cover">
-						<input type="text" id="redirect_url" name="site-mode-redirect-url" value="<?php echo esc_attr( $this->redirect_url ); ?>" <?php checked( 1, $this->redirect_url, true ); ?> />
-					</div>
-				</div>
-			</div>
-			<div class="option__row">
-				<div class="option__row--label">
-					<span><label for="delay_seconds"><?php esc_html_e( 'Delay (seconds)', 'site-mode' ); ?></label></span>
-					<span class="info_text"><?php esc_html_e( 'Enter the number of seconds to delay the redirection in the range of 0-10 seconds', 'site-mode' ); ?></span>
-				</div>
-				<div class="option__row--field">
-					<div class="sm_input_cover">
-						<input type="number" min="0" max="10" id="delay_seconds" class="number" data-inc="1" name="site-mode-redirect-delay" value="<?php echo esc_attr( $this->redirect_delay ); ?>" <?php checked( 1, $this->redirect_delay, true ); ?> />
-					</div>
-				</div>
-			</div>
-		</div>
 
 		<!-- Logo Setting -->
 		<div class="option__row">
@@ -63,10 +8,10 @@
 				<span class="info_text"><?php esc_html_e( 'Enable this option to easily access the login page URL directly from the icon on the front page of your website', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
-				<div class="sm_checkbox_wrapper">
-					<input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-show-login-icon" value="1" <?php checked( 1, $this->show_login_icon, true ); ?> />
-					<label for="login_icon"></label>
-				</div>
+                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
+                    <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-show-login-icon" value="1" <?php checked( 1, $this->show_login_icon, true ); ?> />
+                    <label class="toggle" for="login_icon"></label>
+                </span>
 			</div>
 		</div>
 		<div class="login_url_field <?php echo ( ! empty( $this->show_login_icon ) ) ? '' : 'sm_hide_field'; ?>">
@@ -77,50 +22,9 @@
 				</div>
 				<div class="option__row--field">
 					<div class="sm_input_cover">
-						<input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr( $this->custom_login_url ); ?>" placeholder="<?php echo esc_attr( site_url() ); ?>/login/" />
+						<input type="text" id="redirect_url_field" name="site-mode-custom-login-url" value="<?php echo esc_attr( $this->custom_login_url ); ?>" placeholder="<?php echo esc_attr( site_url() ); ?>/wp-login.php" />
 					</div>
 				</div>
-			</div>
-		</div>
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><label for="whitelist_include"><?php esc_html_e( 'Whitelist Pages', 'site-mode' ); ?></label></span>
-				<span class="info_text"><?php esc_html_e( 'Exclude these pages from displaying the maintenance page', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<?php $all_pages = get_pages(); ?>
-				<div class="sm_select">
-					<select class="whitelist-pages-multiselect" name="site-mode-whitelist-pages[]" multiple="multiple" id="whitelist_include">
-						<?php
-						foreach ( $all_pages as $value ) :
-							if ( in_array( $value->ID, $this->whitelist_pages ) ) {
-								$selected = 'selected';
-							} else {
-								$selected = '';
-							}
-							?>
-							<option value="<?php echo esc_attr( $value->ID ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html_e( $value->post_name ); ?></option>
-						<?php endforeach; ?>
-					</select>
-					<span class="arrow-down"></span>
-				</div>
-			</div>
-		</div>
-
-		<div class="option__row">
-			<div class="option__row--label">
-				<span><?php esc_html_e( 'Whitelist User Roles', 'site-mode' ); ?></span>
-				<span class="info_text"><?php esc_html_e( 'Exclude these user roles from viewing the maintenance page', 'site-mode' ); ?></span>
-			</div>
-			<div class="option__row--field">
-				<?php global $wp_roles; ?>
-				<?php foreach ( $wp_roles->roles as $key => $value ) : ?>
-				<div class="sm_checkbox_wrapper role_checkbox">
-					<?php $checked = ( in_array( $key, $this->user_roles ) ) ? 'checked' : ''; ?>
-					<input type="checkbox" id="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>" name="site-mode-user-roles[]" value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $checked ); ?> />
-					<label for="<?php echo esc_attr( $value['name'] ) . '-' . esc_attr( $key ); ?>"><?php echo esc_html( $value['name'] ); ?></label>
-				</div>
-				<?php endforeach; ?>
 			</div>
 		</div>
 

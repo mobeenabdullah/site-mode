@@ -1,0 +1,113 @@
+// Colors
+$dashboard-primary-color: #fe4773 !default;
+$dashboard-primary-light:#ffedf1 !default;
+$dashboard-bas-color:#ffffff !default;
+$dashboard-contrast-color:#000000 !default;
+
+
+// Background Colors
+$header-bg: #F9F9F9 !default;
+
+// Border Colors
+$seperator-color: #EEEEEE !default;
+
+
+
+$dashboard-colors: (
+        'primary-color': $dashboard-primary-color,
+        'primary-light-color': $dashboard-primary-light,
+        'header-bg': $header-bg,
+        'base-color': $dashboard-bas-color,
+        'contrast-color': $dashboard-contrast-color,
+        'seperator-color': $seperator-color
+) !default;
+
+
+// Old variables
+//  1. General variables
+$base-font-family: 'Open Sans', sans-serif !default;
+$base-html-font: 62.5%;
+
+//  2. Colors variables
+//$primary-color: #6F73D2 !default;
+$primary-color: #fe4773 !default;
+$primary-light:#ffedf1 !default;
+$setting-page-bg: #F7F8FE !default;
+$secondary-color:  #202020 !default;
+$base-white-color: #ffffff !default;
+$base-black-color: #141414 !default;
+$error-color: #dc3545 !default;
+$success-color: #fe4773 !default;
+$input-border: #cfd7e2 !default;
+$input-focus-border: #7c8db5 !default;
+$social-media-color: #F6F7FE !default;
+$social-media-border: #cbd6e5 !default;
+
+
+// Sidebar colors
+$sidebar-title: #2b3e73 !default;
+$sidebar-border: #EDEFF7 !default;
+
+// 3. Colors Array for root css variables
+$colors: (
+        'primary-color': $primary-color,
+        'primary-light-color': $primary-light,
+        'secondary-color': $secondary-color,
+        'base-white-color': $base-white-color,
+        'base-black-color': $base-black-color,
+        'toast-base-color': $primary-color,
+        'toast-icon-bg': $secondary-color,
+        'toast-text-color': $base-white-color,
+        'toast-error-color': $error-color,
+        'button-bg-color': $primary-color,
+        'button-border-color': $primary-color,
+        'sidebar-title-color': $sidebar-title,
+        'sidebar-border-color': $sidebar-border,
+        'input-border-color': $input-border,
+        'input-focus-border-color': $input-focus-border,
+        'setting-page-bg-color': $setting-page-bg,
+        'social-media-color': $social-media-color,
+        'social-media-border': $social-media-border,
+) !default;
+
+$font-families: (
+        'open-sans': $base-font-family,
+) !default;
+
+//  4. Buttons variables
+$btn-bg-color: $primary-color;
+$btn-border-color: $primary-color;
+$btn-border-width: 1px;
+$btn-padding: 0.4rem 1.5rem 0.5rem 1.5rem;
+$btn-radius: 0.2rem;
+$btn-font-size: 0.6rem;
+$btn-line-height: 1.5;
+
+//  5. Transition variables
+$transition-all: all 0.2s;
+
+//  6. Borders variables
+$border-width: 1px;
+$border-radius-50: 50%;
+
+
+//  7. Checkbox/Radio variables
+$checkbox-width-height: 19px;
+$checkbox-width-before: $checkbox-width-height;
+$checkbox-height-before: $checkbox-width-height;
+$checkbox-width-after: $checkbox-width-height;
+$checkbox-height-after: $checkbox-width-height;
+$checkbox-mark-top: $border-width + 3;
+$padding-top-bottom: $checkbox-width-height / 3;
+$padding-left-right: $checkbox-width-height + 20px;
+
+//  8. Form fields variables
+$input-bottom-spacing: 1.5rem;
+$width: 2.5rem;
+$height: $width/2;
+$form-fields-width: 20rem;
+$form-fields-height: 3rem;
+$form-field-border-radius: .25rem;
+$form-field-padding: 0 1em;
+$form-field-font-size: 14px;
+$outline-width: $border-width;

@@ -1,0 +1,42 @@
+{
+  "label": "Color Scheme",
+  "__file": "wp_export",
+  "version": 2,
+  "content": {
+    "default" : {
+      "base" : "white",
+      "primary": "#4D34FA",
+      "contrast": "black"
+    },
+    "preset1" : {
+      "base" : "white",
+      "primary": "#FFBF42",
+      "contrast": "black"
+    },
+    "preset2" : {
+      "base" : "white",
+      "primary": "#00796A",
+      "contrast": "#000000"
+    },
+    "preset3" : {
+      "base" : "white",
+      "primary": "#1E1926",
+      "contrast": "black"
+    },
+    "preset4" : {
+      "base" : "white",
+      "primary": "#AD3A5B",
+      "contrast": "#000000"
+    },
+    "preset5" : {
+      "base" : "white",
+      "primary": "#BD5A42",
+      "contrast": "black"
+    },
+    "preset6" : {
+      "base" : "white",
+      "primary": "#7700B3",
+      "contrast": "black"
+    }
+  }
+}

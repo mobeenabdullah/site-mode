@@ -1,0 +1,113 @@
+//  default-scheme
+$default-primary-color: #4D34FA !default;
+$default-base-color: #ffffff !default;
+$default-black-color: #000000 !default;
+
+$defaultColors: (
+        '--default--preset--color--base': $default-base-color,
+        '--default--preset--color--primary': $default-primary-color,
+        '--default--preset--color--contrast': $default-black-color,
+
+) !default;
+
+// Preset 1
+$p1-primary-color: #FFBF42 !default;
+$p1-base-color: #ffffff !default;
+$p1-black-color: #000000 !default;
+
+$preset1Colors: (
+        '--p1--preset--color--base': $p1-base-color,
+        '--p1--preset--color--primary': $p1-primary-color,
+        '--p1--preset--color--contrast': $p1-black-color,
+
+) !default;
+
+// Preset 2
+$p2-primary-color: #00796A !default;
+$p2-base-color: #ffffff !default;
+$p2-black-color: #000000 !default;
+
+$preset2Colors: (
+        '--p2--preset--color--base': $p2-base-color,
+        '--p2--preset--color--primary': $p2-primary-color,
+        '--p2--preset--color--contrast': $p2-black-color,
+
+) !default;
+
+// Preset 3
+$p3-primary-color: #1E1926 !default;
+$p3-base-color: #ffffff !default;
+$p3-black-color: #000000 !default;
+
+$preset3Colors: (
+        '--p3--preset--color--base': $p3-base-color,
+        '--p3--preset--color--primary': $p3-primary-color,
+        '--p3--preset--color--contrast': $p3-black-color,
+
+) !default;
+
+// Preset 4
+$p4-primary-color: #AD3A5B !default;
+$p4-base-color: #ffffff !default;
+$p4-black-color: #000000 !default;
+
+$preset4Colors: (
+        '--p4--preset--color--base': $p4-base-color,
+        '--p4--preset--color--primary': $p4-primary-color,
+        '--p4--preset--color--contrast': $p4-black-color,
+
+) !default;
+
+// Preset 5
+$p5-primary-color: #BD5A42 !default;
+$p5-base-color: #ffffff !default;
+$p5-black-color: #000000 !default;
+
+$preset5Colors: (
+        '--p5--preset--color--base': $p5-base-color,
+        '--p5--preset--color--primary': $p5-primary-color,
+        '--p5--preset--color--contrast': $p5-black-color,
+
+) !default;
+
+// Preset 6
+$p6-primary-color: #7700B3 !default;
+$p6-base-color: #ffffff !default;
+$p6-black-color: #000000 !default;
+
+$preset6Colors: (
+        '--p6--preset--color--base': $p6-base-color,
+        '--p6--preset--color--primary': $p6-primary-color,
+        '--p6--preset--color--contrast': $p6-black-color,
+
+) !default;
+
+:root {
+  @each $color, $value in $defaultColors {
+    #{$color}: #{$value} !important;
+  }
+
+  @each $color, $value in $preset1Colors {
+    #{$color}: #{$value} !important;
+  }
+
+  @each $color, $value in $preset2Colors {
+    #{$color}: #{$value} !important;
+  }
+
+  @each $color, $value in $preset3Colors {
+    #{$color}: #{$value} !important;
+  }
+
+  @each $color, $value in $preset4Colors {
+    #{$color}: #{$value} !important;
+  }
+
+  @each $color, $value in $preset5Colors {
+    #{$color}: #{$value} !important;
+  }
+  @each $color, $value in $preset6Colors {
+    #{$color}: #{$value} !important;
+  }
+}
+

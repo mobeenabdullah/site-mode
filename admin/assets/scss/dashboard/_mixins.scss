@@ -1,0 +1,44 @@
+//--------------------------------------------------------------------------
+//  Mixins
+//  1.  Font size mixin
+//  2.  Box Shadow mixin
+//  3.  Border mixin
+//  4.  Flex mixin
+//--------------------------------------------------------------------------
+
+//  1.  Font size mixin
+@mixin fontSize($size) {
+  font-size: $size; //Fallback in px
+  font-size: calculateRem($size);
+}
+
+//  2.  Box Shadow mixin
+@mixin box-shadow($x-axis: 0, $y-axis: 0, $blur: 0, $spread: $border-width, $color: rgba($input-focus-border, 0.5)) {
+  box-shadow: $x-axis $y-axis $blur $spread $color;
+}
+
+//  3.  Border mixin
+@mixin border($direction, $width, $style, $color) {
+  @if $direction == null {
+    border: $width $style $color;
+  } @else {
+    border-#{$direction}: $width $style $color;
+  }
+}
+
+//  4.  Flex mixin
+@mixin flex_mixin($display, $x, $y, $direction, $gap) {
+  display: $display;
+  align-items: $y;
+  justify-content: $x;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+// Clamp mixin
+@function clamp-calc($min-width, $max-width, $size-at-min-width, $size-at-max-width) {
+  $slope: ($size-at-max-width - $size-at-min-width) / ($max-width - $min-width);
+  $y-axis-intersection: -1 * $min-width * $slope + $size-at-min-width;
+  $return-value: clamp(#{$size-at-min-width}, #{$y-axis-intersection} + #{$slope} * 100vw, #{$size-at-max-width});
+  @return $return-value;
+}

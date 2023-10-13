@@ -1,0 +1,160 @@
+/*-----------------------------------------------------
+1.  Wizard Header
+    a.  Wizard Logo
+    b.  Wizard Steps
+    c.  Wizard Close
+-----------------------------------------------------*/
+
+/* 1.  Wizard Header */
+.sm__wizard-header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  background-color: var(--wd-base-white-color);
+  border-bottom: 1px solid var(--wd-border-color);
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr auto;
+    background-color: transparent;
+    border-bottom: none;
+    padding-bottom: 2rem;
+  }
+  /* a.   Wizard Logo */
+  &--logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: calc(clamp(1rem, 1rem + 0.391vw, 1.25rem));
+    border-right: 1px solid var(--wd-border-color);
+    @media screen and (max-width: 767px) {
+      order: 1;
+      background-color: var(--wd-base-white-color);
+    }
+    img {
+      display: block;
+      width: calc(clamp(3.75rem, 3.741rem + 13.685vw, 12.5rem));
+    }
+  }
+  /* b.   Wizard Steps */
+  &--steps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @media screen and (max-width: 767px) {
+      order: 3;
+      grid-column: 1 / -1;
+      padding: 2rem 1rem 0rem 1rem;
+    }
+    &-cover {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      @media screen and (max-width: 767px) {
+        gap: 0.5rem;
+      }
+      & .sm-step {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        @media screen and (max-width: 767px) {
+          gap: 0.5rem;
+        }
+        & .step_circle {
+          width: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+          height: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+          border: 1px solid var(--wd-gray-2-color);
+          border-radius: 50%;
+          position: relative;
+          flex-basis: calc(clamp(1.125rem, 1.125rem + 0vw, 1.125rem));
+          flex-shrink: 0;
+          flex-grow: 1;
+        }
+        & .step_label {
+          font-weight: 600;
+          color: var(--wd-gray-2-color);
+          font-size: calc(clamp(0.7rem, 0.657rem + 0.381vw, 1rem));
+          @media screen and (max-width: 767px) {
+            font-size: 0.6rem;
+          }
+        }
+        & .step_line {
+          width: calc(clamp(1.125rem, -0.304rem + 3.81vw, 3.125rem));
+          height: calc(clamp(0.063rem, 0.063rem + 0vw, 0.063rem));
+          background-color: var(--wd-gray-2-color);
+        }
+        &.active {
+          & .step_circle {
+            border-color: var(--wd-base-black-color);
+            &::before {
+              content: '';
+              width: calc(clamp(0.7rem, 0.7rem + 0vw, 0.7rem));
+              height: calc(clamp(0.7rem, 0.7rem + 0vw, 0.7rem));
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              background-color: var(--wd-base-black-color);
+              border-radius: 50%;
+              @media screen and (max-width: 767px) {
+                margin-left: 0.02rem;
+                margin-top: 0.01rem;
+              }
+            }
+          }
+          & .step_label {
+            color: var(--wd-base-black-color);
+          }
+          & .step_line {
+            background-color: var(--wd-base-black-color);
+          }
+        }
+      }
+    }
+  }
+
+  /* c.   Wizard Close */
+  &--close {
+    padding: calc(clamp(1rem, 1rem + 0.391vw, 1.25rem));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: calc(clamp(3.75rem, 3.748rem + 3.91vw, 6.25rem));
+    border-left: 1px solid var(--wd-border-color);
+    & .close_wizard_btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    &:hover {
+      & .sm_close_wizard {
+        & .close_wizard_btn {
+          & span {
+            display: flex;
+            & svg {
+              & path {
+                fill: var(--wd-primary-color);
+              }
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width: 767px) {
+      order: 2;
+      background-color: var(--wd-base-white-color);
+    }
+    & .sm_close_wizard {
+      & .close_wizard_btn {
+        display: block;
+        & svg {
+          display: block;
+          width: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
+          height: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
+        }
+      }
+    }
+  }
+}
+
+
+
+
+

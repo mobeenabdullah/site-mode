@@ -1,9 +1,8 @@
 <?php
-	$seo_info        = unserialize( get_option( 'site_mode_seo' ) );
-	$social          = unserialize( get_option( 'site_mode_social' ) );
-	$advance_content = unserialize( get_option( 'site_mode_advanced' ) );
-	$seo_image_url   = isset( $seo['meta_image'] ) ? wp_get_attachment_image_url( $seo['meta_image'], 'full' ) : '';
-	$favicon         = isset( $seo['meta_favicon'] ) ? wp_get_attachment_image_url( $seo['meta_favicon'], 'full' ) : '';
+	$seo_info               = get_option( 'site_mode_seo' );
+	$integrations_content   = get_option( 'site_mode_integrations' );
+	$seo_image_url          = isset( $seo['meta_image'] ) ? wp_get_attachment_image_url( $seo['meta_image'], 'full' ) : '';
+	$favicon                = isset( $seo['meta_favicon'] ) ? wp_get_attachment_image_url( $seo['meta_favicon'], 'full' ) : '';
 
 ?>
 
@@ -41,22 +40,22 @@
 	<?php endif; ?>
 
 	<?php
-	if ( ! empty( $advance_content['ga_id'] ) ) {
+	if ( ! empty( $integrations_content['ga_id'] ) ) {
 		?>
 
 			<!-- Google tag (gtag.js) -->
-			<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $advance_content['ga_id'] ); ?>"></script>
+			<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr( $integrations_content['ga_id'] ); ?>"></script>
 			<script>
 				window.dataLayer = window.dataLayer || [];
 				function gtag(){dataLayer.push(arguments);}
 				gtag('js', new Date());
 
-				gtag('config', '<?php echo esc_attr( $advance_content['ga_id'] ); ?>');
+				gtag('config', '<?php echo esc_attr( $integrations_content['ga_id'] ); ?>');
 			</script>
 
 			<?php
 	}
-	if ( ! empty( $advance_content['fb_id'] ) ) {
+	if ( ! empty( $integrations_content['fb_id'] ) ) {
 		?>
 
 			<script>
@@ -68,12 +67,12 @@
 					t.src=v;s=b.getElementsByTagName(e)[0];
 					s.parentNode.insertBefore(t,s)}(window, document,'script',
 					'https://connect.facebook.net/en_US/fbevents.js');
-				fbq('init', '<?php echo esc_attr( $advance_content['fb_id'] ); ?>');
+				fbq('init', '<?php echo esc_attr( $integrations_content['fb_id'] ); ?>');
 				fbq('track', 'PageView');
 			</script>
 			<noscript>
 				<img height="1" width="1" style="display:none"
-					 src="https://www.facebook.com/tr?id=<?php echo esc_attr( $advance_content['fb_id'] ); ?>&ev=PageView&noscript=1"/>
+					 src="https://www.facebook.com/tr?id=<?php echo esc_attr( $integrations_content['fb_id'] ); ?>&ev=PageView&noscript=1"/>
 			</noscript>
 			<?php
 	}
