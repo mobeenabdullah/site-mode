@@ -42,7 +42,6 @@ class Site_Mode_Design extends  Settings {
         'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
         'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
-
     ];
 
     public function __construct() {
@@ -115,7 +114,7 @@ class Site_Mode_Design extends  Settings {
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
         $subscriber_email = $this->get_post_data( 'subscriber_email', 'template_init_action', 'template_init_field', 'text' );
         $category  = $this->get_post_data( 'category', 'template_init_action', 'template_init_field', 'text' );
-        $this->sm_design_properties_init();
+        $this->sm_design_properties_init($category);
 
         if(!empty($subscriber_email)) {
             $this->add_subscriber_to_mailchimp_list($subscriber_email);
@@ -128,7 +127,6 @@ class Site_Mode_Design extends  Settings {
         $design_data = [
             'template'      => $template_name,
             'page_setup'    => $this->page_setup,
-            'preset'        => $this->color_scheme
         ];
 
         // check has maintaince page
@@ -138,9 +136,11 @@ class Site_Mode_Design extends  Settings {
         if($category === 'maintenance') {
             $design_data['page_setup']['maintenance_page_id'] = $page_id;
             $design_data['page_setup']['maintenance_template'] = $template_name;
+            $design_data['preset']['maintenance'] = $this->color_scheme;
         } else {
             $design_data['page_setup']['coming_soon_page_id'] = $page_id;
             $design_data['page_setup']['coming_soon_template'] = $template_name;
+            $design_data['preset']['coming_soon'] = $this->color_scheme;
         }
 
         $this->page_id    = $page_id;
@@ -208,15 +208,16 @@ class Site_Mode_Design extends  Settings {
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
                 $this->page_setup['maintenance_template'] = $template_name;
+                $design_data['preset']['maintenance'] = $this->color_scheme;
             } else {
                 $this->page_setup['coming_soon_page_id'] = $page_id;
                 $this->page_setup['coming_soon_template'] = $template_name;
+                $design_data['preset']['coming_soon'] = $this->color_scheme;
             }
 
             $design_data = [
                 'template'      => $template_name,
                 'page_setup'    => $this->page_setup,
-                'preset'        => $this->color_scheme
             ];
 
             $this->save_data( $this->option_name, $design_data );
@@ -352,13 +353,17 @@ class Site_Mode_Design extends  Settings {
     /**
      * @return void
      */
-    protected function sm_design_properties_init(): void {
+    protected function sm_design_properties_init($category): void {
         $this->get_template_props_init();
         $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
         $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
-        $this->color_scheme = $this->get_post_data('colorScheme', 'template_init_action', 'template_init_field', 'text');
+        $currentColorScheme = $this->get_post_data('colorScheme', 'template_init_action', 'template_init_field', 'text');
 
+        if($category === 'maintenance') {
+            $this->color_scheme['preset']['maintenance'] = $currentColorScheme;
+        } else {
+            $this->color_scheme['preset']['coming_soon'] = $currentColorScheme;
+        }
     }
-
 
 }
