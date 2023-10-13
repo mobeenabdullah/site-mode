@@ -246,9 +246,9 @@ class Site_Mode_Admin {
         $maintenance_page =  isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['maintenance_page_id']) && get_post_status($design_settings['page_setup']['maintenance_page_id']) === 'publish' ? $design_settings['page_setup']['maintenance_page_id'] : '' ;
         $coming_soon_page = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['coming_soon_page_id'])&& get_post_status($design_settings['page_setup']['coming_soon_page_id']) === 'publish' ? $design_settings['page_setup']['coming_soon_page_id'] : '';
 
-        if ($is_status_active == $maintenance_page) {
+        if ($is_status_active == $maintenance_page && isset($design_settings['preset']['maintenance'])) {
             $preset_scheme = $design_settings['preset']['maintenance'];
-        } elseif ($is_status_active == $coming_soon_page) {
+        } elseif ($is_status_active == $coming_soon_page && isset($design_settings['preset']['coming_soon'])) {
             $preset_scheme = $design_settings['preset']['coming_soon'];
         } else {
             $preset_scheme = 'default';

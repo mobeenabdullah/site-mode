@@ -127,6 +127,7 @@ class Site_Mode_Design extends  Settings {
         $design_data = [
             'template'      => $template_name,
             'page_setup'    => $this->page_setup,
+            'preset'        => $this->color_scheme
         ];
 
         // check has maintaince page
@@ -136,11 +137,9 @@ class Site_Mode_Design extends  Settings {
         if($category === 'maintenance') {
             $design_data['page_setup']['maintenance_page_id'] = $page_id;
             $design_data['page_setup']['maintenance_template'] = $template_name;
-            $design_data['preset']['maintenance'] = $this->color_scheme;
         } else {
             $design_data['page_setup']['coming_soon_page_id'] = $page_id;
             $design_data['page_setup']['coming_soon_template'] = $template_name;
-            $design_data['preset']['coming_soon'] = $this->color_scheme;
         }
 
         $this->page_id    = $page_id;
@@ -208,16 +207,15 @@ class Site_Mode_Design extends  Settings {
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
                 $this->page_setup['maintenance_template'] = $template_name;
-                $design_data['preset']['maintenance'] = $this->color_scheme;
             } else {
                 $this->page_setup['coming_soon_page_id'] = $page_id;
                 $this->page_setup['coming_soon_template'] = $template_name;
-                $design_data['preset']['coming_soon'] = $this->color_scheme;
             }
 
             $design_data = [
                 'template'      => $template_name,
                 'page_setup'    => $this->page_setup,
+                'preset'        => $this->color_scheme
             ];
 
             $this->save_data( $this->option_name, $design_data );
@@ -358,12 +356,14 @@ class Site_Mode_Design extends  Settings {
         $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
         $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
         $currentColorScheme = $this->get_post_data('colorScheme', 'template_init_action', 'template_init_field', 'text');
+        $this->color_scheme = [];
 
         if($category === 'maintenance') {
-            $this->color_scheme['preset']['maintenance'] = $currentColorScheme;
+            $this->color_scheme['maintenance'] = $currentColorScheme;
         } else {
-            $this->color_scheme['preset']['coming_soon'] = $currentColorScheme;
+            $this->color_scheme['coming_soon'] = $currentColorScheme;
         }
+
     }
 
 }
