@@ -236,15 +236,22 @@ class Site_Mode_Admin {
     }
 
     public function site_mode_filter_theme_json_theme( $theme_json ){
-        $preset_scheme = 'default';
+
         $default_theme_data = $theme_json->get_data();
         $default_colors = $default_theme_data['settings']['color']['palette']['theme'];
         $scheme_file = SITE_MODE_ADMIN . 'assets/color-scheme.json';
         $scheme_content         = json_decode(file_get_contents($scheme_file))->content;
         $design_settings = get_option('site_mode_design');
+        $is_status_active     = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['active_page']) && get_post_status($design_settings['page_setup']['active_page']) === 'publish' ? $design_settings['page_setup']['active_page'] : '' ;
+        $maintenance_page =  isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['maintenance_page_id']) && get_post_status($design_settings['page_setup']['maintenance_page_id']) === 'publish' ? $design_settings['page_setup']['maintenance_page_id'] : '' ;
+        $coming_soon_page = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['coming_soon_page_id'])&& get_post_status($design_settings['page_setup']['coming_soon_page_id']) === 'publish' ? $design_settings['page_setup']['coming_soon_page_id'] : '';
 
-        if(!empty($design_settings['preset'])) {
-            $preset_scheme = $design_settings['preset'];
+        if ($is_status_active == $maintenance_page && isset($design_settings['preset']['maintenance'])) {
+            $preset_scheme = $design_settings['preset']['maintenance'];
+        } elseif ($is_status_active == $coming_soon_page && isset($design_settings['preset']['coming_soon'])) {
+            $preset_scheme = $design_settings['preset']['coming_soon'];
+        } else {
+            $preset_scheme = 'default';
         }
 
         $base = $scheme_content->$preset_scheme->base;
