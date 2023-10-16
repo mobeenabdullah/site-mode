@@ -20,7 +20,7 @@
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.2
+ * @since      1.0.3
  *
  * @package    Site_Mode
  */

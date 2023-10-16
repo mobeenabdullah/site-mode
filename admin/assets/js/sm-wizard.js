@@ -67,13 +67,16 @@ jQuery(function ($) {
     }
     $('.choose_page_type').on('click', choosePageType);
 
-
     $(".setup-coming-soon-page").on("click", function() {
+        $('.sm__card-radio[value=maintenance]').prop('checked', false);
+        $('.sm__card-radio[value=coming-soon]').prop('checked', true);
         choosePageType();
         $('.template-category-filter[data-template-category=coming-soon]').trigger('click');
     });
 
     $(".setup-maintenance-page").on("click", function() {
+        $('.sm__card-radio[value=coming-soon]').prop('checked', false);
+        $('.sm__card-radio[value=maintenance]').prop('checked', true);
         choosePageType();
         $('.template-category-filter[data-template-category=maintenance]').trigger('click');
     });
