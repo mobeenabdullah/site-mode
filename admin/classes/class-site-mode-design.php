@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.2
+ * @since      1.0.3
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.2
+ * @since      1.0.3
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -189,9 +189,9 @@ class Site_Mode_Design extends  Settings {
 
         // Replace placeholder strings for content
         $template         = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
-        $blocks           = str_replace( '\n', '', $template_content );
+        $template_content = $this->replace_template_placeholder($template_name, $template->content, 'countdown', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, 'social-media', $this->show_social);
+        $blocks = str_replace( '\n', '', $template_content );
 
         // Create the page
         $page_id = wp_insert_post( array(
@@ -243,10 +243,8 @@ class Site_Mode_Design extends  Settings {
 
     protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder ) {
         $placeholder_str = '---sm-' . $placeholder . '---';
-
-        if($emptyPlaceholder == 'false'){
-            $placeholder_content = '';
-        } else {
+        $placeholder_content = '';
+        if($emptyPlaceholder != 'false'){
             $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $placeholder .'.json';
             $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
         }

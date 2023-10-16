@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.2
+ * @since      1.0.3
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.2
+ * @since      1.0.3
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
