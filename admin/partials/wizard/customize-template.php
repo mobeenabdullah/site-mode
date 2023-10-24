@@ -33,7 +33,7 @@
                         <div class="sidebar_content-settings">
                             <div class="component__settings" style="display: block;">
                                 <div class="component__settings-cover">
-                                    <div class="settings__card">
+                                    <div class="settings__card template-components">
                                         <div class="settings__card-title sm_open_panel">
                                             <h2 class="settings_card_heading">Components</h2>
                                             <div class="sm-setting-reset-components sm-setting-reset">

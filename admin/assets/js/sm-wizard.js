@@ -62,23 +62,24 @@ jQuery(function ($) {
         showElements('.wizard__content-wrapper');
         addElementClass('.sm-select-template', 'active');
         const categoryName = $('.sm__card-radio:checked').val();
+
+        if(categoryName === '404') {
+            $('.template-components.settings__card').hide();
+        } else {
+            $('.template-components.settings__card').show();
+        }
+
         $(`.template-category-filter[data-template-category=${categoryName}]`).trigger('click');
 
     }
     $('.choose_page_type').on('click', choosePageType);
 
-    $(".setup-coming-soon-page").on("click", function() {
-        $('.sm__card-radio[value=maintenance]').prop('checked', false);
-        $('.sm__card-radio[value=coming-soon]').prop('checked', true);
+    $('.setup-button').on("click", function() {
+        const cat = $(this).attr('data-template-category');
+        $('.sm__card-radio').prop('checked', false);
+        $(`.sm__card-radio[value=${cat}]`).prop('checked', true);
         choosePageType();
-        $('.template-category-filter[data-template-category=coming-soon]').trigger('click');
-    });
-
-    $(".setup-maintenance-page").on("click", function() {
-        $('.sm__card-radio[value=coming-soon]').prop('checked', false);
-        $('.sm__card-radio[value=maintenance]').prop('checked', true);
-        choosePageType();
-        $('.template-category-filter[data-template-category=maintenance]').trigger('click');
+        $(`.template-category-filter[data-template-category=${cat}]`).trigger('click');
     });
 
     // Back to wizard start page
@@ -200,7 +201,6 @@ jQuery(function ($) {
     }
 
     const templateParam = getParameterByName('template');
-    const isSetup = getParameterByName('setup');
     const cat = getParameterByName('cat');
     if(templateParam) {
         $('.choose_page_type').trigger('click');

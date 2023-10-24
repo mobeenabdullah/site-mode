@@ -54,6 +54,14 @@ class Template_Load {
 
     }
 
+    public function sm_redirect_404_to_homepage() {
+        if(is_404() && !empty($this->template['page_setup']) && !empty($this->template['page_setup']['404_page_id']) ) {
+            wp_safe_redirect( get_the_permalink($this->template['page_setup']['404_page_id']) );
+            die();
+            exit;
+        }
+    }
+
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
 		$wp_user_roles      = $this->advanced_settings['user_roles'] ?? [];

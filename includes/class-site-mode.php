@@ -195,9 +195,6 @@ class Site_Mode {
         $this->loader->add_action( 'wpsm_head', $plugin_admin, 'sm_remember_fse_style' );
         $this->loader->add_action( 'wpsm_footer', $plugin_admin, 'sm_fse_style' );
 
-        // Add Site Mode Color palette
-        $this->loader->add_filter( 'wp_theme_json_data_theme', $plugin_admin, 'site_mode_filter_theme_json_theme' );
-
         //Add body class
         $this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
 
@@ -242,7 +239,7 @@ class Site_Mode {
 
 		// Template load
 		$template_load = new Template_Load();
-
+        $this->loader->add_action( 'template_redirect', $template_load, 'sm_redirect_404_to_homepage' );
         if($template_load->is_site_mode_active()) {
             $this->loader->add_filter( 'pre_option_page_on_front', $template_load, 'pre_option_redirect_page');
         }
