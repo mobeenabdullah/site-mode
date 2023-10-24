@@ -23,12 +23,21 @@ $templates =  [
     'template-6' => [
         'name'          => 'Template 6',
         'category'      => 'maintenance',
+    ],
+    'template-7' => [
+        'name'          => 'Template 7',
+        'category'      => '404',
+    ],
+    'template-8' => [
+        'name'          => 'Template 8',
+        'category'      => '404',
     ]
 ];
 $categories = [
     'all' => 'All',
     'coming-soon' => 'Coming Soon',
     'maintenance' => 'Maintenance',
+    '404'         => '404'
 ];
 
 $args = array(

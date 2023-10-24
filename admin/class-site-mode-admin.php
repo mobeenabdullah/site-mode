@@ -129,6 +129,7 @@ class Site_Mode_Admin {
         $design_data = get_option( 'site_mode_design' );
         $maintenance_page = isset($design_data['page_setup']['maintenance_page_id']) ? $design_data['page_setup']['maintenance_page_id'] : '';
         $coming_soon_page = isset($design_data['page_setup']['coming_soon_page_id']) ? $design_data['page_setup']['coming_soon_page_id'] : '';
+        $error_404_page = isset($design_data['page_setup']['404_page_id']) ? $design_data['page_setup']['404_page_id'] : '';
 
         if($coming_soon_page == $post->ID) {
             $post_states['sm_coming_soon_status'] = 'Coming Soon';
@@ -136,6 +137,10 @@ class Site_Mode_Admin {
 
         if($maintenance_page == $post->ID) {
             $post_states['sm_maintenance_status'] = 'Maintenance';
+        }
+
+        if($error_404_page == $post->ID) {
+            $post_states['sm_404_status'] = '404 Page';
         }
 
         return $post_states;
@@ -233,58 +238,6 @@ class Site_Mode_Admin {
         } else {
             return $classes;
         }
-    }
-
-    public function site_mode_filter_theme_json_theme( $theme_json ){
-
-        $default_theme_data = $theme_json->get_data();
-        $default_colors = $default_theme_data['settings']['color']['palette']['theme'];
-        $scheme_file = SITE_MODE_ADMIN . 'assets/color-scheme.json';
-        $scheme_content         = json_decode(file_get_contents($scheme_file))->content;
-        $design_settings = get_option('site_mode_design');
-        $is_status_active     = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['active_page']) && get_post_status($design_settings['page_setup']['active_page']) === 'publish' ? $design_settings['page_setup']['active_page'] : '' ;
-        $maintenance_page =  isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['maintenance_page_id']) && get_post_status($design_settings['page_setup']['maintenance_page_id']) === 'publish' ? $design_settings['page_setup']['maintenance_page_id'] : '' ;
-        $coming_soon_page = isset( $design_settings['page_setup'] )  && !empty($design_settings['page_setup']['coming_soon_page_id'])&& get_post_status($design_settings['page_setup']['coming_soon_page_id']) === 'publish' ? $design_settings['page_setup']['coming_soon_page_id'] : '';
-
-        if ($is_status_active == $maintenance_page && isset($design_settings['preset']['maintenance'])) {
-            $preset_scheme = $design_settings['preset']['maintenance'];
-        } elseif ($is_status_active == $coming_soon_page && isset($design_settings['preset']['coming_soon'])) {
-            $preset_scheme = $design_settings['preset']['coming_soon'];
-        } else {
-            $preset_scheme = 'default';
-        }
-
-        $base = $scheme_content->$preset_scheme->base;
-        $contrast = $scheme_content->$preset_scheme->contrast;
-        $primary = $scheme_content->$preset_scheme->primary;
-
-        $new_data = array(
-            'version'  => 2,
-            'settings' => array(
-                'color' => array(
-                    'palette'    => array(
-                        ...$default_colors,
-                        array(
-                            'slug'  => 'sm-base',
-                            'color' => $base,
-                            'name'  => __( 'Site Mode Base', 'site-mode' ),
-                        ),
-                        array(
-                            'slug'  => 'sm-contrast',
-                            'color' => $contrast,
-                            'name'  => __( 'Site Mode Contrast', 'site-mode' ),
-                        ),
-                        array(
-                            'slug'  => 'sm-primary',
-                            'color' => $primary,
-                            'name'  => __( 'Site Mode Primary', 'site-mode' ),
-                        )
-                    ),
-                ),
-            ),
-        );
-
-        return $theme_json->update_with( $new_data );
     }
 
     public function sm_remember_fse_style() {
