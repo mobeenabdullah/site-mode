@@ -395,8 +395,7 @@ class Site_Mode_Design extends  Settings {
      * @param mixed $scheme
      * @return array|string|string[]
      */
-    public function changeTheColorPlaceholderToSetTheColorScheme(mixed $template_name, array|string $template_content, mixed $scheme): string|array
-    {
+    public function changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $scheme) {
 
         $color_scheme_file  = SITE_MODE_ADMIN . 'assets/color-scheme.json';
         $color_scheme_content       = json_decode(file_get_contents($color_scheme_file))->content;
