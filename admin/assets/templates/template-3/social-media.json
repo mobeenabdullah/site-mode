@@ -2,5 +2,5 @@
   "label": "Countdown",
   "__file": "wp_export",
   "version": 2,
-  "content": "<!-- wp:social-links {\"iconColor\":\"sm-base\",\"iconColorValue\":\"white\",\"align\":\"left\",\"className\":\"is-style-logos-only\"} -->\n    <ul class=\"wp-block-social-links alignleft has-icon-color is-style-logos-only\"><!-- wp:social-link {\"url\":\"#\",\"service\":\"facebook\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"instagram\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"linkedin\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"youtube\"} /--></ul>\n    <!-- /wp:social-links -->"
+  "content": "<!-- wp:social-links {\"customIconColor\":\"#8b1d86\",\"iconColorValue\":\"#8b1d86\",\"align\":\"left\",\"className\":\"is-style-logos-only\"} -->\n    <ul class=\"wp-block-social-links alignleft has-icon-color is-style-logos-only\"><!-- wp:social-link {\"url\":\"#\",\"service\":\"facebook\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"instagram\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"linkedin\"} /-->\n    \n    <!-- wp:social-link {\"url\":\"#\",\"service\":\"youtube\"} /--></ul>\n    <!-- /wp:social-links -->"
 }

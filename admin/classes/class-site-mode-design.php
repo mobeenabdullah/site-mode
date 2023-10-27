@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.3
+ * @since      1.0.4
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.3
+ * @since      1.0.4
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -28,12 +28,20 @@ class Site_Mode_Design extends  Settings {
     protected  $show_countdown = true;
     protected $color_scheme = '';
 
+    protected $placeholder_colors = [
+        'base'      => '#AC3C3C',
+        'primary'   => '#8B1D86',
+        'contrast'  => '#B7E972'
+    ];
+
     protected $page_setup = [
         'active_page'   => '',
         'coming_soon_page_id'  => '',
         'maintenance_page_id'   => '',
+        '404_page_id'          => '',
         'maintenance_template' => '',
         'coming_soon_template' => '',
+        '404_template'         => '',
     ];
     protected array $default_images = [
         'template-1' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
@@ -42,6 +50,8 @@ class Site_Mode_Design extends  Settings {
         'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
         'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
+        'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+        'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
     ];
 
     public function __construct() {
@@ -100,7 +110,6 @@ class Site_Mode_Design extends  Settings {
         $design_data = [
             'template'      => $this->active_template,
             'page_setup'    => $this->page_setup,
-            'preset'        => $this->color_scheme
         ];
 
         $design_data['page_setup']['active_page'] = $active_page_id;
@@ -114,7 +123,7 @@ class Site_Mode_Design extends  Settings {
         $template_name = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
         $subscriber_email = $this->get_post_data( 'subscriber_email', 'template_init_action', 'template_init_field', 'text' );
         $category  = $this->get_post_data( 'category', 'template_init_action', 'template_init_field', 'text' );
-        $this->sm_design_properties_init($category);
+        $this->sm_design_properties_init();
 
         if(!empty($subscriber_email)) {
             $this->add_subscriber_to_mailchimp_list($subscriber_email);
@@ -127,28 +136,31 @@ class Site_Mode_Design extends  Settings {
         $design_data = [
             'template'      => $template_name,
             'page_setup'    => $this->page_setup,
-            'preset'        => $this->color_scheme
         ];
 
         // check has maintaince page
         $page_id = $this->check_maintaince_page($this->page_setup, $template_name, $category );
-        $design_data['page_setup']['active_page'] = $page_id;
 
         if($category === 'maintenance') {
             $design_data['page_setup']['maintenance_page_id'] = $page_id;
             $design_data['page_setup']['maintenance_template'] = $template_name;
+            $design_data['page_setup']['active_page'] = $page_id;
+        } elseif ($category == '404') {
+            $design_data['page_setup']['404_page_id'] = $page_id;
+            $design_data['page_setup']['404_template'] = $template_name;
         } else {
             $design_data['page_setup']['coming_soon_page_id'] = $page_id;
             $design_data['page_setup']['coming_soon_template'] = $template_name;
+            $design_data['page_setup']['active_page'] = $page_id;
         }
 
-        $this->page_id    = $page_id;
+        // Change the components placeholder to group the template components
+        $template           = json_decode($this->replace_template_default_image($template_name));
+        $template_content = $this->replace_template_placeholder($template_name, $template->content, '---sm-countdown---', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
 
-        // replace placeholder strings
-        $template         = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($this->active_template, $template->content, 'countdown', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($this->active_template, $template_content, 'social-media', $this->show_social);
-        $blocks = str_replace( '\n', '', $template_content );
+        // Change the color placeholder to set the color scheme
+        $blocks = $this->changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $this->color_scheme);
 
         $post = get_post( $page_id );
         $post->post_content = $blocks;
@@ -169,6 +181,8 @@ class Site_Mode_Design extends  Settings {
 
         if( $category === 'maintenance') {
             $id = $page_setup['maintenance_page_id'];
+        } elseif ($category == '404') {
+            $id = $page_setup['404_page_id'];
         } else {
             $id = $page_setup['coming_soon_page_id'];
         }
@@ -187,15 +201,25 @@ class Site_Mode_Design extends  Settings {
 
     public function create_maintenance_page ($template_name = '', $category = '') {
 
-        // Replace placeholder strings for content
-        $template         = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($template_name, $template->content, 'countdown', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($template_name, $template_content, 'social-media', $this->show_social);
-        $blocks = str_replace( '\n', '', $template_content );
+        // Change the components placeholder to group the template components
+        $template           = json_decode($this->replace_template_default_image($template_name));
+        $template_content = $this->replace_template_placeholder($template_name, $template->content, '---sm-countdown---', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
+
+        // Change the color placeholder to set the color scheme
+        $blocks = $this->changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $this->color_scheme);
+
+        if($category === 'maintenance') {
+            $title = 'Maintenance Page';
+        } elseif($category == '404') {
+            $title = '404 Page';
+        } else {
+            $title = 'Coming Soon Page';
+        }
 
         // Create the page
         $page_id = wp_insert_post( array(
-            'post_title'    => $category === 'maintenance' ? 'Maintenance Page' : 'Coming Soon Page',
+            'post_title'    => $title,
             'post_content'  => $blocks,
             'post_status'   => 'publish',
             'post_type'     => 'page',
@@ -203,23 +227,25 @@ class Site_Mode_Design extends  Settings {
         ) );
 
         if(!is_wp_error($page_id)){
-            $this->page_setup['active_page'] = $page_id;
             if($category === 'maintenance') {
                 $this->page_setup['maintenance_page_id'] = $page_id;
                 $this->page_setup['maintenance_template'] = $template_name;
+                $this->page_setup['active_page'] = $page_id;
+            } elseif ($category == '404') {
+                $this->page_setup['404_page_id'] = $page_id;
+                $this->page_setup['404_template'] = $template_name;
             } else {
                 $this->page_setup['coming_soon_page_id'] = $page_id;
                 $this->page_setup['coming_soon_template'] = $template_name;
+                $this->page_setup['active_page'] = $page_id;
             }
 
             $design_data = [
                 'template'      => $template_name,
                 'page_setup'    => $this->page_setup,
-                'preset'        => $this->color_scheme
             ];
 
             $this->save_data( $this->option_name, $design_data );
-//            return $page_id;
         } else {
             wp_send_json_error( 'Something went wrong.');
         }
@@ -229,30 +255,36 @@ class Site_Mode_Design extends  Settings {
         $design_settings = $this->get_data( $this->option_name );
 
         if(!empty($design_settings)){
-            $this->color_scheme    = $design_settings['preset'] ?? '';
             $this->active_template = $design_settings['template'] ?? '';
             $this->page_setup = [
-                'active_page'   => $design_settings['page_setup']['active_page'] ?? '',
+                'active_page'          => $design_settings['page_setup']['active_page'] ?? '',
                 'coming_soon_page_id'  => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
-                'maintenance_page_id'   => $design_settings['page_setup']['maintenance_page_id'] ?? '',
+                'maintenance_page_id'  => $design_settings['page_setup']['maintenance_page_id'] ?? '',
+                '404_page_id'          => $design_settings['page_setup']['404_page_id'] ?? '',
                 'maintenance_template' => $design_settings['page_setup']['maintenance_template'] ?? '',
                 'coming_soon_template' => $design_settings['page_setup']['coming_soon_template'] ?? '',
+                '404_template' => $design_settings['page_setup']['404_template'] ?? '',
             ];
         }
     }
 
-    protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder ) {
-        $placeholder_str = '---sm-' . $placeholder . '---';
+    protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder, $new_color = '' ) {
         $placeholder_content = '';
-        if($emptyPlaceholder != 'false'){
-            $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $placeholder .'.json';
+        if($emptyPlaceholder != 'false' && empty($new_color)){
+            $filtered_placeholder = str_replace('---', '',  $placeholder);
+            $filtered_placeholder = str_replace('sm-', '',  $filtered_placeholder);
+            $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $filtered_placeholder .'.json';
             $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
+        } elseif(!empty($new_color)) {
+            $placeholder_content = $new_color;
         }
 
-        if(!str_contains($template_content, $placeholder_str)){
+        if(str_contains($template_content, strtolower($placeholder)) ) {
+            return str_replace(strtolower($placeholder), $placeholder_content, $template_content);
+        } elseif(!str_contains($template_content, $placeholder)){
             return $template_content;
         } else {
-            return str_replace($placeholder_str, $placeholder_content, $template_content);
+            return str_replace($placeholder, $placeholder_content, $template_content);
         }
     }
 
@@ -349,19 +381,31 @@ class Site_Mode_Design extends  Settings {
     /**
      * @return void
      */
-    protected function sm_design_properties_init($category): void {
+    protected function sm_design_properties_init(): void {
         $this->get_template_props_init();
         $this->show_countdown = $this->get_post_data('showCountdown', 'template_init_action', 'template_init_field', 'text');
         $this->show_social = $this->get_post_data('showSocial', 'template_init_action', 'template_init_field', 'text');
         $currentColorScheme = $this->get_post_data('colorScheme', 'template_init_action', 'template_init_field', 'text');
-        $this->color_scheme = [];
+        $this->color_scheme = $currentColorScheme;
+    }
 
-        if($category === 'maintenance') {
-            $this->color_scheme['maintenance'] = $currentColorScheme;
-        } else {
-            $this->color_scheme['coming_soon'] = $currentColorScheme;
-        }
+    /**
+     * @param mixed $template_name
+     * @param array|string $template_content
+     * @param mixed $scheme
+     * @return array|string|string[]
+     */
+    public function changeTheColorPlaceholderToSetTheColorScheme(mixed $template_name, array|string $template_content, mixed $scheme): string|array
+    {
 
+        $color_scheme_file  = SITE_MODE_ADMIN . 'assets/color-scheme.json';
+        $color_scheme_content       = json_decode(file_get_contents($color_scheme_file))->content;
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, $this->placeholder_colors['base'], false, $color_scheme_content->$scheme->base);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, $this->placeholder_colors['contrast'], false, $color_scheme_content->$scheme->contrast);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, $this->placeholder_colors['primary'], false, $color_scheme_content->$scheme->primary);
+
+        $blocks = str_replace('\n', '', $template_content);
+        return $blocks;
     }
 
 }
