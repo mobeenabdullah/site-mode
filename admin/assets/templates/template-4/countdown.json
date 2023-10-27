@@ -2,6 +2,6 @@
   "label": "Countdown",
   "__file": "wp_export",
   "version": 2,
-  "content": "<!-- wp:site-mode/countdown {\"bgColor\":\"white\",\"background\":false,\"numberColor\":\"white\",\"labelColor\":\"white\",\"borderColor\":\"white\",\"separatorColor\":\"white\",\"dueDate\":\"2023-10-31T21:22:05\",\"preset\":\"countdown-without-box\"} /-->"
+  "content": "<!-- wp:site-mode/countdown {\"bgColor\":\"#ac3c3c\",\"background\":false,\"numberColor\":\"#ac3c3c\",\"labelColor\":\"#ac3c3c\",\"borderColor\":\"#ac3c3c\",\"separatorColor\":\"#ac3c3c\",\"dueDate\":\"2023-10-31T21:22:05\",\"preset\":\"countdown-without-box\"} /-->"
 }
 
