@@ -96,7 +96,7 @@ function enqueue_my_block_script() {
 			'sm-countdown-block', // Handle
 			plugin_dir_url(__FILE__) . 'src/sm-countdown-frontend.js', // Adjust the path as needed
 			array('wp-blocks', 'wp-editor'), // Dependencies
-			'1.0.4', // Version number
+			'1.0.5', // Version number
 			true // Load in the footer
 	);
 }

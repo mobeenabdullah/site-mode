@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.4
+ * @since      1.0.5
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.4
+ * @since      1.0.5
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -395,8 +395,7 @@ class Site_Mode_Design extends  Settings {
      * @param mixed $scheme
      * @return array|string|string[]
      */
-    public function changeTheColorPlaceholderToSetTheColorScheme(mixed $template_name, array|string $template_content, mixed $scheme): string|array
-    {
+    public function changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $scheme) {
 
         $color_scheme_file  = SITE_MODE_ADMIN . 'assets/color-scheme.json';
         $color_scheme_content       = json_decode(file_get_contents($color_scheme_file))->content;
