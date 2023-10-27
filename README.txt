@@ -3,9 +3,9 @@ Contributors: mobeen-abdullah
 Donate link: https://github.com/mobeenabdullah/site-mode
 Tags: maintenance mode, coming soon, under construction, maintenance page, launch, coming soong page, coming soon mode
 Requires at least: 4.7
-Tested up to: 6.3.2
+Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,8 @@ Yes, this plugin is Completely FREE
 
 == Changelog ==
 
+= 1.0.4 =
+* Fixed compatibility errors with Non-FSE themes.
 = 1.0.0 =
 * Added exciting new features to enhance your experience.
 * Introduced new templates to elevate your maintenance and coming soon pages.
