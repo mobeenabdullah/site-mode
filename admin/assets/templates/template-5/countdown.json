@@ -2,6 +2,6 @@
   "label": "Countdown",
   "__file": "wp_export",
   "version": 2,
-  "content": "<!-- wp:site-mode/countdown {\"borderColor\":\"black\",\"dueDate\":\"2023-10-31T02:22:59\"} /-->"
+  "content": "<!-- wp:site-mode/countdown {\"bgColor\":\"#ac3c3c\",\"numberColor\":\"#b7e972\",\"labelColor\":\"#b7e972\",\"borderColor\":\"#b7e972\",\"separatorColor\":\"#b7e972\",\"dueDate\":\"2023-10-31T02:22:59\"} /-->"
 }
 

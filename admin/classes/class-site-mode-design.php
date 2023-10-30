@@ -4,7 +4,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.3
+ * @since      1.0.5
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -15,7 +15,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.3
+ * @since      1.0.5
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -29,9 +29,9 @@ class Site_Mode_Design extends  Settings {
     protected $color_scheme = '';
 
     protected $placeholder_colors = [
-        'base'      => '#ac3c3c',
-        'primary'   => '#8b1d86',
-        'contrast'  => '#b7e972'
+        'base'      => '#AC3C3C',
+        'primary'   => '#8B1D86',
+        'contrast'  => '#B7E972'
     ];
 
     protected $page_setup = [
@@ -156,8 +156,8 @@ class Site_Mode_Design extends  Settings {
 
         // Change the components placeholder to group the template components
         $template           = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($this->active_template, $template->content, '---sm-countdown---', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($this->active_template, $template_content, '---sm-social-media---', $this->show_social);
+        $template_content = $this->replace_template_placeholder($template_name, $template->content, '---sm-countdown---', $this->show_countdown);
+        $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
 
         // Change the color placeholder to set the color scheme
         $blocks = $this->changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $this->color_scheme);
@@ -271,13 +271,17 @@ class Site_Mode_Design extends  Settings {
     protected function replace_template_placeholder($template_name, $template_content, $placeholder, $emptyPlaceholder, $new_color = '' ) {
         $placeholder_content = '';
         if($emptyPlaceholder != 'false' && empty($new_color)){
-            $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $placeholder .'.json';
+            $filtered_placeholder = str_replace('---', '',  $placeholder);
+            $filtered_placeholder = str_replace('sm-', '',  $filtered_placeholder);
+            $placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/'. $template_name .'/'. $filtered_placeholder .'.json';
             $placeholder_content         = json_decode(file_get_contents($placeholder_content_url))->content;
         } elseif(!empty($new_color)) {
             $placeholder_content = $new_color;
         }
 
-        if(!str_contains($template_content, $placeholder)){
+        if(str_contains($template_content, strtolower($placeholder)) ) {
+            return str_replace(strtolower($placeholder), $placeholder_content, $template_content);
+        } elseif(!str_contains($template_content, $placeholder)){
             return $template_content;
         } else {
             return str_replace($placeholder, $placeholder_content, $template_content);
@@ -391,8 +395,7 @@ class Site_Mode_Design extends  Settings {
      * @param mixed $scheme
      * @return array|string|string[]
      */
-    public function changeTheColorPlaceholderToSetTheColorScheme(mixed $template_name, array|string $template_content, mixed $scheme): string|array
-    {
+    public function changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $scheme) {
 
         $color_scheme_file  = SITE_MODE_ADMIN . 'assets/color-scheme.json';
         $color_scheme_content       = json_decode(file_get_contents($color_scheme_file))->content;
