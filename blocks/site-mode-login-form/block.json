@@ -1,15 +1,45 @@
 {
 	"apiVersion": 2,
-	"name": "create-block/boilerplate",
-	"title": "Boilerplate",
+	"name": "site-mode/login-form",
+	"title": "Login Form",
 	"category": "widgets",
-	"icon": "smiley",
-	"description": "Example block written with ESNext standard and JSX support – build step required.",
+	"icon": "icon-login-form",
+	"description": "A login form block for the site mode.",
 	"supports": {
 		"html": false
 	},
-	"textdomain": "boilerplate",
+	"textdomain": "site-mode",
 	"editorScript": "file:./build/index.js",
 	"editorStyle": "file:./build/index.css",
-	"style": "file:./build/style-index.css"
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"labelUsername": {
+			"type": "string",
+			"default": "Username"
+		},
+		"labelPassword": {
+			"type": "string",
+			"default": "Password"
+		},
+		"labelSubmit": {
+			"type": "string",
+			"default": "Login"
+		},
+		"showRememberMe": {
+			"type": "boolean",
+			"default": true
+		},
+		"rememberMeLabel": {
+			"type": "string",
+			"default": "Remember Me"
+		},
+		"defaultRememberMe": {
+			"type": "boolean",
+			"default": false
+		},
+		"loggedInBehaviour": {
+			"type": "string",
+			"default": "redirect"
+		}
+	}
 }
