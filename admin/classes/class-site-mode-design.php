@@ -38,10 +38,12 @@ class Site_Mode_Design extends  Settings {
         'active_page'   => '',
         'coming_soon_page_id'  => '',
         'maintenance_page_id'   => '',
+        'login_page_id'         => '',
         '404_page_id'          => '',
         'maintenance_template' => '',
         'coming_soon_template' => '',
         '404_template'         => '',
+        'login_template'       => '',
     ];
     protected array $default_images = [
         'template-1' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
@@ -52,6 +54,8 @@ class Site_Mode_Design extends  Settings {
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
         'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
+        'template-9' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+        'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
     ];
 
     public function __construct() {
@@ -148,7 +152,10 @@ class Site_Mode_Design extends  Settings {
         } elseif ($category == '404') {
             $design_data['page_setup']['404_page_id'] = $page_id;
             $design_data['page_setup']['404_template'] = $template_name;
-        } else {
+        } elseif($category === 'login') {
+            $design_data['page_setup']['login_page_id'] = $page_id;
+            $design_data['page_setup']['login_template'] = $template_name;
+        }else {
             $design_data['page_setup']['coming_soon_page_id'] = $page_id;
             $design_data['page_setup']['coming_soon_template'] = $template_name;
             $design_data['page_setup']['active_page'] = $page_id;
@@ -183,7 +190,9 @@ class Site_Mode_Design extends  Settings {
             $id = $page_setup['maintenance_page_id'];
         } elseif ($category == '404') {
             $id = $page_setup['404_page_id'];
-        } else {
+        } elseif($category === 'login') {
+            $id = $page_setup['login_page_id'];
+        } else{
             $id = $page_setup['coming_soon_page_id'];
         }
 
@@ -211,8 +220,10 @@ class Site_Mode_Design extends  Settings {
 
         if($category === 'maintenance') {
             $title = 'Maintenance Page';
-        } elseif($category == '404') {
+        } elseif($category === '404') {
             $title = '404 Page';
+        } elseif($category === 'login') {
+            $title = 'Login Page';
         } else {
             $title = 'Coming Soon Page';
         }
@@ -234,6 +245,9 @@ class Site_Mode_Design extends  Settings {
             } elseif ($category == '404') {
                 $this->page_setup['404_page_id'] = $page_id;
                 $this->page_setup['404_template'] = $template_name;
+            } elseif($category === 'login') {
+                $this->page_setup['login_page_id'] = $page_id;
+                $this->page_setup['login_template'] = $template_name;
             } else {
                 $this->page_setup['coming_soon_page_id'] = $page_id;
                 $this->page_setup['coming_soon_template'] = $template_name;
@@ -263,7 +277,9 @@ class Site_Mode_Design extends  Settings {
                 '404_page_id'          => $design_settings['page_setup']['404_page_id'] ?? '',
                 'maintenance_template' => $design_settings['page_setup']['maintenance_template'] ?? '',
                 'coming_soon_template' => $design_settings['page_setup']['coming_soon_template'] ?? '',
-                '404_template' => $design_settings['page_setup']['404_template'] ?? '',
+                '404_template'         => $design_settings['page_setup']['404_template'] ?? '',
+                'login_page_id'        => $design_settings['page_setup']['login_page_id'] ?? '',
+                'login_template'       => $design_settings['page_setup']['login_template'] ?? '',
             ];
         }
     }
