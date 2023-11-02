@@ -62,6 +62,15 @@ class Template_Load {
         }
     }
 
+    public function sm_modify_default_login_url($login_url, $redirect, $force_reauth) {
+
+        if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['login_page_id']) ) {
+            return home_url('/login-page');
+        } else {
+            return $login_url;
+        }
+    }
+
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
 		$wp_user_roles      = $this->advanced_settings['user_roles'] ?? [];

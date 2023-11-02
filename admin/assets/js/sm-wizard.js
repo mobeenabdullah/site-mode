@@ -63,7 +63,7 @@ jQuery(function ($) {
         addElementClass('.sm-select-template', 'active');
         const categoryName = $('.sm__card-radio:checked').val();
 
-        if(categoryName === '404') {
+        if(categoryName === '404' || categoryName === 'login') {
             $('.template-components.settings__card').hide();
         } else {
             $('.template-components.settings__card').show();

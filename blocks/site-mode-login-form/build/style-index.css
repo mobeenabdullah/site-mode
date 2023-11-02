@@ -1,0 +1,70 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.wp-block-create-block-boilerplate {
+  background-color: #21759b;
+  color: #fff;
+  padding: 2px;
+}
+
+.sm-login-form-block {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+.sm-login-form-block .sm-login-form-cover {
+  padding: 2rem;
+  background-color: #ffffff;
+  min-width: 25rem;
+  border-radius: 0.8rem;
+}
+.sm-login-form-block .sm-login-form-cover .login__heading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p {
+  display: flex;
+  padding: 0;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 0 0 1.5rem 0;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p input {
+  padding: 0.5rem;
+  height: 1.5rem;
+  border-radius: 0.3rem;
+  border: 1px solid #cfcfcf;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p.login-remember label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p.login-submit {
+  margin-bottom: 0;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p.login-submit input {
+  height: auto;
+  padding: 0.7rem 3rem !important;
+  background-color: var(--wp--preset--color--primary);
+  border-color: var(--wp--preset--color--primary);
+  cursor: pointer;
+  font-size: 16px;
+}
+.sm-login-form-block .sm-login-form-cover #sm-login-form-block > p.login-submit input:hover {
+  background-color: #84ec00;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

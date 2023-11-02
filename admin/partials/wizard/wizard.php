@@ -24,20 +24,29 @@ $templates =  [
         'name'          => 'Template 6',
         'category'      => 'maintenance',
     ],
-//    'template-7' => [
-//        'name'          => 'Template 7',
-//        'category'      => '404',
-//    ],
-//    'template-8' => [
-//        'name'          => 'Template 8',
-//        'category'      => '404',
-//    ]
+    'template-7' => [
+        'name'          => 'Template 7',
+        'category'      => '404',
+    ],
+    'template-8' => [
+        'name'          => 'Template 8',
+        'category'      => '404',
+    ],
+    'template-9' => [
+        'name'          => 'Template 9',
+        'category'      => 'login',
+    ],
+    'template-10' => [
+        'name'          => 'Template 10',
+        'category'      => 'login',
+    ],
 ];
 $categories = [
     'all' => 'All',
     'coming-soon' => 'Coming Soon',
     'maintenance' => 'Maintenance',
-//    '404'         => '404'
+    '404'         => '404',
+    'login'       => 'Login',
 ];
 $active_cat         = '';
 $active_template    = '';
@@ -48,10 +57,10 @@ if(isset($_GET['template'])) {
 
 if(isset($_GET['cat'])) {
     $active_cat = $_GET['cat'];
-    if($active_cat === 'maintenance' || $active_cat === 'coming-soon') {
+    if($active_cat === 'maintenance' || $active_cat === 'coming-soon' || $active_cat === '404' || $active_cat === 'login') {
         $cat = $active_cat;
     } else {
-        $cat = '404';
+        $cat = 'coming-soon';
     }
 } else {
     $cat = 'coming-soon';
@@ -163,7 +172,7 @@ if(isset($_GET['cat'])) {
                             </div>
                             <div class="wizard__start-cards--item">
                                 <label class="sm__card">
-                                    <input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="custom_login_page_mode">
+                                    <input name="plan" class="sm__card-radio" type="radio"  <?php echo $cat === 'login' ? 'checked' : '';  ?> value="login">
                                     <div class="sm__card-cover">
                                         <div class="sm_select_page-icon">
                                             <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -177,7 +186,7 @@ if(isset($_GET['cat'])) {
                                             Secure, branded login gateway with personalized options.
                                         </div>
                                         <div class="sm_select_page-btn">
-                                            <button class="sm__btn block_btn primary_button">Setup Login Page</button>
+                                            <button class="sm__btn block_btn primary_button setup-button" data-template-category="login">Setup Login Page</button>
                                         </div>
                                     </div>
                                 </label>
