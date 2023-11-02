@@ -17,6 +17,9 @@ add_action( 'init', 'create_sm_login_form_block' );
 function sm_login_form_block_render_callback($attributes) {
 
 	$output = '';
+	$output .= '<div class="sm-login-form-block">';
+	$output .= '<div class="sm-login-form-cover">';
+	$output .= '<h2 class="login__heading">' . __( 'Login', 'site-mode' ) . '</h2>';
 	if ( is_user_logged_in() ) {
 
 		$what_to_do = 'hide';
@@ -76,6 +79,9 @@ function sm_login_form_block_render_callback($attributes) {
 	}
 
 	$output .= wp_login_form($args);
+	$output .= '</div>';
+	$output .= '</div>';
+
 
 	return $output;
 

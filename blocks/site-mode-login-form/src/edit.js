@@ -42,65 +42,69 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 			</InspectorControls>
-
-			<form>
-				<p className="login-username">
-					<RichText
-						tagName="label"
-						placeholder={__('Username or Email Address', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelUsername: value })}
-						value={labelUsername}
-					/>
-					<input
-						type="text"
-						className="input"
-						placeholder={__('Default username', 'site-mode')}
-						onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
-						value={defaultUsername}
-						size="20"
-					/>
-				</p>
-				<p className="login-password">
-					<RichText
-						tagName="label"
-						placeholder={__('Password', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelPassword: value })}
-						value={labelPassword}
-					/>
-					<input type="password" className="input" size="20" value='********' readOnly />
-				</p>
-				{showRememberMe ?
-					<>
-						<p className="login-remember">
-							<input
-								type="checkbox"
-								onChange={() => setAttributes({ defaultRememberMe: !defaultRememberMe })}
-								checked={defaultRememberMe}
-							/>
+			<div className="sm-login-form-block">
+				<div className="sm-login-form-cover">
+					<h2 className="login__heading">Login</h2>
+					<form id="sm-login-form-block">
+						<div className="sm__input-field sm__username-email">
 							<RichText
 								tagName="label"
-								placeholder={__('Remember Me', 'site-mode')}
+								placeholder={__('Username or Email Address', 'site-mode')}
 								keepPlaceholderOnFocus="true"
-								onChange={(value) => setAttributes({ rememberMeLabel: value })}
-								value={rememberMeLabel}
+								onChange={(value) => setAttributes({ labelUsername: value })}
+								value={labelUsername}
 							/>
-						</p>
-					</>
-					: (<br />)
-				}
-				<p className="login-submit">
-					<RichText
-						tagName="label"
-						className="wp-block-button__link"
-						placeholder={__('Log In', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelSubmit: value })}
-						value={labelSubmit}
-					/>
-				</p>
-			</form>
+							<input
+								type="text"
+								className="input"
+								placeholder={__('Default username', 'site-mode')}
+								onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
+								value={defaultUsername}
+								size="20"
+							/>
+						</div>
+						<div className="sm__input-field sm__password">
+							<RichText
+								tagName="label"
+								placeholder={__('Password', 'site-mode')}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes({ labelPassword: value })}
+								value={labelPassword}
+							/>
+							<input type="password" className="input" size="20" value='********' readOnly />
+						</div>
+						{showRememberMe ?
+							<>
+								<div className="sm__input-field sm__remember-me">
+									<input
+										type="checkbox"
+										onChange={() => setAttributes({ defaultRememberMe: !defaultRememberMe })}
+										checked={defaultRememberMe}
+									/>
+									<RichText
+										tagName="label"
+										placeholder={__('Remember Me', 'site-mode')}
+										keepPlaceholderOnFocus="true"
+										onChange={(value) => setAttributes({ rememberMeLabel: value })}
+										value={rememberMeLabel}
+									/>
+								</div>
+							</>
+							: (<br />)
+						}
+						<div className="sm__input-field sm__submit-field">
+							<RichText
+								tagName="label"
+								className="wp-block-button__link"
+								placeholder={__('Log In', 'site-mode')}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes({ labelSubmit: value })}
+								value={labelSubmit}
+							/>
+						</div>
+					</form>
+				</div>
+			</div>
 
 		</div>
 	);
