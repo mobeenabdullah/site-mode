@@ -16,7 +16,7 @@ add_action( 'init', 'create_sm_login_form_block' );
 
 function sm_login_form_block_render_callback($attributes) {
 
-
+	$output = '';
 	if ( is_user_logged_in() ) {
 
 		$what_to_do = 'hide';
@@ -75,6 +75,8 @@ function sm_login_form_block_render_callback($attributes) {
 		}
 	}
 
-	return wp_login_form($args);
+	$output .= wp_login_form($args);
+
+	return $output;
 
 }
