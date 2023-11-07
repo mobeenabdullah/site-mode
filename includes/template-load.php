@@ -65,7 +65,19 @@ class Template_Load {
     public function sm_modify_default_login_url($login_url, $redirect, $force_reauth) {
 
         if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['login_page_id']) ) {
-            return home_url('/login-page');
+
+            $custom_login_url = get_the_permalink($this->template['page_setup']['login_page_id']);
+            if (!empty($redirect)) {
+                $custom_login_url = add_query_arg('redirect_to', urlencode($redirect), $custom_login_url);
+            }
+
+            // Check if the "force_reauth" parameter is set and add it to the custom login URL if necessary.
+            if ($force_reauth) {
+                $custom_login_url = add_query_arg('reauth', '1', $custom_login_url);
+            }
+
+            return $custom_login_url;
+
         } else {
             return $login_url;
         }
@@ -110,6 +122,14 @@ class Template_Load {
 
 	}
 
+    public function custom_login_redirect($user_login, $user) {
+        // Check if the 'redirect_to' parameter is present in the query string.
+        if (isset($_GET['redirect_to'])) {
+            $redirect_to = esc_url_raw($_GET['redirect_to']);
+            wp_safe_redirect($redirect_to);
+            exit;
+        }
+    }
 
     public function pre_option_redirect_page($value) {
         if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && get_post_status($this->template['page_setup']['active_page']) === 'publish' && $this->template_initialize()){

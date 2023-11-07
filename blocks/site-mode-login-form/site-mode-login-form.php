@@ -22,6 +22,7 @@ function sm_login_form_block_render_callback($attributes) {
 	$output .= '<h2 class="login__heading">' . __( 'Login', 'site-mode' ) . '</h2>';
 	if ( is_user_logged_in() ) {
 
+
 		$what_to_do = 'hide';
 		if ( ! empty( $attributes['loggedInBehaviour'] ) ) {
 			$what_to_do = $attributes['loggedInBehaviour'];
@@ -68,9 +69,17 @@ function sm_login_form_block_render_callback($attributes) {
 		'echo'    => false,
 	];
 
-	if ( ! empty( $block->context['postId'] ) ) {
+
+	if(isset($_GET['redirect_to'])) {
+		$args['redirect'] = esc_url_raw($_GET['redirect_to']);
+	} else if( ! empty( $block->context['postId'] ) ) {
 		$args['redirect'] = get_permalink( $block->context['postId'] );
 	}
+
+//	if ( ! empty( $block->context['postId'] ) ) {
+//		$args['redirect'] = get_permalink( $block->context['postId'] );
+//		$args['redirect'] = isset($_GET['redirect_to']) ? esc_url_raw($_GET['redirect_to']) : '';
+//	}
 
 	foreach ( $attribute_to_form_arg as $attribute => $arg ) {
 		if ( isset( $attributes[ $attribute ] ) && '' !== $attributes[ $attribute ] ) {
@@ -86,3 +95,4 @@ function sm_login_form_block_render_callback($attributes) {
 	return $output;
 
 }
+

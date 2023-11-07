@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, CheckboxControl } from '@wordpress/components';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -15,8 +15,6 @@ export default function Edit({ attributes, setAttributes }) {
 		defaultRememberMe,
 		loggedInBehaviour,
 	} = attributes;
-
-	console.log(attributes);
 
 
 	return (
