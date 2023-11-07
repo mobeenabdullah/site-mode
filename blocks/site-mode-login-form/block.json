@@ -40,6 +40,18 @@
 		"loggedInBehaviour": {
 			"type": "string",
 			"default": "redirect"
+		},
+		"colors": {
+			"type": "object",
+			"default": {
+				"inputLabel": "#000000",
+				"inputBorder": "#000000",
+				"inputBackground": "#ffffff",
+				"buttonBackground": "#000000",
+				"buttonText": "#ffffff",
+				"buttonBorder": "#000000",
+				"headingText": "#000000"
+			}
 		}
 	}
 }

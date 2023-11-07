@@ -76,11 +76,6 @@ function sm_login_form_block_render_callback($attributes) {
 		$args['redirect'] = get_permalink( $block->context['postId'] );
 	}
 
-//	if ( ! empty( $block->context['postId'] ) ) {
-//		$args['redirect'] = get_permalink( $block->context['postId'] );
-//		$args['redirect'] = isset($_GET['redirect_to']) ? esc_url_raw($_GET['redirect_to']) : '';
-//	}
-
 	foreach ( $attribute_to_form_arg as $attribute => $arg ) {
 		if ( isset( $attributes[ $attribute ] ) && '' !== $attributes[ $attribute ] ) {
 			$args[ $arg ] = $attributes[ $attribute ];
