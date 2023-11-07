@@ -13,17 +13,18 @@
 
 .sm-login-form-block {
   width: 100%;
-  height: 100%;
+  //height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  //min-height: 100vh;
   & .sm-login-form-cover {
-	padding: 2rem;
-	background-color: #ffffff;
-	min-width: 25rem;
-	border-radius: 0.8rem;
+	width: 100%;
+	//padding: 2rem;
+	//background-color: #ffffff;
+	//min-width: 25rem;
+	//border-radius: 0.8rem;
 	& .login__heading {
 	  font-size: 2rem;
 	  font-weight: 600;
@@ -55,13 +56,8 @@
 		  & input {
 			height: auto;
 			padding: 0.7rem 3rem !important;
-			background-color: var(--wp--preset--color--primary);
-			border-color: var(--wp--preset--color--primary);
 			cursor: pointer;
-			font-size: 16px;
-			&:hover {
-			  background-color: darken(#9DFF20, 10%);
-			}
+			font-size: 16px;		
 		  }
 		}
 	  }

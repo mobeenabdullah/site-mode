@@ -61,6 +61,7 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
 								value={defaultUsername}
 								size="20"
+								style={{ backgroundColor: '#AC3C3C' }}
 							/>
 						</div>
 						<div className="sm__input-field sm__password">
@@ -71,7 +72,7 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(value) => setAttributes({ labelPassword: value })}
 								value={labelPassword}
 							/>
-							<input type="password" className="input" size="20" value='********' readOnly />
+							<input type="password" className="input" size="20" value='********' readOnly style={{ backgroundColor: '#AC3C3C' }}  />
 						</div>
 						{showRememberMe ?
 							<>
@@ -100,6 +101,7 @@ export default function Edit({ attributes, setAttributes }) {
 								keepPlaceholderOnFocus="true"
 								onChange={(value) => setAttributes({ labelSubmit: value })}
 								value={labelSubmit}
+								style={{ backgroundColor: '#8B1D86', borderColor: '#8B1D86' }}
 							/>
 						</div>
 					</form>

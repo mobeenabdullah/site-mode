@@ -95,7 +95,10 @@ function Edit(_ref) {
       defaultUsername: event.target.value
     }),
     value: defaultUsername,
-    size: "20"
+    size: "20",
+    style: {
+      backgroundColor: '#AC3C3C'
+    }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm__input-field sm__password"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -111,7 +114,10 @@ function Edit(_ref) {
     className: "input",
     size: "20",
     value: "********",
-    readOnly: true
+    readOnly: true,
+    style: {
+      backgroundColor: '#AC3C3C'
+    }
   })), showRememberMe ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm__input-field sm__remember-me"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
@@ -138,7 +144,11 @@ function Edit(_ref) {
     onChange: value => setAttributes({
       labelSubmit: value
     }),
-    value: labelSubmit
+    value: labelSubmit,
+    style: {
+      backgroundColor: '#8B1D86',
+      borderColor: '#8B1D86'
+    }
   }))))));
 }
 

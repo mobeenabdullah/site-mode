@@ -16,7 +16,12 @@ add_action( 'init', 'create_sm_login_form_block' );
 
 function sm_login_form_block_render_callback($attributes) {
 
-	$output = '';
+	$output = '<style>
+			.login-submit input[type="submit"] {
+				background-color: #8B1D86;
+				border-color: #8B1D86 !important;
+			}
+	</style>';
 	$output .= '<div class="sm-login-form-block">';
 	$output .= '<div class="sm-login-form-cover">';
 	$output .= '<h2 class="login__heading">' . __( 'Login', 'site-mode' ) . '</h2>';
