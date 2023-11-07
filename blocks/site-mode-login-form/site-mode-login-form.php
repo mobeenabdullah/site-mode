@@ -15,12 +15,29 @@ add_action( 'init', 'create_sm_login_form_block' );
 
 
 function sm_login_form_block_render_callback($attributes) {
+	$colors = $attributes['colors'] ?? [];
+
 
 	$output = '<style>
-			.login-submit input[type="submit"] {
-				background-color: #8B1D86;
-				border-color: #8B1D86 !important;
+			.login__heading {
+				color: ' . $colors['headingText']. ' !important;
 			}
+			#sm-login-form-block p label {
+				color: ' . $colors['inputLabel']. ' !important;
+			}
+			#sm-login-form-block p input {
+				background-color: ' . $colors['inputBackground']. ';
+				border-color: ' . $colors['inputBorder']. ' !important;
+			}
+			#sm-login-form-block p input[type="submit"] {
+				background-color: ' . $colors['buttonBackground']. ';
+				border-color: ' . $colors['buttonBorder']. ' !important;
+				color: ' . $colors['buttonText']. ';
+			}
+			#sm-login-form-block p input[type="checkbox"] {
+				accent-color: ' . $colors['buttonBackground']. ' !important;
+			}
+
 	</style>';
 	$output .= '<div class="sm-login-form-block">';
 	$output .= '<div class="sm-login-form-cover">';

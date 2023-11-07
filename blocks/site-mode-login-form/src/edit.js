@@ -16,10 +16,16 @@ export default function Edit({ attributes, setAttributes }) {
 		loggedInBehaviour,
 		colors,
 	} = attributes;
-
-
+	console.log(colors)
 	return (
 		<div {...useBlockProps()}>
+			<style>
+				{`
+					.sm-login-form-block .sm__input-field label {
+						color: ${colors.inputLabel};
+					}
+				`}
+			</style>
 
 			<InspectorControls>
 				<PanelBody title={__('Login Form Settings', 'site-mode')}>
@@ -89,7 +95,7 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div className="sm-login-form-block">
 				<div className="sm-login-form-cover">
-					<h2 className="login__heading">Login</h2>
+					<h2 className="login__heading" style={{ color: colors.headingText }}>Login</h2>
 					<form id="sm-login-form-block">
 						<div className="sm__input-field sm__username-email">
 							<RichText
@@ -106,7 +112,7 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
 								value={defaultUsername}
 								size="20"
-								style={{ backgroundColor: '#AC3C3C' }}
+								style={{ backgroundColor: colors.inputBackground, borderColor: colors.inputBorder }}
 							/>
 						</div>
 						<div className="sm__input-field sm__password">
@@ -117,7 +123,7 @@ export default function Edit({ attributes, setAttributes }) {
 								onChange={(value) => setAttributes({ labelPassword: value })}
 								value={labelPassword}
 							/>
-							<input type="password" className="input" size="20" value='********' readOnly style={{ backgroundColor: '#AC3C3C' }}  />
+							<input type="password" className="input" size="20" value='********' readOnly style={{ backgroundColor: colors.inputBackground, borderColor: colors.inputBorder }}  />
 						</div>
 						{showRememberMe ?
 							<>
@@ -146,7 +152,7 @@ export default function Edit({ attributes, setAttributes }) {
 								keepPlaceholderOnFocus="true"
 								onChange={(value) => setAttributes({ labelSubmit: value })}
 								value={labelSubmit}
-								style={{ backgroundColor: '#8B1D86', borderColor: '#8B1D86' }}
+								style={{ backgroundColor: colors.buttonBackground, borderColor: colors.buttonBorder, color: colors.buttonText }}
 							/>
 						</div>
 					</form>

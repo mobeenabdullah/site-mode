@@ -42,7 +42,12 @@ function Edit(_ref) {
     loggedInBehaviour,
     colors
   } = attributes;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  console.log(colors);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+					.sm-login-form-block .sm__input-field label {
+						color: ${colors.inputLabel};
+					}
+				`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Login Form Settings', 'site-mode')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Remember Me', 'site-mode'),
@@ -79,7 +84,8 @@ function Edit(_ref) {
     colorSettings: [{
       value: colors.headingText,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           headingText: value
         }
       }),
@@ -87,7 +93,8 @@ function Edit(_ref) {
     }, {
       value: colors.inputLabel,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           inputLabel: value
         }
       }),
@@ -95,7 +102,8 @@ function Edit(_ref) {
     }, {
       value: colors.inputBorder,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           inputBorder: value
         }
       }),
@@ -103,7 +111,8 @@ function Edit(_ref) {
     }, {
       value: colors.inputBackground,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           inputBackground: value
         }
       }),
@@ -111,7 +120,8 @@ function Edit(_ref) {
     }, {
       value: colors.buttonBackground,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           buttonBackground: value
         }
       }),
@@ -119,7 +129,8 @@ function Edit(_ref) {
     }, {
       value: colors.buttonText,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           buttonText: value
         }
       }),
@@ -127,7 +138,8 @@ function Edit(_ref) {
     }, {
       value: colors.buttonBorder,
       onChange: value => setAttributes({
-        colors: { ...colors,
+        colors: {
+          ...colors,
           buttonBorder: value
         }
       }),
@@ -138,7 +150,10 @@ function Edit(_ref) {
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-login-form-cover"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
-    className: "login__heading"
+    className: "login__heading",
+    style: {
+      color: colors.headingText
+    }
   }, "Login"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     id: "sm-login-form-block"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -161,7 +176,8 @@ function Edit(_ref) {
     value: defaultUsername,
     size: "20",
     style: {
-      backgroundColor: '#AC3C3C'
+      backgroundColor: colors.inputBackground,
+      borderColor: colors.inputBorder
     }
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm__input-field sm__password"
@@ -180,7 +196,8 @@ function Edit(_ref) {
     value: "********",
     readOnly: true,
     style: {
-      backgroundColor: '#AC3C3C'
+      backgroundColor: colors.inputBackground,
+      borderColor: colors.inputBorder
     }
   })), showRememberMe ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm__input-field sm__remember-me"
@@ -210,8 +227,9 @@ function Edit(_ref) {
     }),
     value: labelSubmit,
     style: {
-      backgroundColor: '#8B1D86',
-      borderColor: '#8B1D86'
+      backgroundColor: colors.buttonBackground,
+      borderColor: colors.buttonBorder,
+      color: colors.buttonText
     }
   }))))));
 }

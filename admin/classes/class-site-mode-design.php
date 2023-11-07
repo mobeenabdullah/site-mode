@@ -53,9 +53,9 @@ class Site_Mode_Design extends  Settings {
         'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
         'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
-        'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
-        'template-9' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
-        'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
+        'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
+        'template-9' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/nature-sky-mountainous-landforms-mountain-cloud-horizon-1013391-pxhere.com_11zon.webp',
+        'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/sunrise-beauty-color-dusk-sob-bright-1578121-pxhere.com_11zon-1-scaled.webp',
     ];
 
     public function __construct() {

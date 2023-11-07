@@ -45,12 +45,12 @@
 			"type": "object",
 			"default": {
 				"inputLabel": "#000000",
-				"inputBorder": "#000000",
+				"inputBorder": "#00000032",
 				"inputBackground": "#ffffff",
-				"buttonBackground": "#000000",
+				"buttonBackground": "#4D34FA",
 				"buttonText": "#ffffff",
-				"buttonBorder": "#000000",
-				"headingText": "#000000"
+				"buttonBorder": "#4D34FA",
+				"headingText": "#4D34FA"
 			}
 		}
 	}
