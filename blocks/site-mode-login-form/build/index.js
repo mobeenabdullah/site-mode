@@ -39,9 +39,9 @@ function Edit(_ref) {
     labelSubmit,
     rememberMeLabel,
     defaultRememberMe,
-    loggedInBehaviour
+    loggedInBehaviour,
+    colors
   } = attributes;
-  console.log(attributes);
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Login Form Settings', 'site-mode')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
@@ -68,6 +68,70 @@ function Edit(_ref) {
     }, {
       value: 'login',
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show log in form', 'site-mode')
+    }]
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors & Background', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: "Color Settings",
+    initialOpen: true,
+    icon: "admin-appearance",
+    colorSettings: [{
+      value: colors.headingText,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          headingText: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading Text')
+    }, {
+      value: colors.inputLabel,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          inputLabel: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Label')
+    }, {
+      value: colors.inputBorder,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          inputBorder: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Border')
+    }, {
+      value: colors.inputBackground,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          inputBackground: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Background')
+    }, {
+      value: colors.buttonBackground,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          buttonBackground: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Background')
+    }, {
+      value: colors.buttonText,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          buttonText: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text')
+    }, {
+      value: colors.buttonBorder,
+      onChange: value => setAttributes({
+        colors: { ...colors,
+          buttonBorder: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Border')
     }]
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-login-form-block"

@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, CheckboxControl } from '@wordpress/components';
+import { useBlockProps, RichText, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -14,9 +14,8 @@ export default function Edit({ attributes, setAttributes }) {
 		rememberMeLabel,
 		defaultRememberMe,
 		loggedInBehaviour,
+		colors,
 	} = attributes;
-
-	console.log(attributes);
 
 
 	return (
@@ -38,6 +37,52 @@ export default function Edit({ attributes, setAttributes }) {
 							{ value: 'user', label: __('Show "Logged in as USER. Log Out"', 'site-mode') },
 							{ value: 'logout', label: __('Just the log out link', 'site-mode') },
 							{ value: 'login', label: __('Show log in form', 'site-mode') },
+						]}
+					/>
+				</PanelBody>
+
+				<PanelBody title={__('Colors & Background', 'site-mode')} initialOpen={false}>
+					<PanelColorSettings
+						title="Color Settings"
+						initialOpen={true}
+						icon="admin-appearance"
+						colorSettings={[
+							{
+								value: colors.headingText,
+								onChange: (value) => setAttributes({ colors: { ...colors, headingText: value } }),
+								label: __('Heading Text')
+							},
+							{
+								value: colors.inputLabel,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputLabel: value } }),
+								label: __('Input Label')
+							},
+							{
+								value: colors.inputBorder,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputBorder: value } }),
+								label: __('Input Border')
+							},
+							{
+								value: colors.inputBackground,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputBackground: value } }),
+								label: __('Input Background')
+							},
+							{
+								value: colors.buttonBackground,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonBackground: value } }),
+								label: __('Button Background')
+							},
+							{
+								value: colors.buttonText,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonText: value } }),
+								label: __('Button Text')
+							},
+							{
+								value: colors.buttonBorder,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonBorder: value } }),
+								label: __('Button Border')
+							}
+
 						]}
 					/>
 				</PanelBody>

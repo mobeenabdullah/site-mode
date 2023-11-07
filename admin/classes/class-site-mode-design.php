@@ -52,7 +52,7 @@ class Site_Mode_Design extends  Settings {
         'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
         'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
-        'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+        'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
         'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
         'template-9' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
         'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
@@ -163,8 +163,11 @@ class Site_Mode_Design extends  Settings {
 
         // Change the components placeholder to group the template components
         $template           = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($template_name, $template->content, '---sm-countdown---', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
+        $template_content   = $template->content;
+        if($category === 'maintenance' || $category === 'coming_soon') :
+            $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-countdown---', $this->show_countdown);
+            $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
+        endif;
 
         // Change the color placeholder to set the color scheme
         $blocks = $this->changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $this->color_scheme);
@@ -212,8 +215,12 @@ class Site_Mode_Design extends  Settings {
 
         // Change the components placeholder to group the template components
         $template           = json_decode($this->replace_template_default_image($template_name));
-        $template_content = $this->replace_template_placeholder($template_name, $template->content, '---sm-countdown---', $this->show_countdown);
-        $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
+        $template_content   = $template->content;
+
+        if($category === 'maintenance' || $category === 'coming_soon') :
+            $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-countdown---', $this->show_countdown);
+            $template_content = $this->replace_template_placeholder($template_name, $template_content, '---sm-social-media---', $this->show_social);
+        endif;
 
         // Change the color placeholder to set the color scheme
         $blocks = $this->changeTheColorPlaceholderToSetTheColorScheme($template_name, $template_content, $this->color_scheme);

@@ -242,7 +242,7 @@ class Site_Mode {
 
         $this->loader->add_action( 'template_redirect', $template_load, 'sm_redirect_404_to_homepage' );
         $this->loader->add_filter( 'login_url', $template_load, 'sm_modify_default_login_url', 10, 3 );
-//        $this->loader->add_action( 'init', $template_load, 'custom_login' );
+//        $this->loader->add_filter( 'wp_login', $template_load, 'custom_login_redirect', 10, 2 );
 
 
         if($template_load->is_site_mode_active()) {
