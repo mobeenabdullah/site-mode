@@ -39,7 +39,7 @@
 		},
 		"loggedInBehaviour": {
 			"type": "string",
-			"default": "redirect"
+			"default": "user"
 		},
 		"colors": {
 			"type": "object",
