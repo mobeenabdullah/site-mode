@@ -5,9 +5,14 @@
 }
 
 // General Styling
-* {
+
+
+
+.sm__dashboard * {
   box-sizing: border-box;
 }
+
+
 .sm__dashboard {
   & #wpcontent {
     padding-left: 0 !important;
