@@ -1,6 +1,6 @@
 import { __ } from '@wordpress/i18n';
-import { useBlockProps, RichText, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, ToggleControl, SelectControl, CheckboxControl } from '@wordpress/components';
+import { useBlockProps, RichText, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
+import { PanelBody, ToggleControl, SelectControl } from '@wordpress/components';
 import './editor.scss';
 
 export default function Edit({ attributes, setAttributes }) {
@@ -14,13 +14,18 @@ export default function Edit({ attributes, setAttributes }) {
 		rememberMeLabel,
 		defaultRememberMe,
 		loggedInBehaviour,
+		colors,
 	} = attributes;
-
-	console.log(attributes);
-
-
+	console.log(colors)
 	return (
 		<div {...useBlockProps()}>
+			<style>
+				{`
+					.sm-login-form-block .sm__input-field label {
+						color: ${colors.inputLabel};
+					}
+				`}
+			</style>
 
 			<InspectorControls>
 				<PanelBody title={__('Login Form Settings', 'site-mode')}>
@@ -41,66 +46,118 @@ export default function Edit({ attributes, setAttributes }) {
 						]}
 					/>
 				</PanelBody>
-			</InspectorControls>
 
-			<form>
-				<p className="login-username">
-					<RichText
-						tagName="label"
-						placeholder={__('Username or Email Address', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelUsername: value })}
-						value={labelUsername}
+				<PanelBody title={__('Colors & Background', 'site-mode')} initialOpen={false}>
+					<PanelColorSettings
+						title="Color Settings"
+						initialOpen={true}
+						icon="admin-appearance"
+						colorSettings={[
+							{
+								value: colors.headingText,
+								onChange: (value) => setAttributes({ colors: { ...colors, headingText: value } }),
+								label: __('Heading Text')
+							},
+							{
+								value: colors.inputLabel,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputLabel: value } }),
+								label: __('Input Label')
+							},
+							{
+								value: colors.inputBorder,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputBorder: value } }),
+								label: __('Input Border')
+							},
+							{
+								value: colors.inputBackground,
+								onChange: (value) => setAttributes({ colors: { ...colors, inputBackground: value } }),
+								label: __('Input Background')
+							},
+							{
+								value: colors.buttonBackground,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonBackground: value } }),
+								label: __('Button Background')
+							},
+							{
+								value: colors.buttonText,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonText: value } }),
+								label: __('Button Text')
+							},
+							{
+								value: colors.buttonBorder,
+								onChange: (value) => setAttributes({ colors: { ...colors, buttonBorder: value } }),
+								label: __('Button Border')
+							}
+
+						]}
 					/>
-					<input
-						type="text"
-						className="input"
-						placeholder={__('Default username', 'site-mode')}
-						onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
-						value={defaultUsername}
-						size="20"
-					/>
-				</p>
-				<p className="login-password">
-					<RichText
-						tagName="label"
-						placeholder={__('Password', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelPassword: value })}
-						value={labelPassword}
-					/>
-					<input type="password" className="input" size="20" value='********' readOnly />
-				</p>
-				{showRememberMe ?
-					<>
-						<p className="login-remember">
-							<input
-								type="checkbox"
-								onChange={() => setAttributes({ defaultRememberMe: !defaultRememberMe })}
-								checked={defaultRememberMe}
-							/>
+				</PanelBody>
+			</InspectorControls>
+			<div className="sm-login-form-block">
+				<div className="sm-login-form-cover">
+					<h2 className="login__heading" style={{ color: colors.headingText }}>Login</h2>
+					<form id="sm-login-form-block">
+						<div className="sm__input-field sm__username-email">
 							<RichText
 								tagName="label"
-								placeholder={__('Remember Me', 'site-mode')}
+								placeholder={__('Username or Email Address', 'site-mode')}
 								keepPlaceholderOnFocus="true"
-								onChange={(value) => setAttributes({ rememberMeLabel: value })}
-								value={rememberMeLabel}
+								onChange={(value) => setAttributes({ labelUsername: value })}
+								value={labelUsername}
 							/>
-						</p>
-					</>
-					: (<br />)
-				}
-				<p className="login-submit">
-					<RichText
-						tagName="label"
-						className="wp-block-button__link"
-						placeholder={__('Log In', 'site-mode')}
-						keepPlaceholderOnFocus="true"
-						onChange={(value) => setAttributes({ labelSubmit: value })}
-						value={labelSubmit}
-					/>
-				</p>
-			</form>
+							<input
+								type="text"
+								className="input"
+								placeholder={__('Default username', 'site-mode')}
+								onChange={(event) => setAttributes({ defaultUsername: event.target.value })}
+								value={defaultUsername}
+								size="20"
+								style={{ backgroundColor: colors.inputBackground, borderColor: colors.inputBorder }}
+							/>
+						</div>
+						<div className="sm__input-field sm__password">
+							<RichText
+								tagName="label"
+								placeholder={__('Password', 'site-mode')}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes({ labelPassword: value })}
+								value={labelPassword}
+							/>
+							<input type="password" className="input" size="20" value='********' readOnly style={{ backgroundColor: colors.inputBackground, borderColor: colors.inputBorder }}  />
+						</div>
+						{showRememberMe ?
+							<>
+								<div className="sm__input-field sm__remember-me">
+									<input
+										type="checkbox"
+										onChange={() => setAttributes({ defaultRememberMe: !defaultRememberMe })}
+										checked={defaultRememberMe}
+									/>
+									<RichText
+										tagName="label"
+										placeholder={__('Remember Me', 'site-mode')}
+										keepPlaceholderOnFocus="true"
+										onChange={(value) => setAttributes({ rememberMeLabel: value })}
+										value={rememberMeLabel}
+									/>
+								</div>
+							</>
+							: (<br />)
+						}
+						<div className="sm__input-field sm__submit-field">
+							<RichText
+								tagName="label"
+								className="wp-block-button__link"
+								placeholder={__('Log In', 'site-mode')}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes({ labelSubmit: value })}
+								value={labelSubmit}
+								style={{ backgroundColor: colors.buttonBackground, borderColor: colors.buttonBorder, color: colors.buttonText }}
+							/>
+						</div>
+					</form>
+				</div>
+			</div>
 
 		</div>
 	);

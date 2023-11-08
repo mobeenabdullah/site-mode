@@ -39,10 +39,15 @@ function Edit(_ref) {
     labelSubmit,
     rememberMeLabel,
     defaultRememberMe,
-    loggedInBehaviour
+    loggedInBehaviour,
+    colors
   } = attributes;
-  console.log(attributes);
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+  console.log(colors);
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+					.sm-login-form-block .sm__input-field label {
+						color: ${colors.inputLabel};
+					}
+				`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Login Form Settings', 'site-mode')
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
     label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show Remember Me', 'site-mode'),
@@ -69,8 +74,90 @@ function Edit(_ref) {
       value: 'login',
       label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Show log in form', 'site-mode')
     }]
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "login-username"
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Colors & Background', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: "Color Settings",
+    initialOpen: true,
+    icon: "admin-appearance",
+    colorSettings: [{
+      value: colors.headingText,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          headingText: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Heading Text')
+    }, {
+      value: colors.inputLabel,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          inputLabel: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Label')
+    }, {
+      value: colors.inputBorder,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          inputBorder: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Border')
+    }, {
+      value: colors.inputBackground,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          inputBackground: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Background')
+    }, {
+      value: colors.buttonBackground,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          buttonBackground: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Background')
+    }, {
+      value: colors.buttonText,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          buttonText: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text')
+    }, {
+      value: colors.buttonBorder,
+      onChange: value => setAttributes({
+        colors: {
+          ...colors,
+          buttonBorder: value
+        }
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Border')
+    }]
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm-login-form-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm-login-form-cover"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("h2", {
+    className: "login__heading",
+    style: {
+      color: colors.headingText
+    }
+  }, "Login"), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    id: "sm-login-form-block"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm__input-field sm__username-email"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Username or Email Address', 'site-mode'),
@@ -87,9 +174,13 @@ function Edit(_ref) {
       defaultUsername: event.target.value
     }),
     value: defaultUsername,
-    size: "20"
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "login-password"
+    size: "20",
+    style: {
+      backgroundColor: colors.inputBackground,
+      borderColor: colors.inputBorder
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm__input-field sm__password"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Password', 'site-mode'),
@@ -103,9 +194,13 @@ function Edit(_ref) {
     className: "input",
     size: "20",
     value: "********",
-    readOnly: true
-  })), showRememberMe ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "login-remember"
+    readOnly: true,
+    style: {
+      backgroundColor: colors.inputBackground,
+      borderColor: colors.inputBorder
+    }
+  })), showRememberMe ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm__input-field sm__remember-me"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "checkbox",
     onChange: () => setAttributes({
@@ -120,8 +215,8 @@ function Edit(_ref) {
       rememberMeLabel: value
     }),
     value: rememberMeLabel
-  }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
-    className: "login-submit"
+  }))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("br", null), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm__input-field sm__submit-field"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
     className: "wp-block-button__link",
@@ -130,8 +225,13 @@ function Edit(_ref) {
     onChange: value => setAttributes({
       labelSubmit: value
     }),
-    value: labelSubmit
-  }))));
+    value: labelSubmit,
+    style: {
+      backgroundColor: colors.buttonBackground,
+      borderColor: colors.buttonBorder,
+      color: colors.buttonText
+    }
+  }))))));
 }
 
 /***/ }),
