@@ -54,23 +54,6 @@ class Template_Load {
 
     }
 
-    public function sm_redirect_404_to_homepage() {
-        if(is_404() && !empty($this->template['page_setup']) && !empty($this->template['page_setup']['404_page_id']) ) {
-            wp_safe_redirect( get_the_permalink($this->template['page_setup']['404_page_id']) );
-            die();
-            exit;
-        }
-    }
-
-    public function sm_modify_default_login_url($login_url, $redirect, $force_reauth) {
-
-        if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['login_page_id']) ) {
-            return home_url('/login-page');
-        } else {
-            return $login_url;
-        }
-    }
-
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
 		$wp_user_roles      = $this->advanced_settings['user_roles'] ?? [];
@@ -109,7 +92,6 @@ class Template_Load {
 		}
 
 	}
-
 
     public function pre_option_redirect_page($value) {
         if(!empty($this->template['page_setup']) && !empty($this->template['page_setup']['active_page']) && get_post_status($this->template['page_setup']['active_page']) === 'publish' && $this->template_initialize()){

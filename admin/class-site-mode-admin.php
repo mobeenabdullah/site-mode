@@ -191,8 +191,21 @@ class Site_Mode_Admin {
         );
     }
 
+
     public function use_maintenance_template( $template ) {
         global $post;
+        $sm_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
+        $sm_404_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-404-page-template.php';
+
+        $sm_design_data = get_option( 'site_mode_design' );
+        $sm_404_template_active = isset($sm_design_data['page_setup']['404_template_active']) ? $sm_design_data['page_setup']['404_template_active'] : '';
+
+        if(is_404() && $sm_404_template_active){
+            if ( is_file( $sm_404_template_file ) ) {
+                return $sm_404_template_file;
+            }
+        }
+
         if ( empty( $post ) ) {
             return $template;
         }
@@ -221,10 +234,8 @@ class Site_Mode_Admin {
         }
 
 
-        $file = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
-
-        if ( is_file( $file ) ) {
-            return $file;
+        if ( is_file( $sm_template_file ) ) {
+            return $sm_template_file;
         }
 
         return $template;
