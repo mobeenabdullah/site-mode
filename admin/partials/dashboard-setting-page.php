@@ -5,8 +5,8 @@ $coming_soon_page        = !empty($design_settings['page_setup']['coming_soon_pa
 $active_page             = !empty($design_settings['page_setup']['active_page']) && get_post_status($design_settings['page_setup']['active_page']) === 'publish' ? intval($design_settings['page_setup']['active_page']) : '';
 $coming_soon_template    = !empty($design_settings['page_setup']['coming_soon_template']) ? $design_settings['page_setup']['coming_soon_template'] : '';
 $maintenance_template    = !empty($design_settings['page_setup']['maintenance_template']) ? $design_settings['page_setup']['maintenance_template'] : '';
-$notfound_template    = !empty($design_settings['page_setup']['maintenance_template']) ? $design_settings['page_setup']['maintenance_template'] : '';
-$login_template    = !empty($design_settings['page_setup']['maintenance_template']) ? $design_settings['page_setup']['maintenance_template'] : '';
+$notfound_active       = !empty($design_settings['page_setup']['404_template_active']) ? $design_settings['page_setup']['404_template_active'] : '';
+$notfound_template     = !empty($design_settings['page_setup']['404_template']) ? $design_settings['page_setup']['404_template'] : '';
 
 ?>
 
@@ -36,13 +36,13 @@ $login_template    = !empty($design_settings['page_setup']['maintenance_template
                 <div class="sitemode__media-box">
                     <div class="site-mode-cards">
                         <?php wp_nonce_field( 'setup_action', 'setup_action_field' ); ?>
-                        <div class="site-mode-cards--item <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'enabled__card' : '' ?>">
+                        <div class="site-mode-cards--item sm-page <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
                                     <?php if(empty($coming_soon_page)) : ?>
                                         <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=coming-soon'); ?>">
                                     <?php endif; ?>
-                                        <input type="checkbox" name="page__template" id="coming_soon_temp" <?php echo empty($coming_soon_page) ? 'disabled' : '';?> value="<?php echo esc_attr($coming_soon_page); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : '' ?>>
+                                        <input type="checkbox" name="page__template" id="coming_soon_temp" class="sm-page-checkbox" data-category="coming-soon" <?php echo empty($coming_soon_page) ? 'disabled' : '';?> value="<?php echo esc_attr($coming_soon_page); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : '' ?>>
                                         <label class="toggle" for="coming_soon_temp"></label>
                                     <?php if(empty($coming_soon_page)) : ?>
                                         </a>
@@ -82,13 +82,13 @@ $login_template    = !empty($design_settings['page_setup']['maintenance_template
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="site-mode-cards--item  <?php echo $maintenance_page && $maintenance_page === $active_page ? 'enabled__card' : '' ?>">
+                        <div class="site-mode-cards--item sm-page <?php echo $maintenance_page && $maintenance_page === $active_page ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
                                     <?php if(empty($maintenance_page)) : ?>
                                         <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>">
                                     <?php endif; ?>
-                                        <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
+                                        <input type="checkbox" name="page__template" id="maintenance_temp" class="sm-page-checkbox" data-category="maintenance" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
                                         <label class="toggle" for="maintenance_temp"></label>
                                     <?php if(empty($maintenance_page)) : ?>
                                         </a>
@@ -129,15 +129,15 @@ $login_template    = !empty($design_settings['page_setup']['maintenance_template
                                 <?php endif; ?>
                             </div>
                         </div>
-                        <div class="site-mode-cards--item  <?php echo $notfound_template && $notfound_template === $active_page ? 'enabled__card' : '' ?>">
+                        <div class="site-mode-cards--item sm-template <?php echo $notfound_active ? 'enabled__card' : '' ?>">
                             <div class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <?php if(empty($maintenance_page)) : ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>">
+                                    <?php if(empty($notfound_template)) : ?>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=404'); ?>">
                                     <?php endif; ?>
-                                        <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
-                                        <label class="toggle" for="maintenance_temp"></label>
-                                    <?php if(empty($maintenance_page)) : ?>
+                                        <input type="checkbox" name="404__template" id="404_temp" data-category="404" value="<?php echo esc_attr($notfound_template); ?>" <?php echo empty($notfound_template) ? 'disabled' : '';?> <?php echo $notfound_active ? 'checked' : '' ?>>
+                                        <label class="toggle" for="404_temp"></label>
+                                    <?php if(empty($notfound_template)) : ?>
                                         </a>
                                     <?php endif; ?>
                                 </span>
@@ -156,67 +156,16 @@ $login_template    = !empty($design_settings['page_setup']['maintenance_template
                                 <div class="sm_select_page-btn">
 
                                     <?php
-                                    if(!empty($maintenance_page)) {
+                                    if(empty($notfound_template)) {
                                         ?>
-                                        <a href="<?php echo esc_url(get_edit_post_link(intval($maintenance_page))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Edit Page</a>
-                                        <a href="<?php echo esc_url(get_permalink(intval($maintenance_page))); ?>" target="_blank" class="sm__btn block_btn primary_button">Perview</a>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=404'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
                                         <?php
                                     }
                                     ?>
                                 </div>
-                                <?php if(!empty($maintenance_page))  : ?>
+                                <?php if(!empty($notfound_template))  : ?>
                                     <div class="sm_select_re_setup">
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&template=' . $maintenance_template); ?>" class="reset_setup_again">Reset and setup again</a>
-                                    </div>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                        <div class="site-mode-cards--item  <?php echo $login_template && $login_template === $active_page ? 'enabled__card' : '' ?>">
-                            <div class="sm__card">
-                                <span class="btn-toggle setup_pages btn-check-toggle">
-                                    <?php if(empty($maintenance_page)) : ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>">
-                                    <?php endif; ?>
-                                        <input type="checkbox" name="page__template" id="maintenance_temp" value="<?php echo esc_attr($maintenance_page); ?>" <?php echo empty($maintenance_page) ? 'disabled' : '';?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : '' ?>>
-                                        <label class="toggle" for="maintenance_temp"></label>
-                                    <?php if(empty($maintenance_page)) : ?>
-                                        </a>
-                                    <?php endif; ?>
-                                </span>
-                                <div class="sm_select_page-icon maintenance__icon">
-                                    <svg width="50" height="50" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M35 46.6667C41.4342 46.6667 46.6667 41.4342 46.6667 35C46.6667 28.5659 41.4342 23.3334 35 23.3334C28.5659 23.3334 23.3334 28.5659 23.3334 35C23.3334 41.4342 28.5659 46.6667 35 46.6667ZM35 29.1667C38.1617 29.1667 40.8334 31.8384 40.8334 35C40.8334 38.1617 38.1617 40.8334 35 40.8334C31.8384 40.8334 29.1667 38.1617 29.1667 35C29.1667 31.8384 31.8384 29.1667 35 29.1667Z" fill="#FE4773"/>
-                                        <path d="M8.29789 47.0634L11.2146 52.1092C12.7633 54.7838 16.4908 55.7871 19.1771 54.2384L20.72 53.3459C22.4074 54.6732 24.2678 55.7644 26.25 56.5892V58.3334C26.25 61.5505 28.8662 64.1667 32.0833 64.1667H37.9166C41.1337 64.1667 43.75 61.5505 43.75 58.3334V56.5892C45.7314 55.7643 47.5918 54.6742 49.28 53.3488L50.8229 54.2413C53.515 55.7871 57.2337 54.7896 58.7883 52.1092L61.7021 47.0663C62.475 45.7267 62.6847 44.135 62.2849 42.6409C61.8851 41.1469 60.9086 39.8726 59.57 39.098L58.0971 38.2463C58.4102 36.0954 58.4102 33.9105 58.0971 31.7596L59.57 30.908C60.9081 30.1328 61.884 28.8585 62.2837 27.3647C62.6834 25.8708 62.4742 24.2794 61.7021 22.9396L58.7883 17.8967C57.2396 15.2134 53.515 14.2071 50.8229 15.7617L49.28 16.6542C47.5926 15.3269 45.7321 14.2357 43.75 13.4109V11.6667C43.75 8.44962 41.1337 5.83337 37.9166 5.83337H32.0833C28.8662 5.83337 26.25 8.44962 26.25 11.6667V13.4109C24.2685 14.2358 22.4082 15.3259 20.72 16.6513L19.1771 15.7588C16.4821 14.21 12.7604 15.2134 11.2116 17.8938L8.29789 22.9367C7.52492 24.2763 7.3153 25.868 7.71507 27.3621C8.11484 28.8561 9.0913 30.1304 10.43 30.905L11.9029 31.7567C11.5886 33.9065 11.5886 36.0906 11.9029 38.2405L10.43 39.0921C9.09169 39.8678 8.11568 41.1427 7.716 42.637C7.31631 44.1313 7.52557 45.7231 8.29789 47.0634ZM17.9987 39.0192C17.6694 37.7048 17.5019 36.3551 17.5 35C17.5 33.6525 17.6691 32.2992 17.9958 30.9809C18.1496 30.3664 18.099 29.7186 17.8517 29.1354C17.6043 28.5523 17.1737 28.0657 16.625 27.7492L13.3496 25.8534L16.2604 20.8105L19.6 22.7413C20.1446 23.0564 20.7767 23.1864 21.4015 23.1117C22.0263 23.0371 22.61 22.7617 23.065 22.3271C25.0382 20.4504 27.4176 19.0541 30.0183 18.2467C30.6157 18.0643 31.1388 17.695 31.5105 17.193C31.8823 16.691 32.083 16.083 32.0833 15.4584V11.6667H37.9166V15.4584C37.9169 16.083 38.1177 16.691 38.4894 17.193C38.8612 17.695 39.3842 18.0643 39.9816 18.2467C42.5818 19.0552 44.961 20.4514 46.935 22.3271C47.3905 22.7609 47.9741 23.0356 48.5986 23.1103C49.2232 23.1849 49.8551 23.0555 50.4 22.7413L53.7366 20.8134L56.6533 25.8563L53.375 27.7492C52.8266 28.066 52.3963 28.5527 52.1489 29.1357C51.9016 29.7187 51.8508 30.3664 52.0041 30.9809C52.3308 32.2992 52.5 33.6525 52.5 35C52.5 36.3446 52.3308 37.698 52.0012 39.0192C51.8482 39.634 51.8994 40.2819 52.1473 40.8649C52.3951 41.448 52.8261 41.9345 53.375 42.2509L56.6504 44.1438L53.7396 49.1867L50.4 47.2588C49.8555 46.9432 49.2233 46.8129 48.5984 46.8876C47.9735 46.9623 47.3897 47.2379 46.935 47.673C44.9618 49.5497 42.5823 50.946 39.9816 51.7534C39.3842 51.9358 38.8612 52.3051 38.4894 52.8071C38.1177 53.309 37.9169 53.9171 37.9166 54.5417L37.9225 58.3334H32.0833V54.5417C32.083 53.9171 31.8823 53.309 31.5105 52.8071C31.1388 52.3051 30.6157 51.9358 30.0183 51.7534C27.4181 50.9448 25.0389 49.5487 23.065 47.673C22.6109 47.2367 22.0268 46.9604 21.4014 46.8862C20.7761 46.812 20.1436 46.9438 19.6 47.2617L16.2633 49.1925L13.3466 44.1496L16.625 42.2509C17.1739 41.9345 17.6048 41.448 17.8527 40.8649C18.1005 40.2819 18.1518 39.634 17.9987 39.0192Z" fill="#FE4773"/>
-                                    </svg>
-                                </div>
-                                <div class="sm_select_page-title">
-                                    Custom Login Page (coming soon)
-                                </div>
-                                <div class="sm_select_page-desc">
-                                    Secure, branded login gateway with personalized options.
-                                </div>
-                                <div class="sm_select_page-btn">
-
-                                    <?php
-                                    if(!empty($maintenance_page)) {
-                                        ?>
-                                        <a href="<?php echo esc_url(get_edit_post_link(intval($maintenance_page))); ?>" target="_blank" class="sm__btn block_btn secondary_btn">Edit Page</a>
-                                        <a href="<?php echo esc_url(get_permalink(intval($maintenance_page))); ?>" target="_blank" class="sm__btn block_btn primary_button">Perview</a>
-                                        <?php
-                                    } else {
-                                        ?>
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance'); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
-                                        <?php
-                                    }
-                                    ?>
-                                </div>
-                                <?php if(!empty($maintenance_page))  : ?>
-                                    <div class="sm_select_re_setup">
-                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=maintenance&template=' . $maintenance_template); ?>" class="reset_setup_again">Reset and setup again</a>
+                                        <a href="<?php echo admin_url('/admin.php?page=site-mode&design=true&cat=404&template=' . $notfound_template); ?>" class="reset_setup_again">Reset and setup again</a>
                                     </div>
                                 <?php endif; ?>
                             </div>

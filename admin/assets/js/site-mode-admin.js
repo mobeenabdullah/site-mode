@@ -351,9 +351,14 @@ jQuery(function ($) {
     let activePage = '';
     const currentElement = $(this);
     const nonce = $("#setup_action_field").val();
+    const category = currentElement.attr('data-category');
 
     if (currentElement.prop('checked')) {
-      activePage = currentElement.val();
+      if(category == '404') {
+        activePage = true;
+      } else {
+        activePage = currentElement.val();
+      }
     }
 
     $.ajax({
@@ -363,13 +368,23 @@ jQuery(function ($) {
       data: {
         action: "ajax_site_mode_page_setup",
         activePage: activePage,
-        setup_action_field: nonce
+        setup_action_field: nonce,
+        category: category
       },
       success: function (res) {
-        $('.setup_pages input[type="checkbox"]').not(currentElement).prop('checked', false);
-        manipulateElement('.site-mode-cards--item', 'removeClass', 'enabled__card');
-        if (currentElement.prop('checked')) {
-          manipulateElement(currentElement.closest('.site-mode-cards--item'), 'addClass', 'enabled__card');
+
+        if(category === '404') {
+          if (currentElement.prop('checked')) {
+            manipulateElement('.site-mode-cards--item.sm-template', 'addClass', 'enabled__card');
+          } else {
+            manipulateElement('.site-mode-cards--item.sm-template', 'removeClass', 'enabled__card');
+          }
+        } else {
+          $('.setup_pages .sm-page-checkbox').not(currentElement).prop('checked', false);
+          manipulateElement('.site-mode-cards--item.sm-page', 'removeClass', 'enabled__card');
+          if (currentElement.prop('checked')) {
+            manipulateElement(currentElement.closest('.site-mode-cards--item.sm-page'), 'addClass', 'enabled__card');
+          }
         }
         window.location.reload();
       },
