@@ -118,22 +118,12 @@ class Site_Mode_Design extends  Settings {
             'page_setup'    => $this->page_setup,
         ];
 
-        if($page_category === '404' || $page_category === 'login') {
-            if($page_category === 'login') {
-                $design_data['page_setup']['login_template_active'] = !$this->page_setup['page_setup']['login_template_active'];
-            } else {
-                $design_data['page_setup']['404_template_active'] = !$this->page_setup['page_setup']['404_template_active'];
-            }
+        if($page_category == '404') {
+            $design_data['page_setup']['404_template_active'] = $active_page_id;
         } else {
             $design_data['page_setup']['active_page'] = $active_page_id;
         }
 
-        $design_data = [
-            'template'      => $this->active_template,
-            'page_setup'    => $this->page_setup,
-        ];
-
-        $design_data['page_setup']['active_page'] = $active_page_id;
         $this->save_data( $this->option_name, $design_data );
         die();
 
@@ -159,7 +149,7 @@ class Site_Mode_Design extends  Settings {
             'page_setup'    => $this->page_setup,
         ];
 
-        if($category !== '404' && $category !== 'login') {
+        if($category !== '404') {
             $page_id = $this->check_page_exist($this->page_setup, $template_name, $category );
         } else {
             $this->create_page_or_template($template_name, $category);
@@ -204,7 +194,7 @@ class Site_Mode_Design extends  Settings {
 
     public function check_page_exist($page_setup = '', $template_name = '', $category = ''){
 
-        if($category !== '404' && $category !== 'login') {
+        if($category !== '404') {
             if($category === 'maintenance') {
                 $id = $page_setup['maintenance_page_id'];
             } else {
@@ -249,15 +239,9 @@ class Site_Mode_Design extends  Settings {
         } elseif($category === 'coming_soon') {
             $title = 'Coming Soon Page';
         } else {
-            if($category === '404') {
-                $this->page_setup['404_template'] = $template_name;
-                $this->page_setup['404_template_active'] = true;
-                $this->page_setup['404_template_content'] = $blocks;
-            } elseif($category === 'login') {
-                $this->page_setup['login_template'] = $template_name;
-                $this->page_setup['login_template_active'] = true;
-                $this->page_setup['login_template_content'] = $blocks;
-            }
+            $this->page_setup['404_template'] = $template_name;
+            $this->page_setup['404_template_active'] = true;
+            $this->page_setup['404_template_content'] = $blocks;
 
             $design_data = [
                 'template'      => $template_name,
