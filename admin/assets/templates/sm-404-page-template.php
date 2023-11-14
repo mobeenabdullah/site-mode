@@ -111,13 +111,8 @@ if(!empty($seo_info) && !empty($seo_info['meta_favicon'])) {
     wp_body_open();
 
     if($sm_404_template_content) {
-        $parsed_blocks = parse_blocks($sm_404_template_content);
-
-        if ($parsed_blocks) {
-            foreach ($parsed_blocks as $block) {
-                echo apply_filters('the_content', render_block($block));
-            }
-        }
+        $content = apply_filters('the_content', $sm_404_template_content);
+        echo $content;
     } else {
         echo '<div class="sm-404-template">';
         echo '<h1 class="sm-404-template__title">' . esc_html__('404', 'site-mode') . '</h1>';

@@ -32,6 +32,9 @@
   margin: 0 !important;
 }
 
+.sm__wizard-wrapper * {
+  box-sizing: border-box;
+}
 /*  d.  Wizard General Styling */
 .sm__wizard-wrapper {
   position: absolute;
