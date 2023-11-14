@@ -32,21 +32,21 @@ $templates =  [
         'name'          => 'Template 8',
         'category'      => '404',
     ],
-    'template-9' => [
-        'name'          => 'Template 9',
-        'category'      => 'login',
-    ],
-    'template-10' => [
-        'name'          => 'Template 10',
-        'category'      => 'login',
-    ],
+//    'template-9' => [
+//        'name'          => 'Template 9',
+//        'category'      => 'login',
+//    ],
+//    'template-10' => [
+//        'name'          => 'Template 10',
+//        'category'      => 'login',
+//    ],
 ];
 $categories = [
     'all' => 'All',
     'coming-soon' => 'Coming Soon',
     'maintenance' => 'Maintenance',
     '404'         => '404',
-    'login'       => 'Login',
+//    'login'       => 'Login',
 ];
 
 $args = array(
@@ -77,7 +77,7 @@ $page_ids = get_posts($args);
             </div>
             <div class="template_options wizard__templates-cards">
                 <?php foreach($templates as $key => $template ): ?>
-                    <div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $this->active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo $template['category']; ?>">
+                    <div class="template_card template-content-wrapper wizard__templates-cards--single" data-category-name="<?php echo $template['category']; ?>">
                         <div class="template_card-img" style="background-image: url(<?php echo esc_url(SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg'); ?>);">
                             <div class="template_card-actions">
                                 <?php

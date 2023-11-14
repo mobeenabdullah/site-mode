@@ -84,8 +84,7 @@ function Edit(_ref) {
     colorSettings: [{
       value: colors.headingText,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           headingText: value
         }
       }),
@@ -93,8 +92,7 @@ function Edit(_ref) {
     }, {
       value: colors.inputLabel,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           inputLabel: value
         }
       }),
@@ -102,8 +100,7 @@ function Edit(_ref) {
     }, {
       value: colors.inputBorder,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           inputBorder: value
         }
       }),
@@ -111,8 +108,7 @@ function Edit(_ref) {
     }, {
       value: colors.inputBackground,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           inputBackground: value
         }
       }),
@@ -120,8 +116,7 @@ function Edit(_ref) {
     }, {
       value: colors.buttonBackground,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           buttonBackground: value
         }
       }),
@@ -129,8 +124,7 @@ function Edit(_ref) {
     }, {
       value: colors.buttonText,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           buttonText: value
         }
       }),
@@ -138,8 +132,7 @@ function Edit(_ref) {
     }, {
       value: colors.buttonBorder,
       onChange: value => setAttributes({
-        colors: {
-          ...colors,
+        colors: { ...colors,
           buttonBorder: value
         }
       }),
