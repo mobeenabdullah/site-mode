@@ -38,38 +38,38 @@ class Site_Mode_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-    /**
-     * Style buffering.
-     *
-     * @var string $site_mode_buffer_style
-     */
-    protected $site_mode_buffer_style;
+	/**
+	 * Style buffering.
+	 *
+	 * @var
+	 */
+	protected $site_mode_buffer_style;
 
-    /**
-     * General settings.
-     *
-     * @var array $general_settings
-     */
-    protected $general_settings;
+	/**
+	 * General settings.
+	 *
+	 * @var
+	 */
+	protected $general_settings;
 
-    /**
-     * Design settings.
-     *
-     * @var array $design_settings
-     */
-    protected $design_settings;
-    /**
-     * SEO settings.
-     *
-     * @var array $seo_settings
-     */
-    protected $seo_settings;
-    /**
-     * Advanced settings.
-     *
-     * @var array $advanced_settings
-     */
-    protected $advanced_settings;
+	/**
+	 * Design settings.
+	 *
+	 * @var
+	 */
+	protected $design_settings;
+	/**
+	 * SEO settings.
+	 *
+	 * @var
+	 */
+	protected $seo_settings;
+	/**
+	 * Advanced settings.
+	 *
+	 * @var
+	 */
+	protected $advanced_settings;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -88,22 +88,22 @@ class Site_Mode_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
 	}
 
-    /**
-     * Register the stylesheets for the admin area.
-     *
-     * @return void
-     */
+	/**
+	 * Register the stylesheets for the admin area.
+	 *
+	 * @return void
+	 */
 	public function enqueue_media() {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
 	}
 
-    /**
-     * Enqueue stylesheets for the admin area.
-     *
-     * @return void
-     */
+	/**
+	 * Register the stylesheets for the admin area.
+	 *
+	 * @return void
+	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', array(), $this->version, 'all' );
@@ -116,9 +116,9 @@ class Site_Mode_Admin {
 	}
 
 	/**
-	 * Enqueue JavaScript for the admin area.
-     *
-     * @return void
+	 * Register the JavaScript for the admin area.
+	 *
+	 * @return void
 	 */
 	public function enqueue_scripts() {
 
@@ -178,11 +178,11 @@ class Site_Mode_Admin {
 		return $post_states;
 	}
 
-    /**
-     * SM plugin redirect.
-     *
-     * @return void
-     */
+	/**
+	 * SM plugin redirect.
+	 *
+	 * @return void
+	 */
 	public function sm_plugin_redirect() {
 		if ( get_option( 'sm_activation_redirect', false ) ) {
 			delete_option( 'sm_activation_redirect' );
@@ -190,11 +190,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * SM admin bar.
-     *
-     * @return void
-     */
+	/**
+	 * SM admin bar.
+	 *
+	 * @return void
+	 */
 	public function sm_admin_bar() {
 		global $wp_admin_bar;
 
@@ -312,11 +312,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * SM remember fse style.
-     *
-     * @return void
-     */
+	/**
+	 * SM remember fse style.
+	 *
+	 * @return void
+	 */
 	public function sm_remember_fse_style() {
 		ob_start();
 		wp_head();
@@ -330,11 +330,11 @@ class Site_Mode_Admin {
 		$this->site_mode_buffer_style = $doc->getElementsByTagName( 'style' );
 	}
 
-    /**
-     * SM fse style.
-     *
-     * @return void
-     */
+	/**
+	 * SM fse style.
+	 *
+	 * @return void
+	 */
 	public function sm_fse_style() {
 		ob_start();
 		wp_head();
