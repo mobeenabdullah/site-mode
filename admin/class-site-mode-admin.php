@@ -111,7 +111,7 @@ class Site_Mode_Admin {
 		// wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( 'site-mode' == isset( $_GET['page'] ) && $_GET['page']  && ( ( isset( $_GET['design'] ) &&  'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( 'site-mode' == isset( $_GET['page'] ) && $_GET['page'] && ( ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}
@@ -139,7 +139,7 @@ class Site_Mode_Admin {
 			)
 		);
 
-		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page']  && ( ( isset( $_GET['design'] ) &&  'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page'] && ( ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_script( 'sm-wizard', plugin_dir_url( __FILE__ ) . 'assets/js/sm-wizard.js', array( 'jquery' ), $this->version, true );
 			wp_localize_script(
 				'sm-wizard',
@@ -151,13 +151,13 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * Add display post status.
-     *
-     * @param array $post_states An array of post display states.
-     * @param WP_Post $post The current post object.
-     * @return array
-     */
+	/**
+	 * Add display post status.
+	 *
+	 * @param array   $post_states An array of post display states.
+	 * @param WP_Post $post The current post object.
+	 * @return array
+	 */
 	public function add_display_post_states( $post_states, $post ) {
 
 		$design_data      = get_option( 'site_mode_design' );
@@ -227,12 +227,12 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * Add maintenance template.
-     *
-     * @param array $templates Array of templates.
-     * @return array
-     */
+	/**
+	 * Add maintenance template.
+	 *
+	 * @param array $templates Array of templates.
+	 * @return array
+	 */
 	public function add_maintenance_template( $templates ) {
 		return array_merge(
 			$templates,
@@ -242,12 +242,12 @@ class Site_Mode_Admin {
 		);
 	}
 
-    /**
-     * Use maintenance template.
-     *
-     * @param string $template Template file.
-     * @return string
-     */
+	/**
+	 * Use maintenance template.
+	 *
+	 * @param string $template Template file.
+	 * @return string
+	 */
 	public function use_maintenance_template( $template ) {
 		global $post;
 		$sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
@@ -296,14 +296,14 @@ class Site_Mode_Admin {
 		return $template;
 	}
 
-    /**
-     * SM add body class.
-     *
-     * @param string $classes Body classes.
-     * @return string
-     */
+	/**
+	 * SM add body class.
+	 *
+	 * @param string $classes Body classes.
+	 * @return string
+	 */
 	public function sm_add_body_class( $classes ) {
-		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page']  && ( empty( get_option( 'sm-fresh-installation' ) ) || ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) ) ) {
+		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page'] && ( empty( get_option( 'sm-fresh-installation' ) ) || ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) ) ) {
 			$classes .= ' sm__wizard-mode ';
 			return $classes;
 		} elseif ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page'] ) {
@@ -325,7 +325,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-        echo esc_html($output);
+		echo esc_html( $output );
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
@@ -344,7 +344,7 @@ class Site_Mode_Admin {
 		ob_end_clean();
 
 		$doc = new DOMDocument();
-		$doc->loadHTML( '<html>' . esc_html($output) . '</html>' );
+		$doc->loadHTML( '<html>' . esc_html( $output ) . '</html>' );
 		$elems = $doc->getElementsByTagName( 'style' );
 		$css   = '';
 
@@ -366,6 +366,6 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo esc_html($css);
+		echo esc_html( $css );
 	}
 }

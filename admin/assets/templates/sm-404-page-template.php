@@ -27,7 +27,7 @@ if ( ! empty( $seo_info ) && ! empty( $seo_info['meta_favicon'] ) ) {
 }
 
 ?>
-    <!DOCTYPE html>
+	<!DOCTYPE html>
 	<html <?php language_attributes(); ?>>
 	<head>
 		<meta charset="<?php bloginfo( 'charset' ); ?>">
