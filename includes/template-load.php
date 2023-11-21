@@ -16,7 +16,7 @@ class Template_Load {
 		$maintenance_page = isset( $this->template['page_setup']['maintenance_page_id'] ) ? intval( $this->template['page_setup']['maintenance_page_id'] ) : '';
 		$active_template  = isset( $this->template['page_setup']['active_page'] ) ? intval( $this->template['page_setup']['active_page'] ) : '';
 
-		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) == 'true' ) {
+		if ( is_user_logged_in() && isset( $_GET['site-mode-preview'] ) === 'true' ) {
 			return true;
 		} elseif ( $active_template && $this->check_user_role() && $this->check_whitelist_pages() && $this->check_redirect_status() ) {
 			if ( $maintenance_page === $active_template ) {

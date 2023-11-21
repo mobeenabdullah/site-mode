@@ -122,7 +122,7 @@ class Site_Mode_Design extends Settings {
 			'page_setup' => $this->page_setup,
 		);
 
-		if ( $page_category == '404' ) {
+		if ( $page_category === '404' ) {
 			$design_data['page_setup']['404_template_active'] = $active_page_id;
 		} else {
 			$design_data['page_setup']['active_page'] = $active_page_id;
@@ -310,7 +310,7 @@ class Site_Mode_Design extends Settings {
 
 	protected function replace_template_placeholder( $template_name, $template_content, $placeholder, $emptyPlaceholder, $new_color = '' ) {
 		$placeholder_content = '';
-		if ( $emptyPlaceholder != 'false' && empty( $new_color ) ) {
+		if ( $emptyPlaceholder !== 'false' && empty( $new_color ) ) {
 			$filtered_placeholder    = str_replace( '---', '', $placeholder );
 			$filtered_placeholder    = str_replace( 'sm-', '', $filtered_placeholder );
 			$placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/' . $filtered_placeholder . '.json';

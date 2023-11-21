@@ -96,7 +96,7 @@ class Site_Mode_Admin {
 		// wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] == 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}
@@ -121,7 +121,7 @@ class Site_Mode_Admin {
 			)
 		);
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] == 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_script( 'sm-wizard', plugin_dir_url( __FILE__ ) . 'assets/js/sm-wizard.js', array( 'jquery' ), $this->version, true );
 			wp_localize_script(
 				'sm-wizard',
@@ -140,15 +140,15 @@ class Site_Mode_Admin {
 		$coming_soon_page = isset( $design_data['page_setup']['coming_soon_page_id'] ) ? $design_data['page_setup']['coming_soon_page_id'] : '';
 		$error_404_page   = isset( $design_data['page_setup']['404_page_id'] ) ? $design_data['page_setup']['404_page_id'] : '';
 
-		if ( $coming_soon_page == $post->ID ) {
+		if ( $coming_soon_page === $post->ID ) {
 			$post_states['sm_coming_soon_status'] = 'Coming Soon';
 		}
 
-		if ( $maintenance_page == $post->ID ) {
+		if ( $maintenance_page === $post->ID ) {
 			$post_states['sm_maintenance_status'] = 'Maintenance';
 		}
 
-		if ( $error_404_page == $post->ID ) {
+		if ( $error_404_page === $post->ID ) {
 			$post_states['sm_404_status'] = '404 Page';
 		}
 
@@ -171,9 +171,9 @@ class Site_Mode_Admin {
 		$coming_soon_page = isset( $design_settings['page_setup'] ) && ! empty( $design_settings['page_setup']['coming_soon_page_id'] ) && get_post_status( $design_settings['page_setup']['coming_soon_page_id'] ) === 'publish' ? $design_settings['page_setup']['coming_soon_page_id'] : '';
 
 		if ( $is_status_active ) {
-			if ( $is_status_active == $maintenance_page ) {
+			if ( $is_status_active === $maintenance_page ) {
 				$text = '<span style="background: #fe4773; color: #fff; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status" >Maintenance Mode is Enabled</span>';
-			} elseif ( $is_status_active == $coming_soon_page ) {
+			} elseif ( $is_status_active === $coming_soon_page ) {
 				$text = '<span style="background: #fe4773; color: #fff; display: flex; justify-content: center; padding: 0 10px;" class="sm-admin-bar-status">Coming Soon Mode Enabled</span>';
 			} else {
 				return;
@@ -290,7 +290,7 @@ class Site_Mode_Admin {
 
 		foreach ( $elems as $i => $elem ) {
 			foreach ( $this->site_mode_buffer_style as $style ) {
-				if ( $elems->item( $i )->C14N() == $style->C14N() ) {
+				if ( $elems->item( $i )->C14N() === $style->C14N() ) {
 					$common_positions[] = $i;
 				}
 			}

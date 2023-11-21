@@ -135,7 +135,7 @@ class Site_Mode_Public {
 		$maintenance_page = isset( $design_settings['page_setup']['maintenance_page_id'] ) ? $design_settings['page_setup']['maintenance_page_id'] : '';
 		$is_valid_page    = false;
 
-		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( $active_page == get_the_ID() || $coming_soon_page == get_the_ID() && $maintenance_page == get_the_ID() ) ) {
+		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( $active_page === get_the_ID() || $coming_soon_page === get_the_ID() && $maintenance_page === get_the_ID() ) ) {
 			$is_valid_page = true;
 		}
 

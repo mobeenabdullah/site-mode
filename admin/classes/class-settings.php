@@ -26,7 +26,7 @@ class Settings {
 	public function save_data( $option_name, $data ) {
 		update_option( $option_name, $data );
 
-		if ( empty( get_option( 'sm-fresh-installation' ) ) && $option_name == 'site_mode_design' ) {
+		if ( empty( get_option( 'sm-fresh-installation' ) ) && $option_name === 'site_mode_design' ) {
 			update_option( 'sm-fresh-installation', true );
 
 			wp_send_json_success(
@@ -37,7 +37,7 @@ class Settings {
 					'template_name'      => str_replace( '-', ' ', $data['template'] ),
 				)
 			);
-		} elseif ( $option_name == 'site_mode_design' ) {
+		} elseif ( $option_name === 'site_mode_design' ) {
 			wp_send_json_success(
 				array(
 					'tab'       => 'design',
