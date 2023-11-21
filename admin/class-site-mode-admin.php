@@ -38,38 +38,38 @@ class Site_Mode_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-    /**
-     * Style buffering.
-     *
-     * @var
-     */
-    protected $site_mode_buffer_style;
+	/**
+	 * Style buffering.
+	 *
+	 * @var
+	 */
+	protected $site_mode_buffer_style;
 
-    /**
-     * General settings.
-     *
-     * @var
-     */
-    protected $general_settings;
+	/**
+	 * General settings.
+	 *
+	 * @var
+	 */
+	protected $general_settings;
 
-    /**
-     * Design settings.
-     *
-     * @var
-     */
-    protected $design_settings;
-    /**
-     * SEO settings.
-     *
-     * @var
-     */
-    protected $seo_settings;
-    /**
-     * Advanced settings.
-     *
-     * @var
-     */
-    protected $advanced_settings;
+	/**
+	 * Design settings.
+	 *
+	 * @var
+	 */
+	protected $design_settings;
+	/**
+	 * SEO settings.
+	 *
+	 * @var
+	 */
+	protected $seo_settings;
+	/**
+	 * Advanced settings.
+	 *
+	 * @var
+	 */
+	protected $advanced_settings;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -89,8 +89,8 @@ class Site_Mode_Admin {
 	}
 
 	/**
-     * Register the stylesheets for the admin area.
-     *
+	 * Register the stylesheets for the admin area.
+	 *
 	 * @return void
 	 */
 	public function enqueue_media() {
@@ -101,8 +101,8 @@ class Site_Mode_Admin {
 
 	/**
 	 * Register the stylesheets for the admin area.
-     *
-     * @return void
+	 *
+	 * @return void
 	 */
 	public function enqueue_styles() {
 		wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', array(), $this->version, 'all' );
@@ -117,8 +117,8 @@ class Site_Mode_Admin {
 
 	/**
 	 * Register the JavaScript for the admin area.
-     *
-     * @return void
+	 *
+	 * @return void
 	 */
 	public function enqueue_scripts() {
 
@@ -149,11 +149,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * Add display post status.
-     *
-     * @return void
-     */
+	/**
+	 * Add display post status.
+	 *
+	 * @return void
+	 */
 	public function add_display_post_states( $post_states, $post ) {
 
 		$design_data      = get_option( 'site_mode_design' );
@@ -176,11 +176,11 @@ class Site_Mode_Admin {
 		return $post_states;
 	}
 
-    /**
-     * SM plugin redirect.
-     *
-     * @return void
-     */
+	/**
+	 * SM plugin redirect.
+	 *
+	 * @return void
+	 */
 	public function sm_plugin_redirect() {
 		if ( get_option( 'sm_activation_redirect', false ) ) {
 			delete_option( 'sm_activation_redirect' );
@@ -188,11 +188,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * SM admin bar.
-     *
-     * @return void
-     */
+	/**
+	 * SM admin bar.
+	 *
+	 * @return void
+	 */
 	public function sm_admin_bar() {
 		global $wp_admin_bar;
 
@@ -223,11 +223,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * Add maintenance template.
-     *
-     * @return void
-     */
+	/**
+	 * Add maintenance template.
+	 *
+	 * @return void
+	 */
 	public function add_maintenance_template( $templates ) {
 		return array_merge(
 			$templates,
@@ -237,11 +237,11 @@ class Site_Mode_Admin {
 		);
 	}
 
-    /**
-     * Use maintenance template.
-     *
-     * @return void
-     */
+	/**
+	 * Use maintenance template.
+	 *
+	 * @return void
+	 */
 	public function use_maintenance_template( $template ) {
 		global $post;
 		$sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
@@ -290,11 +290,11 @@ class Site_Mode_Admin {
 		return $template;
 	}
 
-    /**
-     * SM add body class.
-     *
-     * @return void
-     */
+	/**
+	 * SM add body class.
+	 *
+	 * @return void
+	 */
 	public function sm_add_body_class( $classes ) {
 		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( empty( get_option( 'sm-fresh-installation' ) ) || ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) ) ) {
 			$classes .= ' sm__wizard-mode ';
@@ -307,11 +307,11 @@ class Site_Mode_Admin {
 		}
 	}
 
-    /**
-     * SM remember fse style.
-     *
-     * @return void
-     */
+	/**
+	 * SM remember fse style.
+	 *
+	 * @return void
+	 */
 	public function sm_remember_fse_style() {
 		ob_start();
 		wp_head();
@@ -325,11 +325,11 @@ class Site_Mode_Admin {
 		$this->site_mode_buffer_style = $doc->getElementsByTagName( 'style' );
 	}
 
-    /**
-     * SM fse style.
-     *
-     * @return void
-     */
+	/**
+	 * SM fse style.
+	 *
+	 * @return void
+	 */
 	public function sm_fse_style() {
 		ob_start();
 		wp_head();
