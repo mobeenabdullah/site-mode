@@ -109,7 +109,7 @@ class Site_Mode {
 	private function load_dependencies() {
 
 		/**
-		 * This is responsible for loading all blocks
+		 * This is responsible for loading all blocks.
 		 */
 		require_once SITE_MODE_BLOCKS . 'init.php';
 
@@ -137,7 +137,7 @@ class Site_Mode {
 		require_once SITE_MODE_ADMIN . 'classes/class-plugin-menu.php';
 
 		/**
-		 * The class responsible for defining advanced settings page of the plugin
+		 * The class responsible for defining advanced settings page of the plugin.
 		 */
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 
@@ -196,7 +196,7 @@ class Site_Mode {
 		$this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
 
 		/**
-		 * Ajax calling
+		 * Ajax calling.
 		 */
 		$this->loader->add_filter( 'theme_page_templates', $plugin_admin, 'add_maintenance_template' );
 		$this->loader->add_filter( 'template_include', $plugin_admin, 'use_maintenance_template' );

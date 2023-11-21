@@ -1,6 +1,7 @@
 <?php
 /**
  * Template Name: Full Width for Site Mode
+ * @package Site_Mode
  */
 
 defined( 'ABSPATH' ) || exit;

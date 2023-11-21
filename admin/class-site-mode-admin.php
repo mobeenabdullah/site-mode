@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The admin-specific functionality of the plugin.
  *
@@ -39,13 +38,28 @@ class Site_Mode_Admin {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	protected $site_mode_buffer_style;
+    /**
+     * @var
+     */
+    protected $site_mode_buffer_style;
 
-	protected $general_settings;
+    /**
+     * @var
+     */
+    protected $general_settings;
 
-	protected $design_settings;
-	protected $seo_settings;
-	protected $advanced_settings;
+    /**
+     * @var
+     */
+    protected $design_settings;
+    /**
+     * @var
+     */
+    protected $seo_settings;
+    /**
+     * @var
+     */
+    protected $advanced_settings;
 
 	/**
 	 * Initialize the class and set its properties.
@@ -54,9 +68,7 @@ class Site_Mode_Admin {
 	 * @param      string $plugin_name       The name of this plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
-
 	public function __construct( $plugin_name, $version ) {
-
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 
@@ -65,7 +77,6 @@ class Site_Mode_Admin {
 		// Enqueueing media
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
 	}
-
 
 	/**
 	 * @return void
