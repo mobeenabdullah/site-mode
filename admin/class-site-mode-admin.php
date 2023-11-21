@@ -41,33 +41,33 @@ class Site_Mode_Admin {
     /**
      * Style buffering.
      *
-     * @var
+     * @var string $site_mode_buffer_style
      */
     protected $site_mode_buffer_style;
 
     /**
      * General settings.
      *
-     * @var
+     * @var array $general_settings
      */
     protected $general_settings;
 
     /**
      * Design settings.
      *
-     * @var
+     * @var array $design_settings
      */
     protected $design_settings;
     /**
      * SEO settings.
      *
-     * @var
+     * @var array $seo_settings
      */
     protected $seo_settings;
     /**
      * Advanced settings.
      *
-     * @var
+     * @var array $advanced_settings
      */
     protected $advanced_settings;
 
@@ -88,35 +88,35 @@ class Site_Mode_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
 	}
 
-	/**
+    /**
      * Register the stylesheets for the admin area.
      *
-	 * @return void
-	 */
+     * @return void
+     */
 	public function enqueue_media() {
 		if ( function_exists( 'wp_enqueue_media' ) ) {
 			wp_enqueue_media();
 		}
 	}
 
-	/**
-	 * Register the stylesheets for the admin area.
+    /**
+     * Enqueue stylesheets for the admin area.
      *
      * @return void
-	 */
+     */
 	public function enqueue_styles() {
 		wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', array(), $this->version, 'all' );
 		// wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( 'site-mode' == isset( $_GET['page'] ) && $_GET['page']  && ( ( isset( $_GET['design'] ) &&  'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}
 
 	/**
-	 * Register the JavaScript for the admin area.
+	 * Enqueue JavaScript for the admin area.
      *
      * @return void
 	 */
@@ -137,7 +137,7 @@ class Site_Mode_Admin {
 			)
 		);
 
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page']  && ( ( isset( $_GET['design'] ) &&  'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_script( 'sm-wizard', plugin_dir_url( __FILE__ ) . 'assets/js/sm-wizard.js', array( 'jquery' ), $this->version, true );
 			wp_localize_script(
 				'sm-wizard',
@@ -152,7 +152,9 @@ class Site_Mode_Admin {
     /**
      * Add display post status.
      *
-     * @return void
+     * @param array $post_states An array of post display states.
+     * @param WP_Post $post The current post object.
+     * @return array
      */
 	public function add_display_post_states( $post_states, $post ) {
 
@@ -226,7 +228,8 @@ class Site_Mode_Admin {
     /**
      * Add maintenance template.
      *
-     * @return void
+     * @param array $templates Array of templates.
+     * @return array
      */
 	public function add_maintenance_template( $templates ) {
 		return array_merge(
@@ -240,7 +243,8 @@ class Site_Mode_Admin {
     /**
      * Use maintenance template.
      *
-     * @return void
+     * @param string $template Template file.
+     * @return string
      */
 	public function use_maintenance_template( $template ) {
 		global $post;
@@ -293,13 +297,14 @@ class Site_Mode_Admin {
     /**
      * SM add body class.
      *
-     * @return void
+     * @param string $classes Body classes.
+     * @return string
      */
 	public function sm_add_body_class( $classes ) {
-		if ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' && ( empty( get_option( 'sm-fresh-installation' ) ) || ( isset( $_GET['design'] ) && $_GET['design'] === 'true' ) ) ) {
+		if ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page']  && ( empty( get_option( 'sm-fresh-installation' ) ) || ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) ) ) {
 			$classes .= ' sm__wizard-mode ';
 			return $classes;
-		} elseif ( isset( $_GET['page'] ) && $_GET['page'] === 'site-mode' ) {
+		} elseif ( isset( $_GET['page'] ) && 'site-mode' == $_GET['page'] ) {
 			$classes .= ' sm__dashboard ';
 			return $classes;
 		} else {
@@ -318,7 +323,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo $output;
+        echo esc_html($output);
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
@@ -337,7 +342,7 @@ class Site_Mode_Admin {
 		ob_end_clean();
 
 		$doc = new DOMDocument();
-		$doc->loadHTML( '<html>' . $output . '</html>' );
+		$doc->loadHTML( '<html>' . esc_html($output) . '</html>' );
 		$elems = $doc->getElementsByTagName( 'style' );
 		$css   = '';
 
@@ -359,6 +364,6 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo $css;
+		echo esc_html($css);
 	}
 }
