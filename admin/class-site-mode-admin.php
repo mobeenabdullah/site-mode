@@ -84,7 +84,7 @@ class Site_Mode_Admin {
 
 		require_once SITE_MODE_ADMIN . 'classes/class-init.php';
 
-		// Enqueueing media
+		// Enqueueing media.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
 	}
 
@@ -108,10 +108,9 @@ class Site_Mode_Admin {
 	public function enqueue_styles() {
 		wp_enqueue_style( 'fontawsome', SITE_MODE_ADMIN_URL . 'assets/css/all.min.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', array(), $this->version, 'all' );
-		// wp_enqueue_style( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/css/site-mode-admin.css', [], $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( 'site-mode' == isset( $_GET['page'] ) && $_GET['page'] && ( ( isset( $_GET['design'] ) && 'true' == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( 'site-mode' === isset( $_GET['page'] ) && $_GET['page'] && ( ( isset( $_GET['design'] ) && 'true' === $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}
