@@ -22,57 +22,57 @@
  */
 require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
 class Site_Mode_Advanced extends Settings {
-    /**
-     * @var string
-     */
-    protected $option_name = 'site_mode_advanced';
+	/**
+	 * @var string
+	 */
+	protected $option_name = 'site_mode_advanced';
 
-    /**
-     * @var mixed|string
-     */
-    protected $redirect_url;
+	/**
+	 * @var mixed|string
+	 */
+	protected $redirect_url;
 
-    /**
-     * @var int|mixed
-     */
-    protected $redirect_delay;
+	/**
+	 * @var int|mixed
+	 */
+	protected $redirect_delay;
 
-    /**
-     * @var int|mixed
-     */
-    protected $disable_rest_api;
+	/**
+	 * @var int|mixed
+	 */
+	protected $disable_rest_api;
 
-    /**
-     * @var mixed|string
-     */
-    protected $disable_rss_feed;
+	/**
+	 * @var mixed|string
+	 */
+	protected $disable_rss_feed;
 
-    /**
-     * @var false|mixed
-     */
-    protected $redirect;
+	/**
+	 * @var false|mixed
+	 */
+	protected $redirect;
 
-    /**
-     * @var array
-     */
-    protected $site_mode_advanced = array();
+	/**
+	 * @var array
+	 */
+	protected $site_mode_advanced = array();
 
-    /**
-     * @var array|mixed
-     */
-    protected $whitelist_pages;
+	/**
+	 * @var array|mixed
+	 */
+	protected $whitelist_pages;
 
-    /**
-     * @var array|mixed
-     */
-    protected $user_roles;
+	/**
+	 * @var array|mixed
+	 */
+	protected $user_roles;
 
-    /**
-     * Site_Mode_Advanced constructor.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Site_Mode_Advanced constructor.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function __construct() {
 		$this->site_mode_advanced = get_option( 'site_mode_advanced' );
 		if ( $this->site_mode_advanced ) {
@@ -86,22 +86,22 @@ class Site_Mode_Advanced extends Settings {
 		}
 	}
 
-    /**
-     * Remove RSS feed.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Remove RSS feed.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function site_mode_remove_rss_feed() {
 		wp_die( 'RSS feed is disabled' );
 	}
 
-    /**
-     * AJAX for site mode advance settings.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * AJAX for site mode advance settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function ajax_site_mode_advanced() {
 
 		$this->verify_nonce( 'advance-custom-message', 'advance-settings-save' );
@@ -126,12 +126,12 @@ class Site_Mode_Advanced extends Settings {
 		wp_die();
 	}
 
-    /**
-     * Rest API.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Rest API.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function site_mode_rest_api( $access ) {
 
 		if ( empty( $this->disable_rest_api ) ) {
@@ -141,12 +141,12 @@ class Site_Mode_Advanced extends Settings {
 		}
 	}
 
-    /**
-     * Render.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Render.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function render() {
 		$this->display_settings_page( 'advanced' );
 	}

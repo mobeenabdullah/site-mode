@@ -21,46 +21,46 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Design extends Settings {
-    /**
-     * @var string
-     */
-    protected $option_name     = 'site_mode_design';
+	/**
+	 * @var string
+	 */
+	protected $option_name = 'site_mode_design';
 
-    /**
-     * @var string
-     */
-    protected $active_template = '';
+	/**
+	 * @var string
+	 */
+	protected $active_template = '';
 
-    /**
-     * @var bool
-     */
-    protected $show_social     = true;
+	/**
+	 * @var bool
+	 */
+	protected $show_social = true;
 
-    /**
-     * @var bool
-     */
-    protected $show_countdown  = true;
+	/**
+	 * @var bool
+	 */
+	protected $show_countdown = true;
 
-    /**
-     * @var string
-     */
-    protected $color_scheme    = '';
+	/**
+	 * @var string
+	 */
+	protected $color_scheme = '';
 
-    /**
-     * @var string[]
-     */
-    protected $placeholder_colors = array(
+	/**
+	 * @var string[]
+	 */
+	protected $placeholder_colors = array(
 		'base'     => '#AC3C3C',
 		'primary'  => '#8B1D86',
 		'contrast' => '#B7E972',
 	);
 
-    /**
-     * Page Setup Array
-     *
-     * @var array
-     */
-    protected $page_setup     = array(
+	/**
+	 * Page Setup Array
+	 *
+	 * @var array
+	 */
+	protected $page_setup = array(
 		'active_page'            => '',
 		'coming_soon_page_id'    => '',
 		'maintenance_page_id'    => '',
@@ -74,12 +74,12 @@ class Site_Mode_Design extends Settings {
 		'login_template_content' => '',
 	);
 
-    /**
-     * Default Images
-     *
-     * @var string[]
-     */
-    protected $default_images = array(
+	/**
+	 * Default Images
+	 *
+	 * @var string[]
+	 */
+	protected $default_images = array(
 		'template-1'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
 		'template-2'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
 		'template-3'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
@@ -92,21 +92,21 @@ class Site_Mode_Design extends Settings {
 		'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/sunrise-beauty-color-dusk-sob-bright-1578121-pxhere.com_11zon-1-scaled.webp',
 	);
 
-    /**
-     * Site_Mode_Design constructor.
-     *
-     * @since 1.0.5
-     * @return void
-     */
+	/**
+	 * Site_Mode_Design constructor.
+	 *
+	 * @since 1.0.5
+	 * @return void
+	 */
 	public function __construct() {
 		$this->get_template_props_init();
 	}
 
-    /**
-     * AJAX Site Mode Page Setup Wizard.
-     *
-     * @return void
-     */
+	/**
+	 * AJAX Site Mode Page Setup Wizard.
+	 *
+	 * @return void
+	 */
 	public function ajax_site_mode_skip_wizard() {
 		$this->verify_nonce( 'template_init_field', 'template_init_action' );
 		update_option( 'sm-fresh-installation', true );
@@ -118,11 +118,11 @@ class Site_Mode_Design extends Settings {
 		die();
 	}
 
-    /**
-     * Add subscriber to mailchimp list.
-     *
-     * @return void
-     */
+	/**
+	 * Add subscriber to mailchimp list.
+	 *
+	 * @return void
+	 */
 	protected function add_subscriber_to_mailchimp_list( $email ) {
 
 		try {
@@ -161,11 +161,11 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * AJAX Site Mode Page Setup Wizard.
-     *
-     * @return void
-     */
+	/**
+	 * AJAX Site Mode Page Setup Wizard.
+	 *
+	 * @return void
+	 */
 	public function ajax_site_mode_page_setup() {
 		$this->verify_nonce( 'setup_action_field', 'setup_action' );
 		$active_page_id = $this->get_post_data( 'activePage', 'setup_action', 'setup_action_field', 'text' );
@@ -185,11 +185,11 @@ class Site_Mode_Design extends Settings {
 		die();
 	}
 
-    /**
-     * AJAX Site Mode Template Init.
-     *
-     * @return void
-     */
+	/**
+	 * AJAX Site Mode Template Init.
+	 *
+	 * @return void
+	 */
 	public function ajax_site_mode_template_init(): void {
 		$this->verify_nonce( 'template_init_field', 'template_init_action' );
 		$template_name    = $this->get_post_data( 'template', 'template_init_action', 'template_init_field', 'text' );
@@ -250,23 +250,23 @@ class Site_Mode_Design extends Settings {
 		$this->save_data( $this->option_name, $design_data );
 	}
 
-    /**
-     * Render.
-     *
-     * @return void
-     */
+	/**
+	 * Render.
+	 *
+	 * @return void
+	 */
 	public function render() {
 		$this->display_settings_page( 'design' );
 	}
 
-    /**
-     * Check page exist.
-     *
-     * @param mixed  $page_setup
-     * @param string $template_name
-     * @param string $category
-     * @return mixed
-     */
+	/**
+	 * Check page exist.
+	 *
+	 * @param mixed  $page_setup
+	 * @param string $template_name
+	 * @param string $category
+	 * @return mixed
+	 */
 	public function check_page_exist( $page_setup = '', $template_name = '', $category = '' ) {
 
 		if ( $category !== '404' ) {
@@ -292,13 +292,13 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * Create page or template.
-     *
-     * @param string $template_name
-     * @param string $category
-     * @return void
-     */
+	/**
+	 * Create page or template.
+	 *
+	 * @param string $template_name
+	 * @param string $category
+	 * @return void
+	 */
 	public function create_page_or_template( $template_name = '', $category = '' ) {
 
 		// Change the components placeholder to group the template components
@@ -366,11 +366,11 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * Get template props init.
-     *
-     * @return void
-     */
+	/**
+	 * Get template props init.
+	 *
+	 * @return void
+	 */
 	public function get_template_props_init(): void {
 		$design_settings = $this->get_data( $this->option_name );
 
@@ -392,16 +392,16 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * Replace template placeholder.
-     *
-     * @param mixed        $template_name
-     * @param array|string $template_content
-     * @param mixed        $placeholder
-     * @param mixed        $emptyPlaceholder
-     * @param mixed        $new_color
-     * @return array|string|string[]
-     */
+	/**
+	 * Replace template placeholder.
+	 *
+	 * @param mixed        $template_name
+	 * @param array|string $template_content
+	 * @param mixed        $placeholder
+	 * @param mixed        $emptyPlaceholder
+	 * @param mixed        $new_color
+	 * @return array|string|string[]
+	 */
 	protected function replace_template_placeholder( $template_name, $template_content, $placeholder, $emptyPlaceholder, $new_color = '' ) {
 		$placeholder_content = '';
 		if ( $emptyPlaceholder !== 'false' && empty( $new_color ) ) {
@@ -422,12 +422,12 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * Replace template default image.
-     *
-     * @param mixed $template_name
-     * @return array|string|string[]
-     */
+	/**
+	 * Replace template default image.
+	 *
+	 * @param mixed $template_name
+	 * @return array|string|string[]
+	 */
 	public function replace_template_default_image( $template_name = '' ) {
 		$template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
 		$template_content = file_get_contents( $template_url );
@@ -519,11 +519,11 @@ class Site_Mode_Design extends Settings {
 		}
 	}
 
-    /**
-     * Sm design properties init.
-     *
-     * @return void
-     */
+	/**
+	 * Sm design properties init.
+	 *
+	 * @return void
+	 */
 	protected function sm_design_properties_init(): void {
 		$this->get_template_props_init();
 		$this->show_countdown = $this->get_post_data( 'showCountdown', 'template_init_action', 'template_init_field', 'text' );
@@ -533,14 +533,14 @@ class Site_Mode_Design extends Settings {
 	}
 
 
-    /**
-     * Change the color placeholder to set the color scheme.
-     *
-     * @param mixed  $template_name
-     * @param mixed  $template_content
-     * @param string $scheme
-     * @return string
-     */
+	/**
+	 * Change the color placeholder to set the color scheme.
+	 *
+	 * @param mixed  $template_name
+	 * @param mixed  $template_content
+	 * @param string $scheme
+	 * @return string
+	 */
 	public function changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $scheme ) {
 
 		$color_scheme_file    = SITE_MODE_ADMIN . 'assets/color-scheme.json';

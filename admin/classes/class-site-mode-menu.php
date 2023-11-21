@@ -21,20 +21,20 @@
  */
 class Site_Mode_Menu {
 
-    /**
-     * Constructor
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Constructor
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function __construct() {}
 
-    /**
-     * Add menu page
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Add menu page
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function site_mode_menu() {
 		add_menu_page(
 			__( 'Site Mode Settings', 'site-mode' ),
@@ -46,12 +46,12 @@ class Site_Mode_Menu {
 		);
 	}
 
-    /**
-     * Add submenu page
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Add submenu page
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function site_mode_submenu_settings_page() {
 
 		$submenus = array(
@@ -87,12 +87,12 @@ class Site_Mode_Menu {
 		}
 	}
 
-    /**
-     * Callback function for menu page
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Callback function for menu page
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function site_mode_settings_page_cb() {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return;
@@ -100,12 +100,12 @@ class Site_Mode_Menu {
 		require_once SITE_MODE_ADMIN . 'partials/settings-layout.php';
 	}
 
-    /**
-     * Callback function for submenu page
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Callback function for submenu page
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 

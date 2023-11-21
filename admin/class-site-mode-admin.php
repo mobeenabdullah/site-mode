@@ -48,13 +48,13 @@ class Site_Mode_Admin {
 	/**
 	 * General settings.
 	 *
-     * @var array $general_settings
+	 * @var array $general_settings
 	 */
 	protected $general_settings;
 
 	/**
 	 * Design settings.
-     *
+	 *
 	 * @var array $design_settings
 	 */
 	protected $design_settings;
@@ -102,7 +102,7 @@ class Site_Mode_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-     * @param string $hook_suffix The current admin page.
+	 * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_styles() {
@@ -118,7 +118,7 @@ class Site_Mode_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-     * @param string $hook_suffix The current admin page.
+	 * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_scripts() {

@@ -23,12 +23,12 @@
  */
 class Settings {
 
-    /**
-     * Constructor
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Constructor
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function save_data( $option_name, $data ) {
 		update_option( $option_name, $data );
 
@@ -57,23 +57,23 @@ class Settings {
 		}
 	}
 
-    /**
-     * Get Data.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Get Data.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function get_data( $option_name ) {
 		$data = get_option( $option_name );
 		return $data;
 	}
 
-    /**
-     * Get Post Data.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Get Post Data.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function get_post_data( $key, $action, $nonce, $sanitize = 'text' ) {
 
 		if ( isset( $_POST[ $key ] ) && isset( $_POST[ $nonce ] ) && wp_verify_nonce( sanitize_text_field( $_POST[ $nonce ] ), $action ) ) {
@@ -90,34 +90,34 @@ class Settings {
 		return null;
 	}
 
-    /**
-     * Verify Nonce.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Verify Nonce.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function verify_nonce( $key, $action ) {
 		if ( ! isset( $_POST[ $key ] ) || ! wp_verify_nonce( $_POST[ $key ], $action ) ) {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 	}
 
-    /**
-     * Display Settings Page.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Display Settings Page.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function display_settings_page( $page_name ) {
 		require_once SITE_MODE_ADMIN . "partials/{$page_name}-setting-page.php";
 	}
 
-    /**
-     * SVG Sanitization.
-     *
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * SVG Sanitization.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 

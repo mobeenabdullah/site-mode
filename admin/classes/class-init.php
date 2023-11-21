@@ -21,46 +21,48 @@
 
 class Site_Mode_Init {
 
-    /**
-     * Admin Menu.
-     *
-     * @var Site_Mode_Menu
-     */
-    public $admin_menu;
+	/**
+	 * Admin Menu.
+	 *
+	 * @var Site_Mode_Menu
+	 */
+	public $admin_menu;
 
-    /**
-     * General Settings.
-     *
-     * @var Site_Mode_General
-     */
-    protected $general_settings;
+	/**
+	 * General Settings.
+	 *
+	 * @var Site_Mode_General
+	 */
+	protected $general_settings;
 
-    /**
-     * SEO Settings.
-     *
-     * @var Site_Mode_Seo
-     */
-    protected $seo_settings;
+	/**
+	 * SEO Settings.
+	 *
+	 * @var Site_Mode_Seo
+	 */
+	protected $seo_settings;
 
-    /**
-     * Design Settings.
-     * @var Site_Mode_Advanced
-     */
-    protected $advanced_settings;
+	/**
+	 * Design Settings.
+	 *
+	 * @var Site_Mode_Advanced
+	 */
+	protected $advanced_settings;
 
-    /**
-     * Integrations Settings.
-     * @var Site_Mode_Integrations
-     */
-    protected $intergrations_settings;
+	/**
+	 * Integrations Settings.
+	 *
+	 * @var Site_Mode_Integrations
+	 */
+	protected $intergrations_settings;
 
-    /**
-     * Constructor.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return void
-     */
+	/**
+	 * Constructor.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return void
+	 */
 	public function __construct() {
 		$this->files_loader();
 		$this->admin_menu             = new Site_Mode_Menu();
@@ -71,13 +73,13 @@ class Site_Mode_Init {
 		$this->intergrations_settings = new Site_Mode_Integrations();
 	}
 
-    /**
-     * Load all files.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return void
-     */
+	/**
+	 * Load all files.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return void
+	 */
 	public function files_loader() {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-menu.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
@@ -88,57 +90,57 @@ class Site_Mode_Init {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-integrations.php';
 	}
 
-    /**
-     * Get General Settings.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return Site_Mode_General
-     */
+	/**
+	 * Get General Settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return Site_Mode_General
+	 */
 	public function get_general() {
 		return new Site_Mode_General();
 	}
 
-    /**
-     * Get Design Settings.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return Site_Mode_Design
-     */
+	/**
+	 * Get Design Settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return Site_Mode_Design
+	 */
 	public function get_design() {
 		return new Site_Mode_Design();
 	}
 
-    /**
-     * Get SEO Settings.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return Site_Mode_Seo
-     */
+	/**
+	 * Get SEO Settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return Site_Mode_Seo
+	 */
 	public function get_seo() {
 		return new Site_Mode_Seo();
 	}
 
-    /**
-     * Get Advanced Settings.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return Site_Mode_Advanced
-     */
+	/**
+	 * Get Advanced Settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return Site_Mode_Advanced
+	 */
 	public function get_advanced() {
 		return new Site_Mode_Advanced();
 	}
 
-    /**
-     * Get Integrations Settings.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return Site_Mode_Integrations
-     */
+	/**
+	 * Get Integrations Settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return Site_Mode_Integrations
+	 */
 	public function get_integrations() {
 		return new Site_Mode_Integrations();
 	}
