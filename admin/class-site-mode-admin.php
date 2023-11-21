@@ -41,33 +41,33 @@ class Site_Mode_Admin {
 	/**
 	 * Style buffering.
 	 *
-	 * @var
+	 * @var string $site_mode_buffer_style
 	 */
 	protected $site_mode_buffer_style;
 
 	/**
 	 * General settings.
 	 *
-	 * @var
+     * @var array $general_settings
 	 */
 	protected $general_settings;
 
 	/**
 	 * Design settings.
-	 *
-	 * @var
+     *
+	 * @var array $design_settings
 	 */
 	protected $design_settings;
 	/**
 	 * SEO settings.
 	 *
-	 * @var
+	 * @var array $seo_settings
 	 */
 	protected $seo_settings;
 	/**
 	 * Advanced settings.
 	 *
-	 * @var
+	 * @var array $advanced_settings
 	 */
 	protected $advanced_settings;
 
@@ -102,6 +102,7 @@ class Site_Mode_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
+     * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_styles() {
@@ -118,6 +119,7 @@ class Site_Mode_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
+     * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_scripts() {
