@@ -62,8 +62,7 @@ class Site_Mode_Public {
 		// check if value is set or not if not set then set default value.
 		$this->enable_template = isset( $this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template'] : '1';
 
-		add_filter( 'style_loader_tag', [ $this, 'my_style_loader_tag_filter' ], 10, 2 );
-
+		add_filter( 'style_loader_tag', array( $this, 'my_style_loader_tag_filter' ), 10, 2 );
 	}
 
 	/**
@@ -85,8 +84,7 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', [], $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -108,7 +106,7 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', array( 'jquery' ), $this->version, false );
 	}
 
 	public function my_style_loader_tag_filter( $html, $handle ) {
@@ -128,28 +126,27 @@ class Site_Mode_Public {
 		}
 		return $html;
 	}
-    function add_login_icon(){
+	function add_login_icon() {
 
-        $general_settings = get_option('site_mode_general');
-        $design_settings = get_option('site_mode_design');
-        $active_page = isset($design_settings['page_setup']['active_page']) ? $design_settings['page_setup']['active_page'] : '';
-        $coming_soon_page = isset($design_settings['page_setup']['coming_soon_page_id']) ? $design_settings['page_setup']['coming_soon_page_id'] : '';
-        $maintenance_page = isset($design_settings['page_setup']['maintenance_page_id']) ? $design_settings['page_setup']['maintenance_page_id'] : '';
-        $is_valid_page = false;
+		$general_settings = get_option( 'site_mode_general' );
+		$design_settings  = get_option( 'site_mode_design' );
+		$active_page      = isset( $design_settings['page_setup']['active_page'] ) ? $design_settings['page_setup']['active_page'] : '';
+		$coming_soon_page = isset( $design_settings['page_setup']['coming_soon_page_id'] ) ? $design_settings['page_setup']['coming_soon_page_id'] : '';
+		$maintenance_page = isset( $design_settings['page_setup']['maintenance_page_id'] ) ? $design_settings['page_setup']['maintenance_page_id'] : '';
+		$is_valid_page    = false;
 
-        if(!is_admin() && (!is_user_logged_in() || isset($_GET['site-mode-preview']) ) && ($active_page == get_the_ID() || $coming_soon_page == get_the_ID() && $maintenance_page == get_the_ID() ) ) {
-            $is_valid_page = true;
-        }
+		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( $active_page == get_the_ID() || $coming_soon_page == get_the_ID() && $maintenance_page == get_the_ID() ) ) {
+			$is_valid_page = true;
+		}
 
-        if(!empty($general_settings['show_login_icon']) && !empty($general_settings['custom_login_url']) && $is_valid_page) :
-            ?>
-            <div class="login_icon_footer">
-                <a href="<?php echo esc_url($general_settings['custom_login_url']); ?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
-                </a>
-            </div>
-            <?php
-        endif;
-    }
-
+		if ( ! empty( $general_settings['show_login_icon'] ) && ! empty( $general_settings['custom_login_url'] ) && $is_valid_page ) :
+			?>
+			<div class="login_icon_footer">
+				<a href="<?php echo esc_url( $general_settings['custom_login_url'] ); ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
+				</a>
+			</div>
+			<?php
+		endif;
+	}
 }

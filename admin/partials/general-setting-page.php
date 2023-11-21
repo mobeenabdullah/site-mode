@@ -8,10 +8,10 @@
 				<span class="info_text"><?php esc_html_e( 'Enable this option to easily access the login page URL directly from the icon on the front page of your website', 'site-mode' ); ?></span>
 			</div>
 			<div class="option__row--field">
-                <span class="btn-toggle btn-check-toggle smd_normal_toggle">
-                    <input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-show-login-icon" value="1" <?php checked( 1, $this->show_login_icon, true ); ?> />
-                    <label class="toggle" for="login_icon"></label>
-                </span>
+				<span class="btn-toggle btn-check-toggle smd_normal_toggle">
+					<input type="checkbox" id="login_icon" class="enable_login_icon" name="site-mode-show-login-icon" value="1" <?php checked( 1, $this->show_login_icon, true ); ?> />
+					<label class="toggle" for="login_icon"></label>
+				</span>
 			</div>
 		</div>
 		<div class="login_url_field <?php echo ( ! empty( $this->show_login_icon ) ) ? '' : 'sm_hide_field'; ?>">

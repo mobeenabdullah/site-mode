@@ -32,15 +32,15 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 // Options cleanup during uninstall plugin
 
-$options = [
+$options = array(
 	'site_mode_general',
 	'site_mode_seo',
 	'site_mode_design',
 	'site_mode_advanced',
 	'site_mode_design_templates',
-    'sm_activation_redirect',
-    'sm-fresh-installation'
-];
+	'sm_activation_redirect',
+	'sm-fresh-installation',
+);
 
 if ( ! empty( $options ) ) {
 	foreach ( $options as $option ) :

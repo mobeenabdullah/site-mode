@@ -35,7 +35,7 @@ class Site_Mode_General extends Settings {
 	public function ajax_site_mode_general() {
 		$this->verify_nonce( 'general_section_field', 'general_settings_action' );
 
-		$data                     = [];
+		$data                     = array();
 		$data['show_login_icon']  = $this->get_post_data( 'site-mode-show-login-icon', 'general_settings_action', 'general_section_field', 'text' );
 		$data['custom_login_url'] = $this->get_post_data( 'site-mode-custom-login-url', 'general_settings_action', 'general_section_field', 'text' );
 

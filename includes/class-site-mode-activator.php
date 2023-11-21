@@ -24,49 +24,48 @@ class Site_Mode_Activator {
 
 	public static function activate() {
 		// Add default options to database for general settings
-		$general_settings = [
+		$general_settings = array(
 			'mode_status'      => 0,
 			'redirect_url'     => '',
 			'redirect_delay'   => 0,
 			'show_login_icon'  => 1,
 			'custom_login_url' => get_home_url( '', 'wp-login.php' ),
-		];
+		);
 
 		// add default options to database for SEO settings fields with placeholder text.
-		$seo_settings = [
+		$seo_settings = array(
 			'meta_title'       => '',
 			'meta_description' => '',
 			'meta_favicon'     => '',
 			'meta_image'       => '',
-		];
+		);
 
 		// adding default options to database for advanced settings.
-		$advance_settings = [
+		$advance_settings = array(
 			'enable_rest_api'  => '0',
 			'disable_rss_feed' => '0',
 			'enable_feed'      => '1',
-            'mode_type'        => 'maintenance',
-            'whitelist_pages'  => [],
-            'user_roles'       => ['administrator'],
-		];
+			'mode_type'        => 'maintenance',
+			'whitelist_pages'  => array(),
+			'user_roles'       => array( 'administrator' ),
+		);
 
-        $integrations_settings = [
-            'ga_id'            => '',
-            'fb_id'            => '',
-        ];
+		$integrations_settings = array(
+			'ga_id' => '',
+			'fb_id' => '',
+		);
 
 		// Add default options to database for general settings.
-		$settings = [
-			'site_mode_general'             => $general_settings,
-			'site_mode_seo'                 => $seo_settings,
-			'site_mode_advanced'            => $advance_settings,
-            'site_mode_integrations'        => $integrations_settings,
-            'sm_activation_redirect'        => true
-		];
+		$settings = array(
+			'site_mode_general'      => $general_settings,
+			'site_mode_seo'          => $seo_settings,
+			'site_mode_advanced'     => $advance_settings,
+			'site_mode_integrations' => $integrations_settings,
+			'sm_activation_redirect' => true,
+		);
 
 		foreach ( $settings as $key => $value ) :
 			add_option( $key, $value );
 		endforeach;
-
 	}
 }
