@@ -2,7 +2,7 @@
 
 
 /**
- * Responsible for plugin menu
+ * Responsible for Site Mode Advanced Settings
  *
  * @link       https://mobeenabdullah.com
  * @since      1.0.5
@@ -23,10 +23,16 @@
  */
 class Settings {
 
+    /**
+     * Constructor
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function save_data( $option_name, $data ) {
 		update_option( $option_name, $data );
 
-		if ( empty( get_option( 'sm-fresh-installation' ) ) && $option_name === 'site_mode_design' ) {
+		if ( empty( get_option( 'sm-fresh-installation' ) ) && 'site_mode_design' === $option_name ) {
 			update_option( 'sm-fresh-installation', true );
 
 			wp_send_json_success(
@@ -51,19 +57,31 @@ class Settings {
 		}
 	}
 
+    /**
+     * Get Data.
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function get_data( $option_name ) {
 		$data = get_option( $option_name );
 		return $data;
 	}
 
+    /**
+     * Get Post Data.
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function get_post_data( $key, $action, $nonce, $sanitize = 'text' ) {
 
 		if ( isset( $_POST[ $key ] ) && isset( $_POST[ $nonce ] ) && wp_verify_nonce( sanitize_text_field( $_POST[ $nonce ] ), $action ) ) {
-			if ( $sanitize === 'number' ) {
+			if ( 'number' === $sanitize ) {
 				return intval( $_POST[ $key ] );
-			} elseif ( $sanitize === 'color' ) {
+			} elseif ( 'color' === $sanitize ) {
 				return sanitize_hex_color( $_POST[ $key ] );
-			} elseif ( $sanitize === 'code' ) {
+			} elseif ( 'code' === $sanitize ) {
 				return $_POST[ $key ];
 			} else {
 				return sanitize_text_field( $_POST[ $key ] );
@@ -72,16 +90,34 @@ class Settings {
 		return null;
 	}
 
+    /**
+     * Verify Nonce.
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function verify_nonce( $key, $action ) {
 		if ( ! isset( $_POST[ $key ] ) || ! wp_verify_nonce( $_POST[ $key ], $action ) ) {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 	}
 
+    /**
+     * Display Settings Page.
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function display_settings_page( $page_name ) {
 		require_once SITE_MODE_ADMIN . "partials/{$page_name}-setting-page.php";
 	}
 
+    /**
+     * SVG Sanitization.
+     *
+     * @since 1.0.5
+     * @access public
+     */
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 
