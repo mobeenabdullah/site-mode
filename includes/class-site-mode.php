@@ -134,7 +134,7 @@ class Site_Mode {
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once SITE_MODE_ADMIN . 'classes/class-plugin-menu.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-menu.php';
 
 		/**
 		 * The class responsible for defining advanced settings page of the plugin.
@@ -178,7 +178,7 @@ class Site_Mode {
 	private function define_admin_hooks() {
 
 		$plugin_admin         = new Site_Mode_Admin( $this->get_plugin_name(), $this->get_version() );
-		$this->classes_loader = new init();
+		$this->classes_loader = new Site_Mode_Init();
 
 		$this->loader->add_action( 'init', $plugin_admin, 'sm_plugin_redirect' );
 		$this->loader->add_action( 'wp_before_admin_bar_render', $plugin_admin, 'sm_admin_bar' );
