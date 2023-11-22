@@ -1,6 +1,6 @@
 <?php
 /**
- * Responsible for plugin menu
+ * Responsible for design settings.
  *
  * @link       https://mobeenabdullah.com
  * @since      1.0.5
@@ -10,7 +10,7 @@
  */
 
 /**
- * Responsible for plugin menu
+ * Responsible for design settings.
  *
  * This class defines all code necessary to run during the plugin's menu
  *
@@ -21,31 +21,43 @@
  */
 class Site_Mode_Design extends Settings {
     /**
+     * Variable for option name.
+     *
      * @var string $option_name
      */
 	protected $option_name = 'site_mode_design';
 
 	/**
+     * Variable for active template.
+     *
 	 * @var string $active_template
 	 */
 	protected $active_template = '';
 
 	/**
+     * Variable for show social.
+     *
 	 * @var bool $show_social
 	 */
 	protected $show_social = true;
 
 	/**
+     * Variable for show countdown.
+     *
 	 * @var bool $show_countdown
 	 */
 	protected $show_countdown = true;
 
 	/**
+     * Variable for color scheme.
+     *
 	 * @var string $color_scheme
 	 */
 	protected $color_scheme = '';
 
 	/**
+     * Variable for placeholder colors.
+     *
 	 * @var string[] $placeholder_colors
 	 */
 	protected $placeholder_colors = array(
@@ -390,7 +402,7 @@ class Site_Mode_Design extends Settings {
 	 * @param mixed        $template_name Template name.
 	 * @param array|string $template_content Template content.
 	 * @param mixed        $placeholder Placeholder.
-	 * @param mixed        $emptyPlaceholder Empty placeholder.
+	 * @param mixed        $empty_placeholder Empty placeholder.
 	 * @param mixed        $new_color New color.
 	 * @return array|string|string[]
 	 */
@@ -483,7 +495,7 @@ class Site_Mode_Design extends Settings {
 
 						$media_id = wp_insert_attachment( $attachment, $file_path );
 
-						// Update image metadata
+						// Update image metadata.
 						require_once ABSPATH . 'wp-admin/includes/image.php';
 						$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
 						wp_update_attachment_metadata( $media_id, $attach_data );
