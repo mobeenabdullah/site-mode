@@ -32,21 +32,12 @@ $templates =  [
         'name'          => 'Template 8',
         'category'      => '404',
     ],
-//    'template-9' => [
-//        'name'          => 'Template 9',
-//        'category'      => 'login',
-//    ],
-//    'template-10' => [
-//        'name'          => 'Template 10',
-//        'category'      => 'login',
-//    ],
 ];
 $categories = [
     'all' => 'All',
     'coming-soon' => 'Coming Soon',
     'maintenance' => 'Maintenance',
     '404'         => '404',
-//    'login'       => 'Login',
 ];
 $active_cat         = '';
 $active_template    = '';
