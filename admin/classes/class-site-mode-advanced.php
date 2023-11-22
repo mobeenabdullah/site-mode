@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Responsible for Site Mode Advanced Settings
  *
@@ -21,49 +20,93 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
+
+/**
+ * Class Site_Mode_Advanced
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/Advanced
+ */
 class Site_Mode_Advanced extends Settings {
 	/**
-	 * @var string
+	 * The Key of settings in the options table.
+	 *
+	 * @since    1.0.5
+	 * @access   protected
+	 * @var      string    $option_name    The Key of settings in the options table.
 	 */
 	protected $option_name = 'site_mode_advanced';
 
 	/**
-	 * @var mixed|string
+	 * Redirect URL.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var string $redirect_url Redirect URL.
 	 */
 	protected $redirect_url;
 
 	/**
-	 * @var int|mixed
+	 * Redirect delay.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var int|mixed $redirect_delay Redirect delay.
 	 */
 	protected $redirect_delay;
 
 	/**
-	 * @var int|mixed
+	 * Disable REST API.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var int|mixed $disable_rest_api Disable REST API.
 	 */
 	protected $disable_rest_api;
 
 	/**
-	 * @var mixed|string
+	 * Disable RSS feed.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var mixed|int $disable_rss_feed Disable RSS feed.
 	 */
 	protected $disable_rss_feed;
 
 	/**
-	 * @var false|mixed
+	 * Redirect.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var false|mixed $redirect Redirect.
 	 */
 	protected $redirect;
 
 	/**
-	 * @var array
+	 * Advanced settings.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var array|string $site_mode_advanced Advanced settings.
 	 */
 	protected $site_mode_advanced = array();
 
 	/**
-	 * @var array|mixed
+	 * Whitelist pages.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var array|mixed $whitelist_pages Whitelist pages.
 	 */
 	protected $whitelist_pages;
 
 	/**
-	 * @var array|mixed
+	 * User roles.
+	 *
+	 * @since 1.0.5
+	 * @access protected
+	 * @var array|mixed $user_roles User roles.
 	 */
 	protected $user_roles;
 
@@ -114,10 +157,10 @@ class Site_Mode_Advanced extends Settings {
 		$data['redirect_url']     = $this->get_post_data( 'site-mode-redirect-url', 'advance-settings-save', 'advance-custom-message', 'text' );
 		$data['redirect_delay']   = $this->get_post_data( 'site-mode-redirect-delay', 'advance-settings-save', 'advance-custom-message', 'number' );
 
-		if ( isset( $_POST['site-mode-whitelist-pages'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( wp_unslash( sanitize_text_field( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
+		if ( isset( $_POST['site-mode-whitelist-pages'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
 			$data['whitelist_pages'] = array_map( 'sanitize_text_field', $_POST['site-mode-whitelist-pages'] );
 		}
-		if ( isset( $_POST['site-mode-user-roles'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( wp_unslash( sanitize_text_field( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
+		if ( isset( $_POST['site-mode-user-roles'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
 			$data['user_roles'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['site-mode-user-roles'] ) );
 		}
 
@@ -131,6 +174,7 @@ class Site_Mode_Advanced extends Settings {
 	 *
 	 * @since 1.0.5
 	 * @access public
+     * @param mixed $access Access.
 	 */
 	public function site_mode_rest_api( $access ) {
 
