@@ -43,7 +43,7 @@ class Settings {
 					'template_name'      => str_replace( '-', ' ', $data['template'] ),
 				)
 			);
-		} elseif (  'site_mode_design' === $option_name ) {
+		} elseif ( 'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
 					'tab'       => 'design',
