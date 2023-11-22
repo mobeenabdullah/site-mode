@@ -18,7 +18,6 @@
  * @subpackage Site_Mode/admin
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-
 class Site_Mode_Init {
 
 	/**

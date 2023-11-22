@@ -82,7 +82,7 @@ class Site_Mode_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version     = $version;
 
-		require_once SITE_MODE_ADMIN . 'classes/class-init.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-init.php';
 
 		// Enqueueing media.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
@@ -102,7 +102,6 @@ class Site_Mode_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_styles() {
@@ -110,7 +109,7 @@ class Site_Mode_Admin {
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( 'site-mode' === isset( $_GET['page'] ) && sanitize_text_field( $_GET['page'] ) && ( ( isset( $_GET['design'] ) && 'true' === sanitize_text_field( $_GET['design'] ) ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( 'site-mode' === isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) && ( ( isset( $_GET['design'] ) && 'true' === sanitize_text_field( wp_unslash( $_GET['design'] ) ) ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}
@@ -118,7 +117,6 @@ class Site_Mode_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @param string $hook_suffix The current admin page.
 	 * @return void
 	 */
 	public function enqueue_scripts() {

@@ -24,8 +24,8 @@ class Settings {
 	/**
 	 * Constructor
      *
-	 * @param $option_name
-     * @param $data
+	 * @param string $option_name
+     * @param array|string $data
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -43,7 +43,7 @@ class Settings {
 					'template_name'      => str_replace( '-', ' ', $data['template'] ),
 				)
 			);
-		} elseif ( $option_name === 'site_mode_design' ) {
+		} elseif (  'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
 					'tab'       => 'design',
@@ -60,7 +60,7 @@ class Settings {
 	/**
 	 * Get Data.
 	 *
-     * @param $option_name
+     * @param string $option_name
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -72,10 +72,10 @@ class Settings {
 	/**
 	 * Get Post Data.
 	 *
-     * @param $key
-     * @param $action
-     * @param $nonce
-     * @param $sanitize
+     * @param string $key
+     * @param string $action
+     * @param mixed $nonce
+     * @param string $sanitize
 	 * @since 1.0.5
 	 * @access public
      * @return int|string|null
@@ -88,7 +88,7 @@ class Settings {
 			} elseif ( 'color' === $sanitize ) {
 				return sanitize_hex_color( wp_unslash( $_POST[ $key ] ) );
 			} elseif ( 'code' === $sanitize ) {
-				return wp_unslash( $_POST[ $key ] );
+				return sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
 			} else {
 				return sanitize_text_field( wp_unslash( $_POST[ $key ] ) );
 			}
@@ -99,13 +99,13 @@ class Settings {
 	/**
 	 * Verify Nonce.
 	 *
-     * @param $key
-     * @param $action
+     * @param string $key
+     * @param string $action
 	 * @since 1.0.5
 	 * @access public
 	 */
 	public function verify_nonce( $key, $action ) {
-		if ( ! isset( $_POST[ $key ] ) || ! wp_verify_nonce( wp_unslash( $_POST[ $key ] ), $action ) ) {
+		if ( ! isset( $_POST[ $key ] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST[ $key ] ) ), $action ) ) {
 			wp_send_json_error( 'Invalid nonce' );
 		}
 	}
@@ -113,7 +113,7 @@ class Settings {
 	/**
 	 * Display Settings Page.
 	 *
-     * @param $page_name
+     * @param string $page_name
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -124,7 +124,7 @@ class Settings {
 	/**
 	 * SVG Sanitization.
 	 *
-     * @param $svg_content
+     * @param mixed $svg_content
 	 * @since 1.0.5
 	 * @access public
 	 */
