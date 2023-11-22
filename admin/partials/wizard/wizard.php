@@ -1,46 +1,46 @@
 <?php
-$templates =  [
-    'template-1' => [
-        'name'          => 'Template 1',
-        'category'      => 'maintenance',
-    ],
-    'template-2' => [
-        'name'          => 'Template 2',
-        'category'      => 'coming-soon',
-    ],
-    'template-3' => [
-        'name'          => 'Template 3',
-        'category'      => 'maintenance',
-    ],
-    'template-4' => [
-        'name'          => 'Template 4',
-        'category'      => 'coming-soon',
-    ],
-    'template-5' => [
-        'name'          => 'Template 5',
-        'category'      => 'coming-soon',
-    ],
-    'template-6' => [
-        'name'          => 'Template 6',
-        'category'      => 'maintenance',
-    ],
-    'template-7' => [
-        'name'          => 'Template 7',
-        'category'      => '404',
-    ],
-    'template-8' => [
-        'name'          => 'Template 8',
-        'category'      => '404',
-    ],
-];
-$categories = [
-    'all' => 'All',
-    'coming-soon' => 'Coming Soon',
-    'maintenance' => 'Maintenance',
-    '404'         => '404',
-];
-$active_cat         = '';
-$active_template    = '';
+$templates       = array(
+	'template-1' => array(
+		'name'     => 'Template 1',
+		'category' => 'maintenance',
+	),
+	'template-2' => array(
+		'name'     => 'Template 2',
+		'category' => 'coming-soon',
+	),
+	'template-3' => array(
+		'name'     => 'Template 3',
+		'category' => 'maintenance',
+	),
+	'template-4' => array(
+		'name'     => 'Template 4',
+		'category' => 'coming-soon',
+	),
+	'template-5' => array(
+		'name'     => 'Template 5',
+		'category' => 'coming-soon',
+	),
+	'template-6' => array(
+		'name'     => 'Template 6',
+		'category' => 'maintenance',
+	),
+	'template-7' => array(
+		'name'     => 'Template 7',
+		'category' => '404',
+	),
+	'template-8' => array(
+		'name'     => 'Template 8',
+		'category' => '404',
+	),
+);
+$categories      = array(
+	'all'         => 'All',
+	'coming-soon' => 'Coming Soon',
+	'maintenance' => 'Maintenance',
+	'404'         => '404',
+);
+$active_cat      = '';
+$active_template = '';
 
 if ( isset( $_GET['template'] ) ) {
 	$active_template = $_GET['template'];

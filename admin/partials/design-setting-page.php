@@ -1,5 +1,5 @@
 <?php
-$templates = array(
+$templates  = array(
 	'template-1' => array(
 		'name'     => 'Template 1',
 		'category' => 'maintenance',

@@ -61,14 +61,14 @@ class Site_Mode_Design extends Settings {
 	 * @var array
 	 */
 	protected $page_setup = array(
-		'active_page'            => '',
-		'coming_soon_page_id'    => '',
-		'maintenance_page_id'    => '',
-		'maintenance_template'   => '',
-		'coming_soon_template'   => '',
-		'404_template'           => false,
-		'404_template_active'    => '',
-		'404_template_content'   => '',
+		'active_page'          => '',
+		'coming_soon_page_id'  => '',
+		'maintenance_page_id'  => '',
+		'maintenance_template' => '',
+		'coming_soon_template' => '',
+		'404_template'         => false,
+		'404_template_active'  => '',
+		'404_template_content' => '',
 	);
 
 	/**
@@ -77,14 +77,14 @@ class Site_Mode_Design extends Settings {
 	 * @var string[]
 	 */
 	protected $default_images = array(
-		'template-1'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
-		'template-2'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
-		'template-3'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
-		'template-4'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
-		'template-5'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
-		'template-6'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
-		'template-7'  => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
-		'template-8'  => 'https://demo.site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
+		'template-1' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
+		'template-2' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
+		'template-3' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+		'template-4' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
+		'template-5' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
+		'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
+		'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
+		'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
 	);
 
 	/**
@@ -369,20 +369,20 @@ class Site_Mode_Design extends Settings {
 	public function get_template_props_init(): void {
 		$design_settings = $this->get_data( $this->option_name );
 
-        if(!empty($design_settings)){
-            $this->active_template = $design_settings['template'] ?? '';
-            $this->page_setup = [
-                'active_page'               => $design_settings['page_setup']['active_page'] ?? '',
-                'coming_soon_page_id'       => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
-                'maintenance_page_id'       => $design_settings['page_setup']['maintenance_page_id'] ?? '',
-                'maintenance_template'      => $design_settings['page_setup']['maintenance_template'] ?? '',
-                'coming_soon_template'      => $design_settings['page_setup']['coming_soon_template'] ?? '',
-                '404_template'              => $design_settings['page_setup']['404_template'] ?? '',
-                '404_template_active'       => $design_settings['page_setup']['404_template_active'] ?? '',
-                '404_template_content'      => $design_settings['page_setup']['404_template_content'] ?? '',
-            ];
-        }
-    }
+		if ( ! empty( $design_settings ) ) {
+			$this->active_template = $design_settings['template'] ?? '';
+			$this->page_setup      = array(
+				'active_page'          => $design_settings['page_setup']['active_page'] ?? '',
+				'coming_soon_page_id'  => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
+				'maintenance_page_id'  => $design_settings['page_setup']['maintenance_page_id'] ?? '',
+				'maintenance_template' => $design_settings['page_setup']['maintenance_template'] ?? '',
+				'coming_soon_template' => $design_settings['page_setup']['coming_soon_template'] ?? '',
+				'404_template'         => $design_settings['page_setup']['404_template'] ?? '',
+				'404_template_active'  => $design_settings['page_setup']['404_template_active'] ?? '',
+				'404_template_content' => $design_settings['page_setup']['404_template_content'] ?? '',
+			);
+		}
+	}
 
 	/**
 	 * Replace template placeholder.
