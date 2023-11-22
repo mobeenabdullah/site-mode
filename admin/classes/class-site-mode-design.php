@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Responsible for plugin menu
  *
@@ -21,33 +20,33 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Design extends Settings {
-	/**
-	 * @var string
-	 */
+    /**
+     * @var string $option_name
+     */
 	protected $option_name = 'site_mode_design';
 
 	/**
-	 * @var string
+	 * @var string $active_template
 	 */
 	protected $active_template = '';
 
 	/**
-	 * @var bool
+	 * @var bool $show_social
 	 */
 	protected $show_social = true;
 
 	/**
-	 * @var bool
+	 * @var bool $show_countdown
 	 */
 	protected $show_countdown = true;
 
 	/**
-	 * @var string
+	 * @var string $color_scheme
 	 */
 	protected $color_scheme = '';
 
 	/**
-	 * @var string[]
+	 * @var string[] $placeholder_colors
 	 */
 	protected $placeholder_colors = array(
 		'base'     => '#AC3C3C',
@@ -116,16 +115,17 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Add subscriber to mailchimp list.
 	 *
+     * @param string $email Email.
 	 * @return void
 	 */
 	protected function add_subscriber_to_mailchimp_list( $email ) {
 
 		try {
 			$api_key = 'fe524550eae6ded493741f2dc83ce973-us21';
-			$status  = 'subscribed'; // we are going to talk about it in just a little bit
-			$list_id = '4a1d333259'; // List / Audience ID
+			$status  = 'subscribed'; // we are going to talk about it in just a little.
+			$list_id = '4a1d333259'; // List / Audience ID.
 
-			// start our Mailchimp connection
+			// start our Mailchimp connection.
 			$connection = curl_init();
 			curl_setopt(
 				$connection,
@@ -170,7 +170,7 @@ class Site_Mode_Design extends Settings {
 			'page_setup' => $this->page_setup,
 		);
 
-		if ( $page_category === '404' ) {
+		if ( '404' === $page_category ) {
 			$design_data['page_setup']['404_template_active'] = $active_page_id;
 		} else {
 			$design_data['page_setup']['active_page'] = $active_page_id;
@@ -205,14 +205,14 @@ class Site_Mode_Design extends Settings {
 			'page_setup' => $this->page_setup,
 		);
 
-		if ( $category !== '404' ) {
+		if ( '404' !== $category ) {
 			$page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
 		} else {
 			$this->create_page_or_template( $template_name, $category );
 			return;
 		}
 
-		if ( $category === 'maintenance' ) {
+		if ( 'maintenance' === $category ) {
 			$design_data['page_setup']['maintenance_page_id']  = $page_id;
 			$design_data['page_setup']['maintenance_template'] = $template_name;
 			$design_data['page_setup']['active_page']          = $page_id;
@@ -222,15 +222,15 @@ class Site_Mode_Design extends Settings {
 			$design_data['page_setup']['active_page']          = $page_id;
 		}
 
-		// Change the components placeholder to group the template components
+		// Change the components placeholder to group the template components.
 		$template         = json_decode( $this->replace_template_default_image( $template_name ) );
 		$template_content = $template->content;
-		if ( $category === 'maintenance' || $category === 'coming_soon' ) :
+		if ( 'maintenance' === $category || 'coming_soon' === $category ) :
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-countdown---', $this->show_countdown );
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-social-media---', $this->show_social );
 		endif;
 
-		// Change the color placeholder to set the color scheme
+		// Change the color placeholder to set the color scheme.
 		$blocks = $this->changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $this->color_scheme );
 
 		$post                = get_post( $page_id );
@@ -257,15 +257,15 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Check page exist.
 	 *
-	 * @param mixed  $page_setup
-	 * @param string $template_name
-	 * @param string $category
+	 * @param mixed  $page_setup Page setup.
+	 * @param string $template_name Template name.
+	 * @param string $category Category.
 	 * @return mixed
 	 */
 	public function check_page_exist( $page_setup = '', $template_name = '', $category = '' ) {
 
-		if ( $category !== '404' ) {
-			if ( $category === 'maintenance' ) {
+		if ( '404' !== $category ) {
+			if ( 'maintenance' === $category ) {
 				$id = $page_setup['maintenance_page_id'];
 			} else {
 				$id = $page_setup['coming_soon_page_id'];
@@ -290,17 +290,17 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Create page or template.
 	 *
-	 * @param string $template_name
-	 * @param string $category
+	 * @param string $template_name Template name.
+	 * @param string $category Category.
 	 * @return void
 	 */
 	public function create_page_or_template( $template_name = '', $category = '' ) {
 
-		// Change the components placeholder to group the template components
+		// Change the components placeholder to group the template components.
 		$template         = json_decode( $this->replace_template_default_image( $template_name ) );
 		$template_content = $template->content;
 
-		if ( $category === 'maintenance' || $category === 'coming_soon' ) :
+		if ( 'maintenance' === $category || 'coming_soon' === $category ) :
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-countdown---', $this->show_countdown );
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-social-media---', $this->show_social );
 		else :
@@ -308,12 +308,12 @@ class Site_Mode_Design extends Settings {
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-social-media---', false );
 		endif;
 
-		// Change the color placeholder to set the color scheme
+		// Change the color placeholder to set the color scheme.
 		$blocks = $this->changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $this->color_scheme );
 
-		if ( $category === 'maintenance' ) {
+		if ( 'maintenance' === $category ) {
 			$title = 'Maintenance Page';
-		} elseif ( $category === 'coming_soon' ) {
+		} elseif ( 'coming_soon' === $category ) {
 			$title = 'Coming Soon Page';
 		} else {
 			$this->page_setup['404_template']         = $template_name;
@@ -328,7 +328,7 @@ class Site_Mode_Design extends Settings {
 			return;
 		}
 
-		// Create the page
+		// Create the page.
 		$page_id = wp_insert_post(
 			array(
 				'post_title'    => $title,
@@ -340,7 +340,7 @@ class Site_Mode_Design extends Settings {
 		);
 
 		if ( ! is_wp_error( $page_id ) ) {
-			if ( $category === 'maintenance' ) {
+			if ( 'maintenance' === $category ) {
 				$this->page_setup['maintenance_page_id']  = $page_id;
 				$this->page_setup['maintenance_template'] = $template_name;
 				$this->page_setup['active_page']          = $page_id;
@@ -387,16 +387,16 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Replace template placeholder.
 	 *
-	 * @param mixed        $template_name
-	 * @param array|string $template_content
-	 * @param mixed        $placeholder
-	 * @param mixed        $emptyPlaceholder
-	 * @param mixed        $new_color
+	 * @param mixed        $template_name Template name.
+	 * @param array|string $template_content Template content.
+	 * @param mixed        $placeholder Placeholder.
+	 * @param mixed        $emptyPlaceholder Empty placeholder.
+	 * @param mixed        $new_color New color.
 	 * @return array|string|string[]
 	 */
-	protected function replace_template_placeholder( $template_name, $template_content, $placeholder, $emptyPlaceholder, $new_color = '' ) {
+	protected function replace_template_placeholder( $template_name, $template_content, $placeholder, $empty_placeholder, $new_color = '' ) {
 		$placeholder_content = '';
-		if ( $emptyPlaceholder !== 'false' && empty( $new_color ) ) {
+		if ( 'false' !== $empty_placeholder && empty( $new_color ) ) {
 			$filtered_placeholder    = str_replace( '---', '', $placeholder );
 			$filtered_placeholder    = str_replace( 'sm-', '', $filtered_placeholder );
 			$placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/' . $filtered_placeholder . '.json';
@@ -417,7 +417,7 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Replace template default image.
 	 *
-	 * @param mixed $template_name
+	 * @param mixed $template_name Template name.
 	 * @return array|string|string[]
 	 */
 	public function replace_template_default_image( $template_name = '' ) {
@@ -431,18 +431,18 @@ class Site_Mode_Design extends Settings {
 				return $template_content;
 			} else {
 
-				// Fetch the image and save it to the uploads directory
+				// Fetch the image and save it to the uploads directory.
 				$upload_dir = wp_upload_dir();
 				$image_data = file_get_contents( $image_url );
 				$filename   = basename( $image_url );
 				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
 				$media_id   = '';
 
-				// Check if the file already exists
+				// Check if the file already exists.
 				if ( ! file_exists( $file_path ) ) {
 					file_put_contents( $file_path, $image_data );
 
-					// Add the image to the media library
+					// Add the image to the media library.
 					$attachment = array(
 						'post_title'   => sanitize_file_name( $template_name ),
 						'post_content' => '',
@@ -451,7 +451,7 @@ class Site_Mode_Design extends Settings {
 
 					$media_id = wp_insert_attachment( $attachment, $file_path );
 
-					// Update image metadata
+					// Update image metadata.
 					require_once ABSPATH . 'wp-admin/includes/image.php';
 					$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
 					wp_update_attachment_metadata( $media_id, $attach_data );
@@ -491,13 +491,13 @@ class Site_Mode_Design extends Settings {
 					}
 				}
 
-				// Check if the image was successfully uploaded
+				// Check if the image was successfully uploaded.
 				if ( $media_id ) {
 					$media_url = wp_get_attachment_url( $media_id );
 					if ( $media_url ) {
-						// Replace "template1.png" with the site-mode media URL
+						// Replace "template1.png" with the site-mode media URL.
 						$new_content = str_replace( $template_name, $media_url, $template_content );
-						// Save the updated content back to template-content.php
+						// Save the updated content back to template-content.php.
 						return $new_content;
 					} else {
 						return $template_content;
@@ -520,17 +520,17 @@ class Site_Mode_Design extends Settings {
 		$this->get_template_props_init();
 		$this->show_countdown = $this->get_post_data( 'showCountdown', 'template_init_action', 'template_init_field', 'text' );
 		$this->show_social    = $this->get_post_data( 'showSocial', 'template_init_action', 'template_init_field', 'text' );
-		$currentColorScheme   = $this->get_post_data( 'colorScheme', 'template_init_action', 'template_init_field', 'text' );
-		$this->color_scheme   = $currentColorScheme;
+		$current_color_scheme   = $this->get_post_data( 'colorScheme', 'template_init_action', 'template_init_field', 'text' );
+		$this->color_scheme   = $current_color_scheme;
 	}
 
 
 	/**
 	 * Change the color placeholder to set the color scheme.
 	 *
-	 * @param mixed  $template_name
-	 * @param mixed  $template_content
-	 * @param string $scheme
+	 * @param mixed  $template_name Template name.
+	 * @param mixed  $template_content Template content.
+	 * @param string $scheme Scheme.
 	 * @return string
 	 */
 	public function changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $scheme ) {

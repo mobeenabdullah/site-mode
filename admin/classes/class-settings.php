@@ -24,8 +24,8 @@ class Settings {
 	/**
 	 * Constructor
      *
-	 * @param string $option_name
-     * @param array|string $data
+	 * @param string $option_name Option Name.
+     * @param array|string $data Data.
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -60,7 +60,7 @@ class Settings {
 	/**
 	 * Get Data.
 	 *
-     * @param string $option_name
+     * @param string $option_name Option Name.
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -72,10 +72,10 @@ class Settings {
 	/**
 	 * Get Post Data.
 	 *
-     * @param string $key
-     * @param string $action
-     * @param mixed $nonce
-     * @param string $sanitize
+     * @param string $key Key.
+     * @param string $action Action.
+     * @param mixed $nonce Nonce.
+     * @param string $sanitize Sanitize.
 	 * @since 1.0.5
 	 * @access public
 	 * @return int|string|null
@@ -99,8 +99,8 @@ class Settings {
 	/**
 	 * Verify Nonce.
 	 *
-     * @param string $key
-     * @param string $action
+     * @param string $key Key.
+     * @param string $action Action.
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -113,7 +113,7 @@ class Settings {
 	/**
 	 * Display Settings Page.
 	 *
-     * @param string $page_name
+     * @param string $page_name Page Name.
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -124,7 +124,7 @@ class Settings {
 	/**
 	 * SVG Sanitization.
 	 *
-     * @param mixed $svg_content
+     * @param mixed $svg_content SVG Content.
 	 * @since 1.0.5
 	 * @access public
 	 */
