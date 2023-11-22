@@ -23,9 +23,9 @@ class Settings {
 
 	/**
 	 * Constructor
-     *
-	 * @param string $option_name
-     * @param array|string $data
+	 *
+	 * @param string       $option_name
+	 * @param array|string $data
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -43,7 +43,7 @@ class Settings {
 					'template_name'      => str_replace( '-', ' ', $data['template'] ),
 				)
 			);
-		} elseif (  'site_mode_design' === $option_name ) {
+		} elseif ( 'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
 					'tab'       => 'design',
@@ -60,7 +60,7 @@ class Settings {
 	/**
 	 * Get Data.
 	 *
-     * @param string $option_name
+	 * @param string $option_name
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -72,10 +72,10 @@ class Settings {
 	/**
 	 * Get Post Data.
 	 *
-     * @param string $key
-     * @param string $action
-     * @param mixed $nonce
-     * @param string $sanitize
+	 * @param string $key
+	 * @param string $action
+	 * @param mixed  $nonce
+	 * @param string $sanitize
 	 * @since 1.0.5
 	 * @access public
 	 * @return int|string|null
@@ -99,8 +99,8 @@ class Settings {
 	/**
 	 * Verify Nonce.
 	 *
-     * @param string $key
-     * @param string $action
+	 * @param string $key
+	 * @param string $action
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -113,7 +113,7 @@ class Settings {
 	/**
 	 * Display Settings Page.
 	 *
-     * @param string $page_name
+	 * @param string $page_name
 	 * @since 1.0.5
 	 * @access public
 	 */
@@ -124,7 +124,7 @@ class Settings {
 	/**
 	 * SVG Sanitization.
 	 *
-     * @param mixed $svg_content
+	 * @param mixed $svg_content
 	 * @since 1.0.5
 	 * @access public
 	 */

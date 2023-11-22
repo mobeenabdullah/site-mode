@@ -30,7 +30,7 @@ require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
  */
 class Site_Mode_Advanced extends Settings {
 	/**
-	 * The Key of settings in the options table.
+	 * The Key of Advance tab settings in the options table.
 	 *
 	 * @since    1.0.5
 	 * @access   protected
@@ -158,7 +158,7 @@ class Site_Mode_Advanced extends Settings {
 		$data['redirect_delay']   = $this->get_post_data( 'site-mode-redirect-delay', 'advance-settings-save', 'advance-custom-message', 'number' );
 
 		if ( isset( $_POST['site-mode-whitelist-pages'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
-			$data['whitelist_pages'] = array_map( 'sanitize_text_field', $_POST['site-mode-whitelist-pages'] );
+			$data['whitelist_pages'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['site-mode-whitelist-pages'] ) );
 		}
 		if ( isset( $_POST['site-mode-user-roles'] ) && isset( $_POST['advance-custom-message'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['advance-custom-message'] ) ), 'advance-settings-save' ) ) {
 			$data['user_roles'] = array_map( 'sanitize_text_field', wp_unslash( $_POST['site-mode-user-roles'] ) );
