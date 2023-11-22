@@ -78,7 +78,7 @@ class Settings {
      * @param string $sanitize
 	 * @since 1.0.5
 	 * @access public
-     * @return int|string|null
+	 * @return int|string|null
 	 */
 	public function get_post_data( $key, $action, $nonce, $sanitize = 'text' ) {
 
