@@ -1,4 +1,25 @@
 <?php
+/**
+ * Responsible for dashboard settings page.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
+/**
+ * Responsible for dashboard settings page.
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
+<?php
 $design_settings      = get_option( 'site_mode_design' );
 $maintenance_page     = ! empty( $design_settings['page_setup']['maintenance_page_id'] ) && get_post_status( $design_settings['page_setup']['maintenance_page_id'] ) === 'publish' ? intval( $design_settings['page_setup']['maintenance_page_id'] ) : '';
 $coming_soon_page     = ! empty( $design_settings['page_setup']['coming_soon_page_id'] ) && get_post_status( $design_settings['page_setup']['coming_soon_page_id'] ) === 'publish' ? intval( $design_settings['page_setup']['coming_soon_page_id'] ) : '';
@@ -40,7 +61,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 							<div class="sm__card">
 								<span class="btn-toggle setup_pages btn-check-toggle">
 									<?php if ( empty( $coming_soon_page ) ) : ?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon' ); ?>">
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon' ) ); ?>">
 									<?php endif; ?>
 										<input type="checkbox" name="page__template" id="coming_soon_temp" class="sm-page-checkbox" data-category="coming-soon" <?php echo empty( $coming_soon_page ) ? 'disabled' : ''; ?> value="<?php echo esc_attr( $coming_soon_page ); ?>" <?php echo $coming_soon_page && $coming_soon_page === $active_page ? 'checked' : ''; ?>>
 										<label class="toggle" for="coming_soon_temp"></label>
@@ -70,14 +91,14 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 										<?php
 									} else {
 										?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon' ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page" >Setup</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page" >Setup</a>
 										<?php
 									}
 									?>
 								</div>
 								<?php if ( ! empty( $coming_soon_page ) ) : ?>
 									<div class="sm_select_re_setup">
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon&template=' . $coming_soon_template ); ?>" class="reset_setup_again">Reset and setup again</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=coming-soon&template=' . $coming_soon_template ) ); ?>" class="reset_setup_again">Reset and setup again</a>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -86,7 +107,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 							<div class="sm__card">
 								<span class="btn-toggle setup_pages btn-check-toggle">
 									<?php if ( empty( $maintenance_page ) ) : ?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance' ); ?>">
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance' ) ); ?>">
 									<?php endif; ?>
 										<input type="checkbox" name="page__template" id="maintenance_temp" class="sm-page-checkbox" data-category="maintenance" value="<?php echo esc_attr( $maintenance_page ); ?>" <?php echo empty( $maintenance_page ) ? 'disabled' : ''; ?> <?php echo $maintenance_page && $maintenance_page === $active_page ? 'checked' : ''; ?>>
 										<label class="toggle" for="maintenance_temp"></label>
@@ -117,14 +138,14 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 										<?php
 									} else {
 										?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance' ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
 										<?php
 									}
 									?>
 								</div>
 								<?php if ( ! empty( $maintenance_page ) ) : ?>
 									<div class="sm_select_re_setup">
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance&template=' . $maintenance_template ); ?>" class="reset_setup_again">Reset and setup again</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=maintenance&template=' . $maintenance_template ) ); ?>" class="reset_setup_again">Reset and setup again</a>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -133,7 +154,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 							<div class="sm__card">
 								<span class="btn-toggle setup_pages btn-check-toggle">
 									<?php if ( empty( $notfound_template ) ) : ?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=404' ); ?>">
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=404' ) ); ?>">
 									<?php endif; ?>
 										<input type="checkbox" name="404__template" id="404_temp" data-category="404" value="<?php echo esc_attr( $notfound_template ); ?>" <?php echo empty( $notfound_template ) ? 'disabled' : ''; ?> <?php echo $notfound_active ? 'checked' : ''; ?>>
 										<label class="toggle" for="404_temp"></label>
@@ -158,14 +179,14 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 									<?php
 									if ( empty( $notfound_template ) ) {
 										?>
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=404' ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=404' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
 										<?php
 									}
 									?>
 								</div>
 								<?php if ( ! empty( $notfound_template ) ) : ?>
 									<div class="sm_select_re_setup">
-										<a href="<?php echo admin_url( '/admin.php?page=site-mode&design=true&cat=404&template=' . $notfound_template ); ?>" class="reset_setup_again">Reset and setup again</a>
+										<a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=404&template=' . $notfound_template ) ); ?>" class="reset_setup_again">Reset and setup again</a>
 									</div>
 								<?php endif; ?>
 							</div>
@@ -235,8 +256,8 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 					</div>
 					<div class="smd-card-seperator"></div>
 					<div class="smd-card-actions">
-						<a href="<?php echo admin_url( $dashboard_card['link'] ); ?>" role="button" tabindex="-1"><?php echo $dashboard_card['link-text']; ?></a>
-						<a href="<?php echo admin_url( $dashboard_card['link'] ); ?>" role="button" tabindex="-1">
+						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1"><?php echo $dashboard_card['link-text']; ?></a>
+						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1">
 							<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M7.49939 1.24561C4.05314 1.24623 1.24939 4.04998 1.24939 7.49623C1.24939 10.9425 4.05314 13.7462 7.50001 13.7462C10.9456 13.7462 13.7494 10.9425 13.75 7.49623C13.75 4.04998 10.9463 1.24623 7.49939 1.24561ZM7.50001 12.4962C4.74251 12.4962 2.49939 10.2531 2.49939 7.49623C2.49939 4.73936 4.74251 2.49623 7.49939 2.49561C10.2569 2.49623 12.5 4.73936 12.5 7.49623C12.4994 10.2531 10.2563 12.4962 7.50001 12.4962Z" fill="black"/>
 								<path d="M7.5 6.87126H5V8.12126H7.5V10L10.0031 7.49688L7.5 4.99438V6.87126Z" fill="black"/>

@@ -9,8 +9,18 @@
  * @subpackage Site_Mode/includes
  */
 
-class Site_Mode_Menu {
+/**
+ * Responsible for plugin menu
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
 
+class Site_Mode_Menu {
 	/**
 	 * Constructor
 	 *
@@ -93,7 +103,7 @@ class Site_Mode_Menu {
     /**
      * Callback function for submenu page
      *
-     * @param $svg_content
+     * @param $svg_content (svg content).
      * @return void
      * @since 1.0.5
      * @access public

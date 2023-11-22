@@ -19,6 +19,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
+
 class Site_Mode_General extends Settings {
 
 	/**
@@ -64,7 +65,7 @@ class Site_Mode_General extends Settings {
 	 *
 	 * @since    1.0.5
 	 * @access   public
-	 * @return   void|mixed   Return if nonce is not verified.
+	 * @return   void|mixed  $this->save_data( $this->option_name, $data ) Return if nonce is not verified.
 	 */
 	public function ajax_site_mode_general() {
 		$this->verify_nonce( 'general_section_field', 'general_settings_action' );

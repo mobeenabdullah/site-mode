@@ -1,3 +1,26 @@
+<?php
+/**
+ * Responsible for Advanced Settings page.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
+/**
+ * Responsible for Advanced Settings page.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
 <div class="site_mode__wrap-form">
 	<?php settings_errors(); ?>
 
@@ -76,13 +99,13 @@
 					<select class="whitelist_user_role-multiselect" name="site-mode-user-roles[]" multiple="multiple" id="whitelist_user_role">
 						<?php
 						foreach ( $wp_roles->roles as $key => $value ) :
-							if ( in_array( strtolower( $value['name'] ), $this->user_roles ) ) {
+							if ( in_array( strtolower( esc_html( $value['name'] ) ), $this->user_roles ) ) {
 								$selected = 'selected';
 							} else {
 								$selected = 'not-selected';
 							}
 							?>
-							<option value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html_e( $value['name'] ); ?></option>
+							<option value="<?php echo esc_attr( strtolower( esc_html( $value['name'] ) ) ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html( $value['name'] ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
