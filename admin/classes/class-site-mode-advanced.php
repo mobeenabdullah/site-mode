@@ -174,7 +174,7 @@ class Site_Mode_Advanced extends Settings {
 	 *
 	 * @since 1.0.5
 	 * @access public
-     * @param mixed $access Access.
+	 * @param mixed $access Access.
 	 */
 	public function site_mode_rest_api( $access ) {
 
