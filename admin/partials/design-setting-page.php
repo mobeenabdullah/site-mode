@@ -32,14 +32,6 @@ $templates = array(
 		'name'     => 'Template 8',
 		'category' => '404',
 	),
-	// 'template-9' => [
-	// 'name'          => 'Template 9',
-	// 'category'      => 'login',
-	// ],
-	// 'template-10' => [
-	// 'name'          => 'Template 10',
-	// 'category'      => 'login',
-	// ],
 );
 $categories = array(
 	'all'         => 'All',

@@ -69,9 +69,6 @@ class Site_Mode_Design extends Settings {
 		'404_template'           => false,
 		'404_template_active'    => '',
 		'404_template_content'   => '',
-		'login_template'         => false,
-		'login_template_active'  => '',
-		'login_template_content' => '',
 	);
 
 	/**
@@ -88,8 +85,6 @@ class Site_Mode_Design extends Settings {
 		'template-6'  => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
 		'template-7'  => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
 		'template-8'  => 'https://demo.site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
-		'template-9'  => 'https://demo.site-mode.com/wp-content/uploads/2023/11/nature-sky-mountainous-landforms-mountain-cloud-horizon-1013391-pxhere.com_11zon.webp',
-		'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/sunrise-beauty-color-dusk-sob-bright-1578121-pxhere.com_11zon-1-scaled.webp',
 	);
 
 	/**
@@ -374,23 +369,20 @@ class Site_Mode_Design extends Settings {
 	public function get_template_props_init(): void {
 		$design_settings = $this->get_data( $this->option_name );
 
-		if ( ! empty( $design_settings ) ) {
-			$this->active_template = $design_settings['template'] ?? '';
-			$this->page_setup      = array(
-				'active_page'            => $design_settings['page_setup']['active_page'] ?? '',
-				'coming_soon_page_id'    => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
-				'maintenance_page_id'    => $design_settings['page_setup']['maintenance_page_id'] ?? '',
-				'maintenance_template'   => $design_settings['page_setup']['maintenance_template'] ?? '',
-				'coming_soon_template'   => $design_settings['page_setup']['coming_soon_template'] ?? '',
-				'404_template'           => $design_settings['page_setup']['404_template'] ?? '',
-				'404_template_active'    => $design_settings['page_setup']['404_template_active'] ?? '',
-				'404_template_content'   => $design_settings['page_setup']['404_template_content'] ?? '',
-				'login_template'         => $design_settings['page_setup']['login_template'] ?? '',
-				'login_template_active'  => $design_settings['page_setup']['login_template_active'] ?? '',
-				'login_template_content' => $design_settings['page_setup']['login_template_content'] ?? '',
-			);
-		}
-	}
+        if(!empty($design_settings)){
+            $this->active_template = $design_settings['template'] ?? '';
+            $this->page_setup = [
+                'active_page'               => $design_settings['page_setup']['active_page'] ?? '',
+                'coming_soon_page_id'       => $design_settings['page_setup']['coming_soon_page_id'] ?? '',
+                'maintenance_page_id'       => $design_settings['page_setup']['maintenance_page_id'] ?? '',
+                'maintenance_template'      => $design_settings['page_setup']['maintenance_template'] ?? '',
+                'coming_soon_template'      => $design_settings['page_setup']['coming_soon_template'] ?? '',
+                '404_template'              => $design_settings['page_setup']['404_template'] ?? '',
+                '404_template_active'       => $design_settings['page_setup']['404_template_active'] ?? '',
+                '404_template_content'      => $design_settings['page_setup']['404_template_content'] ?? '',
+            ];
+        }
+    }
 
 	/**
 	 * Replace template placeholder.
