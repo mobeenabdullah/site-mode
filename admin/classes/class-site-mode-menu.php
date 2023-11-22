@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Responsible for plugin menu
  *
@@ -9,16 +8,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  */
-/**
- * Responsible for plugin menu
- *
- * This class defines all code necessary to run during the plugin's menu
- *
- * @since      1.0.5
- * @package    Site_Mode
- * @subpackage Site_Mode/includes
- * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
- */
+
 class Site_Mode_Menu {
 
 	/**
@@ -100,12 +90,14 @@ class Site_Mode_Menu {
 		require_once SITE_MODE_ADMIN . 'partials/settings-layout.php';
 	}
 
-	/**
-	 * Callback function for submenu page
-	 *
-	 * @since 1.0.5
-	 * @access public
-	 */
+    /**
+     * Callback function for submenu page
+     *
+     * @param $svg_content
+     * @return void
+     * @since 1.0.5
+     * @access public
+     */
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 

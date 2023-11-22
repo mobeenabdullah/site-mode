@@ -64,7 +64,7 @@ class Site_Mode_General extends Settings {
 	 *
 	 * @since    1.0.5
 	 * @access   public
-	 * @return   void
+	 * @return   void|mixed   Return if nonce is not verified.
 	 */
 	public function ajax_site_mode_general() {
 		$this->verify_nonce( 'general_section_field', 'general_settings_action' );
