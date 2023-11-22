@@ -43,9 +43,6 @@ class Site_Mode_Design extends  Settings {
         '404_template'           => false,
         '404_template_active'     => '',
         '404_template_content'    => '',
-        'login_template'          => false,
-        'login_template_active'    => '',
-        'login_template_content'   => '',
     ];
     protected $default_images = [
         'template-1' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
@@ -56,8 +53,6 @@ class Site_Mode_Design extends  Settings {
         'template-6' => 'https://demo.site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
         'template-7' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
         'template-8' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
-        'template-9' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/nature-sky-mountainous-landforms-mountain-cloud-horizon-1013391-pxhere.com_11zon.webp',
-        'template-10' => 'https://demo.site-mode.com/wp-content/uploads/2023/11/sunrise-beauty-color-dusk-sob-bright-1578121-pxhere.com_11zon-1-scaled.webp',
     ];
 
     public function __construct() {
@@ -296,9 +291,6 @@ class Site_Mode_Design extends  Settings {
                 '404_template'              => $design_settings['page_setup']['404_template'] ?? '',
                 '404_template_active'       => $design_settings['page_setup']['404_template_active'] ?? '',
                 '404_template_content'      => $design_settings['page_setup']['404_template_content'] ?? '',
-                'login_template'            => $design_settings['page_setup']['login_template'] ?? '',
-                'login_template_active'     => $design_settings['page_setup']['login_template_active'] ?? '',
-                'login_template_content'    => $design_settings['page_setup']['login_template_content'] ?? '',
             ];
         }
     }
