@@ -20,9 +20,9 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Design extends Settings {
-    /**
-     * @var string $option_name
-     */
+	/**
+	 * @var string $option_name
+	 */
 	protected $option_name = 'site_mode_design';
 
 	/**
@@ -115,7 +115,7 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Add subscriber to mailchimp list.
 	 *
-     * @param string $email Email.
+	 * @param string $email Email.
 	 * @return void
 	 */
 	protected function add_subscriber_to_mailchimp_list( $email ) {
@@ -520,7 +520,7 @@ class Site_Mode_Design extends Settings {
 		$this->get_template_props_init();
 		$this->show_countdown = $this->get_post_data( 'showCountdown', 'template_init_action', 'template_init_field', 'text' );
 		$this->show_social    = $this->get_post_data( 'showSocial', 'template_init_action', 'template_init_field', 'text' );
-		$current_color_scheme   = $this->get_post_data( 'colorScheme', 'template_init_action', 'template_init_field', 'text' );
+		$current_color_scheme = $this->get_post_data( 'colorScheme', 'template_init_action', 'template_init_field', 'text' );
 		$this->color_scheme   = $current_color_scheme;
 	}
 
