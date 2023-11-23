@@ -256,13 +256,13 @@ class Site_Mode {
 	}
 
 	// menu.
-    /**
-     * Get Menu.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return void
-     */
+	/**
+	 * Get Menu.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return void
+	 */
 	public function get_menu() {
 		$settings_menu = new Site_Mode_Menu();
 	}
