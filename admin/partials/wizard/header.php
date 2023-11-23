@@ -1,3 +1,19 @@
+<?php
+/**
+ * Responsible for wizard header.
+ *
+ * This is used to define internationalization, admin-specific hooks, and
+ * public-facing site hooks.
+ *
+ * Also maintains the unique identifier of this plugin as well as the current
+ * version of the plugin.
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
 <div class="sm__wizard-header">
 	<div class="sm__wizard-header--logo">
 		<img src="<?php echo esc_url( SITE_MODE_ADMIN_URL . '/assets/img/sitemode-logo.png' ); ?>" alt="Site Mode Logo" class="site_mode__wrap--logo">

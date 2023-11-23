@@ -19,7 +19,6 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-
 class Template_Load {
 	/**
 	 * General settings for the site mode.

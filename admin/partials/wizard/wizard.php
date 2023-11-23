@@ -59,12 +59,12 @@ if ( isset( $_GET['template'] ) ) {
 if ( isset( $_GET['cat'] ) ) {
 	$active_cat = sanitize_text_field( wp_unslash( $_GET['cat'] ) );
 	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat ) {
-		$cat = $active_cat;
+		$sm_category = $active_cat;
 	} else {
-		$cat = 'coming-soon';
+        $sm_category = 'coming-soon';
 	}
 } else {
-	$cat = 'coming-soon';
+    $sm_category = 'coming-soon';
 }
 
 ?>
@@ -83,7 +83,7 @@ if ( isset( $_GET['cat'] ) ) {
 						<div class="wizard__start-cards">
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'coming-soon' === $cat ? 'checked' : ''; ?> value="coming-soon">
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'coming-soon' === $sm_category ? 'checked' : ''; ?> value="coming-soon">
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,7 +106,7 @@ if ( isset( $_GET['cat'] ) ) {
 							</div>
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'maintenance' === $cat ? 'checked' : ''; ?> value="maintenance">
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'maintenance' === $sm_category ? 'checked' : ''; ?> value="maintenance">
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -128,7 +128,7 @@ if ( isset( $_GET['cat'] ) ) {
 							</div>
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo '404' === $cat ? 'checked' : ''; ?> value="404" >
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo '404' === $sm_category ? 'checked' : ''; ?> value="404" >
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -216,20 +216,20 @@ if ( isset( $_GET['cat'] ) ) {
 						<div class="wizard__templates-filter">
 							<div class="wizard__templates-filter-cover">
 								<?php foreach ( $categories as $key => $category ) : ?>
-									<button type="button" class="template-category-filter filter_btn <?php echo 'all' === $key ? 'active' : ''; ?> " data-template-category="<?php echo $key; ?>">
-										<?php echo $category; ?>
+									<button type="button" class="template-category-filter filter_btn <?php echo 'all' === $key ? 'active' : ''; ?> " data-template-category="<?php echo esc_attr( $key ); ?>">
+										<?php echo esc_html( $category ); ?>
 									</button>
 								<?php endforeach; ?>
 							</div>
 						</div>
 					</div>
 					<div class="template_options wizard__templates-cards">
-						<input type="hidden" name="template-name" id="selected-template-name" value="<?php echo $active_template; ?>">
+						<input type="hidden" name="template-name" id="selected-template-name" value="<?php echo esc_html( $active_template ); ?>">
 						<?php foreach ( $templates as $key => $template ) : ?>
-							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo $key; ?>">
+							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo esc_attr( $key ); ?>">
 								<div class="template_card-img" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg' ); ?>);">
 									<div class="template_card-actions">
-										<button type="button" class="select_template" data-template-label="<?php echo $template['name']; ?>">
+										<button type="button" class="select_template" data-template-label="<?php echo esc_arrt( $template['name'] ); ?>">
 											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M7.00008 1.16663C3.78358 1.16663 1.16675 3.78346 1.16675 6.99996C1.16675 10.2165 3.78358 12.8333 7.00008 12.8333C10.2166 12.8333 12.8334 10.2165 12.8334 6.99996C12.8334 3.78346 10.2166 1.16663 7.00008 1.16663ZM7.00008 11.6666C4.427 11.6666 2.33341 9.57304 2.33341 6.99996C2.33341 4.42688 4.427 2.33329 7.00008 2.33329C9.57316 2.33329 11.6667 4.42688 11.6667 6.99996C11.6667 9.57304 9.57316 11.6666 7.00008 11.6666Z" fill="white"/>
 												<path d="M5.83272 7.92569L4.49164 6.58694L3.66797 7.41294L5.83389 9.57419L9.74572 5.66236L8.92089 4.83752L5.83272 7.92569Z" fill="white"/>
@@ -240,7 +240,7 @@ if ( isset( $_GET['cat'] ) ) {
 								</div>
 								<div class="template_card-heading">
 									<h2 class="template_card-content--title"><?php echo esc_html__( $template['name'], 'site-mode' ); ?></h2>
-									<a href="<?php echo 'https://demo.site-mode.com/' . $key; ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
+									<a href="<?php echo esc_url( 'https://demo.site-mode.com/' . $key ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 								</div>
 							</div>
 						<?php endforeach; ?>
@@ -316,7 +316,7 @@ if ( isset( $_GET['cat'] ) ) {
 				<p class="sm-modal-success-message">Your {comingsoon} page is ready. Now you can view the page or start customizing it.</p>
 				<div class="buttons__wrapper">
 					<a href="#" class="outline_btn">Edit Page</a>
-					<a href="<?php echo home_url() . '?site-mode-preview=true'; ?>" class="primary_btn" target="_blank">Preview Page</a>
+					<a href="<?php echo esc_url( home_url() . '?site-mode-preview=true' ); ?>" class="primary_btn" target="_blank">Preview Page</a>
 				</div>
 			</div>
 		</div>

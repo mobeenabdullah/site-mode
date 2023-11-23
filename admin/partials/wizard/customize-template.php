@@ -1,10 +1,25 @@
 <?php
+/**
+ * Responsible for customize template.
+ *
+ * This is used to define internationalization, admin-specific hooks, and
+ * public-facing site hooks.
+ *
+ * Also maintains the unique identifier of this plugin as well as the current
+ * version of the plugin.
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+
 	$get_current_user = wp_get_current_user();
-	$current_user     = $get_current_user->user_email;
+    $current_user_email     = $get_current_user->user_email;
 	$active_template  = '';
 
 if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
-	$active_template = $_GET['template'];
+	$active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );
 }
 ?>
 
@@ -173,7 +188,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 													<p class="sm__helper-text">We do not spam, unsubscribe antime.</p>
 												</div>
 												<div class="settings__card-options--field">
-													<input type="text" name="sm-subscribe-email" id="sm-subscribe-email" class="show-subscribe-field"   value="<?php echo $current_user; ?>">
+													<input type="text" name="sm-subscribe-email" id="sm-subscribe-email" class="show-subscribe-field"   value="<?php echo esc_html( $current_user_email ); ?>">
 													<label for="sm-subscribe-email"></label>
 												</div>
 											</div>
@@ -194,7 +209,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 						</button>
 					</div>
 					<div class="customize__template-content--canvas sm-scroll">
-						<iframe src="<?php echo 'https://demo.site-mode.com/' . $active_template; ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+						<iframe src="<?php echo esc_url( 'https://demo.site-mode.com/' . $active_template ); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
 						<div class="loading__template"  style="display: flex;">
 							<div class="template-loader">
 								<div class="loader">

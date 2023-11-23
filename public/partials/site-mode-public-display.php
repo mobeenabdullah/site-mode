@@ -10,6 +10,7 @@
  * @package    Site_Mode
  * @subpackage Site_Mode/public/partials
  */
+
 ?>
 
 <!-- This file should primarily consist of HTML with a little of PHP. -->
