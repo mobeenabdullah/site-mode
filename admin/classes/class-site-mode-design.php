@@ -20,44 +20,44 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_Design extends Settings {
-    /**
-     * Variable for option name.
-     *
-     * @var string $option_name
-     */
+	/**
+	 * Variable for option name.
+	 *
+	 * @var string $option_name
+	 */
 	protected $option_name = 'site_mode_design';
 
 	/**
-     * Variable for active template.
-     *
+	 * Variable for active template.
+	 *
 	 * @var string $active_template
 	 */
 	protected $active_template = '';
 
 	/**
-     * Variable for show social.
-     *
+	 * Variable for show social.
+	 *
 	 * @var bool $show_social
 	 */
 	protected $show_social = true;
 
 	/**
-     * Variable for show countdown.
-     *
+	 * Variable for show countdown.
+	 *
 	 * @var bool $show_countdown
 	 */
 	protected $show_countdown = true;
 
 	/**
-     * Variable for color scheme.
-     *
+	 * Variable for color scheme.
+	 *
 	 * @var string $color_scheme
 	 */
 	protected $color_scheme = '';
 
 	/**
-     * Variable for placeholder colors.
-     *
+	 * Variable for placeholder colors.
+	 *
 	 * @var string[] $placeholder_colors
 	 */
 	protected $placeholder_colors = array(

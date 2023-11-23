@@ -100,14 +100,14 @@ class Site_Mode_Menu {
 		require_once SITE_MODE_ADMIN . 'partials/settings-layout.php';
 	}
 
-    /**
-     * Callback function for submenu page
-     *
-     * @param $svg_content (svg content).
-     * @return void
-     * @since 1.0.5
-     * @access public
-     */
+	/**
+	 * Callback function for submenu page
+	 *
+	 * @param $svg_content (svg content).
+	 * @return void
+	 * @since 1.0.5
+	 * @access public
+	 */
 	public function wp_kses_svg( $svg_content ) {
 		$kses_defaults = wp_kses_allowed_html( 'post' );
 

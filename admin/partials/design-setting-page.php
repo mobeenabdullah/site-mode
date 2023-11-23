@@ -96,7 +96,7 @@ $page_ids = get_posts( $args );
 							<div class="template_card-actions">
 								<?php
 								if ( $this->active_template !== $key ) :
-                                    $template_link = admin_url( '/admin.php?page=site-mode&design=true&template=' ) . $key . '&cat=' . $template['category'];
+									$template_link = admin_url( '/admin.php?page=site-mode&design=true&template=' ) . $key . '&cat=' . $template['category'];
 									?>
 								<a href="<?php echo eac_url( $template_link ); ?>" class="select_template">
 									<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +118,7 @@ $page_ids = get_posts( $args );
 						</div>
 						<div class="template_card-heading">
 							<h2 class="template_card-content--title"><?php echo esc_html( $template['name'] ); ?></h2>
-                            <?php $live_demo_link = 'https://demo.site-mode.com/' . $key; ?>
+							<?php $live_demo_link = 'https://demo.site-mode.com/' . $key; ?>
 							<a href="<?php echo esc_url( $live_demo_link ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 						</div>
 					</div>
