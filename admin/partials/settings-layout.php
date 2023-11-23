@@ -73,7 +73,7 @@ if ( ( isset( $_GET['design'] ) && true === $_GET['design'] ) || empty( get_opti
 		<div class="sm__dashboard-content">
 			<div class="smd-fluid-container">
 				<div class="tab__contents">
-					<div class="smd-tab-content" id="<?php echo eac_attr( $current_tab ); ?>">
+					<div class="smd-tab-content" id="<?php echo esc_attr( $current_tab ); ?>">
 						<?php
 
 						if ( 'settings' === $current_tab || 'templates' === $current_tab ) {
