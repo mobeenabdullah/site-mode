@@ -61,10 +61,10 @@ if ( isset( $_GET['cat'] ) ) {
 	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat ) {
 		$sm_category = $active_cat;
 	} else {
-        $sm_category = 'coming-soon';
+		$sm_category = 'coming-soon';
 	}
 } else {
-    $sm_category = 'coming-soon';
+	$sm_category = 'coming-soon';
 }
 
 ?>

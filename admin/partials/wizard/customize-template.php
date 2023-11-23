@@ -14,9 +14,9 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 
-	$get_current_user = wp_get_current_user();
-    $current_user_email     = $get_current_user->user_email;
-	$active_template  = '';
+	$get_current_user   = wp_get_current_user();
+	$current_user_email = $get_current_user->user_email;
+	$active_template    = '';
 
 if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 	$active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );

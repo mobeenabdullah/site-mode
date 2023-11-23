@@ -58,26 +58,26 @@ class Site_Mode {
 	 */
 	protected $version;
 
-    /**
-     * Initialize classes.
-     *
-     * @var string $classes_loader Init classes.
-     */
-    protected $classes_loader = '';
+	/**
+	 * Initialize classes.
+	 *
+	 * @var string $classes_loader Init classes.
+	 */
+	protected $classes_loader = '';
 
-    /**
-     * Utilities.
-     *
-     * @var string $utilities Utilities.
-     */
-    protected $utilities = '';
+	/**
+	 * Utilities.
+	 *
+	 * @var string $utilities Utilities.
+	 */
+	protected $utilities = '';
 
-    /**
-     * Status.
-     *
-     * @var string $status Status.
-     */
-    protected $status = '';
+	/**
+	 * Status.
+	 *
+	 * @var string $status Status.
+	 */
+	protected $status = '';
 
 	/**
 	 * Define the core functionality of the plugin.
