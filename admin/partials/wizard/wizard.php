@@ -1,4 +1,14 @@
 <?php
+/**
+ * Responsible for Site Mode Wizard Settings Page
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
 $templates       = array(
 	'template-1' => array(
 		'name'     => 'Template 1',
@@ -43,11 +53,11 @@ $active_cat      = '';
 $active_template = '';
 
 if ( isset( $_GET['template'] ) ) {
-	$active_template = $_GET['template'];
+	$active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );
 }
 
 if ( isset( $_GET['cat'] ) ) {
-	$active_cat = $_GET['cat'];
+	$active_cat = sanitize_text_field( wp_unslash( $_GET['cat'] ) );
 	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat ) {
 		$cat = $active_cat;
 	} else {
@@ -229,7 +239,7 @@ if ( isset( $_GET['cat'] ) ) {
 									</div>
 								</div>
 								<div class="template_card-heading">
-									<h2 class="template_card-content--title"><?php echo $template['name']; ?></h2>
+									<h2 class="template_card-content--title"><?php echo esc_html__( $template['name'], 'site-mode' ); ?></h2>
 									<a href="<?php echo 'https://demo.site-mode.com/' . $key; ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 								</div>
 							</div>
@@ -248,7 +258,7 @@ if ( isset( $_GET['cat'] ) ) {
 					</svg>
 					<span>Back</span>
 				</button>
-				<button class="select_template_btn sm__btn primary_btn_outline disabled__customize" disabled="disabled" type="button" data-template-name="<?php echo $key; ?>" data-template-label="<?php echo $template['name']; ?>">
+				<button class="select_template_btn sm__btn primary_btn_outline disabled__customize" disabled="disabled" type="button" data-template-name="<?php echo esc_attr( $key ); ?>" data-template-label="<?php echo esc_attr( $template['name'] ); ?>">
 					<span>Customize</span>
 					<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
