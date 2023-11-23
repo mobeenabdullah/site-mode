@@ -38,22 +38,22 @@ class Site_Mode_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-    /*
-     * Site Mode Design Settings
-     *
-     * @since 1.0.5
-     * @access private
-     * @var array $site_mode_design Design settings of site mode.
-     */
+	/*
+	 * Site Mode Design Settings
+	 *
+	 * @since 1.0.5
+	 * @access private
+	 * @var array $site_mode_design Design settings of site mode.
+	 */
 	protected $site_mode_design;
 
-    /*
-     * Enable Template
-     *
-     * @since 1.0.5
-     * @access private
-     * @var string|bool $enable_template Enable template.
-     */
+	/*
+	 * Enable Template
+	 *
+	 * @since 1.0.5
+	 * @access private
+	 * @var string|bool $enable_template Enable template.
+	 */
 	protected $enable_template;
 
 	/**
@@ -120,14 +120,14 @@ class Site_Mode_Public {
 		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', array( 'jquery' ), $this->version, false );
 	}
 
-    /**
-     * Custom filter function to modify the HTML output of style loader tags.
-     *
-     * @param string $html   The HTML output for the style loader tag.
-     * @param string $handle The unique identifier for the registered style.
-     *
-     * @return string The modified HTML output for the style loader tag.
-     */
+	/**
+	 * Custom filter function to modify the HTML output of style loader tags.
+	 *
+	 * @param string $html   The HTML output for the style loader tag.
+	 * @param string $handle The unique identifier for the registered style.
+	 *
+	 * @return string The modified HTML output for the style loader tag.
+	 */
 	public function my_style_loader_tag_filter( $html, $handle ) {
 		if ( 'preconnect-font' === $handle ) {
 			return str_replace(
@@ -146,19 +146,20 @@ class Site_Mode_Public {
 		return $html;
 	}
 
-    /**
-     * Adds a login icon to the footer based on site mode settings.
-     * @since 1.0.5
-     * @return void
-     * @access public
-     * @global array $site_mode_general General settings of site mode.
-     * @global array $site_mode_design Design settings of site mode.
-     * @global int $active_page Active page ID.
-     * @global int $coming_soon_page Coming soon page ID.
-     * @global int $maintenance_page Maintenance page ID.
-     * @global bool $is_valid_page Check if page is valid or not.
-     * @return void
-     */
+	/**
+	 * Adds a login icon to the footer based on site mode settings.
+	 *
+	 * @since 1.0.5
+	 * @return void
+	 * @access public
+	 * @global array $site_mode_general General settings of site mode.
+	 * @global array $site_mode_design Design settings of site mode.
+	 * @global int $active_page Active page ID.
+	 * @global int $coming_soon_page Coming soon page ID.
+	 * @global int $maintenance_page Maintenance page ID.
+	 * @global bool $is_valid_page Check if page is valid or not.
+	 * @return void
+	 */
 	public function add_login_icon() {
 
 		$general_settings = get_option( 'site_mode_general' );
