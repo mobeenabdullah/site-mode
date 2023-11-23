@@ -1,5 +1,27 @@
-<div class="site_mode__wrap-form">
+<?php
+/**
+ * Responsible for SEO Settings page.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
 
+/**
+ * Responsible for SEO Settings page.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
+<div class="site_mode__wrap-form">
 	<form id="site-mode-seo" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" >
 		<div class="option__row">
 			<div class="option__row--label">

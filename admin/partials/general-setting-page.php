@@ -1,7 +1,28 @@
+<?php
+/**
+ * Responsible for general Settings page.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
+/**
+ * Responsible for general Settings page.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
 <div class="site_mode__wrap-form">
 	<form method="post" class="site_mode_form general_form" id="site-mode-general" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-
-		<!-- Logo Setting -->
 		<div class="option__row">
 			<div class="option__row--label">
 				<span><label for="login_icon"><?php esc_html_e( 'Show Login Icon', 'site-mode' ); ?></label></span>
@@ -30,7 +51,6 @@
 
 		<?php wp_nonce_field( 'general_settings_action', 'general_section_field' ); ?>
 
-		<!-- Submit setting -->
 		<div class="option__row">
 			<div class="option__row--label submit_button">
 				<?php // submit_button(); ?>

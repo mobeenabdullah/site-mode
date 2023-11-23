@@ -1,3 +1,26 @@
+<?php
+/**
+ * Responsible for Design Settings page.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
+/**
+ * Responsible for Design Settings page.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
 <div class="container">
 	<div id="toast-success">
 		<div class="toast-success-msg">
@@ -44,7 +67,7 @@
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					),
 				);
-				$active_tab     = isset( $_GET['setting'] ) ? sanitize_text_field( strtolower( $_GET['setting'] ) ) : 'general';
+				$active_tab     = isset( $_GET['setting'] ) ? sanitize_text_field( strtolower( wp_unslash( $_GET['setting'] ) ) ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';

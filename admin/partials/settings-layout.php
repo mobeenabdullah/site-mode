@@ -1,5 +1,28 @@
 <?php
-if ( ( isset( $_GET['design'] ) && $_GET['design'] === true ) || empty( get_option( 'sm-fresh-installation' ) ) ) :
+/**
+ * Responsible for settings layout.
+ *
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ */
+
+/**
+ * Responsible for settings layout.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+?>
+
+<?php
+if ( ( isset( $_GET['design'] ) && true === $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) :
 	require_once SITE_MODE_ADMIN . 'partials/wizard/wizard.php';
 	else :
 		?>
@@ -35,12 +58,12 @@ if ( ( isset( $_GET['design'] ) && $_GET['design'] === true ) || empty( get_opti
 							),
 						);
 
-						$current_tab = isset( $_GET['setting'] ) ? $_GET['setting'] : 'dashboard';
+						$current_tab = isset( $_GET['setting'] ) ? wp_unslash( $_GET['setting'] ) : 'dashboard';
 
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
 							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ); ?>" class="<?php echo $tab_class; ?>"><?php echo $site_mode_tab['title']; ?></a>
+								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( $tab_class ); ?>"><?php echo wp_unslash( $site_mode_tab['title'] ); ?></a>
 							<?php
 						endforeach;
 						?>
@@ -50,12 +73,12 @@ if ( ( isset( $_GET['design'] ) && $_GET['design'] === true ) || empty( get_opti
 		<div class="sm__dashboard-content">
 			<div class="smd-fluid-container">
 				<div class="tab__contents">
-					<div class="smd-tab-content" id="<?php echo $current_tab; ?>">
+					<div class="smd-tab-content" id="<?php echo eac_attr( $current_tab ); ?>">
 						<?php
 
-						if ( $current_tab === 'settings' || $current_tab === 'templates' ) {
+						if ( 'settings' === $current_tab || 'templates' === $current_tab ) {
 
-							if ( $current_tab === 'templates' ) {
+							if ( 'templates' === $current_tab ) {
 								require_once SITE_MODE_ADMIN . 'classes/class-site-mode-design.php';
 								$class_name = 'Site_Mode_Design';
 								$class      = new $class_name();
@@ -85,7 +108,7 @@ if ( ( isset( $_GET['design'] ) && $_GET['design'] === true ) || empty( get_opti
 												'icon'  => '<i class="fa-solid fa-sliders"></i>',
 											),
 										);
-										$active_tab     = isset( $_GET['tab'] ) ? sanitize_text_field( strtolower( $_GET['tab'] ) ) : 'general';
+										$active_tab     = isset( $_GET['tab'] ) ? sanitize_text_field( strtolower( wp_unslash( $_GET['tab'] ) ) ) : 'general';
 
 										foreach ( $site_mode_tabs as $site_mode_tab ) :
 											$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
@@ -115,7 +138,7 @@ if ( ( isset( $_GET['design'] ) && $_GET['design'] === true ) || empty( get_opti
 								</div>
 								<?php
 							}
-						} elseif ( $current_tab === 'about-us' ) {
+						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
 						} else {
 							require_once SITE_MODE_ADMIN . 'partials/dashboard-setting-page.php';
