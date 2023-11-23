@@ -497,6 +497,7 @@ html {
 	padding: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem)) calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
 	background-color: var(--wd-base-white-color);
 	z-index: 999;
+	box-sizing: border-box;
 	border-top: 1px solid var(--wd-border-color);
 }
 

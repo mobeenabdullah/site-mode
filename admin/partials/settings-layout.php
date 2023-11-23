@@ -22,7 +22,7 @@
 ?>
 
 <?php
-if ( ( isset( $_GET['design'] ) && true === $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) :
+if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_option( 'sm-fresh-installation' ) ) ) :
 	require_once SITE_MODE_ADMIN . 'partials/wizard/wizard.php';
 	else :
 		?>
@@ -58,12 +58,12 @@ if ( ( isset( $_GET['design'] ) && true === $_GET['design'] ) || empty( get_opti
 							),
 						);
 
-						$current_tab = isset( $_GET['setting'] ) ? wp_unslash( $_GET['setting'] ) : 'dashboard';
+						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
 
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
 							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( $tab_class ); ?>"><?php echo wp_unslash( $site_mode_tab['title'] ); ?></a>
+								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo wp_unslash( $site_mode_tab['title'] ); ?></a>
 							<?php
 						endforeach;
 						?>
@@ -108,7 +108,7 @@ if ( ( isset( $_GET['design'] ) && true === $_GET['design'] ) || empty( get_opti
 												'icon'  => '<i class="fa-solid fa-sliders"></i>',
 											),
 										);
-										$active_tab     = isset( $_GET['tab'] ) ? sanitize_text_field( strtolower( wp_unslash( $_GET['tab'] ) ) ) : 'general';
+										$active_tab     = isset( $_GET['tab'] ) ?  strtolower( sanitize_text_field( wp_unslash( $_GET['tab'] ) ) )  : 'general';
 
 										foreach ( $site_mode_tabs as $site_mode_tab ) :
 											$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';

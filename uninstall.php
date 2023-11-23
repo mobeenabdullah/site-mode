@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired when the plugin is uninstalled.
  *
@@ -30,8 +29,7 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Options cleanup during uninstall plugin
-
+// Options cleanup during uninstall plugin.
 $options = array(
 	'site_mode_general',
 	'site_mode_seo',

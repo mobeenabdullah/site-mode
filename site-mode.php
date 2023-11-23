@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -20,7 +19,7 @@
  * Author:            Mobeen Abdullah
  * Author URI:        https://github.com/mobeenabdullah
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0  .txt
  * Text Domain:       site-mode
  * Domain Path:       /languages
  */
@@ -79,8 +78,6 @@ require SITE_MODE_INC . 'class-site-mode.php';
  *
  * @since    1.0.5
  */
-
-
 function run_site_mode() {
 	$plugin = new Site_Mode();
 	$plugin->run();

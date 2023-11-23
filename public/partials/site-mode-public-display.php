@@ -1,9 +1,8 @@
 <?php
-
 /**
  * Provide a public-facing view for the plugin
  *
- * This file is used to markup the public-facing aspects of the plugin.
+ * This file is used to html the public-facing aspects of the plugin.
  *
  * @link       https://mobeenabdullah.com
  * @since      1.0.5
@@ -13,4 +12,4 @@
  */
 ?>
 
-<!-- This file should primarily consist of HTML with a little bit of PHP. -->
+<!-- This file should primarily consist of HTML with a little of PHP. -->

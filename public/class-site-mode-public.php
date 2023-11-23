@@ -38,7 +38,8 @@ class Site_Mode_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
-	/*
+
+	/**
 	 * Site Mode Design Settings
 	 *
 	 * @since 1.0.5
@@ -47,7 +48,7 @@ class Site_Mode_Public {
 	 */
 	protected $site_mode_design;
 
-	/*
+	/**
 	 * Enable Template
 	 *
 	 * @since 1.0.5
@@ -150,7 +151,6 @@ class Site_Mode_Public {
 	 * Adds a login icon to the footer based on site mode settings.
 	 *
 	 * @since 1.0.5
-	 * @return void
 	 * @access public
 	 * @global array $site_mode_general General settings of site mode.
 	 * @global array $site_mode_design Design settings of site mode.
@@ -169,7 +169,7 @@ class Site_Mode_Public {
 		$maintenance_page = isset( $design_settings['page_setup']['maintenance_page_id'] ) ? $design_settings['page_setup']['maintenance_page_id'] : '';
 		$is_valid_page    = false;
 
-		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( $active_page === get_the_ID() || $coming_soon_page === get_the_ID() && $maintenance_page === get_the_ID() ) ) {
+		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( get_the_ID() === $active_page || get_the_ID() === $coming_soon_page && get_the_ID() === $maintenance_page ) ) {
 			$is_valid_page = true;
 		}
 

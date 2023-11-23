@@ -1,6 +1,6 @@
 <?php
 /**
- * Site Mode Admin Menu.
+ * Site Mode Admin Entry File.
  *
  * @package Site_Mode
  * @subpackage Site_Mode/admin

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The file that defines the core plugin class
  *
@@ -27,6 +26,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
+
 class Site_Mode {
 
 	/**
@@ -57,13 +57,21 @@ class Site_Mode {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
-	protected $classes_loader = '';
 
-	protected $utilities = '';
+    /**
+     * @var string $classes_loader Init classes.
+     */
+    protected $classes_loader = '';
 
-	protected $status = '';
+    /**
+     * @var string $utilities Utilities.
+     */
+    protected $utilities = '';
 
-
+    /**
+     * @var string $status Status.
+     */
+    protected $status = '';
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -96,7 +104,7 @@ class Site_Mode {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Site_Mode_Loader. Orchestrates the hooks of the plugin.
-	 * - Site_Mode_i18n. Defines internationalization functionality.
+	 * - Site_Mode_I18n. Defines internationalization functionality.
 	 * - Site_Mode_Admin. Defines all hooks for the admin area.
 	 * - Site_Mode_Public. Defines all hooks for the public side of the site.
 	 *
@@ -141,7 +149,7 @@ class Site_Mode {
 		 */
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 
-		require_once SITE_MODE_INC . 'template-load.php';
+		require_once SITE_MODE_INC . 'class-template-load.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
@@ -155,7 +163,7 @@ class Site_Mode {
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Site_Mode_i18n class in order to set the domain and to register the hook
+	 * Uses the Site_Mode_I18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.5
@@ -163,7 +171,7 @@ class Site_Mode {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Site_Mode_i18n();
+		$plugin_i18n = new Site_Mode_I18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 	}
@@ -188,11 +196,11 @@ class Site_Mode {
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 
-		// Adding FSE Theme Styles in Site Mode Template
+		// Adding FSE Theme Styles in Site Mode Template.
 		$this->loader->add_action( 'wpsm_head', $plugin_admin, 'sm_remember_fse_style' );
 		$this->loader->add_action( 'wpsm_footer', $plugin_admin, 'sm_fse_style' );
 
-		// Add body class
+		// Add body class.
 		$this->loader->add_filter( 'admin_body_class', $plugin_admin, 'sm_add_body_class' );
 
 		/**
@@ -224,7 +232,7 @@ class Site_Mode {
 		$this->loader->add_filter( 'rest_authentication_errors', $this->classes_loader->get_advanced(), 'site_mode_rest_api' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'add_login_icon' );
 
-		// feeds
+		// feeds.
 		$this->loader->add_action( 'do_feed', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed' );
 		$this->loader->add_action( 'do_feed_rdf', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_rss', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
@@ -233,7 +241,7 @@ class Site_Mode {
 		$this->loader->add_action( 'do_feed_rss2_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_atom_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 
-		// Template load
+		// Template load.
 		$template_load = new Template_Load();
 
 		if ( $template_load->is_site_mode_active() ) {
@@ -241,8 +249,14 @@ class Site_Mode {
 		}
 	}
 
-	// menu
-
+	// menu.
+    /**
+     * Get Menu.
+     *
+     * @since 1.0.5
+     * @access public
+     * @return void
+     */
 	public function get_menu() {
 		$settings_menu = new Site_Mode_Menu();
 	}

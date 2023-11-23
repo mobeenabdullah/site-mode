@@ -109,7 +109,7 @@ class Site_Mode_Admin {
 		wp_enqueue_style( 'select-2', SITE_MODE_ADMIN_URL . 'assets/css/select-2.css', array(), $this->version, 'all' );
 		wp_enqueue_style( 'site-mode-dashboard', SITE_MODE_ADMIN_URL . 'assets/css/site-mode-dashboard.css', array(), $this->version, 'all' );
 
-		if ( 'site-mode' === isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) && ( ( isset( $_GET['design'] ) && 'true' === sanitize_text_field( wp_unslash( $_GET['design'] ) ) ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
+		if ( 'site-mode' == isset( $_GET['page'] ) && sanitize_text_field( wp_unslash( $_GET['page'] ) ) && ( ( isset( $_GET['design'] ) && 'true' == sanitize_text_field( wp_unslash( $_GET['design'] ) ) ) || empty( get_option( 'sm-fresh-installation' ) ) ) ) {
 			wp_enqueue_style( 'site-mode-wizard', SITE_MODE_ADMIN_URL . 'assets/css/wizard.css', array(), $this->version, 'all' );
 		}
 	}

@@ -1,9 +1,25 @@
 <?php
 /**
- * Class Template_Load
+ * Responsible for template load.
  *
- * Handles the initialization and functionality related to the site mode template.
+ * @link       https://mobeenabdullah.com
+ * @since      1.0.5
+ *
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
  */
+
+/**
+ * Responsible for template load.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
+
 class Template_Load {
 	/**
 	 * General settings for the site mode.
@@ -106,9 +122,9 @@ class Template_Load {
 	 */
 	public function check_whitelist_pages() {
 		$whitelist_pages     = $this->advanced_settings['whitelist_pages'] ?? array();
-		$get_current_page_ID = get_the_ID();
+		$get_current_page_id = get_the_ID();
 
-		if ( in_array( $get_current_page_ID, $whitelist_pages ) ) {
+		if ( in_array( $get_current_page_id, $whitelist_pages ) ) {
 			return false;
 		}
 		return true;

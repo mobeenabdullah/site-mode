@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired during plugin activation
  *
@@ -22,8 +21,14 @@
  */
 class Site_Mode_Activator {
 
+    /**
+     * Activate plugin.
+     *
+     * @since    1.0.5
+     * @return   void
+     */
 	public static function activate() {
-		// Add default options to database for general settings
+		// Add default options to database for general settings.
 		$general_settings = array(
 			'mode_status'      => 0,
 			'redirect_url'     => '',
