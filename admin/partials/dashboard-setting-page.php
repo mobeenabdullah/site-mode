@@ -28,80 +28,80 @@ $maintenance_template = ! empty( $design_settings['page_setup']['maintenance_tem
 $notfound_active      = ! empty( $design_settings['page_setup']['404_template_active'] ) ? $design_settings['page_setup']['404_template_active'] : '';
 $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] ) ? $design_settings['page_setup']['404_template'] : '';
 $svg_allowed_elements = array(
-    'svg'      => array(
-        'class'               => true,
-        'xmlns'               => true,
-        'width'               => true,
-        'height'              => true,
-        'viewbox'             => true,
-        'preserveaspectratio' => true,
-        'fill'                => true,
-        'aria-hidden'         => true,
-        'focusable'           => true,
-        'role'                => true,
-        'path'                => true,
-        'style'               => true,
-    ),
-    'path'     => array(
-        'fill'      => true,
-        'fill-rule' => true,
-        'd'         => true,
-        'transform' => true,
-    ),
-    'polygon'  => array(
-        'fill'      => true,
-        'fill-rule' => true,
-        'points'    => true,
-        'transform' => true,
-        'focusable' => true,
-    ),
-    'rect'     => array(
-        'fill'      => true,
-        'fill-rule' => true,
-        'height'    => true,
-        'width'     => true,
-        'x'         => true,
-        'y'         => true,
-    ),
-    'line'     => array(
-        'fill'         => true,
-        'fill-rule'    => true,
-        'x1'           => true,
-        'x2'           => true,
-        'y1'           => true,
-        'y2'           => true,
-        'stroke'       => true,
-        'stroke-width' => true,
-        'transform'    => true,
-    ),
-    'defs'     => array(
-        'id' => true,
-    ),
-    'clipPath' => array(
-        'id' => true,
-    ),
-    'g'        => array(
-        'clip-path' => true,
-        'mask'      => true,
-    ),
-    'circle'   => array(
-        'cx'   => true,
-        'cy'   => true,
-        'r'    => true,
-        'fill' => true,
-    ),
-    'mask'     => array(
-        'id'         => true,
-        'fill'       => true,
-        'style'      => true,
-        'maskUnits'  => true,
-        'x'          => true,
-        'y'          => true,
-        'width'      => true,
-        'height'     => true,
-        'maskUnits'  => true,
-        'maskContent'=> true,
-    ),
+	'svg'      => array(
+		'class'               => true,
+		'xmlns'               => true,
+		'width'               => true,
+		'height'              => true,
+		'viewbox'             => true,
+		'preserveaspectratio' => true,
+		'fill'                => true,
+		'aria-hidden'         => true,
+		'focusable'           => true,
+		'role'                => true,
+		'path'                => true,
+		'style'               => true,
+	),
+	'path'     => array(
+		'fill'      => true,
+		'fill-rule' => true,
+		'd'         => true,
+		'transform' => true,
+	),
+	'polygon'  => array(
+		'fill'      => true,
+		'fill-rule' => true,
+		'points'    => true,
+		'transform' => true,
+		'focusable' => true,
+	),
+	'rect'     => array(
+		'fill'      => true,
+		'fill-rule' => true,
+		'height'    => true,
+		'width'     => true,
+		'x'         => true,
+		'y'         => true,
+	),
+	'line'     => array(
+		'fill'         => true,
+		'fill-rule'    => true,
+		'x1'           => true,
+		'x2'           => true,
+		'y1'           => true,
+		'y2'           => true,
+		'stroke'       => true,
+		'stroke-width' => true,
+		'transform'    => true,
+	),
+	'defs'     => array(
+		'id' => true,
+	),
+	'clipPath' => array(
+		'id' => true,
+	),
+	'g'        => array(
+		'clip-path' => true,
+		'mask'      => true,
+	),
+	'circle'   => array(
+		'cx'   => true,
+		'cy'   => true,
+		'r'    => true,
+		'fill' => true,
+	),
+	'mask'     => array(
+		'id'          => true,
+		'fill'        => true,
+		'style'       => true,
+		'maskUnits'   => true,
+		'x'           => true,
+		'y'           => true,
+		'width'       => true,
+		'height'      => true,
+		'maskUnits'   => true,
+		'maskContent' => true,
+	),
 )
 ?>
 <div class="sitemode__dashboard">
@@ -319,7 +319,7 @@ $svg_allowed_elements = array(
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
-                        <?php echo wp_kses( $dashboard_card['icon'], $svg_allowed_elements); ?>
+						<?php echo wp_kses( $dashboard_card['icon'], $svg_allowed_elements ); ?>
 					</div>
 					<div class="smd-card-title">
 						<h2><?php echo esc_html( $dashboard_card['title'] ); ?></h2>
