@@ -26,7 +26,6 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-
 class Site_Mode {
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power

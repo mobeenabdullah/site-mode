@@ -13,6 +13,7 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
+
 ?>
 
 <div class="customize__template-sidebar" aria-label="Navigation" role="region" tabindex="-1">

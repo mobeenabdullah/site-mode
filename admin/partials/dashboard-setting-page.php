@@ -99,7 +99,6 @@ $svg_allowed_elements = array(
         'y'          => true,
         'width'      => true,
         'height'     => true,
-        'maskUnits'  => true,
         'maskContent'=> true,
     ),
 )
