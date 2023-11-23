@@ -14,6 +14,7 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 ?>
+
 <div class="customize__template-sidebar" aria-label="Navigation" role="region" tabindex="-1">
 	<div class="sidebar_content">
 		<div class="sidebar_content-header">
