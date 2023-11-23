@@ -243,7 +243,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
-						<?php echo esc_html( $dashboard_card['icon'] ); ?>
+						<?php echo  $dashboard_card['icon']; ?>
 					</div>
 					<div class="smd-card-title">
 						<h2><?php echo esc_html( $dashboard_card['title'] ); ?></h2>
