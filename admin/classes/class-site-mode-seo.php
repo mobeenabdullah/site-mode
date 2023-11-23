@@ -28,15 +28,16 @@ class Site_Mode_Seo extends Settings {
 	 * @var      string    $option_name    The Key of settings in the options table.
 	 */
 	protected $option_name = 'site_mode_seo';
-	/*
+
+	/**
 	 * SEO Settings
 	 *
 	 * @since 1.0.5
 	 * @access protected
 	 * @var array $seo_settings SEO Settings.
 	 */
-
 	protected $seo_settings = array();
+
 	/**
 	 * Meta Title.
 	 *
@@ -45,6 +46,7 @@ class Site_Mode_Seo extends Settings {
 	 * @var string $meta_title Meta Title.
 	 */
 	protected $meta_title;
+
 	/**
 	 * Meta Description.
 	 *
@@ -53,6 +55,7 @@ class Site_Mode_Seo extends Settings {
 	 * @var string $meta_description Meta Description.
 	 */
 	protected $meta_description;
+
 	/**
 	 * Meta Favicon.
 	 *
@@ -61,6 +64,7 @@ class Site_Mode_Seo extends Settings {
 	 * @var string $meta_favicon Meta Favicon.
 	 */
 	protected $meta_favicon;
+
 	/**
 	 * Meta Image.
 	 *
@@ -80,7 +84,7 @@ class Site_Mode_Seo extends Settings {
 	public function __construct() {
 
 		$this->seo_settings = $this->get_data( $this->option_name );
-		// check if values are set or not if not set then set default values
+		// check if values are set or not if not set then set default values.
 		$this->meta_title       = isset( $this->seo_settings['meta_title'] ) ? $this->seo_settings['meta_title'] : 'SEO Meta Title';
 		$this->meta_description = isset( $this->seo_settings['meta_description'] ) ? $this->seo_settings['meta_description'] : 'SEO Meta Description';
 		$this->meta_favicon     = isset( $this->seo_settings['meta_favicon'] ) ? $this->seo_settings['meta_favicon'] : '';
@@ -92,7 +96,7 @@ class Site_Mode_Seo extends Settings {
 	 *
 	 * @since 1.0.5
 	 * @access public
-	 * @return void
+	 * @return mixed
 	 */
 	public function ajax_site_mode_seo() {
 

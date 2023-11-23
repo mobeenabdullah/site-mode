@@ -86,7 +86,7 @@ class Site_Mode_Integrations extends Settings {
 	 *
 	 * @since 1.0.5
 	 * @access public
-	 * @return void
+	 * @return mixed
 	 */
 	public function ajax_site_mode_intergrations() {
 

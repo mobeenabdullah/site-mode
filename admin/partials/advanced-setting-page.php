@@ -128,7 +128,7 @@
 								$selected = '';
 							}
 							?>
-							<option value="<?php echo esc_attr( $value->ID ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html_e( $value->post_name ); ?></option>
+							<option value="<?php echo esc_attr( $value->ID ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html__( $value->post_name, 'site-mode' ); ?></option>
 						<?php endforeach; ?>
 					</select>
 					<span class="arrow-down"></span>

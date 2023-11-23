@@ -102,7 +102,7 @@ class Site_Mode_Menu {
 	/**
 	 * Callback function for submenu page
 	 *
-	 * @param $svg_content (svg content).
+	 * @param string $svg_content The SVG content to be processed.
 	 * @return void
 	 * @since 1.0.5
 	 * @access public

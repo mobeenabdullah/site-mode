@@ -67,7 +67,7 @@
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					),
 				);
-				$active_tab     = isset( $_GET['setting'] ) ? sanitize_text_field( strtolower( wp_unslash( $_GET['setting'] ) ) ) : 'general';
+				$active_tab     = isset( $_GET['setting'] ) ?  strtolower( sanitize_text_field( wp_unslash( $_GET['setting'] ) ) )  : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
@@ -87,7 +87,7 @@
 			$tab_class = strtolower( $tab_content['title'] ) === $active_tab ? 'tab-content current' : 'tab-content';
 			$tab_id    = 'tab-' . strtolower( $tab_content['title'] );
 			$tab_data  = 'tab-' . strtolower( $tab_content['title'] );
-			$tab_name  = strtolower( $tab_content['title'] );
+			$tab_name  = strtolower( esc_html__( $tab_content['title'], 'site-mode' ) );
 			?>
 				<div id="<?php esc_attr_e( $tab_id ); ?>" class="<?php esc_attr_e( $tab_class ); ?>">
 					<?php

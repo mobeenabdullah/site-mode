@@ -243,17 +243,17 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
-						<?php echo $dashboard_card['icon']; ?>
+						<?php echo esc_html( $dashboard_card['icon'] ); ?>
 					</div>
 					<div class="smd-card-title">
-						<h2><?php echo $dashboard_card['title']; ?></h2>
+						<h2><?php echo esc_html( $dashboard_card['title'] ); ?></h2>
 					</div>
 					<div class="smd-card-description">
-						<p><?php echo $dashboard_card['description']; ?></p>
+						<p><?php echo esc_html( $dashboard_card['description'] ); ?></p>
 					</div>
 					<div class="smd-card-seperator"></div>
 					<div class="smd-card-actions">
-						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1"><?php echo $dashboard_card['link-text']; ?></a>
+						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1"><?php echo esc_html( $dashboard_card['link-text'] ); ?></a>
 						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1">
 							<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M7.49939 1.24561C4.05314 1.24623 1.24939 4.04998 1.24939 7.49623C1.24939 10.9425 4.05314 13.7462 7.50001 13.7462C10.9456 13.7462 13.7494 10.9425 13.75 7.49623C13.75 4.04998 10.9463 1.24623 7.49939 1.24561ZM7.50001 12.4962C4.74251 12.4962 2.49939 10.2531 2.49939 7.49623C2.49939 4.73936 4.74251 2.49623 7.49939 2.49561C10.2569 2.49623 12.5 4.73936 12.5 7.49623C12.4994 10.2531 10.2563 12.4962 7.50001 12.4962Z" fill="black"/>

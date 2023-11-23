@@ -30,7 +30,7 @@
 			</div>
 			<div class="option__row--field">
 				<div class="sm_input_cover">
-					<input type="text" id="seo-meta-title" name="seo-meta-title" value="<?php esc_attr_e( $this->meta_title, 'site-mode' ); ?>" />
+					<input type="text" id="seo-meta-title" name="seo-meta-title" value="<?php esc_attr( $this->meta_title, 'site-mode' ); ?>" />
 				</div>
 			</div>
 		</div>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="option__row--field">
 				<div class="sm_input_cover">
-				<input type="text" id="seo-meta-description" name="seo-meta-description" value="<?php esc_attr_e( $this->meta_description, 'site-mode' ); ?>" />
+				<input type="text" id="seo-meta-description" name="seo-meta-description" value="<?php esc_attr( $this->meta_description, 'site-mode' ); ?>" />
 				</div>
 			</div>
 		</div>
