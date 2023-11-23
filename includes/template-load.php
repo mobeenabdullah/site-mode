@@ -1,16 +1,41 @@
 <?php
-
+/**
+ * Class Template_Load
+ *
+ * Handles the initialization and functionality related to the site mode template.
+ */
 class Template_Load {
+	/**
+	 * General settings for the site mode.
+	 *
+	 * @var array
+	 */
 	protected $general_settings;
-
+	/**
+	 * Advanced settings for the site mode.
+	 *
+	 * @var array
+	 */
 	protected $advanced_settings;
-
+	/**
+	 * Template settings for the site mode design.
+	 *
+	 * @var array
+	 */
 	protected $template;
+	/**
+	 * Constructor to initialize class properties with relevant options.
+	 */
 	public function __construct() {
 		$this->general_settings  = get_option( 'site_mode_general' );
 		$this->advanced_settings = get_option( 'site_mode_advanced' );
 		$this->template          = get_option( 'site_mode_design' );
 	}
+	/**
+	 * Initializes the site mode template.
+	 *
+	 * @return bool True if the site mode is active, false otherwise.
+	 */
 	public function template_initialize() {
 
 		$maintenance_page = isset( $this->template['page_setup']['maintenance_page_id'] ) ? intval( $this->template['page_setup']['maintenance_page_id'] ) : '';
@@ -32,7 +57,11 @@ class Template_Load {
 			return false;
 		}
 	}
-
+	/**
+	 * Checks if the site mode is active based on template settings.
+	 *
+	 * @return bool True if site mode is active, false otherwise.
+	 */
 	public function is_site_mode_active(): bool {
 
 		if ( empty( $this->template['page_setup'] ) && empty( $this->template['page_setup']['active_page'] ) ) {
@@ -53,6 +82,11 @@ class Template_Load {
 		return true;
 	}
 
+	/**
+	 * Checks if the current user has the required role.
+	 *
+	 * @return bool True if the user role is allowed, false otherwise.
+	 */
 	public function check_user_role() {
 		$current_user_roles = wp_get_current_user()->roles;
 		$wp_user_roles      = $this->advanced_settings['user_roles'] ?? array();
@@ -65,6 +99,11 @@ class Template_Load {
 		return true;
 	}
 
+	/**
+	 * Checks if the current page is whitelisted.
+	 *
+	 * @return bool True if the page is whitelisted, false otherwise.
+	 */
 	public function check_whitelist_pages() {
 		$whitelist_pages     = $this->advanced_settings['whitelist_pages'] ?? array();
 		$get_current_page_ID = get_the_ID();
@@ -74,6 +113,11 @@ class Template_Load {
 		}
 		return true;
 	}
+	/**
+	 * Checks the redirect status and performs redirection if necessary.
+	 *
+	 * @return bool True if redirection is not needed, false otherwise.
+	 */
 	public function check_redirect_status() {
 		$redirect       = $this->advanced_settings['redirect'] ?? '';
 		$redirect_url   = $this->advanced_settings['redirect_url'] ?? '';
@@ -91,6 +135,13 @@ class Template_Load {
 		}
 	}
 
+	/**
+	 * Callback function for the pre_option_redirect_page filter.
+	 *
+	 * @param mixed $value The value to be filtered.
+	 *
+	 * @return mixed The filtered value.
+	 */
 	public function pre_option_redirect_page( $value ) {
 		if ( ! empty( $this->template['page_setup'] ) && ! empty( $this->template['page_setup']['active_page'] ) && get_post_status( $this->template['page_setup']['active_page'] ) === 'publish' && $this->template_initialize() ) {
 			return $this->template['page_setup']['active_page'];

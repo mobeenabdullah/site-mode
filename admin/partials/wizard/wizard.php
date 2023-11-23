@@ -48,7 +48,7 @@ if ( isset( $_GET['template'] ) ) {
 
 if ( isset( $_GET['cat'] ) ) {
 	$active_cat = $_GET['cat'];
-	if ( $active_cat === 'maintenance' || $active_cat === 'coming-soon' || $active_cat === '404' ) {
+	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat ) {
 		$cat = $active_cat;
 	} else {
 		$cat = 'coming-soon';
@@ -73,7 +73,7 @@ if ( isset( $_GET['cat'] ) ) {
 						<div class="wizard__start-cards">
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'coming-soon' ? 'checked' : ''; ?> value="coming-soon">
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'coming-soon' === $cat ? 'checked' : ''; ?> value="coming-soon">
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,7 +96,7 @@ if ( isset( $_GET['cat'] ) ) {
 							</div>
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === 'maintenance' ? 'checked' : ''; ?> value="maintenance">
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'maintenance' === $cat ? 'checked' : ''; ?> value="maintenance">
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -118,7 +118,7 @@ if ( isset( $_GET['cat'] ) ) {
 							</div>
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" <?php echo $cat === '404' ? 'checked' : ''; ?> value="404" >
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo '404' === $cat ? 'checked' : ''; ?> value="404" >
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -206,7 +206,7 @@ if ( isset( $_GET['cat'] ) ) {
 						<div class="wizard__templates-filter">
 							<div class="wizard__templates-filter-cover">
 								<?php foreach ( $categories as $key => $category ) : ?>
-									<button type="button" class="template-category-filter filter_btn <?php echo $key === 'all' ? 'active' : ''; ?> " data-template-category="<?php echo $key; ?>">
+									<button type="button" class="template-category-filter filter_btn <?php echo 'all' === $key ? 'active' : ''; ?> " data-template-category="<?php echo $key; ?>">
 										<?php echo $category; ?>
 									</button>
 								<?php endforeach; ?>
