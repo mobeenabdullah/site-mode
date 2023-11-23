@@ -58,20 +58,20 @@ class Site_Mode {
 	 */
 	protected $version;
 
-    /**
-     * @var string $classes_loader Init classes.
-     */
-    protected $classes_loader = '';
+	/**
+	 * @var string $classes_loader Init classes.
+	 */
+	protected $classes_loader = '';
 
-    /**
-     * @var string $utilities Utilities.
-     */
-    protected $utilities = '';
+	/**
+	 * @var string $utilities Utilities.
+	 */
+	protected $utilities = '';
 
-    /**
-     * @var string $status Status.
-     */
-    protected $status = '';
+	/**
+	 * @var string $status Status.
+	 */
+	protected $status = '';
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -250,13 +250,13 @@ class Site_Mode {
 	}
 
 	// menu.
-    /**
-     * Get Menu.
-     *
-     * @since 1.0.5
-     * @access public
-     * @return void
-     */
+	/**
+	 * Get Menu.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @return void
+	 */
 	public function get_menu() {
 		$settings_menu = new Site_Mode_Menu();
 	}
