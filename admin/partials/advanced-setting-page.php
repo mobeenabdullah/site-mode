@@ -20,7 +20,6 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 ?>
-
 <div class="site_mode__wrap-form">
 	<?php settings_errors(); ?>
 

@@ -18,7 +18,6 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 ?>
-
 <?php
 $design_settings      = get_option( 'site_mode_design' );
 $maintenance_page     = ! empty( $design_settings['page_setup']['maintenance_page_id'] ) && get_post_status( $design_settings['page_setup']['maintenance_page_id'] ) === 'publish' ? intval( $design_settings['page_setup']['maintenance_page_id'] ) : '';
@@ -28,9 +27,7 @@ $coming_soon_template = ! empty( $design_settings['page_setup']['coming_soon_tem
 $maintenance_template = ! empty( $design_settings['page_setup']['maintenance_template'] ) ? $design_settings['page_setup']['maintenance_template'] : '';
 $notfound_active      = ! empty( $design_settings['page_setup']['404_template_active'] ) ? $design_settings['page_setup']['404_template_active'] : '';
 $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] ) ? $design_settings['page_setup']['404_template'] : '';
-
 ?>
-
 <div class="sitemode__dashboard">
 	<div class="smd-container">
 		<div class="sitemode__introduction">

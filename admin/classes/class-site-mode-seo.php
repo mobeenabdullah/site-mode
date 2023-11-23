@@ -19,7 +19,6 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-
 class Site_Mode_Seo extends Settings {
 	/**
 	 * The Key of seo tab settings in the options table.

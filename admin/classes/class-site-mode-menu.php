@@ -19,7 +19,6 @@
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
-
 class Site_Mode_Menu {
 	/**
 	 * Constructor

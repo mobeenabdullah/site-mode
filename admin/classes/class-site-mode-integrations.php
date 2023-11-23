@@ -9,6 +9,16 @@
  * @subpackage Site_Mode/includes
  */
 
+/**
+ * Responsible for settings.
+ *
+ * This class defines all code necessary to run during the plugin's menu
+ *
+ * @since      1.0.5
+ * @package    Site_Mode
+ * @subpackage Site_Mode/includes
+ * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
+ */
 require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
 /**
  * Responsible for Integrations settings
