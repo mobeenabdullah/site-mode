@@ -365,4 +365,5 @@ class Site_Mode_Admin {
 
 		echo esc_html( $css );
 	}
+
 }

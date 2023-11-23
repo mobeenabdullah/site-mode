@@ -137,7 +137,7 @@ if ( isset( $_GET['cat'] ) ) {
 											</svg>
 										</div>
 										<div class="sm_select_page-title">
-											Error 404 Page (coming soon)
+											Error 404 Page
 										</div>
 										<div class="sm_select_page-desc">
 											Error page for lost content, guiding users back.
@@ -226,7 +226,7 @@ if ( isset( $_GET['cat'] ) ) {
 					<div class="template_options wizard__templates-cards">
 						<input type="hidden" name="template-name" id="selected-template-name" value="<?php echo esc_html( $active_template ); ?>">
 						<?php foreach ( $templates as $key => $template ) : ?>
-							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo $template['category']; ?>" data-category-template="<?php echo esc_attr( $key ); ?>">
+							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo esc_attr( $template['category'] ); ?>" data-category-template="<?php echo esc_attr( $key ); ?>">
 								<div class="template_card-img" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg' ); ?>);">
 									<div class="template_card-actions">
 										<button type="button" class="select_template" data-template-label="<?php echo esc_attr( $template['name'] ); ?>">
@@ -239,7 +239,7 @@ if ( isset( $_GET['cat'] ) ) {
 									</div>
 								</div>
 								<div class="template_card-heading">
-									<h2 class="template_card-content--title"><?php echo esc_html__( $template['name'], 'site-mode' ); ?></h2>
+									<h2 class="template_card-content--title"><?php echo esc_html( $template['name'] ); ?></h2>
 									<a href="<?php echo esc_url( 'https://demo.site-mode.com/' . $key ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 								</div>
 							</div>

@@ -27,6 +27,82 @@ $coming_soon_template = ! empty( $design_settings['page_setup']['coming_soon_tem
 $maintenance_template = ! empty( $design_settings['page_setup']['maintenance_template'] ) ? $design_settings['page_setup']['maintenance_template'] : '';
 $notfound_active      = ! empty( $design_settings['page_setup']['404_template_active'] ) ? $design_settings['page_setup']['404_template_active'] : '';
 $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] ) ? $design_settings['page_setup']['404_template'] : '';
+$svg_allowed_elements = array(
+    'svg'      => array(
+        'class'               => true,
+        'xmlns'               => true,
+        'width'               => true,
+        'height'              => true,
+        'viewbox'             => true,
+        'preserveaspectratio' => true,
+        'fill'                => true,
+        'aria-hidden'         => true,
+        'focusable'           => true,
+        'role'                => true,
+        'path'                => true,
+        'style'               => true,
+    ),
+    'path'     => array(
+        'fill'      => true,
+        'fill-rule' => true,
+        'd'         => true,
+        'transform' => true,
+    ),
+    'polygon'  => array(
+        'fill'      => true,
+        'fill-rule' => true,
+        'points'    => true,
+        'transform' => true,
+        'focusable' => true,
+    ),
+    'rect'     => array(
+        'fill'      => true,
+        'fill-rule' => true,
+        'height'    => true,
+        'width'     => true,
+        'x'         => true,
+        'y'         => true,
+    ),
+    'line'     => array(
+        'fill'         => true,
+        'fill-rule'    => true,
+        'x1'           => true,
+        'x2'           => true,
+        'y1'           => true,
+        'y2'           => true,
+        'stroke'       => true,
+        'stroke-width' => true,
+        'transform'    => true,
+    ),
+    'defs'     => array(
+        'id' => true,
+    ),
+    'clipPath' => array(
+        'id' => true,
+    ),
+    'g'        => array(
+        'clip-path' => true,
+        'mask'      => true,
+    ),
+    'circle'   => array(
+        'cx'   => true,
+        'cy'   => true,
+        'r'    => true,
+        'fill' => true,
+    ),
+    'mask'     => array(
+        'id'         => true,
+        'fill'       => true,
+        'style'      => true,
+        'maskUnits'  => true,
+        'x'          => true,
+        'y'          => true,
+        'width'      => true,
+        'height'     => true,
+        'maskUnits'  => true,
+        'maskContent'=> true,
+    ),
+)
 ?>
 <div class="sitemode__dashboard">
 	<div class="smd-container">
@@ -166,7 +242,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 									</svg>
 								</div>
 								<div class="sm_select_page-title">
-									Error 404 Page (coming soon)
+									Error 404 Page
 								</div>
 								<div class="sm_select_page-desc">
 									Error page for lost content, guiding users back.
@@ -207,7 +283,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 				array(
 					'title'         => 'SEO Configuration',
 					'description'   => 'Optimize your coming soon/maintenance page for search engines with advanced SEO settings.',
-					'icon'          => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill:#FE4773; transform: ;msFilter:;"><path d="M20 12a2 2 0 0 0-.703.133l-2.398-1.963c.059-.214.101-.436.101-.67C17 8.114 15.886 7 14.5 7S12 8.114 12 9.5c0 .396.1.765.262 1.097l-2.909 3.438A2.06 2.06 0 0 0 9 14c-.179 0-.348.03-.512.074l-2.563-2.563C5.97 11.348 6 11.179 6 11c0-1.108-.892-2-2-2s-2 .892-2 2 .892 2 2 2c.179 0 .348-.03.512-.074l2.563 2.563A1.906 1.906 0 0 0 7 16c0 1.108.892 2 2 2s2-.892 2-2c0-.237-.048-.46-.123-.671l2.913-3.442c.227.066.462.113.71.113a2.48 2.48 0 0 0 1.133-.281l2.399 1.963A2.077 2.077 0 0 0 18 14c0 1.108.892 2 2 2s2-.892 2-2-.892-2-2-2z"></path></svg>',
+					'icon'          => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M20 12a2 2 0 0 0-.703.133l-2.398-1.963c.059-.214.101-.436.101-.67C17 8.114 15.886 7 14.5 7S12 8.114 12 9.5c0 .396.1.765.262 1.097l-2.909 3.438A2.06 2.06 0 0 0 9 14c-.179 0-.348.03-.512.074l-2.563-2.563C5.97 11.348 6 11.179 6 11c0-1.108-.892-2-2-2s-2 .892-2 2 .892 2 2 2c.179 0 .348-.03.512-.074l2.563 2.563A1.906 1.906 0 0 0 7 16c0 1.108.892 2 2 2s2-.892 2-2c0-.237-.048-.46-.123-.671l2.913-3.442c.227.066.462.113.71.113a2.48 2.48 0 0 0 1.133-.281l2.399 1.963A2.077 2.077 0 0 0 18 14c0 1.108.892 2 2 2s2-.892 2-2-.892-2-2-2z" fill="#FE4773"></path></svg>',
 					'link'          => '?page=site-mode&setting=settings&tab=seo',
 					'link-text'     => 'View Settings',
 					'external_link' => '',
@@ -243,7 +319,7 @@ $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] 
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
-						<?php echo $dashboard_card['icon']; ?>
+                        <?php echo wp_kses( $dashboard_card['icon'], $svg_allowed_elements); ?>
 					</div>
 					<div class="smd-card-title">
 						<h2><?php echo esc_html( $dashboard_card['title'] ); ?></h2>
