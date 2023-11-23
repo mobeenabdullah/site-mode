@@ -63,7 +63,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
 							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo wp_unslash( $site_mode_tab['title'] ); ?></a>
+								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
 							<?php
 						endforeach;
 						?>

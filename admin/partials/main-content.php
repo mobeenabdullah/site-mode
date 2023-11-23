@@ -87,9 +87,9 @@
 			$tab_class = strtolower( $tab_content['title'] ) === $active_tab ? 'tab-content current' : 'tab-content';
 			$tab_id    = 'tab-' . strtolower( $tab_content['title'] );
 			$tab_data  = 'tab-' . strtolower( $tab_content['title'] );
-			$tab_name  = strtolower( esc_html__( $tab_content['title'], 'site-mode' ) );
+			$tab_name  = strtolower( esc_html( $tab_content['title'] ) );
 			?>
-				<div id="<?php esc_attr_e( $tab_id ); ?>" class="<?php esc_attr_e( $tab_class ); ?>">
+				<div id="<?php esc_attr( $tab_id ); ?>" class="<?php esc_attr( $tab_class ); ?>">
 					<?php
 					require_once SITE_MODE_ADMIN . "classes/class-site-mode-{$tab_name}.php";
 					$class_name = 'Site_Mode_' . ucfirst( $tab_name );
