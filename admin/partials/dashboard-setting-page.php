@@ -318,7 +318,7 @@ $svg_allowed_elements = array(
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
-                        <?php echo wp_kses( $dashboard_card['icon'], $svg_allowed_elements); ?>
+						<?php echo wp_kses( $dashboard_card['icon'], $svg_allowed_elements ); ?>
 					</div>
 					<div class="smd-card-title">
 						<h2><?php echo esc_html( $dashboard_card['title'] ); ?></h2>
