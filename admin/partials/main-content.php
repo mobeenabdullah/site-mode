@@ -67,7 +67,7 @@
 						'icon'  => '<i class="fa-solid fa-sliders"></i>',
 					),
 				);
-				$active_tab     = isset( $_GET['setting'] ) ?  strtolower( sanitize_text_field( wp_unslash( $_GET['setting'] ) ) )  : 'general';
+				$active_tab     = isset( $_GET['setting'] ) ? strtolower( sanitize_text_field( wp_unslash( $_GET['setting'] ) ) ) : 'general';
 
 				foreach ( $site_mode_tabs as $site_mode_tab ) :
 					$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';

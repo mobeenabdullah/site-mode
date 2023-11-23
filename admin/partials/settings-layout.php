@@ -108,7 +108,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 												'icon'  => '<i class="fa-solid fa-sliders"></i>',
 											),
 										);
-										$active_tab     = isset( $_GET['tab'] ) ?  strtolower( sanitize_text_field( wp_unslash( $_GET['tab'] ) ) )  : 'general';
+										$active_tab     = isset( $_GET['tab'] ) ? strtolower( sanitize_text_field( wp_unslash( $_GET['tab'] ) ) ) : 'general';
 
 										foreach ( $site_mode_tabs as $site_mode_tab ) :
 											$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
