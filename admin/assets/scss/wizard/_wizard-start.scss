@@ -1,4 +1,4 @@
-.wizard__start {
+.wizard__start, .sm_final_import {
   padding: calc(clamp(2rem, 0.571rem + 3.81vw, 4rem)) 0 calc(clamp(6rem, 4.571rem + 3.81vw, 8rem)) 0;
   @media screen and (max-width: 767px) {
     padding: 0;
@@ -248,4 +248,18 @@
 }
 .sm__card:hover .sm__card-radio:disabled {
   border-color: var(--wd-gray-2-color) !important;
+}
+
+.sm_final_import {
+  & .wizard__start-content--cover {
+    margin-top: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+    padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+    background-color: var(--smd-base-color);
+    border-radius: 0.7rem;
+    & .settings__card-options--label {
+      & h3 {
+        margin: 0;
+      }
+    }
+  }
 }

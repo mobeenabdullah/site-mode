@@ -457,32 +457,32 @@ html {
 	height: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
 }
 
-.wizard__start {
+.wizard__start, .sm_final_import {
 	padding: calc(clamp(2rem, 0.571rem + 3.81vw, 4rem)) 0 calc(clamp(6rem, 4.571rem + 3.81vw, 8rem)) 0;
 }
 
 @media screen and (max-width: 767px) {
-	.wizard__start {
+	.wizard__start, .sm_final_import {
 		padding: 0;
 	}
 }
 
-.wizard__start-content--title {
+.wizard__start-content--title, .sm_final_import-content--title {
 	margin-bottom: 2rem;
 }
 
-.wizard__start-content--title h1 {
+.wizard__start-content--title h1, .sm_final_import-content--title h1 {
 	text-align: center;
 }
 
 @media screen and (max-width: 767px) {
-	.wizard__start-content--title h1 {
+	.wizard__start-content--title h1, .sm_final_import-content--title h1 {
 		line-height: 1.5;
 		font-size: 1.5rem;
 	}
 }
 
-.wizard__start .wizard__content-wrapper--actions {
+.wizard__start .wizard__content-wrapper--actions, .sm_final_import .wizard__content-wrapper--actions {
 	justify-content: flex-end;
 }
 
@@ -701,6 +701,17 @@ html {
 
 .sm__card:hover .sm__card-radio:disabled {
 	border-color: var(--wd-gray-2-color) !important;
+}
+
+.sm_final_import .wizard__start-content--cover {
+	margin-top: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+	padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+	background-color: var(--smd-base-color);
+	border-radius: 0.7rem;
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options--label h3 {
+	margin: 0;
 }
 
 .wizard__templates {
