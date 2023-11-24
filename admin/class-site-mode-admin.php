@@ -322,7 +322,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo esc_html( $output );
+		echo $output ;
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
@@ -363,6 +363,6 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo esc_html( $css );
+		echo $css;
 	}
 }

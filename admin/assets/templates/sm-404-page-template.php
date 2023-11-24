@@ -132,7 +132,7 @@ if ( ! empty( $seo_info ) && ! empty( $seo_info['meta_favicon'] ) ) {
 
 		if ( $parsed_blocks ) {
 			foreach ( $parsed_blocks as $block ) {
-				echo esc_html( apply_filters( 'the_content', render_block( $block ) ) );
+				echo wp_kses_post( apply_filters( 'the_content', render_block( $block ) ) );
 			}
 		}
 	} else {
