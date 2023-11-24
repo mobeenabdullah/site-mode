@@ -240,7 +240,7 @@ if ( isset( $_GET['cat'] ) ) {
 								</div>
 								<div class="template_card-heading">
 									<h2 class="template_card-content--title"><?php echo esc_html( $template['name'] ); ?></h2>
-									<a href="<?php echo esc_url( 'https://demo.site-mode.com/' . $key ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
+									<a href="<?php echo esc_url( 'https://site-mode.com/' . $key ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 								</div>
 							</div>
 						<?php endforeach; ?>
