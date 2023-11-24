@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Responsible for plugin menu
  *
@@ -21,21 +20,56 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 class Site_Mode_General extends Settings {
+
+	/**
+	 * The Key of General tab settings in the options table.
+	 *
+	 * @since    1.0.5
+	 * @access   protected
+	 * @var      string    $option_name    The Key of general settings tab in the options table.
+	 */
 	protected $option_name = 'site_mode_general';
+	/**
+	 * Show login icon.
+	 *
+	 * @since    1.0.5
+	 * @access   protected
+	 * @var      boolean    $show_login_icon    Show login icon.
+	 */
 	protected $show_login_icon;
+	/**
+	 * Login URL.
+	 *
+	 * @since    1.0.5
+	 * @access   protected
+	 * @var      string    $custom_login_url    Login URL.
+	 */
 	protected $custom_login_url;
 
-
+	/**
+	 * Site_Mode_General constructor.
+	 *
+	 * @since    1.0.5
+	 * @access   public
+	 * @return   void
+	 */
 	public function __construct() {
 		$this->site_mode_general = $this->get_data( $this->option_name );
 		$this->show_login_icon   = isset( $this->site_mode_general['show_login_icon'] ) ? $this->site_mode_general['show_login_icon'] : false;
 		$this->custom_login_url  = isset( $this->site_mode_general['custom_login_url'] ) ? $this->site_mode_general['custom_login_url'] : '';
 	}
 
+	/**
+	 * Ajax callback for general settings.
+	 *
+	 * @since    1.0.5
+	 * @access   public
+	 * @return   void|mixed  $this->save_data( $this->option_name, $data ) Return if nonce is not verified.
+	 */
 	public function ajax_site_mode_general() {
 		$this->verify_nonce( 'general_section_field', 'general_settings_action' );
 
-		$data                     = [];
+		$data                     = array();
 		$data['show_login_icon']  = $this->get_post_data( 'site-mode-show-login-icon', 'general_settings_action', 'general_section_field', 'text' );
 		$data['custom_login_url'] = $this->get_post_data( 'site-mode-custom-login-url', 'general_settings_action', 'general_section_field', 'text' );
 
@@ -44,7 +78,13 @@ class Site_Mode_General extends Settings {
 		wp_die();
 	}
 
-	// function to display the template
+		/**
+		 * Render general settings page.
+		 *
+		 * @since    1.0.5
+		 * @access   public
+		 * @return   void
+		 */
 	public function render() {
 		$this->display_settings_page( 'general' );
 	}

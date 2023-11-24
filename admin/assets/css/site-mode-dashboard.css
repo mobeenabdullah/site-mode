@@ -1690,6 +1690,7 @@ input[type=file] {
 	user-select: none;
 	text-align: center;
 	line-height: 1.5;
+	min-height: calc(clamp(12.5rem, 9.821rem + 7.143vw, 16.25rem));
 }
 
 @media screen and (max-width: 767px) {

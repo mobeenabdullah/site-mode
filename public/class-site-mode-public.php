@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The public-facing functionality of the plugin.
  *
@@ -40,9 +39,22 @@ class Site_Mode_Public {
 	 */
 	private $version;
 
-
+	/**
+	 * Site Mode Design Settings
+	 *
+	 * @since 1.0.5
+	 * @access private
+	 * @var array $site_mode_design Design settings of site mode.
+	 */
 	protected $site_mode_design;
 
+	/**
+	 * Enable Template
+	 *
+	 * @since 1.0.5
+	 * @access private
+	 * @var string|bool $enable_template Enable template.
+	 */
 	protected $enable_template;
 
 	/**
@@ -62,8 +74,7 @@ class Site_Mode_Public {
 		// check if value is set or not if not set then set default value.
 		$this->enable_template = isset( $this->site_mode_design['enable_template'] ) ? $this->site_mode_design['enable_template'] : '1';
 
-		add_filter( 'style_loader_tag', [ $this, 'my_style_loader_tag_filter' ], 10, 2 );
-
+		add_filter( 'style_loader_tag', array( $this, 'my_style_loader_tag_filter' ), 10, 2 );
 	}
 
 	/**
@@ -85,8 +96,7 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', [], $this->version, 'all' );
-
+		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', array(), $this->version, 'all' );
 	}
 
 	/**
@@ -108,18 +118,26 @@ class Site_Mode_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', [ 'jquery' ], $this->version, false );
+		wp_enqueue_script( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'js/site-mode-public.js', array( 'jquery' ), $this->version, false );
 	}
 
+	/**
+	 * Custom filter function to modify the HTML output of style loader tags.
+	 *
+	 * @param string $html   The HTML output for the style loader tag.
+	 * @param string $handle The unique identifier for the registered style.
+	 *
+	 * @return string The modified HTML output for the style loader tag.
+	 */
 	public function my_style_loader_tag_filter( $html, $handle ) {
-		if ( $handle === 'preconnect-font' ) {
+		if ( 'preconnect-font' === $handle ) {
 			return str_replace(
 				"rel='stylesheet'",
 				"rel='preconnect'",
 				$html
 			);
 		}
-		if ( $handle === 'preconnect-static' ) {
+		if ( 'preconnect-static' === $handle ) {
 			return str_replace(
 				"rel='stylesheet'",
 				"rel='preconnect' crossorigin",
@@ -128,28 +146,41 @@ class Site_Mode_Public {
 		}
 		return $html;
 	}
-    function add_login_icon(){
 
-        $general_settings = get_option('site_mode_general');
-        $design_settings = get_option('site_mode_design');
-        $active_page = isset($design_settings['page_setup']['active_page']) ? $design_settings['page_setup']['active_page'] : '';
-        $coming_soon_page = isset($design_settings['page_setup']['coming_soon_page_id']) ? $design_settings['page_setup']['coming_soon_page_id'] : '';
-        $maintenance_page = isset($design_settings['page_setup']['maintenance_page_id']) ? $design_settings['page_setup']['maintenance_page_id'] : '';
-        $is_valid_page = false;
+	/**
+	 * Adds a login icon to the footer based on site mode settings.
+	 *
+	 * @since 1.0.5
+	 * @access public
+	 * @global array $site_mode_general General settings of site mode.
+	 * @global array $site_mode_design Design settings of site mode.
+	 * @global int $active_page Active page ID.
+	 * @global int $coming_soon_page Coming soon page ID.
+	 * @global int $maintenance_page Maintenance page ID.
+	 * @global bool $is_valid_page Check if page is valid or not.
+	 * @return void
+	 */
+	public function add_login_icon() {
 
-        if(!is_admin() && (!is_user_logged_in() || isset($_GET['site-mode-preview']) ) && ($active_page == get_the_ID() || $coming_soon_page == get_the_ID() && $maintenance_page == get_the_ID() ) ) {
-            $is_valid_page = true;
-        }
+		$general_settings = get_option( 'site_mode_general' );
+		$design_settings  = get_option( 'site_mode_design' );
+		$active_page      = isset( $design_settings['page_setup']['active_page'] ) ? $design_settings['page_setup']['active_page'] : '';
+		$coming_soon_page = isset( $design_settings['page_setup']['coming_soon_page_id'] ) ? $design_settings['page_setup']['coming_soon_page_id'] : '';
+		$maintenance_page = isset( $design_settings['page_setup']['maintenance_page_id'] ) ? $design_settings['page_setup']['maintenance_page_id'] : '';
+		$is_valid_page    = false;
 
-        if(!empty($general_settings['show_login_icon']) && !empty($general_settings['custom_login_url']) && $is_valid_page) :
-            ?>
-            <div class="login_icon_footer">
-                <a href="<?php echo esc_url($general_settings['custom_login_url']); ?>">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
-                </a>
-            </div>
-            <?php
-        endif;
-    }
+		if ( ! is_admin() && ( ! is_user_logged_in() || isset( $_GET['site-mode-preview'] ) ) && ( get_the_ID() === $active_page || get_the_ID() === $coming_soon_page && get_the_ID() === $maintenance_page ) ) {
+			$is_valid_page = true;
+		}
 
+		if ( ! empty( $general_settings['show_login_icon'] ) && ! empty( $general_settings['custom_login_url'] ) && $is_valid_page ) :
+			?>
+			<div class="login_icon_footer">
+				<a href="<?php echo esc_url( $general_settings['custom_login_url'] ); ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" width="40"  height="40" viewBox="0 0 24 24" style="fill:#ffffff"><path d="M12 2C9.243 2 7 4.243 7 7v3H6c-1.103 0-2 .897-2 2v8c0 1.103.897 2 2 2h12c1.103 0 2-.897 2-2v-8c0-1.103-.897-2-2-2h-1V7c0-2.757-2.243-5-5-5zm6 10 .002 8H6v-8h12zm-9-2V7c0-1.654 1.346-3 3-3s3 1.346 3 3v3H9z" fill="#ffffff"></path></svg>
+				</a>
+			</div>
+			<?php
+		endif;
+	}
 }

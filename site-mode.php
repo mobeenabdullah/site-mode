@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -20,7 +19,7 @@
  * Author:            Mobeen Abdullah
  * Author URI:        https://github.com/mobeenabdullah
  * License:           GPL-2.0+
- * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
+ * License URI:       http://www.gnu.org/licenses/gpl-2.0  .txt
  * Text Domain:       site-mode
  * Domain Path:       /languages
  */
@@ -33,14 +32,14 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version.
  */
-define( 'SITE_MODE_VERSION',    '1.0.5' );
-define('SITE_MODE_PATH',        plugin_dir_path( __FILE__ ));
-define('SITE_MODE_INC',         SITE_MODE_PATH . 'includes/');
-define('SITE_MODE_ADMIN',       SITE_MODE_PATH . 'admin/');
-define('SITE_MODE_BLOCKS',      SITE_MODE_PATH . 'blocks/');
-define('SITE_MODE_PUBLIC',      SITE_MODE_PATH . 'public/');
-define('SITE_MODE_ADMIN_URL',   plugin_dir_url(__FILE__ ) . 'admin/');
-define('SITE_MODE_PUBLIC_URL',  plugin_dir_url( __FILE__ ) . 'public/');
+define( 'SITE_MODE_VERSION', '1.0.5' );
+define( 'SITE_MODE_PATH', plugin_dir_path( __FILE__ ) );
+define( 'SITE_MODE_INC', SITE_MODE_PATH . 'includes/' );
+define( 'SITE_MODE_ADMIN', SITE_MODE_PATH . 'admin/' );
+define( 'SITE_MODE_BLOCKS', SITE_MODE_PATH . 'blocks/' );
+define( 'SITE_MODE_PUBLIC', SITE_MODE_PATH . 'public/' );
+define( 'SITE_MODE_ADMIN_URL', plugin_dir_url( __FILE__ ) . 'admin/' );
+define( 'SITE_MODE_PUBLIC_URL', plugin_dir_url( __FILE__ ) . 'public/' );
 
 
 /**
@@ -79,8 +78,6 @@ require SITE_MODE_INC . 'class-site-mode.php';
  *
  * @since    1.0.5
  */
-
-
 function run_site_mode() {
 	$plugin = new Site_Mode();
 	$plugin->run();
