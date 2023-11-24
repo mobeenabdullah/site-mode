@@ -237,7 +237,7 @@ class Site_Mode_Design extends Settings {
 		// Change the components placeholder to group the template components.
 		$template         = json_decode( $this->replace_template_default_image( $template_name ) );
 		$template_content = $template->content;
-		if ( 'maintenance' === $category || 'coming_soon' === $category ) :
+		if ( 'maintenance' === $category || 'coming-soon' === $category ) :
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-countdown---', $this->show_countdown );
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-social-media---', $this->show_social );
 		endif;
@@ -312,7 +312,7 @@ class Site_Mode_Design extends Settings {
 		$template         = json_decode( $this->replace_template_default_image( $template_name ) );
 		$template_content = $template->content;
 
-		if ( 'maintenance' === $category || 'coming_soon' === $category ) :
+		if ( 'maintenance' === $category || 'coming-soon' === $category ) :
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-countdown---', $this->show_countdown );
 			$template_content = $this->replace_template_placeholder( $template_name, $template_content, '---sm-social-media---', $this->show_social );
 		else :
@@ -325,7 +325,7 @@ class Site_Mode_Design extends Settings {
 
 		if ( 'maintenance' === $category ) {
 			$title = 'Maintenance Page';
-		} elseif ( 'coming_soon' === $category ) {
+		} elseif ( 'coming-soon' === $category ) {
 			$title = 'Coming Soon Page';
 		} else {
 			$this->page_setup['404_template']         = $template_name;
