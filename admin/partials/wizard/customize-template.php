@@ -209,7 +209,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 						</button>
 					</div>
 					<div class="customize__template-content--canvas sm-scroll">
-						<iframe src="<?php echo esc_url( 'https://demo.site-mode.com/' . $active_template ); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+						<iframe src="<?php echo esc_url( 'https://site-mode.com/' . $active_template ); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
 						<div class="loading__template"  style="display: flex;">
 							<div class="template-loader">
 								<div class="loader">

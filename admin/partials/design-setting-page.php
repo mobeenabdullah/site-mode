@@ -118,7 +118,7 @@ $page_ids = get_posts( $args );
 						</div>
 						<div class="template_card-heading">
 							<h2 class="template_card-content--title"><?php echo esc_html( $template['name'] ); ?></h2>
-							<?php $live_demo_link = 'https://demo.site-mode.com/' . $key; ?>
+							<?php $live_demo_link = 'https://site-mode.com/' . $key; ?>
 							<a href="<?php echo esc_url( $live_demo_link ); ?>" class="template_card-content--demo" target="_blank">Live Demo</a>
 						</div>
 					</div>
