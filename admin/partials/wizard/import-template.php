@@ -21,7 +21,7 @@ $current_user_email = $get_current_user->user_email;
 ?>
 
 
-<div class="sm_final_import sm_customize_settings" style="display: none">
+<div class="sm_final_import" style="display: none">
     <div class="customize__template-wrapper">
 <!--        <div class="customize__template-cover">-->
 <!--            <div class="customize__template-layout">-->

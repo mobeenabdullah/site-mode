@@ -251,15 +251,46 @@
 }
 
 .sm_final_import {
+
   & .wizard__start-content--cover {
-    margin-top: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+    margin: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) auto auto auto;
     padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
     background-color: var(--smd-base-color);
     border-radius: 0.7rem;
+    max-width: 35rem;
+    @media screen and (max-width: 767px) {
+      max-width: initial;
+      width: initial;
+    }
     & .settings__card-options--label {
-      & h3 {
+      & h3, & h4, & p {
         margin: 0;
       }
+     & h4, & h3 {
+       margin-bottom: 0.5rem;
+     }
+    }
+    & .settings__card-options--field {
+      & input {
+        width: 100%;
+      }
+    }
+
+    & .settings__card-options-box, .subscribe_box {
+      display: flex;
+      gap: 3rem;
+      justify-content: space-between;
+      width: 100%;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+          gap: 0.5rem;
+        }
+      & .settings__card-options--label, .settings__card-options--field {
+        width: 50%;
+      }
+    }
+    & .settings__card-options-box:not(:last-child) {
+      margin-bottom: 2rem;
     }
   }
 }

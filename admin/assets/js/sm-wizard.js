@@ -133,7 +133,7 @@ jQuery(function ($) {
         const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
         $('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
-        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
         showElements('.sm_customize_settings, .component__settings, .customize__actions');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
