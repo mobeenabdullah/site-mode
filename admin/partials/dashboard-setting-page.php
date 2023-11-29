@@ -109,7 +109,7 @@ $svg_allowed_elements = array(
 			<div class="sitemode__introduction--content">
 				<h2 class="smd-intro-title">Welcome to Site Mode</h2>
 				<p class="smd-intro-desc">Your trusted solution for captivating "Coming Soon" & "Maintenance" pages. We prioritize customization and user-friendliness, ensuring you have full control without any coding. Whether you're gearing up for a launch or managing updates, Site Mode has you covered.</p>
-				<div class="dashboard__buttons" tabindex="-1">
+				<div class="dashboard__buttons" tabindex="-1" style="display: none">
 					<a href="#" role="button" class="solid__btn">
 						<span>Customize</span>
 					</a>
