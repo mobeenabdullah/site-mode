@@ -1,4 +1,4 @@
-.wizard__start {
+.wizard__start, .sm_final_import {
   padding: calc(clamp(2rem, 0.571rem + 3.81vw, 4rem)) 0 calc(clamp(6rem, 4.571rem + 3.81vw, 8rem)) 0;
   @media screen and (max-width: 767px) {
     padding: 0;
@@ -31,6 +31,7 @@
   padding: calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem)) calc(clamp(0.8rem, 0.657rem + 0.381vw, 1rem));
   background-color: var(--wd-base-white-color);
   z-index: 999;
+  box-sizing: border-box;
   border-top: 1px solid var(--wd-border-color);
   & .customize__actions, .import__actions {
     display: flex;
@@ -247,4 +248,49 @@
 }
 .sm__card:hover .sm__card-radio:disabled {
   border-color: var(--wd-gray-2-color) !important;
+}
+
+.sm_final_import {
+
+  & .wizard__start-content--cover {
+    margin: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) auto auto auto;
+    padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+    background-color: var(--smd-base-color);
+    border-radius: 0.7rem;
+    max-width: 35rem;
+    @media screen and (max-width: 767px) {
+      max-width: initial;
+      width: initial;
+    }
+    & .settings__card-options--label {
+      & h3, & h4, & p {
+        margin: 0;
+      }
+     & h4, & h3 {
+       margin-bottom: 0.5rem;
+     }
+    }
+    & .settings__card-options--field {
+      & input {
+        width: 100%;
+      }
+    }
+
+    & .settings__card-options-box, .subscribe_box {
+      display: flex;
+      gap: 3rem;
+      justify-content: space-between;
+      width: 100%;
+        @media screen and (max-width: 767px) {
+            flex-direction: column;
+          gap: 0.5rem;
+        }
+      & .settings__card-options--label, .settings__card-options--field {
+        width: 50%;
+      }
+    }
+    & .settings__card-options-box:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
 }

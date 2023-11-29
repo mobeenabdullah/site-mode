@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Fired when the plugin is uninstalled.
  *
@@ -20,7 +19,7 @@
  * https://github.com/tommcfarlin/WordPress-Plugin-Boilerplate/pull/123#issuecomment-28541913
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.5
+ * @since      1.0.6
  *
  * @package    Site_Mode
  */
@@ -30,17 +29,16 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-// Options cleanup during uninstall plugin
-
-$options = [
+// Options cleanup during uninstall plugin.
+$options = array(
 	'site_mode_general',
 	'site_mode_seo',
 	'site_mode_design',
 	'site_mode_advanced',
 	'site_mode_design_templates',
-    'sm_activation_redirect',
-    'sm-fresh-installation'
-];
+	'sm_activation_redirect',
+	'sm-fresh-installation',
+);
 
 if ( ! empty( $options ) ) {
 	foreach ( $options as $option ) :

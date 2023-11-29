@@ -1,21 +1,27 @@
 <?php
 /**
- * Template Name: Full Width for Site Mode
+ * Template Name: 404 template for Site Mode
  *
  * @package Site_Mode
  */
 
 defined( 'ABSPATH' ) || exit;
+$seo_image_url = '';
+$favicon       = '';
 
 $seo_info             = get_option( 'site_mode_seo' );
 $integrations_content = get_option( 'site_mode_integrations' );
-$seo_image_url        = '';
-$favicon              = '';
-$seo_title            = ! empty( $seo_info['meta_title'] ) ? $seo_info['meta_title'] : '';
-$seo_desc             = ! empty( $seo_info['meta_description'] ) ? $seo_info['meta_description'] : '';
+$sm_design_data       = get_option( 'site_mode_design' );
+
+$sm_404_template_active  = isset( $sm_design_data['page_setup']['404_template_active'] ) ? $sm_design_data['page_setup']['404_template_active'] : '';
+$seo_title               = ! empty( $seo_info['meta_title'] ) ? $seo_info['meta_title'] : '';
+$seo_desc                = ! empty( $seo_info['meta_description'] ) ? $seo_info['meta_description'] : '';
+$sm_404_template_content = ( isset( $sm_design_data ) && isset( $sm_design_data['page_setup']['404_template_content'] ) ) ? $sm_design_data['page_setup']['404_template_content'] : '';
+
 if ( ! empty( $seo_info ) && ! empty( $seo_info['meta_image'] ) ) {
 	$seo_image_url = wp_get_attachment_image_url( $seo_info['meta_image'], 'full' );
 }
+
 if ( ! empty( $seo_info ) && ! empty( $seo_info['meta_favicon'] ) ) {
 	$favicon = wp_get_attachment_image_url( $seo_info['meta_favicon'], 'full' );
 }
@@ -120,8 +126,21 @@ if ( ! empty( $seo_info ) && ! empty( $seo_info['meta_favicon'] ) ) {
 
 	<?php
 	wp_body_open();
-	the_post();
-	the_content();
+
+	if ( $sm_404_template_content ) {
+		$parsed_blocks = parse_blocks( $sm_404_template_content );
+
+		if ( $parsed_blocks ) {
+			foreach ( $parsed_blocks as $block ) {
+				echo wp_kses_post( apply_filters( 'the_content', render_block( $block ) ) );
+			}
+		}
+	} else {
+		echo '<div class="sm-404-template">';
+		echo '<h1 class="sm-404-template__title">' . esc_html__( '404', 'site-mode' ) . '</h1>';
+		echo '<p class="sm-404-template__desc">' . esc_html__( 'Page not found', 'site-mode' ) . '</p>';
+		echo '</div>';
+	}
 	wp_footer();
 	do_action( 'wpsm_footer' );
 	?>

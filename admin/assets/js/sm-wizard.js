@@ -58,7 +58,7 @@ jQuery(function ($) {
 
     // Choose page type
     function choosePageType () {
-        hideElements('.wizard__start, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
+        hideElements('.wizard__start, .sm_customize_settings, .sm_final_import, .component__settings, .customize__actions, .import__actions');
         showElements('.wizard__content-wrapper');
         addElementClass('.sm-select-template', 'active');
         const categoryName = $('.sm__card-radio:checked').val();
@@ -84,7 +84,7 @@ jQuery(function ($) {
 
     // Back to wizard start page
     function backToWizardStart () {
-        hideElements('.wizard__content-wrapper, .sm_customize_settings, .component__settings, .customize__actions, .import__settings, .import__actions');
+        hideElements('.wizard__content-wrapper, .sm_final_import, .sm_customize_settings, .component__settings, .customize__actions, .import__actions');
         showElements('.wizard__start');
         removeElementClass('.sm-select-template', 'active');
         removeElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
@@ -101,13 +101,13 @@ jQuery(function ($) {
         $('.wizard__templates-cards--single button span').html('select');
         $(this).parents('.wizard__templates-cards--single').addClass('active');
         $(this).children('span').html('Selected');
-        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        hideElements('.wizard__start, .wizard__content-wrapper, .sm_final_import, .import__actions');
         showElements('.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
         $template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
-        $('#sm-preview-iframe').attr('src', `https://demo.site-mode.com/${$template_slug}`);
+        $('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_slug}`);
         $('#selected-template-name').val($template_slug);
         $('.sm-setting-reset-components').trigger('click');
         $('#color_scheme').val('default').trigger('change');
@@ -132,8 +132,8 @@ jQuery(function ($) {
         $('.template__name').html(templateLabel);
         const templateName = $(this).attr('data-template-name');
         $('#selected-template-name').val(templateName);
-        $('#sm-preview-iframe').attr('src', `https://demo.site-mode.com/${templateName}`);
-        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
+        $('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
+        hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
         showElements('.sm_customize_settings, .component__settings, .customize__actions');
         addElementClass('.sm-customize', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
@@ -144,7 +144,7 @@ jQuery(function ($) {
 
     // Back to select template page
     function backToSelectTemplate () {
-        hideElements('.wizard__start, .import__settings, .import__actions, .sm_customize_settings, .component__settings, .customize__actions');
+        hideElements('.wizard__start, .import__actions, .sm_final_import, .sm_customize_settings, .component__settings, .customize__actions');
         showElements('.wizard__content-wrapper');
         removeElementClass('.sm-customize', 'active');
         removeElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
@@ -153,8 +153,8 @@ jQuery(function ($) {
 
     // Go to import template page
     function startImportingTemplate () {
-        hideElements('.wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
-        showElements('.customize__sidebar-content, .import__settings, .import__actions');
+        hideElements('.customize__template, .customize__sidebar-content, .wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions');
+        showElements('.sm_final_import, .import__actions');
         addElementClass('.sm-import', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
     }
@@ -162,8 +162,10 @@ jQuery(function ($) {
 
     // Back to custom template page
     function backTemplateCustomize () {
-        hideElements('.wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
-        showElements('.sm_customize_settings, .component__settings, .customize__actions');
+        // hideElements('.wizard__start, .wizard__content-wrapper, .import__actions, .sm_final_import');
+        // showElements('.customize__template, .sm_customize_settings, .component__settings, .customize__actions');
+        hideElements('.wizard__start, .wizard__content-wrapper, .sm_final_import, .import__actions');
+        showElements('.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions');
         removeElementClass('.sm-import', 'active');
         addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
     }
