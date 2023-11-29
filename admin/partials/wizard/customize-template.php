@@ -14,12 +14,12 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 
-	$get_current_user   = wp_get_current_user();
-	$current_user_email = $get_current_user->user_email;
-	$active_template    = '';
+$get_current_user   = wp_get_current_user();
+$current_user_email = $get_current_user->user_email;
+$active_template    = '';
 
 if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
-	$active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );
+    $active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );
 }
 ?>
 
@@ -98,7 +98,6 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                 <option value="default">Blue</option>
                                                                 <option value="preset1">Yellow</option>
                                                                 <option value="preset2">Green</option>
-                                                                <option value="preset3">Dark Gray</option>
                                                                 <option value="preset4">Pink</option>
                                                                 <option value="preset5">Orange</option>
                                                                 <option value="preset6">Violet</option>
@@ -162,7 +161,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                         </div>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
