@@ -3,7 +3,7 @@
  * Responsible for design settings.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.5
+ * @since      1.0.6
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.5
+ * @since      1.0.6
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -101,7 +101,7 @@ class Site_Mode_Design extends Settings {
 	/**
 	 * Site_Mode_Design constructor.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @return void
 	 */
 	public function __construct() {

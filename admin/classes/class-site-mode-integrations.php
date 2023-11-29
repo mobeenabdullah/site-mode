@@ -3,7 +3,7 @@
  * Responsible for plugin Integrations settings
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.5
+ * @since      1.0.6
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.5
+ * @since      1.0.6
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -25,7 +25,7 @@ require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.5
+ * @since      1.0.6
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -34,7 +34,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * The Key of integration tab settings in the options table.
 	 *
-	 * @since    1.0.5
+	 * @since    1.0.6
 	 * @access   protected
 	 * @var      string    $option_name    The Key of settings in the options table.
 	 */
@@ -42,7 +42,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * Google Analytics ID.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access protected
 	 * @var mixed|string $ga_id Google Analytics ID.
 	 */
@@ -50,7 +50,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * Facebook Pixel ID.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access protected
 	 * @var mixed|string $fb_id Facebook Pixel ID.
 	 */
@@ -59,7 +59,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * Site Mode Integrations.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access protected
 	 * @var array $site_mode_intergrations Site Mode Integrations.
 	 */
@@ -69,7 +69,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * Site_Mode_Integrations constructor.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access public
 	 * @return void
 	 */
@@ -84,7 +84,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * AJAX for site mode integration.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access public
 	 * @return mixed
 	 */
@@ -105,7 +105,7 @@ class Site_Mode_Integrations extends Settings {
 	/**
 	 * Render the integration settings page for this plugin.
 	 *
-	 * @since 1.0.5
+	 * @since 1.0.6
 	 * @access public
 	 * @return void
 	 */
