@@ -5,7 +5,7 @@ Tags: maintenance mode, coming soon, under construction, maintenance page, launc
 Requires at least: 4.7
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.0.5
+Stable tag: 1.0.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,9 @@ Yes, this plugin is Completely FREE
 
 == Changelog ==
 
+= 1.0.6 =
+* Added custom 404 page builder feature
+* Code improvements
 = 1.0.5 =
 * Fixed compatibility errors with Non-FSE themes.
 = 1.0.0 =
