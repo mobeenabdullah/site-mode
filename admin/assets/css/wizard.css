@@ -457,32 +457,32 @@ html {
 	height: calc(clamp(1.25rem, 1.249rem + 0.978vw, 1.875rem));
 }
 
-.wizard__start {
+.wizard__start, .sm_final_import {
 	padding: calc(clamp(2rem, 0.571rem + 3.81vw, 4rem)) 0 calc(clamp(6rem, 4.571rem + 3.81vw, 8rem)) 0;
 }
 
 @media screen and (max-width: 767px) {
-	.wizard__start {
+	.wizard__start, .sm_final_import {
 		padding: 0;
 	}
 }
 
-.wizard__start-content--title {
+.wizard__start-content--title, .sm_final_import-content--title {
 	margin-bottom: 2rem;
 }
 
-.wizard__start-content--title h1 {
+.wizard__start-content--title h1, .sm_final_import-content--title h1 {
 	text-align: center;
 }
 
 @media screen and (max-width: 767px) {
-	.wizard__start-content--title h1 {
+	.wizard__start-content--title h1, .sm_final_import-content--title h1 {
 		line-height: 1.5;
 		font-size: 1.5rem;
 	}
 }
 
-.wizard__start .wizard__content-wrapper--actions {
+.wizard__start .wizard__content-wrapper--actions, .sm_final_import .wizard__content-wrapper--actions {
 	justify-content: flex-end;
 }
 
@@ -701,6 +701,55 @@ html {
 
 .sm__card:hover .sm__card-radio:disabled {
 	border-color: var(--wd-gray-2-color) !important;
+}
+
+.sm_final_import .wizard__start-content--cover {
+	margin: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) auto auto auto;
+	padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem));
+	background-color: var(--smd-base-color);
+	border-radius: 0.7rem;
+	max-width: 35rem;
+}
+
+@media screen and (max-width: 767px) {
+	.sm_final_import .wizard__start-content--cover {
+		max-width: initial;
+		width: initial;
+	}
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options--label h3, .sm_final_import .wizard__start-content--cover .settings__card-options--label h4, .sm_final_import .wizard__start-content--cover .settings__card-options--label p {
+	margin: 0;
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options--label h4, .sm_final_import .wizard__start-content--cover .settings__card-options--label h3 {
+	margin-bottom: 0.5rem;
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options--field input {
+	width: 100%;
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options-box, .sm_final_import .wizard__start-content--cover .subscribe_box {
+	display: flex;
+	gap: 3rem;
+	justify-content: space-between;
+	width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.sm_final_import .wizard__start-content--cover .settings__card-options-box, .sm_final_import .wizard__start-content--cover .subscribe_box {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options-box .settings__card-options--label, .sm_final_import .wizard__start-content--cover .settings__card-options-box .settings__card-options--field, .sm_final_import .wizard__start-content--cover .subscribe_box .settings__card-options--label, .sm_final_import .wizard__start-content--cover .subscribe_box .settings__card-options--field {
+	width: 50%;
+}
+
+.sm_final_import .wizard__start-content--cover .settings__card-options-box:not(:last-child) {
+	margin-bottom: 2rem;
 }
 
 .wizard__templates {

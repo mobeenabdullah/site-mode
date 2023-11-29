@@ -88,14 +88,14 @@ class Site_Mode_Design extends Settings {
 	 * @var string[]
 	 */
 	protected $default_images = array(
-		'template-1' => 'https://site-mode.com/wp-content/uploads/2023/10/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled.jpg',
-		'template-2' => 'https://site-mode.com/wp-content/uploads/2023/10/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled.jpg',
-		'template-3' => 'https://site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
-		'template-4' => 'https://site-mode.com/wp-content/uploads/2023/10/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.jpg',
-		'template-5' => 'https://site-mode.com/wp-content/uploads/2023/10/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled.jpg',
-		'template-6' => 'https://site-mode.com/wp-content/uploads/2023/10/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled.jpg',
-		'template-7' => 'https://site-mode.com/wp-content/uploads/2023/11/green-watercolor-watercolours-watercolors-watercolour-abstract-1601551-pxhere.com_-scaled.webp',
-		'template-8' => 'https://site-mode.com/wp-content/uploads/2023/11/landscape-nature-grass-horizon-walking-mountain-500343-pxhere.com_11zon-scaled.webp',
+		'template-1' => 'https://site-mode.com/wp-content/uploads/2023/11/landscape-tree-nature-wilderness-creative-mountain-367379-pxhere.com_-scaled-1.webp',
+		'template-2' => 'https://site-mode.com/wp-content/uploads/2023/11/hand-person-black-and-white-girl-woman-sport-615778-pxhere.com_-scaled-1.webp',
+		'template-3' => 'https://site-mode.com/wp-content/uploads/2023/11/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled-1.webp',
+		'template-4' => 'https://site-mode.com/wp-content/uploads/2023/11/mac-atmosphere-space-galaxy-nebula-outer-space-741617-pxhere.com_-1.webp',
+		'template-5' => 'https://site-mode.com/wp-content/uploads/2023/11/girl-woman-hair-white-photography-cute-596921-pxhere.com_-scaled-2.webp',
+		'template-6' => 'https://site-mode.com/wp-content/uploads/2023/11/forest-outdoor-rope-sport-boy-kid-773699-pxhere.com_-scaled-1.webp',
+		'template-7' => 'https://site-mode.com/wp-content/uploads/2023/11/girl-woman-hair-sunset-photography-wind-541159-pxhere.com_-1-scaled-1.webp',
+		'template-8' => 'https://site-mode.com/wp-content/uploads/2023/11/hand-girl-hair-camera-photographer-pine-14200-pxhere.com_-scaled-1.webp',
 	);
 
 	/**

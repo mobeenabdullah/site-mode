@@ -98,13 +98,13 @@
 					<select class="whitelist_user_role-multiselect" name="site-mode-user-roles[]" multiple="multiple" id="whitelist_user_role">
 						<?php
 						foreach ( $wp_roles->roles as $key => $value ) :
-							if ( in_array( strtolower( esc_html( $value['name'] ) ), $this->user_roles ) ) {
+							if ( in_array( strtolower( $value['name'] ), $this->user_roles ) ) {
 								$selected = 'selected';
 							} else {
 								$selected = 'not-selected';
 							}
 							?>
-							<option value="<?php echo esc_attr( strtolower( esc_html( $value['name'] ) ) ); ?>" <?php echo esc_attr( $selected ); ?>> <?php esc_html( $value['name'] ); ?></option>
+							<option value="<?php echo esc_attr( strtolower( $value['name'] ) ); ?>" <?php echo esc_attr( $selected ); ?>> <?php echo esc_html( $value['name'] ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</div>
