@@ -3,7 +3,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.6
+ * @since      1.0.7
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.6
+ * @since      1.0.7
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -24,7 +24,7 @@ class Site_Mode_General extends Settings {
 	/**
 	 * The Key of General tab settings in the options table.
 	 *
-	 * @since    1.0.6
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $option_name    The Key of general settings tab in the options table.
 	 */
@@ -32,7 +32,7 @@ class Site_Mode_General extends Settings {
 	/**
 	 * Show login icon.
 	 *
-	 * @since    1.0.6
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      boolean    $show_login_icon    Show login icon.
 	 */
@@ -40,7 +40,7 @@ class Site_Mode_General extends Settings {
 	/**
 	 * Login URL.
 	 *
-	 * @since    1.0.6
+	 * @since    1.0.7
 	 * @access   protected
 	 * @var      string    $custom_login_url    Login URL.
 	 */
@@ -49,7 +49,7 @@ class Site_Mode_General extends Settings {
 	/**
 	 * Site_Mode_General constructor.
 	 *
-	 * @since    1.0.6
+	 * @since    1.0.7
 	 * @access   public
 	 * @return   void
 	 */
@@ -62,7 +62,7 @@ class Site_Mode_General extends Settings {
 	/**
 	 * Ajax callback for general settings.
 	 *
-	 * @since    1.0.6
+	 * @since    1.0.7
 	 * @access   public
 	 * @return   void|mixed  $this->save_data( $this->option_name, $data ) Return if nonce is not verified.
 	 */
@@ -81,7 +81,7 @@ class Site_Mode_General extends Settings {
 		/**
 		 * Render general settings page.
 		 *
-		 * @since    1.0.6
+		 * @since    1.0.7
 		 * @access   public
 		 * @return   void
 		 */
