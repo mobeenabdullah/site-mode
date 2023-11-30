@@ -1,6 +1,6 @@
 {
   "name": "sass-compile",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple sass compile config.",
   "main": "index.js",
   "scripts": {

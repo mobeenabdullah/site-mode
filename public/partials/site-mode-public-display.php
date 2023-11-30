@@ -5,7 +5,7 @@
  * This file is used to html the public-facing aspects of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.6
+ * @since      1.0.7
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/public/partials

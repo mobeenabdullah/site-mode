@@ -3,7 +3,7 @@
  * Responsible for Site Mode Advanced Settings
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.6
+ * @since      1.0.7
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.6
+ * @since      1.0.7
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -26,7 +26,7 @@ class Settings {
 	 *
 	 * @param string       $option_name Option Name.
 	 * @param array|string $data Data.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 */
 	public function save_data( $option_name, $data ) {
@@ -61,7 +61,7 @@ class Settings {
 	 * Get Data.
 	 *
 	 * @param string $option_name Option Name.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 */
 	public function get_data( $option_name ) {
@@ -76,7 +76,7 @@ class Settings {
 	 * @param string $action Action.
 	 * @param mixed  $nonce Nonce.
 	 * @param string $sanitize Sanitize.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 * @return int|string|null
 	 */
@@ -101,7 +101,7 @@ class Settings {
 	 *
 	 * @param string $key Key.
 	 * @param string $action Action.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 */
 	public function verify_nonce( $key, $action ) {
@@ -114,7 +114,7 @@ class Settings {
 	 * Display Settings Page.
 	 *
 	 * @param string $page_name Page Name.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 */
 	public function display_settings_page( $page_name ) {
@@ -125,7 +125,7 @@ class Settings {
 	 * SVG Sanitization.
 	 *
 	 * @param mixed $svg_content SVG Content.
-	 * @since 1.0.6
+	 * @since 1.0.7
 	 * @access public
 	 */
 	public function wp_kses_svg( $svg_content ) {
