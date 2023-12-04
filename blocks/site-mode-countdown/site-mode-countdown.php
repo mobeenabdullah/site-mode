@@ -87,7 +87,7 @@ function site_mode_countdown_block_init() {
 add_action( 'init', 'site_mode_countdown_block_init' );
 
 
-function enqueue_my_block_script() {
+function site_mode_countdown_block_script() {
 
 	if ( is_admin() ) {
 		return;
@@ -96,10 +96,10 @@ function enqueue_my_block_script() {
 	// Enqueue the JavaScript file for your block
 	wp_enqueue_script(
 		'sm-countdown-block', // Handle
-		plugin_dir_url( __FILE__ ) . 'src/sm-countdown-frontend.js', // Adjust the path as needed
+		plugin_dir_url(__FILE__) . 'src/sm-countdown.js', // Adjust the path as needed
 		array( 'wp-blocks', 'wp-editor' ), // Dependencies
 		'1.0.7', // Version number
 		true // Load in the footer
 	);
 }
-add_action( 'enqueue_block_assets', 'enqueue_my_block_script' );
+add_action( 'enqueue_block_assets', 'site_mode_countdown_block_script' );

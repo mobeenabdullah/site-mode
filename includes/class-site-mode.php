@@ -123,7 +123,7 @@ class Site_Mode {
 		/**
 		 * This is responsible for loading all blocks.
 		 */
-		require_once SITE_MODE_BLOCKS . 'init.php';
+		require_once SITE_MODE_BLOCKS . 'site-mode-blocks-init.php';
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the

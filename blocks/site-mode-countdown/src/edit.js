@@ -1,7 +1,6 @@
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls, PanelColorSettings } from '@wordpress/block-editor';
 import {useState, useEffect} from "@wordpress/element";
-import { layouts, presetSettings } from '../constants';
 import './editor.scss';
 import {
 	PanelBody,
@@ -9,9 +8,7 @@ import {
 	DateTimePicker,
 	ToggleControl,
 	SelectControl,
-	TextControl,
 	RadioControl,
-	__experimentalUnitControl as UnitControl,
 } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {

@@ -1,0 +1,42 @@
+{
+	"apiVersion": 2,
+	"name": "site-mode/contact-form",
+	"title": "Site Mode Contact Form",
+	"category": "widgets",
+	"icon": "businessperson",
+	"description": "A contact form widget.",
+	"supports": {
+		"html": false
+	},
+	"keywords": [
+		"contact form",
+		"site mode",
+		"form"
+	],
+	"textdomain": "site-mode",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css",
+	"attributes": {
+		"nameLabel": {
+			"type": "string",
+			"default": "Name"
+		},
+		"emailLabel": {
+			"type": "string",
+			"default": "Email"
+		},
+		"namePlaceholder": {
+			"type": "string",
+			"default": "Enter your name"
+		},
+		"emailPlaceholder": {
+			"type": "string",
+			"default": "Enter your email"
+		},
+		"submitLabel": {
+			"type": "string",
+			"default": "Submit"
+		}
+	}
+}
