@@ -5,8 +5,37 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-boilerplate {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+.sm__contact {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  &-form {
+	border-radius: 0.5rem;
+	width: 100%;
+	&--field {
+	  margin-bottom: 0.5rem;
+	  label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+	  }
+	  input {
+		display: block;
+		padding: 0.5rem;
+		border: 1px solid #ccc;
+		border-radius: 0.25rem;
+		width: 100%;
+		min-height: 30px;
+		&[type="submit"] {
+		  background-color: #FE4773;
+		  color: #ffffff;
+		  border: transparent;
+		  cursor: pointer;
+		  width: auto;
+		}
+	  }
+	}
+  }
 }
+

@@ -18,7 +18,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
 /* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @wordpress/components */ "@wordpress/components");
+/* harmony import */ var _wordpress_components__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _editor_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./editor.scss */ "./src/editor.scss");
+
 
 
 
@@ -32,9 +35,134 @@ function Edit({
     emailLabel,
     namePlaceholder,
     emailPlaceholder,
-    submitLabel
+    submitLabel,
+    labelColor,
+    inputBgColor,
+    inputTextColor,
+    inputBorderColor,
+    inputBorderWidth,
+    inputBorderRadius,
+    inputPadding,
+    btnTextColor,
+    btnBgColor,
+    btnBorderColor,
+    btnBorderWidth,
+    btnBorderRadius,
+    btnPadding
   } = attributes;
-  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  const smLabelColor = {
+    color: labelColor ? labelColor : 'transparent'
+  };
+  const smInputField = {
+    backgroundColor: inputBgColor ? inputBgColor : 'transparent',
+    color: inputTextColor ? inputTextColor : 'transparent',
+    borderColor: inputBorderColor ? inputBorderColor : 'transparent',
+    borderWidth: inputBorderWidth ? inputBorderWidth : 0,
+    borderRadius: inputBorderRadius ? inputBorderRadius : 0,
+    paddingTop: inputPadding.top ? inputPadding.top : '8px',
+    paddingRight: inputPadding.right ? inputPadding.right : '16px',
+    paddingBottom: inputPadding.bottom ? inputPadding.bottom : '8px',
+    paddingLeft: inputPadding.left ? inputPadding.left : '16px'
+  };
+  const units = [{
+    value: 'px',
+    label: 'px',
+    default: 0
+  }, {
+    value: '%',
+    label: '%',
+    default: 10
+  }, {
+    value: 'em',
+    label: 'em',
+    default: 0
+  }];
+  const buttonColors = {
+    backgroundColor: btnBgColor ? btnBgColor : 'transparent',
+    color: btnTextColor ? btnTextColor : 'transparent',
+    borderColor: btnBorderColor ? btnBorderColor : 'transparent',
+    borderWidth: inputBorderWidth ? inputBorderWidth : 0,
+    borderRadius: inputBorderRadius ? inputBorderRadius : 0,
+    paddingTop: inputPadding.top ? inputPadding.top : '8px',
+    paddingRight: inputPadding.right ? inputPadding.right : '16px',
+    paddingBottom: inputPadding.bottom ? inputPadding.bottom : '8px',
+    paddingLeft: inputPadding.left ? inputPadding.left : '16px'
+  };
+  return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fields color settings', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
+    title: "Fields Color Settings",
+    initialOpen: false,
+    icon: "admin-appearance",
+    colorSettings: [{
+      value: labelColor,
+      onChange: value => setAttributes({
+        labelColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Label Color')
+    }, {
+      value: inputBgColor,
+      onChange: value => setAttributes({
+        inputBgColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Background Color')
+    }, {
+      value: inputTextColor,
+      onChange: value => setAttributes({
+        inputTextColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Text Color')
+    }, {
+      value: inputBorderColor,
+      onChange: value => setAttributes({
+        inputBorderColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Border Color')
+    }, {
+      value: btnBgColor,
+      onChange: value => setAttributes({
+        btnBgColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Background Color')
+    }, {
+      value: btnTextColor,
+      onChange: value => setAttributes({
+        btnTextColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text Color')
+    }, {
+      value: btnBorderColor,
+      onChange: value => setAttributes({
+        btnBorderColor: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Border Color')
+    }]
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fields Settings', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Border width",
+    value: inputBorderWidth,
+    onChange: value => setAttributes({
+      inputBorderWidth: value
+    }),
+    min: 2,
+    max: 10
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
+    label: "Border radius",
+    onChange: value => setAttributes({
+      inputBorderRadius: value
+    }),
+    value: inputBorderRadius,
+    units: units
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
+    label: "Padding",
+    values: inputPadding,
+    onChange: nextValues => setAttributes({
+      inputPadding: nextValues
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "login-username"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
@@ -43,7 +171,8 @@ function Edit({
     onChange: value => setAttributes({
       nameLabel: value
     }),
-    value: nameLabel
+    value: nameLabel,
+    style: smLabelColor
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     className: "input",
@@ -52,7 +181,8 @@ function Edit({
       namePlaceholder: event.target.value
     }),
     value: namePlaceholder,
-    size: "20"
+    size: "20",
+    style: smInputField
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "login-password"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -62,7 +192,8 @@ function Edit({
     onChange: value => setAttributes({
       emailLabel: value
     }),
-    value: emailLabel
+    value: emailLabel,
+    style: smLabelColor
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     className: "input",
@@ -71,19 +202,21 @@ function Edit({
       emailPlaceholder: event.target.value
     }),
     value: emailPlaceholder,
-    size: "20"
+    size: "20",
+    style: smInputField
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "login-submit"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "text",
+    type: "submit",
     className: "button button-primary",
     value: submitLabel,
     onChange: event => setAttributes({
       submitLabel: event.target.value
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Submit', 'site-mode'),
-    size: "20"
-  }))));
+    size: "20",
+    style: buttonColors
+  })))));
 }
 
 /***/ }),
@@ -168,6 +301,16 @@ module.exports = window["wp"]["blockEditor"];
 /***/ ((module) => {
 
 module.exports = window["wp"]["blocks"];
+
+/***/ }),
+
+/***/ "@wordpress/components":
+/*!************************************!*\
+  !*** external ["wp","components"] ***!
+  \************************************/
+/***/ ((module) => {
+
+module.exports = window["wp"]["components"];
 
 /***/ }),
 

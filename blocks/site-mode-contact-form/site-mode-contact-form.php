@@ -14,17 +14,17 @@ function site_mode_contact_form_block_render_callback( $attributes ) {
 	$namePlaceholder = isset($attributes['namePlaceholder']) ? $attributes['namePlaceholder'] : 'Enter your name';
 	$emailPlaceholder = isset($attributes['emailPlaceholder']) ? $attributes['emailPlaceholder'] : 'Enter your email';
 
-	$markup  = '<div class="sm-contact-form-wrapper">';
-	$markup .= '<form class="sm-contact-form">';
-	$markup .= '<div class="sm-contact-form-field">';
+	$markup  = '<div class="sm__contact">';
+	$markup .= '<form class="sm__contact-form">';
+	$markup .= '<div class="sm__contact-form--field">';
 	$markup .= '<label for="sm-name">' . esc_attr( $nameLabel ) . '</label>';
 	$markup .= '<input type="text" id="sm-contact-name" name="name" placeholder="' . esc_attr( $namePlaceholder ) . '">';
 	$markup .= '</div>';
-	$markup .= '<div class="sm-contact-form-field">';
+	$markup .= '<div class="sm__contact-form--field">';
 	$markup .= '<label for="sm-email">' . esc_attr( $emailLabel ) . '</label>';
 	$markup .= '<input type="email" id="sm-conatct-email" name="email" placeholder="' . esc_attr( $emailPlaceholder ) . '">';
 	$markup .= '</div>';
-	$markup .= '<div class="sm-contact-form-field">';
+	$markup .= '<div class="sm__contact-form--field">';
 	$markup .= '<input type="submit" value="Submit">';
 	$markup .= '</div>';
 	$markup .= '</form>';

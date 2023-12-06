@@ -4,6 +4,36 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.wp-block-create-block-boilerplate {
-	border: 1px dotted #f03;
+[data-type="site-mode/contact-form"] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+	& form {
+	  border-radius: 0.5rem;
+	  width: 100%;
+	  & p {
+		margin: 0 0 1rem 0;
+		label {
+		  display: block;
+		  margin-bottom: 0.5rem;
+		  font-size: 0.8rem;
+		  font-weight: 600;
+		}
+		input {
+		  display: block;
+		  width: 100%;
+		  padding: 0.5rem;
+		  border: 1px solid #ccc;
+		  border-radius: 0.25rem;
+		}
+		&.login-submit {
+		  & input {
+			background-color: #FE4773;
+			color: #ffffff;
+			border-color: #FE4773;
+			width: auto;
+		  }
+		}
+	  }
+	}
 }
