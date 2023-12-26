@@ -77,16 +77,16 @@ function Edit({
     label: 'em',
     default: 0
   }];
-  const buttonColors = {
+  const buttonSettings = {
     backgroundColor: btnBgColor ? btnBgColor : 'transparent',
     color: btnTextColor ? btnTextColor : 'transparent',
     borderColor: btnBorderColor ? btnBorderColor : 'transparent',
-    borderWidth: inputBorderWidth ? inputBorderWidth : 0,
-    borderRadius: inputBorderRadius ? inputBorderRadius : 0,
-    paddingTop: inputPadding.top ? inputPadding.top : '8px',
-    paddingRight: inputPadding.right ? inputPadding.right : '16px',
-    paddingBottom: inputPadding.bottom ? inputPadding.bottom : '8px',
-    paddingLeft: inputPadding.left ? inputPadding.left : '16px'
+    borderWidth: btnBorderWidth ? btnBorderWidth : 0,
+    borderRadius: btnBorderRadius ? btnBorderRadius : 0,
+    paddingTop: btnPadding.top ? btnPadding.top : '8px',
+    paddingRight: btnPadding.right ? btnPadding.right : '16px',
+    paddingBottom: btnPadding.bottom ? btnPadding.bottom : '8px',
+    paddingLeft: btnPadding.left ? btnPadding.left : '16px'
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fields color settings', 'site-mode'),
@@ -149,20 +149,48 @@ function Edit({
     }),
     min: 2,
     max: 10
-  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalUnitControl, {
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: "Border radius",
+    value: inputBorderRadius,
     onChange: value => setAttributes({
       inputBorderRadius: value
     }),
-    value: inputBorderRadius,
-    units: units
+    min: 1,
+    max: 100
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
     label: "Padding",
     values: inputPadding,
     onChange: nextValues => setAttributes({
       inputPadding: nextValues
     })
-  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Border width",
+    value: btnBorderWidth,
+    onChange: value => setAttributes({
+      btnBorderWidth: value
+    }),
+    min: 2,
+    max: 10
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+    label: "Border radius",
+    value: btnBorderRadius,
+    onChange: value => setAttributes({
+      btnBorderRadius: value
+    }),
+    min: 1,
+    max: 100
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.__experimentalBoxControl, {
+    label: "Padding",
+    values: btnPadding,
+    onChange: nextValues => setAttributes({
+      btnPadding: nextValues
+    })
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
+    class: "site_mode_subscribe"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "login-username"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
@@ -215,7 +243,7 @@ function Edit({
     }),
     placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Submit', 'site-mode'),
     size: "20",
-    style: buttonColors
+    style: buttonSettings
   })))));
 }
 
@@ -237,7 +265,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('site-mode/contact-form', {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)('site-mode/subscribe-form', {
   edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
   save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
 });
@@ -485,7 +513,7 @@ module.exports = window["wp"]["i18n"];
 /******/ 			return __webpack_require__.O(result);
 /******/ 		}
 /******/ 		
-/******/ 		var chunkLoadingGlobal = globalThis["webpackChunksite_mode_contact_form"] = globalThis["webpackChunksite_mode_contact_form"] || [];
+/******/ 		var chunkLoadingGlobal = globalThis["webpackChunksite_mode_subscribe_form"] = globalThis["webpackChunksite_mode_subscribe_form"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
 /******/ 	})();

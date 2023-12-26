@@ -4,12 +4,11 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-[data-type="site-mode/contact-form"] {
+[data-type="site-mode/subscribe-form"] {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 	& form {
-	  border-radius: 0.5rem;
 	  width: 100%;
 	  & p {
 		margin: 0 0 1rem 0;
@@ -23,15 +22,16 @@
 		  display: block;
 		  width: 100%;
 		  padding: 0.5rem;
-		  border: 1px solid #ccc;
+		  border: 1px solid transparent;
 		  border-radius: 0.25rem;
+		  font-size: 0.9rem;
+		  line-height: 1.7;
 		}
 		&.login-submit {
 		  & input {
-			background-color: #FE4773;
-			color: #ffffff;
-			border-color: #FE4773;
 			width: auto;
+			font-size: 0.9rem;
+			line-height: 1.7;
 		  }
 		}
 	  }

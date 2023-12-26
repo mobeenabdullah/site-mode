@@ -3,7 +3,7 @@ import './style.scss';
 import Edit from './edit';
 import save from './save';
 
-registerBlockType('site-mode/contact-form', {
+registerBlockType('site-mode/subscribe-form', {
 	edit: Edit,
 	save,
 });

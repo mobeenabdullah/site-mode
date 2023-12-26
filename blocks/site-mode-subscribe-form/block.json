@@ -1,17 +1,18 @@
 {
 	"apiVersion": 2,
-	"name": "site-mode/contact-form",
-	"title": "Site Mode Contact Form",
+	"name": "site-mode/subscribe-form",
+	"title": "Site Mode Subscribe Form",
 	"category": "widgets",
 	"icon": "businessperson",
-	"description": "A contact form widget.",
+	"description": "A subscribe form widget.",
 	"supports": {
 		"html": false
 	},
 	"keywords": [
-		"contact form",
+		"subscribe form",
 		"site mode",
-		"form"
+		"form",
+	  	"contact form",
 	],
 	"textdomain": "site-mode",
 	"editorScript": "file:./build/index.js",
@@ -43,8 +44,13 @@
 		"default": 0
 	  },
 	  "inputPadding": {
-		"type": "number",
-		"default": 8
+		"type": "object",
+		"default": {
+		  "top": "16px",
+		  "right": "16px",
+		  "bottom": "16px",
+		  "left": "16px"
+		}
 	  },
 	  "btnBorderColor": {
 		"type": "string",
@@ -56,7 +62,7 @@
 	  },
 	  "btnTextColor": {
 		"type": "string",
-		"default": "#000000"
+		"default": "#ffffff"
 	  },
 	  "btnBorderWidth": {
 		"type": "number",
@@ -84,12 +90,10 @@
 			"default": "Email"
 		},
 		"namePlaceholder": {
-			"type": "string",
-			"default": "Enter your name"
+			"type": "string"
 		},
 		"emailPlaceholder": {
-			"type": "string",
-			"default": "Enter your email"
+			"type": "string"
 		},
 		"submitLabel": {
 			"type": "string",

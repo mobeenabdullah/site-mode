@@ -5,12 +5,11 @@
  * Replace them with your own styles or remove the file completely.
  */
 
-.sm__contact {
+.sm__subscribe {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   &-form {
-	border-radius: 0.5rem;
 	width: 100%;
 	&--field {
 	  margin-bottom: 0.5rem;
@@ -23,17 +22,19 @@
 	  input {
 		display: block;
 		padding: 0.5rem;
-		border: 1px solid #ccc;
-		border-radius: 0.25rem;
 		width: 100%;
 		min-height: 30px;
-		&[type="submit"] {
-		  background-color: #FE4773;
-		  color: #ffffff;
-		  border: transparent;
-		  cursor: pointer;
-		  width: auto;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		&:focus {
+		  outline: none;
 		}
+	  }
+	  & .submit_subscribe {
+		cursor: pointer !important;
+		width: auto !important;
+		font-size: 0.9rem !important;
+		line-height: 1.7 !important;
 	  }
 	}
   }

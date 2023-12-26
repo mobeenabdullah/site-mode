@@ -54,16 +54,16 @@ export default function Edit({ attributes, setAttributes }) {
 		{ value: 'em', label: 'em', default: 0 },
 	];
 
-	const buttonColors = {
+	const buttonSettings = {
 		backgroundColor: btnBgColor ? btnBgColor : 'transparent',
 		color: btnTextColor ? btnTextColor : 'transparent',
 		borderColor: btnBorderColor ? btnBorderColor : 'transparent',
-		borderWidth: inputBorderWidth ? inputBorderWidth : 0,
-		borderRadius: inputBorderRadius ? inputBorderRadius : 0,
-		paddingTop: inputPadding.top ? inputPadding.top : '8px',
-		paddingRight: inputPadding.right ? inputPadding.right : '16px',
-		paddingBottom: inputPadding.bottom ? inputPadding.bottom : '8px',
-		paddingLeft: inputPadding.left ? inputPadding.left : '16px',
+		borderWidth: btnBorderWidth ? btnBorderWidth : 0,
+		borderRadius: btnBorderRadius ? btnBorderRadius : 0,
+		paddingTop: btnPadding.top ? btnPadding.top : '8px',
+		paddingRight: btnPadding.right ? btnPadding.right : '16px',
+		paddingBottom: btnPadding.bottom ? btnPadding.bottom : '8px',
+		paddingLeft: btnPadding.left ? btnPadding.left : '16px',
 	}
 
 
@@ -123,11 +123,13 @@ export default function Edit({ attributes, setAttributes }) {
 							min={ 2 }
 							max={ 10 }
 						/>
-						<UnitControl
+
+						<RangeControl
 							label="Border radius"
-							onChange={ (value) => setAttributes({inputBorderRadius: value}) }
 							value={ inputBorderRadius }
-							units={ units }
+							onChange={ (value) => setAttributes({inputBorderRadius: value}) }
+							min={ 1 }
+							max={ 100 }
 						/>
 						<BoxControl
 							label="Padding"
@@ -135,10 +137,32 @@ export default function Edit({ attributes, setAttributes }) {
 							onChange={ (nextValues) => setAttributes({inputPadding: nextValues}) }
 						/>
 				</PanelBody>
+				<PanelBody title={__('Button Settings', 'site-mode')} initialOpen={ false }>
+					<RangeControl
+						label="Border width"
+						value={ btnBorderWidth }
+						onChange={ ( value ) => setAttributes({ btnBorderWidth: value }) }
+						min={ 2 }
+						max={ 10 }
+					/>
+
+					<RangeControl
+						label="Border radius"
+						value={ btnBorderRadius }
+						onChange={ (value) => setAttributes({btnBorderRadius: value}) }
+						min={ 1 }
+						max={ 100 }
+					/>
+					<BoxControl
+						label="Padding"
+						values={ btnPadding }
+						onChange={ (nextValues) => setAttributes({btnPadding: nextValues}) }
+					/>
+				</PanelBody>
 
 			</InspectorControls>
 			<div {...useBlockProps()}>
-				<form>
+				<form class="site_mode_subscribe">
 					<p className="login-username">
 						<RichText
 							tagName="label"
@@ -185,7 +209,7 @@ export default function Edit({ attributes, setAttributes }) {
 							onChange={(event) => setAttributes({ submitLabel: event.target.value })}
 							placeholder={__('Submit', 'site-mode')}
 							size="20"
-							style={buttonColors}
+							style={buttonSettings}
 						/>
 					</p>
 				</form>

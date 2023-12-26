@@ -1862,6 +1862,119 @@ input[type=checkbox]:disabled + .toggle {
 	z-index: -1;
 }
 
+.sm__subscribes {
+	padding: calc(clamp(1.563rem, 0rem + 4.167vw, 3.125rem)) 0;
+}
+
+.sm__subscribes-cover--left {
+	width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.sm__subscribes-cover--left {
+		width: 100%;
+	}
+}
+
+.sm__subscribes-cover--left p {
+	font-size: calc(clamp(0.875rem, 0.696rem + 0.476vw, 1.125rem));
+}
+
+.sm__subscribes-cover--content .page__title {
+	color: #1d2327;
+	font-size: 2em;
+	margin: 0;
+	padding: 0;
+}
+
+.sm__subscribes-cover--content p {
+	font-size: calc(clamp(0.875rem, 0.696rem + 0.476vw, 1.125rem));
+}
+
+.sm__subscribes-cover--content .subscribe__table {
+	width: 100%;
+}
+
+.sm__subscribes-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 3rem;
+	margin: 0 0 1.5rem 0;
+}
+
+.sm__subscribes-header #exportToExcel {
+	background-color: var(--smd-primary-color);
+	color: var(--smd-base-color);
+	border: none;
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	font-size: 0.9rem;
+	cursor: pointer;
+}
+
+.sm__subscribes-header #exportToExcel:hover {
+	background-color: var(--smd-primary-color);
+	color: var(--smd-base-color);
+}
+
+.subscribe__table {
+	min-width: 400px;
+	width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+	.subscribe__table {
+		width: 100%;
+		overflow-x: auto;
+	}
+}
+
+.subscribe__table-cover {
+	border-collapse: collapse;
+	margin: 25px 0;
+	font-size: 0.9em;
+	width: 100%;
+}
+
+.subscribe__table-cover thead tr {
+	background-color: var(--smd-contrast-color);
+	color: var(--smd-base-color);
+	text-align: left;
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.subscribe__table-cover thead tr th:nth-child(1), .subscribe__table-cover thead tr td:nth-child(1) {
+	width: 5%;
+}
+
+.subscribe__table-cover thead tr th:nth-child(2), .subscribe__table-cover thead tr td:nth-child(2) {
+	width: 30%;
+}
+
+.subscribe__table-cover thead tr th:nth-child(3), .subscribe__table-cover thead tr td:nth-child(3) {
+	width: 40%;
+}
+
+.subscribe__table-cover thead tr th:nth-child(4), .subscribe__table-cover thead tr td:nth-child(4) {
+	width: 25%;
+}
+
+.subscribe__table-cover th, .subscribe__table-cover td {
+	padding: 12px 15px;
+}
+
+.subscribe__table-cover tbody tr:nth-of-type(even) {
+	background-color: var(--smd-header-bg);
+}
+
+.subscribe__table-cover tbody tr.active-row {
+	font-weight: bold;
+	color: var(--smd-primary-color);
+}
+
 .smd-navbar {
 	list-style: none;
 	padding: 0;

@@ -140,6 +140,8 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							}
 						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
+                        } elseif ( 'subscribes' === $current_tab ) {
+                            require_once SITE_MODE_ADMIN . 'partials/subscribes.php';
 						} else {
 							require_once SITE_MODE_ADMIN . 'partials/dashboard-setting-page.php';
 						}

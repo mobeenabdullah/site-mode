@@ -160,7 +160,6 @@ class Site_Mode_Admin {
 		$design_data      = get_option( 'site_mode_design' );
 		$maintenance_page = isset( $design_data['page_setup']['maintenance_page_id'] ) ? $design_data['page_setup']['maintenance_page_id'] : '';
 		$coming_soon_page = isset( $design_data['page_setup']['coming_soon_page_id'] ) ? $design_data['page_setup']['coming_soon_page_id'] : '';
-		$error_404_page   = isset( $design_data['page_setup']['404_page_id'] ) ? $design_data['page_setup']['404_page_id'] : '';
 
 		if ( $coming_soon_page === $post->ID ) {
 			$post_states['sm_coming_soon_status'] = 'Coming Soon';
@@ -168,10 +167,6 @@ class Site_Mode_Admin {
 
 		if ( $maintenance_page === $post->ID ) {
 			$post_states['sm_maintenance_status'] = 'Maintenance';
-		}
-
-		if ( $error_404_page === $post->ID ) {
-			$post_states['sm_404_status'] = '404 Page';
 		}
 
 		return $post_states;
@@ -183,7 +178,7 @@ class Site_Mode_Admin {
 	 * @return void
 	 */
 	public function sm_plugin_redirect() {
-		if ( get_option( 'sm_activation_redirect', false ) ) {
+		if ( get_option( 'sm_activation_redirect', false ) && is_admin() ) {
 			delete_option( 'sm_activation_redirect' );
 			wp_redirect( admin_url( 'admin.php?page=site-mode&design=true' ) );
 		}
