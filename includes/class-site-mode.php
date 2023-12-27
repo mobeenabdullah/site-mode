@@ -230,6 +230,9 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_advanced', $this->classes_loader->get_advanced(), 'ajax_site_mode_advanced' );
         $this->loader->add_action( 'wp_ajax_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
         $this->loader->add_action( 'wp_ajax_nopriv_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
+        $this->loader->add_action( 'wp_ajax_subscribe_export_csv', $this->classes_loader->get_subscribes(), 'subscribe_export_csv' );
+        $this->loader->add_action( 'wp_ajax_delete_subscribe', $this->classes_loader->get_subscribes(), 'delete_subscribe' );
+
 	}
 
 	/**

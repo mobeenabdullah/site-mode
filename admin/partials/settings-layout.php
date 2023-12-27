@@ -56,6 +56,11 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 								'icon'  => '<i class="fa-solid fa-sliders"></i>',
 								'link'  => 'about-us',
 							),
+                            array(
+                                'title' => 'Subscribes',
+                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
+                                'link'  => 'subscribes',
+                            ),
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';

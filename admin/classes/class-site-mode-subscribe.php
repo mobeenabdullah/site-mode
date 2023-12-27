@@ -24,9 +24,7 @@ class Site_Mode_Subscribe  {
     public $subscribes = [];
 
     public function __construct() {
-//        $subscribes_instance = new Site_Mode_Subscribe();
         $this->get_subscribes();
-//        $this->subscribes = $subscribes_instance->subscribes;
     }
 
     public static function create_subscribe_table() {
@@ -94,6 +92,13 @@ class Site_Mode_Subscribe  {
     }
 
     public function displayTable() {
+        $current_page = isset($_GET['subscribe_page']) ? absint($_GET['subscribe_page']) : 1;
+        $records_per_page = 10;
+        $pagination_data = $this->get_subscribe_pagination($current_page, $records_per_page);
+        $data = $pagination_data['data'];
+        $total_rows = $pagination_data['total_rows'];
+        $total_pages = ceil($total_rows / $records_per_page);
+
         ?>
         <div class="sm__subscribes">
             <div class="smd-container">
@@ -111,13 +116,36 @@ class Site_Mode_Subscribe  {
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Date</th>
+                                    <th>Actions</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <?php $this->displaySubscribes(); ?>
+                                <?php $this->displaySubscribes($data); ?>
                                 </tbody>
                             </table>
                         </div>
+
+                        <?php if($total_pages > 1) { ?>
+                            <div class="sm__pagination">
+                                <?php
+                                    $prev_page = ($current_page > 1) ? $current_page - 1 : 1;
+                                    if(!(isset($_GET["subscribe_page"]) && trim($_GET["subscribe_page"]) == '1')) {
+                                        echo "<a href='?page=site-mode&setting=subscribes&subscribe_page=$prev_page' class='sm__pagination-item'>&laquo; Previous</a>";
+                                    }
+
+                                    for ($i = 1; $i <= $total_pages; $i++) {
+                                        echo "<a href='?page=site-mode&setting=subscribes&subscribe_page=$i' " . ($i == $current_page ? "class='current sm__pagination-item'" : "class='sm__pagination-item'") . ">$i</a>";
+                                    }
+                                    // Next Page Link
+                                    $next_page = ($current_page < $total_pages) ? $current_page + 1 : $total_pages;
+                                    if($current_page !==  absint($total_pages) ) {
+                                        echo "<a href='?page=site-mode&setting=subscribes&subscribe_page=$next_page' class='sm__pagination-item'>Next &raquo;</a>";
+                                    }
+
+                                ?>
+                            </div>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
@@ -144,20 +172,107 @@ class Site_Mode_Subscribe  {
 
     private function displayExportButton() {
         ?>
-        <button id="exportToExcel">Export</button>
+        <button id="exportToCSV">Export CSV</button>
         <?php
     }
 
-    private function displaySubscribes() {
-        foreach ($this->subscribes as $subscribe) :
+    private function displaySubscribes($data) {
+        foreach ($data as $key => $subscribe) :
             ?>
             <tr>
-                <td><?php echo esc_html($subscribe['id']); ?></td>
+                <td><?php echo esc_html($key + 1); ?></td>
                 <td><?php echo esc_html($subscribe['name']); ?></td>
                 <td><?php echo esc_html($subscribe['email']); ?></td>
                 <td><?php echo esc_html($subscribe['created_at']); ?></td>
+                <td class="delete_entry" data-id="<?php echo esc_attr($subscribe['id']); ?>" data-nonce="<?php echo wp_create_nonce('sm_subscribe_delete_nonce'); ?>">
+                    Delete
+                    <input type="hidden" id="sm_subscribe_delete_nonce" value="<?php echo wp_create_nonce( 'sm_subscribe_delete_nonce' ); ?>">
+                </td>
             </tr>
+            <?php //wp_nonce_field('sm_subscribe_delete_nonce', 'sm_subscribe_delete_nonce_field'); ?>
         <?php
         endforeach;
     }
+
+    public function subscribe_export_csv () {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'site_mode_subscribe';
+
+        $data = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
+
+        if ($data === false) {
+            echo "Error in database query";
+            error_log("Database query error: " . $wpdb->last_error); // Check your error log for detailed error message
+            die();
+        }
+
+        $csv_output = "id,name,email,date\n";
+
+        foreach ($data as $row) {
+            $csv_output .= implode(',', $row) . "\n";
+        }
+
+        header("Content-type: text/csv");
+        header("Content-disposition: attachment; filename=exported_data.csv");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+
+        echo $csv_output;
+        die();
+    }
+
+    private function get_subscribe_pagination($page, $per_page) {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'site_mode_subscribe';
+        $offset = ($page - 1) * $per_page;
+
+        $sql_query = $wpdb->prepare("SELECT * FROM $table_name LIMIT %d, %d", $offset, $per_page);
+        $data = $wpdb->get_results($sql_query, ARRAY_A);
+
+        // Fetch the total number of rows for pagination
+        $total_rows = $wpdb->get_var("SELECT COUNT(id) FROM $table_name");
+
+        return array(
+            'data' => $data,
+            'total_rows' => $total_rows,
+        );
+    }
+
+    public function delete_subscribe() {
+        global $wpdb;
+        $table_name = $wpdb->prefix . 'site_mode_subscribe';
+
+        error_log('Nonce from POST: ' . sanitize_text_field($_POST['sm_subscribe_delete_nonce']));
+
+        if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( $_POST['nonce'], 'sm_subscribe_delete_nonce' ) ) {
+            wp_send_json_error( 'Invalid nonce' );
+        }
+
+        // Validate and sanitize the ID
+        $id = absint( $_POST['id'] );
+
+        if ( empty( $id ) ) {
+            wp_send_json_error( 'Invalid ID' );
+        }
+
+        // Delete data from the table
+//        $result = $wpdb->delete(
+//            $table_name,
+//            array('id' => $id),
+//            array('%d')
+//        );
+
+        $result = $wpdb->query(
+            $wpdb->prepare("DELETE FROM $table_name WHERE id = %d", $id)
+        );
+
+        if ($result === false) {
+            error_log('Database error: ' . $wpdb->last_error);
+            wp_send_json_error('Database error');
+        } else {
+            error_log('Rows affected: ' . $result);
+            wp_send_json_success('Data deleted successfully');
+        }
+    }
+
 }

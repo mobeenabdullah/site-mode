@@ -12,7 +12,7 @@
 		"subscribe form",
 		"site mode",
 		"form",
-	  	"contact form",
+	  	"contact form"
 	],
 	"textdomain": "site-mode",
 	"editorScript": "file:./build/index.js",

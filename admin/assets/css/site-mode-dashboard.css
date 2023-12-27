@@ -1903,7 +1903,7 @@ input[type=checkbox]:disabled + .toggle {
 	margin: 0 0 1.5rem 0;
 }
 
-.sm__subscribes-header #exportToExcel {
+.sm__subscribes-header #exportToCSV {
 	background-color: var(--smd-primary-color);
 	color: var(--smd-base-color);
 	border: none;
@@ -1913,7 +1913,7 @@ input[type=checkbox]:disabled + .toggle {
 	cursor: pointer;
 }
 
-.sm__subscribes-header #exportToExcel:hover {
+.sm__subscribes-header #exportToCSV:hover {
 	background-color: var(--smd-primary-color);
 	color: var(--smd-base-color);
 }
@@ -1955,11 +1955,15 @@ input[type=checkbox]:disabled + .toggle {
 }
 
 .subscribe__table-cover thead tr th:nth-child(3), .subscribe__table-cover thead tr td:nth-child(3) {
-	width: 40%;
+	width: 30%;
 }
 
 .subscribe__table-cover thead tr th:nth-child(4), .subscribe__table-cover thead tr td:nth-child(4) {
 	width: 25%;
+}
+
+.subscribe__table-cover thead tr th:nth-child(5), .subscribe__table-cover thead tr td:nth-child(5) {
+	width: 10%;
 }
 
 .subscribe__table-cover th, .subscribe__table-cover td {
@@ -1973,6 +1977,42 @@ input[type=checkbox]:disabled + .toggle {
 .subscribe__table-cover tbody tr.active-row {
 	font-weight: bold;
 	color: var(--smd-primary-color);
+}
+
+.subscribe__table .delete_entry {
+	cursor: pointer;
+}
+
+.sm__pagination {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	gap: 1rem;
+	margin: 1rem 0;
+}
+
+.sm__pagination-item {
+	padding: 0.5rem 1rem;
+	border-radius: 0.25rem;
+	background-color: var(--smd-seperator-color);
+	color: var(--smd-contrast-color);
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.sm__pagination-item.current {
+	background-color: var(--smd-primary-color);
+	color: var(--smd-base-color);
+}
+
+.sm__pagination-item:hover {
+	background-color: var(--smd-primary-color);
+	color: var(--smd-base-color);
+}
+
+.sm__pagination-item.active {
+	background-color: var(--smd-primary-color);
+	color: var(--smd-base-color);
 }
 
 .smd-navbar {

@@ -31,7 +31,8 @@
     justify-content: space-between;
     gap: 3rem;
     margin: 0 0 1.5rem 0;
-    & #exportToExcel {
+
+    & #exportToCSV {
       background-color: var(--smd-primary-color);
       color: var(--smd-base-color);
       border: none;
@@ -75,10 +76,13 @@
           width: 30%;
         }
         &:nth-child(3) {
-          width: 40%;
+          width: 30%;
         }
         &:nth-child(4) {
           width: 25%;
+        }
+        &:nth-child(5) {
+          width: 10%;
         }
       }
     }
@@ -94,9 +98,38 @@
       color: var(--smd-primary-color);
     }
   }
+  & .delete_entry {
+    cursor: pointer;
+  }
 }
 
-
+.sm__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin: 1rem 0;
+  &-item {
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    background-color: var(--smd-seperator-color);
+    color: var(--smd-contrast-color);
+    cursor: pointer;
+    text-decoration: none;
+    &.current {
+      background-color: var(--smd-primary-color);
+      color: var(--smd-base-color);
+    }
+    &:hover {
+      background-color: var(--smd-primary-color);
+      color: var(--smd-base-color);
+    }
+    &.active {
+      background-color: var(--smd-primary-color);
+      color: var(--smd-base-color);
+    }
+  }
+}
 
 
 
