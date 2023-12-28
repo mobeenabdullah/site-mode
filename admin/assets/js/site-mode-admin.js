@@ -228,11 +228,11 @@ jQuery(function ($) {
       });
     });
 
-    // Delete spacific entry.
+    // Delete spacific entry. window.location.href = window.location.pathname + '?page=site-mode&setting=subscribes&subscribe_page=' + newPage;
     $('.delete_entry').on('click', function() {
       const id = $(this).data('id');
       const nonce = $(this).data('nonce');
-      const currentElement = $(this);
+      const currentPage = parseInt(getParameterByName('subscribe_page')) || 1; // Get the current page from the URL
 
       $.ajax({
         url: ajaxurl,
@@ -243,14 +243,45 @@ jQuery(function ($) {
           nonce: nonce,
         },
         success: function(response) {
-          if(response.success) {
-            window.location.reload();
+          response.total_rows = undefined;
+          if (response.success) {
+            const totalRows = response.total_rows || 0;
+
+            // Check if the current page is empty after the delete operation.
+            const isCurrentPageEmpty = totalRows <= 0;
+
+            // Check if the current page is not the first page, and it's empty.
+            if (isCurrentPageEmpty) {
+              if (currentPage > 1) {
+                const newPage = currentPage - 1;
+                window.location.href = window.location.pathname + '?page=site-mode&setting=subscribes&subscribe_page=' + newPage;
+              } else {
+                // If the current page is the first page, reload it
+                window.location.reload();
+              }
+            } else {
+              // Stay on the current page as there are remaining entries
+              window.location.reload();
+            }
           } else {
             alert('Something went wrong.');
           }
         }
       });
     });
+
+    // Helper function to get query parameter by name from the URL
+    function getParameterByName(name) {
+      const url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
   });
 
   const mobileMenu = document.querySelector(".mobile_menu");

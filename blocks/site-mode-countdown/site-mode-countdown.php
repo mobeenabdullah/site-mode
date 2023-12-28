@@ -11,9 +11,10 @@
 
 function site_mode_countdown_block_render_callback( $attributes ) {
 
-	$due_date        = strtotime( $attributes['dueDate'] );
-	$time_Units      = $attributes['timeUnits'] || array();
-	$date            = strtotime( ( new DateTime( date( 'D, d M y H:i:s O' ), new DateTimeZone( 'UTC' ) ) )->format( 'D, d M y H:i:s O' ) );
+	$due_date   = strtotime( $attributes['dueDate'] );
+	$time_Units = $attributes['timeUnits'] || array();
+	// $date            = strtotime( ( new DateTime( date( 'D, d M y H:i:s O' ), new DateTimeZone( 'UTC' ) ) )->format( 'D, d M y H:i:s O' ) );
+	$date            = strtotime( gmdate( 'D, d M Y H:i:s O' ) );
 	$bg_color        = ! is_admin() && $attributes['background'] ? $attributes['bgColor'] : '';
 	$border_color    = ! is_admin() && $attributes['border'] ? $attributes['borderColor'] : '';
 	$label_color     = ! is_admin() ? $attributes['labelColor'] : '';
@@ -96,7 +97,7 @@ function site_mode_countdown_block_script() {
 	// Enqueue the JavaScript file for your block
 	wp_enqueue_script(
 		'sm-countdown-block', // Handle
-		plugin_dir_url(__FILE__) . 'src/sm-countdown.js', // Adjust the path as needed
+		plugin_dir_url( __FILE__ ) . 'src/sm-countdown.js', // Adjust the path as needed
 		array( 'wp-blocks', 'wp-editor' ), // Dependencies
 		'1.0.7', // Version number
 		true // Load in the footer

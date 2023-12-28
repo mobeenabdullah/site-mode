@@ -72,12 +72,12 @@ class Site_Mode_Menu {
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
 			),
-            array(
-                'page_title' => 'Subscribes',
-                'menu_title' => 'Subscribes',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=subscribes',
-            ),
+			array(
+				'page_title' => 'Subscribes',
+				'menu_title' => 'Subscribes',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=subscribes',
+			),
 
 		);
 

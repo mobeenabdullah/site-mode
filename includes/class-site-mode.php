@@ -120,12 +120,11 @@ class Site_Mode {
 	 */
 	private function load_dependencies() {
 
-
-//        /**
-//         * This is responsible for creating the contact post type.
-//         */
-//
-//        require_once SITE_MODE_INC . 'contact-post-type.php';
+		// **
+		// * This is responsible for creating the contact post type.
+		// */
+		//
+		// require_once SITE_MODE_INC . 'contact-post-type.php';
 
 		/**
 		 * This is responsible for loading all blocks.
@@ -168,7 +167,7 @@ class Site_Mode {
 		 */
 		require_once SITE_MODE_PUBLIC . 'class-site-mode-public.php';
 
-        require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
 
 		$this->loader = new Site_Mode_Loader();
 	}
@@ -205,7 +204,7 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_before_admin_bar_render', $plugin_admin, 'sm_admin_bar' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-        $this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
+		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_submenu_settings_page' );
 		$this->loader->add_filter( 'display_post_states', $plugin_admin, 'add_display_post_states', 10, 2 );
 		$this->loader->add_action( 'admin_menu', $this->classes_loader->admin_menu, 'site_mode_menu' );
 
@@ -228,10 +227,10 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_general', $this->classes_loader->get_general(), 'ajax_site_mode_general' );
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_seo', $this->classes_loader->get_seo(), 'ajax_site_mode_seo' );
 		$this->loader->add_action( 'wp_ajax_ajax_site_mode_advanced', $this->classes_loader->get_advanced(), 'ajax_site_mode_advanced' );
-        $this->loader->add_action( 'wp_ajax_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
-        $this->loader->add_action( 'wp_ajax_nopriv_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
-        $this->loader->add_action( 'wp_ajax_subscribe_export_csv', $this->classes_loader->get_subscribes(), 'subscribe_export_csv' );
-        $this->loader->add_action( 'wp_ajax_delete_subscribe', $this->classes_loader->get_subscribes(), 'delete_subscribe' );
+		$this->loader->add_action( 'wp_ajax_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
+		$this->loader->add_action( 'wp_ajax_nopriv_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
+		$this->loader->add_action( 'wp_ajax_subscribe_export_csv', $this->classes_loader->get_subscribes(), 'subscribe_export_csv' );
+		$this->loader->add_action( 'wp_ajax_delete_subscribe', $this->classes_loader->get_subscribes(), 'delete_subscribe' );
 
 	}
 

@@ -138,21 +138,24 @@ class Site_Mode_Design extends Settings {
 			$list_id = '4a1d333259'; // List / Audience ID.
 
 			// start our Mailchimp connection.
-			$connection = curl_init();
-			curl_setopt(
+			$connection = wp_remote_get();
+			wp_remote_get(
 				$connection,
 				CURLOPT_URL,
 				'https://' . substr( $api_key, strpos( $api_key, '-' ) + 1 ) . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . md5( strtolower( $email ) )
 			);
-			curl_setopt( $connection, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Authorization: Basic ' . base64_encode( 'user:' . $api_key ) ) );
-			curl_setopt( $connection, CURLOPT_RETURNTRANSFER, true );
-			curl_setopt( $connection, CURLOPT_CUSTOMREQUEST, 'PUT' );
-			curl_setopt( $connection, CURLOPT_POST, true );
-			curl_setopt( $connection, CURLOPT_SSL_VERIFYPEER, false );
-			curl_setopt(
+
+			$username     = 'user';
+			$concatenated = base64_encode( htmlentities( $username . ':' . $api_key, ENT_QUOTES ) );
+			wp_remote_get( $connection, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Authorization: Basic ' . $concatenated ) );
+			wp_remote_get( $connection, CURLOPT_RETURNTRANSFER, true );
+			wp_remote_get( $connection, CURLOPT_CUSTOMREQUEST, 'PUT' );
+			wp_remote_get( $connection, CURLOPT_POST, true );
+			wp_remote_get( $connection, CURLOPT_SSL_VERIFYPEER, false );
+			wp_remote_get(
 				$connection,
 				CURLOPT_POSTFIELDS,
-				json_encode(
+				wp_json_encode(
 					array(
 						'apikey'        => $api_key,
 						'email_address' => $email,
@@ -161,7 +164,7 @@ class Site_Mode_Design extends Settings {
 				)
 			);
 
-			$result = curl_exec( $connection );
+			$result = wp_remote_get( $connection );
 			update_option( 'mailchimp-subscriber-status', $result );
 		} catch ( Exception $e ) {
 			update_option( 'mailchimp-subscriber-status', $e->getMessage() );
@@ -412,7 +415,7 @@ class Site_Mode_Design extends Settings {
 			$filtered_placeholder    = str_replace( '---', '', $placeholder );
 			$filtered_placeholder    = str_replace( 'sm-', '', $filtered_placeholder );
 			$placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/' . $filtered_placeholder . '.json';
-			$placeholder_content     = json_decode( file_get_contents( $placeholder_content_url ) )->content;
+			$placeholder_content     = json_decode( wp_remote_get( $placeholder_content_url ) )->content;
 		} elseif ( ! empty( $new_color ) ) {
 			$placeholder_content = $new_color;
 		}
@@ -434,7 +437,7 @@ class Site_Mode_Design extends Settings {
 	 */
 	public function replace_template_default_image( $template_name = '' ) {
 		$template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
-		$template_content = file_get_contents( $template_url );
+		$template_content = wp_remote_get( $template_url );
 		$image_url        = $this->default_images[ $template_name ];
 
 		try {
@@ -445,14 +448,14 @@ class Site_Mode_Design extends Settings {
 
 				// Fetch the image and save it to the uploads directory.
 				$upload_dir = wp_upload_dir();
-				$image_data = file_get_contents( $image_url );
+				$image_data = wp_remote_get( $image_url );
 				$filename   = basename( $image_url );
 				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
 				$media_id   = '';
 
 				// Check if the file already exists.
 				if ( ! file_exists( $file_path ) ) {
-					file_put_contents( $file_path, $image_data );
+					wp_remote_get( $file_path, $image_data );
 
 					// Add the image to the media library.
 					$attachment = array(
@@ -548,7 +551,7 @@ class Site_Mode_Design extends Settings {
 	public function changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $scheme ) {
 
 		$color_scheme_file    = SITE_MODE_ADMIN . 'assets/color-scheme.json';
-		$color_scheme_content = json_decode( file_get_contents( $color_scheme_file ) )->content;
+		$color_scheme_content = json_decode( wp_remote_get( $color_scheme_file ) )->content;
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['base'], false, $color_scheme_content->$scheme->base );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['contrast'], false, $color_scheme_content->$scheme->contrast );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['primary'], false, $color_scheme_content->$scheme->primary );

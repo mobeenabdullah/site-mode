@@ -56,11 +56,11 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 								'icon'  => '<i class="fa-solid fa-sliders"></i>',
 								'link'  => 'about-us',
 							),
-                            array(
-                                'title' => 'Subscribes',
-                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
-                                'link'  => 'subscribes',
-                            ),
+							array(
+								'title' => 'Subscribes',
+								'icon'  => '<i class="fa-solid fa-sliders"></i>',
+								'link'  => 'subscribes',
+							),
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
@@ -145,8 +145,8 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							}
 						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
-                        } elseif ( 'subscribes' === $current_tab ) {
-                            require_once SITE_MODE_ADMIN . 'partials/subscribes.php';
+						} elseif ( 'subscribes' === $current_tab ) {
+							require_once SITE_MODE_ADMIN . 'partials/subscribes.php';
 						} else {
 							require_once SITE_MODE_ADMIN . 'partials/dashboard-setting-page.php';
 						}

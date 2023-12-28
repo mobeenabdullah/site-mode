@@ -317,7 +317,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo $output ;
+		echo $output;
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
