@@ -34,14 +34,14 @@ export default function Edit({ attributes, setAttributes }) {
 
 	useEffect(
 		() => {
-			if (dueDate) {
+        if (dueDate) {
+            clearInterval( intervalCount );
+            const interval = setInterval( countdownHandler, 1000 );
+            setIntervalCount( interval );
+        } else {
 				clearInterval( intervalCount );
-				const interval = setInterval( countdownHandler, 1000 );
-				setIntervalCount( interval );
-			} else {
-        clearInterval( intervalCount );
-        setIntervalCount( null );
-			}
+				setIntervalCount( null );
+        }
 		},
 		[dueDate, timeUnits]
 	);
