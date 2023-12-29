@@ -46,7 +46,6 @@ define( 'SITE_MODE_PUBLIC_URL', plugin_dir_url( __FILE__ ) . 'public/' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-site-mode-activator.php
  */
-
 function activate_site_mode() {
 	require_once SITE_MODE_INC . 'class-site-mode-activator.php';
 	Site_Mode_Activator::activate();

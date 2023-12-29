@@ -7,8 +7,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
-
-
 function site_mode_countdown_block_render_callback( $attributes ) {
 
 	$due_date   = strtotime( $attributes['dueDate'] );

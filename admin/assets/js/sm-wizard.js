@@ -146,76 +146,76 @@ jQuery(function ($) {
 			addElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
 			$( '.loading__template' ).css( 'display', 'flex' );
 			setTimeoutForTemplate();
-	}
+            }
 			$( '.select_template_btn' ).on( 'click', customizeTemplate );
 			// Back to select template page
-	function backToSelectTemplate () {
-		hideElements( '.wizard__start, .import__actions, .sm_final_import, .sm_customize_settings, .component__settings, .customize__actions' );
-		showElements( '.wizard__content-wrapper' );
-		removeElementClass( '.sm-customize', 'active' );
-		removeElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
-	}
+            function backToSelectTemplate () {
+                hideElements( '.wizard__start, .import__actions, .sm_final_import, .sm_customize_settings, .component__settings, .customize__actions' );
+                showElements( '.wizard__content-wrapper' );
+                removeElementClass( '.sm-customize', 'active' );
+                removeElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
+            }
 			$( '.template-init-back' ).on( 'click', backToSelectTemplate );
 			// Go to import template page
-	function startImportingTemplate () {
-		hideElements( '.customize__template, .customize__sidebar-content, .wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions' );
-		showElements( '.sm_final_import, .import__actions' );
-		addElementClass( '.sm-import', 'active' );
-		addElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
-	}
+            function startImportingTemplate () {
+                hideElements( '.customize__template, .customize__sidebar-content, .wizard__start, .wizard__content-wrapper, .component__settings, .customize__actions' );
+                showElements( '.sm_final_import, .import__actions' );
+                addElementClass( '.sm-import', 'active' );
+                addElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
+            }
 			$( '.start_importing' ).on( 'click', startImportingTemplate );
 			// Back to custom template page
-	function backTemplateCustomize () {
-		// hideElements('.wizard__start, .wizard__content-wrapper, .import__actions, .sm_final_import');
-		// showElements('.customize__template, .sm_customize_settings, .component__settings, .customize__actions');
-		hideElements( '.wizard__start, .wizard__content-wrapper, .sm_final_import, .import__actions' );
-		showElements( '.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions' );
-		removeElementClass( '.sm-import', 'active' );
-		addElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
-	}
+            function backTemplateCustomize () {
+                // hideElements('.wizard__start, .wizard__content-wrapper, .import__actions, .sm_final_import');
+                // showElements('.customize__template, .sm_customize_settings, .component__settings, .customize__actions');
+                hideElements( '.wizard__start, .wizard__content-wrapper, .sm_final_import, .import__actions' );
+                showElements( '.sm_customize_settings, .customize__sidebar-content, .component__settings, .customize__actions' );
+                removeElementClass( '.sm-import', 'active' );
+                addElementClass( '.sm__wizard-wrapper', 'sm_add_scroll' );
+            }
 			$( '.template-back-customize' ).on( 'click', backTemplateCustomize );
 			// Post message to iframe
 			$( '#show-countdown' ).on( 'change', sendPostMessage );
 			$( '#show-subscribe' ).on( 'change', sendPostMessage );
 			$( '#show-social' ).on( 'change', sendPostMessage );
 			$( '#color_scheme' ).on( 'change', sendPostMessage )
-	function sendPostMessage() {
-		const iframe        = document.querySelector( "#sm-preview-iframe" );
-		const showSocial    = document.getElementById( "show-social" ).checked;
-		const showCountdown = document.getElementById( "show-countdown" ).checked;
-		const colorScheme   = document.getElementById( "color_scheme" ).value;
-		iframe.contentWindow.postMessage(
-			{
-				hideCountdown: ! showCountdown,
-				hideSocialIcons: ! showSocial,
-				colorScheme : colorScheme
-			},
-			"*"
-		)
-	}
+            function sendPostMessage() {
+                const iframe        = document.querySelector( "#sm-preview-iframe" );
+                const showSocial    = document.getElementById( "show-social" ).checked;
+                const showCountdown = document.getElementById( "show-countdown" ).checked;
+                const colorScheme   = document.getElementById( "color_scheme" ).value;
+                iframe.contentWindow.postMessage(
+                    {
+                        hideCountdown: ! showCountdown,
+                        hideSocialIcons: ! showSocial,
+                        colorScheme : colorScheme
+                    },
+                    "*"
+                )
+            }
 
-	function getParameterByName(name, url) {
-		if ( ! url) {
-			url = window.location.href;
-		}
-			name      = name.replace( /[\[\]]/g, "\\$&" );
-			var regex = new RegExp( "[?&]" + name + "(=([^&#]*)|&|#|$)" ),
-			results   = regex.exec( url );
-		if ( ! results) {
-			return null;
-		}
-		if ( ! results[2]) {
-			return '';
-		}
-			return decodeURIComponent( results[2].replace( /\+/g, " " ) );
-	}
+            function getParameterByName(name, url) {
+                if ( ! url) {
+                    url = window.location.href;
+                }
+                    name      = name.replace( /[\[\]]/g, "\\$&" );
+                    var regex = new RegExp( "[?&]" + name + "(=([^&#]*)|&|#|$)" ),
+                    results   = regex.exec( url );
+                if ( ! results) {
+                    return null;
+                }
+                if ( ! results[2]) {
+                    return '';
+                }
+                    return decodeURIComponent( results[2].replace( /\+/g, " " ) );
+            }
 
 			const templateParam = getParameterByName( 'template' );
 			const cat           = getParameterByName( 'cat' );
-            if (templateParam) {
-                        $( '.choose_page_type' ).trigger( 'click' );
-                        $( `.template_card[data - category - template = "${templateParam}"] .select_template` ).trigger( 'click' );
-            }
+	if (templateParam) {
+				$( '.choose_page_type' ).trigger( 'click' );
+				$( `.template_card[data - category - template = "${templateParam}"] .select_template` ).trigger( 'click' );
+	}
 			// AJAX Functionality for import template
 			$( '.import-template' ).on(
 				'click',
@@ -269,7 +269,7 @@ jQuery(function ($) {
 										$( '.error__content' ).hide();
 										$( '.thank__you-content' ).show();
 										$( '.sm-modal-success-message' ).html( `Your ${res.data.template_name} page is ready. Now you can view the page or start customizing it.` )
-										$( '.sm-modal-content-text .outline_btn' ).attr( 'href', res.data ? .page_link ? .replace( 'amp;', '' ) )
+										$( '.sm-modal-content-text .outline_btn' ).attr( 'href', res.data ? .page_link ? .replace( 'amp;', '' ) );
 									},
 									1000
 								);
@@ -290,65 +290,65 @@ jQuery(function ($) {
 				}
 			);
 			// Reset to default options functionality
-            function handleSettingsClick() {
-                const $parentOfAction = $( this ).closest( '.settings__card' );
+		function handleSettingsClick() {
+			const $parentOfAction = $( this ).closest( '.settings__card' );
 
-                if ($( this ).hasClass( 'sm-setting-reset-components' )) {
-                    const $checkboxes = $parentOfAction.find( ".settings__card-options--field input[type='checkbox']" );
-                    $checkboxes.prop(
-                    'checked',
-                    function() {
-                        const checkboxValue = $( this ).val();
-                        return checkboxValue === '1' || checkboxValue === 'true';
-                    }
-                    );
-                } else if ($( this ).hasClass( 'setting__label' )) {
-                    // Toggle checkbox click on labels
-                    const $checkbox = $( this ).siblings( '.settings__card-options--field' ).find( "input[type='checkbox']" );
-                    $checkbox.prop(
-                    'checked',
-                    function(_, checked) {
-                        return ! checked;
-                    }
-                    );
-                }
-                sendPostMessage();
-            }
+			if ($( this ).hasClass( 'sm-setting-reset-components' )) {
+				const $checkboxes = $parentOfAction.find( ".settings__card-options--field input[type='checkbox']" );
+				$checkboxes.prop(
+				'checked',
+				function() {
+					const checkboxValue = $( this ).val();
+					return checkboxValue === '1' || checkboxValue === 'true';
+				}
+				);
+			} else if ($( this ).hasClass( 'setting__label' )) {
+				// Toggle checkbox click on labels
+				const $checkbox = $( this ).siblings( '.settings__card-options--field' ).find( "input[type='checkbox']" );
+				$checkbox.prop(
+				'checked',
+				function(_, checked) {
+					return ! checked;
+				}
+				);
+			}
+			sendPostMessage();
+		}
 
 			$( '.setting__label, .sm-setting-reset-components' ).on( 'click', handleSettingsClick );
 			// On select change fonts/colors
-            function setupSelectAndPresets(selectId, presetBoxesClass) {
-                $( presetBoxesClass ).hide();
-                var selectedOption = $( selectId ).val();
-                $( presetBoxesClass + '[data-preset="' + selectedOption + '"]' ).show();
+		function setupSelectAndPresets(selectId, presetBoxesClass) {
+			$( presetBoxesClass ).hide();
+			var selectedOption = $( selectId ).val();
+			$( presetBoxesClass + '[data-preset="' + selectedOption + '"]' ).show();
 
-                $( selectId ).change(
-                function() {
-                    $( presetBoxesClass ).hide();
-                    var selectedOption = $( this ).val();
-                    $( presetBoxesClass + '[data-preset="' + selectedOption + '"]' ).show();
-                }
-                );
-            }
+			$( selectId ).change(
+			function() {
+				$( presetBoxesClass ).hide();
+				var selectedOption = $( this ).val();
+				$( presetBoxesClass + '[data-preset="' + selectedOption + '"]' ).show();
+			}
+			);
+		}
 			setupSelectAndPresets( '#color_scheme', '.color__scheme-preset-box' );
 			// Show/hide sidebar
-            function toggleSidebar() {
-                const sidebar = $( this ).parent().parent().prev();
+		function toggleSidebar() {
+			const sidebar = $( this ).parent().parent().prev();
 
-                sidebar.toggleClass( 'slide_right_to_left' );
-                sidebar.prev().toggle();
+			sidebar.toggleClass( 'slide_right_to_left' );
+			sidebar.prev().toggle();
 
-                if (sidebar.hasClass( 'slide_right_to_left' )) {
-                    // sidebar.slideRight(300);
-                    $( '.sm_full_screen' ).css( 'display', 'none' );
-                    $( '.sm_exit_full_screen' ).css( 'display', 'flex' );
-                } else {
-                    // sidebar.slideLeft(300);
-                    $( '.sm_full_screen' ).css( 'display', 'flex' );
-                    $( '.sm_exit_full_screen' ).css( 'display', 'none' );
-                }
+			if (sidebar.hasClass( 'slide_right_to_left' )) {
+				// sidebar.slideRight(300);
+				$( '.sm_full_screen' ).css( 'display', 'none' );
+				$( '.sm_exit_full_screen' ).css( 'display', 'flex' );
+			} else {
+				// sidebar.slideLeft(300);
+				$( '.sm_full_screen' ).css( 'display', 'flex' );
+				$( '.sm_exit_full_screen' ).css( 'display', 'none' );
+			}
 
-            }
+		}
 			$( '.sm_full_screen, .sm_exit_full_screen' ).on( 'click', toggleSidebar );
 			updateSubscribeBoxDisplay();
 			$( '#show-subscribe-field' ).change(
@@ -369,13 +369,13 @@ jQuery(function ($) {
 
 				}
 			);
-            function updateSubscribeBoxDisplay() {
-                if ($( '#show-subscribe-field' ).is( ':checked' )) {
-                    $( '.subscribe_box' ).show();
-                } else {
-                    $( '.subscribe_box' ).hide();
-                }
-            }
+		function updateSubscribeBoxDisplay() {
+			if ($( '#show-subscribe-field' ).is( ':checked' )) {
+				$( '.subscribe_box' ).show();
+			} else {
+				$( '.subscribe_box' ).hide();
+			}
+		}
 			var initialText = $( '.template-category-filter:first' ).html();
 			$( '.display_template_name' ).html( initialText );
 			$( '.template-category-filter' ).on(
@@ -416,5 +416,5 @@ jQuery(function ($) {
 					);
 				}
 			);
-            }
+}
 		);

@@ -6,7 +6,6 @@
  *
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
-
 function site_mode_subscribe_form_block_render_callback( $attributes ) {
 	$nameLabel        = isset( $attributes['nameLabel'] ) ? $attributes['nameLabel'] : 'Name';
 	$emailLabel       = isset( $attributes['emailLabel'] ) ? $attributes['emailLabel'] : 'Email';
