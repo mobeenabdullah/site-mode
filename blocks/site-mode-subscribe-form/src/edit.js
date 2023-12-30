@@ -65,10 +65,10 @@ export default function Edit({ attributes, setAttributes }) {
 			}
 
 	return (
-		<>
-			<InspectorControls>
-				<PanelBody title     = {__( 'Fields color settings', 'site-mode' )} initialOpen = { false }>
-					<PanelColorSettings
+		< >
+			< InspectorControls >
+				< PanelBody title     = {__( 'Fields color settings', 'site-mode' )} initialOpen = { false } >
+					< PanelColorSettings
 						title         = "Fields Color Settings"
 						initialOpen   = {false}
 						icon          = "admin-appearance"
@@ -110,66 +110,66 @@ export default function Edit({ attributes, setAttributes }) {
 							}
 
 							]}
-					/>
-				</PanelBody>
-				<PanelBody title    = {__( 'Fields Settings', 'site-mode' )} initialOpen = { false }>
-						<RangeControl
+					/ >
+				< / PanelBody >
+				< PanelBody title    = {__( 'Fields Settings', 'site-mode' )} initialOpen = { false } >
+						< RangeControl
 							label    = "Border width"
 							value    = { inputBorderWidth }
 							onChange = { ( value ) => setAttributes( { inputBorderWidth: value } ) }
 							min      = { 2 }
 							max      = { 10 }
-						/>
+						/ >
 
-						<RangeControl
+						< RangeControl
 							label    = "Border radius"
 							value    = { inputBorderRadius }
 							onChange = { (value) => setAttributes( {inputBorderRadius: value} ) }
 							min      = { 1 }
 							max      = { 100 }
-						/>
-						<BoxControl
+						/ >
+						< BoxControl
 							label    = "Padding"
 							values   = { inputPadding }
 							onChange = { (nextValues) => setAttributes( {inputPadding: nextValues} ) }
-						/>
-				</PanelBody>
-				<PanelBody title    = {__( 'Button Settings', 'site-mode' )} initialOpen = { false }>
-					<RangeControl
+						/ >
+				< / PanelBody >
+				< PanelBody title    = {__( 'Button Settings', 'site-mode' )} initialOpen = { false } >
+					< RangeControl
 						label        = "Border width"
 						value        = { btnBorderWidth }
 						onChange     = { ( value ) => setAttributes( { btnBorderWidth: value } ) }
 						min          = { 2 }
 						max          = { 10 }
-					/>
+					/ >
 
-					<RangeControl
+					< RangeControl
 						label    = "Border radius"
 						value    = { btnBorderRadius }
 						onChange = { (value) => setAttributes( {btnBorderRadius: value} ) }
 						min      = { 1 }
 						max      = { 100 }
-					/>
-					<BoxControl
+					/ >
+					< BoxControl
 						label    = "Padding"
 						values   = { btnPadding }
 						onChange = { (nextValues) => setAttributes( {btnPadding: nextValues} ) }
-					/>
-				</PanelBody>
+					/ >
+				< / PanelBody >
 
-			</InspectorControls>
-			<div {...useBlockProps()}>
-				<form class= "site_mode_subscribe">
-					<p className= "login-username">
-						<RichText
+			< / InspectorControls >
+			< div {...useBlockProps()} >
+				< form class                       = "site_mode_subscribe" >
+					< p className                  = "login-username" >
+						< RichText
 							tagName                = "label"
 							placeholder            = {__( 'Full Name', 'site-mode' )}
 							keepPlaceholderOnFocus = "true"
 							onChange               = {(value) => setAttributes( { nameLabel: value } )}
 							value                  = {nameLabel}
 							style                  = {smLabelColor}
-						/>
-						<input
+						/ >
+						< input
 							type                   = "text"
 							className              = "input"
 							placeholder            = {__( 'John Doe', 'site-mode' )}
@@ -177,18 +177,18 @@ export default function Edit({ attributes, setAttributes }) {
 							value                  = {namePlaceholder}
 							size                   = "20"
 							style                  = {smInputField}
-						/>
-					</p>
-					<p className                  = "login-password" >
-						<RichText
+						/ >
+					< / p >
+					< p className                  = "login-password" >
+						< RichText
 							tagName                = "label"
 							placeholder            = {__( 'Your Email', 'site-mode' )}
 							keepPlaceholderOnFocus = "true"
 							onChange               = {(value) => setAttributes( { emailLabel: value } )}
 							value                  = {emailLabel}
 							style                  = {smLabelColor}
-						/>
-						<input
+						/ >
+						< input
 							type                   = "text"
 							className              = "input"
 							placeholder            = {__( 'example@xyz.com', 'site-mode' )}
@@ -196,10 +196,10 @@ export default function Edit({ attributes, setAttributes }) {
 							value                  = {emailPlaceholder}
 							size                   = "20"
 							style                  = {smInputField}
-						/>
-					</p>
-					<p className                  = "login-submit" >
-						<input
+						/ >
+					< / p >
+					< p className                  = "login-submit" >
+						< input
 							type                   = "submit"
 							className              = "button button-primary"
 							value                  = {submitLabel}
@@ -207,11 +207,11 @@ export default function Edit({ attributes, setAttributes }) {
 							placeholder            = {__( 'Submit', 'site-mode' )}
 							size                   = "20"
 							style                  = {buttonSettings}
-						/>
-					</p>
-				</form>
-			</div>
-		</>
+						/ >
+					< / p >
+				< / form >
+			< / div >
+		< / >
 
 	);
 }

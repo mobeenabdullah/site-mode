@@ -86,6 +86,7 @@ class Site_Mode_Admin {
 
 		// Enqueueing media.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
+        $this->create_subscribe_table();
 	}
 
 	/**
@@ -125,7 +126,7 @@ class Site_Mode_Admin {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/js/site-mode-admin.js', array( 'jquery' ), $this->version, true );
 		wp_localize_script(
 			$this->plugin_name,
@@ -317,7 +318,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo $output;
+		echo esc_html( $output );
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
@@ -358,6 +359,33 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo $css;
+		echo wp_kses_post( $css );
 	}
+
+    /**
+     * Responsible for creating custom table.
+     *
+     * @since 1.0.7
+     * @access public
+     * @return mixed
+     */
+    public function create_subscribe_table() {
+        global $wpdb;
+        $table_name      = $wpdb->prefix . 'site_mode_subscribe';
+        $charset_collate = $wpdb->get_charset_collate();
+        $sql             = "CREATE TABLE IF NOT EXISTS $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            name varchar(255) NOT NULL,
+            email varchar(255) NOT NULL UNIQUE,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY  (id)
+        ) $charset_collate;";
+        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+        $result = dbDelta( $sql );
+
+        if ( false === $result ) {
+            error_log( 'Database table creation error: ' . $wpdb->last_error );
+        }
+    }
 }

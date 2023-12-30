@@ -49,7 +49,6 @@ define( 'SITE_MODE_PUBLIC_URL', plugin_dir_url( __FILE__ ) . 'public/' );
 function activate_site_mode() {
 	require_once SITE_MODE_INC . 'class-site-mode-activator.php';
 	Site_Mode_Activator::activate();
-	Site_Mode_Subscribe::create_subscribe_table();
 }
 
 /**
@@ -62,7 +61,7 @@ function deactivate_site_mode() {
 }
 
 register_activation_hook( __FILE__, 'activate_site_mode' );
-// register_activation_hook( __FILE__, 'wp_learn_create_database_table' );
+
 register_deactivation_hook( __FILE__, 'deactivate_site_mode' );
 
 /**

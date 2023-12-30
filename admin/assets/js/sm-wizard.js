@@ -110,7 +110,7 @@ jQuery(function($) {
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
 		$template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
-		$('#sm-preview-iframe').attr('src', `https:// site-mode.com/${$template_slug}`);
+		$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_slug}`);
 		$('#selected-template-name').val($template_slug);
 		$('.sm-setting-reset-components').trigger('click');
 		$('#color_scheme').val('default').trigger('change');
@@ -139,7 +139,7 @@ jQuery(function($) {
 		$('#selected-template-name').val(templateName);
 		$('#sm-preview-iframe').attr(
 			'src',
-			`https:// site-mode.com/${templateName}`);
+			`https://site-mode.com/${templateName}`);
 		hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
 		showElements('.sm_customize_settings, .component__settings, .customize__actions');
 		addElementClass('.sm-customize', 'active');

@@ -120,12 +120,6 @@ class Site_Mode {
 	 */
 	private function load_dependencies() {
 
-		// **
-		// * This is responsible for creating the contact post type.
-		// */
-		//
-		// require_once SITE_MODE_INC . 'contact-post-type.php';
-
 		/**
 		 * This is responsible for loading all blocks.
 		 */

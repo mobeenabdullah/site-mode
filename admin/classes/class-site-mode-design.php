@@ -130,46 +130,40 @@ class Site_Mode_Design extends Settings {
 	 * @param string $email Email.
 	 * @return void
 	 */
-	protected function add_subscriber_to_mailchimp_list( $email ) {
+    protected function add_subscriber_to_mailchimp_list( $email ) {
+        try {
+            $api_key = 'fe524550eae6ded493741f2dc83ce973-us21';
+            $status  = 'subscribed'; // we are going to talk about it in just a little.
+            $list_id = '4a1d333259'; // List / Audience ID.
 
-		try {
-			$api_key = 'fe524550eae6ded493741f2dc83ce973-us21';
-			$status  = 'subscribed'; // we are going to talk about it in just a little.
-			$list_id = '4a1d333259'; // List / Audience ID.
+            // Mailchimp API endpoint
+            $url = 'https://' . substr( $api_key, strpos( $api_key, '-' ) + 1 ) . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . md5( strtolower( $email ) );
 
-			// start our Mailchimp connection.
-			$connection = wp_remote_get();
-			wp_remote_get(
-				$connection,
-				CURLOPT_URL,
-				'https://' . substr( $api_key, strpos( $api_key, '-' ) + 1 ) . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . md5( strtolower( $email ) )
-			);
+            // Mailchimp connection options
+            $options = array(
+                'headers' => array(
+                    'Content-Type'  => 'application/json',
+                    'Authorization' => 'Basic ' . base64_encode( 'user:' . $api_key ),
+                ),
+                'body'    => wp_json_encode(
+                    array(
+                        'email_address' => $email,
+                        'status'        => $status,
+                    )
+                ),
+                'method'  => 'PUT',
+                'sslverify' => false, // Only use this in development. For production, ensure SSL verification is enabled.
+            );
 
-			$username     = 'user';
-			$concatenated = base64_encode( htmlentities( $username . ':' . $api_key, ENT_QUOTES ) );
-			wp_remote_get( $connection, CURLOPT_HTTPHEADER, array( 'Content-Type: application/json', 'Authorization: Basic ' . $concatenated ) );
-			wp_remote_get( $connection, CURLOPT_RETURNTRANSFER, true );
-			wp_remote_get( $connection, CURLOPT_CUSTOMREQUEST, 'PUT' );
-			wp_remote_get( $connection, CURLOPT_POST, true );
-			wp_remote_get( $connection, CURLOPT_SSL_VERIFYPEER, false );
-			wp_remote_get(
-				$connection,
-				CURLOPT_POSTFIELDS,
-				wp_json_encode(
-					array(
-						'apikey'        => $api_key,
-						'email_address' => $email,
-						'status'        => $status,
-					)
-				)
-			);
+            // Make the request
+            $result = wp_remote_request( $url, $options );
 
-			$result = wp_remote_get( $connection );
-			update_option( 'mailchimp-subscriber-status', $result );
-		} catch ( Exception $e ) {
-			update_option( 'mailchimp-subscriber-status', $e->getMessage() );
-		}
-	}
+            // Handle the response
+            update_option( 'mailchimp-subscriber-status', $result );
+        } catch ( Exception $e ) {
+            update_option( 'mailchimp-subscriber-status', $e->getMessage() );
+        }
+    }
 
 	/**
 	 * AJAX Site Mode Page Setup Wizard.

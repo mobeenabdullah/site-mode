@@ -10,7 +10,7 @@
 }
 @media screen and (max-width: 800px) {
   .countdown_main-wrapper .countdown-wrapper {
-	gap: 0.4rem;
+    gap: 0.4rem;
   }
 }
 .countdown_main-wrapper .countdown-wrapper .sm-countdown-box {
@@ -30,10 +30,10 @@
 }
 @media screen and (max-width: 767px) {
   .countdown_main-wrapper .countdown-wrapper .sm-countdown-box {
-	width: 4rem;
-	height: 5rem;
-	padding: 0.5rem;
-	border-radius: 0.6rem;
+    width: 4rem;
+    height: 5rem;
+    padding: 0.5rem;
+    border-radius: 0.6rem;
   }
 }
 .countdown_main-wrapper .countdown-wrapper.countdown-without-box .sm-countdown-box {
@@ -126,7 +126,7 @@
 }
 @media screen and (max-width: 767px) {
   .countdown_main-wrapper .countdown-wrapper .countdown_number {
-	font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
+    font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
   }
 }
 .countdown_main-wrapper .countdown-wrapper .countdown_label {

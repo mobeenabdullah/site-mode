@@ -20,10 +20,10 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 
-$subscribeManager = new Site_Mode_Subscribe();
+$subscribe_manager = new Site_Mode_Subscribe();
 
-if ( $subscribeManager->hasSubscribes() ) {
-	$subscribeManager->displayTable();
+if ( !$subscribe_manager->has_subscribes() ) {
+    $subscribe_manager->display_no_subscribes_message();
 } else {
-	$subscribeManager->displayNoSubscribesMessage();
+    $subscribe_manager->display_table();
 }
