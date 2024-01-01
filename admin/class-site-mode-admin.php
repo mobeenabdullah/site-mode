@@ -86,7 +86,7 @@ class Site_Mode_Admin {
 
 		// Enqueueing media.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
-        $this->create_subscribe_table();
+		$this->create_subscribe_table();
 	}
 
 	/**
@@ -362,30 +362,30 @@ class Site_Mode_Admin {
 		echo wp_kses_post( $css );
 	}
 
-    /**
-     * Responsible for creating custom table.
-     *
-     * @since 1.0.7
-     * @access public
-     * @return mixed
-     */
-    public function create_subscribe_table() {
-        global $wpdb;
-        $table_name      = $wpdb->prefix . 'site_mode_subscribe';
-        $charset_collate = $wpdb->get_charset_collate();
-        $sql             = "CREATE TABLE IF NOT EXISTS $table_name (
+	/**
+	 * Responsible for creating custom table.
+	 *
+	 * @since 1.0.7
+	 * @access public
+	 * @return mixed
+	 */
+	public function create_subscribe_table() {
+		global $wpdb;
+		$table_name      = $wpdb->prefix . 'site_mode_subscribe';
+		$charset_collate = $wpdb->get_charset_collate();
+		$sql             = "CREATE TABLE IF NOT EXISTS $table_name (
             id mediumint(9) NOT NULL AUTO_INCREMENT,
             name varchar(255) NOT NULL,
             email varchar(255) NOT NULL UNIQUE,
             created_at datetime DEFAULT CURRENT_TIMESTAMP,
             PRIMARY KEY  (id)
         ) $charset_collate;";
-        require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
-        $result = dbDelta( $sql );
+		$result = dbDelta( $sql );
 
-        if ( false === $result ) {
-            error_log( 'Database table creation error: ' . $wpdb->last_error );
-        }
-    }
+		if ( false === $result ) {
+			error_log( 'Database table creation error: ' . $wpdb->last_error );
+		}
+	}
 }

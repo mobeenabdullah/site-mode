@@ -94,9 +94,8 @@ class Site_Mode_Subscribe {
 	 */
 	public function get_subscribes() {
 		global $wpdb;
-		$table_name = $wpdb->prefix . 'site_mode_subscribe';
-        // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$this->subscribes = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table_name", ARRAY_A ) );
+		$table_name       = $wpdb->prefix . 'site_mode_subscribe';
+		$this->subscribes = $wpdb->get_results( $wpdb->prepare( "SELECT * FROM $table_name WHERE 1=%d", 1 ), ARRAY_A );
 	}
 
 	/**
@@ -169,7 +168,7 @@ class Site_Mode_Subscribe {
 								}
 
 								for ( $i = 1; $i <= $total_pages; $i++ ) {
-									$class = $i == $current_page ? 'current sm__pagination-item"' : 'class="sm__pagination-item';
+									$class = $i == $current_page ? 'current sm__pagination-item' : 'sm__pagination-item';
 									$url   = esc_url(
 										add_query_arg(
 											array(
@@ -179,7 +178,7 @@ class Site_Mode_Subscribe {
 											)
 										)
 									);
-									echo esc_html( "<a href='" . esc_url( $url ) . "' class='" . esc_attr( $class ) . "'>' . $i . '</a>" );
+									echo '<a href="' . esc_url( $url ) . '" class="' . esc_attr( $class ) . '">' . $i . '</a>';
 								}
 								// Next Page Link.
 								$next_page = ( $current_page < $total_pages ) ? $current_page + 1 : $total_pages;
@@ -319,9 +318,8 @@ class Site_Mode_Subscribe {
 		$offset     = ( $page - 1 ) * $per_page;
 
         // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-        $sql_query = $wpdb->prepare("SELECT * FROM $table_name LIMIT %d, %d", $offset, $per_page);
-        $data = $wpdb->get_results($sql_query, ARRAY_A);
-
+		$sql_query = $wpdb->prepare( "SELECT * FROM $table_name LIMIT %d, %d", $offset, $per_page );
+		$data      = $wpdb->get_results( $sql_query, ARRAY_A );
 
         // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 		$total_rows = $wpdb->get_var( "SELECT COUNT(id) FROM $table_name" );
@@ -354,7 +352,7 @@ class Site_Mode_Subscribe {
 			wp_send_json_error( 'Invalid ID' );
 		}
 
-        $result = $wpdb->query($wpdb->prepare("DELETE FROM $table_name WHERE id = %d", $id));
+		$result = $wpdb->query( $wpdb->prepare( "DELETE FROM $table_name WHERE id = %d", $id ) );
 
 		if ( false === $result ) {
 			error_log( 'Database error: ' . $wpdb->last_error );

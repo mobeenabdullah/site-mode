@@ -22,8 +22,8 @@
 
 $subscribe_manager = new Site_Mode_Subscribe();
 
-if ( !$subscribe_manager->has_subscribes() ) {
-    $subscribe_manager->display_no_subscribes_message();
+if ( ! $subscribe_manager->has_subscribes() ) {
+	$subscribe_manager->display_no_subscribes_message();
 } else {
-    $subscribe_manager->display_table();
+	$subscribe_manager->display_table();
 }
