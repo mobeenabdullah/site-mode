@@ -409,7 +409,7 @@ class Site_Mode_Design extends Settings {
 			$filtered_placeholder    = str_replace( '---', '', $placeholder );
 			$filtered_placeholder    = str_replace( 'sm-', '', $filtered_placeholder );
 			$placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/' . $filtered_placeholder . '.json';
-			$placeholder_content     = json_decode( wp_remote_get( $placeholder_content_url ) )->content;
+            $placeholder_content     = json_decode( file_get_contents( $placeholder_content_url ) )->content;
 		} elseif ( ! empty( $new_color ) ) {
 			$placeholder_content = $new_color;
 		}
@@ -431,7 +431,7 @@ class Site_Mode_Design extends Settings {
 	 */
 	public function replace_template_default_image( $template_name = '' ) {
 		$template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
-		$template_content = wp_remote_get( $template_url );
+        $template_content = file_get_contents( $template_url );
 		$image_url        = $this->default_images[ $template_name ];
 
 		try {
@@ -442,14 +442,14 @@ class Site_Mode_Design extends Settings {
 
 				// Fetch the image and save it to the uploads directory.
 				$upload_dir = wp_upload_dir();
-				$image_data = wp_remote_get( $image_url );
+                $upload_dir = wp_upload_dir();
 				$filename   = basename( $image_url );
 				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
 				$media_id   = '';
 
 				// Check if the file already exists.
 				if ( ! file_exists( $file_path ) ) {
-					wp_remote_get( $file_path, $image_data );
+                    file_put_contents( $file_path, $image_data );
 
 					// Add the image to the media library.
 					$attachment = array(
@@ -545,7 +545,7 @@ class Site_Mode_Design extends Settings {
 	public function changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $scheme ) {
 
 		$color_scheme_file    = SITE_MODE_ADMIN . 'assets/color-scheme.json';
-		$color_scheme_content = json_decode( wp_remote_get( $color_scheme_file ) )->content;
+        $color_scheme_content = json_decode( file_get_contents( $color_scheme_file ) )->content;
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['base'], false, $color_scheme_content->$scheme->base );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['contrast'], false, $color_scheme_content->$scheme->contrast );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['primary'], false, $color_scheme_content->$scheme->primary );

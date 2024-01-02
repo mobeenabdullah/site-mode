@@ -241,53 +241,53 @@ class Site_Mode_Admin {
 	 * @param string $template Template file.
 	 * @return string
 	 */
-	public function use_maintenance_template( $template ) {
-		global $post;
-		$sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
-		$sm_404_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-404-page-template.php';
+    public function use_maintenance_template( $template ) {
+        global $post;
+        $sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
+        $sm_404_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-404-page-template.php';
 
-		$sm_design_data         = get_option( 'site_mode_design' );
-		$sm_404_template_active = isset( $sm_design_data['page_setup']['404_template_active'] ) ? $sm_design_data['page_setup']['404_template_active'] : '';
+        $sm_design_data         = get_option( 'site_mode_design' );
+        $sm_404_template_active = isset( $sm_design_data['page_setup']['404_template_active'] ) ? $sm_design_data['page_setup']['404_template_active'] : '';
 
-		if ( is_404() && $sm_404_template_active ) {
-			if ( is_file( $sm_404_template_file ) ) {
-				return $sm_404_template_file;
-			}
-		}
+        if ( is_404() && $sm_404_template_active ) {
+            if ( is_file( $sm_404_template_file ) ) {
+                return $sm_404_template_file;
+            }
+        }
 
-		if ( empty( $post ) ) {
-			return $template;
-		}
+        if ( empty( $post ) ) {
+            return $template;
+        }
 
-		$current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-		if ( empty( $current_template ) ) {
-			return $template;
-		}
-		if ( 'templates/sm-page-template.php' !== $current_template ) {
-			return $template;
-		}
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
 
-		global $post;
-		if ( empty( $post ) ) {
-			return $template;
-		}
+        global $post;
+        if ( empty( $post ) ) {
+            return $template;
+        }
 
-		$current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-		if ( empty( $current_template ) ) {
-			return $template;
-		}
-		if ( 'templates/sm-page-template.php' !== $current_template ) {
-			return $template;
-		}
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
 
-		if ( is_file( $sm_template_file ) ) {
-			return $sm_template_file;
-		}
+        if ( is_file( $sm_template_file ) ) {
+            return $sm_template_file;
+        }
 
-		return $template;
-	}
+        return $template;
+    }
 
 	/**
 	 * SM add body class.
@@ -318,7 +318,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo esc_html( $output );
+		echo $output;
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );

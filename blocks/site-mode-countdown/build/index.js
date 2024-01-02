@@ -238,7 +238,7 @@ function Edit({
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "countdown_main-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `countdown - wrapper ${preset}`
+    className: `countdown-wrapper ${preset}`
   }, timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-days-wrapper",
     style: smCounterBox
@@ -249,7 +249,7 @@ function Edit({
     className: "sm-countdown-days countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, " ", days, " "))), showSeperator && timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, days, " "))), showSeperator && timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "countdown-seperator",
     style: countdownSeperator
   }, " : "), timeUnits.includes('hours') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -275,7 +275,7 @@ function Edit({
     className: "sm-countdown-hours countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, " ", minutes, " "))), showSeperator && timeUnits.includes('minutes') && timeUnits.includes('seconds') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
+  }, minutes))), showSeperator && timeUnits.includes('minutes') && timeUnits.includes('seconds') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     className: "countdown-seperator",
     style: countdownSeperator
   }, " : "), timeUnits.includes('seconds') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
@@ -288,7 +288,7 @@ function Edit({
     className: "sm-countdown-minutes countdown_number"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("span", {
     style: countdownNumber
-  }, " ", seconds, " ")))))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " Timer not set ! ")));
+  }, seconds)))))) : (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", null, " Timer not set ! ")));
 }
 
 /***/ }),

@@ -119,26 +119,26 @@ export default function Edit({ attributes, setAttributes }) {
 	}
 
 	return (
-		< >
-			< InspectorControls >
-				< PanelBody title         = {__( 'Time & Date', 'site-mode' )} initialOpen = { false } >
-					< PanelRow >
+		<>
+			<InspectorControls >
+				<PanelBody title         = {__( 'Time & Date', 'site-mode' )} initialOpen = { false }>
+					<PanelRow>
 						{isInvalidDate && (
-							< p className = "error-message" >
+							<p className = "error-message">
 								{__( 'Please select a date in the future.', 'site-mode' )}
-							< / p >
+							</p>
 						)}
 
-						< DateTimePicker
+						<DateTimePicker
 							currentDate = { dueDate }
 							onChange    = { onChangeDate }
 							is12Hour    = { true }
-						/ >
-					< / PanelRow >
-				< / PanelBody >
-				< PanelBody title       = {__( 'Layout', 'site-mode' )} initialOpen = { false } >
-					< PanelRow >
-						< RadioControl
+						/>
+					</PanelRow>
+				</PanelBody>
+				<PanelBody title       = {__( 'Layout', 'site-mode' )} initialOpen = { false }>
+					<PanelRow>
+						<RadioControl
 							label       = "Shape"
 							options     = { [
 								{ label: 'Radius', value: 'default-countdown' },
@@ -146,10 +146,10 @@ export default function Edit({ attributes, setAttributes }) {
 								{ label: 'Square', value: 'countdown-without-box'}
 								] }
 							onChange    = { ( value ) => setAttributes( {preset: value} ) }
-						/ >
-					< / PanelRow >
-					< PanelRow >
-						< SelectControl
+						/>
+					</PanelRow>
+					<PanelRow>
+						<SelectControl
 							multiple    = {true}
 							label       = { __( 'Time Units' ) }
 							value       = {  timeUnits }
@@ -162,34 +162,34 @@ export default function Edit({ attributes, setAttributes }) {
 								{ value: 'seconds', label: 'Seconds'},
 								] }
 							__nextHasNoMarginBottom
-						/ >
-					< / PanelRow >
-					< PanelRow >
-						< ToggleControl
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
 							label       = "Background"
 							checked     = { background }
 							onChange    = {() => setAttributes( { background: ! background } )}
-						/ >
-					< / PanelRow >
-					< PanelRow >
-						< ToggleControl
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
 							label       = "Border"
 							checked     = { border }
 							onChange    = {() => setAttributes( { border: ! border } )}
-						/ >
-					< / PanelRow >
-					< PanelRow >
-						< ToggleControl
+						/>
+					</PanelRow>
+					<PanelRow>
+						<ToggleControl
 							label       = "Seperator"
 							checked     = { showSeperator }
 							onChange    = {() => setAttributes( { showSeperator: ! showSeperator } )}
-						/ >
-					< / PanelRow >
+						/>
+					</PanelRow>
 
-				< / PanelBody >
-				< PanelBody title = {__( 'Colors & Background', 'site-mode' )} initialOpen = { false } >
+				</PanelBody>
+				<PanelBody title = {__( 'Colors & Background', 'site-mode' )} initialOpen = { false }>
 
-					< PanelColorSettings
+					<PanelColorSettings
 						title         = "Color Settings"
 						initialOpen   = {true}
 						icon          = "admin-appearance"
@@ -220,58 +220,58 @@ export default function Edit({ attributes, setAttributes }) {
 								label: __( 'Separator Color' )
 							}
 							]}
-					/ >
-				< / PanelBody >
-			< / InspectorControls >
+					/>
+				</PanelBody>
+			</InspectorControls>
 
-			< div {...useBlockProps()} >
+			<div {...useBlockProps()}>
 
 				{dueDate ? (
-					< >
-						< div className                      = "countdown_main-wrapper" >
-							< div className                  = {`countdown - wrapper ${preset}`} >
+					<>
+						<div className="countdown_main-wrapper">
+							<div className={`countdown-wrapper ${preset}`}>
 									{timeUnits.includes( 'days' ) && (
-										< div className      = "sm-countdown-box sm-countdown-days-wrapper" style = {smCounterBox} >
-											< div className  = "sm-countdown-days-label countdown_label" style = {smCountdownDaysLabel} > { __( 'Days', 'site-mode' )} < / div >
-											< div className  = "sm-countdown-days countdown_number" >
-												< span style = {countdownNumber} > {days} < / span >
-											< / div >
-										< / div >
+										<div className="sm-countdown-box sm-countdown-days-wrapper" style = {smCounterBox}>
+											<div className="sm-countdown-days-label countdown_label" style = {smCountdownDaysLabel} > { __( 'Days', 'site-mode' )} </div>
+											<div className="sm-countdown-days countdown_number">
+												<span style={countdownNumber}>{days} </span>
+											</div>
+										</div>
 									)}
 									{showSeperator && timeUnits.includes( 'days' ) && < span className = "countdown-seperator" style = {countdownSeperator} > : < / span > }
 									{timeUnits.includes( 'hours' ) && (
-										< div className      = "sm-countdown-box sm-countdown-days-wrapper" style = {smCounterBox} >
-											< div className  = "sm-countdown-days-label countdown_label" style = {smCountdownDaysLabel} > {__( 'Hours', 'site-mode' )} < / div >
-											< div className  = "sm-countdown-days countdown_number" >
-												< span style = {countdownNumber} > {hours} < / span >
-											< / div >
-										< / div >
+										<div className      = "sm-countdown-box sm-countdown-days-wrapper" style = {smCounterBox}>
+											<div className  = "sm-countdown-days-label countdown_label" style = {smCountdownDaysLabel} > {__( 'Hours', 'site-mode' )} </div>
+											<div className  = "sm-countdown-days countdown_number">
+												<span style = {countdownNumber} > {hours} </span>
+											</div>
+										</div>
 									)}
 									{showSeperator && timeUnits.includes( 'hours' ) && < span className = "countdown-seperator" style = {countdownSeperator} > : < / span > }
 									{timeUnits.includes( 'minutes' ) && (
-										< div className      = "sm-countdown-box sm-countdown-hours-wrapper" style = {smCounterBox} >
-											< div className  = "sm-countdown-hours-label countdown_label" style = {smCountdownDaysLabel} > {__( 'Minutes', 'site-mode' )} < / div >
-											< div className  = "sm-countdown-hours countdown_number" >
-												< span style = {countdownNumber} > {minutes} < / span >
-											< / div >
-										< / div >
+										<div className ="sm-countdown-box sm-countdown-hours-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-hours-label countdown_label" style = {smCountdownDaysLabel}> {__( 'Minutes', 'site-mode' )} </div>
+											<div className="sm-countdown-hours countdown_number">
+												<span style={countdownNumber}>{minutes}</span>
+											</div>
+										</div>
 									)}
 									{showSeperator && timeUnits.includes( 'minutes' ) && timeUnits.includes( 'seconds' ) && < span className = "countdown-seperator" style = {countdownSeperator} > : < / span > }
 									{timeUnits.includes( 'seconds' ) && (
-										< div className      = "sm-countdown-box sm-countdown-minutes-wrapper" style = {smCounterBox} >
-											< div className  = "sm-countdown-minutes-label countdown_label" style = {smCountdownDaysLabel} > {__( 'Seconds', 'site-mode' )} < / div >
-											< div className  = "sm-countdown-minutes countdown_number" >
-												< span style = {countdownNumber} > {seconds} < / span >
-											< / div >
-										< / div >
+										<div className="sm-countdown-box sm-countdown-minutes-wrapper" style={smCounterBox}>
+											<div className="sm-countdown-minutes-label countdown_label" style={smCountdownDaysLabel}> {__( 'Seconds', 'site-mode' )} </div>
+											<div className="sm-countdown-minutes countdown_number">
+												<span style={countdownNumber}>{seconds}</span>
+											</div>
+										</div>
 									)}
-							< / div >
-						< / div >
-					< / >
+							</div>
+						</div>
+					</>
 				)
-				: < p > Timer not set ! < / p >
+				: <p> Timer not set ! </p>
 				}
-			< / div >
-		< / >
+			</div>
+		</>
 	);
 }
