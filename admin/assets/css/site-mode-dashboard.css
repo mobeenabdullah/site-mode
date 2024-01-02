@@ -67,20 +67,20 @@
 }
 
 /*------------------------------------------------
-Plugin general styling
+Plugin general styling 
   1.  CSS root variables
   2.  Utilities
   3.  Base structure classes
   4.  Form Layout
   5.  Buttons
   6.  Tabs
-	  (a) General Tab
-	  (b) Content Tab
-	  (c) Social Media Tab
-	  (d) Design Tab
-	  (e) SEO tab
-	  (f) Advance Tab
-	  (g) Import/Export Tab
+      (a) General Tab
+      (b) Content Tab
+      (c) Social Media Tab
+      (d) Design Tab
+      (e) SEO tab
+      (f) Advance Tab
+      (g) Import/Export Tab
   7.  Sidebar
   8.  Responsiveness
 ------------------------------------------------*/
@@ -323,7 +323,7 @@ Plugin general styling
 	color: var(--sm-primary-color);
 }
 
-.btn_sm:hover {
+.btn_sm:hover, .btn_sm:focus {
 	color: var(--sm-base-white-color);
 }
 

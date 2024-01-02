@@ -271,6 +271,7 @@ jQuery(function($) {
 							$('.thank__you-content').show();
 							$('.sm-modal-success-message').html(`Your ${res.data.template_name} page is ready. Now you can view the page or start customizing it.`)
 							$('.sm-modal-content-text .outline_btn').attr('href', res.data?.page_link?.replace('amp;', ''));
+							console.log(res.data);
 						},
 						1000
 					);
