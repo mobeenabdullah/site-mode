@@ -3,7 +3,7 @@
  * Responsible for dashboard settings page.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -12,7 +12,7 @@
 /**
  * Responsible for dashboard settings page.
  *
- * @since      1.0.7
+ * @since      1.0.8
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
