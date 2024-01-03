@@ -3,7 +3,7 @@
  * Site Mode Init
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -56,9 +56,16 @@ class Site_Mode_Init {
 	protected $intergrations_settings;
 
 	/**
+	 * Design Settings.
+	 *
+	 * @var Site_Mode_Subscribe
+	 */
+	protected $subscribe_settings;
+
+	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return void
 	 */
@@ -70,12 +77,13 @@ class Site_Mode_Init {
 		$this->seo_settings           = new Site_Mode_Seo();
 		$this->advanced_settings      = new Site_Mode_Advanced();
 		$this->intergrations_settings = new Site_Mode_Integrations();
+		$this->subscribe_settings     = new Site_Mode_Subscribe();
 	}
 
 	/**
 	 * Load all files.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return void
 	 */
@@ -87,12 +95,13 @@ class Site_Mode_Init {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-seo.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-integrations.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
 	}
 
 	/**
 	 * Get General Settings.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return Site_Mode_General
 	 */
@@ -103,7 +112,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Design Settings.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return Site_Mode_Design
 	 */
@@ -114,7 +123,7 @@ class Site_Mode_Init {
 	/**
 	 * Get SEO Settings.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return Site_Mode_Seo
 	 */
@@ -125,7 +134,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Advanced Settings.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return Site_Mode_Advanced
 	 */
@@ -136,11 +145,26 @@ class Site_Mode_Init {
 	/**
 	 * Get Integrations Settings.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return Site_Mode_Integrations
 	 */
 	public function get_integrations() {
 		return new Site_Mode_Integrations();
 	}
+
+	/**
+	 * Get Subscribe Settings.
+	 *
+	 * @since 1.0.8
+	 * @access public
+	 * @return Site_Mode_Subscribe
+	 */
+	public function get_subscribes() {
+		return new Site_Mode_Subscribe();
+	}
+
+
+
+
 }

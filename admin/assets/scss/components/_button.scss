@@ -47,9 +47,7 @@
     --btn-border-color: var(--sm-primary-color);
     --btn-text-color: var(--sm-base-white-color);
   }
-} 
-
-
+}
 
 .btn_sm {  
   --btn-padding: 0.4rem 1rem 0.5rem 1rem;
@@ -57,7 +55,7 @@
   --btn-line-height: 1;
   border-radius: 0.4rem;
   color: var(--sm-primary-color);
-  &:hover {
+  &:hover, &:focus {
     color: var(--sm-base-white-color);
   }
 }

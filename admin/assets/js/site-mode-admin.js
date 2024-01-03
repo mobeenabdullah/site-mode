@@ -208,6 +208,80 @@ jQuery(function ($) {
     // Multi Select
     $(".whitelist-pages-multiselect").select2();
     $(".whitelist_user_role-multiselect").select2();
+
+    // Export to CSV
+    $('#exportToCSV').on('click', function() {
+      $.ajax({
+        url: ajaxurl,
+        type: 'post',
+        data: {
+          action: 'subscribe_export_csv',
+        },
+        success: function(response) {
+          // Trigger file download
+          var blob = new Blob([response]);
+          var link = document.createElement('a');
+          link.href = window.URL.createObjectURL(blob);
+          link.download = 'exported_data.csv';
+          link.click();
+        }
+      });
+    });
+
+    // Delete spacific entry. window.location.href = window.location.pathname + '?page=site-mode&setting=subscribes&subscribe_page=' + newPage;
+    $('.delete_entry').on('click', function() {
+      const id = $(this).data('id');
+      const nonce = $(this).data('nonce');
+      const currentPage = parseInt(getParameterByName('subscribe_page')) || 1; // Get the current page from the URL
+
+      $.ajax({
+        url: ajaxurl,
+        type: 'post',
+        data: {
+          action: 'delete_subscribe',
+          id: id,
+          nonce: nonce,
+        },
+        success: function(response) {
+          response.total_rows = undefined;
+          if (response.success) {
+            const totalRows = response.total_rows || 0;
+
+            // Check if the current page is empty after the delete operation.
+            const isCurrentPageEmpty = totalRows <= 0;
+
+            // Check if the current page is not the first page, and it's empty.
+            if (isCurrentPageEmpty) {
+              if (currentPage > 1) {
+                const newPage = currentPage - 1;
+                window.location.href = window.location.pathname + '?page=site-mode&setting=subscribers&subscribe_page=' + newPage;
+              } else {
+                // If the current page is the first page, reload it
+                window.location.reload();
+              }
+            } else {
+              // Stay on the current page as there are remaining entries
+              window.location.reload();
+            }
+          } else {
+            alert('Something went wrong.');
+          }
+        }
+      });
+    });
+
+    // Helper function to get query parameter by name from the URL
+    function getParameterByName(name) {
+      const url = window.location.href;
+      name = name.replace(/[\[\]]/g, '\\$&');
+      const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+
   });
 
   const mobileMenu = document.querySelector(".mobile_menu");
@@ -430,8 +504,5 @@ jQuery(function ($) {
     });
   }
   getActiveSubMenu();
-
-
-
 
 });

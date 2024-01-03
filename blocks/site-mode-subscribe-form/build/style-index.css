@@ -1,0 +1,80 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.sm__subscribe {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.sm__subscribe-form {
+  width: 100%;
+}
+.sm__subscribe-form--field {
+  margin: 0 0 1rem 0;
+}
+.sm__subscribe-form--field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.sm__subscribe-form--field input {
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+  min-height: 30px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  box-sizing: border-box;
+}
+.sm__subscribe-form--field input:focus {
+  outline: none;
+}
+.sm__subscribe-form--field input.sm_error_field {
+  border: 1px solid #B00020 !important;
+}
+.sm__subscribe-form--field .submit_subscribe {
+  cursor: pointer !important;
+  width: auto !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+}
+.sm__subscribe .subscribe_error {
+  width: 100%;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+.sm__subscribe .subscribe_error.remove_error {
+  transition: all 0.3s ease-in-out;
+}
+.sm__subscribe .sub_field_error {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  margin: 0.8rem 0 0.8rem 0;
+  color: #B00020;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+}
+.sm__subscribe .sm_submit_success {
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+
+/*# sourceMappingURL=style-index.css.map*/

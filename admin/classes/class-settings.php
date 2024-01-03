@@ -3,7 +3,7 @@
  * Responsible for Site Mode Advanced Settings
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.7
+ * @since      1.0.8
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -26,10 +26,10 @@ class Settings {
 	 *
 	 * @param string       $option_name Option Name.
 	 * @param array|string $data Data.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 */
-	public function save_data( $option_name, $data ) {
+	public function save_data( $option_name, $data, $category = '' ) {
 		update_option( $option_name, $data );
 
 		if ( empty( get_option( 'sm-fresh-installation' ) ) && 'site_mode_design' === $option_name ) {
@@ -40,16 +40,17 @@ class Settings {
 					'page_link'          => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
 					'message'            => 'Template has been initialized successfully.',
 					'fresh_installation' => true,
-					'template_name'      => str_replace( '-', ' ', $data['template'] ),
+					'template_name'      => str_replace( '-', ' ', $category )
 				)
 			);
 		} elseif ( 'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
-					'tab'       => 'design',
-					'status'    => ! empty( $data['page_setup']['active_page'] ),
-					'message'   => 'Settings has been saved successfully.',
-					'page_link' => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
+					'tab'               => 'design',
+					'status'            => ! empty( $data['page_setup']['active_page'] ),
+					'message'           => 'Settings has been saved successfully.',
+					'page_link'         => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
+                    'template_name'     => str_replace( '-', ' ', $category )
 				)
 			);
 		} else {
@@ -61,7 +62,7 @@ class Settings {
 	 * Get Data.
 	 *
 	 * @param string $option_name Option Name.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 */
 	public function get_data( $option_name ) {
@@ -76,7 +77,7 @@ class Settings {
 	 * @param string $action Action.
 	 * @param mixed  $nonce Nonce.
 	 * @param string $sanitize Sanitize.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 * @return int|string|null
 	 */
@@ -101,7 +102,7 @@ class Settings {
 	 *
 	 * @param string $key Key.
 	 * @param string $action Action.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 */
 	public function verify_nonce( $key, $action ) {
@@ -114,7 +115,7 @@ class Settings {
 	 * Display Settings Page.
 	 *
 	 * @param string $page_name Page Name.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 */
 	public function display_settings_page( $page_name ) {
@@ -125,7 +126,7 @@ class Settings {
 	 * SVG Sanitization.
 	 *
 	 * @param mixed $svg_content SVG Content.
-	 * @since 1.0.7
+	 * @since 1.0.8
 	 * @access public
 	 */
 	public function wp_kses_svg( $svg_content ) {

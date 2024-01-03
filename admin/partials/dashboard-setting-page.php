@@ -3,7 +3,7 @@
  * Responsible for dashboard settings page.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -12,7 +12,7 @@
 /**
  * Responsible for dashboard settings page.
  *
- * @since      1.0.7
+ * @since      1.0.8
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -315,6 +315,15 @@ $svg_allowed_elements = array(
 			);
 
 			foreach ( $dashboard_cards as $dashboard_card ) :
+
+                if( $dashboard_card['external_link'] != '' ) {
+                    $dashboard_card['link'] = $dashboard_card['external_link'];
+                    $new_tab = 'target="_blank"';
+                } else {
+                    $dashboard_card['link'] = admin_url( $dashboard_card['link'] );
+                    $new_tab = '';
+                }
+
 				?>
 				<div class="smd-card">
 					<div class="smd-card-icon">
@@ -328,8 +337,8 @@ $svg_allowed_elements = array(
 					</div>
 					<div class="smd-card-seperator"></div>
 					<div class="smd-card-actions">
-						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1"><?php echo esc_html( $dashboard_card['link-text'] ); ?></a>
-						<a href="<?php echo esc_url( admin_url( $dashboard_card['link'] ) ); ?>" role="button" tabindex="-1">
+						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" <?php echo $new_tab; ?> role="button" tabindex="-1"><?php echo esc_html( $dashboard_card['link-text'] ); ?></a>
+						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" <?php echo $new_tab; ?> role="button" tabindex="-1">
 							<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M7.49939 1.24561C4.05314 1.24623 1.24939 4.04998 1.24939 7.49623C1.24939 10.9425 4.05314 13.7462 7.50001 13.7462C10.9456 13.7462 13.7494 10.9425 13.75 7.49623C13.75 4.04998 10.9463 1.24623 7.49939 1.24561ZM7.50001 12.4962C4.74251 12.4962 2.49939 10.2531 2.49939 7.49623C2.49939 4.73936 4.74251 2.49623 7.49939 2.49561C10.2569 2.49623 12.5 4.73936 12.5 7.49623C12.4994 10.2531 10.2563 12.4962 7.50001 12.4962Z" fill="black"/>
 								<path d="M7.5 6.87126H5V8.12126H7.5V10L10.0031 7.49688L7.5 4.99438V6.87126Z" fill="black"/>

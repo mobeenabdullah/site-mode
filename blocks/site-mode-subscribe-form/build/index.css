@@ -1,0 +1,42 @@
+/*!****************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/editor.scss ***!
+  \****************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+[data-type="site-mode/subscribe-form"] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+[data-type="site-mode/subscribe-form"] form {
+  width: 100%;
+}
+[data-type="site-mode/subscribe-form"] form p {
+  margin: 0 0 1rem 0;
+}
+[data-type="site-mode/subscribe-form"] form p label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+[data-type="site-mode/subscribe-form"] form p input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  box-sizing: border-box;
+}
+[data-type="site-mode/subscribe-form"] form p.login-submit input {
+  width: auto;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/*# sourceMappingURL=index.css.map*/

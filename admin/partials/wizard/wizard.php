@@ -3,7 +3,7 @@
  * Responsible for Site Mode Wizard Settings Page
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -267,7 +267,7 @@ if ( isset( $_GET['cat'] ) ) {
 			</div>
 		</div>
 		<?php require SITE_MODE_ADMIN . 'partials/wizard/customize-template.php'; ?>
-        <?php require SITE_MODE_ADMIN . 'partials/wizard/import-template.php'; ?>
+		<?php require SITE_MODE_ADMIN . 'partials/wizard/import-template.php'; ?>
 	</div>
 </div>
 

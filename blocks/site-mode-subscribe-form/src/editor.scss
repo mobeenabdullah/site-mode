@@ -1,0 +1,40 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+[data-type="site-mode/subscribe-form"] {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+	& form {
+	  width: 100%;
+	  & p {
+		margin: 0 0 1rem 0;
+		label {
+		  display: block;
+		  margin-bottom: 0.5rem;
+		  font-size: 0.8rem;
+		  font-weight: 600;
+		}
+		input {
+		  display: block;
+		  width: 100%;
+		  padding: 0.5rem;
+		  border: 1px solid transparent;
+		  border-radius: 0.25rem;
+		  font-size: 0.9rem;
+		  line-height: 1.7;
+		  box-sizing: border-box;
+		}
+		&.login-submit {
+		  & input {
+			width: auto;
+			font-size: 0.9rem;
+			line-height: 1.7;
+		  }
+		}
+	  }
+	}
+}

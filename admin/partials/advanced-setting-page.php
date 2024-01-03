@@ -3,7 +3,7 @@
  * Responsible for Advanced Settings page.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.7
+ * @since      1.0.8
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.7
+ * @since      1.0.8
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
