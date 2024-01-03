@@ -28,12 +28,12 @@
 
 /*-----------------------------------------------------
 1.  General Styling
-    a.  CSS Root Variables
-    b.  Hide admin controls
-    c.  Remove extra margin and padding from content
-    d.  Wizard General Styling
-    e.  Main container
-    f.  General CSS
+	a.  CSS Root Variables
+	b.  Hide admin controls
+	c.  Remove extra margin and padding from content
+	d.  Wizard General Styling
+	e.  Main container
+	f.  General CSS
 -----------------------------------------------------*/
 /*  a.   CSS Root Variables */
 :root {
@@ -275,9 +275,9 @@ html {
 
 /*-----------------------------------------------------
 1.  Wizard Header
-    a.  Wizard Logo
-    b.  Wizard Steps
-    c.  Wizard Close
+	a.  Wizard Logo
+	b.  Wizard Steps
+	c.  Wizard Close
 -----------------------------------------------------*/
 /* 1.  Wizard Header */
 .sm__wizard-header {
@@ -756,46 +756,46 @@ html {
 	padding: calc(clamp(1rem, -1.143rem + 5.714vw, 4rem)) 0 calc(clamp(4rem, 1.143rem + 7.619vw, 8rem)) 0;
 	/*
   &-form {
-    & .sm_search-field {
-      display: flex;
-      position: relative;
-      min-width: calc(clamp(15.625rem, 15.625rem + 0vw, 15.625rem));
-      width: 100%;
-      & input {
-        height: 100%;
-        width: 100%;
-        background-color: var(--wd-base-white-color);
-        flex: 1;
-        border: 1px solid var(--wd-input-border-color);
-        padding: calc(clamp(0.5rem, 0.411rem + 0.238vw, 0.625rem)) calc(clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem));
-        border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
-        &::-webkit-search-cancel-button {
-          -webkit-appearance: none;
-          cursor: pointer;
-        }
-        &:focus, &:hover, &:focus-within {
-          border-color: var(--wd-primary-color);
-          outline: 1px solid var(--wd-primary-color);
-        }
-      }
-      & button[type="submit"] {
-        position: absolute;
-        top: 0;
-        right: 0;
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-        width: calc(clamp(2.5rem, 2.946rem + -1.19vw, 1.875rem));
-        height: 100%;
-      }
-      &:hover {
-        & button[type="submit"] {
-          & svg path {
-            fill: var(--wd-primary-color);
-          }
-        }
-      }
-    }
+	& .sm_search-field {
+	  display: flex;
+	  position: relative;
+	  min-width: calc(clamp(15.625rem, 15.625rem + 0vw, 15.625rem));
+	  width: 100%;
+	  & input {
+		height: 100%;
+		width: 100%;
+		background-color: var(--wd-base-white-color);
+		flex: 1;
+		border: 1px solid var(--wd-input-border-color);
+		padding: calc(clamp(0.5rem, 0.411rem + 0.238vw, 0.625rem)) calc(clamp(0.75rem, 0.393rem + 0.952vw, 1.25rem));
+		border-radius: calc(clamp(0.125rem, 0.08rem + 0.119vw, 0.188rem));
+		&::-webkit-search-cancel-button {
+		  -webkit-appearance: none;
+		  cursor: pointer;
+		}
+		&:focus, &:hover, &:focus-within {
+		  border-color: var(--wd-primary-color);
+		  outline: 1px solid var(--wd-primary-color);
+		}
+	  }
+	  & button[type="submit"] {
+		position: absolute;
+		top: 0;
+		right: 0;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		width: calc(clamp(2.5rem, 2.946rem + -1.19vw, 1.875rem));
+		height: 100%;
+	  }
+	  &:hover {
+		& button[type="submit"] {
+		  & svg path {
+			fill: var(--wd-primary-color);
+		  }
+		}
+	  }
+	}
 
   }
   */

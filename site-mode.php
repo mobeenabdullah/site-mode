@@ -61,6 +61,7 @@ function deactivate_site_mode() {
 }
 
 register_activation_hook( __FILE__, 'activate_site_mode' );
+
 register_deactivation_hook( __FILE__, 'deactivate_site_mode' );
 
 /**

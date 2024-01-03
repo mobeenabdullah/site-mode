@@ -96,7 +96,7 @@ $page_ids = get_posts( $args );
 							<div class="template_card-actions">
 								<?php
 									$template_link = admin_url( '/admin.php?page=site-mode&design=true&template=' ) . $key . '&cat=' . $template['category'];
-									?>
+								?>
 								<a href="<?php echo esc_url( $template_link ); ?>" class="select_template">
 									<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 										<path d="M7.00008 1.16663C3.78358 1.16663 1.16675 3.78346 1.16675 6.99996C1.16675 10.2165 3.78358 12.8333 7.00008 12.8333C10.2166 12.8333 12.8334 10.2165 12.8334 6.99996C12.8334 3.78346 10.2166 1.16663 7.00008 1.16663ZM7.00008 11.6666C4.427 11.6666 2.33341 9.57304 2.33341 6.99996C2.33341 4.42688 4.427 2.33329 7.00008 2.33329C9.57316 2.33329 11.6667 4.42688 11.6667 6.99996C11.6667 9.57304 9.57316 11.6666 7.00008 11.6666Z" fill="white"/>

@@ -86,6 +86,7 @@ class Site_Mode_Admin {
 
 		// Enqueueing media.
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_media' ) );
+		$this->create_subscribe_table();
 	}
 
 	/**
@@ -125,7 +126,7 @@ class Site_Mode_Admin {
 			wp_enqueue_media();
 		}
 
-		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', array( 'jquery' ), null, true );
+		wp_enqueue_script( 'select-2', SITE_MODE_ADMIN_URL . 'assets/js/select-2.js', array( 'jquery' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name, SITE_MODE_ADMIN_URL . 'assets/js/site-mode-admin.js', array( 'jquery' ), $this->version, true );
 		wp_localize_script(
 			$this->plugin_name,
@@ -160,7 +161,6 @@ class Site_Mode_Admin {
 		$design_data      = get_option( 'site_mode_design' );
 		$maintenance_page = isset( $design_data['page_setup']['maintenance_page_id'] ) ? $design_data['page_setup']['maintenance_page_id'] : '';
 		$coming_soon_page = isset( $design_data['page_setup']['coming_soon_page_id'] ) ? $design_data['page_setup']['coming_soon_page_id'] : '';
-		$error_404_page   = isset( $design_data['page_setup']['404_page_id'] ) ? $design_data['page_setup']['404_page_id'] : '';
 
 		if ( $coming_soon_page === $post->ID ) {
 			$post_states['sm_coming_soon_status'] = 'Coming Soon';
@@ -168,10 +168,6 @@ class Site_Mode_Admin {
 
 		if ( $maintenance_page === $post->ID ) {
 			$post_states['sm_maintenance_status'] = 'Maintenance';
-		}
-
-		if ( $error_404_page === $post->ID ) {
-			$post_states['sm_404_status'] = '404 Page';
 		}
 
 		return $post_states;
@@ -183,7 +179,7 @@ class Site_Mode_Admin {
 	 * @return void
 	 */
 	public function sm_plugin_redirect() {
-		if ( get_option( 'sm_activation_redirect', false ) ) {
+		if ( get_option( 'sm_activation_redirect', false ) && is_admin() ) {
 			delete_option( 'sm_activation_redirect' );
 			wp_redirect( admin_url( 'admin.php?page=site-mode&design=true' ) );
 		}
@@ -245,53 +241,53 @@ class Site_Mode_Admin {
 	 * @param string $template Template file.
 	 * @return string
 	 */
-	public function use_maintenance_template( $template ) {
-		global $post;
-		$sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
-		$sm_404_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-404-page-template.php';
+    public function use_maintenance_template( $template ) {
+        global $post;
+        $sm_template_file     = SITE_MODE_ADMIN . 'assets/templates/sm-page-template.php';
+        $sm_404_template_file = SITE_MODE_ADMIN . 'assets/templates/sm-404-page-template.php';
 
-		$sm_design_data         = get_option( 'site_mode_design' );
-		$sm_404_template_active = isset( $sm_design_data['page_setup']['404_template_active'] ) ? $sm_design_data['page_setup']['404_template_active'] : '';
+        $sm_design_data         = get_option( 'site_mode_design' );
+        $sm_404_template_active = isset( $sm_design_data['page_setup']['404_template_active'] ) ? $sm_design_data['page_setup']['404_template_active'] : '';
 
-		if ( is_404() && $sm_404_template_active ) {
-			if ( is_file( $sm_404_template_file ) ) {
-				return $sm_404_template_file;
-			}
-		}
+        if ( is_404() && $sm_404_template_active ) {
+            if ( is_file( $sm_404_template_file ) ) {
+                return $sm_404_template_file;
+            }
+        }
 
-		if ( empty( $post ) ) {
-			return $template;
-		}
+        if ( empty( $post ) ) {
+            return $template;
+        }
 
-		$current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-		if ( empty( $current_template ) ) {
-			return $template;
-		}
-		if ( 'templates/sm-page-template.php' !== $current_template ) {
-			return $template;
-		}
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
 
-		global $post;
-		if ( empty( $post ) ) {
-			return $template;
-		}
+        global $post;
+        if ( empty( $post ) ) {
+            return $template;
+        }
 
-		$current_template = get_post_meta( $post->ID, '_wp_page_template', true );
+        $current_template = get_post_meta( $post->ID, '_wp_page_template', true );
 
-		if ( empty( $current_template ) ) {
-			return $template;
-		}
-		if ( 'templates/sm-page-template.php' !== $current_template ) {
-			return $template;
-		}
+        if ( empty( $current_template ) ) {
+            return $template;
+        }
+        if ( 'templates/sm-page-template.php' !== $current_template ) {
+            return $template;
+        }
 
-		if ( is_file( $sm_template_file ) ) {
-			return $sm_template_file;
-		}
+        if ( is_file( $sm_template_file ) ) {
+            return $sm_template_file;
+        }
 
-		return $template;
-	}
+        return $template;
+    }
 
 	/**
 	 * SM add body class.
@@ -322,7 +318,7 @@ class Site_Mode_Admin {
 		$output = ob_get_contents();
 		ob_end_clean();
 
-		echo $output ;
+		echo $output;
 
 		$doc = new DOMDocument();
 		$doc->loadHTML( '<html>' . $output . '</html>' );
@@ -363,6 +359,33 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo $css;
+		echo wp_kses_post( $css );
+	}
+
+	/**
+	 * Responsible for creating custom table.
+	 *
+	 * @since 1.0.7
+	 * @access public
+	 * @return mixed
+	 */
+	public function create_subscribe_table() {
+		global $wpdb;
+		$table_name      = $wpdb->prefix . 'site_mode_subscribe';
+		$charset_collate = $wpdb->get_charset_collate();
+		$sql             = "CREATE TABLE IF NOT EXISTS $table_name (
+            id mediumint(9) NOT NULL AUTO_INCREMENT,
+            name varchar(255) NOT NULL,
+            email varchar(255) NOT NULL UNIQUE,
+            created_at datetime DEFAULT CURRENT_TIMESTAMP,
+            PRIMARY KEY  (id)
+        ) $charset_collate;";
+		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
+
+		$result = dbDelta( $sql );
+
+		if ( false === $result ) {
+			error_log( 'Database table creation error: ' . $wpdb->last_error );
+		}
 	}
 }

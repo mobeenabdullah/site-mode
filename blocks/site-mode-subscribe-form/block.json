@@ -1,0 +1,103 @@
+{
+	"apiVersion": 2,
+	"name": "site-mode/subscribe-form",
+	"title": "Site Mode Subscribe Form",
+	"category": "widgets",
+	"icon": "businessperson",
+	"description": "A subscribe form widget.",
+	"supports": {
+		"html": false
+	},
+	"keywords": [
+		"subscribe form",
+		"site mode",
+		"form",
+	  	"contact form"
+	],
+	"textdomain": "site-mode",
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css",
+	"attributes": {
+	  "labelColor": {
+		"type": "string",
+		"default": "#000000"
+	  	},
+	  "inputBgColor": {
+		"type": "string",
+		"default": "transparent"
+	  	},
+	  "inputTextColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "inputBorderColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "inputBorderWidth": {
+		"type": "number",
+		"default": 1
+	  },
+	  "inputBorderRadius": {
+		"type": "number",
+		"default": 0
+	  },
+	  "inputPadding": {
+		"type": "object",
+		"default": {
+		  "top": "16px",
+		  "right": "16px",
+		  "bottom": "16px",
+		  "left": "16px"
+		}
+	  },
+	  "btnBorderColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "btnBgColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "btnTextColor": {
+		"type": "string",
+		"default": "#ffffff"
+	  },
+	  "btnBorderWidth": {
+		"type": "number",
+		"default": 1
+	  },
+	  "btnBorderRadius": {
+		"type": "number",
+		"default": 0
+	  },
+	  "btnPadding": {
+		"type": "object",
+		"default": {
+		  "top": "8px",
+		  "right": "16px",
+		  "bottom": "8px",
+		  "left": "16px"
+		}
+	  },
+		"nameLabel": {
+			"type": "string",
+			"default": "Name"
+		},
+		"emailLabel": {
+			"type": "string",
+			"default": "Email"
+		},
+		"namePlaceholder": {
+			"type": "string"
+		},
+		"emailPlaceholder": {
+			"type": "string"
+		},
+		"submitLabel": {
+			"type": "string",
+			"default": "Submit"
+		}
+	}
+}

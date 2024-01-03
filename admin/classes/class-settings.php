@@ -29,7 +29,7 @@ class Settings {
 	 * @since 1.0.7
 	 * @access public
 	 */
-	public function save_data( $option_name, $data ) {
+	public function save_data( $option_name, $data, $category = '' ) {
 		update_option( $option_name, $data );
 
 		if ( empty( get_option( 'sm-fresh-installation' ) ) && 'site_mode_design' === $option_name ) {
@@ -40,16 +40,17 @@ class Settings {
 					'page_link'          => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
 					'message'            => 'Template has been initialized successfully.',
 					'fresh_installation' => true,
-					'template_name'      => str_replace( '-', ' ', $data['template'] ),
+					'template_name'      => str_replace( '-', ' ', $category )
 				)
 			);
 		} elseif ( 'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
-					'tab'       => 'design',
-					'status'    => ! empty( $data['page_setup']['active_page'] ),
-					'message'   => 'Settings has been saved successfully.',
-					'page_link' => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
+					'tab'               => 'design',
+					'status'            => ! empty( $data['page_setup']['active_page'] ),
+					'message'           => 'Settings has been saved successfully.',
+					'page_link'         => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
+                    'template_name'     => str_replace( '-', ' ', $category )
 				)
 			);
 		} else {

@@ -4,7 +4,7 @@ import Edit from './edit';
 import save from './save';
 
 registerBlockType(
-	'site-mode/countdown',
+	'site-mode/subscribe-form',
 	{
 		edit: Edit,
 		save,

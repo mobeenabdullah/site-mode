@@ -54,6 +54,12 @@ class Site_Mode_Menu {
 	public function site_mode_submenu_settings_page() {
 
 		$submenus = array(
+            array(
+                'page_title' => 'Dashboard',
+                'menu_title' => 'Dashboard',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
+            ),
 			array(
 				'page_title' => 'Templates',
 				'menu_title' => 'Templates',
@@ -71,6 +77,12 @@ class Site_Mode_Menu {
 				'menu_title' => 'About Us',
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
+			),
+			array(
+				'page_title' => 'Subscribes',
+				'menu_title' => 'Subscribes',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=subscribes',
 			),
 
 		);

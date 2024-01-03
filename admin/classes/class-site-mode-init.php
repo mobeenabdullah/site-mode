@@ -56,6 +56,13 @@ class Site_Mode_Init {
 	protected $intergrations_settings;
 
 	/**
+	 * Design Settings.
+	 *
+	 * @var Site_Mode_Subscribe
+	 */
+	protected $subscribe_settings;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.7
@@ -70,6 +77,7 @@ class Site_Mode_Init {
 		$this->seo_settings           = new Site_Mode_Seo();
 		$this->advanced_settings      = new Site_Mode_Advanced();
 		$this->intergrations_settings = new Site_Mode_Integrations();
+		$this->subscribe_settings     = new Site_Mode_Subscribe();
 	}
 
 	/**
@@ -87,6 +95,7 @@ class Site_Mode_Init {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-seo.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-integrations.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
 	}
 
 	/**
@@ -143,4 +152,19 @@ class Site_Mode_Init {
 	public function get_integrations() {
 		return new Site_Mode_Integrations();
 	}
+
+	/**
+	 * Get Subscribe Settings.
+	 *
+	 * @since 1.0.7
+	 * @access public
+	 * @return Site_Mode_Subscribe
+	 */
+	public function get_subscribes() {
+		return new Site_Mode_Subscribe();
+	}
+
+
+
+
 }

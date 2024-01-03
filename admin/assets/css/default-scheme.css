@@ -1,7 +1,7 @@
 :root {
-    --wp--preset--color--base: #ffffff !important;
-    --wp--preset--color--primary: #e63946 !important;
-    --wp--preset--color--contrast: #000000 !important;
-    --wp--preset--color--secondary: #fcb900 !important;
-    --wp--preset--color--tertiary: #F6F6F6 !important;
+	--wp--preset--color--base: #ffffff !important;
+	--wp--preset--color--primary: #e63946 !important;
+	--wp--preset--color--contrast: #000000 !important;
+	--wp--preset--color--secondary: #fcb900 !important;
+	--wp--preset--color--tertiary: #F6F6F6 !important;
 }
