@@ -51,16 +51,17 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
 								'link'  => 'settings',
 							),
+                            array(
+                                'title' => 'Subscribers',
+                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
+                                'link'  => 'subscribers',
+                            ),
 							array(
 								'title' => 'About Us',
 								'icon'  => '<i class="fa-solid fa-sliders"></i>',
 								'link'  => 'about-us',
 							),
-							array(
-								'title' => 'Subscribes',
-								'icon'  => '<i class="fa-solid fa-sliders"></i>',
-								'link'  => 'subscribes',
-							),
+
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
@@ -68,7 +69,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
 							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo esc_url( admin_url( '?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
+								<a href="<?php echo esc_url( admin_url( 'admin.php?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
 							<?php
 						endforeach;
 						?>
@@ -145,7 +146,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							}
 						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
-						} elseif ( 'subscribes' === $current_tab ) {
+						} elseif ( 'subscribers' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/subscribes.php';
 						} else {
 							require_once SITE_MODE_ADMIN . 'partials/dashboard-setting-page.php';

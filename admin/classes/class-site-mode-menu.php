@@ -72,18 +72,19 @@ class Site_Mode_Menu {
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
 			),
+            array(
+                'page_title' => 'Subscribers',
+                'menu_title' => 'Subscribers',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=subscribers',
+            ),
 			array(
 				'page_title' => 'About Us',
 				'menu_title' => 'About Us',
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
 			),
-			array(
-				'page_title' => 'Subscribes',
-				'menu_title' => 'Subscribes',
-				'capability' => 'manage_options',
-				'menu_slug'  => 'admin.php?page=site-mode&setting=subscribes',
-			),
+
 
 		);
 

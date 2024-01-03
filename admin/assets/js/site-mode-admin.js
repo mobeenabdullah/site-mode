@@ -254,7 +254,7 @@ jQuery(function ($) {
             if (isCurrentPageEmpty) {
               if (currentPage > 1) {
                 const newPage = currentPage - 1;
-                window.location.href = window.location.pathname + '?page=site-mode&setting=subscribes&subscribe_page=' + newPage;
+                window.location.href = window.location.pathname + '?page=site-mode&setting=subscribers&subscribe_page=' + newPage;
               } else {
                 // If the current page is the first page, reload it
                 window.location.reload();
