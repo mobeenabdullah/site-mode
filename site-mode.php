@@ -14,7 +14,7 @@
  * @wordpress-plugin
  * Plugin Name:       Site Mode -  Coming Soon Page, Maintenance Mode & Landing Page Builder
  * Plugin URI:        https://github.com/mobeenabdullah/site-mode
- * Description:       Create a beautiful Maintenance, Coming Soon or Under Construction Page in Seconds.
+ * Description:       Activate Maintenance Mode, Coming Soon or Under Construction Page in moments.
  * Version:           1.0.8
  * Author:            Mobeen Abdullah
  * Author URI:        https://github.com/mobeenabdullah

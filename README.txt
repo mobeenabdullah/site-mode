@@ -9,7 +9,7 @@ Stable tag: 1.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Your all-in-one plugin for Maintenance, Coming Soon, and Under Construction pages.
+Activate Maintenance Mode, Coming Soon, or Under Construction Page in seconds with our easy drag & drop builder. Quick, customizable, and ready to go.
 
 == Description ==
 
