@@ -185,7 +185,7 @@ class Site_Mode_Design extends Settings {
 			$design_data['page_setup']['active_page'] = $active_page_id;
 		}
 
-		$this->save_data( $this->option_name, $design_data );
+		$this->save_data( $this->option_name, $design_data, $page_category );
 		die();
 	}
 
@@ -251,7 +251,7 @@ class Site_Mode_Design extends Settings {
 		if ( is_wp_error( $result ) ) {
 			wp_send_json_error( 'Something went wrong.' );
 		}
-		$this->save_data( $this->option_name, $design_data );
+		$this->save_data( $this->option_name, $design_data, $category );
 	}
 
 	/**
@@ -333,7 +333,7 @@ class Site_Mode_Design extends Settings {
 				'template'   => $template_name,
 				'page_setup' => $this->page_setup,
 			);
-			$this->save_data( $this->option_name, $design_data );
+			$this->save_data( $this->option_name, $design_data, $category );
 			return;
 		}
 
@@ -364,7 +364,7 @@ class Site_Mode_Design extends Settings {
 				'page_setup' => $this->page_setup,
 			);
 
-			$this->save_data( $this->option_name, $design_data );
+			$this->save_data( $this->option_name, $design_data, $category );
 		} else {
 			wp_send_json_error( 'Something went wrong.' );
 		}
@@ -429,96 +429,96 @@ class Site_Mode_Design extends Settings {
 	 * @param mixed $template_name Template name.
 	 * @return array|string|string[]
 	 */
-	public function replace_template_default_image( $template_name = '' ) {
-		$template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
+    public function replace_template_default_image( $template_name = '' ) {
+        $template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
         $template_content = file_get_contents( $template_url );
-		$image_url        = $this->default_images[ $template_name ];
+        $image_url        = $this->default_images[ $template_name ];
 
-		try {
+        try {
 
-			if ( ! str_contains( $template_content, $template_name ) ) {
-				return $template_content;
-			} else {
+            if ( ! str_contains( $template_content, $template_name ) ) {
+                return $template_content;
+            } else {
 
-				// Fetch the image and save it to the uploads directory.
-				$upload_dir = wp_upload_dir();
+                // Fetch the image and save it to the uploads directory.
                 $upload_dir = wp_upload_dir();
-				$filename   = basename( $image_url );
-				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
-				$media_id   = '';
+                $image_data = file_get_contents( $image_url );
+                $filename   = basename( $image_url );
+                $file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
+                $media_id   = '';
 
-				// Check if the file already exists.
-				if ( ! file_exists( $file_path ) ) {
+                // Check if the file already exists.
+                if ( ! file_exists( $file_path ) ) {
                     file_put_contents( $file_path, $image_data );
 
-					// Add the image to the media library.
-					$attachment = array(
-						'post_title'   => sanitize_file_name( $template_name ),
-						'post_content' => '',
-						'post_status'  => 'inherit',
-					);
+                    // Add the image to the media library.
+                    $attachment = array(
+                        'post_title'   => sanitize_file_name( $template_name ),
+                        'post_content' => '',
+                        'post_status'  => 'inherit',
+                    );
 
-					$media_id = wp_insert_attachment( $attachment, $file_path );
+                    $media_id = wp_insert_attachment( $attachment, $file_path );
 
-					// Update image metadata.
-					require_once ABSPATH . 'wp-admin/includes/image.php';
-					$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
-					wp_update_attachment_metadata( $media_id, $attach_data );
-				} else {
+                    // Update image metadata.
+                    require_once ABSPATH . 'wp-admin/includes/image.php';
+                    $attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
+                    wp_update_attachment_metadata( $media_id, $attach_data );
+                } else {
 
-					$attachment_posts = get_posts(
-						array(
-							'post_type'   => 'attachment',
-							'post_status' => 'inherit',
-							'meta_query'  => array(
-								array(
-									'key'     => '_wp_attached_file',
-									'value'   => $template_name . '-' . $filename,
-									'compare' => 'LIKE',
-								),
-							),
-						)
-					);
+                    $attachment_posts = get_posts(
+                        array(
+                            'post_type'   => 'attachment',
+                            'post_status' => 'inherit',
+                            'meta_query'  => array(
+                                array(
+                                    'key'     => '_wp_attached_file',
+                                    'value'   => $template_name . '-' . $filename,
+                                    'compare' => 'LIKE',
+                                ),
+                            ),
+                        )
+                    );
 
-					if ( ! empty( $attachment_posts ) ) {
-						$media_id = $attachment_posts[0]->ID;
-					} else {
+                    if ( ! empty( $attachment_posts ) ) {
+                        $media_id = $attachment_posts[0]->ID;
+                    } else {
 
-						$attachment = array(
-							'post_title'   => sanitize_file_name( $template_name ),
-							'post_content' => '',
-							'post_status'  => 'inherit',
-						);
+                        $attachment = array(
+                            'post_title'   => sanitize_file_name( $template_name ),
+                            'post_content' => '',
+                            'post_status'  => 'inherit',
+                        );
 
-						$media_id = wp_insert_attachment( $attachment, $file_path );
+                        $media_id = wp_insert_attachment( $attachment, $file_path );
 
-						// Update image metadata.
-						require_once ABSPATH . 'wp-admin/includes/image.php';
-						$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
-						wp_update_attachment_metadata( $media_id, $attach_data );
+                        // Update image metadata.
+                        require_once ABSPATH . 'wp-admin/includes/image.php';
+                        $attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
+                        wp_update_attachment_metadata( $media_id, $attach_data );
 
-					}
-				}
+                    }
+                }
 
-				// Check if the image was successfully uploaded.
-				if ( $media_id ) {
-					$media_url = wp_get_attachment_url( $media_id );
-					if ( $media_url ) {
-						// Replace "template1.png" with the site-mode media URL.
-						$new_content = str_replace( $template_name, $media_url, $template_content );
-						// Save the updated content back to template-content.php.
-						return $new_content;
-					} else {
-						return $template_content;
-					}
-				} else {
-					return $template_content;
-				}
-			}
-		} catch ( Exception $e ) {
-			return $template_content;
-		}
-	}
+                // Check if the image was successfully uploaded.
+                if ( $media_id ) {
+                    $media_url = wp_get_attachment_url( $media_id );
+                    if ( $media_url ) {
+                        // Replace "template1.png" with the site-mode media URL.
+                        $new_content = str_replace( $template_name, $media_url, $template_content );
+                        // Save the updated content back to template-content.php.
+                        return $new_content;
+                    } else {
+                        return $template_content;
+                    }
+                } else {
+                    return $template_content;
+                }
+            }
+        } catch ( Exception $e ) {
+            return $template_content;
+        }
+    }
 
 	/**
 	 * Sm design properties init.
