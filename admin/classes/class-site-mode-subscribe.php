@@ -130,7 +130,7 @@ class Site_Mode_Subscribe {
 				<div class="sm__subscribes-cover">
 					<div class="sm__subscribes-cover--content">
 						<div class="sm__subscribes-header">
-							<h2 class="page__title">Subscribes</h2>
+							<h2 class="page__title">Subscribers</h2>
 							<?php $this->display_export_button(); ?>
 						</div>
 						<div class="subscribe__table">
@@ -159,7 +159,7 @@ class Site_Mode_Subscribe {
 										add_query_arg(
 											array(
 												'page'    => 'site-mode',
-												'setting' => 'subscribes',
+												'setting' => 'subscribers',
 												'subscribe_page' => $prev_page,
 											),
 											admin_url()
@@ -173,7 +173,7 @@ class Site_Mode_Subscribe {
 										add_query_arg(
 											array(
 												'page'    => 'site-mode',
-												'setting' => 'subscribes',
+												'setting' => 'subscribers',
 												'subscribe_page' => $i,
 											)
 										)
@@ -187,7 +187,7 @@ class Site_Mode_Subscribe {
 										add_query_arg(
 											array(
 												'page'    => 'site-mode',
-												'setting' => 'subscribes',
+												'setting' => 'subscribers',
 												'subscribe_page' => $next_page,
 											)
 										)
