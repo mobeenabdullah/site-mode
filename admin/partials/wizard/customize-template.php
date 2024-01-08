@@ -198,7 +198,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 						<span>Back</span>
 					</button>
 					<button class="start_importing primary_btn_outline sm__btn" type="button">
-						<span>Import Settings</span>
+						<span>Activate</span>
 						<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 							<path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>
 						</svg>
