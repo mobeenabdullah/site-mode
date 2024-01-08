@@ -17,11 +17,18 @@
 require_once SITE_MODE_BLOCKS . 'site-mode-countdown/site-mode-countdown.php';
 
 /**
- * Site Mode Contact Form Block
+ * Site Mode Subscribe Form Block
  *
  * @since 1.0.8 *
  */
 require_once SITE_MODE_BLOCKS . 'site-mode-subscribe-form/site-mode-subscribe-form.php';
+
+/**
+ * Site Mode Contact Form Block
+ *
+ * @since 1.0.8 *
+ */
+require_once SITE_MODE_BLOCKS . 'site-mode-contact-form/site-mode-contact-form.php';
 
 
 /**
