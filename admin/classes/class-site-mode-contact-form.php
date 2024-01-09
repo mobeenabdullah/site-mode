@@ -22,15 +22,31 @@
 class Site_Mode_Contact_Form {
 
     public function send_email_cb() {
-        $full_name = sanitize_text_field($_POST['name']); // Changed from 'fullName' to 'name'
+        // Sanitize and validate inputs
+        $full_name = sanitize_text_field($_POST['name']);
         $email = sanitize_email($_POST['email']);
         $subject = sanitize_text_field($_POST['subject']);
         $message = sanitize_textarea_field($_POST['message']);
 
+        // Validate email
+        if (!is_email($email)) {
+            echo json_encode(['status' => 'Fail', 'message' => 'Invalid email address.']);
+            wp_die();
+        }
+
+        // Check required fields
+        if (empty($full_name) || empty($subject) || empty($message)) {
+            echo json_encode(['status' => 'Fail', 'message' => 'Please fill in all required fields.']);
+            wp_die();
+        }
+
+        // Email headers
         $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $full_name . ' <' . $email . '>');
 
+        // Get admin email
         $admin_email = get_option('admin_email');
 
+        // Send email
         if (wp_mail($admin_email, $subject, $message, $headers)) {
             echo json_encode(['status' => 'Success', 'message' => 'Email sent successfully.']);
         } else {
