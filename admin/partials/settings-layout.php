@@ -42,14 +42,9 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 								'link'  => 'dashboard',
 							),
 							array(
-								'title' => 'Templates',
+								'title' => 'Setup',
 								'icon'  => '<i class="fa-solid fa-palette"></i>',
-								'link'  => 'templates',
-							),
-							array(
-								'title' => 'Settings',
-								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
-								'link'  => 'settings',
+								'link'  => 'admin.php?page=site-mode&design=true',
 							),
                             array(
                                 'title' => 'Subscribers',
@@ -57,11 +52,10 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
                                 'link'  => 'subscribers',
                             ),
 							array(
-								'title' => 'About Us',
-								'icon'  => '<i class="fa-solid fa-sliders"></i>',
-								'link'  => 'about-us',
+								'title' => 'Settings',
+								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
+								'link'  => 'settings',
 							),
-
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
@@ -82,16 +76,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 					<div class="smd-tab-content" id="<?php echo esc_attr( $current_tab ); ?>">
 						<?php
 
-						if ( 'settings' === $current_tab || 'templates' === $current_tab ) {
-
-							if ( 'templates' === $current_tab ) {
-								require_once SITE_MODE_ADMIN . 'classes/class-site-mode-design.php';
-								$class_name = 'Site_Mode_Design';
-								$class      = new $class_name();
-								$class->render();
-							} else {
-
-
+						if ( 'settings' === $current_tab) {
 								?>
 								<div class="tabs_wrapper">
 									<ul class="sm_tabs">
@@ -143,7 +128,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 
 								</div>
 								<?php
-							}
+
 						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
 						} elseif ( 'subscribers' === $current_tab ) {

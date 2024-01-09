@@ -60,18 +60,12 @@ class Site_Mode_Menu {
                 'capability' => 'manage_options',
                 'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
             ),
-			array(
-				'page_title' => 'Templates',
-				'menu_title' => 'Templates',
-				'capability' => 'manage_options',
-				'menu_slug'  => 'admin.php?page=site-mode&setting=templates',
-			),
-			array(
-				'page_title' => 'Settings',
-				'menu_title' => 'Settings',
-				'capability' => 'manage_options',
-				'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
-			),
+//			array(
+//				'page_title' => 'Templates',
+//				'menu_title' => 'Templates',
+//				'capability' => 'manage_options',
+//				'menu_slug'  => 'admin.php?page=site-mode&setting=templates',
+//			),
             array(
                 'page_title' => 'Subscribers',
                 'menu_title' => 'Subscribers',
@@ -84,8 +78,12 @@ class Site_Mode_Menu {
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
 			),
-
-
+            array(
+                'page_title' => 'Settings',
+                'menu_title' => 'Settings',
+                'capability' => 'manage_options',
+                'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
+            ),
 		);
 
 		foreach ( $submenus as $submenu ) {
