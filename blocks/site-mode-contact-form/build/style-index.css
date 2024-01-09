@@ -7,11 +7,6 @@
  *
  * Replace them with your own styles or remove the file completely.
  */
-.sm__contact {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
 .sm__contact-form {
   width: 100%;
 }
@@ -65,7 +60,7 @@
 .sm__contact .contact_error.remove_error {
   transition: all 0.3s ease-in-out;
 }
-.sm__contact .sub_field_error {
+.sm__contact .contact_field_error {
   box-sizing: border-box;
   width: 100%;
   background-color: transparent;
@@ -79,6 +74,26 @@
   text-align: center;
   font-size: 1.6rem;
   line-height: 1.7;
+}
+.sm__contact-two-cols {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .sm__contact-two-cols {
+    flex-wrap: wrap;
+  }
+}
+.sm__contact-two-cols .sm__contact-form--field {
+  width: calc(50% - 1rem);
+  margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+  .sm__contact-two-cols .sm__contact-form--field {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=style-index.css.map*/

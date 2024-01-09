@@ -30,6 +30,8 @@ export default function Edit({ attributes, setAttributes }) {
 		btnBorderWidth,
 		btnBorderRadius,
 		btnPadding,
+		subjectLabel,
+		subjectValue
 	} = attributes;
 
 	const smLabelColor = {
@@ -162,40 +164,61 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...useBlockProps()} >
 				<form class="site_mode_contact">
-					<p className="login-username">
+					<div className="sm__contact-two-cols">
+						<p className="login-username">
+							<RichText
+								tagName="label"
+								placeholder={__( 'Full Name', 'site-mode' )}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes( { nameLabel: value } )}
+								value={nameLabel}
+								style={smLabelColor}
+							/>
+							<input
+								type="text"
+								className="input"
+								placeholder={__( 'John Doe', 'site-mode' )}
+								onChange={(event) => setAttributes( { nameValue: event.target.value } )}
+								value={nameValue}
+								size="20"
+								style={smInputField}
+							/>
+						</p>
+						<p className="login-password">
+							<RichText
+								tagName="label"
+								placeholder={__( 'Your Email', 'site-mode' )}
+								keepPlaceholderOnFocus="true"
+								onChange={(value) => setAttributes( { emailLabel: value } )}
+								value={emailLabel}
+								style={smLabelColor}
+							/>
+							<input
+								type="text"
+								className="input"
+								placeholder={__( 'example@xyz.com', 'site-mode' )}
+								onChange={(event) => setAttributes( { emailValue: event.target.value } )}
+								value={emailValue}
+								size="20"
+								style={smInputField}
+							/>
+						</p>
+					</div>
+					<p className="subject-field">
 						<RichText
 							tagName="label"
-							placeholder={__( 'Full Name', 'site-mode' )}
+							placeholder={__( 'Subject', 'site-mode' )}
 							keepPlaceholderOnFocus="true"
-							onChange={(value) => setAttributes( { nameLabel: value } )}
-							value={nameLabel}
+							onChange={(value) => setAttributes( { subjectLabel: value } )}
+							value={subjectLabel}
 							style={smLabelColor}
 						/>
 						<input
 							type="text"
 							className="input"
-							placeholder={__( 'John Doe', 'site-mode' )}
-							onChange={(event) => setAttributes( { nameValue: event.target.value } )}
-							value={nameValue}
-							size="20"
-							style={smInputField}
-						/>
-					</p>
-					<p className="login-password">
-						<RichText
-							tagName="label"
-							placeholder={__( 'Your Email', 'site-mode' )}
-							keepPlaceholderOnFocus="true"
-							onChange={(value) => setAttributes( { emailLabel: value } )}
-							value={emailLabel}
-							style={smLabelColor}
-						/>
-						<input
-							type="text"
-							className="input"
-							placeholder={__( 'example@xyz.com', 'site-mode' )}
-							onChange={(event) => setAttributes( { emailValue: event.target.value } )}
-							value={emailValue}
+							placeholder={__( 'Subject', 'site-mode' )}
+							onChange={(event) => setAttributes( { subjectValue: event.target.value } )}
+							value={subjectValue}
 							size="20"
 							style={smInputField}
 						/>

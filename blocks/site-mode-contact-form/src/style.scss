@@ -6,9 +6,6 @@
  */
 
 .sm__contact {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
   &-form {
 	width: 100%;
 	&--field {
@@ -62,7 +59,7 @@
 	  transition: all 0.3s ease-in-out;
 	}
   }
-  & .sub_field_error {
+  & .contact_field_error {
 	box-sizing: border-box;
 	width: 100%;
 	background-color: transparent;
@@ -77,5 +74,20 @@
 	font-size: 1.6rem;
 	line-height: 1.7;
   }
+  &-two-cols {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 767px) {
+	  flex-wrap: wrap;
+	}
+	& .sm__contact-form--field {
+	  width: calc(50% - 1rem);
+	  margin-bottom: 0;
+	  @media screen and (max-width: 767px) {
+		width: 100%;
+	  }
+	}
+  }
 }
-

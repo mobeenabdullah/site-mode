@@ -89,6 +89,10 @@
 			"type": "string",
 			"default": "Email"
 		},
+	  "subjectLabel": {
+		"type": "string",
+		"default": "Subject"
+	  },
 	  "messageLabel": {
 		"type": "string",
 		"default": "Message"
@@ -99,6 +103,9 @@
 		"emailValue": {
 			"type": "string"
 		},
+	  "subjectValue": {
+		"type": "string"
+	  },
 		"messageValue": {
 		  "type": "string"
 		},

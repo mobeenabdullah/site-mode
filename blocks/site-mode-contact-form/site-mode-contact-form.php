@@ -1,6 +1,6 @@
 <?php
 /**
- * Responsible for subscribe table layout.
+ * Responsible for contact table layout.
  *
  * @link       https://mobeenabdullah.com
  * @since      1.0.8
@@ -20,12 +20,14 @@
 function site_mode_contact_form_block_render_callback( $attributes ) {
 	$name_label        = isset( $attributes['nameLabel'] ) ? $attributes['nameLabel'] : 'Name';
 	$email_label       = isset( $attributes['emailLabel'] ) ? $attributes['emailLabel'] : 'Email';
+	$subject_label       = isset( $attributes['subjectLabel'] ) ? $attributes['subjectLabel'] : 'Subject';
 	$message_label       = isset( $attributes['messageLabel'] ) ? $attributes['messageLabel'] : 'Email';
 	$submit_label      = isset( $attributes['submitLabel'] ) ? $attributes['submitLabel'] : 'Submit';
 	$name_placeholder  = isset( $attributes['nameValue'] ) ? $attributes['nameValue'] : 'Enter your name';
 	$email_placeholder = isset( $attributes['emailValue'] ) ? $attributes['emailValue'] : 'Enter your email';
+	$subject_placeholder = isset( $attributes['subjectValue'] ) ? $attributes['subjectValue'] : 'Enter subject';
 	$message_placeholder = isset( $attributes['messageValue'] ) ? $attributes['messageValue'] : 'Message...';
-	$nonce             = wp_create_nonce( 'sm_subscribe_form_nonce' );
+	$nonce             = wp_create_nonce( 'sm_contact_form_nonce' );
 
 	$label_color         = ! is_admin() && $attributes['labelColor'] ? $attributes['labelColor'] : '';
 	$input_bg_color      = ! is_admin() && $attributes['inputBgColor'] ? $attributes['inputBgColor'] : '';
@@ -51,7 +53,9 @@ function site_mode_contact_form_block_render_callback( $attributes ) {
 
 	$markup  = '<div class="sm__contact">';
 	$markup .= '<form class="sm__contact-form">';
-	$markup .= '<input type="hidden" name="sm_subscribe_form_nonce" id="sm-contact-nonce" value="' . esc_attr( $nonce ) . '">';
+	$markup .= '<input type="hidden" name="sm_contact_form_nonce" id="sm-contact-nonce" value="' . esc_attr( $nonce ) . '">';
+
+	$markup .= '<div class="sm__contact-two-cols">';
 	// Name field.
 	$markup .= '<div class="sm__contact-form--field">';
 	$markup .= '<label for="sm-contact-name" style="color: ' . $label_color . '">' . esc_attr( $name_label ) . '</label>';
@@ -63,7 +67,14 @@ function site_mode_contact_form_block_render_callback( $attributes ) {
 	$markup .= '<label for="sm-contact-email" style="color: ' . $label_color . '">' . esc_attr( $email_label ) . '</label>';
 	$markup .= '<input type="email" id="sm-contact-email" name="email" placeholder="' . esc_attr( $email_placeholder ) . '"style="background-color: ' . $input_bg_color . '; color:' . $input_text_color . '; border-color: ' . $input_border_color . '; border-radius: ' . $input_border_radius . 'px; border-width: ' . $input_border_width . 'px; padding: ' . $padding . '">';
 	$markup .= '</div>';
+	$markup .= '</div>';
 
+	$markup .= '<div class="sm__contact-form--field">';
+	$markup .= '<label for="sm-contact-subject" style="color: ' . $label_color . '">' . esc_attr( $subject_label ) . '</label>';
+	$markup .= '<input type="text" id="sm-contact-subject" name="subject" placeholder="' . esc_attr( $subject_placeholder ) . '"style="background-color: ' . $input_bg_color . '; color:' . $input_text_color . '; border-color: ' . $input_border_color . '; border-radius: ' . $input_border_radius . 'px; border-width: ' . $input_border_width . 'px; padding: ' . $padding . '">';
+	$markup .= '</div>';
+
+	// Message field.
 	$markup .= '<div class="sm__contact-form--field">';
 	$markup .= '<label for="sm-contact-message" style="color: ' . $label_color . '">' . esc_attr( $message_label ) . '</label>';
 	$markup .= '<textarea id="sm-contact-message" name="email" placeholder="' . esc_attr( $message_placeholder ) . '"style="background-color: ' . $input_bg_color . '; color:' . $input_text_color . '; border-color: ' . $input_border_color . '; border-radius: ' . $input_border_radius . 'px; border-width: ' . $input_border_width . 'px; padding: ' . $padding . '"></textarea>';
@@ -108,7 +119,7 @@ function site_mode_contact_form_block_script() {
 	}
 
 	wp_enqueue_script(
-		'sm-subscribe-form-block',
+		'sm-contact-form-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-contact-form.js',
 		array( 'wp-blocks', 'wp-editor' ),
 		'1.0.8',
@@ -116,8 +127,8 @@ function site_mode_contact_form_block_script() {
 	);
 
 	wp_localize_script(
-		'sm-subscribe-form-block',
-		'smSubscribeForm',
+		'sm-contact-form-block',
+		'smContactForm',
 		array(
 			'ajax_url' => admin_url( 'admin-ajax.php' ),
 		)
@@ -125,4 +136,3 @@ function site_mode_contact_form_block_script() {
 
 }
 add_action( 'enqueue_block_assets', 'site_mode_contact_form_block_script' );
-

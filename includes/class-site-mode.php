@@ -163,6 +163,8 @@ class Site_Mode {
 
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
 
+        require_once SITE_MODE_ADMIN . 'classes/class-site-mode-contact-form.php';
+
 		$this->loader = new Site_Mode_Loader();
 	}
 
@@ -225,6 +227,8 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_ajax_nopriv_insert_subscribes', $this->classes_loader->get_subscribes(), 'insert_subscribes' );
 		$this->loader->add_action( 'wp_ajax_subscribe_export_csv', $this->classes_loader->get_subscribes(), 'subscribe_export_csv' );
 		$this->loader->add_action( 'wp_ajax_delete_subscribe', $this->classes_loader->get_subscribes(), 'delete_subscribe' );
+        $this->loader->add_action( 'wp_ajax_send_email_cb', $this->classes_loader->get_contact_form(), 'send_email_cb' );
+        $this->loader->add_action( 'wp_ajax_nopriv_send_email_cb', $this->classes_loader->get_contact_form(), 'send_email_cb' );
 
 	}
 

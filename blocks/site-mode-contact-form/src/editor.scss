@@ -37,4 +37,22 @@
 		}
 	  }
 	}
+  & .sm__contact-two-cols {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 767px) {
+	  flex-wrap: wrap;
+	}
+	& p {
+	  width: calc(50% - 1rem);
+	  margin-bottom: 0;
+	  @media screen and (max-width: 767px) {
+		width: 100%;
+	  }
+	}
+  }
 }
+
+

@@ -50,7 +50,9 @@ function Edit({
     btnBorderColor,
     btnBorderWidth,
     btnBorderRadius,
-    btnPadding
+    btnPadding,
+    subjectLabel,
+    subjectValue
   } = attributes;
   const smLabelColor = {
     color: labelColor ? labelColor : 'transparent'
@@ -192,6 +194,8 @@ function Edit({
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     class: "site_mode_contact"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "sm__contact-two-cols"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
     className: "login-username"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
@@ -232,6 +236,27 @@ function Edit({
       emailValue: event.target.value
     }),
     value: emailValue,
+    size: "20",
+    style: smInputField
+  }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+    className: "subject-field"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+    tagName: "label",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Subject', 'site-mode'),
+    keepPlaceholderOnFocus: "true",
+    onChange: value => setAttributes({
+      subjectLabel: value
+    }),
+    value: subjectLabel,
+    style: smLabelColor
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
+    type: "text",
+    className: "input",
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Subject', 'site-mode'),
+    onChange: event => setAttributes({
+      subjectValue: event.target.value
+    }),
+    value: subjectValue,
     size: "20",
     style: smInputField
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {

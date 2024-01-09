@@ -38,5 +38,25 @@
   font-size: 0.9rem;
   line-height: 1.7;
 }
+[data-type="site-mode/contact-form"] .sm__contact-two-cols {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  [data-type="site-mode/contact-form"] .sm__contact-two-cols {
+    flex-wrap: wrap;
+  }
+}
+[data-type="site-mode/contact-form"] .sm__contact-two-cols p {
+  width: calc(50% - 1rem);
+  margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+  [data-type="site-mode/contact-form"] .sm__contact-two-cols p {
+    width: 100%;
+  }
+}
 
 /*# sourceMappingURL=index.css.map*/
