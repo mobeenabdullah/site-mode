@@ -5,7 +5,7 @@ Tags: maintenance, coming soon, maintenance page, coming soon page, under constr
 Requires at least: 4.7
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.0.8
+Stable tag: 1.0.9
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,8 @@ Yes, this plugin is Completely FREE
 
 == Changelog ==
 
+= 1.0.9 =
+* Added contact form feature and fixed some errors
 = 1.0.8 =
 * Added subscription form feature
 = 1.0.7 =
