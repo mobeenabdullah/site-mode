@@ -3,7 +3,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.8
+ * @since      1.0.9
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -24,7 +24,7 @@ class Site_Mode_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.0.8
+	 * @since    1.0.9
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -33,7 +33,7 @@ class Site_Mode_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.0.8
+	 * @since    1.0.9
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -74,7 +74,7 @@ class Site_Mode_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.0.8
+	 * @since    1.0.9
 	 * @param      string $plugin_name       The name of this plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
@@ -365,7 +365,7 @@ class Site_Mode_Admin {
 	/**
 	 * Responsible for creating custom table.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return mixed
 	 */
