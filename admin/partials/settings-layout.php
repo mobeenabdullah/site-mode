@@ -108,7 +108,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 										foreach ( $site_mode_tabs as $site_mode_tab ) :
 											$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
 											$tab_data  = 'tab-' . strtolower( $site_mode_tab['title'] );
-											$tab_link  = '?page=site-mode&setting=settings&tab=' . strtolower( $site_mode_tab['title'] );
+											$tab_link  = 'admin.php?page=site-mode&setting=settings&tab=' . strtolower( $site_mode_tab['title'] );
 											?>
 											<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
 												<a href="<?php echo esc_url( admin_url( $tab_link ) ); ?>" >
