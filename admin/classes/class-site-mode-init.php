@@ -34,6 +34,13 @@ class Site_Mode_Init {
 	 */
 	protected $general_settings;
 
+    /**
+     * Design Settings.
+     *
+     * @var Site_Mode_Design
+     */
+    protected $design_settings;
+
 	/**
 	 * SEO Settings.
 	 *
