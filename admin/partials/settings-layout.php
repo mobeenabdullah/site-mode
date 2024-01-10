@@ -39,31 +39,35 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							array(
 								'title' => 'Dashboard',
 								'icon'  => '<i class="fa-solid fa-gear"></i>',
-								'link'  => 'dashboard',
+                                'slug' => 'dashboard',
+								'link'  => 'admin.php?page=site-mode&setting=dashboard',
 							),
 							array(
 								'title' => 'Setup',
 								'icon'  => '<i class="fa-solid fa-palette"></i>',
+                                'slug' => 'setup',
 								'link'  => 'admin.php?page=site-mode&design=true',
 							),
                             array(
                                 'title' => 'Subscribers',
                                 'icon'  => '<i class="fa-solid fa-sliders"></i>',
-                                'link'  => 'subscribers',
+                                'slug' => 'subscribers',
+                                'link'  => 'admin.php?page=site-mode&setting=subscribers',
                             ),
 							array(
 								'title' => 'Settings',
 								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
-								'link'  => 'settings',
+                                'slug' => 'settings',
+								'link'  => 'admin.php?page=site-mode&setting=settings',
 							),
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
 
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
-							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
+							$tab_class = ( $current_tab === $site_mode_tab['slug'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
+								<a href="<?php echo esc_url( admin_url( $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
 							<?php
 						endforeach;
 						?>
