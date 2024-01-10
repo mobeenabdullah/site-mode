@@ -34,12 +34,12 @@ class Site_Mode_Init {
 	 */
 	protected $general_settings;
 
-    /**
-     * Design Settings.
-     *
-     * @var Site_Mode_Design
-     */
-    protected $design_settings;
+	/**
+	 * Design Settings.
+	 *
+	 * @var Site_Mode_Design
+	 */
+	protected $design_settings;
 
 	/**
 	 * SEO Settings.
@@ -103,7 +103,7 @@ class Site_Mode_Init {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-integrations.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
-        require_once SITE_MODE_ADMIN . 'classes/class-site-mode-contact-form.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-contact-form.php';
 	}
 
 	/**
@@ -172,16 +172,15 @@ class Site_Mode_Init {
 		return new Site_Mode_Subscribe();
 	}
 
-    /**
-     * Get Contact Form Settings.
-     *
-     * @since 1.0.8
-     * @access public
-     * @return Site_Mode_Contact_Form
-     */
-    public function get_contact_form()
-    {
-        return new Site_Mode_Contact_Form();
-    }
+	/**
+	 * Get Contact Form Settings.
+	 *
+	 * @since 1.0.8
+	 * @access public
+	 * @return Site_Mode_Contact_Form
+	 */
+	public function get_contact_form() {
+		return new Site_Mode_Contact_Form();
+	}
 
 }

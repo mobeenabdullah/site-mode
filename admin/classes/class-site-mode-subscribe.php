@@ -252,15 +252,15 @@ class Site_Mode_Subscribe {
 	 */
 	private function display_subscribes( $data ) {
 		foreach ( $data as $key => $subscribe ) :
-            $customDateTime = esc_html( $subscribe['created_at'] );
-            $dateObject = new DateTime($customDateTime);
-            $formattedDate = $dateObject->format('Y-m-d');
-            ?>
+			$custom_date_time = esc_html( $subscribe['created_at'] );
+			$date_object      = new DateTime( $custom_date_time );
+			$formatted_date   = $date_object->format( 'Y-m-d' );
+			?>
 			<tr>
 				<td><?php echo esc_html( $key + 1 ); ?></td>
 				<td><?php echo esc_html( $subscribe['name'] ); ?></td>
 				<td><?php echo esc_html( $subscribe['email'] ); ?></td>
-				<td><?php echo $formattedDate; ?></td>
+				<td><?php echo esc_html( $formatted_date ); ?></td>
 				<td class="delete_entry" data-id="<?php echo esc_attr( $subscribe['id'] ); ?>" data-nonce="<?php echo esc_attr( wp_create_nonce( 'sm_subscribe_delete_nonce' ) ); ?>">
 					Delete
 					<input type="hidden" id="sm_subscribe_delete_nonce" value="<?php echo esc_attr( wp_create_nonce( 'sm_subscribe_delete_nonce' ) ); ?>">
@@ -315,23 +315,23 @@ class Site_Mode_Subscribe {
 	 * @access public
 	 * @return array
 	 */
-    private function get_subscribe_pagination( $page, $per_page ) {
-        global $wpdb;
-        $table_name = $wpdb->prefix . 'site_mode_subscribe';
-        $offset     = ( $page - 1 ) * $per_page;
+	private function get_subscribe_pagination( $page, $per_page ) {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'site_mode_subscribe';
+		$offset     = ( $page - 1 ) * $per_page;
 
         // phpcs:ignore WordPress.DB.PreparedSQL.NotPrepared
-        $sql_query = $wpdb->prepare( "SELECT * FROM $table_name ORDER BY created_at DESC LIMIT %d, %d", $offset, $per_page );
-        $data      = $wpdb->get_results( $sql_query, ARRAY_A );
+		$sql_query = $wpdb->prepare( "SELECT * FROM $table_name ORDER BY created_at DESC LIMIT %d, %d", $offset, $per_page );
+		$data      = $wpdb->get_results( $sql_query, ARRAY_A );
 
         // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-        $total_rows = $wpdb->get_var( "SELECT COUNT(id) FROM $table_name" );
+		$total_rows = $wpdb->get_var( "SELECT COUNT(id) FROM $table_name" );
 
-        return array(
-            'data'       => $data,
-            'total_rows' => $total_rows,
-        );
-    }
+		return array(
+			'data'       => $data,
+			'total_rows' => $total_rows,
+		);
+	}
 
 	/**
 	 * Responsible to delete subscribe from database.

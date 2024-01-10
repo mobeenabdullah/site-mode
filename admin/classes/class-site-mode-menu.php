@@ -54,36 +54,36 @@ class Site_Mode_Menu {
 	public function site_mode_submenu_settings_page() {
 
 		$submenus = array(
-            array(
-                'page_title' => 'Dashboard',
-                'menu_title' => 'Dashboard',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
-            ),
-            array(
-                'page_title' => 'Setup',
-                'menu_title' => 'Setup',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&design=true',
-            ),
-            array(
-                'page_title' => 'Subscribers',
-                'menu_title' => 'Subscribers',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=subscribers',
-            ),
+			array(
+				'page_title' => 'Dashboard',
+				'menu_title' => 'Dashboard',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
+			),
+			array(
+				'page_title' => 'Setup',
+				'menu_title' => 'Setup',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&design=true',
+			),
+			array(
+				'page_title' => 'Subscribers',
+				'menu_title' => 'Subscribers',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=subscribers',
+			),
 			array(
 				'page_title' => 'About Us',
 				'menu_title' => 'About Us',
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
 			),
-            array(
-                'page_title' => 'Settings',
-                'menu_title' => 'Settings',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
-            ),
+			array(
+				'page_title' => 'Settings',
+				'menu_title' => 'Settings',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
+			),
 
 		);
 

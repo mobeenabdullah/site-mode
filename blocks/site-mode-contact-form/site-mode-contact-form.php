@@ -18,16 +18,16 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 function site_mode_contact_form_block_render_callback( $attributes ) {
-	$name_label        = isset( $attributes['nameLabel'] ) ? $attributes['nameLabel'] : 'Name';
-	$email_label       = isset( $attributes['emailLabel'] ) ? $attributes['emailLabel'] : 'Email';
+	$name_label          = isset( $attributes['nameLabel'] ) ? $attributes['nameLabel'] : 'Name';
+	$email_label         = isset( $attributes['emailLabel'] ) ? $attributes['emailLabel'] : 'Email';
 	$subject_label       = isset( $attributes['subjectLabel'] ) ? $attributes['subjectLabel'] : 'Subject';
 	$message_label       = isset( $attributes['messageLabel'] ) ? $attributes['messageLabel'] : 'Email';
-	$submit_label      = isset( $attributes['submitLabel'] ) ? $attributes['submitLabel'] : 'Submit';
-	$name_placeholder  = isset( $attributes['nameValue'] ) ? $attributes['nameValue'] : 'Enter your name';
-	$email_placeholder = isset( $attributes['emailValue'] ) ? $attributes['emailValue'] : 'Enter your email';
+	$submit_label        = isset( $attributes['submitLabel'] ) ? $attributes['submitLabel'] : 'Submit';
+	$name_placeholder    = isset( $attributes['nameValue'] ) ? $attributes['nameValue'] : 'Enter your name';
+	$email_placeholder   = isset( $attributes['emailValue'] ) ? $attributes['emailValue'] : 'Enter your email';
 	$subject_placeholder = isset( $attributes['subjectValue'] ) ? $attributes['subjectValue'] : 'Enter subject';
 	$message_placeholder = isset( $attributes['messageValue'] ) ? $attributes['messageValue'] : 'Message...';
-	$nonce             = wp_create_nonce( 'sm_contact_form_nonce' );
+	$nonce               = wp_create_nonce( 'sm_contact_form_nonce' );
 
 	$label_color         = ! is_admin() && $attributes['labelColor'] ? $attributes['labelColor'] : '';
 	$input_bg_color      = ! is_admin() && $attributes['inputBgColor'] ? $attributes['inputBgColor'] : '';

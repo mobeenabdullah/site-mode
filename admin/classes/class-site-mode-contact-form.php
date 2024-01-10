@@ -21,38 +21,70 @@
  */
 class Site_Mode_Contact_Form {
 
-    public function send_email_cb() {
-        // Sanitize and validate inputs
-        $full_name = sanitize_text_field($_POST['name']);
-        $email = sanitize_email($_POST['email']);
-        $subject = sanitize_text_field($_POST['subject']);
-        $message = sanitize_textarea_field($_POST['message']);
+	/**
+	 * Responsible for send email.
+	 *
+	 * @since 1.0.8
+	 * @access public
+	 * @return void
+	 */
+	public function send_email_cb() {
 
-        // Validate email
-        if (!is_email($email)) {
-            echo json_encode(['status' => 'Fail', 'message' => 'Invalid email address.']);
-            wp_die();
-        }
+		// Sanitize and validate inputs.
+		if ( ! isset( $_POST['nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['nonce'] ) ), 'sm_contact_form_nonce' ) ) {
+			wp_send_json_error( 'Invalid nonce' );
+		}
 
-        // Check required fields
-        if (empty($full_name) || empty($subject) || empty($message)) {
-            echo json_encode(['status' => 'Fail', 'message' => 'Please fill in all required fields.']);
-            wp_die();
-        }
+		$full_name = isset( $_POST['name'] ) ? sanitize_text_field( wp_unslash( $_POST['name'] ) ) : '';
+		$email     = isset( $_POST['email'] ) ? sanitize_email( wp_unslash( $_POST['email'] ) ) : '';
+		$subject   = isset( $_POST['subject'] ) ? sanitize_text_field( wp_unslash( $_POST['subject'] ) ) : '';
+		$message   = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
 
-        // Email headers
-        $headers = array('Content-Type: text/html; charset=UTF-8', 'From: ' . $full_name . ' <' . $email . '>');
+		// Validate email.
+		if ( ! is_email( $email ) ) {
+			echo json_encode(
+				array(
+					'status'  => 'Fail',
+					'message' => 'Invalid email address.',
+				)
+			);
+			wp_die();
+		}
 
-        // Get admin email
-        $admin_email = get_option('admin_email');
+		// Check required fields.
+		if ( empty( $full_name ) || empty( $subject ) || empty( $message ) ) {
+			echo json_encode(
+				array(
+					'status'  => 'Fail',
+					'message' => 'Please fill in all required fields.',
+				)
+			);
+			wp_die();
+		}
 
-        // Send email
-        if (wp_mail($admin_email, $subject, $message, $headers)) {
-            echo json_encode(['status' => 'Success', 'message' => 'Email sent successfully.']);
-        } else {
-            echo json_encode(['status' => 'Fail', 'message' => 'Failed to send email.']);
-        }
+		// Email headers.
+		$headers = array( 'Content-Type: text/html; charset=UTF-8', 'From: ' . $full_name . ' <' . $email . '>' );
 
-        wp_die();
-    }
+		// Get admin email.
+		$admin_email = get_option( 'admin_email' );
+
+		// Send email.
+		if ( wp_mail( $admin_email, $subject, $message, $headers ) ) {
+			echo json_encode(
+				array(
+					'status'  => 'Success',
+					'message' => 'Email sent successfully.',
+				)
+			);
+		} else {
+			echo json_encode(
+				array(
+					'status'  => 'Fail',
+					'message' => 'Failed to send email.',
+				)
+			);
+		}
+
+		wp_die();
+	}
 }

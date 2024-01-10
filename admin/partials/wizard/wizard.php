@@ -71,7 +71,7 @@ if ( isset( $_GET['cat'] ) ) {
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
 	<!-- Select Template -->
-    <div class="wizard_overlay"></div>
+	<div class="wizard_overlay"></div>
 	<div class="wizard__content">
 		<?php require SITE_MODE_ADMIN . 'partials/wizard/header.php'; ?>
 		<div class="wizard__start" style="display: block">

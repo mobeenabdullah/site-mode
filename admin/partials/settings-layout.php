@@ -39,25 +39,25 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							array(
 								'title' => 'Dashboard',
 								'icon'  => '<i class="fa-solid fa-gear"></i>',
-                                'slug' => 'dashboard',
+								'slug'  => 'dashboard',
 								'link'  => 'admin.php?page=site-mode&setting=dashboard',
 							),
 							array(
 								'title' => 'Setup',
 								'icon'  => '<i class="fa-solid fa-palette"></i>',
-                                'slug' => 'setup',
+								'slug'  => 'setup',
 								'link'  => 'admin.php?page=site-mode&design=true',
 							),
-                            array(
-                                'title' => 'Subscribers',
-                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
-                                'slug' => 'subscribers',
-                                'link'  => 'admin.php?page=site-mode&setting=subscribers',
-                            ),
+							array(
+								'title' => 'Subscribers',
+								'icon'  => '<i class="fa-solid fa-sliders"></i>',
+								'slug'  => 'subscribers',
+								'link'  => 'admin.php?page=site-mode&setting=subscribers',
+							),
 							array(
 								'title' => 'Settings',
 								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
-                                'slug' => 'settings',
+								'slug'  => 'settings',
 								'link'  => 'admin.php?page=site-mode&setting=settings',
 							),
 						);
@@ -80,8 +80,8 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 					<div class="smd-tab-content" id="<?php echo esc_attr( $current_tab ); ?>">
 						<?php
 
-						if ( 'settings' === $current_tab) {
-								?>
+						if ( 'settings' === $current_tab ) {
+							?>
 								<div class="tabs_wrapper">
 									<ul class="sm_tabs">
 										<?php
