@@ -39,7 +39,7 @@
 			</div>
 			<div class="sm-import sm-step">
 				<div class="step_circle"></div>
-				<div class="step_label">Import</div>
+				<div class="step_label">Activate</div>
 			</div>
 		</div>
 	</div>

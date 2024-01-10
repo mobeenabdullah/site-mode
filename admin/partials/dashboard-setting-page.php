@@ -272,14 +272,6 @@ $svg_allowed_elements = array(
 			<?php
 			$dashboard_cards = array(
 				array(
-					'title'         => 'Templates',
-					'description'   => 'Change layout of your coming soon/maintenance page from our free templates library.',
-					'icon'          => '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13.4 2.096a10.08 10.08 0 0 0-8.937 3.331A10.054 10.054 0 0 0 2.096 13.4c.53 3.894 3.458 7.207 7.285 8.246A9.981 9.981 0 0 0 12 22l.142-.001a3.002 3.002 0 0 0 2.516-1.426 2.989 2.989 0 0 0 .153-2.879l-.199-.416a1.919 1.919 0 0 1 .094-1.912 2.004 2.004 0 0 1 2.576-.755l.412.197c.412.198.85.299 1.301.299A3.022 3.022 0 0 0 22 12.14a9.937 9.937 0 0 0-.353-2.76c-1.04-3.826-4.353-6.754-8.247-7.284Zm5.158 10.909-.412-.197c-1.828-.878-4.07-.198-5.135 1.494-.738 1.176-.813 2.576-.204 3.842l.2.416a.982.982 0 0 1-.052.961.992.992 0 0 1-.844.479H12a8.063 8.063 0 0 1-2.095-.283c-3.063-.831-5.403-3.479-5.826-6.586-.32-2.355.352-4.623 1.893-6.389a8.002 8.002 0 0 1 7.16-2.664c3.107.423 5.755 2.764 6.586 5.826.198.73.293 1.474.282 2.207-.012.807-.845 1.183-1.44.894Z" fill="#FE4773"/><path d="M7.5 16a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm0-4a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm3-3a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm4 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" fill="#FE4773"/></svg>',
-					'link'          => '?page=site-mode&setting=templates',
-					'link-text'     => 'View All Templates',
-					'external_link' => '',
-				),
-				array(
 					'title'         => 'SEO Configuration',
 					'description'   => 'Optimize your coming soon/maintenance page for search engines with advanced SEO settings.',
 					'icon'          => '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path d="M20 12a2 2 0 0 0-.703.133l-2.398-1.963c.059-.214.101-.436.101-.67C17 8.114 15.886 7 14.5 7S12 8.114 12 9.5c0 .396.1.765.262 1.097l-2.909 3.438A2.06 2.06 0 0 0 9 14c-.179 0-.348.03-.512.074l-2.563-2.563C5.97 11.348 6 11.179 6 11c0-1.108-.892-2-2-2s-2 .892-2 2 .892 2 2 2c.179 0 .348-.03.512-.074l2.563 2.563A1.906 1.906 0 0 0 7 16c0 1.108.892 2 2 2s2-.892 2-2c0-.237-.048-.46-.123-.671l2.913-3.442c.227.066.462.113.71.113a2.48 2.48 0 0 0 1.133-.281l2.399 1.963A2.077 2.077 0 0 0 18 14c0 1.108.892 2 2 2s2-.892 2-2-.892-2-2-2z" fill="#FE4773"></path></svg>',
@@ -316,13 +308,13 @@ $svg_allowed_elements = array(
 
 			foreach ( $dashboard_cards as $dashboard_card ) :
 
-                if( $dashboard_card['external_link'] != '' ) {
-                    $dashboard_card['link'] = $dashboard_card['external_link'];
-                    $new_tab = 'target="_blank"';
-                } else {
-                    $dashboard_card['link'] = admin_url( $dashboard_card['link'] );
-                    $new_tab = '';
-                }
+				if ( '' != $dashboard_card['external_link'] ) {
+					$dashboard_card['link'] = $dashboard_card['external_link'];
+					$new_tab                = '_blank';
+				} else {
+					$dashboard_card['link'] = admin_url( $dashboard_card['link'] );
+					$new_tab                = '';
+				}
 
 				?>
 				<div class="smd-card">
@@ -337,8 +329,8 @@ $svg_allowed_elements = array(
 					</div>
 					<div class="smd-card-seperator"></div>
 					<div class="smd-card-actions">
-						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" <?php echo $new_tab; ?> role="button" tabindex="-1"><?php echo esc_html( $dashboard_card['link-text'] ); ?></a>
-						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" <?php echo $new_tab; ?> role="button" tabindex="-1">
+						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" target="<?php echo esc_attr( $new_tab ); ?>" role="button" tabindex="-1"><?php echo esc_html( $dashboard_card['link-text'] ); ?></a>
+						<a href="<?php echo esc_url( $dashboard_card['link'] ); ?>" target="<?php echo esc_attr( $new_tab ); ?>" role="button" tabindex="-1">
 							<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
 								<path d="M7.49939 1.24561C4.05314 1.24623 1.24939 4.04998 1.24939 7.49623C1.24939 10.9425 4.05314 13.7462 7.50001 13.7462C10.9456 13.7462 13.7494 10.9425 13.75 7.49623C13.75 4.04998 10.9463 1.24623 7.49939 1.24561ZM7.50001 12.4962C4.74251 12.4962 2.49939 10.2531 2.49939 7.49623C2.49939 4.73936 4.74251 2.49623 7.49939 2.49561C10.2569 2.49623 12.5 4.73936 12.5 7.49623C12.4994 10.2531 10.2563 12.4962 7.50001 12.4962Z" fill="black"/>
 								<path d="M7.5 6.87126H5V8.12126H7.5V10L10.0031 7.49688L7.5 4.99438V6.87126Z" fill="black"/>

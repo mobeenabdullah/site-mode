@@ -136,10 +136,10 @@ class Site_Mode_Design extends Settings {
 			$status  = 'subscribed'; // we are going to talk about it in just a little.
 			$list_id = '4a1d333259'; // List / Audience ID.
 
-			// Mailchimp API endpoint
+			// Mailchimp API endpoint.
 			$url = 'https://' . substr( $api_key, strpos( $api_key, '-' ) + 1 ) . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members/' . md5( strtolower( $email ) );
 
-			// Mailchimp connection options
+			// Mailchimp connection options.
 			$options = array(
 				'headers'   => array(
 					'Content-Type'  => 'application/json',
@@ -155,10 +155,10 @@ class Site_Mode_Design extends Settings {
 				'sslverify' => false, // Only use this in development. For production, ensure SSL verification is enabled.
 			);
 
-			// Make the request
+			// Make the request.
 			$result = wp_remote_request( $url, $options );
 
-			// Handle the response
+			// Handle the response.
 			update_option( 'mailchimp-subscriber-status', $result );
 		} catch ( Exception $e ) {
 			update_option( 'mailchimp-subscriber-status', $e->getMessage() );
@@ -409,7 +409,7 @@ class Site_Mode_Design extends Settings {
 			$filtered_placeholder    = str_replace( '---', '', $placeholder );
 			$filtered_placeholder    = str_replace( 'sm-', '', $filtered_placeholder );
 			$placeholder_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/' . $filtered_placeholder . '.json';
-            $placeholder_content     = json_decode( file_get_contents( $placeholder_content_url ) )->content;
+			$placeholder_content     = json_decode( file_get_contents( $placeholder_content_url ) )->content;
 		} elseif ( ! empty( $new_color ) ) {
 			$placeholder_content = $new_color;
 		}
@@ -429,96 +429,96 @@ class Site_Mode_Design extends Settings {
 	 * @param mixed $template_name Template name.
 	 * @return array|string|string[]
 	 */
-    public function replace_template_default_image( $template_name = '' ) {
-        $template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
-        $template_content = file_get_contents( $template_url );
-        $image_url        = $this->default_images[ $template_name ];
+	public function replace_template_default_image( $template_name = '' ) {
+		$template_url     = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
+		$template_content = file_get_contents( $template_url );
+		$image_url        = $this->default_images[ $template_name ];
 
-        try {
+		try {
 
-            if ( ! str_contains( $template_content, $template_name ) ) {
-                return $template_content;
-            } else {
+			if ( ! str_contains( $template_content, $template_name ) ) {
+				return $template_content;
+			} else {
 
-                // Fetch the image and save it to the uploads directory.
-                $upload_dir = wp_upload_dir();
-                $image_data = file_get_contents( $image_url );
-                $filename   = basename( $image_url );
-                $file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
-                $media_id   = '';
+				// Fetch the image and save it to the uploads directory.
+				$upload_dir = wp_upload_dir();
+				$image_data = file_get_contents( $image_url );
+				$filename   = basename( $image_url );
+				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
+				$media_id   = '';
 
-                // Check if the file already exists.
-                if ( ! file_exists( $file_path ) ) {
-                    file_put_contents( $file_path, $image_data );
+				// Check if the file already exists.
+				if ( ! file_exists( $file_path ) ) {
+					file_put_contents( $file_path, $image_data );
 
-                    // Add the image to the media library.
-                    $attachment = array(
-                        'post_title'   => sanitize_file_name( $template_name ),
-                        'post_content' => '',
-                        'post_status'  => 'inherit',
-                    );
+					// Add the image to the media library.
+					$attachment = array(
+						'post_title'   => sanitize_file_name( $template_name ),
+						'post_content' => '',
+						'post_status'  => 'inherit',
+					);
 
-                    $media_id = wp_insert_attachment( $attachment, $file_path );
+					$media_id = wp_insert_attachment( $attachment, $file_path );
 
-                    // Update image metadata.
-                    require_once ABSPATH . 'wp-admin/includes/image.php';
-                    $attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
-                    wp_update_attachment_metadata( $media_id, $attach_data );
-                } else {
+					// Update image metadata.
+					require_once ABSPATH . 'wp-admin/includes/image.php';
+					$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
+					wp_update_attachment_metadata( $media_id, $attach_data );
+				} else {
 
-                    $attachment_posts = get_posts(
-                        array(
-                            'post_type'   => 'attachment',
-                            'post_status' => 'inherit',
-                            'meta_query'  => array(
-                                array(
-                                    'key'     => '_wp_attached_file',
-                                    'value'   => $template_name . '-' . $filename,
-                                    'compare' => 'LIKE',
-                                ),
-                            ),
-                        )
-                    );
+					$attachment_posts = get_posts(
+						array(
+							'post_type'   => 'attachment',
+							'post_status' => 'inherit',
+							'meta_query'  => array(
+								array(
+									'key'     => '_wp_attached_file',
+									'value'   => $template_name . '-' . $filename,
+									'compare' => 'LIKE',
+								),
+							),
+						)
+					);
 
-                    if ( ! empty( $attachment_posts ) ) {
-                        $media_id = $attachment_posts[0]->ID;
-                    } else {
+					if ( ! empty( $attachment_posts ) ) {
+						$media_id = $attachment_posts[0]->ID;
+					} else {
 
-                        $attachment = array(
-                            'post_title'   => sanitize_file_name( $template_name ),
-                            'post_content' => '',
-                            'post_status'  => 'inherit',
-                        );
+						$attachment = array(
+							'post_title'   => sanitize_file_name( $template_name ),
+							'post_content' => '',
+							'post_status'  => 'inherit',
+						);
 
-                        $media_id = wp_insert_attachment( $attachment, $file_path );
+						$media_id = wp_insert_attachment( $attachment, $file_path );
 
-                        // Update image metadata.
-                        require_once ABSPATH . 'wp-admin/includes/image.php';
-                        $attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
-                        wp_update_attachment_metadata( $media_id, $attach_data );
+						// Update image metadata.
+						require_once ABSPATH . 'wp-admin/includes/image.php';
+						$attach_data = wp_generate_attachment_metadata( $media_id, $file_path );
+						wp_update_attachment_metadata( $media_id, $attach_data );
 
-                    }
-                }
+					}
+				}
 
-                // Check if the image was successfully uploaded.
-                if ( $media_id ) {
-                    $media_url = wp_get_attachment_url( $media_id );
-                    if ( $media_url ) {
-                        // Replace "template1.png" with the site-mode media URL.
-                        $new_content = str_replace( $template_name, $media_url, $template_content );
-                        // Save the updated content back to template-content.php.
-                        return $new_content;
-                    } else {
-                        return $template_content;
-                    }
-                } else {
-                    return $template_content;
-                }
-            }
-        } catch ( Exception $e ) {
-            return $template_content;
-        }
-    }
+				// Check if the image was successfully uploaded.
+				if ( $media_id ) {
+					$media_url = wp_get_attachment_url( $media_id );
+					if ( $media_url ) {
+						// Replace "template1.png" with the site-mode media URL.
+						$new_content = str_replace( $template_name, $media_url, $template_content );
+						// Save the updated content back to template-content.php.
+						return $new_content;
+					} else {
+						return $template_content;
+					}
+				} else {
+					return $template_content;
+				}
+			}
+		} catch ( Exception $e ) {
+			return $template_content;
+		}
+	}
 
 	/**
 	 * Sm design properties init.
@@ -545,7 +545,7 @@ class Site_Mode_Design extends Settings {
 	public function changeTheColorPlaceholderToSetTheColorScheme( $template_name, $template_content, $scheme ) {
 
 		$color_scheme_file    = SITE_MODE_ADMIN . 'assets/color-scheme.json';
-        $color_scheme_content = json_decode( file_get_contents( $color_scheme_file ) )->content;
+		$color_scheme_content = json_decode( file_get_contents( $color_scheme_file ) )->content;
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['base'], false, $color_scheme_content->$scheme->base );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['contrast'], false, $color_scheme_content->$scheme->contrast );
 		$template_content     = $this->replace_template_placeholder( $template_name, $template_content, $this->placeholder_colors['primary'], false, $color_scheme_content->$scheme->primary );

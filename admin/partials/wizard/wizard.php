@@ -71,6 +71,7 @@ if ( isset( $_GET['cat'] ) ) {
 <!-- Please don't remove sm__wizard-wrapper class -->
 <div class="sm__wizard-wrapper">
 	<!-- Select Template -->
+	<div class="wizard_overlay"></div>
 	<div class="wizard__content">
 		<?php require SITE_MODE_ADMIN . 'partials/wizard/header.php'; ?>
 		<div class="wizard__start" style="display: block">
@@ -283,8 +284,8 @@ if ( isset( $_GET['cat'] ) ) {
 						</svg>
 					</div>
 				</div>
-				<h3>Importing ...</h3>
-				<p>Please be patient and don't refresh this page. The import can take some time.</p>
+				<h3>Activating ...</h3>
+				<p>Please be patient and don't refresh this page. The activation can take some time.</p>
 			</div>
 		</div>
 

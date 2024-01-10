@@ -29,6 +29,16 @@ class Site_Mode_General extends Settings {
 	 * @var      string    $option_name    The Key of general settings tab in the options table.
 	 */
 	protected $option_name = 'site_mode_general';
+
+	/**
+	 * General settings data.
+	 *
+	 * @since    1.0.8
+	 * @access   protected
+	 * @var      array    $site_mode_general    General settings data.
+	 */
+	public $site_mode_general;
+
 	/**
 	 * Show login icon.
 	 *

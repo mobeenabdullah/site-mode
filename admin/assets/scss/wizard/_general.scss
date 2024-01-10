@@ -16,15 +16,15 @@
 }
 
 /*  b. Hide admin controls */
-.sm__wizard-mode #wpfooter,
-.sm__wizard-mode #wpadminbar,
-.sm__wizard-mode .notice,
-.sm__wizard-mode .wrap .error,
-.sm__wizard-mode .wrap .notice,
-.sm__wizard-mode .wrap .updated,
-.sm__wizard-mode #adminmenumain,{
-  display: none !important;
-}
+//.sm__wizard-mode #wpfooter,
+//.sm__wizard-mode #wpadminbar,
+//.sm__wizard-mode .notice,
+//.sm__wizard-mode .wrap .error,
+//.sm__wizard-mode .wrap .notice,
+//.sm__wizard-mode .wrap .updated,
+//.sm__wizard-mode #adminmenumain,{
+//  display: none !important;
+//}
 
 /*  c.  Remove extra margin and padding from content */
 .sm__wizard-mode #wpcontent {
@@ -40,7 +40,9 @@
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  z-index: 200;
+  z-index: 99999;
+  padding: 3rem;
+  box-sizing: border-box;
 }
 
 /* e. Main container */
@@ -55,10 +57,23 @@
 }
 
 /*  f.  General CSS */
+.wizard_overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    height: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
 .wizard__content {
   width: 100%;
-  min-height: 100vh;
+  min-height: 90vh;
   background-color: var(--wd-bg-color);
+  position: relative;
+  z-index: 99999;
 }
 html {
   padding-top: 0 !important;

@@ -26,6 +26,7 @@ class Settings {
 	 *
 	 * @param string       $option_name Option Name.
 	 * @param array|string $data Data.
+	 * @param string       $category Category.
 	 * @since 1.0.8
 	 * @access public
 	 */
@@ -40,17 +41,17 @@ class Settings {
 					'page_link'          => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
 					'message'            => 'Template has been initialized successfully.',
 					'fresh_installation' => true,
-					'template_name'      => str_replace( '-', ' ', $category )
+					'template_name'      => str_replace( '-', ' ', $category ),
 				)
 			);
 		} elseif ( 'site_mode_design' === $option_name ) {
 			wp_send_json_success(
 				array(
-					'tab'               => 'design',
-					'status'            => ! empty( $data['page_setup']['active_page'] ),
-					'message'           => 'Settings has been saved successfully.',
-					'page_link'         => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
-                    'template_name'     => str_replace( '-', ' ', $category )
+					'tab'           => 'design',
+					'status'        => ! empty( $data['page_setup']['active_page'] ),
+					'message'       => 'Settings has been saved successfully.',
+					'page_link'     => urldecode( get_edit_post_link( intval( $data['page_setup']['active_page'] ) ) ),
+					'template_name' => str_replace( '-', ' ', $category ),
 				)
 			);
 		} else {

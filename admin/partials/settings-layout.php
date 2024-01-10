@@ -39,37 +39,35 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 							array(
 								'title' => 'Dashboard',
 								'icon'  => '<i class="fa-solid fa-gear"></i>',
-								'link'  => 'dashboard',
+								'slug'  => 'dashboard',
+								'link'  => 'admin.php?page=site-mode&setting=dashboard',
 							),
 							array(
-								'title' => 'Templates',
+								'title' => 'Setup',
 								'icon'  => '<i class="fa-solid fa-palette"></i>',
-								'link'  => 'templates',
+								'slug'  => 'setup',
+								'link'  => 'admin.php?page=site-mode&design=true',
+							),
+							array(
+								'title' => 'Subscribers',
+								'icon'  => '<i class="fa-solid fa-sliders"></i>',
+								'slug'  => 'subscribers',
+								'link'  => 'admin.php?page=site-mode&setting=subscribers',
 							),
 							array(
 								'title' => 'Settings',
 								'icon'  => '<i class="fa-solid fa-chart-pie"></i>',
-								'link'  => 'settings',
+								'slug'  => 'settings',
+								'link'  => 'admin.php?page=site-mode&setting=settings',
 							),
-                            array(
-                                'title' => 'Subscribers',
-                                'icon'  => '<i class="fa-solid fa-sliders"></i>',
-                                'link'  => 'subscribers',
-                            ),
-							array(
-								'title' => 'About Us',
-								'icon'  => '<i class="fa-solid fa-sliders"></i>',
-								'link'  => 'about-us',
-							),
-
 						);
 
 						$current_tab = isset( $_GET['setting'] ) ? sanitize_text_field( wp_unslash( $_GET['setting'] ) ) : 'dashboard';
 
 						foreach ( $site_mode_tabs as $site_mode_tab ) :
-							$tab_class = ( $current_tab === $site_mode_tab['link'] ) ? 'active' : '';
+							$tab_class = ( $current_tab === $site_mode_tab['slug'] ) ? 'active' : '';
 							?>
-								<a href="<?php echo esc_url( admin_url( 'admin.php?page=site-mode&setting=' . $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
+								<a href="<?php echo esc_url( admin_url( $site_mode_tab['link'] ) ); ?>" class="<?php echo esc_attr( wp_unslash( $tab_class ) ); ?>"><?php echo esc_html( wp_unslash( $site_mode_tab['title'] ) ); ?></a>
 							<?php
 						endforeach;
 						?>
@@ -82,17 +80,8 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 					<div class="smd-tab-content" id="<?php echo esc_attr( $current_tab ); ?>">
 						<?php
 
-						if ( 'settings' === $current_tab || 'templates' === $current_tab ) {
-
-							if ( 'templates' === $current_tab ) {
-								require_once SITE_MODE_ADMIN . 'classes/class-site-mode-design.php';
-								$class_name = 'Site_Mode_Design';
-								$class      = new $class_name();
-								$class->render();
-							} else {
-
-
-								?>
+						if ( 'settings' === $current_tab ) {
+							?>
 								<div class="tabs_wrapper">
 									<ul class="sm_tabs">
 										<?php
@@ -119,7 +108,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 										foreach ( $site_mode_tabs as $site_mode_tab ) :
 											$tab_class = strtolower( $site_mode_tab['title'] ) === $active_tab ? 'sm_tabs-link current' : 'sm_tabs-link';
 											$tab_data  = 'tab-' . strtolower( $site_mode_tab['title'] );
-											$tab_link  = '?page=site-mode&setting=settings&tab=' . strtolower( $site_mode_tab['title'] );
+											$tab_link  = 'admin.php?page=site-mode&setting=settings&tab=' . strtolower( $site_mode_tab['title'] );
 											?>
 											<li class="<?php echo esc_attr( $tab_class ); ?>" data-tab="<?php echo esc_attr( $tab_data ); ?>">
 												<a href="<?php echo esc_url( admin_url( $tab_link ) ); ?>" >
@@ -143,7 +132,7 @@ if ( ( isset( $_GET['design'] ) && true == $_GET['design'] ) || empty( get_optio
 
 								</div>
 								<?php
-							}
+
 						} elseif ( 'about-us' === $current_tab ) {
 							require_once SITE_MODE_ADMIN . 'partials/about-page.php';
 						} elseif ( 'subscribers' === $current_tab ) {

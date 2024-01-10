@@ -24,20 +24,20 @@ window.addEventListener(
 						subscribeFormName.classList.remove( 'sm_error_field' );
 					}
 					if ((subscribeFormName.value == null || subscribeFormName.value === "")) {
-						subscribeFormName.insertAdjacentHTML( 'afterend', ` < span class = "sub_field_error" > Please enter your name.< / span > ` );
+						subscribeFormName.insertAdjacentHTML( 'afterend', ` <span class="sub_field_error"> Please enter your name.</span> ` );
 						subscribeFormName.focus();
 						subscribeFormName.classList.add( 'sm_error_field' );
 						return false;
 					}
 					if ((subscribeFormEmail.value == null || subscribeFormEmail.value === "")) {
-						subscribeFormEmail.insertAdjacentHTML( 'afterend', ` < span class = "sub_field_error" > Please enter your email.< / span > ` );
+						subscribeFormEmail.insertAdjacentHTML( 'afterend', ` <span class="sub_field_error">Please enter your email.</span> ` );
 						subscribeFormEmail.focus();
 						subscribeFormEmail.classList.add( 'sm_error_field' );
 						validateEmail( subscribeFormEmail.value );
 						return false;
 					}
 					if ( ! validateEmail( subscribeFormEmail.value )) {
-						subscribeFormEmail.insertAdjacentHTML( 'afterend', ` < span class = "sub_field_error" > Please enter valid email.< / span > ` );
+						subscribeFormEmail.insertAdjacentHTML( 'afterend', ` <span class="sub_field_error"> Please enter valid email.</span> ` );
 						subscribeFormEmail.focus();
 						subscribeFormEmail.classList.add( 'sm_error_field' );
 						return false;
