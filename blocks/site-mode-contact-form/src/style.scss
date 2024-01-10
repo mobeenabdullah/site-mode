@@ -1,0 +1,93 @@
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.sm__contact {
+  &-form {
+	width: 100%;
+	&--field {
+	  margin: 0 0 1rem 0;
+	  label {
+		display: block;
+		margin-bottom: 0.5rem;
+		font-size: 0.8rem;
+		font-weight: 600;
+	  }
+	  input, textarea {
+		display: block;
+		padding: 0.5rem;
+		width: 100%;
+		min-height: 30px;
+		font-size: 0.9rem;
+		line-height: 1.7;
+		box-sizing: border-box;
+		&:focus {
+		  outline: none;
+		}
+		&.sm_error_field {
+		  border: 1px solid #B00020 !important;
+		}
+	  }
+	  & textarea {
+		height: 100px;
+		resize: none;
+	  }
+	  & .submit_contact {
+		cursor: pointer !important;
+		width: auto !important;
+		font-size: 0.9rem !important;
+		line-height: 1.7 !important;
+	  }
+	}
+  }
+  & .contact_error {
+	width: 100%;
+	background-color: #f8d7da;
+	color: #721c24;
+	padding: 0.75rem 1.25rem;
+	border: 1px solid #f5c6cb;
+	border-radius: 0.25rem;
+	margin: 0 0 1rem 0;
+	font-size: 0.9rem;
+	line-height: 1.7;
+	transition: all 0.3s ease-in-out;
+	box-sizing: border-box;
+	&.remove_error {
+	  transition: all 0.3s ease-in-out;
+	}
+  }
+  & .contact_field_error {
+	box-sizing: border-box;
+	width: 100%;
+	background-color: transparent;
+	padding: 0;
+	margin: 0.8rem 0 0.8rem 0;
+	color: #B00020;
+	transition: all 0.3s ease-in-out;
+	font-size: 0.8rem;
+  }
+  & .sm_submit_success {
+	text-align: center;
+	font-size: 1.6rem;
+	line-height: 1.7;
+  }
+  &-two-cols {
+	display: flex;
+	gap: 1rem;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+	@media screen and (max-width: 767px) {
+	  flex-wrap: wrap;
+	}
+	& .sm__contact-form--field {
+	  width: calc(50% - 1rem);
+	  margin-bottom: 0;
+	  @media screen and (max-width: 767px) {
+		width: 100%;
+	  }
+	}
+  }
+}

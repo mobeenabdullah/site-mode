@@ -3,7 +3,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.8
+ * @since      1.0.9
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.8
+ * @since      1.0.9
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -23,7 +23,7 @@ class Site_Mode_Menu {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 */
 	public function __construct() {}
@@ -31,7 +31,7 @@ class Site_Mode_Menu {
 	/**
 	 * Add menu page
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 */
 	public function site_mode_menu() {
@@ -48,23 +48,35 @@ class Site_Mode_Menu {
 	/**
 	 * Add submenu page
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 */
 	public function site_mode_submenu_settings_page() {
 
 		$submenus = array(
-            array(
-                'page_title' => 'Dashboard',
-                'menu_title' => 'Dashboard',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
-            ),
 			array(
-				'page_title' => 'Templates',
-				'menu_title' => 'Templates',
+				'page_title' => 'Dashboard',
+				'menu_title' => 'Dashboard',
 				'capability' => 'manage_options',
-				'menu_slug'  => 'admin.php?page=site-mode&setting=templates',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=dashboard',
+			),
+			array(
+				'page_title' => 'Setup',
+				'menu_title' => 'Setup',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&design=true',
+			),
+			array(
+				'page_title' => 'Subscribers',
+				'menu_title' => 'Subscribers',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=subscribers',
+			),
+			array(
+				'page_title' => 'About Us',
+				'menu_title' => 'About Us',
+				'capability' => 'manage_options',
+				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
 			),
 			array(
 				'page_title' => 'Settings',
@@ -72,19 +84,6 @@ class Site_Mode_Menu {
 				'capability' => 'manage_options',
 				'menu_slug'  => 'admin.php?page=site-mode&setting=settings',
 			),
-            array(
-                'page_title' => 'Subscribers',
-                'menu_title' => 'Subscribers',
-                'capability' => 'manage_options',
-                'menu_slug'  => 'admin.php?page=site-mode&setting=subscribers',
-            ),
-			array(
-				'page_title' => 'About Us',
-				'menu_title' => 'About Us',
-				'capability' => 'manage_options',
-				'menu_slug'  => 'admin.php?page=site-mode&setting=about-us',
-			),
-
 
 		);
 
@@ -102,7 +101,7 @@ class Site_Mode_Menu {
 	/**
 	 * Callback function for menu page
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 */
 	public function site_mode_settings_page_cb() {
@@ -117,7 +116,7 @@ class Site_Mode_Menu {
 	 *
 	 * @param string $svg_content The SVG content to be processed.
 	 * @return void
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 */
 	public function wp_kses_svg( $svg_content ) {

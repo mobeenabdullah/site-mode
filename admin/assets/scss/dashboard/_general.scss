@@ -13,21 +13,21 @@
 }
 
 
-.sm__dashboard {
-  & #wpcontent {
-    padding-left: 0 !important;
-    @media screen and (max-width: 767px) {
-      padding: 0 !important;
-    }
-  }
-  & #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item {
-    color: white !important;
-  }
-}
-
-#wp-admin-bar-site-mode li.site-mode-admin-bar .ab-item:hover, li.site-mode-admin-bar .ab-item:hover span {
-  color: var(--smd-base-color) !important;
-}
+//.sm__dashboard {
+//  & #wpcontent {
+//    padding-left: 0 !important;
+//    @media screen and (max-width: 767px) {
+//      padding: 0 !important;
+//    }
+//  }
+//  & #wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item {
+//    color: white !important;
+//  }
+//}
+//
+//#wp-admin-bar-site-mode li.site-mode-admin-bar .ab-item:hover, li.site-mode-admin-bar .ab-item:hover span {
+//  color: var(--smd-base-color) !important;
+//}
 
 .smd-container {
   max-width: calc(clamp(22.5rem, -15rem + 100vw, 75rem));

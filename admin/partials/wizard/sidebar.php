@@ -8,7 +8,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.0.8
+ * @since      1.0.9
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>

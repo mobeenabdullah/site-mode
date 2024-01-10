@@ -1,0 +1,99 @@
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[3].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[3].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[3].use[3]!./src/style.scss ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/**
+ * The following styles get applied both on the front of your site
+ * and in the editor.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+.sm__contact-form {
+  width: 100%;
+}
+.sm__contact-form--field {
+  margin: 0 0 1rem 0;
+}
+.sm__contact-form--field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.sm__contact-form--field input, .sm__contact-form--field textarea {
+  display: block;
+  padding: 0.5rem;
+  width: 100%;
+  min-height: 30px;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  box-sizing: border-box;
+}
+.sm__contact-form--field input:focus, .sm__contact-form--field textarea:focus {
+  outline: none;
+}
+.sm__contact-form--field input.sm_error_field, .sm__contact-form--field textarea.sm_error_field {
+  border: 1px solid #B00020 !important;
+}
+.sm__contact-form--field textarea {
+  height: 100px;
+  resize: none;
+}
+.sm__contact-form--field .submit_contact {
+  cursor: pointer !important;
+  width: auto !important;
+  font-size: 0.9rem !important;
+  line-height: 1.7 !important;
+}
+.sm__contact .contact_error {
+  width: 100%;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid #f5c6cb;
+  border-radius: 0.25rem;
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  transition: all 0.3s ease-in-out;
+  box-sizing: border-box;
+}
+.sm__contact .contact_error.remove_error {
+  transition: all 0.3s ease-in-out;
+}
+.sm__contact .contact_field_error {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: transparent;
+  padding: 0;
+  margin: 0.8rem 0 0.8rem 0;
+  color: #B00020;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.8rem;
+}
+.sm__contact .sm_submit_success {
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.7;
+}
+.sm__contact-two-cols {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+@media screen and (max-width: 767px) {
+  .sm__contact-two-cols {
+    flex-wrap: wrap;
+  }
+}
+.sm__contact-two-cols .sm__contact-form--field {
+  width: calc(50% - 1rem);
+  margin-bottom: 0;
+}
+@media screen and (max-width: 767px) {
+  .sm__contact-two-cols .sm__contact-form--field {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=style-index.css.map*/

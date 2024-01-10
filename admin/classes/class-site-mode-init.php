@@ -3,7 +3,7 @@
  * Site Mode Init
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.8
+ * @since      1.0.9
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -33,6 +33,13 @@ class Site_Mode_Init {
 	 * @var Site_Mode_General
 	 */
 	protected $general_settings;
+
+	/**
+	 * Design Settings.
+	 *
+	 * @var Site_Mode_Design
+	 */
+	protected $design_settings;
 
 	/**
 	 * SEO Settings.
@@ -65,7 +72,7 @@ class Site_Mode_Init {
 	/**
 	 * Constructor.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return void
 	 */
@@ -83,7 +90,7 @@ class Site_Mode_Init {
 	/**
 	 * Load all files.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return void
 	 */
@@ -96,12 +103,13 @@ class Site_Mode_Init {
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-advanced.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-integrations.php';
 		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-subscribe.php';
+		require_once SITE_MODE_ADMIN . 'classes/class-site-mode-contact-form.php';
 	}
 
 	/**
 	 * Get General Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_General
 	 */
@@ -112,7 +120,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Design Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_Design
 	 */
@@ -123,7 +131,7 @@ class Site_Mode_Init {
 	/**
 	 * Get SEO Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_Seo
 	 */
@@ -134,7 +142,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Advanced Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_Advanced
 	 */
@@ -145,7 +153,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Integrations Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_Integrations
 	 */
@@ -156,7 +164,7 @@ class Site_Mode_Init {
 	/**
 	 * Get Subscribe Settings.
 	 *
-	 * @since 1.0.8
+	 * @since 1.0.9
 	 * @access public
 	 * @return Site_Mode_Subscribe
 	 */
@@ -164,7 +172,15 @@ class Site_Mode_Init {
 		return new Site_Mode_Subscribe();
 	}
 
-
-
+	/**
+	 * Get Contact Form Settings.
+	 *
+	 * @since 1.0.9
+	 * @access public
+	 * @return Site_Mode_Contact_Form
+	 */
+	public function get_contact_form() {
+		return new Site_Mode_Contact_Form();
+	}
 
 }
