@@ -3,7 +3,7 @@
  * Responsible for add and display subscribes.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.9
+ * @since      1.1.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.9
+ * @since      1.1.0
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -24,7 +24,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * The array of subscribes.
 	 *
-	 * @since    1.0.9
+	 * @since    1.1.0
 	 * @access   private
 	 * @var      array    $subscribes    The array of subscribes.
 	 */
@@ -33,7 +33,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Site_Mode_Subscribe constructor.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @return void
 	 */
 	public function __construct() {
@@ -43,7 +43,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible for Insert subscribes into database.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -88,7 +88,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible for Get subscribes from database.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -101,7 +101,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible for to check if subscribe is not empty.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return bool
 	 */
@@ -112,7 +112,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible for render subscribe table in admin.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -208,7 +208,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible to render message when no entry found in table.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -232,7 +232,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible display export button.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -245,7 +245,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible to display row of subscribes in table.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @param array $data Array of subscribes.
 	 * @return void
@@ -273,7 +273,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible to export data in csv format.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
@@ -309,7 +309,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible to get pagination data.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @param int $page Page number.
 	 * @param int $per_page Number of records per page.
 	 * @access public
@@ -336,7 +336,7 @@ class Site_Mode_Subscribe {
 	/**
 	 * Responsible to delete subscribe from database.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */

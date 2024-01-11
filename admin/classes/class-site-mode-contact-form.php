@@ -3,7 +3,7 @@
  * Responsible for add and display subscribes.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.9
+ * @since      1.1.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.0.9
+ * @since      1.1.0
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -24,7 +24,7 @@ class Site_Mode_Contact_Form {
 	/**
 	 * Responsible for send email.
 	 *
-	 * @since 1.0.9
+	 * @since 1.1.0
 	 * @access public
 	 * @return void
 	 */
