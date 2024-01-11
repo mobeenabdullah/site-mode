@@ -3,7 +3,7 @@
  * Responsible for contact table layout.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.0.9
+ * @since      1.1.0
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -122,7 +122,7 @@ function site_mode_contact_form_block_script() {
 		'sm-contact-form-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-contact-form.js',
 		array( 'wp-blocks', 'wp-editor' ),
-		'1.0.9',
+		'1.1.0',
 		true
 	);
 
