@@ -505,7 +505,7 @@ class Site_Mode_Design extends Settings {
 					$media_url = wp_get_attachment_url( $media_id );
 					if ( $media_url ) {
 						// Replace "template1.png" with the site-mode media URL.
-						$new_content = str_replace( $template_name, $media_url, $template_content );
+						$new_content = str_replace( $template_name, $media_url. '?attachment_id=' . $media_id , $template_content );
 						// Save the updated content back to template-content.php.
 						return $new_content;
 					} else {
