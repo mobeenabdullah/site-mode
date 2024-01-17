@@ -442,7 +442,14 @@ class Site_Mode_Design extends Settings {
 
 				// Fetch the image and save it to the uploads directory.
 				$upload_dir = wp_upload_dir();
+
 				$image_data = file_get_contents( $image_url );
+
+                if ($image_data === false) {
+                    // Handle error; the image data could not be retrieved.
+                    return $template_content;
+                }
+
 				$filename   = basename( $image_url );
 				$file_path  = $upload_dir['path'] . '/' . $template_name . '-' . $filename;
 				$media_id   = '';
@@ -452,11 +459,20 @@ class Site_Mode_Design extends Settings {
 					file_put_contents( $file_path, $image_data );
 
 					// Add the image to the media library.
-					$attachment = array(
-						'post_title'   => sanitize_file_name( $template_name ),
-						'post_content' => '',
-						'post_status'  => 'inherit',
-					);
+                    $filetype = wp_check_filetype($filename, null);
+
+                    $attachment = array(
+                        'post_mime_type' => $filetype['type'],
+                        'post_title'     => sanitize_file_name( $template_name ),
+                        'post_content'   => '',
+                        'post_status'    => 'inherit'
+                    );
+
+//					$attachment = array(
+//						'post_title'   => sanitize_file_name( $template_name ),
+//						'post_content' => '',
+//						'post_status'  => 'inherit',
+//					);
 
 					$media_id = wp_insert_attachment( $attachment, $file_path );
 
@@ -505,7 +521,8 @@ class Site_Mode_Design extends Settings {
 					$media_url = wp_get_attachment_url( $media_id );
 					if ( $media_url ) {
 						// Replace "template1.png" with the site-mode media URL.
-						$new_content = str_replace( $template_name, $media_url. '?attachment_id=' . $media_id , $template_content );
+//						$new_content = str_replace( $template_name, $media_url, $template_content );
+                        $new_content = str_replace($template_name, $media_url, $template_content);
 						// Save the updated content back to template-content.php.
 						return $new_content;
 					} else {
@@ -515,9 +532,10 @@ class Site_Mode_Design extends Settings {
 					return $template_content;
 				}
 			}
-		} catch ( Exception $e ) {
-			return $template_content;
-		}
+        } catch (Exception $e) {
+            error_log('Image Replacement Error: ' . $e->getMessage());
+            return $template_content;
+        }
 	}
 
 	/**
