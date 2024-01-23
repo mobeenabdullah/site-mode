@@ -80,6 +80,8 @@ class Site_Mode_Design extends Settings {
 		'404_template'         => false,
 		'404_template_active'  => '',
 		'404_template_content' => '',
+        'login_page_mode'    => false,
+        'login_page_mode_active'    => '',
 	);
 
 	/**
@@ -181,7 +183,9 @@ class Site_Mode_Design extends Settings {
 
 		if ( '404' === $page_category ) {
 			$design_data['page_setup']['404_template_active'] = $active_page_id;
-		} else {
+		} elseif ( 'login_page_mode' === $page_category ) {
+            $design_data['page_setup']['login_page_mode_active'] = $active_page_id;
+        } else {
 			$design_data['page_setup']['active_page'] = $active_page_id;
 		}
 
@@ -220,6 +224,13 @@ class Site_Mode_Design extends Settings {
 			$this->create_page_or_template( $template_name, $category );
 			return;
 		}
+
+        if ( 'login_page_mode' !== $category ) {
+            $page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
+        } else {
+            $this->create_page_or_template( $template_name, $category );
+            return;
+        }
 
 		if ( 'maintenance' === $category ) {
 			$design_data['page_setup']['maintenance_page_id']  = $page_id;
@@ -389,6 +400,8 @@ class Site_Mode_Design extends Settings {
 				'404_template'         => $design_settings['page_setup']['404_template'] ?? '',
 				'404_template_active'  => $design_settings['page_setup']['404_template_active'] ?? '',
 				'404_template_content' => $design_settings['page_setup']['404_template_content'] ?? '',
+                'login_page_mode'         => $design_settings['page_setup']['login_page_mode'] ?? '',
+                'login_page_mode_active'  => $design_settings['page_setup']['login_page_mode_active'] ?? '',
 			);
 		}
 	}

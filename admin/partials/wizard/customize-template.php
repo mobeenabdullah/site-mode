@@ -162,6 +162,139 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 									</div>
 								</div>
 							</div>
+                            <div class="component__settings" style="display: block;">
+                                <div class="component__settings-cover">
+                                    <div class="settings__card">
+                                        <div class="settings__card-title">
+                                            <h2 class="settings_card_heading">Login Form Settings</h2>
+                                        </div>
+                                        <div class="settings__card-options sm__accordion">
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Logo Option</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Background Option</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Container</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Background</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Labels</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Labels</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Inputs</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Button Styles</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Button background</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Footer Links</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Button Styles</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <h3>Form Text</h3>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            Options goes here...
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
 						</div>
 					</div>
 				</div>

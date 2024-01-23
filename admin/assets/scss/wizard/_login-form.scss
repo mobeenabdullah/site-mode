@@ -1,0 +1,24 @@
+.sm__accordion {
+  & .accordion-step {
+    width: 100%;
+    & .step__content {
+      // Style for the content section
+
+      & .step__actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 10px; // adjust as needed
+
+        & .prev-step,
+        & .next-step {
+          padding: 5px 10px; // adjust padding as needed
+          transition: background-color 0.3s ease;
+        }
+      }
+    }
+  }
+  & .settings__card-options-box {
+    width: 100%;
+  }
+}

@@ -2221,4 +2221,25 @@ html {
 	}
 }
 
+.sm__accordion .accordion-step {
+	width: 100%;
+}
+
+.sm__accordion .accordion-step .step__content .step__actions {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 10px;
+}
+
+.sm__accordion .accordion-step .step__content .step__actions .prev-step,
+.sm__accordion .accordion-step .step__content .step__actions .next-step {
+	padding: 5px 10px;
+	transition: background-color 0.3s ease;
+}
+
+.sm__accordion .settings__card-options-box {
+	width: 100%;
+}
+
 /*# sourceMappingURL=wizard.css.map */

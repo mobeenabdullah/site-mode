@@ -422,4 +422,21 @@ jQuery(function($) {
 			});
 		}
 	);
+
+	// Login Page Steps
+	
+	$(".accordion-step h3").on("click", function() {
+		// Close all step__content elements
+		$('.step__content').slideUp('fast');
+
+		// Open the step__content next to the clicked h3 if it is not already open
+		if ($(this).next('.step__content').is(":hidden")) {
+			$(this).next('.step__content').slideDown('fast');
+		}
+	});
+
+
+
+
+
 });

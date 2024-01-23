@@ -27,6 +27,10 @@ $coming_soon_template = ! empty( $design_settings['page_setup']['coming_soon_tem
 $maintenance_template = ! empty( $design_settings['page_setup']['maintenance_template'] ) ? $design_settings['page_setup']['maintenance_template'] : '';
 $notfound_active      = ! empty( $design_settings['page_setup']['404_template_active'] ) ? $design_settings['page_setup']['404_template_active'] : '';
 $notfound_template    = ! empty( $design_settings['page_setup']['404_template'] ) ? $design_settings['page_setup']['404_template'] : '';
+$login_page_mode = !empty($design_settings['page_setup']['login_page_mode']) ? $design_settings['page_setup']['login_page_mode'] : '';
+$login_page_mode_active = !empty($design_settings['page_setup']['login_page_mode_active']) ? $design_settings['page_setup']['login_page_mode_active'] : '';
+
+
 $svg_allowed_elements = array(
 	'svg'      => array(
 		'class'               => true,
@@ -263,6 +267,47 @@ $svg_allowed_elements = array(
 								<?php endif; ?>
 							</div>
 						</div>
+                        <div class="site-mode-cards--item sm-template <?php echo $login_page_mode_active ? 'enabled__card' : ''; ?>">
+                            <label class="sm__card">
+                                <span class="btn-toggle setup_pages btn-check-toggle">
+                                    <?php if ( empty( $login_page_mode ) ) : ?>
+                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login_page_mode' ) ); ?>">
+                                    <?php endif; ?>
+                                    <input type="checkbox" name="login_page_mode" id="login_page_mode" data-category="login_page_mode" value="<?php echo esc_attr( $login_page_mode ); ?>" <?php echo empty( $login_page_mode ) ? 'disabled' : ''; ?> <?php echo $login_page_mode_active ? 'checked' : ''; ?>>
+                                    <label class="toggle" for="login_page_mode"></label>
+                                    <?php if ( empty( $login_page_mode ) ) : ?>
+                                        </a>
+                                    <?php endif; ?>
+                                </span>
+
+                                <div class="sm_select_page-icon">
+                                    <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M35 5.83337C26.9587 5.83337 20.4166 12.3755 20.4166 20.4167V26.25H17.5C14.2829 26.25 11.6666 28.8663 11.6666 32.0834V58.3334C11.6666 61.5505 14.2829 64.1667 17.5 64.1667H52.5C55.717 64.1667 58.3333 61.5505 58.3333 58.3334V32.0834C58.3333 28.8663 55.717 26.25 52.5 26.25H49.5833V20.4167C49.5833 12.3755 43.0412 5.83337 35 5.83337ZM26.25 20.4167C26.25 15.5925 30.1758 11.6667 35 11.6667C39.8241 11.6667 43.75 15.5925 43.75 20.4167V26.25H26.25V20.4167ZM52.5058 58.3334H37.9166V51.6892C39.652 50.6771 40.8333 48.8163 40.8333 46.6667C40.8333 43.4496 38.217 40.8334 35 40.8334C31.7829 40.8334 29.1666 43.4496 29.1666 46.6667C29.1666 48.8134 30.3479 50.6771 32.0833 51.6892V58.3334H17.5V32.0834H52.5L52.5058 58.3334Z" fill="#CCCCCC"/>
+                                    </svg>
+                                </div>
+                                <div class="sm_select_page-title">
+                                    Custom Login Page (coming soon)
+                                </div>
+                                <div class="sm_select_page-desc">
+                                    Secure, branded login gateway with personalized options.
+                                </div>
+                                <div class="sm_select_page-btn">
+
+                                    <?php
+                                    if ( empty( $login_page_mode) ) {
+                                        ?>
+                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login_page_mode' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+                                        <?php
+                                    }
+                                    ?>
+                                </div>
+                                <?php if ( ! empty( $login_page_mode) ) : ?>
+                                    <div class="sm_select_re_setup">
+                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=404&template=' . $login_page_mode) ); ?>" class="reset_setup_again">Reset and setup again</a>
+                                    </div>
+                                <?php endif; ?>
+                            </label>
+                        </div>
 					</div>
 				</div>
 			</div>
