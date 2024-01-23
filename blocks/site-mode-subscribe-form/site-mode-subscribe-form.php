@@ -103,7 +103,7 @@ function site_mode_subscribe_form_block_script() {
 	wp_enqueue_script(
 		'sm-subscribe-form-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-subscribe-form.js',
-		array( 'wp-blocks', 'wp-editor' ),
+		array( 'wp-blocks'),
 		'1.1.0',
 		true
 	);
