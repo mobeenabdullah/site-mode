@@ -312,18 +312,27 @@ class Site_Mode_Admin {
 	 *
 	 * @return void
 	 */
-	public function sm_remember_fse_style() {
-		ob_start();
-		wp_head();
-		$output = ob_get_contents();
-		ob_end_clean();
+    public function sm_remember_fse_style() {
+        ob_start();
+        wp_head();
+        $output = ob_get_contents();
+        ob_end_clean();
 
-		echo $output;
+        echo $output;
 
-		$doc = new DOMDocument();
-		$doc->loadHTML( '<html>' . $output . '</html>' );
-		$this->site_mode_buffer_style = $doc->getElementsByTagName( 'style' );
-	}
+        $doc = new DOMDocument();
+
+        // Handle character encoding
+        $htmlContent = mb_convert_encoding('<html>' . $output . '</html>', 'HTML-ENTITIES', 'UTF-8');
+
+        // Suppress errors during HTML load
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($htmlContent);
+        libxml_clear_errors(); // Clear any errors that were caught
+
+        $this->site_mode_buffer_style = $doc->getElementsByTagName('style');
+    }
+
 
 	/**
 	 * SM fse style.
