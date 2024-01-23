@@ -112,7 +112,7 @@ function site_mode_countdown_block_script() {
 	wp_enqueue_script(
 		'sm-countdown-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-countdown.js',
-		array( 'wp-blocks', 'wp-editor' ),
+		array( 'wp-blocks' ),
 		'1.1.0',
 		true
 	);
