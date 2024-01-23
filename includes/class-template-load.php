@@ -3,7 +3,7 @@
  * Responsible for template load.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.1.0
+ * @since      1.1.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>

@@ -3,7 +3,7 @@
  * Responsible for subscribe table layout.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -104,7 +104,7 @@ function site_mode_subscribe_form_block_script() {
 		'sm-subscribe-form-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-subscribe-form.js',
 		array( 'wp-blocks'),
-		'1.1.0',
+		'1.1.1',
 		true
 	);
 

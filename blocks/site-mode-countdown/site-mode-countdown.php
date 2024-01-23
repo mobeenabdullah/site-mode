@@ -3,7 +3,7 @@
  * Responsible for subscribe table layout.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -113,7 +113,7 @@ function site_mode_countdown_block_script() {
 		'sm-countdown-block',
 		plugin_dir_url( __FILE__ ) . 'src/sm-countdown.js',
 		array( 'wp-blocks' ),
-		'1.1.0',
+		'1.1.1',
 		true
 	);
 }

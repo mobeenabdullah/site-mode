@@ -5,7 +5,7 @@ Tags: maintenance, coming soon, maintenance page, coming soon page, under constr
 Requires at least: 4.7
 Tested up to: 6.4
 Requires PHP: 7.0
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,6 +114,8 @@ Yes, this plugin is Completely FREE
 
 == Changelog ==
 
+= 1.1.1 =
+* Fixed Rest API issue
 = 1.1.0 =
 * Updated title
 * Coming Soon, Maintenance Mode & Under Construction Page Builder by Site Mode
@@ -124,7 +126,7 @@ Yes, this plugin is Completely FREE
 = 1.0.7 =
 * Name and Tags updates
 = 1.0.6 =
-* Added custom 404 page builder featurez
+* Added custom 404 page builder feature
 * Code improvements
 = 1.0.5 =
 * Fixed compatibility errors with Non-FSE themes.
