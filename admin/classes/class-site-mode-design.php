@@ -468,12 +468,6 @@ class Site_Mode_Design extends Settings {
                         'post_status'    => 'inherit'
                     );
 
-//					$attachment = array(
-//						'post_title'   => sanitize_file_name( $template_name ),
-//						'post_content' => '',
-//						'post_status'  => 'inherit',
-//					);
-
 					$media_id = wp_insert_attachment( $attachment, $file_path );
 
 					// Update image metadata.
