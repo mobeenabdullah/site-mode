@@ -3,7 +3,7 @@
  * Responsible for Site Mode Advanced Settings
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.1.0
+ * @since      1.1.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -24,7 +24,7 @@ require_once SITE_MODE_ADMIN . 'classes/class-settings.php';
 /**
  * Class Site_Mode_Advanced
  *
- * @since      1.1.0
+ * @since      1.1.1
  * @package    Site_Mode
  * @subpackage Site_Mode/Advanced
  */
@@ -32,7 +32,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * The Key of Advance tab settings in the options table.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @access   protected
 	 * @var      string    $option_name    The Key of settings in the options table.
 	 */
@@ -41,7 +41,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Redirect URL.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var string $redirect_url Redirect URL.
 	 */
@@ -50,7 +50,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Redirect delay.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var int|mixed $redirect_delay Redirect delay.
 	 */
@@ -59,7 +59,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Disable REST API.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var int|mixed $disable_rest_api Disable REST API.
 	 */
@@ -68,7 +68,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Disable RSS feed.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var mixed|int $disable_rss_feed Disable RSS feed.
 	 */
@@ -77,7 +77,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Redirect.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var false|mixed $redirect Redirect.
 	 */
@@ -86,7 +86,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Advanced settings.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var array|string $site_mode_advanced Advanced settings.
 	 */
@@ -95,7 +95,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Whitelist pages.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var array|mixed $whitelist_pages Whitelist pages.
 	 */
@@ -104,7 +104,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * User roles.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access protected
 	 * @var array|mixed $user_roles User roles.
 	 */
@@ -113,7 +113,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Site_Mode_Advanced constructor.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function __construct() {
@@ -132,7 +132,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Remove RSS feed.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function site_mode_remove_rss_feed() {
@@ -142,7 +142,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * AJAX for site mode advance settings.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function ajax_site_mode_advanced() {
@@ -172,7 +172,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Rest API.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 * @param mixed $access Access.
 	 */
@@ -188,7 +188,7 @@ class Site_Mode_Advanced extends Settings {
 	/**
 	 * Render.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function render() {

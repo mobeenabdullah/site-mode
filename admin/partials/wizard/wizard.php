@@ -3,7 +3,7 @@
  * Responsible for Site Mode Wizard Settings Page
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
