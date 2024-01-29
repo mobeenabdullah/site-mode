@@ -3,7 +3,7 @@
  * The admin-specific functionality of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/admin
@@ -24,7 +24,7 @@ class Site_Mode_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -33,7 +33,7 @@ class Site_Mode_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -74,7 +74,7 @@ class Site_Mode_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @param      string $plugin_name       The name of this plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
@@ -312,18 +312,27 @@ class Site_Mode_Admin {
 	 *
 	 * @return void
 	 */
-	public function sm_remember_fse_style() {
-		ob_start();
-		wp_head();
-		$output = ob_get_contents();
-		ob_end_clean();
+    public function sm_remember_fse_style() {
+        ob_start();
+        wp_head();
+        $output = ob_get_contents();
+        ob_end_clean();
 
-		echo $output;
+        echo $output;
 
-		$doc = new DOMDocument();
-		$doc->loadHTML( '<html>' . $output . '</html>' );
-		$this->site_mode_buffer_style = $doc->getElementsByTagName( 'style' );
-	}
+        $doc = new DOMDocument();
+
+        // Handle character encoding
+        $htmlContent = mb_convert_encoding('<html>' . $output . '</html>', 'HTML-ENTITIES', 'UTF-8');
+
+        // Suppress errors during HTML load
+        libxml_use_internal_errors(true);
+        $doc->loadHTML($htmlContent);
+        libxml_clear_errors(); // Clear any errors that were caught
+
+        $this->site_mode_buffer_style = $doc->getElementsByTagName('style');
+    }
+
 
 	/**
 	 * SM fse style.
@@ -365,7 +374,7 @@ class Site_Mode_Admin {
 	/**
 	 * Responsible for creating custom table.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 * @return mixed
 	 */

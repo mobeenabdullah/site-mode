@@ -3,7 +3,7 @@
  * Responsible for plugin menu
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
@@ -14,7 +14,7 @@
  *
  * This class defines all code necessary to run during the plugin's menu
  *
- * @since      1.1.0
+ * @since      1.1.1
  * @package    Site_Mode
  * @subpackage Site_Mode/includes
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
@@ -23,7 +23,7 @@ class Site_Mode_Menu {
 	/**
 	 * Constructor
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function __construct() {}
@@ -31,7 +31,7 @@ class Site_Mode_Menu {
 	/**
 	 * Add menu page
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function site_mode_menu() {
@@ -48,7 +48,7 @@ class Site_Mode_Menu {
 	/**
 	 * Add submenu page
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function site_mode_submenu_settings_page() {
@@ -101,7 +101,7 @@ class Site_Mode_Menu {
 	/**
 	 * Callback function for menu page
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function site_mode_settings_page_cb() {
@@ -116,7 +116,7 @@ class Site_Mode_Menu {
 	 *
 	 * @param string $svg_content The SVG content to be processed.
 	 * @return void
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 */
 	public function wp_kses_svg( $svg_content ) {

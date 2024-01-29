@@ -3,7 +3,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://mobeenabdullah.com
- * @since      1.1.0
+ * @since      1.1.1
  *
  * @package    Site_Mode
  * @subpackage Site_Mode/public
@@ -24,7 +24,7 @@ class Site_Mode_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -33,7 +33,7 @@ class Site_Mode_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -42,7 +42,7 @@ class Site_Mode_Public {
 	/**
 	 * Site Mode Design Settings
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access private
 	 * @var array $site_mode_design Design settings of site mode.
 	 */
@@ -51,7 +51,7 @@ class Site_Mode_Public {
 	/**
 	 * Enable Template
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access private
 	 * @var string|bool $enable_template Enable template.
 	 */
@@ -60,7 +60,7 @@ class Site_Mode_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 * @param      string $plugin_name       The name of the plugin.
 	 * @param      string $version    The version of this plugin.
 	 */
@@ -80,7 +80,7 @@ class Site_Mode_Public {
 	/**
 	 * Register the stylesheets for the public-facing side of the site.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 */
 	public function enqueue_styles() {
 
@@ -102,7 +102,7 @@ class Site_Mode_Public {
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *
-	 * @since    1.1.0
+	 * @since    1.1.1
 	 */
 	public function enqueue_scripts() {
 
@@ -150,7 +150,7 @@ class Site_Mode_Public {
 	/**
 	 * Adds a login icon to the footer based on site mode settings.
 	 *
-	 * @since 1.1.0
+	 * @since 1.1.1
 	 * @access public
 	 * @global array $site_mode_general General settings of site mode.
 	 * @global array $site_mode_design Design settings of site mode.
