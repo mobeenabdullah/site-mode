@@ -271,7 +271,7 @@ $svg_allowed_elements = array(
                             <label class="sm__card">
                                 <span class="btn-toggle setup_pages btn-check-toggle">
                                     <?php if ( empty( $login_page_mode ) ) : ?>
-                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login_page_mode' ) ); ?>">
+                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login' ) ); ?>">
                                     <?php endif; ?>
                                     <input type="checkbox" name="login_page_mode" id="login_page_mode" data-category="login_page_mode" value="<?php echo esc_attr( $login_page_mode ); ?>" <?php echo empty( $login_page_mode ) ? 'disabled' : ''; ?> <?php echo $login_page_mode_active ? 'checked' : ''; ?>>
                                     <label class="toggle" for="login_page_mode"></label>
@@ -296,7 +296,7 @@ $svg_allowed_elements = array(
                                     <?php
                                     if ( empty( $login_page_mode) ) {
                                         ?>
-                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login_page_mode' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
+                                        <a href="<?php echo esc_url( admin_url( '/admin.php?page=site-mode&design=true&cat=login' ) ); ?>" class="sm__btn block_btn primary_button setup-coming-soon-page">Setup</a>
                                         <?php
                                     }
                                     ?>

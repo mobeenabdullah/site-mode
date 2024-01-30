@@ -218,18 +218,12 @@ class Site_Mode_Design extends Settings {
 			'page_setup' => $this->page_setup,
 		);
 
-		if ( '404' !== $category ) {
-			$page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
-		} else {
-			$this->create_page_or_template( $template_name, $category );
-			return;
-		}
 
-        if ( 'login_page_mode' !== $category ) {
-            $page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
-        } else {
+        if('login' === $category || '404' === $category) {
             $this->create_page_or_template( $template_name, $category );
             return;
+        } else {
+            $page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
         }
 
 		if ( 'maintenance' === $category ) {

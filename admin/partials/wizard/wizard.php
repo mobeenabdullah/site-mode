@@ -42,12 +42,21 @@ $templates       = array(
 		'name'     => 'Template 8',
 		'category' => '404',
 	),
+    'template-9' => array(
+        'name'     => 'Template 9',
+        'category' => 'login',
+    ),
+    'template-10' => array(
+        'name'     => 'Template 10',
+        'category' => 'login',
+    ),
 );
 $categories      = array(
 	'all'         => 'All',
 	'coming-soon' => 'Coming Soon',
 	'maintenance' => 'Maintenance',
 	'404'         => '404',
+    'login'       => 'Login',
 );
 $active_cat      = '';
 $active_template = '';
@@ -58,7 +67,7 @@ if ( isset( $_GET['template'] ) ) {
 
 if ( isset( $_GET['cat'] ) ) {
 	$active_cat = sanitize_text_field( wp_unslash( $_GET['cat'] ) );
-	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat ) {
+	if ( 'maintenance' === $active_cat || 'coming-soon' === $active_cat || '404' === $active_cat || 'login' === $active_cat ) {
 		$sm_category = $active_cat;
 	} else {
 		$sm_category = 'coming-soon';
@@ -149,33 +158,10 @@ if ( isset( $_GET['cat'] ) ) {
 									</div>
 								</label>
 							</div>
-							<div class="wizard__start-cards--item">
-								<label class="sm__card">
-									<input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="landing_page_mode">
-									<div class="sm__card-cover">
-										<div class="sm_select_page-icon">
-											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-												<path d="M61.0167 6.94166C57.7423 6.20832 54.3973 5.83665 51.0417 5.83333C47.8727 5.63212 44.6952 6.05937 41.6919 7.0905C38.6886 8.12163 35.9188 9.7363 33.5417 11.8417C30.4112 14.9722 27.3098 18.0931 24.2376 21.2042C20.7084 20.825 12.3375 20.6208 6.73755 26.2792C6.19432 26.8256 5.8894 27.5649 5.8894 28.3354C5.8894 29.106 6.19432 29.8452 6.73755 30.3917L39.6959 63.4083C40.2424 63.9516 40.9816 64.2565 41.7521 64.2565C42.5227 64.2565 43.2619 63.9516 43.8084 63.4083C49.4959 57.575 49.3209 49.35 48.9709 45.9083L58.3334 36.575C67.6375 27.2708 63.4084 9.79999 63.2334 9.07083C63.0987 8.54476 62.8199 8.06674 62.4283 7.69057C62.0366 7.3144 61.5478 7.05503 61.0167 6.94166ZM54.1334 32.4625L43.75 42.7875C43.4138 43.127 43.1661 43.544 43.0288 44.0017C42.8915 44.4595 42.8687 44.9439 42.9625 45.4125C43.5926 49.3144 43.0442 53.3156 41.3875 56.9042L13.1834 28.6417C16.8288 26.9639 20.9038 26.4545 24.85 27.1833C25.3169 27.2441 25.7916 27.191 26.2335 27.0284C26.6754 26.8659 27.0713 26.5988 27.3876 26.25C27.3876 26.25 31.4709 22.0208 37.625 15.8667C41.4092 12.8278 46.2003 11.328 51.0417 11.6667C53.319 11.6779 55.5917 11.873 57.8375 12.25C58.5375 16.4208 59.6459 26.95 54.1334 32.4625Z" fill="#CCCCCC"/>
-												<path d="M45.8792 30.0417C49.1009 30.0417 51.7126 27.43 51.7126 24.2083C51.7126 20.9867 49.1009 18.375 45.8792 18.375C42.6576 18.375 40.0459 20.9867 40.0459 24.2083C40.0459 27.43 42.6576 30.0417 45.8792 30.0417Z" fill="#CCCCCC"/>
-												<path d="M14.5833 46.6666C8.75 49.5833 8.75 61.25 8.75 61.25C14.149 61.0959 19.3175 59.0285 23.3333 55.4166L14.5833 46.6666Z" fill="#CCCCCC"/>
-											</svg>
-										</div>
-										<div class="sm_select_page-title">
-											Landing Page (coming soon)
-										</div>
-										<div class="sm_select_page-desc">
-											Create a captivating entrance for your visitors with a high-converting landing page.
-										</div>
-										<div class="sm_select_page-btn">
-											<button class="sm__btn block_btn primary_button">Build a Landing Page</button>
-										</div>
-									</div>
-								</label>
-							</div>
 
 							<div class="wizard__start-cards--item">
 								<label class="sm__card">
-									<input name="plan" class="sm__card-radio" type="radio" disabled value="login">
+									<input name="plan" class="sm__card-radio" type="radio" <?php echo 'login' === $sm_category ? 'checked' : ''; ?> value="login">
 									<div class="sm__card-cover">
 										<div class="sm_select_page-icon">
 											<svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -189,11 +175,34 @@ if ( isset( $_GET['cat'] ) ) {
 											Secure, branded login gateway with personalized options.
 										</div>
 										<div class="sm_select_page-btn">
-											<button class="sm__btn block_btn primary_button setup-button" data-template-category="login">Setup Login Page</button>
+											<button class="sm__btn block_btn primary_button setup-button setup-login-page" data-template-category="login">Setup Login Page</button>
 										</div>
 									</div>
 								</label>
 							</div>
+                            <div class="wizard__start-cards--item">
+                                <label class="sm__card">
+                                    <input name="selected_page_type" class="sm__card-radio" type="radio" disabled value="landing_page_mode">
+                                    <div class="sm__card-cover">
+                                        <div class="sm_select_page-icon">
+                                            <svg width="70" height="70" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M61.0167 6.94166C57.7423 6.20832 54.3973 5.83665 51.0417 5.83333C47.8727 5.63212 44.6952 6.05937 41.6919 7.0905C38.6886 8.12163 35.9188 9.7363 33.5417 11.8417C30.4112 14.9722 27.3098 18.0931 24.2376 21.2042C20.7084 20.825 12.3375 20.6208 6.73755 26.2792C6.19432 26.8256 5.8894 27.5649 5.8894 28.3354C5.8894 29.106 6.19432 29.8452 6.73755 30.3917L39.6959 63.4083C40.2424 63.9516 40.9816 64.2565 41.7521 64.2565C42.5227 64.2565 43.2619 63.9516 43.8084 63.4083C49.4959 57.575 49.3209 49.35 48.9709 45.9083L58.3334 36.575C67.6375 27.2708 63.4084 9.79999 63.2334 9.07083C63.0987 8.54476 62.8199 8.06674 62.4283 7.69057C62.0366 7.3144 61.5478 7.05503 61.0167 6.94166ZM54.1334 32.4625L43.75 42.7875C43.4138 43.127 43.1661 43.544 43.0288 44.0017C42.8915 44.4595 42.8687 44.9439 42.9625 45.4125C43.5926 49.3144 43.0442 53.3156 41.3875 56.9042L13.1834 28.6417C16.8288 26.9639 20.9038 26.4545 24.85 27.1833C25.3169 27.2441 25.7916 27.191 26.2335 27.0284C26.6754 26.8659 27.0713 26.5988 27.3876 26.25C27.3876 26.25 31.4709 22.0208 37.625 15.8667C41.4092 12.8278 46.2003 11.328 51.0417 11.6667C53.319 11.6779 55.5917 11.873 57.8375 12.25C58.5375 16.4208 59.6459 26.95 54.1334 32.4625Z" fill="#CCCCCC"/>
+                                                <path d="M45.8792 30.0417C49.1009 30.0417 51.7126 27.43 51.7126 24.2083C51.7126 20.9867 49.1009 18.375 45.8792 18.375C42.6576 18.375 40.0459 20.9867 40.0459 24.2083C40.0459 27.43 42.6576 30.0417 45.8792 30.0417Z" fill="#CCCCCC"/>
+                                                <path d="M14.5833 46.6666C8.75 49.5833 8.75 61.25 8.75 61.25C14.149 61.0959 19.3175 59.0285 23.3333 55.4166L14.5833 46.6666Z" fill="#CCCCCC"/>
+                                            </svg>
+                                        </div>
+                                        <div class="sm_select_page-title">
+                                            Landing Page (coming soon)
+                                        </div>
+                                        <div class="sm_select_page-desc">
+                                            Create a captivating entrance for your visitors with a high-converting landing page.
+                                        </div>
+                                        <div class="sm_select_page-btn">
+                                            <button class="sm__btn block_btn primary_button">Build a Landing Page</button>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
 						</div>
 					</div>
 				</div>
