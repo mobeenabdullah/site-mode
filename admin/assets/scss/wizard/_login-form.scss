@@ -1,9 +1,11 @@
 .sm__accordion {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   & .accordion-step {
     width: 100%;
     & .step__content {
-      // Style for the content section
-
+      background-color: rgba(0,0,0,0.05);
+      padding: 1.5rem 1.5rem 0.7rem 1.5rem;
       & .step__actions {
         display: flex;
         justify-content: space-between;
@@ -17,8 +19,23 @@
         }
       }
     }
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      border-bottom: 1px solid var(--sm-input-border-color);
+      cursor: pointer;
+      padding: 1.2rem 1.5rem;
+      & h3 {
+        margin: 0;
+        padding: 0;
+      }
+
+    }
   }
   & .settings__card-options-box {
     width: 100%;
+    margin-bottom: 0 !important;
   }
 }

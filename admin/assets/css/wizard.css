@@ -279,6 +279,15 @@ html {
 	color: var(--wd-base-white-color);
 }
 
+.sm__helper-text {
+	font-size: calc(clamp(0.655rem, 0.623rem + 0.086vw, 0.6rem));
+	color: var(--wd-helper-text-color);
+	user-select: none;
+	line-height: 1.2;
+	margin: 0;
+	padding: 0;
+}
+
 /*-----------------------------------------------------
 1.  Wizard Header
     a.  Wizard Logo
@@ -2221,8 +2230,18 @@ html {
 	}
 }
 
+.sm__accordion {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
 .sm__accordion .accordion-step {
 	width: 100%;
+}
+
+.sm__accordion .accordion-step .step__content {
+	background-color: rgba(0, 0, 0, 0.05);
+	padding: 1.5rem 1.5rem 0.7rem 1.5rem;
 }
 
 .sm__accordion .accordion-step .step__content .step__actions {
@@ -2238,8 +2257,63 @@ html {
 	transition: background-color 0.3s ease;
 }
 
+.sm__accordion .accordion-step-title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	border-bottom: 1px solid var(--sm-input-border-color);
+	cursor: pointer;
+	padding: 1.2rem 1.5rem;
+}
+
+.sm__accordion .accordion-step-title h3 {
+	margin: 0;
+	padding: 0;
+}
+
 .sm__accordion .settings__card-options-box {
 	width: 100%;
+	margin-bottom: 0 !important;
+}
+
+.step__content-options .row__option {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 2rem;
+}
+
+.step__content-options .row__option:not(:last-child) {
+	margin-bottom: 0.8rem;
+}
+
+.step__content-options .row__option-label {
+	width: 50%;
+}
+
+.step__content-options .row__option-label label {
+	margin: 0 0 5px 0;
+	padding: 0;
+	font-size: calc(clamp(0.5rem, 0.500rem + 0.4vw, 1rem));
+	user-select: none;
+	color: var(--smd-contrast-color);
+	font-weight: 600;
+}
+
+.step__content-options .row__option-field {
+	flex: 1;
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+}
+
+.step__content-options .row__option-field input, .step__content-options .row__option-field select, .step__content-options .row__option-field textarea {
+	width: 100%;
+}
+
+.step__content-options .row__option-field input[type="file"] {
+	display: block;
 }
 
 /*# sourceMappingURL=wizard.css.map */

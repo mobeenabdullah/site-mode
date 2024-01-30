@@ -1,0 +1,37 @@
+.step__content {
+  &-options {
+    & .row__option {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      &:not(:last-child) {
+        margin-bottom: 0.8rem;
+      }
+
+      &-label {
+        width: 50%;
+        & label {
+          margin: 0 0 5px 0;
+          padding: 0;
+          font-size: calc(clamp(0.5rem, 0.500rem + 0.4vw, 1rem));
+          user-select: none;
+          color: var(--smd-contrast-color);
+          font-weight: 600;
+        }
+      }
+      &-field {
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        & input, & select, & textarea {
+          width: 100%;
+        }
+        & input[type="file"] {
+          display: block;
+        }
+      }
+    }
+  }
+}

@@ -19,8 +19,14 @@ $current_user_email = $get_current_user->user_email;
 $active_template    = '';
 
 if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
-	$active_template = sanitize_text_field( wp_unslash( $_GET['template'] ) );
+    if( 'template-9' === $_GET['template'] || 'template-10' === $_GET['template']) {
+        $active_template = 'wp-login.php';
+    } else {
+        $active_template = sanitize_text_field(wp_unslash($_GET['template']));
+    }
 }
+
+
 ?>
 
 <div class="customize__template sm_customize_settings" style="display: none">
@@ -171,7 +177,216 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                         <div class="settings__card-options sm__accordion">
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Logo Option</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Logo Option</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="show_hide_logo">Hide logo</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <select id="show_hide_logo">
+                                                                        <option value="false">No</option>
+                                                                        <option value="true">Yes</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_image_url">Upload logo image</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="url" value="" id="logo_image_url" placeholder="Enter logo url">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_width">Logo width</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="number" id="logo_width" value="200">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_height">Logo height</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="number" id="logo_height" value="200">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_alignment">Logo alignment</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <select id="logo_alignment">
+                                                                        <option value="center">Center</option>
+                                                                        <option value="left">Left</option>
+                                                                        <option value="right">Right</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_link">Logo link</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="url" id="logo_link" value="" placeholder="Enter logo link">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="logo_title">Logo title</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="text" id="logo_title" value="" placeholder="Enter logo title">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <div class="accordion-step-title">
+                                                        <h3>Background Option</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
+                                                    <div class="step__content">
+                                                        <div class="step__content-options">
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option">
+                                                                <div class="row__option-label">
+                                                                    <label for="background_type">Background Type</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <select id="background_type">
+                                                                        <option value="solid">Solid</option>
+                                                                        <option value="gradient">Gradient</option>
+                                                                        <option value="image">Image</option>
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row__option login_background_color">
+                                                                <div class="row__option-label">
+                                                                    <label for="background_type">Background Color</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="color" id="background_color" value="#ffffff">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+
+                                                            <!-- Option Row start -->
+                                                            <div class="row__option login_background_image">
+                                                                <div class="row__option-label">
+                                                                    <label for="upload_bg_image">Upload Background Image</label>
+                                                                </div>
+                                                                <div class="row__option-field">
+                                                                    <input type="file" id="upload_bg_image" value="" placeholder="Upload logo file">
+                                                                    <input type="url" value="" placeholder="Enter logo url">
+                                                                </div>
+                                                            </div>
+                                                            <!-- Option Row end -->
+                                                            <div class="gradient_background">
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="first_color">First Color</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <input type="color" id="first_color" value="200">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="first_color_location">Location</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <input type="number" id="first_color_location" value="200">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="second_color">Second Color</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <input type="number" id="second_color" value="200">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="second_color_location">Location</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <input type="number" id="second_color_location" value="200">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="gradient_type">Gradient Type</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <select id="gradient_type">
+                                                                            <option value="linear">Linear</option>
+                                                                            <option value="radial">Radial</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                                <!-- Option Row start -->
+                                                                <div class="row__option">
+                                                                    <div class="row__option-label">
+                                                                        <label for="gradient_angle">Angle</label>
+                                                                    </div>
+                                                                    <div class="row__option-field">
+                                                                        <input type="number" id="gradient_angle" value="200">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- Option Row end -->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="settings__card-options-box">
+                                                <div class="accordion-step">
+                                                    <div class="accordion-step-title">
+                                                        <h3>Form Container</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -181,7 +396,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Background Option</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Form Background</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -191,7 +410,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Form Container</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Form Labels</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -201,7 +424,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Form Background</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Form Inputs</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -211,7 +438,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Form Labels</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Button Styles</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -221,7 +452,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Form Labels</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Button background</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -231,7 +466,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Form Inputs</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Footer Links</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -241,7 +480,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Button Styles</h3>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Button Styles</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                                                    </div>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...
@@ -251,37 +494,11 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                             </div>
                                             <div class="settings__card-options-box">
                                                 <div class="accordion-step">
-                                                    <h3>Button background</h3>
-                                                    <div class="step__content">
-                                                        <div class="step__content-options">
-                                                            Options goes here...
-                                                        </div>
+                                                    <div class="accordion-step-title">
+                                                        <h3>Form Text</h3>
+                                                        <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                                                        <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="settings__card-options-box">
-                                                <div class="accordion-step">
-                                                    <h3>Footer Links</h3>
-                                                    <div class="step__content">
-                                                        <div class="step__content-options">
-                                                            Options goes here...
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="settings__card-options-box">
-                                                <div class="accordion-step">
-                                                    <h3>Button Styles</h3>
-                                                    <div class="step__content">
-                                                        <div class="step__content-options">
-                                                            Options goes here...
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="settings__card-options-box">
-                                                <div class="accordion-step">
-                                                    <h3>Form Text</h3>
                                                     <div class="step__content">
                                                         <div class="step__content-options">
                                                             Options goes here...

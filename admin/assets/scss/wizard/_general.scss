@@ -124,3 +124,12 @@ html {
 .site-mode-admin-bar {
   color: var(--wd-base-white-color);
 }
+
+.sm__helper-text {
+  font-size: calc(clamp(0.655rem, 0.623rem + 0.086vw, 0.6rem));
+  color: var(--wd-helper-text-color);
+  user-select: none;
+  line-height: 1.2;
+  margin: 0;
+  padding: 0;
+}

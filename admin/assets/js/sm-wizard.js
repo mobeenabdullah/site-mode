@@ -109,7 +109,9 @@ jQuery(function($) {
 		addElementClass('.sm-customize', 'active');
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
-		$template_slug = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
+		$template_name = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
+		$template_slug = ( 'template-9' === $template_name  || 'template-10' === $template_name ) ? 'wp-login.php' : $template_name;
+
 		$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_slug}`);
 		$('#selected-template-name').val($template_slug);
 		$('.sm-setting-reset-components').trigger('click');
@@ -137,9 +139,10 @@ jQuery(function($) {
 		$('.template__name').html(templateLabel);
 		const templateName = $(this).attr('data-template-name');
 		$('#selected-template-name').val(templateName);
+		const template_slug = ( 'template-9' === templateName  || 'template-10' === templateName ) ? 'wp-login.php' : templateName;
 		$('#sm-preview-iframe').attr(
 			'src',
-			`https://site-mode.com/${templateName}`);
+			`https://site-mode.com/${template_slug}`);
 		hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
 		showElements('.sm_customize_settings, .component__settings, .customize__actions');
 		addElementClass('.sm-customize', 'active');
@@ -424,7 +427,7 @@ jQuery(function($) {
 	);
 
 	// Login Page Steps
-	
+	/*
 	$(".accordion-step h3").on("click", function() {
 		// Close all step__content elements
 		$('.step__content').slideUp('fast');
@@ -434,9 +437,66 @@ jQuery(function($) {
 			$(this).next('.step__content').slideDown('fast');
 		}
 	});
+	*/
+	// Initially hide all accordion contents
+	$('.step__content').hide();
 
+	// Initially set icons to 'open' state
+	$('.open_option').show();
+	$('.close_option').hide();
 
+	$(".accordion-step .accordion-step-title").on("click", function() {
+		// Reference the current accordion step
+		let currentStep = $(this).closest('.accordion-step');
 
+		// Check if the content of the current step is already open
+		if (currentStep.find('.step__content').is(":hidden")) {
+			// Close all open contents
+			$('.step__content').slideUp('fast');
+
+			// Reset all icons to 'open' state
+			$('.open_option').show();
+			$('.close_option').hide();
+
+			// Open the clicked content
+			currentStep.find('.step__content').slideDown('fast');
+
+			// Change the icon of the current step to 'close' state
+			currentStep.find('.open_option').hide();
+			currentStep.find('.close_option').show();
+		} else {
+			// Close the current content
+			currentStep.find('.step__content').slideUp('fast');
+
+			// Change the icon of the current step back to 'open' state
+			currentStep.find('.open_option').show();
+			$('.close_option').hide();
+		}
+	});
+
+	// Initially hide gradient and image options
+	$('.login_background_image, .gradient_background').hide();
+
+	// Set 'solid' as the default selected option
+	$('#background_type').val('solid');
+
+	// Handle change event on background_type select element
+	$('#background_type').on('change', function() {
+		// Get the selected value
+		var selectedType = $(this).val();
+
+		// Hide all option rows
+		$('.login_background_color, .login_background_image, .gradient_background').hide();
+
+		// Show relevant options based on selected value
+		if (selectedType === 'solid') {
+			$('.login_background_color').show();
+		} else if (selectedType === 'gradient') {
+			$('.gradient_background').show();
+		} else if (selectedType === 'image') {
+			$('.login_background_image').show();
+		}
+	});
 
 
 });
