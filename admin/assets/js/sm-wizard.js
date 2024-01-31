@@ -498,5 +498,60 @@ jQuery(function($) {
 		}
 	});
 
+	const stylesSelector = [
+		"#show_hide_logo",
+		"#logo_image_url",
+		"#logo_width",
+		"#logo_height",
+		"#logo_alignment",
+	];
+
+	stylesSelector.forEach(function(selector) {
+
+		$(selector).on('change', function() {
+			const loginStyles = {
+				"#login h1 a": {
+					"display": "inline-block",
+					"font-size": "0",
+					"overflow": "hidden",
+					"text-indent": "-9999px",
+					"white-space": "nowrap",
+				},
+			};
+
+			stylesSelector.forEach(function(selector) {
+				const property = $(selector).attr('data-property');
+				const value = $(selector).val();
+				const element = $(selector).attr('data-element');
+				const cssUnit = $(selector).attr('data-unit') || '';
+
+				if (property && value && element) {
+					if(loginStyles[element] === undefined) {
+						loginStyles[element] = {};
+						if('background-image' === property) {
+							loginStyles[element][property] = `url(${value})`;
+						} else {
+							loginStyles[element][property] = value + cssUnit;
+						}
+					} else {
+						if('background-image' === property) {
+							loginStyles[element][property] = `url(${value})`;
+						} else {
+							loginStyles[element][property] = value + cssUnit;
+						}
+					}
+				}
+
+			});
+
+			const iframe = document.querySelector("#sm-preview-iframe");
+
+			iframe.contentWindow.postMessage({
+				loginStyles: loginStyles
+			}, "*");
+
+		});
+	});
+
 
 });

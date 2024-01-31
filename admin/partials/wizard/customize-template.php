@@ -190,9 +190,9 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="show_hide_logo">Hide logo</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <select id="show_hide_logo">
-                                                                        <option value="false">No</option>
-                                                                        <option value="true">Yes</option>
+                                                                    <select id="show_hide_logo" data-property="display" data-element=".login #login h1">
+                                                                        <option value="block">Yes</option>
+                                                                        <option value="none">No</option>
                                                                     </select>
                                                                 </div>
                                                             </div>
@@ -204,7 +204,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_image_url">Upload logo image</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="url" value="" id="logo_image_url" placeholder="Enter logo url">
+                                                                    <input type="url" value="" id="logo_image_url" placeholder="Enter logo url" data-property="background-image" data-element=".login #login h1 a">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -215,7 +215,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_width">Logo width</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="number" id="logo_width" value="200">
+                                                                    <input type="number" id="logo_width" value="200" data-property="width" data-element=".login #login h1 a" data-unit="px">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -225,7 +225,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_height">Logo height</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="number" id="logo_height" value="200">
+                                                                    <input type="number" id="logo_height" value="200" data-property="height" data-element=".login #login h1 a" data-unit="px">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -235,7 +235,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_alignment">Logo alignment</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <select id="logo_alignment">
+                                                                    <select id="logo_alignment" data-property="text-align" data-element=".login #login h1">
                                                                         <option value="center">Center</option>
                                                                         <option value="left">Left</option>
                                                                         <option value="right">Right</option>
@@ -249,7 +249,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_link">Logo link</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="url" id="logo_link" value="" placeholder="Enter logo link">
+                                                                    <input type="url" id="logo_link" value="" placeholder="Enter logo link" data-property="" data-element="">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -259,7 +259,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_title">Logo title</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="text" id="logo_title" value="" placeholder="Enter logo title">
+                                                                    <input type="text" id="logo_title" value="" placeholder="Enter logo title" data-property="" data-element="">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
