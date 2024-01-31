@@ -110,23 +110,38 @@ jQuery(function($) {
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
 		$template_name = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
-		$template_slug = ( 'template-9' === $template_name  || 'template-10' === $template_name ) ? 'wp-login.php' : $template_name;
+		const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
 
-		$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_slug}`);
-		$('#selected-template-name').val($template_slug);
+		if(isLoginPreview) {
+			$('#sm-preview-iframe').hide();
+			$('#sm-login-preview').show();
+		} else {
+			$('#sm-login-preview').hide();
+			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_name}`);
+			$('#sm-preview-iframe').show();
+		}
+
+		$('#selected-template-name').val($template_name);
 		$('.sm-setting-reset-components').trigger('click');
 		$('#color_scheme').val('default').trigger('change');
 		removeElementClass('.select_template_btn', 'disabled__customize');
 		removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
 		$('.loading__template').css('display', 'flex');
-		setTimeoutForTemplate();
+		setTimeoutForTemplate(isLoginPreview);
 	}
 	$('.select_template').on('click', selectTemplate);
 
-	function setTimeoutForTemplate() {
+	function setTimeoutForTemplate(isLoginPreview = false) {
 		setTimeout(
 			function() {
-				$('#sm-preview-iframe').css('display', 'block');
+
+				if(isLoginPreview) {
+					$('#sm-preview-iframe').css('display', 'none');
+					$('#sm-login-preview').css('display', 'block');
+				} else {
+					$('#sm-login-preview').css('display', 'none');
+					$('#sm-preview-iframe').css('display', 'block');
+				}
 				$('.loading__template').css('display', 'none');
 			},
 			2000
@@ -139,16 +154,24 @@ jQuery(function($) {
 		$('.template__name').html(templateLabel);
 		const templateName = $(this).attr('data-template-name');
 		$('#selected-template-name').val(templateName);
-		const template_slug = ( 'template-9' === templateName  || 'template-10' === templateName ) ? 'wp-login.php' : templateName;
-		$('#sm-preview-iframe').attr(
-			'src',
-			`https://site-mode.com/${template_slug}`);
+		const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
+
+
+		if(isLoginPreview) {
+			$('#sm-preview-iframe').hide();
+			$('#sm-login-preview').show();
+		} else {
+			$('#sm-login-preview').hide();
+			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
+			$('#sm-preview-iframe').show();
+		}
+
 		hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
 		showElements('.sm_customize_settings, .component__settings, .customize__actions');
 		addElementClass('.sm-customize', 'active');
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 		$('.loading__template').css('display', 'flex');
-		setTimeoutForTemplate();
+		setTimeoutForTemplate(isLoginPreview);
 	}
 	$('.select_template_btn').on('click', customizeTemplate);
 	// Back to select template page
@@ -504,7 +527,45 @@ jQuery(function($) {
 		"#logo_width",
 		"#logo_height",
 		"#logo_alignment",
+		"#background_type",
+		"#background_color",
+		"#bg_img_url",
+		"first_color",
+		"first_color_location",
+		"second_color",
+		"second_color_location",
+		"gradient_type",
+		"gradient_angle",
+		"#background_type",
 	];
+
+
+	/*
+	// Gradient Implementation
+	const backgroundType = $('#background_type').val();
+
+	if (backgroundType === 'gradient') {
+
+		const gradientType = $('#gradient_type').val();
+		const firstColor = $('#first_color').val();
+		const secondColor = $('#second_color').val();
+		const firstColorLocation = $('#first_color_location').val();
+		const secondColorLocation = $('#second_color_location').val();
+		let gradientValue = '';
+
+		if (gradientType === 'linear-gradient') {
+			const angle = $('#gradient_angle').val() + 'deg';
+			gradientValue = `${gradientType}(${angle}, ${firstColor} ${firstColorLocation}%, ${secondColor} ${secondColorLocation}%)`;
+		} else if (gradientType === 'radial-gradient') {
+			gradientValue = `${gradientType}(circle, ${firstColor} ${firstColorLocation}%, ${secondColor} ${secondColorLocation}%)`;
+		}
+
+		loginStyles['.login']['background-image'] = gradientValue;
+	}
+
+	*/
+
+
 
 	stylesSelector.forEach(function(selector) {
 
@@ -516,6 +577,8 @@ jQuery(function($) {
 					"overflow": "hidden",
 					"text-indent": "-9999px",
 					"white-space": "nowrap",
+					"margin-bottom": "0",
+					"background-size": "100%",
 				},
 			};
 

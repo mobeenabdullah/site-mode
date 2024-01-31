@@ -14,6 +14,8 @@
  * @author     Mobeen Abdullah <mobeenabdullah@gmail.com>
  */
 
+wp_enqueue_style( 'login' );
+
 $get_current_user   = wp_get_current_user();
 $current_user_email = $get_current_user->user_email;
 $active_template    = '';
@@ -201,7 +203,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                             <!-- Option Row start -->
                                                             <div class="row__option">
                                                                 <div class="row__option-label">
-                                                                    <label for="logo_image_url">Upload logo image</label>
+                                                                    <label for="logo_image_url">Enter image URL</label>
                                                                 </div>
                                                                 <div class="row__option-field">
                                                                     <input type="url" value="" id="logo_image_url" placeholder="Enter logo url" data-property="background-image" data-element=".login #login h1 a">
@@ -215,7 +217,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_width">Logo width</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="number" id="logo_width" value="200" data-property="width" data-element=".login #login h1 a" data-unit="px">
+                                                                    <input type="number" id="logo_width" value="84" data-property="width" data-element=".login #login h1 a" data-unit="px">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -225,7 +227,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                     <label for="logo_height">Logo height</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="number" id="logo_height" value="200" data-property="height" data-element=".login #login h1 a" data-unit="px">
+                                                                    <input type="number" id="logo_height" value="84" data-property="height" data-element=".login #login h1 a" data-unit="px">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -292,10 +294,10 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                             </div>
                                                             <div class="row__option login_background_color">
                                                                 <div class="row__option-label">
-                                                                    <label for="background_type">Background Color</label>
+                                                                    <label for="background_color">Background Color</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="color" id="background_color" value="#ffffff">
+                                                                    <input type="color" id="background_color" value="#ffffff" data-property="background-color" data-element=".login">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -303,11 +305,10 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                             <!-- Option Row start -->
                                                             <div class="row__option login_background_image">
                                                                 <div class="row__option-label">
-                                                                    <label for="upload_bg_image">Upload Background Image</label>
+                                                                    <label for="bg_img_url">Enter image URL</label>
                                                                 </div>
                                                                 <div class="row__option-field">
-                                                                    <input type="file" id="upload_bg_image" value="" placeholder="Upload logo file">
-                                                                    <input type="url" value="" placeholder="Enter logo url">
+                                                                    <input type="url" value="" id="bg_img_url" placeholder="Enter logo url" data-property="background-image" data-element=".login">
                                                                 </div>
                                                             </div>
                                                             <!-- Option Row end -->
@@ -318,7 +319,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="first_color">First Color</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <input type="color" id="first_color" value="200">
+                                                                        <input type="color" id="first_color" value="#ffffff"  data-property="background-image" data-element=".login">
                                                                     </div>
                                                                 </div>
                                                                 <!-- Option Row end -->
@@ -328,7 +329,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="first_color_location">Location</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <input type="number" id="first_color_location" value="200">
+                                                                        <input type="number" id="first_color_location" value="24%"  data-property="background-image" data-element=".login">
                                                                     </div>
                                                                 </div>
                                                                 <!-- Option Row end -->
@@ -338,7 +339,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="second_color">Second Color</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <input type="number" id="second_color" value="200">
+                                                                        <input type="color" id="second_color" value="#000000" data-property="background-image" data-element=".login">
                                                                     </div>
                                                                 </div>
                                                                 <!-- Option Row end -->
@@ -348,7 +349,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="second_color_location">Location</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <input type="number" id="second_color_location" value="200">
+                                                                        <input type="number" id="second_color_location" value="100%" data-property="background-image" data-element=".login">
                                                                     </div>
                                                                 </div>
                                                                 <!-- Option Row end -->
@@ -358,9 +359,9 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="gradient_type">Gradient Type</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <select id="gradient_type">
-                                                                            <option value="linear">Linear</option>
-                                                                            <option value="radial">Radial</option>
+                                                                        <select id="gradient_type" data-property="background-image" data-element=".login">
+                                                                            <option value="linear-gradient">Linear</option>
+                                                                            <option value="radial-gradient">Radial</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -371,7 +372,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
                                                                         <label for="gradient_angle">Angle</label>
                                                                     </div>
                                                                     <div class="row__option-field">
-                                                                        <input type="number" id="gradient_angle" value="200">
+                                                                        <input type="number" id="gradient_angle" value="200" data-property="background-image" data-element=".login">
                                                                     </div>
                                                                 </div>
                                                                 <!-- Option Row end -->
@@ -525,7 +526,12 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 						</button>
 					</div>
 					<div class="customize__template-content--canvas sm-scroll">
-						<iframe src="<?php echo esc_url( 'https://site-mode.com/' . $active_template ); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+                        <div style="display: <?php "wp-login.php" === $active_template ? "block" : "none"; ?>" id="sm-login-preview">
+                            <?php require SITE_MODE_ADMIN . 'partials/wizard/sm-login.php'; ?>
+                        </div>
+                        <iframe src="<?php echo esc_url( 'https://site-mode-blocks.local/' . $active_template ); ?>?site-mode-preview=true" style="display: <?php "wp-login.php" === $active_template ? "none" : "block"; ?>" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
+
+
 						<div class="loading__template"  style="display: flex;">
 							<div class="template-loader">
 								<div class="loader">
