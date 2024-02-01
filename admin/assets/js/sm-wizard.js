@@ -592,6 +592,10 @@ jQuery(function($) {
 					"margin-bottom": "0",
 					"background-size": "100%",
 				},
+				"#loginform": {
+					"border:": "none",
+					"background": "transparent",
+				}
 			};
 
 			stylesSelector.forEach(function(selector) {
