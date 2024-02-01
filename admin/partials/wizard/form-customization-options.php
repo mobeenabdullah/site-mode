@@ -1,0 +1,1019 @@
+<div class="component__settings" style="display: block;">
+    <div class="component__settings-cover">
+        <div class="settings__card">
+            <div class="settings__card-title">
+                <h2 class="settings_card_heading">Login Form Settings</h2>
+            </div>
+            <div class="settings__card-options sm__accordion">
+                <!-- Logo Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Logo Option</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="show_hide_logo">Hide logo</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select id="show_hide_logo" data-property="display" data-element=".login #login h1">
+                                            <option value="block">Yes</option>
+                                            <option value="none">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_image_url">Enter image URL</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="url" value="" id="logo_image_url" placeholder="Enter logo url" data-property="background-image" data-element=".login #login h1 a">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_width">Logo width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="logo_width" value="84" data-property="width" data-element=".login #login h1 a" data-unit="px">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_height">Logo height</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="logo_height" value="84" data-property="height" data-element=".login #login h1 a" data-unit="px">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_alignment">Logo alignment</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select id="logo_alignment" data-property="text-align" data-element=".login #login h1">
+                                            <option value="center">Center</option>
+                                            <option value="left">Left</option>
+                                            <option value="right">Right</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_link">Logo link</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="url" id="logo_link" value="" placeholder="Enter logo link" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="logo_title">Logo title</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="logo_title" value="" placeholder="Enter logo title" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Logo Options End -->
+                <!-- Background Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Background Option</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="body_background_type">Background Type</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select id="body_background_type">
+                                            <option value="solid">Solid</option>
+                                            <option value="gradient">Gradient</option>
+                                            <option value="image">Image</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row__option body_login_background_color">
+                                    <div class="row__option-label">
+                                        <label for="background_color">Background Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="background_color" value="#ffffff" data-property="background-color" data-element=".login">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option body_login_background_image">
+                                    <div class="row__option-label">
+                                        <label for="bg_img_url">Enter image URL</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="url" value="" id="bg_img_url" placeholder="Enter logo url" data-property="background-image" data-element=".login">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <div class="body_gradient_background">
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="first_color">First Color</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="color" id="first_color" value="#ffffff"  data-property="background-image" data-element=".login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="first_color_location">Location</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="number" id="first_color_location" value="24%"  data-property="background-image" data-element=".login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="second_color">Second Color</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="color" id="second_color" value="#000000" data-property="background-image" data-element=".login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="second_color_location">Location</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="number" id="second_color_location" value="100%" data-property="background-image" data-element=".login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="gradient_type">Gradient Type</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <select id="gradient_type" data-property="background-image" data-element=".login">
+                                                <option value="linear-gradient">Linear</option>
+                                                <option value="radial-gradient">Radial</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="gradient_angle">Angle</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="number" id="gradient_angle" value="200" data-property="background-image" data-element=".login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Background Options End -->
+                <!-- Form Container Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Form Container</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="form_width">Width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="form_width" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="form_height">Height</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="form_height" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="border_color">Border Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="border_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="border_style">Border Style</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select class="border_style" id="border_style" data-property="" data-element="">
+                                            <option value="solid">Solid</option>
+                                            <option value="dotted">Dotted</option>
+                                            <option value="dashed">Dashed</option>
+                                            <option value="double">Double</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="border_width_top">Border Width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="border_width_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_width_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_width_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_width_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="border_radius_top">Border Radius</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="border_radius_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_radius_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_radius_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="border_radius_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="shadow_color">Shadow Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="shadow_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="shadow_horizontal_position">Shadow Horizontal Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="shadow_horizontal_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="shadow_vertical_position">Shadow Vertical Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="shadow_vertical_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="shadow_blur_spread">Shadow Blur/Spread</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="shadow_blur_spread" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="form_margins_top">Margins</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="form_margins_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_margins_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_margins_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_margins_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="form_padding_top">Padding</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="form_padding_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_padding_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_padding_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_padding_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Container Options End-->
+                <!-- Form Background Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Form Background</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <div class="step__content-options">
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="form_background_type">Background Type</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <select id="form_background_type">
+                                                <option value="solid">Solid</option>
+                                                <option value="gradient">Gradient</option>
+                                                <option value="image">Image</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="row__option form_login_background_color">
+                                        <div class="row__option-label">
+                                            <label for="form_background_color">Background Color</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="color" id="form_background_color" value="#ffffff" data-property="background-color" data-element="#login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+
+                                    <!-- Option Row start -->
+                                    <div class="row__option form_login_background_image">
+                                        <div class="row__option-label">
+                                            <label for="form_bg_img_url">Enter image URL</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="url" value="" id="form_bg_img_url" placeholder="Enter logo url" data-property="background-image" data-element="#login">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <div class="form_gradient_background">
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_first_color">First Color</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <input type="color" id="form_first_color" value="#ffffff"  data-property="background-image" data-element="#login">
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_first_color_location">Location</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <input type="number" id="form_first_color_location" value="24%"  data-property="background-image" data-element="#login">
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_second_color">Second Color</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <input type="color" id="form_second_color" value="#000000" data-property="background-image" data-element="#login">
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_second_color_location">Location</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <input type="number" id="form_second_color_location" value="100%" data-property="background-image" data-element="#login">
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_gradient_type">Gradient Type</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <select id="form_gradient_type" data-property="background-image" data-element="#login">
+                                                    <option value="linear-gradient">Linear</option>
+                                                    <option value="radial-gradient">Radial</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                        <!-- Option Row start -->
+                                        <div class="row__option">
+                                            <div class="row__option-label">
+                                                <label for="form_gradient_angle">Angle</label>
+                                            </div>
+                                            <div class="row__option-field">
+                                                <input type="number" id="form_gradient_angle" value="200" data-property="background-image" data-element="#login">
+                                            </div>
+                                        </div>
+                                        <!-- Option Row end -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Background Options End -->
+                <!-- Form Labels Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Form Labels Styles</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="label_text_color">Text Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="label_text_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="label_text_size">Text Size</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="label_text_size" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="label_margins">Margins</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="label_margins_top" value="200" data-property="" data-element="" placeholder="Top">
+                                        <input type="number" id="label_margins_right" value="200" data-property="" data-element="" placeholder="Right">
+                                        <input type="number" id="label_margins_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                        <input type="number" id="label_margins_left" value="200" data-property="" data-element="" placeholder="Left">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Labels Options End -->
+                <!-- Form Inputs Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Form Inputs</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_bg_color">Background Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="input_bg_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_text_color">Text Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="input_text_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_text_size">Text Size</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_text_size" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_border_color">Border Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_border_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_border_style">Border Style</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select class="input_border_style" id="input_border_style" data-property="" data-element="">
+                                            <option value="solid">Solid</option>
+                                            <option value="dotted">Dotted</option>
+                                            <option value="dashed">Dashed</option>
+                                            <option value="double">Double</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="input_border_width_top">Border Width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_border_width_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_width_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_width_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_width_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="input_border_radius_top">Border Radius</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_border_radius_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_radius_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_radius_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="input_border_radius_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="input_margins_top">Margins</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_margins_top" value="200" data-property="" data-element="" placeholder="Top">
+                                        <input type="number" id="input_margins_right" value="200" data-property="" data-element="" placeholder="Right">
+                                        <input type="number" id="input_margins_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                        <input type="number" id="input_margins_left" value="200" data-property="" data-element="" placeholder="Left">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="input_padding_top">Paddings</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_padding_top" value="200" data-property="" data-element="" placeholder="Top">
+                                        <input type="number" id="input_padding_right" value="200" data-property="" data-element="" placeholder="Right">
+                                        <input type="number" id="input_padding_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                        <input type="number" id="input_padding_left" value="200" data-property="" data-element="" placeholder="Left">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_shadow_color">Shadow Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="input_shadow_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_shadow_horizontal_position">Shadow Horizontal Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_shadow_horizontal_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_shadow_vertical_position">Shadow Vertical Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_shadow_vertical_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="input_shadow_blur_spread">Shadow Blur/Spread</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="input_shadow_blur_spread" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Inputs Options End -->
+                <!-- Form Button Styles Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Button Styles</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_bg_color">Background Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="button_bg_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_text_color">Text Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="button_text_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_text_size">Text Size</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_text_size" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_width">Button Width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select value="200" id="button_width" data-property="" data-element="">
+                                            <option value="default">Default</option>
+                                            <option value="full width">Full width</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_border_color">Border Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_border_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_border_style">Border Style</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <select class="input_border_style" id="button_border_style" data-property="" data-element="">
+                                            <option value="solid">Solid</option>
+                                            <option value="dotted">Dotted</option>
+                                            <option value="dashed">Dashed</option>
+                                            <option value="double">Double</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="button_border_width_top">Border Width</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_border_width_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_width_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_width_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_width_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="button_border_radius_top">Border Radius</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_border_radius_top" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_radius_right" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_radius_bottom" value="200" data-property="" data-element="">
+                                        <input type="number" id="button_border_radius_left" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="button_margins_top">Margins</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_margins_top" value="200" data-property="" data-element="" placeholder="Top">
+                                        <input type="number" id="button_margins_right" value="200" data-property="" data-element="" placeholder="Right">
+                                        <input type="number" id="button_margins_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                        <input type="number" id="button_margins_left" value="200" data-property="" data-element="" placeholder="Left">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option fields_4_cols">
+                                    <div class="row__option-label">
+                                        <label for="button_padding_top">Paddings</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_padding_top" value="200" data-property="" data-element="" placeholder="Top">
+                                        <input type="number" id="button_padding_right" value="200" data-property="" data-element="" placeholder="Right">
+                                        <input type="number" id="button_padding_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                        <input type="number" id="button_padding_left" value="200" data-property="" data-element="" placeholder="Left">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_shadow_color">Shadow Color</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="color" id="button_shadow_color" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_shadow_horizontal_position">Shadow Horizontal Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_shadow_horizontal_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_shadow_vertical_position">Shadow Vertical Position</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_shadow_vertical_position" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="button_shadow_blur_spread">Shadow Blur/Spread</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="number" id="button_shadow_blur_spread" value="200" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Button Styles Options End -->
+                <!-- Form Footer Links Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Footer Links</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <div class="step__content-options">
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="footer_text_color">Text Color</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="color" id="footer_text_color" value="200" data-property="" data-element="">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="footer_text_size">Text Size</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="number" id="footer_text_size" value="200" data-property="" data-element="">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option">
+                                        <div class="row__option-label">
+                                            <label for="footer_alignment">Alignment</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <select id="footer_alignment" data-property="" data-element="">
+                                                <option value="center">Center</option>
+                                                <option value="left">Left</option>
+                                                <option value="right">Right</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+                                    <!-- Option Row start -->
+                                    <div class="row__option fields_4_cols">
+                                        <div class="row__option-label">
+                                            <label for="footer_margins_top">Margins</label>
+                                        </div>
+                                        <div class="row__option-field">
+                                            <input type="number" id="footer_margins_top" value="200" data-property="" data-element="" placeholder="Top">
+                                            <input type="number" id="footer_margins_right" value="200" data-property="" data-element="" placeholder="Right">
+                                            <input type="number" id="footer_margins_bottom" value="200" data-property="" data-element="" placeholder="Bottom">
+                                            <input type="number" id="footer_margins_left" value="200" data-property="" data-element="" placeholder="Left">
+                                        </div>
+                                    </div>
+                                    <!-- Option Row end -->
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Footer Links Options End -->
+
+                <!-- Form Text Options -->
+                <div class="settings__card-options-box">
+                    <div class="accordion-step">
+                        <div class="accordion-step-title">
+                            <h3>Form Text</h3>
+                            <span class="open_option" style="display: none;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg></span>
+                            <span class="close_option"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 1);transform: ;msFilter:;"><path d="M5 11h14v2H5z"></path></svg></span>
+                        </div>
+                        <div class="step__content">
+                            <div class="step__content-options">
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="username_label">Username Label</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="username_label" value="Username or Email Address" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="password_label">Password Label</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="password_label" value="Password" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="remember_label">Remember Me Label</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="remember_label" value="Remember Me" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="button_text_label">Button Text</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="button_text_label" value="Log In" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="lost_pass_text">Lost Password Text</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="lost_pass_text" value="Lost your password?" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option field_1_col">
+                                    <div class="row__option-label">
+                                        <label for="back_to_website">Back To Website Text</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="text" id="back_to_website" value="Back to website" data-property="" data-element="">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Form Text Options End -->
+            </div>
+        </div>
+    </div>
+</div>

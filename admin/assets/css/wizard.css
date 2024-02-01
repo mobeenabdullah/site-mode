@@ -2316,4 +2316,28 @@ html {
 	display: block;
 }
 
+.step__content-options .row__option.fields_4_cols {
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.step__content-options .row__option.fields_4_cols .row__option-field {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 0.5rem;
+}
+
+.step__content-options .row__option.field_1_col {
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.step__content-options .row__option.field_1_col .row__option-field {
+	width: 100%;
+}
+
+.step__content-options .row__option.field_1_col .row__option-field input, .step__content-options .row__option.field_1_col .row__option-field textarea, .step__content-options .row__option.field_1_col .row__option-field select {
+	width: 100%;
+}
+
 /*# sourceMappingURL=wizard.css.map */
