@@ -48,7 +48,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 							</button>
 						</div>
 						<div class="sidebar_content-settings">
-							<div class="component__settings" style="display: block;">
+							<div class="component__settings sm__templates-components" style="display: block;">
 								<div class="component__settings-cover">
 									<div class="settings__card template-components">
 										<div class="settings__card-title sm_open_panel">
@@ -170,7 +170,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 									</div>
 								</div>
 							</div>
-                            <div class="component__settings" style="display: block;">
+                            <div class="component__settings sm__login-styles" style="display: block;">
                                 <div class="component__settings-cover">
                                     <div class="settings__card">
                                         <div class="settings__card-title">

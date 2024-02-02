@@ -115,10 +115,16 @@ jQuery(function($) {
 		if(isLoginPreview) {
 			$('#sm-preview-iframe').hide();
 			$('#sm-login-preview').show();
+			$(".sm__templates-components").hide();
+			$(".sm__login-styles").show();
+			$('.template-components.settings__card').hide();
 		} else {
 			$('#sm-login-preview').hide();
 			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_name}`);
 			$('#sm-preview-iframe').show();
+			$(".sm__templates-components").show();
+			$(".sm__login-styles").hide();
+			$('.template-components.settings__card').show();
 		}
 
 		$('#selected-template-name').val($template_name);
@@ -156,14 +162,20 @@ jQuery(function($) {
 		$('#selected-template-name').val(templateName);
 		const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
 
+		console.log($template_name, isLoginPreview, templateName);
 
 		if(isLoginPreview) {
 			$('#sm-preview-iframe').hide();
 			$('#sm-login-preview').show();
+			$(".sm__templates-components").hide();
+			$(".sm__login-styles").show();
 		} else {
 			$('#sm-login-preview').hide();
 			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
 			$('#sm-preview-iframe').show();
+			$(".sm__login-styles").hide();
+			$(".sm__templates-components").show();
+
 		}
 
 		hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
@@ -254,6 +266,7 @@ jQuery(function($) {
 			const templateName = $('#selected-template-name').val();
 			const subscriber_email = $('#sm-subscribe-email').val();
 			const colorScheme = $('#color_scheme').val();
+			const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
 
 			if (!templateName) {
 				alert('Please Select Template!');
@@ -264,10 +277,15 @@ jQuery(function($) {
 				action: "ajax_site_mode_template_init",
 				template: templateName,
 				template_init_field: nonce,
-				showSocial: showSocial,
-				showCountdown: showCountdown,
 				category: category,
-				colorScheme: colorScheme,
+			}
+
+			if(isLoginPreview) {
+				data.loginStyles = getLoginPageStyles();
+			} else {
+				data.colorScheme = colorScheme;
+				data.showCountdown = showCountdown;
+				data.showSocial = showSocial;
 			}
 
 			if (add_subscriber && subscriber_email) {
@@ -521,100 +539,81 @@ jQuery(function($) {
 		}
 	});
 
+
+	// login page styles
+	const loginStyles = {
+		".login #login h1 a": {
+			"display": "inline-block",
+			"font-size": "0",
+			"overflow": "hidden",
+			"text-indent": "-9999px",
+			"white-space": "nowrap",
+			"margin-bottom": "0",
+			"background-size": "100%",
+		},
+	};
+
+	// Apply styles
+	for (const selector in loginStyles) {
+		const elements = document.querySelectorAll(selector);
+		elements.forEach(element => {
+			const styles = loginStyles[selector];
+			for (const property in styles) {
+				element.style[property] = styles[property];
+			}
+		});
+	}
+
+
 	const stylesSelector = [
 		"#show_hide_logo",
 		"#logo_image_url",
 		"#logo_width",
 		"#logo_height",
 		"#logo_alignment",
-		"#background_type",
-		"#background_color",
-		"#bg_img_url",
-		"first_color",
-		"first_color_location",
-		"second_color",
-		"second_color_location",
-		"gradient_type",
-		"gradient_angle",
-		"#background_type",
 	];
 
-
-	/*
-	// Gradient Implementation
-	const backgroundType = $('#background_type').val();
-
-	if (backgroundType === 'gradient') {
-
-		const gradientType = $('#gradient_type').val();
-		const firstColor = $('#first_color').val();
-		const secondColor = $('#second_color').val();
-		const firstColorLocation = $('#first_color_location').val();
-		const secondColorLocation = $('#second_color_location').val();
-		let gradientValue = '';
-
-		if (gradientType === 'linear-gradient') {
-			const angle = $('#gradient_angle').val() + 'deg';
-			gradientValue = `${gradientType}(${angle}, ${firstColor} ${firstColorLocation}%, ${secondColor} ${secondColorLocation}%)`;
-		} else if (gradientType === 'radial-gradient') {
-			gradientValue = `${gradientType}(circle, ${firstColor} ${firstColorLocation}%, ${secondColor} ${secondColorLocation}%)`;
-		}
-
-		loginStyles['.login']['background-image'] = gradientValue;
-	}
-
-	*/
-
-
-
 	stylesSelector.forEach(function(selector) {
-
 		$(selector).on('change', function() {
-			const loginStyles = {
-				"#login h1 a": {
-					"display": "inline-block",
-					"font-size": "0",
-					"overflow": "hidden",
-					"text-indent": "-9999px",
-					"white-space": "nowrap",
-					"margin-bottom": "0",
-					"background-size": "100%",
-				},
-			};
+			const property = $(this).attr('data-property');
+			const value = $(this).val();
+			const element = $(this).attr('data-element');
+			const cssUnit = $(this).attr('data-unit') || '';
 
-			stylesSelector.forEach(function(selector) {
-				const property = $(selector).attr('data-property');
-				const value = $(selector).val();
-				const element = $(selector).attr('data-element');
-				const cssUnit = $(selector).attr('data-unit') || '';
-
-				if (property && value && element) {
-					if(loginStyles[element] === undefined) {
-						loginStyles[element] = {};
-						if('background-image' === property) {
-							loginStyles[element][property] = `url(${value})`;
-						} else {
-							loginStyles[element][property] = value + cssUnit;
-						}
-					} else {
-						if('background-image' === property) {
-							loginStyles[element][property] = `url(${value})`;
-						} else {
-							loginStyles[element][property] = value + cssUnit;
-						}
-					}
+			if (property && value && element) {
+				if('background-image' === property) {
+					$(element).css('background-image', `url(${value})`);
+				} else {
+					$(element).css(property, value + cssUnit);
 				}
-
-			});
-
-			const iframe = document.querySelector("#sm-preview-iframe");
-
-			iframe.contentWindow.postMessage({
-				loginStyles: loginStyles
-			}, "*");
-
+			}
 		});
 	});
 
+
+	// get login page styles
+	function getLoginPageStyles() {
+		const styles = {...loginStyles};
+		stylesSelector.forEach(function(selector) {
+			const property = $(selector).attr('data-property');
+			const value = $(selector).val();
+			const element = $(selector).attr('data-element');
+			const cssUnit = $(selector).attr('data-unit') || '';
+
+			if (property && value && element) {
+				if (styles[element] === undefined) {
+					styles[element] = {};
+				}
+				if ('background-image' === property) {
+					styles[element][property] = `url(${value})`;
+				} else {
+					styles[element][property] = value + cssUnit;
+				}
+
+			}
+
+		});
+		return JSON.stringify(styles);
+	}
 
 });

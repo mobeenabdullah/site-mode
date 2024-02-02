@@ -183,4 +183,28 @@ class Site_Mode_Public {
 			<?php
 		endif;
 	}
+
+    public function site_mode_login_internal_styling() {
+        $design_settings  = get_option( 'site_mode_design' );
+        $login_template_active = isset( $design_settings['page_setup']['login_template_active'] ) ? $design_settings['page_setup']['login_template_active'] : '';
+        $login_page_styles = isset( $design_settings['page_setup']['login_page_styles'] ) ? $design_settings['page_setup']['login_page_styles'] : '';
+
+
+        if ( ! empty( $login_template_active ) && ! empty( $login_page_styles ) ) {
+            $stylesArray = json_decode($login_page_styles, true);
+            $login_page_styling = '';
+            foreach ($stylesArray as $selector => $styles) {
+                $login_page_styling .= $selector . '{';
+                foreach ($styles as $property => $value) {
+                    $login_page_styling .= $property . ':' . $value . ';';
+                }
+                $login_page_styling .= '}';
+            }
+
+            $styles = "<style type='text/css'>\n";
+            $styles .= $login_page_styling;
+            $styles .= "</style>\n";
+            echo $styles;
+        }
+    }
 }

@@ -80,8 +80,9 @@ class Site_Mode_Design extends Settings {
 		'404_template'         => false,
 		'404_template_active'  => '',
 		'404_template_content' => '',
-        'login_page_mode'    => false,
-        'login_page_mode_active'    => '',
+        'login_template'       => false,
+        'login_template_active'=> '',
+        'login_page_styles'    => '',
 	);
 
 	/**
@@ -183,8 +184,8 @@ class Site_Mode_Design extends Settings {
 
 		if ( '404' === $page_category ) {
 			$design_data['page_setup']['404_template_active'] = $active_page_id;
-		} elseif ( 'login_page_mode' === $page_category ) {
-            $design_data['page_setup']['login_page_mode_active'] = $active_page_id;
+		} elseif ( 'login' === $page_category ) {
+            $design_data['page_setup']['login_template_active'] = $active_page_id;
         } else {
 			$design_data['page_setup']['active_page'] = $active_page_id;
 		}
@@ -219,8 +220,17 @@ class Site_Mode_Design extends Settings {
 		);
 
 
-        if('login' === $category || '404' === $category) {
+        if('404' === $category) {
             $this->create_page_or_template( $template_name, $category );
+            return;
+        } else if('login' === $category) {
+            $login_styles  = $this->get_post_data( 'loginStyles', 'template_init_action', 'template_init_field', 'text' );
+
+            $design_data['page_setup']['login_template_active']  = true;
+            $design_data['page_setup']['login_template'] = $template_name;
+            $design_data['page_setup']['login_page_styles'] = $login_styles;
+
+            $this->save_data( $this->option_name, $design_data, $category );
             return;
         } else {
             $page_id = $this->check_page_exist( $this->page_setup, $template_name, $category );
@@ -394,8 +404,9 @@ class Site_Mode_Design extends Settings {
 				'404_template'         => $design_settings['page_setup']['404_template'] ?? '',
 				'404_template_active'  => $design_settings['page_setup']['404_template_active'] ?? '',
 				'404_template_content' => $design_settings['page_setup']['404_template_content'] ?? '',
-                'login_page_mode'         => $design_settings['page_setup']['login_page_mode'] ?? '',
-                'login_page_mode_active'  => $design_settings['page_setup']['login_page_mode_active'] ?? '',
+                'login_template'       => $design_settings['page_setup']['login_template'] ?? '',
+                'login_template_active'=> $design_settings['page_setup']['login_template_active'] ?? '',
+                'login_page_styles'    => $design_settings['page_setup']['login_page_styles'] ?? '',
 			);
 		}
 	}

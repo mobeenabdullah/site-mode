@@ -255,6 +255,7 @@ class Site_Mode {
 		$this->loader->add_action( 'do_feed_atom', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_rss2_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
 		$this->loader->add_action( 'do_feed_atom_comments', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed', 1 );
+        $this->loader->add_action( 'login_head', $plugin_public, 'site_mode_login_internal_styling' );
 
 		// Template load.
 		$template_load = new Template_Load();
