@@ -32,6 +32,25 @@
           display: block;
         }
       }
+      &.fields_4_cols {
+        flex-direction: column;
+        gap: 0.5rem;
+        & .row__option-field {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          grid-gap: 0.5rem;
+        }
+      }
+      &.field_1_col {
+        flex-direction: column;
+        gap: 0.5rem;
+        & .row__option-field {
+          width: 100%;
+          & input, textarea, select {
+            width: 100%;
+          }
+        }
+      }
     }
   }
 }

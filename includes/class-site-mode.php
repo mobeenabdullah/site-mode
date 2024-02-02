@@ -246,6 +246,7 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'rest_authentication_errors', $this->classes_loader->get_advanced(), 'site_mode_rest_api' );
 		$this->loader->add_action( 'wp_footer', $plugin_public, 'add_login_icon' );
+//        $this->loader->add_action( 'login_head', $plugin_public, 'custom_login_css' );
 
 		// feeds.
 		$this->loader->add_action( 'do_feed', $this->classes_loader->get_advanced(), 'site_mode_remove_rss_feed' );

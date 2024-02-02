@@ -99,6 +99,121 @@ class Site_Mode_Public {
 		wp_enqueue_style( $this->plugin_name, SITE_MODE_PUBLIC_URL . 'css/site-mode-public.css', array(), $this->version, 'all' );
 	}
 
+    function custom_login_css() {
+        ?>
+        <style>
+            :root {
+                --login-primary-color: #19BDD4;
+                --login-white-color: #ffffff;
+                --login-white-rgb: 255,255,255;
+            }
+            .login {
+                background-color: gray;
+                background-image: url('https://c.pxhere.com/photos/cc/1f/photo-1404179.jpg!d');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                height: calc(100vh - 14rem);
+                width: 100%;
+                box-sizing: border-box;
+                background-image: linear-gradient(-90deg, rgb(255, 255, 255) 24%, rgb(122, 122, 122) 100%);
+            }
+
+            /* show and hide logo */
+            .login #login h1 {
+                display: block;
+                text-align: right;
+            }
+            /* Option logo width and height */
+            .login #login h1 a {
+                background-image: url('https://storage.googleapis.com/pr-newsroom-wp/1/2018/11/Spotify_Logo_CMYK_Green.png');
+                margin: unset;
+                min-width: 100px;
+                max-height: 100px;
+                background-size: 100px;
+                display: inline-block;
+                overflow: hidden;
+                text-indent: -9999px;
+                white-space: nowrap;
+                font-size: 0;
+            }
+
+            .login #login {
+                margin-top: 10rem;
+                background-color: rgba(var(--login-white-rgb),0.15);
+                padding: 2rem;
+                border: 1px solid rgba(var(--login-white-rgb),0.20);
+                border-radius: 0.5rem;
+
+            }
+            .login #login #login-message {
+                border-color: var(--login-primary-color);
+            }
+            .login #login #loginform {
+                background-color: transparent;
+                border: none;
+                padding: 0;
+            }
+            .login #login #loginform label {
+                color: white;
+                margin-bottom: 0.5rem;
+            }
+            .login #login #loginform input {
+                background-color: transparent;
+                border: 1px solid rgba(var(--login-white-rgb),1);
+                color: white;
+            }
+            .login #login #loginform input:focus {
+                border-color: var(--login-primary-color);
+            }
+            .login #login #nav a, .login #login #backtoblog a {
+                color: var(--login-white-color);
+            }
+            .login #login #backtoblog {
+                padding: 0;
+                margin-bottom: 0;
+            }
+            .login #login #backtoblog a {
+                background-color: var(--login-white-color);
+                color: var(--login-primary-color);
+                padding: 1rem 2rem;
+                border-radius: 0.5rem;
+                border: 1px solid var(--login-primary-color);
+                display: block;
+                text-align: center;
+            }
+            .login #login #backtoblog a:hover {
+                background-color: var(--login-primary-color);
+                color: var(--login-white-color);
+            }
+            .login #login .submit input[type="submit"] {
+                color: var(--login-white-color) !important;
+                border: 1px solid var(--login-primary-color) !important;
+                background-color: var(--login-primary-color) !important;
+                color: var(--login-white-color);
+            }
+            .login #login .submit input[type="submit"]:hover {
+                border: 1px solid var(--login-white-color) !important;
+                background-color: var(--login-white-color) !important;
+                color: var(--login-primary-color) !important;
+            }
+
+            .login #login .submit input[type="checkbox"] {
+                accent-color: var(--login-white-color);
+            }
+            .login #login #loginform .button {
+                color: var(--login-white-color);
+            }
+            .login #login #loginform .button:hover {
+                color: var(--login-white-color);
+            }
+            .login #login #loginform .button:focus {
+                border-color: var(--login-white-color);
+            }
+        </style>
+            <?php
+    }
+
 	/**
 	 * Register the JavaScript for the public-facing side of the site.
 	 *

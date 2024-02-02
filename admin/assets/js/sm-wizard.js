@@ -519,23 +519,27 @@ jQuery(function($) {
 	$('.login_background_image, .gradient_background').hide();
 
 	// Set 'solid' as the default selected option
-	$('#background_type').val('solid');
+	$('#body_background_type, #form_background_type').val('solid');
 
 	// Handle change event on background_type select element
-	$('#background_type').on('change', function() {
+	$('#body_background_type, #form_background_type').on('change', function() {
 		// Get the selected value
 		var selectedType = $(this).val();
 
 		// Hide all option rows
-		$('.login_background_color, .login_background_image, .gradient_background').hide();
+		$('.body_login_background_color, .body_login_background_image, .body_gradient_background',).hide();
+		$('.form_login_background_color, .form_login_background_image, .form_gradient_background',).hide();
 
 		// Show relevant options based on selected value
 		if (selectedType === 'solid') {
-			$('.login_background_color').show();
+			$('.body_login_background_color').show();
+			$('.form_login_background_color').show();
 		} else if (selectedType === 'gradient') {
-			$('.gradient_background').show();
+			$('.body_gradient_background').show();
+			$('.form_gradient_background').show();
 		} else if (selectedType === 'image') {
-			$('.login_background_image').show();
+			$('.body_login_background_image').show();
+			$('.form_login_background_image').show();
 		}
 	});
 
