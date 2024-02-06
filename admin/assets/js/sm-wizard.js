@@ -98,7 +98,7 @@ jQuery(function($) {
 	function selectTemplate() {
 		const templateLabel = $(this).attr('data-template-label');
 		$('.template__name').html(templateLabel);
-		const templateName = $(this).attr('data-template-name');
+		// const templateName = $(this).attr('data-template-name');
 
 		removeElementClass('.wizard__templates-cards--single', 'active');
 		$('.wizard__templates-cards--single button span').html('select');
@@ -109,45 +109,36 @@ jQuery(function($) {
 		addElementClass('.sm-customize', 'active');
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 
-		$template_name = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
-		const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
+		const templateName = $(this).parents('.wizard__templates-cards--single').attr('data-category-template');
+		let templateSlug = `https://site-mode.com/${templateName}`;
 
-		if(isLoginPreview) {
-			$('#sm-preview-iframe').hide();
-			$('#sm-login-preview').show();
-			$(".sm__templates-components").hide();
-			$(".sm__login-styles").show();
-			$('.template-components.settings__card').hide();
-		} else {
-			$('#sm-login-preview').hide();
-			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${$template_name}`);
-			$('#sm-preview-iframe').show();
-			$(".sm__templates-components").show();
-			$(".sm__login-styles").hide();
-			$('.template-components.settings__card').show();
+		if('template-9' === templateName || 'template-10' === templateName) {
+			templateSlug = `${window.location.origin}/wp-login.php`;
 		}
 
-		$('#selected-template-name').val($template_name);
+
+		$('#sm-login-preview').hide();
+		$('#sm-preview-iframe').attr('src', templateSlug);
+		$('#sm-preview-iframe').show();
+		$(".sm__templates-components").show();
+		$(".sm__login-styles").hide();
+		$('.template-components.settings__card').show();
+
+
+		$('#selected-template-name').val(templateName);
 		$('.sm-setting-reset-components').trigger('click');
 		$('#color_scheme').val('default').trigger('change');
 		removeElementClass('.select_template_btn', 'disabled__customize');
 		removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
 		$('.loading__template').css('display', 'flex');
-		setTimeoutForTemplate(isLoginPreview);
+		setTimeoutForTemplate();
 	}
 	$('.select_template').on('click', selectTemplate);
 
-	function setTimeoutForTemplate(isLoginPreview = false) {
+	function setTimeoutForTemplate() {
 		setTimeout(
-			function() {
-
-				if(isLoginPreview) {
-					$('#sm-preview-iframe').css('display', 'none');
-					$('#sm-login-preview').css('display', 'block');
-				} else {
-					$('#sm-login-preview').css('display', 'none');
-					$('#sm-preview-iframe').css('display', 'block');
-				}
+		function() {
+				$('#sm-preview-iframe').css('display', 'block');
 				$('.loading__template').css('display', 'none');
 			},
 			2000
@@ -160,30 +151,24 @@ jQuery(function($) {
 		$('.template__name').html(templateLabel);
 		const templateName = $(this).attr('data-template-name');
 		$('#selected-template-name').val(templateName);
-		const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
 
-		console.log($template_name, isLoginPreview, templateName);
+		let templateSlug = `https://site-mode.com/${templateName}`;
 
-		if(isLoginPreview) {
-			$('#sm-preview-iframe').hide();
-			$('#sm-login-preview').show();
-			$(".sm__templates-components").hide();
-			$(".sm__login-styles").show();
-		} else {
-			$('#sm-login-preview').hide();
-			$('#sm-preview-iframe').attr('src', `https://site-mode.com/${templateName}`);
-			$('#sm-preview-iframe').show();
-			$(".sm__login-styles").hide();
-			$(".sm__templates-components").show();
-
+		if('template-9' === templateName || 'template-10' === templateName) {
+			templateSlug = `${window.location.origin}/wp-login.php`;
 		}
+		$('#sm-login-preview').hide();
+		$('#sm-preview-iframe').attr('src', templateSlug);
+		$('#sm-preview-iframe').show();
+		$(".sm__login-styles").hide();
+		$(".sm__templates-components").show();
 
 		hideElements('.sm_final_import, .wizard__start, .wizard__content-wrapper, .import__settings, .import__actions');
 		showElements('.sm_customize_settings, .component__settings, .customize__actions');
 		addElementClass('.sm-customize', 'active');
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 		$('.loading__template').css('display', 'flex');
-		setTimeoutForTemplate(isLoginPreview);
+		setTimeoutForTemplate();
 	}
 	$('.select_template_btn').on('click', customizeTemplate);
 	// Back to select template page
@@ -266,7 +251,7 @@ jQuery(function($) {
 			const templateName = $('#selected-template-name').val();
 			const subscriber_email = $('#sm-subscribe-email').val();
 			const colorScheme = $('#color_scheme').val();
-			const isLoginPreview = 'template-9' === $template_name || 'template-10' === $template_name;
+			const isLoginPreview = 'template-9' === templateName || 'template-10' === templateName;
 
 			if (!templateName) {
 				alert('Please Select Template!');
@@ -555,6 +540,11 @@ jQuery(function($) {
 			"margin-bottom": "0",
 			"background-size": "100%",
 		},
+		"#login": {
+			"display": "flex",
+			"flex-direction": "column",
+			"align-items": "center"
+		}
 	};
 
 	// Apply styles
@@ -575,22 +565,23 @@ jQuery(function($) {
 		"#logo_width",
 		"#logo_height",
 		"#logo_alignment",
+		"#form_width",
+		"#form_height",
 	];
 
 	stylesSelector.forEach(function(selector) {
 		$(selector).on('change', function() {
-			const property = $(this).attr('data-property');
-			const value = $(this).val();
-			const element = $(this).attr('data-element');
-			const cssUnit = $(this).attr('data-unit') || '';
 
-			if (property && value && element) {
-				if('background-image' === property) {
-					$(element).css('background-image', `url(${value})`);
-				} else {
-					$(element).css(property, value + cssUnit);
-				}
-			}
+			const allLoginStyles = getLoginPageStyles();
+
+			const iframe = document.querySelector("#sm-preview-iframe");
+
+			iframe.contentWindow.postMessage({
+					loginStyles: allLoginStyles,
+				},
+				"*"
+			)
+
 		});
 	});
 

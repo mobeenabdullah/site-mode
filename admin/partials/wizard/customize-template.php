@@ -186,12 +186,7 @@ if ( isset( $_GET['template'] ) && isset( $_GET['template'] ) ) {
 						</button>
 					</div>
 					<div class="customize__template-content--canvas sm-scroll">
-                        <div style="display: <?php "wp-login.php" === $active_template ? "block" : "none"; ?>" id="sm-login-preview">
-                            <?php require SITE_MODE_ADMIN . 'partials/wizard/sm-login.php'; ?>
-                        </div>
-                        <iframe src="<?php echo esc_url( 'https://site-mode-blocks.local/' . $active_template ); ?>?site-mode-preview=true" style="display: <?php "wp-login.php" === $active_template ? "none" : "block"; ?>" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
-
-
+                        <iframe src="<?php echo esc_url( 'https://site-mode-blocks.local/' . $active_template ); ?>?site-mode-preview=true" id="sm-preview-iframe" name="page" height="700" width="100%" style="display: none;"></iframe>
 						<div class="loading__template"  style="display: flex;">
 							<div class="template-loader">
 								<div class="loader">

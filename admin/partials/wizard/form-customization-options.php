@@ -230,7 +230,7 @@
                                         <label for="form_width">Width</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="form_width" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_width" value="320" data-property="width" data-element=".login #loginform" data-unit="px">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -240,7 +240,7 @@
                                         <label for="form_height">Height</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="form_height" value="200" data-property="" data-element="">
+                                        <input type="number" id="form_height" value="auto" data-property="height" data-element=".login #loginform" data-unit="px">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
