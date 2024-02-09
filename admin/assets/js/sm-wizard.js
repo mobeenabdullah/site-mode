@@ -514,11 +514,14 @@ jQuery(function($) {
 		// Hide all option rows
 		$('.body_login_background_color, .body_login_background_image, .body_gradient_background',).hide();
 		$('.form_login_background_color, .form_login_background_image, .form_gradient_background',).hide();
+		$('.form__background_color, .form_login_background_image, .form_gradient_background',).hide();
+
 
 		// Show relevant options based on selected value
 		if (selectedType === 'solid') {
 			$('.body_login_background_color').show();
 			$('.form_login_background_color').show();
+			$('.form__background_color').show();
 		} else if (selectedType === 'gradient') {
 			$('.body_gradient_background').show();
 			$('.form_gradient_background').show();
@@ -529,9 +532,12 @@ jQuery(function($) {
 	});
 
 
-	// login page styles
+	// login common page styles
 	const loginStyles = {
-		".login #login h1 a": {
+		"body.login #login h1": {
+			"width": "100%",
+		},
+		"body.login #login h1 a": {
 			"display": "inline-block",
 			"font-size": "0",
 			"overflow": "hidden",
@@ -540,10 +546,25 @@ jQuery(function($) {
 			"margin-bottom": "0",
 			"background-size": "100%",
 		},
-		"#login": {
+
+		"body.login #login": {
 			"display": "flex",
 			"flex-direction": "column",
-			"align-items": "center"
+			"align-items": "center",
+			"border-width": "1px",
+			"border-style": "solid",
+			"border-color": "transparent",
+			"background-color": "transparent",
+		},
+		"body.login #login form#loginform": {
+			"border-color": "transparent",
+			"background-color": "transparent",
+		},
+		"body.login #login #loginform" : {
+			"width": "100%",
+		},
+		"body.login #login #loginform input[type='submit']" : {
+			"width": "100%",
 		}
 	};
 
@@ -567,7 +588,105 @@ jQuery(function($) {
 		"#logo_alignment",
 		"#form_width",
 		"#form_height",
+		"#background_color",
+		"#border_color",
+		"#border_style",
+		"#border_width_top",
+		"#border_width_right",
+		"#border_width_bottom",
+		"#border_width_left",
+		"#border_radius_top",
+		"#border_radius_right",
+		"#border_radius_bottom",
+		"#border_radius_left",
+		"#form_container_bg",
+		"#form_margins_top",
+		"#form_margins_right",
+		"#form_margins_bottom",
+		"#form_margins_left",
+		"#form_padding_top",
+		"#form_padding_right",
+		"#form_padding_bottom",
+		"#form_padding_left",
+		"#label_text_color",
+		"#label_text_size",
+		"#label_margins_top",
+		"#label_margins_right",
+		"#label_margins_bottom",
+		"#label_margins_left",
+		"#input_bg_color",
+		"#input_text_color",
+		"#input_text_size",
+		"#input_margins_top",
+		"#input_margins_right",
+		"#input_margins_bottom",
+		"#input_margins_left",
+		"#input_padding_top",
+		"#input_padding_right",
+		"#input_padding_bottom",
+		"#input_padding_left",
+		"#input_border_color",
+		"#input_border_style",
+		"#input_border_width_top",
+		"#input_border_width_right",
+		"#input_border_width_bottom",
+		"#input_border_width_left",
+		"#input_border_radius_top",
+		"#input_border_radius_right",
+		"#input_border_radius_bottom",
+		"#input_border_radius_left",
+		"#button_bg_color",
+		"#button_text_color",
+		"#button_text_size",
+		"#button_margins_top",
+		"#button_margins_right",
+		"#v_margins_bottom",
+		"#button_margins_left",
+		"#button_padding_top",
+		"#button_padding_right",
+		"#button_padding_bottom",
+		"#button_padding_left",
+		"#button_border_color",
+		"#button_border_style",
+		"#button_border_width_top",
+		"#button_border_width_right",
+		"#button_border_width_bottom",
+		"#button_border_width_left",
+		"#button_border_radius_top",
+		"#button_border_radius_right",
+		"#button_border_radius_bottom",
+		"#button_border_radius_left",
+		"#button_level"
+
 	];
+
+	// Apply gradient
+	const gradientSelector = {
+		"form_gradient_selector" : [
+			"#form_background_type",
+			"#form_container_bg",
+			"#form_bg_img_url",
+			"#form_first_color",
+			"#form_first_color_location",
+			"#form_second_color",
+			"#form_second_color_location",
+			"#form_gradient_type",
+			"#form_gradient_angle"
+		],
+		"body_bg_gradient_selector" : [
+			"#body_background_type",
+			"#background_color",
+			"#bg_img_url",
+			"#first_color",
+			"#first_color_location",
+			"#second_color",
+			"#second_color_location",
+			"#gradient_type",
+			"#gradient_angle"
+		]
+	};
+
+
 
 	stylesSelector.forEach(function(selector) {
 		$(selector).on('change', function() {
@@ -581,9 +700,9 @@ jQuery(function($) {
 				},
 				"*"
 			)
-
 		});
 	});
+
 
 
 	// get login page styles
@@ -596,19 +715,24 @@ jQuery(function($) {
 			const cssUnit = $(selector).attr('data-unit') || '';
 
 			if (property && value && element) {
-				if (styles[element] === undefined) {
-					styles[element] = {};
-				}
-				if ('background-image' === property) {
-					styles[element][property] = `url(${value})`;
-				} else {
-					styles[element][property] = value + cssUnit;
-				}
+			let cssUnit = $(selector).attr('data-unit') || '';
 
+				if (property && value && element) {
+					if( value === 'auto' ) {
+						cssUnit = '';
+					}
+					if (styles[element] === undefined) {
+						styles[element] = {};
+					}
+					if ('background-image' === property) {
+						styles[element][property] = `url(${value})`;
+					} else {
+						styles[element][property] = value + cssUnit;
+					}
+				}
 			}
 
 		});
 		return JSON.stringify(styles);
 	}
-
 });
