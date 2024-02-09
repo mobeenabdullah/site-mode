@@ -32,6 +32,7 @@ function Edit({
   setAttributes
 }) {
   const {
+    fontSize,
     dueDate,
     showSeperator,
     preset,
@@ -114,19 +115,44 @@ function Edit({
       });
     }
   };
-  const smCounterBox = {
-    backgroundColor: background ? bgColor : 'transparent',
-    borderColor: border ? borderColor : 'transparent'
-  };
+  const smCounterBox = {};
+  const smCountBoxContainer = {};
+  if ('normal-countdown' == preset) {
+    smCounterBox.padding = 0;
+    smCounterBox.width = 'auto';
+    smCounterBox.width = 'auto';
+    smCountBoxContainer.gap = '2rem';
+    smCounterBox.borderRadius = '0px';
+    smCounterBox.border = 'none';
+    smCounterBox.backgroundColor = 'transparent';
+  } else {
+    smCounterBox.backgroundColor = background ? bgColor : 'transparent';
+    smCounterBox.borderColor = border ? borderColor : 'transparent';
+  }
   const smCountdownDaysLabel = {
     color: labelColor
   };
   const countdownNumber = {
-    color: numberColor
+    color: numberColor,
+    fontSize: fontSize
   };
   const countdownSeperator = {
     color: separatorColor
   };
+  const fontSizes = [{
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Small'),
+    slug: 'small',
+    size: 14
+  }, {
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Medium'),
+    slug: 'big',
+    size: 24
+  }, {
+    name: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Large'),
+    slug: 'big',
+    size: 36
+  }];
+  const fallbackFontSize = 16;
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Time & Date', 'site-mode'),
     initialOpen: false
@@ -137,11 +163,26 @@ function Edit({
     onChange: onChangeDate,
     is12Hour: true
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Typography', 'site-mode'),
+    initialOpen: false
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.FontSizePicker, {
+    fontSizes: fontSizes,
+    value: fontSize,
+    fallbackFontSize: fallbackFontSize,
+    onChange: newFontSize => {
+      setAttributes({
+        fontSize: newFontSize
+      });
+    }
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelBody, {
     title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Layout', 'site-mode'),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.PanelRow, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_4__.RadioControl, {
     label: "Shape",
     options: [{
+      label: 'normal',
+      value: 'normal-countdown'
+    }, {
       label: 'Radius',
       value: 'default-countdown'
     }, {
@@ -238,7 +279,8 @@ function Edit({
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), dueDate ? (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "countdown_main-wrapper"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
-    className: `countdown-wrapper ${preset}`
+    className: `countdown-wrapper ${preset}`,
+    style: smCountBoxContainer
   }, timeUnits.includes('days') && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "sm-countdown-box sm-countdown-days-wrapper",
     style: smCounterBox

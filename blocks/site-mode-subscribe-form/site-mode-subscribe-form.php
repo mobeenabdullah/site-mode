@@ -18,6 +18,7 @@
  * @see https://developer.wordpress.org/block-editor/tutorials/block-tutorial/writing-your-first-block-type/
  */
 function site_mode_subscribe_form_block_render_callback( $attributes ) {
+	$hide_labels  = isset( $attributes['hideLabels'] ) ? $attributes['hideLabels'] : false;
 	$name_label        = isset( $attributes['nameLabel'] ) ? $attributes['nameLabel'] : 'Name';
 	$email_label       = isset( $attributes['emailLabel'] ) ? $attributes['emailLabel'] : 'Email';
 	$submit_label      = isset( $attributes['submitLabel'] ) ? $attributes['submitLabel'] : 'Submit';
@@ -29,6 +30,7 @@ function site_mode_subscribe_form_block_render_callback( $attributes ) {
 	$input_bg_color      = ! is_admin() && $attributes['inputBgColor'] ? $attributes['inputBgColor'] : '';
 	$input_border_color  = ! is_admin() && $attributes['inputBorderColor'] ? $attributes['inputBorderColor'] : '';
 	$input_text_color    = ! is_admin() && $attributes['inputTextColor'] ? $attributes['inputTextColor'] : '';
+	$input_placeholder_color    = ! is_admin() && $attributes['inputPlaceholder'] ? $attributes['inputPlaceholder'] : '';
 	$input_border_radius = ! is_admin() && $attributes['inputBorderRadius'] ? $attributes['inputBorderRadius'] : '';
 	$input_border_width  = ! is_admin() && $attributes['inputBorderWidth'] ? $attributes['inputBorderWidth'] : '';
 	$padding_top         = ! is_admin() && isset( $attributes['inputPadding']['top'] ) ? $attributes['inputPadding']['top'] : '';
@@ -52,13 +54,18 @@ function site_mode_subscribe_form_block_render_callback( $attributes ) {
 	$markup .= '<input type="hidden" name="sm_subscribe_form_nonce" id="sm-subscribe-nonce" value="' . esc_attr( $nonce ) . '">';
 	// Name field.
 	$markup .= '<div class="sm__subscribe-form--field">';
-	$markup .= '<label for="sm-name" style="color: ' . $label_color . '">' . esc_attr( $name_label ) . '</label>';
+	if('true' == $hide_labels ) {
+		$markup .= '<label for="sm-name" style="color: ' . $label_color . '">' . esc_attr( $name_label ) . '</label>';
+	}
+
 	$markup .= '<input type="text" id="sm-subscribe-name" name="name" placeholder="' . esc_attr( $name_placeholder ) . '"style="background-color: ' . $input_bg_color . '; color:' . $input_text_color . '; border-color: ' . $input_border_color . '; border-radius: ' . $input_border_radius . 'px; border-width: ' . $input_border_width . 'px; padding: ' . $padding . '">';
 	$markup .= '</div>';
 
 	// Email field.
 	$markup .= '<div class="sm__subscribe-form--field">';
-	$markup .= '<label for="sm-email" style="color: ' . $label_color . '">' . esc_attr( $email_label ) . '</label>';
+	if('true' == $hide_labels ) {
+		$markup .= '<label for="sm-email" style="color: ' . $label_color . '">' . esc_attr($email_label) . '</label>';
+	}
 	$markup .= '<input type="email" id="sm-subscribe-email" name="email" placeholder="' . esc_attr( $email_placeholder ) . '"style="background-color: ' . $input_bg_color . '; color:' . $input_text_color . '; border-color: ' . $input_border_color . '; border-radius: ' . $input_border_radius . 'px; border-width: ' . $input_border_width . 'px; padding: ' . $padding . '">';
 	$markup .= '</div>';
 
@@ -69,6 +76,10 @@ function site_mode_subscribe_form_block_render_callback( $attributes ) {
 
 	$markup .= '</form>';
 	$markup .= '</div>';
+
+	$markup .= '<style>';
+	$markup .= '.sm__subscribe-form--field input::placeholder { color: ' . $input_placeholder_color . '; }';
+	$markup .= '</style>';
 	return $markup;
 
 }

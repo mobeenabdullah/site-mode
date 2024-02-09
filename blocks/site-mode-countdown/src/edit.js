@@ -9,10 +9,12 @@ import {
 	ToggleControl,
 	SelectControl,
 	RadioControl,
+	FontSizePicker
 } from '@wordpress/components';
 
 export default function Edit({ attributes, setAttributes }) {
 	const {
+		fontSize,
 		dueDate,
 		showSeperator,
 		preset,
@@ -101,10 +103,22 @@ export default function Edit({ attributes, setAttributes }) {
 		}
 	}
 
-	const smCounterBox = {
-		backgroundColor: background ? bgColor : 'transparent',
-		borderColor: border ? borderColor : 'transparent',
+	const smCounterBox = {};
+	const smCountBoxContainer = {};
+
+	if( 'normal-countdown' ==  preset ) {
+		smCounterBox.padding = 0 ;
+		smCounterBox.width = 'auto';
+		smCounterBox.width = 'auto';
+		smCountBoxContainer.gap = '2rem';
+		smCounterBox.borderRadius = '0px';
+		smCounterBox.border = 'none';
+		smCounterBox.backgroundColor = 'transparent';
+	} else {
+		smCounterBox.backgroundColor = background ? bgColor : 'transparent';
+		smCounterBox.borderColor = border ? borderColor : 'transparent';
 	}
+
 
 	const smCountdownDaysLabel = {
 		color: labelColor,
@@ -112,16 +126,36 @@ export default function Edit({ attributes, setAttributes }) {
 
 	const countdownNumber = {
 		color: numberColor,
+		fontSize: fontSize,
 	}
 
 	const countdownSeperator = {
 		color: separatorColor
 	}
 
+	const fontSizes = [
+		{
+			name: __( 'Small' ),
+			slug: 'small',
+			size: 14,
+		},
+		{
+			name: __( 'Medium' ),
+			slug: 'big',
+			size: 24,
+		},
+		{
+			name: __( 'Large' ),
+			slug: 'big',
+			size: 36,
+		}
+	];
+	const fallbackFontSize = 16;
+
 	return (
 		<>
 			<InspectorControls >
-				<PanelBody title         = {__( 'Time & Date', 'site-mode' )} initialOpen = { false }>
+				<PanelBody title= {__( 'Time & Date', 'site-mode' )} initialOpen = { false }>
 					<PanelRow>
 						{isInvalidDate && (
 							<p className = "error-message">
@@ -136,11 +170,22 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 					</PanelRow>
 				</PanelBody>
+				<PanelBody title= {__( 'Typography', 'site-mode' )} initialOpen = { false }>
+					<FontSizePicker
+						fontSizes={ fontSizes }
+						value={ fontSize }
+						fallbackFontSize={ fallbackFontSize }
+						onChange={ ( newFontSize ) => {
+							setAttributes({fontSize: newFontSize});
+						} }
+					/>
+				</PanelBody>
 				<PanelBody title       = {__( 'Layout', 'site-mode' )} initialOpen = { false }>
 					<PanelRow>
 						<RadioControl
 							label       = "Shape"
 							options     = { [
+								{ label: 'normal', value: 'normal-countdown' },
 								{ label: 'Radius', value: 'default-countdown' },
 								{ label: 'Circle', value: 'countdown-circle' },
 								{ label: 'Square', value: 'countdown-without-box'}
@@ -229,7 +274,7 @@ export default function Edit({ attributes, setAttributes }) {
 				{dueDate ? (
 					<>
 						<div className="countdown_main-wrapper">
-							<div className={`countdown-wrapper ${preset}`}>
+							<div className={`countdown-wrapper ${preset}`} style={ smCountBoxContainer }>
 									{timeUnits.includes( 'days' ) && (
 										<div className="sm-countdown-box sm-countdown-days-wrapper" style = {smCounterBox}>
 											<div className="sm-countdown-days-label countdown_label" style = {smCountdownDaysLabel} > { __( 'Days', 'site-mode' )} </div>

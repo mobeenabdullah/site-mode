@@ -18,6 +18,10 @@
   "editorStyle": "file:./build/index.css",
   "style": "file:./build/style-index.css",
   "attributes": {
+	"fontSize": {
+	  "type": "number",
+	  "default": 16
+	},
 	"bgColor": {
 	  "type": "string",
 	  "default": "#ffffff"

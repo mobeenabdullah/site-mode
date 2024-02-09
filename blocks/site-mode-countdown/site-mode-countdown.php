@@ -21,8 +21,8 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 
 	$due_date   = strtotime( $attributes['dueDate'] );
 	$time_units = $attributes['timeUnits'] || array();
-	// $date            = strtotime( ( new DateTime( date( 'D, d M y H:i:s O' ), new DateTimeZone( 'UTC' ) ) )->format( 'D, d M y H:i:s O' ) );.
 	$date            = strtotime( gmdate( 'D, d M Y H:i:s O' ) );
+	$font_size  	 = ! is_admin() && $attributes['fontSize'] ? $attributes['fontSize'] :  16;
 	$bg_color        = ! is_admin() && $attributes['background'] ? $attributes['bgColor'] : '';
 	$border_color    = ! is_admin() && $attributes['border'] ? $attributes['borderColor'] : '';
 	$label_color     = ! is_admin() ? $attributes['labelColor'] : '';
@@ -35,9 +35,9 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 		$markup .= '<div class="countdown-wrapper ' . esc_attr( $attributes['preset'] ) . ' ">';
 		$markup .= '<input type="hidden" value="' . esc_attr( $attributes['dueDate'] ) . '" class="due-date">';
 		if ( in_array( 'days', (array) $time_units ) ) :
-			$markup .= '<div class="sm-countdown-box sm-countdown-days-wrapper" style="background-color: ' . $bg_color . '; border-color: ' . $border_color . '; ">';
+			$markup .= '<div class="sm-countdown-box sm-countdown-days-wrapper" style="background-color: ' . $bg_color . '; border-color: ' . $border_color . ';  ">';
 			$markup .= '<div class="sm-countdown-days-label countdown_label" style="color: ' . $label_color . ';">Days</div>';
-			$markup .= '<div class="sm-countdown-days countdown_number" style="color: ' . $number_color . ';">';
+			$markup .= '<div class="sm-countdown-days countdown_number" style="color: ' . $number_color . '; font-size: ' . $font_size .'px; ">';
 			$markup .= '<span>0</span>';
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -48,7 +48,7 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 		if ( in_array( 'hours', (array) $time_units ) ) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-hours-wrapper" style="background-color: ' . $bg_color . '; border-color: ' . $border_color . '; ">';
 			$markup .= '<div class="sm-countdown-hours-label countdown_label" style="color: ' . $label_color . ';">Hours</div>';
-			$markup .= '<div class="sm-countdown-hours countdown_number" style="color: ' . $number_color . ';">';
+			$markup .= '<div class="sm-countdown-hours countdown_number" style="color: ' . $number_color . '; font-size: ' . $font_size .'px; ">';
 			$markup .= '<span>0</span>';
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -59,7 +59,7 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 		if ( in_array( 'minutes', (array) $time_units ) ) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-minutes-wrapper" style="background-color: ' . $bg_color . '; border-color: ' . $border_color . '; ">';
 			$markup .= '<div class="sm-countdown-minutes-label countdown_label" style="color: ' . $label_color . ';">Minutes</div>';
-			$markup .= '<div class="sm-countdown-minutes countdown_number" style="color: ' . $number_color . ';">';
+			$markup .= '<div class="sm-countdown-minutes countdown_number" style="color: ' . $number_color . '; font-size: ' . $font_size .'px; ">';
 			$markup .= '<span>0</span>';
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -70,7 +70,7 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 		if ( in_array( 'seconds', (array) $time_units ) ) :
 			$markup .= '<div class="sm-countdown-box sm-countdown-seconds-wrapper" style="background-color: ' . $bg_color . '; border-color: ' . $border_color . '; ">';
 			$markup .= '<div class="sm-countdown-seconds-label countdown_label" style="color: ' . $label_color . ';">Seconds</div>';
-			$markup .= '<div class="sm-countdown-seconds countdown_number" style="color: ' . $number_color . ';">';
+			$markup .= '<div class="sm-countdown-seconds countdown_number" style="color: ' . $number_color . '; font-size: ' . $font_size .'px; ">';
 			$markup .= '<span>0</span>';
 			$markup .= '</div>';
 			$markup .= '</div>';
@@ -78,6 +78,13 @@ function site_mode_countdown_block_render_callback( $attributes ) {
 
 		$markup .= '</div>';
 		$markup .= '</div>';
+		if( 'normal-countdown' == $attributes['preset'] ) {
+			$markup .= '<style>';
+			$markup .= '.sm-countdown-box {padding: 0 !important;width: auto !important; border: none !important; border-radius: 0 !important; background-color: transparent !important;}';
+			$markup .= '.countdown-wrapper {gap: 2rem !important;}';
+			$markup .= '</style>';
+		}
+
 		return $markup;
 	}
 }

@@ -19,6 +19,10 @@
 	"editorStyle": "file:./build/index.css",
 	"style": "file:./build/style-index.css",
 	"attributes": {
+	  "hideLabels": {
+		"type": "boolean",
+		"default": false
+	  },
 	  "labelColor": {
 		"type": "string",
 		"default": "#000000"
@@ -28,6 +32,10 @@
 		"default": "transparent"
 	  	},
 	  "inputTextColor": {
+		"type": "string",
+		"default": "#000000"
+	  },
+	  "inputPlaceholder": {
 		"type": "string",
 		"default": "#000000"
 	  },

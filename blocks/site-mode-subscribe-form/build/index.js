@@ -31,6 +31,7 @@ function Edit({
   setAttributes
 }) {
   const {
+    hideLabels,
     nameLabel,
     emailLabel,
     namePlaceholder,
@@ -39,6 +40,7 @@ function Edit({
     labelColor,
     inputBgColor,
     inputTextColor,
+    inputPlaceholder,
     inputBorderColor,
     inputBorderWidth,
     inputBorderRadius,
@@ -56,7 +58,7 @@ function Edit({
   const smInputField = {
     backgroundColor: inputBgColor ? inputBgColor : 'transparent',
     color: inputTextColor ? inputTextColor : 'transparent',
-    borderColor: inputBorderColor ? inputBorderColor : 'transparent',
+    borderColor: inputBorderColor ? inputBorderColor : '#000000',
     borderWidth: inputBorderWidth ? inputBorderWidth : 0,
     borderRadius: inputBorderRadius ? inputBorderRadius : 0,
     paddingTop: inputPadding.top ? inputPadding.top : '8px',
@@ -89,7 +91,7 @@ function Edit({
     paddingLeft: btnPadding.left ? btnPadding.left : '16px'
   };
   return (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, null, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fields color settings', 'site-mode'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Fields color settings", "site-mode"),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.PanelColorSettings, {
     title: "Fields Color Settings",
@@ -100,48 +102,62 @@ function Edit({
       onChange: value => setAttributes({
         labelColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Label Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Label Color")
     }, {
       value: inputBgColor,
       onChange: value => setAttributes({
         inputBgColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Background Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Input Background Color")
     }, {
       value: inputTextColor,
       onChange: value => setAttributes({
         inputTextColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Text Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Input Text Color")
+    }, {
+      value: inputPlaceholder,
+      onChange: value => setAttributes({
+        inputPlaceholder: value
+      }),
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Input Placeholder Text Color")
     }, {
       value: inputBorderColor,
       onChange: value => setAttributes({
         inputBorderColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Input Border Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Input Border Color")
     }, {
       value: btnBgColor,
       onChange: value => setAttributes({
         btnBgColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Background Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Button Background Color")
     }, {
       value: btnTextColor,
       onChange: value => setAttributes({
         btnTextColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Text Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Button Text Color")
     }, {
       value: btnBorderColor,
       onChange: value => setAttributes({
         btnBorderColor: value
       }),
-      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Border Color')
+      label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Button Border Color")
     }]
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Fields Settings', 'site-mode'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Fields Settings", "site-mode"),
     initialOpen: false
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.ToggleControl, {
+    label: "Show labels",
+    checked: hideLabels,
+    onChange: () => {
+      setAttributes({
+        hideLabels: !hideLabels
+      });
+    }
+  }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: "Border width",
     value: inputBorderWidth,
     onChange: value => setAttributes({
@@ -164,7 +180,7 @@ function Edit({
       inputPadding: nextValues
     })
   })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Button Settings', 'site-mode'),
+    title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Button Settings", "site-mode"),
     initialOpen: false
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.RangeControl, {
     label: "Border width",
@@ -190,11 +206,16 @@ function Edit({
     })
   }))), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.useBlockProps)(), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("form", {
     class: "site_mode_subscribe"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
+    className: "subscribe__form"
+  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("style", null, `
+								.subscribe__form input::placeholder {
+									color: ${inputPlaceholder};
+							`), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-username"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, hideLabels && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Full Name', 'site-mode'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Full Name", "site-mode"),
     keepPlaceholderOnFocus: "true",
     onChange: value => setAttributes({
       nameLabel: value
@@ -204,18 +225,18 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     className: "input",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('John Doe', 'site-mode'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("John Doe", "site-mode"),
     onChange: event => setAttributes({
       namePlaceholder: event.target.value
     }),
     value: namePlaceholder,
     size: "20",
     style: smInputField
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-password"
-  }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
+  }, hideLabels && (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.RichText, {
     tagName: "label",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Your Email', 'site-mode'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Your Email", "site-mode"),
     keepPlaceholderOnFocus: "true",
     onChange: value => setAttributes({
       emailLabel: value
@@ -225,26 +246,26 @@ function Edit({
   }), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
     type: "text",
     className: "input",
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('example@xyz.com', 'site-mode'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("example@xyz.com", "site-mode"),
     onChange: event => setAttributes({
       emailPlaceholder: event.target.value
     }),
     value: emailPlaceholder,
     size: "20",
     style: smInputField
-  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("p", {
+  })), (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("div", {
     className: "login-submit"
   }, (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_0__.createElement)("input", {
-    type: "submit",
+    type: "button",
     className: "button button-primary",
     value: submitLabel,
     onChange: event => setAttributes({
       submitLabel: event.target.value
     }),
-    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)('Submit', 'site-mode'),
+    placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_1__.__)("Submit", "site-mode"),
     size: "20",
     style: buttonSettings
-  })))));
+  }))))));
 }
 
 /***/ }),

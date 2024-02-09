@@ -1,9 +1,9 @@
 .countdown_main-wrapper {
   & .countdown-wrapper {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	gap: 0.8rem;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 1rem;
 	flex-wrap: wrap;
 	@media screen and (max-width: 800px) {
 	  gap: 0.4rem;
@@ -62,13 +62,6 @@
 	  & .countdown-seperator {
 		display: none;
 	  }
-	  //& .countdown_number {
-	  //font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);
-	  //@media screen and (max-width: 767px) {
-	  //  font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
-	  //}
-	  //}
-
 	}
 	&.countdown-with-simple-seperator {
 	  gap: 0;
@@ -81,12 +74,6 @@
 		text-indent: -9999px;
 		white-space: nowrap;
 	  }
-	  //& .countdown_number {
-	  //font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);
-	  //@media screen and (max-width: 767px) {
-	  //  font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
-	  //}
-	  //}
 	}
 	&.countdown-in-row {
 	  gap: 0;
@@ -104,12 +91,6 @@
 		text-indent: -9999px;
 		white-space: nowrap;
 	  }
-	  //& .countdown_number {
-	  //font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);
-	  //@media screen and (max-width: 767px) {
-	  //  font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
-	  //}
-	  //}
 	}
 
 	&.countdown-in-row-individual {
@@ -128,12 +109,6 @@
 	  & .sm-countdown-box {
 		border-radius: 0;
 	  }
-	  //& .countdown_number {
-	  //font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);
-	  //@media screen and (max-width: 767px) {
-	  //  font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
-	  //}
-	  //}
 	}
 	&.countdown-circle {
 	  & .sm-countdown-box {
@@ -141,16 +116,13 @@
 		align-items: center;
 		justify-content: center;
 	  }
-	  //& .countdown_number {
-	  //font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);
-	  //@media screen and (max-width: 767px) {
-	  //  font-size: clamp(1.75rem, 1.214rem + 1.429vw, 2.5rem);
-	  //}
-	  //}
 	}
 	& .countdown-seperator {
 	  font-size: 2rem;
 	  font-weight: 500;
+	  margin-top: 3%;
+	  height: 100%;
+	  display: block;
 	}
 	& .countdown_number {
 	  font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);

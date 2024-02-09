@@ -33,9 +33,9 @@ ul.wp-block-blocks-course-dynamic-posts li p {
 
 .countdown_main-wrapper .countdown-wrapper {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.8rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
   flex-wrap: wrap;
 }
 @media screen and (max-width: 800px) {
@@ -147,6 +147,9 @@ ul.wp-block-blocks-course-dynamic-posts li p {
 .countdown_main-wrapper .countdown-wrapper .countdown-seperator {
   font-size: 2rem;
   font-weight: 500;
+  margin-top: 3%;
+  height: 100%;
+  display: block;
 }
 .countdown_main-wrapper .countdown-wrapper .countdown_number {
   font-size: clamp(1.25rem, 0.833rem + 5.208vw, 2.5rem);

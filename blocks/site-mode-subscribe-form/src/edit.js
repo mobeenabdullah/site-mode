@@ -3,6 +3,10 @@ import {RichText, useBlockProps, PanelColorSettings, InspectorControls} from '@w
 import {
 	PanelBody,
 	RangeControl,
+	ToggleControl,
+	Flex,
+	FlexBlock,
+	FlexItem,
 	__experimentalBoxControl as BoxControl,
 } from '@wordpress/components';
 import './editor.scss';
@@ -10,6 +14,7 @@ import './editor.scss';
 export default function Edit({ attributes, setAttributes }) {
 
 	const {
+		hideLabels,
 		nameLabel,
 		emailLabel,
 		namePlaceholder,
@@ -18,6 +23,7 @@ export default function Edit({ attributes, setAttributes }) {
 		labelColor,
 		inputBgColor,
 		inputTextColor,
+		inputPlaceholder,
 		inputBorderColor,
 		inputBorderWidth,
 		inputBorderRadius,
@@ -37,7 +43,7 @@ export default function Edit({ attributes, setAttributes }) {
 	const smInputField = {
 		backgroundColor: inputBgColor ? inputBgColor : 'transparent',
 		color: inputTextColor ? inputTextColor : 'transparent',
-		borderColor: inputBorderColor ? inputBorderColor : 'transparent',
+		borderColor: inputBorderColor ? inputBorderColor : '#000000',
 		borderWidth: inputBorderWidth ? inputBorderWidth : 0,
 		borderRadius: inputBorderRadius ? inputBorderRadius : 0,
 		paddingTop: inputPadding.top ? inputPadding.top : '8px',
@@ -62,7 +68,7 @@ export default function Edit({ attributes, setAttributes }) {
 		paddingRight: btnPadding.right ? btnPadding.right : '16px',
 		paddingBottom: btnPadding.bottom ? btnPadding.bottom : '8px',
 		paddingLeft: btnPadding.left ? btnPadding.left : '16px',
-			}
+	}
 
 	return (
 		<>
@@ -92,6 +98,11 @@ export default function Edit({ attributes, setAttributes }) {
 								label: __("Input Text Color"),
 							},
 							{
+								value: inputPlaceholder,
+								onChange: (value) => setAttributes({ inputPlaceholder: value }),
+								label: __("Input Placeholder Text Color"),
+							},
+							{
 								value: inputBorderColor,
 								onChange: (value) => setAttributes({ inputBorderColor: value }),
 								label: __("Input Border Color"),
@@ -115,6 +126,13 @@ export default function Edit({ attributes, setAttributes }) {
 					/>
 				</PanelBody>
 				<PanelBody title={__("Fields Settings", "site-mode")} initialOpen={false}>
+					<ToggleControl
+						label="Show labels"
+						checked={ hideLabels }
+						onChange={ () => {
+							setAttributes({ hideLabels: !hideLabels })
+						} }
+					/>
 					<RangeControl
 						label="Border width"
 						value={inputBorderWidth}
@@ -161,61 +179,74 @@ export default function Edit({ attributes, setAttributes }) {
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<form class="site_mode_subscribe">
-					<p className="login-username">
-						<RichText
-							tagName="label"
-							placeholder={__("Full Name", "site-mode")}
-							keepPlaceholderOnFocus="true"
-							onChange={(value) => setAttributes({ nameLabel: value })}
-							value={nameLabel}
-							style={smLabelColor}
-						/>
-						<input
-							type="text"
-							className="input"
-							placeholder={__("John Doe", "site-mode")}
-							onChange={(event) =>
-								setAttributes({ namePlaceholder: event.target.value })
-							}
-							value={namePlaceholder}
-							size="20"
-							style={smInputField}
-						/>
-					</p>
-					<p className="login-password">
-						<RichText
-							tagName="label"
-							placeholder={__("Your Email", "site-mode")}
-							keepPlaceholderOnFocus="true"
-							onChange={(value) => setAttributes({ emailLabel: value })}
-							value={emailLabel}
-							style={smLabelColor}
-						/>
-						<input
-							type="text"
-							className="input"
-							placeholder={__("example@xyz.com", "site-mode")}
-							onChange={(event) =>
-								setAttributes({ emailPlaceholder: event.target.value })
-							}
-							value={emailPlaceholder}
-							size="20"
-							style={smInputField}
-						/>
-					</p>
-					<p className="login-submit">
-						<input
-							type="submit"
-							className="button button-primary"
-							value={submitLabel}
-							onChange={(event) =>
-								setAttributes({ submitLabel: event.target.value })
-							}
-							placeholder={__("Submit", "site-mode")}
-							size="20"
-							style={buttonSettings}
-						/>
-					</p>
+					<div className={"subscribe__form"}>
+						<style>
+							{`
+								.subscribe__form input::placeholder {
+									color: ${inputPlaceholder};
+							`}
+						</style>
+						<div className="login-username">
+							{hideLabels && (
+								<RichText
+									tagName="label"
+									placeholder={__("Full Name", "site-mode")}
+									keepPlaceholderOnFocus="true"
+									onChange={(value) => setAttributes({ nameLabel: value })}
+									value={nameLabel}
+									style={smLabelColor}
+								/>
+							)}
+							<input
+								type="text"
+								className="input"
+								placeholder={__("John Doe", "site-mode")}
+								onChange={(event) =>
+									setAttributes({ namePlaceholder: event.target.value })
+								}
+								value={namePlaceholder}
+								size="20"
+								style={smInputField}
+							/>
+						</div>
+						<div className="login-password">
+							{hideLabels && (
+								<RichText
+									tagName="label"
+									placeholder={__("Your Email", "site-mode")}
+									keepPlaceholderOnFocus="true"
+									onChange={(value) => setAttributes({ emailLabel: value })}
+									value={emailLabel}
+									style={smLabelColor}
+								/>
+							)}
+							<input
+								type="text"
+								className="input"
+								placeholder={__("example@xyz.com", "site-mode")}
+								onChange={(event) =>
+									setAttributes({ emailPlaceholder: event.target.value })
+								}
+								value={emailPlaceholder}
+								size="20"
+								style={smInputField}
+							/>
+						</div>
+						<div className="login-submit">
+							<input
+								type="button"
+								className="button button-primary"
+								value={submitLabel}
+								onChange={(event) =>
+									setAttributes({ submitLabel: event.target.value })
+								}
+								placeholder={__("Submit", "site-mode")}
+								size="20"
+								style={buttonSettings}
+							/>
+						</div>
+					</div>
+
 				</form>
 			</div>
 		</>
