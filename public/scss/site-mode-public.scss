@@ -23,3 +23,25 @@
   margin: 0 !important;
   padding: 0 !important;
 }
+
+@media screen and (max-width: 767px) {
+  .hide-image-column, .hide___image {
+    display: none !important;
+  }
+  .cs__content__column {
+    width: 100%;
+  }
+  .coming__soon-footer {
+    justify-content: center !important;
+  }
+  .maintenance__column {
+    padding: 0 !important;
+  }
+  .content__spacing_y {
+    flex-basis: 100px !important;
+  }
+  .maintenance__bg img {
+    width: 100% !important;
+    opacity: 0.1;
+  }
+}

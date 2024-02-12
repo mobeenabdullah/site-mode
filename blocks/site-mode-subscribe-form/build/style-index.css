@@ -18,11 +18,6 @@
   align-items: flex-end;
   gap: 0.7rem;
 }
-@media screen and (max-width: 767px) {
-  .sm__subscribe-form {
-    flex-wrap: wrap;
-  }
-}
 .sm__subscribe-form--field:not(:last-child) {
   width: 38%;
 }
@@ -98,6 +93,18 @@
   text-align: center;
   font-size: 1.6rem;
   line-height: 1.7;
+}
+@media screen and (max-width: 767px) {
+  .sm__subscribe-form {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .sm__subscribe-form--field:not(:last-child) {
+    width: calc(50% - 0.2rem);
+  }
+  .sm__subscribe.sm_error_field {
+    width: 100%;
+  }
 }
 
 .maintenance__bg.wp-block-cover .wp-block-cover__image-background {

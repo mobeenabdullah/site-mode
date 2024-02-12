@@ -61,9 +61,9 @@ class Site_Mode_Design extends Settings {
 	 * @var string[] $placeholder_colors
 	 */
 	protected $placeholder_colors = array(
-		'base'     => '#AC3C3C',
-		'primary'  => '#8B1D86',
-		'contrast' => '#B7E972',
+		'base'     => '#ffffff',
+		'primary'  => '#fe4155',
+		'contrast' => '#000000',
 	);
 
 	/**

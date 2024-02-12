@@ -14,9 +14,6 @@
 	display: flex;
 	align-items: flex-end;
 	gap: 0.7rem;
-	@media screen and (max-width: 767px) {
-	  flex-wrap: wrap;
-	}
 	&--field {
 	  &:not(:last-child) {
 		width: 38%;
@@ -95,6 +92,20 @@
 	text-align: center;
 	font-size: 1.6rem;
 	line-height: 1.7;
+  }
+  @media screen and (max-width: 767px) {
+	&-form {
+	  flex-wrap: wrap;
+	  gap: 0.4rem;
+	  &--field {
+		&:not(:last-child) {
+		  width: calc(50% - 0.2rem);
+		}
+	  }
+	}
+	&.sm_error_field {
+	  width: 100%;
+	}
   }
 }
 
