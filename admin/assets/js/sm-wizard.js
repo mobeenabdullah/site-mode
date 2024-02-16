@@ -267,6 +267,7 @@ jQuery(function($) {
 
 			if(isLoginPreview) {
 				data.loginStyles = getLoginPageStyles();
+				data.loginContentHandler = JSON.stringify(contentChangeData);
 			} else {
 				data.colorScheme = colorScheme;
 				data.showCountdown = showCountdown;
@@ -453,17 +454,6 @@ jQuery(function($) {
 	);
 
 	// Login Page Steps
-	/*
-	$(".accordion-step h3").on("click", function() {
-		// Close all step__content elements
-		$('.step__content').slideUp('fast');
-
-		// Open the step__content next to the clicked h3 if it is not already open
-		if ($(this).next('.step__content').is(":hidden")) {
-			$(this).next('.step__content').slideDown('fast');
-		}
-	});
-	*/
 	// Initially hide all accordion contents
 	$('.step__content').hide();
 
@@ -500,16 +490,10 @@ jQuery(function($) {
 		}
 	});
 
-	// Initially hide gradient and image options
-	$('.login_background_image, .gradient_background').hide();
-
-	// Set 'solid' as the default selected option
-	$('#body_background_type, #form_background_type').val('solid');
-
 	// Handle change event on background_type select element
 	$('#body_background_type, #form_background_type').on('change', function() {
 		// Get the selected value
-		var selectedType = $(this).val();
+		const selectedType = $(this).val();
 
 		// Hide all option rows
 		$('.body_login_background_color, .body_login_background_image, .body_gradient_background',).hide();
@@ -579,8 +563,7 @@ jQuery(function($) {
 		});
 	}
 
-
-	const stylesSelector = [
+	const generalStylesSelector = [
 		"#show_hide_logo",
 		"#logo_image_url",
 		"#logo_width",
@@ -588,7 +571,6 @@ jQuery(function($) {
 		"#logo_alignment",
 		"#form_width",
 		"#form_height",
-		"#background_color",
 		"#border_color",
 		"#border_style",
 		"#border_width_top",
@@ -657,42 +639,93 @@ jQuery(function($) {
 		"#button_border_radius_bottom",
 		"#button_border_radius_left",
 		"#button_level"
+	];
 
+	const classicStylesSelector = [
+		"#form_background_type",
+		"#form_bg_img_url",
+		"#form_first_color",
+		"#form_first_color_location",
+		"#form_second_color",
+		"#form_second_color_location",
+		"#form_gradient_type",
+		"#form_gradient_angle",
 	];
 
 	// Apply gradient
-	const gradientSelector = {
-		"form_gradient_selector" : [
-			"#form_background_type",
-			"#form_container_bg",
-			"#form_bg_img_url",
-			"#form_first_color",
-			"#form_first_color_location",
-			"#form_second_color",
-			"#form_second_color_location",
-			"#form_gradient_type",
-			"#form_gradient_angle"
-		],
-		"body_bg_gradient_selector" : [
-			"#body_background_type",
-			"#background_color",
-			"#bg_img_url",
-			"#first_color",
-			"#first_color_location",
-			"#second_color",
-			"#second_color_location",
-			"#gradient_type",
-			"#gradient_angle"
-		]
+	const gradientSelectors = {
+		"body.login #login" : {
+			"type" : "#form_background_type",
+			"bg_color" : "#form_container_bg",
+			"img_url" : "#form_bg_img_url",
+			"first_color" : "#form_first_color",
+			"first_color_location" : "#form_first_color_location",
+			"second_color" : "#form_second_color",
+			"second_color_location" : "#form_second_color_location",
+			"gradient_type" : "#form_gradient_type",
+			"gradient_angle" : "#form_gradient_angle"
+		}
 	};
 
+	// content selectors
+	const contentSelectors = [
+		"#username_label",
+		"#password_label",
+		"#remember_label",
+		"#submit_label",
+		"#button_text_label",
+		"#button_text_label",
+		"#lost_pass_text",
+		"#back_to_website"
+	];
 
+	const contentChangeData = {};
 
-	stylesSelector.forEach(function(selector) {
+	// content change handler
+	contentSelectors.forEach(function(selector) {
 		$(selector).on('change', function() {
+			const iframe = document.querySelector("#sm-preview-iframe");
+			const element = $(selector).attr('data-element');
+			const target = $(selector).attr('data-target');
+			const value = $(selector).val();
 
+			if(contentChangeData[element] === undefined) {
+				contentChangeData[element] = {};
+				contentChangeData[element]['value'] = value;
+
+				if(target === "text") {
+					contentChangeData[element]['script'] = `document.querySelector("${element}").innerHTML = '${value}';`
+				} else {
+					contentChangeData[element]['script'] = `document.querySelector("${element}").${target} = '${value}';`
+				}
+
+			} else {
+				contentChangeData[element]['value'] = value;
+				if(target === "text") {
+					contentChangeData[element]['script'] = `document.querySelector("${element}").innerHTML = '${value}';`
+				} else {
+					contentChangeData[element]['script'] = `document.querySelector("${element}").${target} = '${value}';`
+				}
+			}
+
+			iframe.contentWindow.postMessage({
+					contentHandler: JSON.stringify({
+						[`${element}`]: {
+							"target": target,
+							"value": value
+						}
+					}),
+				},
+				"*"
+			)
+		});
+
+	});
+
+
+	[...generalStylesSelector, ...classicStylesSelector].forEach(function(selector) {
+		$(selector).on('change', function() {
 			const allLoginStyles = getLoginPageStyles();
-
 			const iframe = document.querySelector("#sm-preview-iframe");
 
 			iframe.contentWindow.postMessage({
@@ -703,19 +736,16 @@ jQuery(function($) {
 		});
 	});
 
-
-
 	// get login page styles
 	function getLoginPageStyles() {
 		const styles = {...loginStyles};
-		stylesSelector.forEach(function(selector) {
+		generalStylesSelector.forEach(function(selector) {
 			const property = $(selector).attr('data-property');
 			const value = $(selector).val();
 			const element = $(selector).attr('data-element');
-			const cssUnit = $(selector).attr('data-unit') || '';
+			let cssUnit = $(selector).attr('data-unit') || '';
 
 			if (property && value && element) {
-			let cssUnit = $(selector).attr('data-unit') || '';
 
 				if (property && value && element) {
 					if( value === 'auto' ) {
@@ -733,6 +763,38 @@ jQuery(function($) {
 			}
 
 		});
+
+		for (const gradientSelectorKey in gradientSelectors) {
+			const element = gradientSelectorKey;
+			const type = $(gradientSelectors[gradientSelectorKey].type).val();
+
+			if(!styles[element]) {
+				styles[element] = {};
+			}
+
+			if(type === 'gradient') {
+				const first_color = $(gradientSelectors[gradientSelectorKey].first_color).val();
+				const first_color_location = $(gradientSelectors[gradientSelectorKey].first_color_location).val();
+				const second_color = $(gradientSelectors[gradientSelectorKey].second_color).val();
+				const second_color_location = $(gradientSelectors[gradientSelectorKey].second_color_location).val();
+				const gradient_type = $(gradientSelectors[gradientSelectorKey].gradient_type).val();
+				const gradient_angle = $(gradientSelectors[gradientSelectorKey].gradient_angle).val();
+
+				if(gradient_type === 'linear-gradient') {
+					styles[element]['background-image'] = `linear-gradient(${gradient_angle}deg, ${first_color} ${first_color_location}%, ${second_color} ${second_color_location}%)`;
+				} else {
+					styles[element]['background-image'] = `radial-gradient(circle, ${first_color} ${first_color_location}%, ${second_color} ${second_color_location}%)`;
+				}
+			} else if(type === 'image') {
+				const img_url = $(gradientSelectors[gradientSelectorKey].img_url).val();
+				styles[element]['background-image'] = `url('${img_url}')`;
+			} else {
+				const bg_color = $(gradientSelectors[gradientSelectorKey].bg_color).val();
+				styles[element]['background-image'] = `url('')`;
+				styles[element]['background-color'] = bg_color;
+			}
+		}
+
 		return JSON.stringify(styles);
 	}
 });

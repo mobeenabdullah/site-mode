@@ -82,7 +82,7 @@ class Site_Mode_Design extends Settings {
 		'404_template_content' => '',
         'login_template'       => false,
         'login_template_active'=> '',
-        'login_page_styles'    => '',
+        'login_page_settings'    => '',
 	);
 
 	/**
@@ -225,10 +225,13 @@ class Site_Mode_Design extends Settings {
             return;
         } else if('login' === $category) {
             $login_styles  = $this->get_post_data( 'loginStyles', 'template_init_action', 'template_init_field', 'text' );
-
+            $loginContentHandler = $this->get_post_data( 'loginContentHandler', 'template_init_action', 'template_init_field', 'text' );
             $design_data['page_setup']['login_template_active']  = true;
             $design_data['page_setup']['login_template'] = $template_name;
-            $design_data['page_setup']['login_page_styles'] = $login_styles;
+            $design_data['page_setup']['login_page_settings'] = array(
+                'loginStyles' => $login_styles,
+                'loginContentHandler' => $loginContentHandler
+            );
 
             $this->save_data( $this->option_name, $design_data, $category );
             return;
@@ -406,7 +409,7 @@ class Site_Mode_Design extends Settings {
 				'404_template_content' => $design_settings['page_setup']['404_template_content'] ?? '',
                 'login_template'       => $design_settings['page_setup']['login_template'] ?? '',
                 'login_template_active'=> $design_settings['page_setup']['login_template_active'] ?? '',
-                'login_page_styles'    => $design_settings['page_setup']['login_page_styles'] ?? '',
+                'login_page_settings'    => $design_settings['page_setup']['login_page_settings'] ?? '',
 			);
 		}
 	}

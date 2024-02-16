@@ -958,7 +958,7 @@
                                         <label for="username_label">Username Label</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="username_label" value="Username or Email Address" data-property="" data-element="">
+                                        <input type="text" id="username_label" value="Username or Email Address" data-element="body.login label[for='user_login']" data-target="text">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -968,7 +968,7 @@
                                         <label for="password_label">Password Label</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="password_label" value="Password" data-property="" data-element="">
+                                        <input type="text" id="password_label" value="Password" data-element="body.login label[for='user_pass']" data-target="text">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -978,7 +978,7 @@
                                         <label for="remember_label">Remember Me Label</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="remember_label" value="Remember Me" data-property="" data-element="">
+                                        <input type="text" id="remember_label" value="Remember Me" data-element="body.login label[for='rememberme']" data-target="text">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -988,7 +988,7 @@
                                         <label for="button_text_label">Button Text</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="button_text_label" value="Log In" data-property="" data-element="">
+                                        <input type="text" id="button_text_label" value="Log In" data-element="body.login input#wp-submit" data-target="value">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -998,7 +998,7 @@
                                         <label for="lost_pass_text">Lost Password Text</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="lost_pass_text" value="Lost your password?" data-property="" data-element="">
+                                        <input type="text" id="lost_pass_text" value="Lost your password?" data-element="body.login #nav .wp-login-lost-password" data-target="text">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -1008,7 +1008,7 @@
                                         <label for="back_to_website">Back To Website Text</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="back_to_website" value="Back to website" data-property="" data-element="">
+                                        <input type="text" id="back_to_website" value="Back to website" data-element="body.login #backtoblog" data-target="text">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->

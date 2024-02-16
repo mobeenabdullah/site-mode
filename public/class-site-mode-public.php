@@ -193,6 +193,32 @@ class Site_Mode_Public {
      */
     public function site_mode_login_enqueue_script() {
         wp_enqueue_script( 'site-mode-login', SITE_MODE_PUBLIC_URL . 'js/site-mode-login.js', array( 'jquery' ), $this->version, false );
+        $this->login_content_change_handler();
+    }
+
+
+    public function login_content_change_handler() {
+        $design_settings  = get_option( 'site_mode_design' );
+        $login_template_active = isset( $design_settings['page_setup']['login_template_active'] ) ? $design_settings['page_setup']['login_template_active'] : '';
+        $login_page_settings = isset( $design_settings['page_setup']['login_page_settings'] ) ? $design_settings['page_setup']['login_page_settings'] : '';
+        $login_page_script = !empty($login_page_settings["loginContentHandler"]) ? json_decode($login_page_settings["loginContentHandler"], true) : '';
+        $scriptsArray = !empty($login_page_script) ? $login_page_script : '';
+
+        if ( ! empty( $login_template_active ) && ! empty( $scriptsArray ) ) {
+            $login_page_script = '';
+
+            foreach ($scriptsArray as $selector => $script_value) {
+                $login_page_script .= $script_value['script'];
+            }
+
+            $script = "<script type='text/javascript'>\n";
+            $script .= "document.addEventListener('DOMContentLoaded', function() {\n";
+            $script .= $login_page_script;
+            $script .= "});\n";
+            $script .= "</script>\n";
+            echo $script;
+        }
+
     }
 
     /**
@@ -207,11 +233,11 @@ class Site_Mode_Public {
     public function site_mode_login_internal_styling() {
         $design_settings  = get_option( 'site_mode_design' );
         $login_template_active = isset( $design_settings['page_setup']['login_template_active'] ) ? $design_settings['page_setup']['login_template_active'] : '';
-        $login_page_styles = isset( $design_settings['page_setup']['login_page_styles'] ) ? $design_settings['page_setup']['login_page_styles'] : '';
-
+        $login_page_settings = isset( $design_settings['page_setup']['login_page_settings'] ) ? $design_settings['page_setup']['login_page_settings'] : '';
+        $login_page_styles = !empty($login_page_settings["loginStyles"]) ? json_decode($login_page_settings["loginStyles"], true) : '';
 
         if ( ! empty( $login_template_active ) && ! empty( $login_page_styles ) ) {
-            $stylesArray = json_decode($login_page_styles, true);
+            $stylesArray = !empty($login_page_settings) ? $login_page_styles : '';
             $login_page_styling = '';
             foreach ($stylesArray as $selector => $styles) {
                 $login_page_styling .= $selector . '{';

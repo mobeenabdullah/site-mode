@@ -346,7 +346,7 @@ class Site_Mode_Admin {
 		ob_end_clean();
 
 		$doc = new DOMDocument();
-		$doc->loadHTML( '<html>' . esc_html( $output ) . '</html>' );
+		$doc->loadHTML( '<html>' . $output . '</html>' );
 		$elems = $doc->getElementsByTagName( 'style' );
 		$css   = '';
 
@@ -368,7 +368,7 @@ class Site_Mode_Admin {
 			$css .= $elems->item( $i )->C14N();
 		}
 
-		echo wp_kses_post( $css );
+		echo $css;
 	}
 
 	/**
