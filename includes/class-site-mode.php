@@ -229,7 +229,8 @@ class Site_Mode {
 		$this->loader->add_action( 'wp_ajax_delete_subscribe', $this->classes_loader->get_subscribes(), 'delete_subscribe' );
 		$this->loader->add_action( 'wp_ajax_send_email_cb', $this->classes_loader->get_contact_form(), 'send_email_cb' );
 		$this->loader->add_action( 'wp_ajax_nopriv_send_email_cb', $this->classes_loader->get_contact_form(), 'send_email_cb' );
-
+        $this->loader->add_action( 'wp_ajax_load_site_mode_login_page_settings', $this->classes_loader->get_design(), 'load_site_mode_login_page_settings' );
+        $this->loader->add_action( 'wp_ajax_nopriv_load_site_mode_login_page_settings', $this->classes_loader->get_design(), 'load_site_mode_login_page_settings' );
 	}
 
 	/**

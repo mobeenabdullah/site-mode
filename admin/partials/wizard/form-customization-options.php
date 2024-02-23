@@ -390,7 +390,7 @@
                                             <label for="form_background_type">Background Type</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <select id="form_background_type">
+                                            <select id="form_background_type" data-element="body.login #login"  data-property="type">
                                                 <option value="solid">Solid</option>
                                                 <option value="gradient">Gradient</option>
                                                 <option value="image">Image</option>
@@ -425,7 +425,7 @@
                                                 <label for="form_first_color">First Color</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <input type="color" id="form_first_color" value="#ffffff"  data-property="background-image" data-element="body.login #login">
+                                                <input type="color" id="form_first_color" value="#ffffff"  data-element="body.login #login"  data-property="first-color">
                                             </div>
                                         </div>
                                         <!-- Option Row end -->
@@ -435,7 +435,7 @@
                                                 <label for="form_first_color_location">Location</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <input type="number" id="form_first_color_location" value="24%"  data-property="background-image" data-element="body.login #login">
+                                                <input type="number" id="form_first_color_location" value="24%"  data-element="body.login #login"  data-property="first-color-location">
                                             </div>
                                         </div>
                                         <!-- Option Row end -->
@@ -445,7 +445,7 @@
                                                 <label for="form_second_color">Second Color</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <input type="color" id="form_second_color" value="#000000" data-property="background-image" data-element="body.login #login">
+                                                <input type="color" id="form_second_color" value="#000000" data-element="body.login #login"  data-property="second-color">
                                             </div>
                                         </div>
                                         <!-- Option Row end -->
@@ -455,7 +455,7 @@
                                                 <label for="form_second_color_location">Location</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <input type="number" id="form_second_color_location" value="100%" data-property="background-image" data-element="body.login #login">
+                                                <input type="number" id="form_second_color_location" value="100%" data-element="body.login #login"  data-property="second-color-location">
                                             </div>
                                         </div>
                                         <!-- Option Row end -->
@@ -465,7 +465,7 @@
                                                 <label for="form_gradient_type">Gradient Type</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <select id="form_gradient_type" data-property="background-image" data-element="body.login #login">
+                                                <select id="form_gradient_type">
                                                     <option value="linear-gradient">Linear</option>
                                                     <option value="radial-gradient">Radial</option>
                                                 </select>
@@ -478,7 +478,7 @@
                                                 <label for="form_gradient_angle">Angle</label>
                                             </div>
                                             <div class="row__option-field">
-                                                <input type="number" id="form_gradient_angle" value="200" data-property="background-image" data-element="body.login #login">
+                                                <input type="number" id="form_gradient_angle" value="200" data-element="body.login #login"  data-property="angle">
                                             </div>
                                         </div>
                                         <!-- Option Row end -->

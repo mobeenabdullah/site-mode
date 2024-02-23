@@ -94,6 +94,133 @@ jQuery(function($) {
 	}
 	$('.back_wizard_start').on('click', backToWizardStart);
 
+	function loadLoginPageSettings(templateName) {
+
+		const nonce = $("#sm-login-nonce").val();
+
+		$.ajax({
+			url: ajaxObj.ajax_url,
+			dataType: "json",
+			method: "post",
+			data: {
+				action: "load_site_mode_login_page_settings",
+				template: templateName,
+				nonce: nonce,
+			},
+			success: function(res) {
+
+				setTimeout( function() {
+
+					const data = res.data;
+					const loginStyles = data?.template_content?.loginStyles;
+					const contentHandler = data?.template_content?.loginContentHandler;
+					const iframe = document.querySelector("#sm-preview-iframe");
+					const contentChangeData = contentHandler ? JSON.parse(contentHandler) : {};
+					const loginPageStyles = JSON.parse(loginStyles);
+
+					// loop over object loginPageStyles
+					if(Object.keys(loginPageStyles).length > 0) {
+						for (const [selector, styles] of Object.entries(loginPageStyles)) {
+							if (selector && styles) {
+								// loop over object styles
+								for (const [property, value] of Object.entries(styles)) {
+									if (property && value) {
+										// update the value of the editor input field
+
+										if (property === 'background-image') {
+											if (value === "url('')") {
+												$(`input[data-element="${selector}"][data-property="${property}"]`).val('');
+												$('#form_background_type').val('image').trigger('change');
+											} else if (value.includes('linear-gradient')) {
+												const gradientString = value;
+												const gradientRegex = /linear-gradient\((\d+)deg,\s*(#\w+)\s*(\d+%)?,\s*(#\w+)\s*(\d+%)?\)/;
+												const match = gradientString.match(gradientRegex);
+												const angle = match[1];
+												const firstColor = match[2];
+												const firstColorLocation = match[3];
+												const secondColor = match[4];
+												const secondColorLocation = match[5];
+
+												$(`input[data-element="${selector}"][data-property="first-color"]`).val(firstColor);
+												$(`input[data-element="${selector}"][data-property="first-color-location"]`).val(firstColorLocation.replace('%', '') || 0);
+												$(`input[data-element="${selector}"][data-property="second-color"]`).val(secondColor);
+												$(`input[data-element="${selector}"][data-property="second-color-location"]`).val(secondColorLocation.replace('%', '') || 0);
+												$(`input[data-element="${selector}"][data-property="angle"]`).val(angle);
+												$('#form_gradient_type').val('linear-gradient');
+												$('#form_background_type').val('gradient').trigger('change');
+											} else if (value.includes('radial-gradient')) {
+												const gradientString = value;
+												// Define regular expressions for extracting values
+												const gradientRegex = /radial-gradient\((\w+),\s*(#\w+)\s*(\d+%)?,\s*(#\w+)\s*(\d+%)?\)/;
+
+												// Match the string against the regular expression
+												const match = value.match(gradientRegex);
+
+												if (match) {
+													// Extract values from the matched groups
+													const firstColor = match[2];
+													const firstColorLocation = match[3] || "0%";
+													const secondColor = match[4];
+													const secondColorLocation = match[5] || "100%";
+
+													$(`input[data-element="${selector}"][data-property="first-color"]`).val(firstColor);
+													$(`input[data-element="${selector}"][data-property="first-color-location"]`).val(firstColorLocation.replace('%', '') || 0);
+													$(`input[data-element="${selector}"][data-property="second-color"]`).val(secondColor);
+													$(`input[data-element="${selector}"][data-property="second-color-location"]`).val(secondColorLocation.replace('%', '') || 0);
+													$('#form_gradient_type').val('radial-gradient');
+													$('#form_background_type').val('gradient').trigger('change');
+												} else {
+													$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace('url(', '').replace(')', ''));
+												}
+
+
+											} else if (value.includes('px')) {
+												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace('px', ''));
+											} else {
+												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value);
+											}
+										}
+									}
+								}
+							}
+						}
+
+						iframe.contentWindow.postMessage({
+								loginStyles: loginStyles,
+							},
+							"*"
+						)
+					}
+
+					if (contentChangeData && Object.keys(contentChangeData).length > 0) {
+						// loop over object contentHandler
+						for (const [selector, content] of Object.entries(contentChangeData)) {
+							if(selector && content.value) {
+								// update the value of the editor input field
+								$(`input[data-element="${selector}"]`).val(content.value);
+								// send the message to the iframe to update the content
+								iframe.contentWindow.postMessage({
+										contentHandler: JSON.stringify({
+											[`${selector}`]: {
+												"target": content?.target,
+												"value": content.value
+											}
+										}),
+									},
+									"*"
+								)
+							}
+						}
+					}
+				}, 1000);
+
+			},
+			error: function(error) {
+				console.log(error);
+			},
+		});
+	}
+
 	// Go to select template page
 	function selectTemplate() {
 		const templateLabel = $(this).attr('data-template-label');
@@ -114,6 +241,7 @@ jQuery(function($) {
 
 		if('template-9' === templateName || 'template-10' === templateName) {
 			templateSlug = `${window.location.origin}/wp-login.php`;
+			loadLoginPageSettings(templateName);
 		}
 
 
@@ -692,6 +820,7 @@ jQuery(function($) {
 			if(contentChangeData[element] === undefined) {
 				contentChangeData[element] = {};
 				contentChangeData[element]['value'] = value;
+				contentChangeData[element]['target'] = target;
 
 				if(target === "text") {
 					contentChangeData[element]['script'] = `document.querySelector("${element}").innerHTML = '${value}';`
@@ -701,6 +830,7 @@ jQuery(function($) {
 
 			} else {
 				contentChangeData[element]['value'] = value;
+				contentChangeData[element]['target'] = target;
 				if(target === "text") {
 					contentChangeData[element]['script'] = `document.querySelector("${element}").innerHTML = '${value}';`
 				} else {

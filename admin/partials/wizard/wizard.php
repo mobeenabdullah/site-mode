@@ -235,6 +235,7 @@ if ( isset( $_GET['cat'] ) ) {
 					</div>
 					<div class="template_options wizard__templates-cards">
 						<input type="hidden" name="template-name" id="selected-template-name" value="<?php echo esc_html( $active_template ); ?>">
+                        <input type="hidden" name="sm-login-nonce" id="sm-login-nonce" value="<?php echo esc_attr( wp_create_nonce( 'sm-template-login-nonce' ) ); ?>">
 						<?php foreach ( $templates as $key => $template ) : ?>
 							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo esc_attr( $template['category'] ); ?>" data-category-template="<?php echo esc_attr( $key ); ?>">
 								<div class="template_card-img" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg' ); ?>);">

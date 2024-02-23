@@ -233,6 +233,8 @@ class Site_Mode_Design extends Settings {
                 'loginContentHandler' => $loginContentHandler
             );
 
+            update_option('sm-login-content-test', serialize($design_data['page_setup']['login_page_settings']));
+
             $this->save_data( $this->option_name, $design_data, $category );
             return;
         } else {
@@ -586,4 +588,27 @@ class Site_Mode_Design extends Settings {
 		$blocks = str_replace( '\n', '', $template_content );
 		return $blocks;
 	}
+
+    public function load_site_mode_login_page_settings() {
+
+        $this->verify_nonce( 'nonce', 'sm-template-login-nonce' );
+        $template_name    = $this->get_post_data( 'template', 'sm-template-login-nonce', 'nonce', 'text' );
+
+
+        $template_content_url = SITE_MODE_ADMIN . 'assets/templates/' . $template_name . '/blocks-export.json';
+        $template_content     = json_decode( file_get_contents( $template_content_url ) )->content;
+
+        wp_send_json_success( [
+            'status' => true,
+            'template_content' => unserialize(unserialize($template_content)),
+        ] );
+
+
+//        $login_page_settings = $this->get_data( $this->option_name );
+//        if ( ! empty( $login_page_settings ) ) {
+//            $this->page_setup['login_template'] = $login_page_settings['page_setup']['login_template'] ?? '';
+//            $this->page_setup['login_template_active'] = $login_page_settings['page_setup']['login_template_active'] ?? '';
+//            $this->page_setup['login_page_settings'] = $login_page_settings['page_setup']['login_page_settings'] ?? '';
+//        }
+    }
 }
