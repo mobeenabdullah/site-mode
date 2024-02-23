@@ -240,7 +240,7 @@ if ( isset( $_GET['cat'] ) ) {
 							<div class="template_card template-content-wrapper wizard__templates-cards--single <?php echo $active_template === $key ? 'active' : ''; ?>" data-category-name="<?php echo esc_attr( $template['category'] ); ?>" data-category-template="<?php echo esc_attr( $key ); ?>">
 								<div class="template_card-img" style="background-image: url(<?php echo esc_url( SITE_MODE_ADMIN_URL . 'assets/templates/' . $key . '/screenshot.jpg' ); ?>);">
 									<div class="template_card-actions">
-										<button type="button" class="select_template" data-template-label="<?php echo esc_attr( $template['name'] ); ?>">
+										<button type="button" class="select_template" data-template-label="<?php echo esc_attr( $template['name'] ); ?>" data-category-template="<?php echo esc_attr( $template['category'] ); ?>">
 											<svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 												<path d="M7.00008 1.16663C3.78358 1.16663 1.16675 3.78346 1.16675 6.99996C1.16675 10.2165 3.78358 12.8333 7.00008 12.8333C10.2166 12.8333 12.8334 10.2165 12.8334 6.99996C12.8334 3.78346 10.2166 1.16663 7.00008 1.16663ZM7.00008 11.6666C4.427 11.6666 2.33341 9.57304 2.33341 6.99996C2.33341 4.42688 4.427 2.33329 7.00008 2.33329C9.57316 2.33329 11.6667 4.42688 11.6667 6.99996C11.6667 9.57304 9.57316 11.6666 7.00008 11.6666Z" fill="white"/>
 												<path d="M5.83272 7.92569L4.49164 6.58694L3.66797 7.41294L5.83389 9.57419L9.74572 5.66236L8.92089 4.83752L5.83272 7.92569Z" fill="white"/>
@@ -269,7 +269,7 @@ if ( isset( $_GET['cat'] ) ) {
 					</svg>
 					<span>Back</span>
 				</button>
-				<button class="select_template_btn sm__btn primary_btn_outline disabled__customize" disabled="disabled" type="button" data-template-name="<?php echo esc_attr( $key ); ?>" data-template-label="<?php echo esc_attr( $template['name'] ); ?>">
+				<button class="select_template_btn sm__btn primary_btn_outline disabled__customize" disabled="disabled" type="button" data-template-name="<?php echo esc_attr( $key ); ?>" data-template-label="<?php echo esc_attr( $template['name'] ); ?>" data-category-template="<?php echo esc_attr( $template['category'] ); ?>">
 					<span>Customize</span>
 					<svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<path d="M3.1567 7.68786L4 8.59375L8 4.29688L4 0L3.1567 0.905886L5.71701 3.65622H0V4.93753H5.71701L3.1567 7.68786Z" fill="white"/>

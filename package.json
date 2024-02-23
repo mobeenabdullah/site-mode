@@ -13,6 +13,7 @@
   "author": "Adam",
   "license": "ISC",
   "dependencies": {
-    "node-sass": "^9.0.0"
+    "node-sass": "^9.0.0",
+    "sass": "^1.71.1"
   }
 }

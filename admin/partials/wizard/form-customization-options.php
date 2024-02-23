@@ -1,4 +1,4 @@
-<div class="component__settings" style="display: block;">
+<div class="component__settings form__settings" style="display: block;">
     <div class="component__settings-cover">
         <div class="settings__card">
             <div class="settings__card-title">
@@ -129,7 +129,7 @@
                                         <label for="background_color">Background Color</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="color" id="background_color" value="#ffffff" data-property="background-color" data-element=".login">
+                                        <input type="color" id="background_color" value="#ffffff">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -140,7 +140,7 @@
                                         <label for="bg_img_url">Enter image URL</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="url" value="" id="bg_img_url" placeholder="Enter logo url" data-property="background-image" data-element=".login">
+                                        <input type="url" value="" id="bg_img_url" placeholder="Enter logo url">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -151,7 +151,7 @@
                                             <label for="first_color">First Color</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <input type="color" id="first_color" value="#ffffff"  data-property="background-image" data-element=".login">
+                                            <input type="color" id="first_color" value="#ffffff">
                                         </div>
                                     </div>
                                     <!-- Option Row end -->
@@ -161,7 +161,7 @@
                                             <label for="first_color_location">Location</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <input type="number" id="first_color_location" value="24%"  data-property="background-image" data-element=".login">
+                                            <input type="number" id="first_color_location" value="24%">
                                         </div>
                                     </div>
                                     <!-- Option Row end -->
@@ -171,7 +171,7 @@
                                             <label for="second_color">Second Color</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <input type="color" id="second_color" value="#000000" data-property="background-image" data-element=".login">
+                                            <input type="color" id="second_color" value="#000000">
                                         </div>
                                     </div>
                                     <!-- Option Row end -->
@@ -181,7 +181,7 @@
                                             <label for="second_color_location">Location</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <input type="number" id="second_color_location" value="100%" data-property="background-image" data-element=".login">
+                                            <input type="number" id="second_color_location" value="100%">
                                         </div>
                                     </div>
                                     <!-- Option Row end -->
@@ -191,7 +191,7 @@
                                             <label for="gradient_type">Gradient Type</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <select id="gradient_type" data-property="background-image" data-element=".login">
+                                            <select id="gradient_type" data-property="background-image">
                                                 <option value="linear-gradient">Linear</option>
                                                 <option value="radial-gradient">Radial</option>
                                             </select>
@@ -204,7 +204,7 @@
                                             <label for="gradient_angle">Angle</label>
                                         </div>
                                         <div class="row__option-field">
-                                            <input type="number" id="gradient_angle" value="200" data-property="background-image" data-element=".login">
+                                            <input type="number" id="gradient_angle" value="200" data-property="background-image" data-element="body.login">
                                         </div>
                                     </div>
                                     <!-- Option Row end -->
@@ -305,7 +305,17 @@
                                         <label for="shadow_color">Shadow Color</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="color" id="shadow_color" value="200" data-property="" data-element="">
+                                        <input type="color" id="shadow_color" value="rgba(17, 12, 46, 0.15)">
+                                    </div>
+                                </div>
+                                <!-- Option Row end -->
+                                <!-- Option Row start -->
+                                <div class="row__option">
+                                    <div class="row__option-label">
+                                        <label for="shadow_color_opacity">Shadow Opacity</label>
+                                    </div>
+                                    <div class="row__option-field">
+                                        <input type="range" min="0" max="10" steps="0.1" id="shadow_color_opacity" value="0.5">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -315,7 +325,7 @@
                                         <label for="shadow_horizontal_position">Shadow Horizontal Position</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="shadow_horizontal_position" value="200" data-property="" data-element="">
+                                        <input type="number" id="shadow_horizontal_position" value="0">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -325,7 +335,7 @@
                                         <label for="shadow_vertical_position">Shadow Vertical Position</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="shadow_vertical_position" value="200" data-property="" data-element="">
+                                        <input type="number" id="shadow_vertical_position" value="48">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -335,7 +345,7 @@
                                         <label for="shadow_blur_spread">Shadow Blur/Spread</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="shadow_blur_spread" value="200" data-property="" data-element="">
+                                        <input type="number" id="shadow_blur_spread" value="100">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -359,10 +369,10 @@
                                         <label for="form_padding_top">Padding</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="number" id="form_padding_top" value="0" data-property="padding-top" data-element="body.login #login" data-unit="px">
-                                        <input type="number" id="form_padding_right" value="0" data-property="padding-bottom" data-element="body.login #login" data-unit="px">
-                                        <input type="number" id="form_padding_bottom" value="0" data-property="padding-right" data-element="body.login #login" data-unit="px">
-                                        <input type="number" id="form_padding_left" value="0" data-property="padding-left" data-element="body.login #login" data-unit="px">
+                                        <input type="number" id="form_padding_top" value="40" data-property="padding-top" data-element="body.login #login" data-unit="px">
+                                        <input type="number" id="form_padding_right" value="40" data-property="padding-bottom" data-element="body.login #login" data-unit="px">
+                                        <input type="number" id="form_padding_bottom" value="40" data-property="padding-right" data-element="body.login #login" data-unit="px">
+                                        <input type="number" id="form_padding_left" value="40" data-property="padding-left" data-element="body.login #login" data-unit="px">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -655,46 +665,6 @@
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="input_shadow_color">Shadow Color</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="color" id="input_shadow_color" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="input_shadow_horizontal_position">Shadow Horizontal Position</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="input_shadow_horizontal_position" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="input_shadow_vertical_position">Shadow Vertical Position</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="input_shadow_vertical_position" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="input_shadow_blur_spread">Shadow Blur/Spread</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="input_shadow_blur_spread" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
                             </div>
                         </div>
                     </div>
@@ -828,46 +798,6 @@
                                         <input type="number" id="button_padding_right" value="20" data-property="padding-right" data-element="body.login #login #loginform input[type='submit']" placeholder="Right" data-unit="px">
                                         <input type="number" id="button_padding_bottom" value="10" data-property="padding-bottom" data-element="body.login #login #loginform input[type='submit']" placeholder="Bottom" data-unit="px">
                                         <input type="number" id="button_padding_left" value="20" data-property="padding-left" data-element="body.login #login #loginform input[type='submit']" placeholder="Left" data-unit="px">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="button_shadow_color">Shadow Color</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="color" id="button_shadow_color" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="button_shadow_horizontal_position">Shadow Horizontal Position</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="button_shadow_horizontal_position" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="button_shadow_vertical_position">Shadow Vertical Position</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="button_shadow_vertical_position" value="200" data-property="" data-element="">
-                                    </div>
-                                </div>
-                                <!-- Option Row end -->
-                                <!-- Option Row start -->
-                                <div class="row__option">
-                                    <div class="row__option-label">
-                                        <label for="button_shadow_blur_spread">Shadow Blur/Spread</label>
-                                    </div>
-                                    <div class="row__option-field">
-                                        <input type="number" id="button_shadow_blur_spread" value="200" data-property="" data-element="">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->

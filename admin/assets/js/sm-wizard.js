@@ -224,6 +224,7 @@ jQuery(function($) {
 	// Go to select template page
 	function selectTemplate() {
 		const templateLabel = $(this).attr('data-template-label');
+		const templateCategory = $(this).attr('data-category-template');
 		$('.template__name').html(templateLabel);
 		// const templateName = $(this).attr('data-template-name');
 
@@ -260,6 +261,13 @@ jQuery(function($) {
 		removeElementAttribute('.select_template_btn', 'disabled', 'disabled');
 		$('.loading__template').css('display', 'flex');
 		setTimeoutForTemplate();
+		if("login" === templateCategory) {
+			$(".sm__templates-components").hide();
+			$(".form__settings").show();
+		} else {
+			$(".sm__templates-components").show();
+			$(".form__settings").hide();
+		}
 	}
 	$('.select_template').on('click', selectTemplate);
 
@@ -278,6 +286,7 @@ jQuery(function($) {
 		const templateLabel = $(this).attr('data-template-label');
 		$('.template__name').html(templateLabel);
 		const templateName = $(this).attr('data-template-name');
+		const templateCategory = $(".template_card.active .select_template").attr('data-category-template');
 		$('#selected-template-name').val(templateName);
 
 		let templateSlug = `https://site-mode.com/${templateName}`;
@@ -297,6 +306,13 @@ jQuery(function($) {
 		addElementClass('.sm__wizard-wrapper', 'sm_add_scroll');
 		$('.loading__template').css('display', 'flex');
 		setTimeoutForTemplate();
+		if("login" === templateCategory) {
+			$(".sm__templates-components").hide();
+			$(".form__settings").show();
+		} else {
+			$(".sm__templates-components").show();
+			$(".form__settings").hide();
+		}
 	}
 	$('.select_template_btn').on('click', customizeTemplate);
 	// Back to select template page
@@ -618,31 +634,37 @@ jQuery(function($) {
 		}
 	});
 
-	// Handle change event on background_type select element
-	$('#body_background_type, #form_background_type').on('change', function() {
-		// Get the selected value
-		const selectedType = $(this).val();
+	// Refactored function to handle change events
+	function handleBackgroundTypeChange(selectorPrefix, selectedType) {
 
-		// Hide all option rows
-		$('.body_login_background_color, .body_login_background_image, .body_gradient_background',).hide();
-		$('.form_login_background_color, .form_login_background_image, .form_gradient_background',).hide();
-		$('.form__background_color, .form_login_background_image, .form_gradient_background',).hide();
+		// Define the class selectors for different background types
+		const backgroundTypes = {
+			'solid': `${selectorPrefix}_login_background_color`,
+			'gradient': `${selectorPrefix}_gradient_background`,
+			'image': `${selectorPrefix}_login_background_image`
+		};
 
+		// Hide all options first
+		Object.values(backgroundTypes).forEach(selector => $(`.${selector}`).hide());
 
-		// Show relevant options based on selected value
-		if (selectedType === 'solid') {
-			$('.body_login_background_color').show();
-			$('.form_login_background_color').show();
-			$('.form__background_color').show();
-		} else if (selectedType === 'gradient') {
-			$('.body_gradient_background').show();
-			$('.form_gradient_background').show();
-		} else if (selectedType === 'image') {
-			$('.body_login_background_image').show();
-			$('.form_login_background_image').show();
+		// Show relevant option based on selectedType
+		const showSelector = backgroundTypes[selectedType];
+		if (showSelector) {
+			$(`.${showSelector}`).show();
 		}
+	}
+
+	// Event listener for form background type
+	$('#form_background_type').on('change', function() {
+		const selectedType = $(this).val();
+		handleBackgroundTypeChange('form', selectedType);
 	});
 
+	// Event listener for body background type
+	$('#body_background_type').on('change', function() {
+		const selectedType = $(this).val();
+		handleBackgroundTypeChange('body', selectedType);
+	});
 
 	// login common page styles
 	const loginStyles = {
@@ -671,9 +693,11 @@ jQuery(function($) {
 		"body.login #login form#loginform": {
 			"border-color": "transparent",
 			"background-color": "transparent",
-		},
-		"body.login #login #loginform" : {
 			"width": "100%",
+			"box-shadow": "none",
+			"border": "none",
+			"padding": "0",
+			"margin": "0",
 		},
 		"body.login #login #loginform input[type='submit']" : {
 			"width": "100%",
@@ -778,6 +802,19 @@ jQuery(function($) {
 		"#form_second_color_location",
 		"#form_gradient_type",
 		"#form_gradient_angle",
+		"#body_background_type",
+		"#background_color",
+		"#bg_img_url",
+		"#first_color",
+		"#first_color_location",
+		"#second_color",
+		"#second_color_location",
+		"#gradient_type",
+		"#gradient_angle",
+		"#shadow_color",
+		"#shadow_horizontal_position",
+		"#shadow_vertical_position",
+		"#shadow_blur_spread",
 	];
 
 	// Apply gradient
@@ -792,8 +829,20 @@ jQuery(function($) {
 			"second_color_location" : "#form_second_color_location",
 			"gradient_type" : "#form_gradient_type",
 			"gradient_angle" : "#form_gradient_angle"
+		},
+		"body.login" : {
+			"type" : "#body_background_type",
+			"bg_color" : "#background_color",
+			"img_url" : "#bg_img_url",
+			"first_color" : "#first_color",
+			"first_color_location" : "#first_color_location",
+			"second_color" : "#second_color",
+			"second_color_location" : "#second_color_location",
+			"gradient_type" : "#gradient_type",
+			"gradient_angle" : "#gradient_angle"
 		}
 	};
+
 
 	// content selectors
 	const contentSelectors = [
@@ -806,6 +855,16 @@ jQuery(function($) {
 		"#lost_pass_text",
 		"#back_to_website"
 	];
+
+	const shadowSelectors = {
+		"body.login #login" : {
+			"shadow_color" : "#shadow_color",
+			"shadow_x" : "#shadow_horizontal_position",
+			"shadow_y" : "#shadow_vertical_position",
+			"shadow_blur" : "#shadow_blur_spread",
+		}
+	}
+
 
 	const contentChangeData = {};
 
@@ -895,6 +954,7 @@ jQuery(function($) {
 		});
 
 		for (const gradientSelectorKey in gradientSelectors) {
+
 			const element = gradientSelectorKey;
 			const type = $(gradientSelectors[gradientSelectorKey].type).val();
 
@@ -923,6 +983,21 @@ jQuery(function($) {
 				styles[element]['background-image'] = `url('')`;
 				styles[element]['background-color'] = bg_color;
 			}
+		}
+
+		for (const shadowSelectorKey in shadowSelectors) {
+			console.log(shadowSelectorKey);
+			const element = shadowSelectorKey;
+
+			if(!styles[element]) {
+				styles[element] = {};
+			}
+			const shadow_color = $(shadowSelectors[shadowSelectorKey].shadow_color).val();
+			const shadow_x = $(shadowSelectors[shadowSelectorKey].shadow_x).val();
+			const shadow_y = $(shadowSelectors[shadowSelectorKey].shadow_y).val();
+			const shadow_blur = $(shadowSelectors[shadowSelectorKey].shadow_blur).val();
+
+			styles[element]['box-shadow'] = `${shadow_x}px ${shadow_y}px ${shadow_blur}px ${shadow_color}`;
 		}
 
 		return JSON.stringify(styles);
