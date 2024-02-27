@@ -118,6 +118,8 @@ jQuery(function($) {
 					const contentChangeData = contentHandler ? JSON.parse(contentHandler) : {};
 					const loginPageStyles = JSON.parse(loginStyles);
 
+					console.log(loginPageStyles, "loginPageStyles");
+
 					// loop over object loginPageStyles
 					if(Object.keys(loginPageStyles).length > 0) {
 						for (const [selector, styles] of Object.entries(loginPageStyles)) {
@@ -128,9 +130,12 @@ jQuery(function($) {
 										// update the value of the editor input field
 
 										if (property === 'background-image') {
+
 											if (value === "url('')") {
 												$(`input[data-element="${selector}"][data-property="${property}"]`).val('');
-												$('#form_background_type').val('image').trigger('change');
+												$(`select[data-element="${selector}"][data-property="type"]`).val('image');
+												$(`select[data-element="${selector}"][data-property="type"]`).trigger('change');
+
 											} else if (value.includes('linear-gradient')) {
 												const gradientString = value;
 												const gradientRegex = /linear-gradient\((\d+)deg,\s*(#\w+)\s*(\d+%)?,\s*(#\w+)\s*(\d+%)?\)/;
@@ -146,8 +151,10 @@ jQuery(function($) {
 												$(`input[data-element="${selector}"][data-property="second-color"]`).val(secondColor);
 												$(`input[data-element="${selector}"][data-property="second-color-location"]`).val(secondColorLocation.replace('%', '') || 0);
 												$(`input[data-element="${selector}"][data-property="angle"]`).val(angle);
-												$('#form_gradient_type').val('linear-gradient');
-												$('#form_background_type').val('gradient').trigger('change');
+
+												$(`select[data-element="${selector}"][data-property="gradient-type"]`).val('linear-gradient');
+												$(`select[data-element="${selector}"][data-property="type"]`).val('gradient').trigger('change');
+
 											} else if (value.includes('radial-gradient')) {
 												const gradientString = value;
 												// Define regular expressions for extracting values
@@ -167,17 +174,18 @@ jQuery(function($) {
 													$(`input[data-element="${selector}"][data-property="first-color-location"]`).val(firstColorLocation.replace('%', '') || 0);
 													$(`input[data-element="${selector}"][data-property="second-color"]`).val(secondColor);
 													$(`input[data-element="${selector}"][data-property="second-color-location"]`).val(secondColorLocation.replace('%', '') || 0);
-													$('#form_gradient_type').val('radial-gradient');
-													$('#form_background_type').val('gradient').trigger('change');
-												} else {
-													$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace('url(', '').replace(')', ''));
-												}
 
+													$(`select[data-element="${selector}"][data-property="gradient-type"]`).val('radial-gradient');
+													$(`select[data-element="${selector}"][data-property="type"]`).val('gradient').trigger('change');
+												}
 
 											} else if (value.includes('px')) {
 												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace('px', ''));
 											} else {
-												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value);
+
+												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace("url('", "").replace("')", ""));
+												$(`select[data-element="${selector}"][data-property="type"]`).val('image');
+												$(`select[data-element="${selector}"][data-property="type"]`).trigger('change');
 											}
 										}
 									}
@@ -944,7 +952,7 @@ jQuery(function($) {
 						styles[element] = {};
 					}
 					if ('background-image' === property) {
-						styles[element][property] = `url(${value})`;
+						styles[element][property] = `url('${value}')`;
 					} else {
 						styles[element][property] = value + cssUnit;
 					}
@@ -978,6 +986,7 @@ jQuery(function($) {
 			} else if(type === 'image') {
 				const img_url = $(gradientSelectors[gradientSelectorKey].img_url).val();
 				styles[element]['background-image'] = `url('${img_url}')`;
+
 			} else {
 				const bg_color = $(gradientSelectors[gradientSelectorKey].bg_color).val();
 				styles[element]['background-image'] = `url('')`;
@@ -986,7 +995,6 @@ jQuery(function($) {
 		}
 
 		for (const shadowSelectorKey in shadowSelectors) {
-			console.log(shadowSelectorKey);
 			const element = shadowSelectorKey;
 
 			if(!styles[element]) {
