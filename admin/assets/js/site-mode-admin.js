@@ -428,7 +428,7 @@ jQuery(function ($) {
     const category = currentElement.attr('data-category');
 
     if (currentElement.prop('checked')) {
-      if(category == '404') {
+      if(category == '404' || category === 'login') {
         activePage = true;
       } else {
         activePage = currentElement.val();

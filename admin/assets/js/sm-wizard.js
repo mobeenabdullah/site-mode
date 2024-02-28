@@ -179,13 +179,25 @@ jQuery(function($) {
 													$(`select[data-element="${selector}"][data-property="type"]`).val('gradient').trigger('change');
 												}
 
-											} else if (value.includes('px')) {
-												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace('px', ''));
 											} else {
 
 												$(`input[data-element="${selector}"][data-property="${property}"]`).val(value.replace("url('", "").replace("')", ""));
 												$(`select[data-element="${selector}"][data-property="type"]`).val('image');
 												$(`select[data-element="${selector}"][data-property="type"]`).trigger('change');
+											}
+										} else if( property === 'box-shadow') {
+											const shadowString = value;
+											const regex = /^(\d+)px (\d+)px (\d+)px rgba\((\d+), (\d+), (\d+), ([\d.]+)\)$/;
+											const match = shadowString.match(regex);
+
+											if(match) {
+												const [_, horizontal, vertical, blur, red, green, blue, opacity] = match;
+												$(`input[data-element="${selector}"][data-property="x-position"]`).val(horizontal);
+												$(`input[data-element="${selector}"][data-property="y-position"]`).val(vertical);
+												$(`input[data-element="${selector}"][data-property="blur"]`).val(blur);
+												$(`input[data-element="${selector}"][data-property="opacity"]`).val(opacity * 10);
+												$(`input[data-element="${selector}"][data-property="color"]`).val(`#${RGBToHex(red, green, blue)}`);
+
 											}
 										}
 									}
@@ -662,16 +674,16 @@ jQuery(function($) {
 		}
 	}
 
-	// Event listener for form background type
-	$('#form_background_type').on('change', function() {
-		const selectedType = $(this).val();
-		handleBackgroundTypeChange('form', selectedType);
-	});
-
 	// Event listener for body background type
 	$('#body_background_type').on('change', function() {
 		const selectedType = $(this).val();
 		handleBackgroundTypeChange('body', selectedType);
+	});
+
+	// Event listener for form background type
+	$('#form_background_type').on('change', function() {
+		const selectedType = $(this).val();
+		handleBackgroundTypeChange('form', selectedType);
 	});
 
 	// login common page styles
@@ -823,6 +835,7 @@ jQuery(function($) {
 		"#shadow_horizontal_position",
 		"#shadow_vertical_position",
 		"#shadow_blur_spread",
+		"#shadow_color_opacity"
 	];
 
 	// Apply gradient
@@ -870,6 +883,7 @@ jQuery(function($) {
 			"shadow_x" : "#shadow_horizontal_position",
 			"shadow_y" : "#shadow_vertical_position",
 			"shadow_blur" : "#shadow_blur_spread",
+			"shadow_opacity" : "#shadow_color_opacity"
 		}
 	}
 
@@ -1004,10 +1018,43 @@ jQuery(function($) {
 			const shadow_x = $(shadowSelectors[shadowSelectorKey].shadow_x).val();
 			const shadow_y = $(shadowSelectors[shadowSelectorKey].shadow_y).val();
 			const shadow_blur = $(shadowSelectors[shadowSelectorKey].shadow_blur).val();
+			const shadow_opacity = $(shadowSelectors[shadowSelectorKey].shadow_opacity).val();
 
-			styles[element]['box-shadow'] = `${shadow_x}px ${shadow_y}px ${shadow_blur}px ${shadow_color}`;
+			const  shadow_color_rgb = hexToRGB(shadow_color);
+			// Parse the RGB values
+			const rgbValues = shadow_color_rgb.match(/\d+/g);
+			// Construct the new RGBA color
+			const rgbaColor = `rgba(${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]}, ${shadow_opacity/10})`;
+
+			styles[element]['box-shadow'] = `${shadow_x}px ${shadow_y}px ${shadow_blur}px ${rgbaColor}`;
 		}
 
 		return JSON.stringify(styles);
 	}
+
+	const hexToRGB = hex => {
+		let alpha = false,
+			h = hex.slice(hex.startsWith('#') ? 1 : 0);
+		if (h.length === 3) h = [...h].map(x => x + x).join('');
+		else if (h.length === 8) alpha = true;
+		h = parseInt(h, 16);
+		return (
+			'rgb' +
+			(alpha ? 'a' : '') +
+			'(' +
+			(h >>> (alpha ? 24 : 16)) +
+			', ' +
+			((h & (alpha ? 0x00ff0000 : 0x00ff00)) >>> (alpha ? 16 : 8)) +
+			', ' +
+			((h & (alpha ? 0x0000ff00 : 0x0000ff)) >>> (alpha ? 8 : 0)) +
+			(alpha ? `, ${h & 0x000000ff}` : '') +
+			')'
+		);
+	};
+
+	const RGBToHex = (r, g, b) => {
+		return ((parseInt(r) << 16) + (parseInt(g) << 8) + parseInt(b)).toString(16).padStart(6, '0');
+	}
+
+
 });
