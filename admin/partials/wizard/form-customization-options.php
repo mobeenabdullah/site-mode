@@ -314,10 +314,17 @@
                                     <div class="row__option-label">
                                         <label for="shadow_color_opacity">Shadow Opacity</label>
                                     </div>
-                                    <div class="row__option-field">
-                                        <input type="range" min="0" max="10" id="shadow_color_opacity" value="5" data-property="opacity" data-element="body.login #login" data-unit="px">
+                                    <div class="row__option-field opacity__field form_shadow_opacity">
+                                        <div class="range-slider">
+                                            <div class="range-slider_thumb slider_thumb"></div>
+                                            <div class="range-slider_line">
+                                                <div class="range-slider_line-fill slider_line"></div>
+                                            </div>
+                                            <input id="shadow_color_opacity" class="range-slider_input" type="range" style="width: 120px" value="50" min="0" max="100" data-property="opacity" data-element="body.login #login" data-unit="px">
+                                        </div>
                                     </div>
                                 </div>
+
                                 <!-- Option Row end -->
                                 <!-- Option Row start -->
                                 <div class="row__option">
@@ -356,10 +363,10 @@
                                         <label for="form_margins_top">Margins</label>
                                     </div>
                                     <div class="row__option-field">
-                                        <input type="text" id="form_margins_top" value="auto" data-property="margin-top" data-element="body.login #login" data-unit="px">
-                                        <input type="text" id="form_margins_right" value="auto" data-property="margin-right" data-element="body.login #login" data-unit="px">
-                                        <input type="text" id="form_margins_bottom" value="auto" data-property="margin-bottom" data-element="body.login #login" data-unit="px">
-                                        <input type="text" id="form_margins_left" value="auto" data-property="margin-left" data-element="body.login #login" data-unit="px">
+                                        <input type="text" id="form_margins_top" value="0" data-property="margin-top" data-element="body.login #login" data-unit="px">
+                                        <input type="text" id="form_margins_right" value="0" data-property="margin-right" data-element="body.login #login" data-unit="px">
+                                        <input type="text" id="form_margins_bottom" value="0" data-property="margin-bottom" data-element="body.login #login" data-unit="px">
+                                        <input type="text" id="form_margins_left" value="0" data-property="margin-left" data-element="body.login #login" data-unit="px">
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
@@ -376,8 +383,6 @@
                                     </div>
                                 </div>
                                 <!-- Option Row end -->
-
-
                             </div>
                         </div>
                     </div>
@@ -413,7 +418,7 @@
                                             <div class="row__option-label">
                                                 <label for="form_container_bg">Background</label>
                                             </div>
-                                            <div class="row__option-field">
+                                            <div class="row__option-field opacity__field">
                                                 <input type="color" id="form_container_bg" value="#ffffff" data-property="background-color" data-element="body.login #login">
                                             </div>
                                         </div>
@@ -423,11 +428,15 @@
                                             <div class="row__option-label">
                                                 <label for="form_background_color_opacity">Background Opacity</label>
                                             </div>
-                                            <div class="row__option-field">
-                                                <input type="range" min="0" max="10" id="form_background_color_opacity" value="5" data-property="opacity" data-element="body.login #login" data-unit="px">
-                                                <input type="number" min="0" max="10" value="5" data-property="opacity" data-element="body.login #login" data-unit="px">
-
-                                            </div>
+<!--                                            <div class="row__option-field opacity__field form_background_opacity">-->
+<!--                                                <div class="range-slider">-->
+<!--                                                    <div class="range-slider_thumb slider_thumb"></div>-->
+<!--                                                    <div class="range-slider_line">-->
+<!--                                                        <div class="range-slider_line-fill slider_line"></div>-->
+<!--                                                    </div>-->
+<!--                                                    <input id="shadow_color_opacity" class="range-slider_input" type="range" style="width: 120px" value="50" min="0" max="100" data-property="opacity" data-element="body.login #login" data-unit="px">-->
+<!--                                                </div>-->
+<!--                                            </div>-->
                                         </div>
                                         <!-- Option Row end -->
                                     </div>

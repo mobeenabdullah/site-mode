@@ -195,9 +195,9 @@ jQuery(function($) {
 												$(`input[data-element="${selector}"][data-property="x-position"]`).val(horizontal);
 												$(`input[data-element="${selector}"][data-property="y-position"]`).val(vertical);
 												$(`input[data-element="${selector}"][data-property="blur"]`).val(blur);
-												$(`input[data-element="${selector}"][data-property="opacity"]`).val(opacity * 10);
+												$(`input[data-element="${selector}"][data-property="opacity"]`).val(opacity * 100);
+												showSliderValue(`input[data-element="${selector}"][data-property="opacity"]`);
 												$(`input[data-element="${selector}"][data-property="color"]`).val(`#${RGBToHex(red, green, blue)}`);
-
 											}
 										}
 									}
@@ -691,6 +691,22 @@ jQuery(function($) {
 		"body.login #login h1": {
 			"width": "100%",
 		},
+		"body.login #login #loginform .user-pass-wrap ": {
+			"margin-bottom": "20px",
+		},
+		"body.login #login #loginform input[type='submit']" : {
+			"line-height": "1",
+		},
+		"body.login #login #loginform label": {
+			"padding": "0",
+			"margin-bottom": "10px",
+			"display": "block",
+			"width": "100%",
+		},
+		"body.login #login #loginform .forgetmenot": {
+			"display": "flex",
+			"align-items": "center",
+		},
 		"body.login #login h1 a": {
 			"display": "inline-block",
 			"font-size": "0",
@@ -700,7 +716,6 @@ jQuery(function($) {
 			"margin-bottom": "0",
 			"background-size": "100%",
 		},
-
 		"body.login #login": {
 			"display": "flex",
 			"flex-direction": "column",
@@ -709,6 +724,7 @@ jQuery(function($) {
 			"border-style": "solid",
 			"border-color": "transparent",
 			"background-color": "transparent",
+			"margin": "0 !important",
 		},
 		"body.login #login form#loginform": {
 			"border-color": "transparent",
@@ -721,7 +737,18 @@ jQuery(function($) {
 		},
 		"body.login #login #loginform input[type='submit']" : {
 			"width": "100%",
-		}
+		},
+		"body.login": {
+			"background-repeat": "no-repeat",
+			"background-size": "cover",
+			"background-position": "center",
+			"height": "100vh",
+			"width": "100%",
+			"overflow": "hidden",
+			"display": "flex",
+			"justify-content": "center",
+			"align-items": "center",
+		},
 	};
 
 	// Apply styles
@@ -1020,11 +1047,13 @@ jQuery(function($) {
 			const shadow_blur = $(shadowSelectors[shadowSelectorKey].shadow_blur).val();
 			const shadow_opacity = $(shadowSelectors[shadowSelectorKey].shadow_opacity).val();
 
+			showSliderValue(shadowSelectors[shadowSelectorKey].shadow_opacity);
+
 			const  shadow_color_rgb = hexToRGB(shadow_color);
 			// Parse the RGB values
 			const rgbValues = shadow_color_rgb.match(/\d+/g);
 			// Construct the new RGBA color
-			const rgbaColor = `rgba(${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]}, ${shadow_opacity/10})`;
+			const rgbaColor = `rgba(${rgbValues[0]}, ${rgbValues[1]}, ${rgbValues[2]}, ${shadow_opacity/100})`;
 
 			styles[element]['box-shadow'] = `${shadow_x}px ${shadow_y}px ${shadow_blur}px ${rgbaColor}`;
 		}
@@ -1056,5 +1085,29 @@ jQuery(function($) {
 		return ((parseInt(r) << 16) + (parseInt(g) << 8) + parseInt(b)).toString(16).padStart(6, '0');
 	}
 
+
+	function showSliderValue(selector) {
+
+		const range = $(`${selector}`);
+		let value = range.val();
+
+		if(value * 1 >= 0 && value * 1 <= 1) {
+			value = value * 100;
+		}
+
+		const thumb = range.siblings('.slider_thumb');
+		const line = range.siblings('.range-slider_line').find('.slider_line');
+
+		thumb.html(value);
+		const bulletPosition = (value / range.attr('max'));
+		const space = range.width() - thumb.width();
+
+		console.log(bulletPosition, space, value);
+
+		thumb.css('left', (bulletPosition * space) + 'px');
+
+		line.css('width', value + '%');
+
+	}
 
 });
